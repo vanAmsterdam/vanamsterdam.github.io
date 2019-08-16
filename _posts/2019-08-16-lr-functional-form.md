@@ -32,7 +32,9 @@ df = data.frame(x=x,w=w,y=y)
 ```
 
 The data consists of two real-valued 'independent' variables $x,w$, 
-where $x\sim U(0, 2 \pi)$ and $w \sim \frac{x}{2} + sin(x) + \epsilon_w$ ($\epsilon_w \sim N(0, 0.25)$)
+where 
+$$x\sim U(0, 2 \pi)$$
+$$w \sim \frac{x}{2} + sin(x) + \epsilon_w \sim N(0, 0.25)$$
 In reality, $y$ is linear in both $x$ and $w$.
 A plot of the data:
 
@@ -42,7 +44,7 @@ ggplot(df, aes(x=x, y=w,col=y, size=y)) +
   geom_point() + theme_minimal()
 ```
 
-![plot of chunk xwy](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/xwy-1.png)
+![plot of chunk xwy](posts/figures/2019-08-16-lr-functional-form/xwy-1.png)
 
 Let's say we're particualrly interested in the relationship between $y$ and $x$, both conditional on $w$.
 Looking at the *marginal* assocation between $y$ and $x$ with a scatterplot will set us on the wrong foot, 
@@ -55,7 +57,7 @@ ggplot(df, aes(x=x,y=y)) +
   ggtitle("Marginal association between x and y")
 ```
 
-![plot of chunk marginal](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/marginal-1.png)
+![plot of chunk marginal](posts/figures/2019-08-16-lr-functional-form/marginal-1.png)
 
 To construct the correct plot, we can generate a partial residual plot, which is created with 
 
@@ -70,4 +72,4 @@ lyxw <- lm(y~x+w)
 plot(x, resid(lyxw)+coef(lyxw)['x']*x)
 ```
 
-![plot of chunk partresid](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/partresid-1.png)
+![plot of chunk partresid](posts/figures/2019-08-16-lr-functional-form/partresid-1.png)

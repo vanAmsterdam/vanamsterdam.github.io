@@ -31,7 +31,9 @@ df = data.frame(x=x,w=w,y=y)
 ```
 
 The data consists of two real-valued 'independent' variables $x,w$, 
-where $x\sim U(0, 2 \pi)$ and $w \sim \frac{x}{2} + sin(x) + \epsilon_w$ ($\epsilon_w \sim N(0, 0.25)$)
+where 
+$$x\sim U(0, 2 \pi)$$
+$$w \sim \frac{x}{2} + sin(x) + \epsilon_w \sim N(0, 0.25)$$
 In reality, $y$ is linear in both $x$ and $w$.
 A plot of the data:
 

@@ -13,6 +13,12 @@ header-includes:
   - \usepackage{mathrsfs}
 ---
 
+A frequent question that comes up when modeling continuous outcomes with multiple linear regression 
+is what the correct functional form for the relationship between the independent variables is.
+TLDR: the answer is a [partial residual plot](https://en.wikipedia.org/wiki/Partial_residual_plot). 
+Here I will generate some data to illustrate this
+
+
 
 ```r
 require(ggplot2)
@@ -21,125 +27,47 @@ N = 1000
 x <- runif(N, min = 0, max=2*pi)
 w <- .5*x + sin(x) + rnorm(N, sd=.25)
 sy <- rnorm(N, sd=.1)
-
-plot(x, w)
-```
-
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-1.png)
-
-```r
-lx <- lm(x~w)
-lw <- lm(w~x)
-
 y <- x^2 + w + sy
-
-plot(y, x)
+df = data.frame(x=x,w=w,y=y)
 ```
 
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-2.png)
+The data consists of two real-valued 'independent' variables $x,w$, 
+where $x\sim U(0, 2 \pi)$ and $w \sim \frac{x}{2} + sin(x) + \epsilon_w$ ($\epsilon_w \sim N(0, 0.25)$)
+In reality, $y$ is linear in both $x$ and $w$.
+A plot of the data:
+
 
 ```r
-plot(y, w)
-```
-
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-3.png)
-
-```r
-ggplot(data.frame(x=x,w=w,y=y), aes(x=x, y=w,col=y, size=y)) + 
+ggplot(df, aes(x=x, y=w,col=y, size=y)) + 
   geom_point() + theme_minimal()
 ```
 
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-4.png)
+![plot of chunk xwy](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/xwy-1.png)
+
+Let's say we're particualrly interested in the relationship between $y$ and $x$, both conditional on $w$.
+Looking at the *marginal* assocation between $y$ and $x$ with a scatterplot will set us on the wrong foot, 
+because of the assocation between $x$ and $w$.
+
 
 ```r
-lyx <- lm(y~x)
-plot(w, resid(lyx))
+ggplot(df, aes(x=x,y=y)) + 
+  geom_point() + 
+  ggtitle("Marginal association between x and y")
 ```
 
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-5.png)
+![plot of chunk marginal](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/marginal-1.png)
 
-```r
-plot(resid(lw), resid(lyx))
-```
+To construct the correct plot, we can generate a partial residual plot, which is created with 
 
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-6.png)
+$$resid(y|x,w)+\beta_x x \sim x$$
 
-```r
-plot(y, resid(lyx))
-```
+Where $\beta_x$ is the regression coefficient found through linear regression of $y$ on $x$ and $w$
+In a plot:
 
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-7.png)
-
-```r
-lyw <- lm(y~w)
-plot(x, resid(lyw))
-```
-
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-8.png)
-
-```r
-# partial regression plot
-plot(resid(lx), resid(lyw))
-```
-
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-9.png)
-
-```r
-plot(y, resid(lyw))
-```
-
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-10.png)
 
 ```r
 lyxw <- lm(y~x+w)
-plot(x, resid(lyxw))
-```
-
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-11.png)
-
-```r
-plot(w, resid(lyxw))
-```
-
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-12.png)
-
-```r
-plot(y, resid(lyxw))
-```
-
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-13.png)
-
-```r
-lm(y~x+w)
-```
-
-```
-## 
-## Call:
-## lm(formula = y ~ x + w)
-## 
-## Coefficients:
-## (Intercept)            x            w  
-##      -6.695        6.303        0.971
-```
-
-```r
-lm(resid(lyw)~resid(lx))
-```
-
-```
-## 
-## Call:
-## lm(formula = resid(lyw) ~ resid(lx))
-## 
-## Coefficients:
-## (Intercept)    resid(lx)  
-##  -1.360e-15    6.303e+00
-```
-
-```r
-# the solution (partial residual plot):
 plot(x, resid(lyxw)+coef(lyxw)['x']*x)
 ```
 
-![plot of chunk unnamed-chunk-1](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/unnamed-chunk-1-14.png)
+![plot of chunk partresid](/Users/vanAmsterdam/git/vanamsterdam.github.io/posts/figures/2019-08-16-lr-functional-form/partresid-1.png)

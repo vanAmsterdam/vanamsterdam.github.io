@@ -1,0 +1,57 @@
+---
+title: Finding the functional form for multiple linear regression
+output: pdf_document
+date: '2019-08-16'
+tags:
+- statistics 
+- simulations
+permalink: '`r paste0("/posts/",sub("[.]Rmd","",knitr::current_input()),"/")`'
+postname: '`r sub("[.]Rmd","",knitr::current_input())`'
+pdf: true
+rmd: true
+header-includes:
+  - \usepackage{mathrsfs}
+---
+
+```{r}
+require(ggplot2)
+set.seed(12345)
+N = 1000
+x <- runif(N, min = 0, max=2*pi)
+w <- .5*x + sin(x) + rnorm(N, sd=.25)
+sy <- rnorm(N, sd=.1)
+
+plot(x, w)
+lx <- lm(x~w)
+lw <- lm(w~x)
+
+y <- x^2 + w + sy
+
+plot(y, x)
+plot(y, w)
+ggplot(data.frame(x=x,w=w,y=y), aes(x=x, y=w,col=y, size=y)) + 
+  geom_point() + theme_minimal()
+
+lyx <- lm(y~x)
+plot(w, resid(lyx))
+plot(resid(lw), resid(lyx))
+plot(y, resid(lyx))
+
+lyw <- lm(y~w)
+plot(x, resid(lyw))
+
+# partial regression plot
+plot(resid(lx), resid(lyw))
+plot(y, resid(lyw))
+
+lyxw <- lm(y~x+w)
+plot(x, resid(lyxw))
+plot(w, resid(lyxw))
+plot(y, resid(lyxw))
+
+lm(y~x+w)
+lm(resid(lyw)~resid(lx))
+
+# the solution (partial residual plot):
+plot(x, resid(lyxw)+coef(lyxw)['x']*x)
+```

@@ -4,7 +4,7 @@
 # get cwd to replace absolute filenames from figure filenames in md file (this is a hack)
 # cwd = get_wd()
 wd = '/Users/vanAmsterdam/git/vanamsterdam.github.io'
-wd = paste0(cwd, '/') 
+wd = paste0(wd, '/') 
 
 rmd_to_gfm = function(filename, pdf=FALSE, cwd='/Users/vanAmsterda/git/vanamsterdam.github.io'){
   require(here); require(knitr); require(stringr)
@@ -18,7 +18,7 @@ rmd_to_gfm = function(filename, pdf=FALSE, cwd='/Users/vanAmsterda/git/vanamster
   file.rename(outFile, outPath)
   # postprocess figure filenames (this is a hack)
   f  <- readLines(outPath)
-  f2 <- str_replace_all(f, cwd, "")
+  f2 <- str_replace_all(f, cwd, "../")
   writeLines(f2, con=outPath)
 
   pdfDir = here("posts", "pdfs")

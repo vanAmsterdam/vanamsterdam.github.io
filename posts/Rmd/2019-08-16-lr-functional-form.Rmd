@@ -26,7 +26,7 @@ N = 1000
 x <- runif(N, min = 0, max=2*pi)
 w <- .5*x + sin(x) + rnorm(N, sd=.25)
 sy <- rnorm(N, sd=.1)
-y <- x^2 + w + sy
+y <- x + w + sy
 df = data.frame(x=x,w=w,y=y)
 ```
 
@@ -49,7 +49,8 @@ because of the assocation between $x$ and $w$.
 ```{r marginal}
 ggplot(df, aes(x=x,y=y)) + 
   geom_point() + 
-  ggtitle("Marginal association between x and y")
+  ggtitle("Marginal association between x and y") + 
+  theme_minimal()
 ```
 
 To construct the correct plot, we can generate a partial residual plot, which is created with 
@@ -61,5 +62,8 @@ In a plot:
 
 ```{r partresid}
 lyxw <- lm(y~x+w)
-plot(x, resid(lyxw)+coef(lyxw)['x']*x)
+ggplot(df, aes(x=x,y=resid(lyxw)+coef(lyxw)['x']*x)) + 
+  geom_point() + 
+  ggtitle("partial residual plot") + 
+  theme_minimal()
 ```

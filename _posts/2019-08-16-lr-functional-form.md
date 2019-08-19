@@ -44,7 +44,7 @@ ggplot(df, aes(x=x, y=w,col=y, size=y)) +
   geom_point() + theme_minimal()
 ```
 
-![plot of chunk xwy](posts/figures/2019-08-16-lr-functional-form/xwy-1.png)
+![plot of chunk xwy](../posts/figures/2019-08-16-lr-functional-form/xwy-1.png)
 
 Let's say we're particualrly interested in the relationship between $y$ and $x$, both conditional on $w$.
 Looking at the *marginal* assocation between $y$ and $x$ with a scatterplot will set us on the wrong foot, 

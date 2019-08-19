@@ -57,7 +57,7 @@ ggplot(df, aes(x=x,y=y)) +
   ggtitle("Marginal association between x and y")
 ```
 
-![plot of chunk marginal](posts/figures/2019-08-16-lr-functional-form/marginal-1.png)
+![plot of chunk marginal](../posts/figures/2019-08-16-lr-functional-form/marginal-1.png)
 
 To construct the correct plot, we can generate a partial residual plot, which is created with 
 
@@ -72,4 +72,4 @@ lyxw <- lm(y~x+w)
 plot(x, resid(lyxw)+coef(lyxw)['x']*x)
 ```
 
-![plot of chunk partresid](posts/figures/2019-08-16-lr-functional-form/partresid-1.png)
+![plot of chunk partresid](../posts/figures/2019-08-16-lr-functional-form/partresid-1.png)

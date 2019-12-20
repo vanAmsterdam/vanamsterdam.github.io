@@ -1,0 +1,50 @@
+---
+title: Against univariable variable selection:w
+output: pdf_document
+date: '2019-12-20'
+tags:
+- statistics 
+- simulations
+permalink: '`r paste0("/posts/",sub("[.]Rmd","",knitr::current_input()),"/")`'
+postname: '`r sub("[.]Rmd","",knitr::current_input())`'
+pdf: true
+rmd: true
+header-includes:
+  - \usepackage{mathrsfs}
+---
+
+## Intro
+
+This comes up frequently in medical literature: selecting variables for a multivariable analysis, based on univariate significance, AKA 'forward selection'.
+For many reasons, this is a bad idea.
+I will repeat one of these reasons here: the effect of your super-duper new predictor may be **negatively** confoundend by another variable.
+Not including this confounding variable in the analysis will lead to wrongfully reject your new predictor.
+A paper on this problem can be found here https://doi.org/10.1016/0895-4356(96)00025-X
+
+## Example
+
+Let's consider the following example.
+Researchers are want to 
+
+
+```{r}
+set.seed(20191220)
+nsim        <- 1000
+sex         <- rbinom(p=.5, n=nsim, size=1)
+activity    <- rbinom(p=.3+.3*sex, n=nsim, size=1)
+muscle_mass <- rbinom(p=.2+.3*sex+.2*activity, n=nsim, size=1)
+cad         <- rbinom(p=.1+.2*sex-.1*activity-.1*muscle_mass, n=nsim, size=1)
+
+```
+
+
+
+
+
+
+Here is a paragraph with a footnote<span id="a1">[[1]](#f1)</span>.
+
+Footnotes
+=========
+
+1. <span id="f1"></span> This is a footnote. [$\hookleftarrow$](#a1)

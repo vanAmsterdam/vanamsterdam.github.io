@@ -1,0 +1,31 @@
+---
+title: What is an ROC-plot and why is it monotonic?
+output: pdf_document
+date: '2020-08-18'
+tags:
+- statistics 
+permalink: '`r paste0("/posts/",sub("[.]Rmd","",knitr::current_input()),"/")`'
+postname: '`r sub("[.]Rmd","",knitr::current_input())`'
+pdf: true
+rmd: true
+header-includes:
+  - \usepackage{mathrsfs}
+---
+
+Probably the most ubiquitous evaluation metric for prediction models for binary outcomes (be it diagnostic or prognostic), is the AUC, also named C-statistic, or in full: the area under the curve of the receiver operator curve.
+Recently I came across an ROC-curve that seemed a bit odd to me. It was published [here](doi:10.1001/jamanetworkopen.2019.6879) (doi:10.1001/jamanetworkopen.2019.6879) in JAMA Network Open and included an ROC curve that curled up on itself. 
+
+https://cdn.jamanetwork.com/ama/content_public/journal/jamanetworkopen/938081/zoi190277f3.png?Expires=2147483647&Signature=C~Gn712RBY43Xlq3WX1OMdxspU60uTptbeDkOCWp58WWn-zTQz6UCiGsSLLwI10hwFxpZYScTW-fxiXLUpiKwoFtpJkIGMuyqSBgYB5Ewt4K~9bSxGcVIG1vBiclRZq2a9jQ0rjoOnI2aNNBxal0hJCaDuWHWf1q9vh1Gi2osC3kaEXlWX4K1jxX0Z3lOUpinLSt-6oMkhsJqWTPYO2Ud0PLvuQayOC8psmj3STQNba9VTbCZoVPQf77zV3qm0KFC30yd6I1NyjWBnFkv7-I9XvF00kHebkKGNeAx9dFOGbIzondj0XFVRL8yOi8FlO~8hUkEGoscc8vBEXX~8IU0A__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA
+
+To see this is possible, we will use data on smoking, alcohol and esophageal cancer
+
+```{r, imports}
+library(data.table)
+library(pROC)
+data(esoph)
+```
+
+```{r}
+m1 <- glm()
+```
+

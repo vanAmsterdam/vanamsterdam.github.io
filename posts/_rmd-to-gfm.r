@@ -6,7 +6,7 @@
 wd = '/Users/vanAmsterdam/git/vanamsterdam.github.io'
 wd = paste0(wd, '/') 
 
-rmd_to_gfm = function(filename, pdf=FALSE, cwd='/Users/vanAmsterda/git/vanamsterdam.github.io'){
+rmd_to_gfm = function(filename, pdf=FALSE, cwd='/Users/vanAmsterdam/git/vanamsterdam.github.io'){
   require(here); require(knitr); require(stringr)
   inFile =  here("posts", "Rmd", filename)
   outFile = sub("Rmd", "md", filename)

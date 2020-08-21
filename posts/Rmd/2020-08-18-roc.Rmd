@@ -57,20 +57,25 @@ predictions <- predict(m1, type='response')
 ```
 
 ```{r}
+# sort values by order of prediction
 prediction_order    <- order(predictions)
 malignant_ordered   <- malignant[prediction_order]
 predictions_ordered <- predictions[prediction_order]
 
+# create functions for calculating the sensitivity and specificity
 sens <- function(y_true, y_pred) sum(y_pred[y_true]) / sum(y_true)
 spec <- function(y_true, y_pred) sum(!y_pred[!y_true]) / sum(!y_true)
 
-unique_prediction_values <- unique(predictions_ordered)
+
+# setup vectors to contain the values of all pairs of sensitivity and specificity
+unique_prediction_values   <- unique(predictions_ordered)
 n_unique_prediction_values <- length(unique_prediction_values)
 
 cutoffs       <- vector(mode='numeric', length=n_unique_prediction_values)
 sensitivities <- vector(mode='numeric', length=n_unique_prediction_values)
 specificities <- vector(mode='numeric', length=n_unique_prediction_values)
 
+# for each cutoff, generate binary predictions and calculate sens and spec
 for (i in 1:n_unique_prediction_values) {
   cutoff            <- unique_prediction_values[i]
   cutoffs[i]        <- cutoff

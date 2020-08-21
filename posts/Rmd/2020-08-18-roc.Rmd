@@ -1,5 +1,5 @@
 ---
-title: What is an ROC-plot and why is it monotonic?
+title: What is an ROC-curve and why is it concave?
 output: pdf_document
 date: '2020-08-18'
 tags:
@@ -17,6 +17,19 @@ Recently I came across an ROC-curve that seemed a bit odd to me. It was publishe
 
 https://cdn.jamanetwork.com/ama/content_public/journal/jamanetworkopen/938081/zoi190277f3.png?Expires=2147483647&Signature=C~Gn712RBY43Xlq3WX1OMdxspU60uTptbeDkOCWp58WWn-zTQz6UCiGsSLLwI10hwFxpZYScTW-fxiXLUpiKwoFtpJkIGMuyqSBgYB5Ewt4K~9bSxGcVIG1vBiclRZq2a9jQ0rjoOnI2aNNBxal0hJCaDuWHWf1q9vh1Gi2osC3kaEXlWX4K1jxX0Z3lOUpinLSt-6oMkhsJqWTPYO2Ud0PLvuQayOC8psmj3STQNba9VTbCZoVPQf77zV3qm0KFC30yd6I1NyjWBnFkv7-I9XvF00kHebkKGNeAx9dFOGbIzondj0XFVRL8yOi8FlO~8hUkEGoscc8vBEXX~8IU0A__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA
 
+I wrote this blog-post to see if this is at all possible, or whether it is a sign of some error.
+In this post I will explain what the ROC-curve is and how you can 'manually' construct one in R, using only sorting rules and simple math.
+
+### The basis of the ROC-curve: Sensitivity and Specificity
+
+Formally, an ROC-curve is the visualization of the sensitivity and specificity of a continuous predictor for predicting a binary outcome, using different cut-offs.
+The most common example in medical literature is using logistic regression to predict a binary outcome, e.g. benign vs malignant breast tumours.
+
+
+
+
+To see whether this is at all possible, or whether this is a sign of some error, I wrote 
+
 To see this is possible, we will use data on smoking, alcohol and esophageal cancer
 
 ```{r, imports}
@@ -26,6 +39,62 @@ data(esoph)
 ```
 
 ```{r}
-m1 <- glm()
+df <- MASS::biopsy
 ```
+
+```{r}
+xycols <- c("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "class")
+m1 <- glm(class~., data=df[, xycols], family=binomial)
+
+thickness        <- df$V1
+size_uniformity  <- df$V2
+shape_uniformity <- df$V3
+malignant        <- df$class == 'malignant'
+
+m1 <- glm(malignant ~ thickness + size_uniformity + shape_uniformity, family=binomial)
+
+predictions <- predict(m1, type='response')
+```
+
+```{r}
+prediction_order    <- order(predictions)
+malignant_ordered   <- malignant[prediction_order]
+predictions_ordered <- predictions[prediction_order]
+
+sens <- function(y_true, y_pred) sum(y_pred[y_true]) / sum(y_true)
+spec <- function(y_true, y_pred) sum(!y_pred[!y_true]) / sum(!y_true)
+
+unique_prediction_values <- unique(predictions_ordered)
+n_unique_prediction_values <- length(unique_prediction_values)
+
+cutoffs       <- vector(mode='numeric', length=n_unique_prediction_values)
+sensitivities <- vector(mode='numeric', length=n_unique_prediction_values)
+specificities <- vector(mode='numeric', length=n_unique_prediction_values)
+
+for (i in 1:n_unique_prediction_values) {
+  cutoff            <- unique_prediction_values[i]
+  cutoffs[i]        <- cutoff
+  binary_prediction <- predictions_ordered > cutoff
+  sensitivities[i]  <- sens(malignant_ordered, binary_prediction)
+  specificities[i]  <- spec(malignant_ordered, binary_prediction)
+}
+
+```
+
+```{r}
+plot(1 - specificities, sensitivities, type='l')
+abline(a=0, b=1)
+```
+
+```{r}
+proc <- pROC::roc(malignant~predictions)
+plot(proc)
+```
+
+
+
+
+
+
+https://www.kaggle.com/sulianova/cardiovascular-disease-dataset/data#
 

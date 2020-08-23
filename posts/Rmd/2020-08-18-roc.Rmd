@@ -26,16 +26,9 @@ Formally, an ROC-curve is the visualization of the sensitivity and specificity o
 The most common example in medical literature is using logistic regression to predict a binary outcome, e.g. benign vs malignant breast tumours.
 
 
-
-
-To see whether this is at all possible, or whether this is a sign of some error, I wrote 
-
-To see this is possible, we will use data on smoking, alcohol and esophageal cancer
-
 ```{r, imports}
 library(data.table)
 library(pROC)
-data(esoph)
 ```
 
 ```{r}

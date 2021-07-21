@@ -5,6 +5,7 @@ date: '2021-07-20'
 tags:
 - causal inference
 - predictions
+permalink: /posts/goodpredictions_baddecisions
 pdf: true
 rmd: false
 header-includes:

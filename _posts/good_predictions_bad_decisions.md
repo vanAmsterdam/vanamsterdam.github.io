@@ -1,3 +1,18 @@
+---
+title: When good predictions lead to bad decisions
+output: pdf_document
+date: '2021-07-21'
+tags:
+- causal inference
+- predictions
+<!--permalink: '/posts/2019-08-16-lr-functional-form/'-->
+<!--postname: '2019-08-16-lr-functional-form'-->
+pdf: true
+rmd: false
+header-includes:
+  - \usepackage{mathrsfs}
+---
+
 # Introduction
 
 A common premise in prediction research for clinical outcomes is that

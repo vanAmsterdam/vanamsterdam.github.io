@@ -5,8 +5,6 @@ date: '2021-07-20'
 tags:
 - causal inference
 - predictions
-<!--permalink: '/posts/2019-08-16-lr-functional-form/'-->
-<!--postname: '2019-08-16-lr-functional-form'-->
 pdf: true
 rmd: false
 header-includes:

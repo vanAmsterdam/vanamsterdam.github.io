@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>When good predictions lead to bad decisions</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">When good predictions lead to bad decisions</h1>
+</header>
+<h1 id="introduction">Introduction</h1>
+<p>A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.</p>
+<p>For a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.</p>
+<p>Note that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer.</p>
+<h1 id="quantitative-example">Quantitative Example</h1>
+<p>I will use the following symbols to denote the relevant variables: <span class="math inline">\(y\)</span> for the outcome, <span class="math inline">\(x\)</span> for the clinical characteristics, <span class="math inline">\(z\)</span> for the new biomarker. The treatment variable is denoted <span class="math inline">\(t\)</span>, where <span class="math inline">\(t=1\)</span> corresponds to the more intensive and effective treatment <span class="math inline">\(A\)</span>, while <span class="math inline">\(t=0\)</span> is treatment <span class="math inline">\(B\)</span>. The treatment effect on some relevant scale is denoted <span class="math inline">\(\beta\)</span>. The indicator function is denoted <span class="math inline">\(\mathbf{I}_.\)</span> and equals 1 whenever statement <span class="math inline">\(.\)</span> is true, and 0 otherwise. Without loss of generality, we will assume that <span class="math inline">\(y\)</span> is measured on some scale such that <span class="math inline">\(y &gt; 0\)</span> is associated with a positive outcome, i.e. the positive outcome exceeds the risk of side-effects associated with treatment <span class="math inline">\(t = 1\)</span>.</p>
+<h2 id="defining-the-policies">Defining the policies</h2>
+<p>The current clinical policy is:</p>
+<p><span class="math display">\[\pi_0(x) = \mathbf{I}_{E[y|x] &gt; 0}\]</span></p>
+<p>So we should give treatment <span class="math inline">\(t=1\)</span> whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:</p>
+<p><span class="math display">\[y = \beta z t + x - z\]</span></p>
+<p>As <span class="math inline">\(y\)</span> is a deterministic function of <span class="math inline">\(t,x,z\)</span>, we drop the expectation symbol in the following discussion. Let <span class="math inline">\(x,z \sim \mathbf{U}(-1,1)\)</span> be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as <span class="math display">\[\pi_0(x) = \mathbf{I}_{y|x &gt; 0} = \mathbf{I}_{E_{z}[y|x,z]&gt;0} \iff \mathbf{I}_{x &gt; 0}\]</span></p>
+<p>A naive implementation of the new prediction rule incorporating <span class="math inline">\(z\)</span> would lead to the policy <span class="math inline">\(\pi_z(x,z) = \mathbf{I}_{y|x,z &gt; 0}\)</span>. Plugging in the data generating mechanism we can identify</p>
+<p><span class="math display">\[\begin{aligned}
+  y|x,z &amp;= E_{t \sim \pi_0(x)}[y|t,x,z] \\
+    &amp;= E_{t \sim \pi_0(x)}[\beta z t + x - z] \\
+    &amp;= \beta z E_{t \sim \pi_0(x)} [t] + x - z \\
+    &amp;= \beta z E_x [\mathbf{I}_{x &gt; 0}] + x - z \\
+    &amp;= 0.5 \beta z  + x - z \\
+    &amp;= x - (1 - 0.5 \beta)z\end{aligned}\]</span></p>
+<p>Thus <span class="math inline">\(\pi_z(x,z) = \mathbf{I}_{x + (0.5 \beta - 1)z &gt; 0}\)</span>.</p>
+<p>From the data generating mechanism it is clear that the conditional average treatment effect reduces to</p>
+<p><span class="math display">\[\begin{aligned}
+  \text{CATE(x,z)} &amp;= E[y|\text{do}(t=1),x,z] - E[y|\text{do}(t=0),x,z] \\
+                   &amp;= \beta z - 0\end{aligned}\]</span></p>
+<p>The policy that maximizes the outcome <span class="math inline">\(y\)</span> is <span class="math inline">\(\pi_{\text{max}(y)}(z) = \mathbf{I}_{z &gt; 0}\)</span> as <span class="math inline">\(\text{do}(t=1)\)</span> leads to better outcomes if and only if <span class="math inline">\(z&gt;0\)</span>. To conform with the ethical consensus that the intensive treatment is justified when <span class="math inline">\(y|\text{do}(t),x,z&gt;0\)</span>, we set</p>
+<p><span class="math display">\[\begin{aligned}
+    \pi^*(x,z) &amp;= \mathbf{I}_{y|\text{do}(t=1),x,z &gt; 0} \\
+           &amp;= \mathbf{I}_{\beta z * 1 + x - z &gt; 0} \\
+           &amp;= \mathbf{I}_{x + (\beta - 1) z &gt; 0}\end{aligned}\]</span></p>
+<h2 id="expected-utility-of-different-policies">Expected utility of different policies</h2>
+<p>We can now calculate the expected utility of the different policies <span class="math inline">\(\pi \in \{\pi_0,\pi_z,\pi_{\text{max}(y)},\pi^*\}\)</span> as the expected outcome, <span class="math inline">\(U(\pi) = E_{x,z}E_{t\sim \pi(x,z)}y|t,x,z = E_{x,z}\beta z \pi(x,z) + x - z\)</span>. The calculation of these expected utilities depends on the treatment effect, which will we assume to be <span class="math inline">\(\beta = 1.5\)</span>. We will use the marginal indepence of <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> to equate <span class="math inline">\(E_{x,z}[.] = E_z E_x [.]\)</span>.</p>
+<p><span class="math display">\[\begin{aligned}
+    U(\pi_0) &amp;= E_z E_x [\beta z \mathbf{I}_{x &gt; 0} + x - z] \\
+         &amp;= \beta E_z z E_x \mathbf{I}_{x&gt;0} \\
+         &amp;= \beta E_z z 0.5 \\
+         &amp;= 0\end{aligned}\]</span></p>
+<p>We have <span class="math inline">\(\pi_z(x,z) = \mathbf{I}_{x - (1 - 0.5 \beta)z &gt; 0} = \mathbf{I}_{x &gt; 0.25z}\)</span></p>
+<p><span class="math display">\[\begin{aligned}
+    U(\pi_z) &amp;= E_z E_x [\beta z \mathbf{I}_{x &gt; 0.25z} + x - z] \\
+         &amp;= \beta E_z z E_x \mathbf{I}_{x &gt; 0.25z} \\
+         &amp;= \beta E_z z \text{Pr}(x &gt; 0.25z) \\
+         &amp;=^1 \frac{\beta}{2} \int_{-1}^{1} z \text{Pr}(x &gt; 0.25z) dz\\
+         &amp;=^2 \frac{\beta}{2} \int_{-1}^{1} z (1 - \frac{0.25z+1}{2}) dz\\
+         &amp;= \frac{\beta}{4} \int_{-1}^{1} z (1 - 0.25z)dz \\
+         &amp;= \frac{\beta}{4} \left[ \frac{1}{2} z^2 - \frac{0.25}{3}z^3 + C \right]_{-1}^1 \\
+         &amp;= \frac{\beta}{4} \left( ( \frac{1}{2} - \frac{0.25}{3}) - ( \frac{1}{2} + \frac{0.25}{3}) \right) \\ 
+         &amp;= - \frac{\beta}{2} \frac{0.25}{3} \\ 
+         &amp;= - 0.075\end{aligned}\]</span></p>
+<p>Where in <span class="math inline">\(^1\)</span> we used the <span class="math inline">\(U(-1,1)\)</span> distribution of <span class="math inline">\(z\)</span> and in <span class="math inline">\(^2\)</span> we used the probability density function of <span class="math inline">\(x\)</span> and the fact that <span class="math inline">\(-1 &lt; 0.25z &lt; 1\)</span>. This demonstrates that the policy following the (accurate!) prediction model <span class="math inline">\(y|x,z\)</span> leads to worse clinical outcomes than the previous situation that relied on <span class="math inline">\(x\)</span> only.</p>
+<p>The reader may verify that <span class="math display">\[\begin{aligned}
+    U(\pi_{\text{max}(y)}) &amp;= 0.375 \\ 
+    U(\pi^*) &amp;= 0.125\end{aligned}\]</span></p>
+<h1 id="concluding-remarks">Concluding remarks</h1>
+<p>The above example demonstrates that accurate outcome prediction models do not automatically lead to better treatment decisions. Essentially, outcome prediction is the right answer to the wrong question. The canonical question driving treatment decisions is "What is the probability of outcome <span class="math inline">\(y\)</span> if we give treatment <span class="math inline">\(t\)</span> given that we know <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> about this patient". In the form of an equation it is <span class="math inline">\(p(y|\text{do}(t),x,z)\)</span>, whereas outcome prediction targets <span class="math inline">\(p(y|x,z)\)</span>.</p>
+</body>
+</html>

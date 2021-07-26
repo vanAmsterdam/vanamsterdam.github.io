@@ -54,7 +54,7 @@ treamtent $t=0$, so it is $E[Y_0|Y=y_1, t=1]$.
 
 Now assume that the data come from a mixture of Gaussians such that
 
-$$y(t) = (1 - t) \mathcal{N}(1,0.1^2) + t \mathcal{N}(10,2.5^2)$$
+$$y|t \sim (1 - t) \mathcal{N}(1,0.1^2) + t \mathcal{N}(10,2.5^2)$$
 
 And $p(t=1)=0.5$ so both arms are equally large.
 Treatment $t=1$ leads to higher outcome but also more spread.

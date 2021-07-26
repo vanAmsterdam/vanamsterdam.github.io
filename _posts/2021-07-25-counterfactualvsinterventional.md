@@ -1,0 +1,118 @@
+---
+title: The difference between intervention and counterfactuals
+output: pdf_document
+date: '2021-07-25'
+tags:
+- causal inference 
+- statistics 
+permalink: '/posts/2021-07-25-counterfactualvsinterventional'
+postname: '2021-07-25-counterfactualvsinterventional'
+pdf: true
+rmd: false
+header-includes:
+  - \usepackage{mathrsfs}
+---
+
+## Intro
+
+Sometimes there is confusion about the difference between
+counterfactual predictions and interventional predictions.
+According to the ladder of causation introduced by Pearl and presented
+in the 'Book of Why', interventional is rung 2 and counterfactuals
+are rung 3 (associations are rung 1).
+Models that predict the treatment effect for a new patient based on some
+covariates $X$ require interventional models, not counterfactual.
+The difference between interventional and counterfactual models
+is relevant as counterfactual models require more assumptions,
+they require knowledge of the structural mechanisms.
+In words, the interventional question is "What is the expected outcome
+under treatment $t$ given that we know $X$", 
+or "What is the expected difference in outcomes between treatment $t$ 
+and $t'$ given that we know $X$".
+The counterfactual question is "What would have been the outcome
+if we had given treatment $t'$ given that we gave $t$ and observed outcome $y$". 
+
+## Example
+
+To illustrate the difference between a counterfactual prediction and
+an interventional prediction (or conditional average treatment effect
+estimates), consider this very simple setup.
+
+You have data from a randomized trial with two treatment arms 
+$t \in \{0,1\}$ and an outcome $Y$ on a continuous scale.
+Denote $Y_0$ the potential outcome under intervening on treatment $t=0$
+and $Y_1$ the potential outcome under intervening on treatment $t=1$.
+As we are dealing with data from a randomized trial, we can easily 
+estimate the average treatment effect as 
+$E[Y_1 - Y_0] = E[Y|t=0] - E[Y|t=1]$, 
+assuming consistency (ignorability and overlap are satisfied due to the 
+study design).
+
+A counterfactual question is: what would have been the outcome $Y_1$
+under treatment $t=1$, given that we observed the outcome $y_0$ under
+treamtent $t=0$, so it is $E[Y_0|Y=y_1, t=1]$.
+
+Now assume that the data come from a mixture of Gaussians such that
+
+$$y(t) = (1 - t) \mathcal{N}(1,0.1^2) + t \mathcal{N}(10,2.5^2)$$
+
+And $p(t=1)=0.5$ so both arms are equally large.
+Treatment $t=1$ leads to higher outcome but also more spread.
+The relevant interventional expectations are easily calculated by 
+just calculating group means $E[Y_0] = E[Y|t=0] = 1$, 
+$E[Y_1] = E[Y|t=1] = 10$.
+
+### Calculating the counterfactuals
+To see that calculating counterfactuals requires more knowledge,
+namely of the structural equations, we now calculate the 
+counterfactual prediction for a patient with $Y=Y_1=15$.
+This is a patient with a relatively large 'residual', the
+outcome is 2 standard deviations above the mean for treatment 
+group $t=1$.
+
+First we calculate the counterfactual outcome under a *wrong* outcome
+model. Researchers tried to model the outcomes using linear regression,
+and failed to appreciate the difference in variances between the 
+two treatment arms (heteroscedasticity).
+Assuming a large sample, they will arrive at a model:
+
+$$\hat{y}_{\text{wrong}} = 1 + t * 9 + \mathcal{N}(0,\sigma^2)$$
+
+Where $\sigma = \sqrt{\frac{0.1^2 + 2.5^2}{2}} \approx 1.77$ (standard devation of mixture
+of Gaussians with (conditional) mean of 0 and standard deviations 0.1 and 2.5, with 50 / 50 mixing).
+Note that the estimate of the treatment effect is correct,
+and so are $E[Y_0]$ and $E[Y_1]$.
+If there was a binary pre-treatment covariate, the conditional average treatment
+effect could be estimated by repeating this exercise for both levels
+of the covariate.
+To calculate the counterfactual outcome of our patient, we first
+need to determine the value of their *noise* variable for the 
+outcome. According to $\hat{y}_{\text{wrong}}$, the residual 
+for a patient with $Y_1=15$ is $5$, which is $5/\sigma \approx 2.82$ 
+standard deviations away from the expected value for $t=1$.
+Given this residual we can now calculate the counterfactual:
+
+$$\widehat{E_{\text{wrong}}}[Y_0|Y=15,t=1] \approx E[Y_0] + 2.82 \sigma =6$$
+
+Given that we know the data generating mechanism,
+we know that this counterfactual prediction is 50 standard deviations
+from the conditional mean of $t=0$ in the data generating mechanism, clearly 
+this counterfactual prediction is wrong.
+
+If we did model the data correctly with a mixture of Gaussians indexed
+by the treatment group, we would instead say that $Y_1=15$ is
+2 standard deviations above the conditional mean, and we would calculate:
+
+$$\widehat{E^*}[Y_0|Y=15,t=1] = E[Y_0] + 2 * 0.1 =1.2$$
+
+Which is correct.
+
+## Conclusion
+
+To calculate counterfactual predictions, you need to correctly 
+specify the structural equations.
+For treatment recommendations for future patients, these are not needed,
+interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).
+
+Post-script: for 'real' patient counsellling obviously just the expected values under the treatments would not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes.
+

@@ -48,9 +48,9 @@ $E[Y_1 - Y_0] = E[Y|t=0] - E[Y|t=1]$,
 assuming consistency (ignorability and overlap are satisfied due to the 
 study design).
 
-A counterfactual question is: what would have been the outcome $Y_1$
-under treatment $t=1$, given that we observed the outcome $y_0$ under
-treamtent $t=0$, so it is $E[Y_0|Y=y_1, t=1]$.
+A counterfactual question is: what would have been the outcome $Y_0$
+under treatment $t=1$, given that we observed the outcome $y_1$ under
+treamtent $t=1$, so it is $E[Y_0|Y=y_1, t=1]$.
 
 Now assume that the data come from a mixture of Gaussians such that
 
@@ -114,5 +114,5 @@ specify the structural equations.
 For treatment recommendations for future patients, these are not needed,
 interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).
 
-Post-script: for 'real' patient counsellling obviously just the expected values under the treatments would not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes.
+Post-script: for 'real' patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes.
 

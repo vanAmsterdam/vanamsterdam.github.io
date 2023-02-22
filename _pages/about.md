@@ -9,5 +9,8 @@ redirect_from:
 ---
 
 I am a senior research scientist at Babylon Health, working the intersection of machine learning and causal inference for health care applications.
-Before, I was a PhD student at the radiology department of University Medical Center Utrecht, the Netherlands.
-I have a degree in physics (BSc.), medicine (M.D.), epidemiology (MSc.) and a Phd in machine learning for health care.
+Before, I was a PhD student at the radiology department of University Medical Center Utrecht, the Netherlands,
+co-advised by Rajesh Ranganath from the Courant Institute of Mathematical Sciences at New York University.
+I have a degree in physics (BSc.), medicine (M.D.), epidemiology (MSc.) and a PhD in machine learning for health care.
+
+I'm based in the Netherlands

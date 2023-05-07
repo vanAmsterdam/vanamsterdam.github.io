@@ -1,4 +1,7 @@
-Wouter van Amsterdam is a senior research scientist at Babylon Health, working the intersection of machine learning and causal inference for health care applications.
-Before, he was a PhD student at the radiology department of University Medical Center Utrecht, the Netherlands,
+(per June 2023) I am an assistant professor at the University Medical Center Utrecht, working at the intersection of machine learning and causal inference for health care applications.
+Before, I was a PhD student at the radiology department of University Medical Center Utrecht, the Netherlands,
 co-advised by Rajesh Ranganath from the Courant Institute of Mathematical Sciences at New York University.
-Wouter holds degrees in physics (BSc.), medicine (M.D.), epidemiology (MSc.) and has a PhD in machine learning for health care.
+For 1.5 years I worked as a senior research scientist at Babylon Health
+I have a degree in physics (BSc.), medicine (M.D.), epidemiology (MSc.) and a PhD in machine learning for health care.
+
+I'm based in the Netherlands

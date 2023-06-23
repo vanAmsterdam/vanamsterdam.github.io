@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-(per June 2023) I am an assistant professor at the University Medical Center Utrecht, working at the intersection of machine learning and causal inference for health care applications.
+I am an assistant professor at the University Medical Center Utrecht, working at the intersection of machine learning and causal inference for health care applications.
 Before, I was a PhD student at the radiology department of University Medical Center Utrecht, the Netherlands,
 co-advised by Rajesh Ranganath from the Courant Institute of Mathematical Sciences at New York University.
 For 1.5 years I worked as a senior research scientist at Babylon Health

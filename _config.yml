@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Wouter van Amsterdam"
 title_separator          : "-"
 name                     : &name "Wouter van Amsterdam"
-description              : &description "MD, PhD student @ University Medical Center Utrecht"
+description              : &description "assistant professor @ University Medical Center Utrecht"
 url                      : https://vanamsterdam.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "vanamsterdam/vanamsterdam.github.io"
@@ -81,14 +81,14 @@ analytics:
 # Site Author
 author:
   name             : "Wouter van Amsterdam"
-  avatar           : "profile.png"
-  bio              : "MD, PhD student, applying machine learning and causal inference for medical problems"
+  avatar           : "wvanamsterdam_square.jpg"
+  bio              : "assistant professor, machine learning and causal inference methods and applications for health care"
   location         : "Utrecht, the Netherlands"
   employer         :
-  pubmed           : # "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : "https://pubmed.ncbi.nlm.nih.gov/?term=van+Amsterdam%2C+W%5BAuthor%5D&sort="
   googlescholar    : "https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&hl=nl&oi=sra"
-  email            :
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  email            : "w.a.c.vanamsterdam-3 at umcutrecht.nl"
+  researchgate     : "https://www.researchgate.net/profile/Wouter-Van-Amsterdam"
   uri              :
   bitbucket        :
   codepen          :
@@ -102,7 +102,7 @@ author:
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         :
+  linkedin         : "https://www.linkedin.com/in/wouter-van-amsterdam-06b09023"
   orcid            : "https://orcid.org/0000-0002-3181-0810"
   pinterest        :
   soundcloud       :

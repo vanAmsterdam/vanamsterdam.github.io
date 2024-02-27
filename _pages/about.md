@@ -8,8 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am an assistant professor at the University Medical Center Utrecht, working at the intersection of machine learning and causal inference for health care applications.
-My research focus is on methods and applications of machine learning and causal inference in health care.
+I am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.
 I like application driven methods research, using assumptions that are likely to occur in the real world.
 
 Master students with a strong background in statistics or machine learning, math and programming, who want to work with me are welcome to contact me.

@@ -2,16 +2,22 @@ project:
   type: website
 
 website:
-  title: "./"
+  title: "Wouter van Amsterdam"
+  open-graph: true
+  twitter-card:
+    site: "@wvanamsterdam"
   navbar:
+    background: light
+    search: false
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
 

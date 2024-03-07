@@ -2,15 +2,36 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Wouter van Amsterdam, MD, PhD",
     "section": "",
-    "text": "About this site"
+    "text": "I am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care. I like application driven methods research, using assumptions that are likely to occur in the real world.\nMaster students with a strong background in statistics or machine learning, math and programming, who want to work with me are welcome to contact me.\nBefore, I was a PhD student at the radiology department of University Medical Center Utrecht, the Netherlands, co-advised by Rajesh Ranganath from the Courant Institute of Mathematical Sciences at New York University. For 1.5 years I worked as a senior research scientist at Babylon Health I have degrees in physics (BSc.), medicine (M.D.), epidemiology (MSc.) and a PhD in machine learning for health care.\nI’m based around Utrecht, the Netherlands"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Wouter van Amsterdam",
+    "title": "Wouter van Amsterdam, MD, PhD",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n\n  \n  \nI am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care. I like application driven methods research, using assumptions that are likely to occur in the real world.\nMaster students with a strong background in statistics or machine learning, math and programming, who want to work with me are welcome to contact me.\nBefore, I was a PhD student at the radiology department of University Medical Center Utrecht, the Netherlands, co-advised by Rajesh Ranganath from the Courant Institute of Mathematical Sciences at New York University. For 1.5 years I worked as a senior research scientist at Babylon Health I have degrees in physics (BSc.), medicine (M.D.), epidemiology (MSc.) and a PhD in machine learning for health care.\nI’m based around Utrecht, the Netherlands"
+  },
+  {
+    "objectID": "index.html#talks",
+    "href": "index.html#talks",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Talks",
+    "text": "Talks"
+  },
+  {
+    "objectID": "index.html#publications",
+    "href": "index.html#publications",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Publications",
+    "text": "Publications"
+  },
+  {
+    "objectID": "index.html#posts",
+    "href": "index.html#posts",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Posts",
+    "text": "Posts"
   }
 ]

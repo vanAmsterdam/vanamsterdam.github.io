@@ -4,6 +4,7 @@ image: wvanamsterdam_square.jpg
 about:
   id: hero-heading
   template: trestles
+  image-shape: round
   links:
     - icon: twitter
       text: Twitter

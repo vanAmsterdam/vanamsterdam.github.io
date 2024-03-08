@@ -7,69 +7,6 @@
     "text": "Post 1\n\n\n\n\n\n\ncode\n\n\nwriting\n\n\nr\n\n\n\nfirst post to test out quarto\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "",
-    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \n\n\nWouter van Amsterdam is an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.\nMaster students with a background in statistics or machine learning who want to work with me are welcome to contact me. Students enrolled at Utrecht University or UMC Utrecht can find open master projects on konjoin\n\n\n\nUniversity Medical Center Utrecht / Utrecht University\nBSc. in Physics | 2010\nM.D. | 2017\nMSc. in epidemiology (med. statistics track) | 2021\nPhD. machine learning for healthcare | 2022 | co-advised by Rajesh Ranganath from NYU\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf)"
-  },
-  {
-    "objectID": "index.html#selected-papers",
-    "href": "index.html#selected-papers",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Selected papers",
-    "text": "Selected papers\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\npdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\npdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\npdf\nDecision making in cancer: Causal questions require causal answers.\nvan Amsterdam, W. A. C., de Jong, P. A., Suijkerbuijk, K. P. M., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2022). ArXiv pre-print\npdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\npdf"
-  },
-  {
-    "objectID": "index.html#posts",
-    "href": "index.html#posts",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Posts",
-    "text": "Posts\n\n\n\n\n\n\n\n\nPost 1\n\n\nfirst post to test out quarto\n\n\n\nWouter van Amsterdam\n\n\nMar 8, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 25, 2021\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 20, 2021\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Contact",
-    "text": "Contact\nwamster3 at umcutrecht dot nl"
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html",
-    "href": "posts/210720-good_predictions_bad_decisions.html",
-    "title": "When good predictions lead to bad decisions",
-    "section": "",
-    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Defining the policies",
-    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Expected utility of different policies",
-    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
-  },
-  {
-    "objectID": "posts/240308-post1.html",
-    "href": "posts/240308-post1.html",
-    "title": "Post 1",
-    "section": "",
-    "text": "like it?\n\n\n\nset.seed(123)\nx = rnorm(100)\ns_y = rnorm(100)\ny = x + s_y\nplot(y~x)"
-  },
-  {
-    "objectID": "posts/240308-post1.html#this-is-post-one",
-    "href": "posts/240308-post1.html#this-is-post-one",
-    "title": "Post 1",
-    "section": "",
-    "text": "like it?\n\n\n\nset.seed(123)\nx = rnorm(100)\ns_y = rnorm(100)\ny = x + s_y\nplot(y~x)"
-  },
-  {
     "objectID": "posts/210725-counterfactualvsinterventional.html",
     "href": "posts/210725-counterfactualvsinterventional.html",
     "title": "The difference between intervention and counterfactuals",
@@ -98,10 +35,66 @@
     "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
+    "objectID": "posts/240308-post1.html",
+    "href": "posts/240308-post1.html",
+    "title": "Post 1",
+    "section": "",
+    "text": "like it?\n\n\n\nset.seed(123)\nx = rnorm(100)\ns_y = rnorm(100)\ny = x + s_y\nplot(y~x)"
+  },
+  {
+    "objectID": "posts/240308-post1.html#this-is-post-one",
+    "href": "posts/240308-post1.html#this-is-post-one",
+    "title": "Post 1",
+    "section": "",
+    "text": "like it?\n\n\n\nset.seed(123)\nx = rnorm(100)\ns_y = rnorm(100)\ny = x + s_y\nplot(y~x)"
+  },
+  {
+    "objectID": "posts/210720-good_predictions_bad_decisions.html",
+    "href": "posts/210720-good_predictions_bad_decisions.html",
+    "title": "When good predictions lead to bad decisions",
+    "section": "",
+    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
+  },
+  {
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Defining the policies",
+    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
+  },
+  {
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Expected utility of different policies",
+    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "",
-    "text": "I am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care. I like application driven methods research, using assumptions that are likely to occur in the real world.\nMaster students with a strong background in statistics or machine learning, math and programming, who want to work with me are welcome to contact me.\nBefore, I was a PhD student at the radiology department of University Medical Center Utrecht, the Netherlands, co-advised by Rajesh Ranganath from the Courant Institute of Mathematical Sciences at New York University. For 1.5 years I worked as a senior research scientist at Babylon Health I have degrees in physics (BSc.), medicine (M.D.), epidemiology (MSc.) and a PhD in machine learning for health care.\nI’m based around Utrecht, the Netherlands"
+    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \n\n\nWouter van Amsterdam is an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.\nMaster students with a background in statistics or machine learning who want to work with me are welcome to contact me. Students enrolled at Utrecht University or UMC Utrecht can find open master projects on konjoin\n\n\n\nUniversity Medical Center Utrecht / Utrecht University\nBSc. in Physics | 2010\nM.D. | 2017\nMSc. in epidemiology (med. statistics track) | 2021\nPhD. machine learning for healthcare | 2022 | co-advised by Rajesh Ranganath from NYU\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf)"
+  },
+  {
+    "objectID": "index.html#selected-papers",
+    "href": "index.html#selected-papers",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Selected papers",
+    "text": "Selected papers\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\npdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\npdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\npdf\nDecision making in cancer: Causal questions require causal answers.\nvan Amsterdam, W. A. C., de Jong, P. A., Suijkerbuijk, K. P. M., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2022). ArXiv pre-print\npdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\npdf"
+  },
+  {
+    "objectID": "index.html#posts",
+    "href": "index.html#posts",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Posts",
+    "text": "Posts\n\n\n\n\n\n\n\n\nPost 1\n\n\nfirst post to test out quarto\n\n\n\nWouter van Amsterdam\n\n\nMar 8, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 25, 2021\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 20, 2021\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Contact",
+    "text": "Contact\nwamster3 at umcutrecht dot nl"
   }
 ]

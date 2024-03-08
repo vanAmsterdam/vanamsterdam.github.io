@@ -1,0 +1,171 @@
+---
+title: When good predictions lead to bad decisions
+date: "2021/07/20"
+categories:
+- causal inference
+- predictions
+#permalink: /posts/goodpredictions_baddecisions/
+#pdf: true
+#rmd: false
+#header-includes:
+  #- \usepackage{mathrsfs}
+---
+
+# Introduction
+
+A common premise in prediction research for clinical outcomes is that
+better predictions lead to better (informed) decisions. This causal
+statement, that the intervention of introducing a new prediction rule
+leads to better decisions and thus better outcomes, is generally not
+substantiated with sufficient causal arguments. We now present an
+example where naively introducing a validated new prediction rule can
+lead to worse clinical decisions.
+
+For a certain cancer type there are two treatment options: treatment A
+and treatment B. From randomized trials, it is known that treatment A is
+more effective in treating the tumor than treatment B. There is no known
+variation of treatment effect among subgroups defined by clinical
+patient characteristics. However, not all patients respond well to
+treatment. Treatment A is a longer and more intensive treatment regimen
+than treatment B and leads to more side-effects. The consensus is that
+it is unethical to give treatment A to patients with a lower than 10%
+chance of surviving one year, due to the higher risk of side-effects and
+the lengthy treatment regimen associated with treatment A. In current
+clinical practice, the probability of 1-year survival is estimated using
+clinical characteristics. A new research group tries to improve the
+1-year survival predictions using a new biomarker. The research endeavor
+is a success as it turns out that predicting survival with the clinical
+characteristics and the new biomarker is significantly more accurate
+than using only the clinical characteristics. A high value for the
+biomarker is associated with worse overall survival. Having conducted a
+predictive study, it is not discovered that the treatment effect of
+treatment A versus B is actually more in favor of treatment A for
+patients with higher levels of the biomarker. If the new prediction rule
+would be implemented naively with the same 10% cut-off for 1-year
+overall survival, this would lead to worse treatment decisions than
+without using the new prediction model. Some patients with high
+biomarker values will fall under the 10% cut-off based on the new
+biomarker, while without the biomarker they would have had a higher than
+10% survival probability. This erroneously leads to not recommending
+treatment A, even though these patients have a high benefit of treatment
+A.
+
+Note that this is not an unreasonable example for cancer, as aggressive
+/ fast-growing cancers tend to respond better to treatments like
+chemotherapy and radiotherapy. One example is non-seminoma versus
+seminoma testicular cancer.
+
+# Quantitative Example
+
+I will use the following symbols to denote the relevant variables: $y$
+for the outcome, $x$ for the clinical characteristics, $z$ for the new
+biomarker. The treatment variable is denoted $t$, where $t=1$
+corresponds to the more intensive and effective treatment $A$, while
+$t=0$ is treatment $B$. The treatment effect on some relevant scale is
+denoted $\beta$. The indicator function is denoted $\mathbf{I}_.$ and
+equals 1 whenever statement $.$ is true, and 0 otherwise. Without loss
+of generality, we will assume that $y$ is measured on some scale such
+that $y > 0$ is associated with a positive outcome, i.e. the positive
+outcome exceeds the risk of side-effects associated with treatment
+$t = 1$.
+
+## Defining the policies
+
+The current clinical policy is:
+
+$$\pi_0(x) = \mathbf{I}_{E[y|x] > 0}$$
+
+So we should give treatment $t=1$ whenever the expected outcome exceeds
+the reference cut-off. Let the true data generating mechanism be as
+following:
+
+$$y = \beta z t + x - z$$
+
+As $y$ is a deterministic function of $t,x,z$, we drop the expectation
+symbol in the following discussion. Let $x,z \sim \mathbf{U}(-1,1)$ be
+independent variables following a uniform distribution between -1 and 1.
+We can new express the baseline policy as
+$$\pi_0(x) = \mathbf{I}_{y|x > 0} = \mathbf{I}_{E_{z}[y|x,z]>0} \iff \mathbf{I}_{x > 0}$$
+
+A naive implementation of the new prediction rule incorporating $z$
+would lead to the policy $\pi_z(x,z) = \mathbf{I}_{y|x,z > 0}$. Plugging
+in the data generating mechanism we can identify
+
+$$\begin{aligned}
+  y|x,z &= E_{t \sim \pi_0(x)}[y|t,x,z] \\
+    &= E_{t \sim \pi_0(x)}[\beta z t + x - z] \\
+    &= \beta z E_{t \sim \pi_0(x)} [t] + x - z \\
+    &= \beta z E_x [\mathbf{I}_{x > 0}] + x - z \\
+    &= 0.5 \beta z  + x - z \\
+    &= x - (1 - 0.5 \beta)z\end{aligned}$$
+
+Thus $\pi_z(x,z) = \mathbf{I}_{x + (0.5 \beta - 1)z > 0}$.
+
+From the data generating mechanism it is clear that the conditional
+average treatment effect reduces to
+
+$$\begin{aligned}
+  \text{CATE(x,z)} &= E[y|\text{do}(t=1),x,z] - E[y|\text{do}(t=0),x,z] \\
+                   &= \beta z - 0\end{aligned}$$
+
+The policy that maximizes the outcome $y$ is
+$\pi_{\text{max}(y)}(z) = \mathbf{I}_{z > 0}$ as $\text{do}(t=1)$ leads
+to better outcomes if and only if $z>0$. To conform with the ethical
+consensus that the intensive treatment is justified when
+$y|\text{do}(t),x,z>0$, we set
+
+$$\begin{aligned}
+    \pi^*(x,z) &= \mathbf{I}_{y|\text{do}(t=1),x,z > 0} \\
+           &= \mathbf{I}_{\beta z * 1 + x - z > 0} \\
+           &= \mathbf{I}_{x + (\beta - 1) z > 0}\end{aligned}$$
+
+## Expected utility of different policies
+
+We can now calculate the expected utility of the different policies
+$\pi \in \{\pi_0,\pi_z,\pi_{\text{max}(y)},\pi^*\}$ as the expected
+outcome,
+$U(\pi) = E_{x,z}E_{t\sim \pi(x,z)}y|t,x,z = E_{x,z}\beta z \pi(x,z) + x - z$.
+The calculation of these expected utilities depends on the treatment
+effect, which will we assume to be $\beta = 1.5$. We will use the
+marginal indepence of $x$ and $z$ to equate $E_{x,z}[.] = E_z E_x [.]$.
+
+$$\begin{aligned}
+    U(\pi_0) &= E_z E_x [\beta z \mathbf{I}_{x > 0} + x - z] \\
+         &= \beta E_z z E_x \mathbf{I}_{x>0} \\
+         &= \beta E_z z 0.5 \\
+         &= 0\end{aligned}$$
+
+We have
+$\pi_z(x,z) = \mathbf{I}_{x - (1 - 0.5 \beta)z > 0} = \mathbf{I}_{x > 0.25z}$
+
+$$\begin{aligned}
+    U(\pi_z) &= E_z E_x [\beta z \mathbf{I}_{x > 0.25z} + x - z] \\
+         &= \beta E_z z E_x \mathbf{I}_{x > 0.25z} \\
+         &= \beta E_z z \text{Pr}(x > 0.25z) \\
+         &=^1 \frac{\beta}{2} \int_{-1}^{1} z \text{Pr}(x > 0.25z) dz\\
+         &=^2 \frac{\beta}{2} \int_{-1}^{1} z (1 - \frac{0.25z+1}{2}) dz\\
+         &= \frac{\beta}{4} \int_{-1}^{1} z (1 - 0.25z)dz \\
+         &= \frac{\beta}{4} \left[ \frac{1}{2} z^2 - \frac{0.25}{3}z^3 + C \right]_{-1}^1 \\
+         &= \frac{\beta}{4} \left( ( \frac{1}{2} - \frac{0.25}{3}) - ( \frac{1}{2} + \frac{0.25}{3}) \right) \\ 
+         &= - \frac{\beta}{2} \frac{0.25}{3} \\ 
+         &= - 0.075\end{aligned}$$
+
+Where in $^1$ we used the $U(-1,1)$ distribution of $z$ and in $^2$ we
+used the probability density function of $x$ and the fact that
+$-1 < 0.25z < 1$. This demonstrates that the policy following the
+(accurate!) prediction model $y|x,z$ leads to worse clinical outcomes
+than the previous situation that relied on $x$ only.
+
+The reader may verify that $$\begin{aligned}
+    U(\pi_{\text{max}(y)}) &= 0.375 \\ 
+    U(\pi^*) &= 0.125\end{aligned}$$
+
+# Concluding remarks
+
+The above example demonstrates that accurate outcome prediction models
+do not automatically lead to better treatment decisions. Essentially,
+outcome prediction is the right answer to the wrong question. The
+canonical question driving treatment decisions is \"What is the
+probability of outcome $y$ if we give treatment $t$ given that we know
+$x$ and $z$ about this patient\". In the form of an equation it is
+$p(y|\text{do}(t),x,z)$, whereas outcome prediction targets $p(y|x,z)$.

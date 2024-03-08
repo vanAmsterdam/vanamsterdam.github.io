@@ -1,0 +1,15 @@
+# Enable banner style title blocks
+title-block-banner: true
+toc: true
+page-layout: article
+citation: true
+
+author:
+  - name: Wouter van Amsterdam
+    url: https://vanamsterdam.github.io
+    affiliation: University Medical Center Utrecht
+    #affiliation-url: 
+    #orcid: 
+    
+# freeze computational output
+freeze: true

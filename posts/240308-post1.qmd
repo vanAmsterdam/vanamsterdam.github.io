@@ -1,0 +1,24 @@
+---
+title: "Post 1"
+description: "first post to test out quarto"
+date: "2024/03/08"
+#date-modified: "2024/03/08"
+categories:
+  - code
+  - writing
+  - r
+---
+
+## This is post one
+
+like it?
+
+### generate some data
+
+```{r}
+set.seed(123)
+x = rnorm(100)
+s_y = rnorm(100)
+y = x + s_y
+plot(y~x)
+```

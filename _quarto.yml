@@ -3,6 +3,8 @@ project:
 
 website:
   title: "Wouter van Amsterdam"
+  description: "Wouter van Amsterdam's academic home page"
+  site-url: https://vanamsterdam.github.io
   open-graph: true
   twitter-card:
     site: "@wvanamsterdam"
@@ -12,6 +14,10 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - posts.qmd
+  google-analytics:
+    tracking-id: "G-E4W5XMDCR7"
+    storage: none
 
 format:
   html:

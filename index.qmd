@@ -57,8 +57,6 @@ PhD. machine learning for healthcare | 2022 | co-advised by [Rajesh Ranganath](h
 
 :::
 
-<!--## Talks-->
-
 ## Selected papers
 
 When accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\
@@ -80,6 +78,10 @@ Decision making in cancer: Causal questions require causal answers.\
 Eliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\
 *van Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine*\
 [pdf](https://www.nature.com/articles/s41746-019-0194-x.pdf)
+
+<!--## Talks-->
+
+<!--## Teaching-->
 
 ## [Posts](posts.qmd)
 

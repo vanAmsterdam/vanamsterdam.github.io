@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://vanAmsterdam.github.io/vanamsterdam.github.io/about.html</loc>
-    <lastmod>2024-03-07T16:23:51.152Z</lastmod>
+    <loc>https://vanamsterdam.github.io/posts.html</loc>
+    <lastmod>2024-03-08T12:40:59.389Z</lastmod>
   </url>
   <url>
-    <loc>https://vanAmsterdam.github.io/vanamsterdam.github.io/index.html</loc>
-    <lastmod>2024-03-07T16:31:10.909Z</lastmod>
+    <loc>https://vanamsterdam.github.io/index.html</loc>
+    <lastmod>2024-03-08T13:39:00.738Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/210720-good_predictions_bad_decisions.html</loc>
+    <lastmod>2024-03-08T13:43:51.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/240308-post1.html</loc>
+    <lastmod>2024-03-08T12:45:08.416Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/210725-counterfactualvsinterventional.html</loc>
+    <lastmod>2024-03-08T13:46:50.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/about.html</loc>
+    <lastmod>2024-03-07T16:23:51.152Z</lastmod>
   </url>
 </urlset>

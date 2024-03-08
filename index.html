@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,14 +69,88 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-post-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-post-listing'] = new List('listing-post-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E4W5XMDCR7"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+ 
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied'
+  });
+gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Wouter van Amsterdam - Wouter van Amsterdam, MD, PhD">
-<meta property="og:image" content="https://vanAmsterdam.github.io/vanamsterdam.github.io/wvanamsterdam_square.jpg">
+<meta property="og:description" content="Wouter van Amsterdam’s academic home page">
+<meta property="og:image" content="https://vanamsterdam.github.io/wvanamsterdam_square.jpg">
 <meta property="og:site_name" content="Wouter van Amsterdam">
 <meta name="twitter:title" content="Wouter van Amsterdam - Wouter van Amsterdam, MD, PhD">
-<meta name="twitter:image" content="https://vanAmsterdam.github.io/vanamsterdam.github.io/wvanamsterdam_square.jpg">
+<meta name="twitter:description" content="Wouter van Amsterdam’s academic home page">
+<meta name="twitter:image" content="https://vanamsterdam.github.io/wvanamsterdam_square.jpg">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -100,6 +176,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -117,9 +197,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#talks" id="toc-talks" class="nav-link active" data-scroll-target="#talks">Talks</a></li>
-  <li><a href="#publications" id="toc-publications" class="nav-link" data-scroll-target="#publications">Publications</a></li>
+  <li><a href="#selected-papers" id="toc-selected-papers" class="nav-link active" data-scroll-target="#selected-papers">Selected papers</a></li>
   <li><a href="#posts" id="toc-posts" class="nav-link" data-scroll-target="#posts">Posts</a></li>
+  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
   </ul>
 </nav>
     </div>
@@ -157,26 +237,140 @@ ul.task-list li input[type="checkbox"] {
     <i class="bi bi-github"></i>
      <span class="about-link-text">github</span>
   </a>
+  <a href="https://pubmed.ncbi.nlm.nih.gov/?term=van+Amsterdam%2C+W%5BAuthor%5D&amp;sort=" class="about-link" rel="" target="">
+    <i class="bi bi-pubmed"></i>
+     <span class="about-link-text">pubmed</span>
+  </a>
+  <a href="https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&amp;hl=nl&amp;oi=sra" class="about-link" rel="" target="">
+    <i class="bi bi-scholar"></i>
+     <span class="about-link-text">google-scholar</span>
+  </a>
 </div>
   </div>
   <div class="about-contents"><div id="hero-heading">
-<p>I am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care. I like application driven methods research, using assumptions that are likely to occur in the real world.</p>
-<p>Master students with a strong background in statistics or machine learning, math and programming, who want to work with me are welcome to contact me.</p>
-<p>Before, I was a PhD student at the radiology department of University Medical Center Utrecht, the Netherlands, co-advised by Rajesh Ranganath from the Courant Institute of Mathematical Sciences at New York University. For 1.5 years I worked as a senior research scientist at Babylon Health I have degrees in physics (BSc.), medicine (M.D.), epidemiology (MSc.) and a PhD in machine learning for health care.</p>
-<p>I’m based around Utrecht, the Netherlands</p>
+<section id="bio" class="level4">
+<h4 data-anchor-id="bio">Bio</h4>
+<p>Wouter van Amsterdam is an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.</p>
+<p>Master students with a background in statistics or machine learning who want to work with me are welcome to contact me. Students enrolled at Utrecht University or UMC Utrecht can find open master projects on <a href="https://uu.konjoin.nl/profile/wouter-van-amsterdam">konjoin</a></p>
+</section>
+<section id="education" class="level4">
+<h4 data-anchor-id="education">Education</h4>
+<p><strong>University Medical Center Utrecht / Utrecht University</strong></p>
+<p>BSc. in Physics | 2010<br>
+M.D.&nbsp;| 2017<br>
+MSc. in epidemiology (med. statistics track) | 2021<br>
+PhD. machine learning for healthcare | 2022 | co-advised by <a href="https://cims.nyu.edu/~rajeshr/">Rajesh Ranganath</a> from NYU</p>
+</section>
+<section id="experience" class="level4">
+<h4 data-anchor-id="experience">Experience</h4>
+<p><strong>UMC Utrecht</strong>| Assistant Professor | 2023 - now<br>
+<strong>Babylon Health</strong> | Senior Research Scientist | 2021 - 2023</p>
+<p><a href="cv.pdf">CV (pdf)</a></p>
+</section>
 </div></div>
 </div>
 
-<section id="talks" class="level2">
-<h2 data-anchor-id="talks">Talks</h2>
-</section>
-<section id="publications" class="level2">
-<h2 data-anchor-id="publications">Publications</h2>
+<!--## Talks-->
+<section id="selected-papers" class="level2">
+<h2 data-anchor-id="selected-papers">Selected papers</h2>
+<p>When accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).<br>
+<em>van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., &amp; Ciná, G. (2024). ML4H 2023 findings-track</em><br>
+<a href="papers/2024_selffulfilling_ml4h.pdf">pdf</a></p>
+<p>Individual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.&nbsp; <em>van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., &amp; Ranganath, R. (2022). Scientific Reports</em><br>
+<a href="https://www.nature.com/articles/s41598-022-09775-9.pdf">pdf</a></p>
+<p>Conditional average treatment effect estimation with marginally constrained models.<br>
+<em>van Amsterdam, W. A. C., &amp; Ranganath, R. (2023). Journal of Causal Inference</em><br>
+<a href="papers/2023_offset_jci.pdf">pdf</a></p>
+<p>Decision making in cancer: Causal questions require causal answers.<br>
+<em>van Amsterdam, W. A. C., de Jong, P. A., Suijkerbuijk, K. P. M., Verhoeff, J. J. C., Leiner, T., &amp; Ranganath, R. (2022). ArXiv pre-print</em><br>
+<a href="papers/2022_comment_arxiv.pdf">pdf</a></p>
+<p>Eliminating biasing signals in lung cancer images for prognosis predictions with deep learning.<br>
+<em>van Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., &amp; Eijkemans, M. J. C. (2019). Npj Digital Medicine</em><br>
+<a href="https://www.nature.com/articles/s41746-019-0194-x.pdf">pdf</a></p>
 </section>
 <section id="posts" class="level2">
-<h2 data-anchor-id="posts">Posts</h2>
-<!--This is a Quarto website.-->
-<!--To learn more about Quarto websites visit <https://quarto.org/docs/websites>.-->
+<h2 data-anchor-id="posts"><a href="./posts.html">Posts</a></h2>
+<div id="listing-post-listing" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="code,writing,r" data-listing-date-sort="1709852400000" data-listing-file-modified-sort="1709901908416" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="13">
+<a href="./posts/240308-post1.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="posts/240308-post1_files/figure-html/unnamed-chunk-1-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Post 1
+</h5>
+<div class="card-text listing-description">
+first post to test out quarto
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Wouter van Amsterdam
+</div>
+<div class="listing-date">
+Mar 8, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="causal inference,statistics" data-listing-date-sort="1627164000000" data-listing-file-modified-sort="1709905610036" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687">
+<a href="./posts/210725-counterfactualvsinterventional.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+The difference between intervention and counterfactuals
+</h5>
+<div class="card-text listing-description">
+Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Wouter van Amsterdam
+</div>
+<div class="listing-date">
+Jul 25, 2021
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="causal inference,predictions" data-listing-date-sort="1626732000000" data-listing-file-modified-sort="1709905431003" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1226">
+<a href="./posts/210720-good_predictions_bad_decisions.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+When good predictions lead to bad decisions
+</h5>
+<div class="card-text listing-description">
+A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Wouter van Amsterdam
+</div>
+<div class="listing-date">
+Jul 20, 2021
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="contact" class="level2">
+<h2 data-anchor-id="contact">Contact</h2>
+<p>wamster3 at umcutrecht dot nl</p>
+
 
 
 

@@ -1,0 +1,18 @@
+[
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/240308-post1.html",
+      "/posts/210725-counterfactualvsinterventional.html",
+      "/posts/210720-good_predictions_bad_decisions.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/240308-post1.html",
+      "/posts/210725-counterfactualvsinterventional.html",
+      "/posts/210720-good_predictions_bad_decisions.html"
+    ]
+  }
+]

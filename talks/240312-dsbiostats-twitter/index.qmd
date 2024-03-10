@@ -1,28 +1,24 @@
 ---
-title: Wouter's twitter experi(ments/ences)
+title: Wouter's twitter X-peri(ments/ences)
 date: 2024/03/12
 format:
   revealjs:
+    incremental: true
     embed-resources: true
   #pdf: default
 ---
 
 # Why (I) use X?
 
-## Twitter is dead, long live X....????
-
 ## Why (I) use X?
 
 1. learn
-  - papers
-  - events
-  - discussions of (/ with?) famous researchers
-
+    i) papers
+    ii) events (AAAI 2019)
+    iii) discussions of (/ with?) famous researchers
 2. advertise work
-
-rct of tweeted papers: 4x citations in 1y (group of 58k followers) 
-https://x.com/JSheltzer/status/1272574976454012930?s=20
-
+    i) RCT of tweeted papers: 4x citations in 1y (group of 58k followers) 
+<!-- https://x.com/JSheltzer/status/1272574976454012930?s=20 -->
 3. connect
 
 ## Why not use X?
@@ -37,30 +33,51 @@ https://x.com/JSheltzer/status/1272574976454012930?s=20
 - linkedin: *fake* interactions
 - twitter: *too real* interactions
 
-# My X experi(ments/ences)
+# My X-peri(ments/ences)
 
 ## Twitter history and status
 
 - joined: Jan 2014
-- first tweet: 
 <!--https://x.com/WvanAmsterdam/status/432149806535168000?s=20-->
 <!--retweet:-->
 <!--https://x.com/Pontifex/status/425573891369472000?s=20-->
+- 500-ish followers
+- 500-ish following
+- 15-minutes a day but waning
 
-- first tweet that got a like:
-https://twitter.com/WvanAmsterdam/status/827844631115206656
 
-- first tweet on causal inference (1 like):
-https://x.com/WvanAmsterdam/status/1000032772373827587?s=20
+## first tweet that got a like
 
-- first ad for own paper on causal ML (liked by judea pearl)
-https://x.com/WvanAmsterdam/status/1113060473342091270?s=20
+{{< tweet WvanAmsterdam 827844631115206656 >}}
 
-- first joke (kind-of success)
-https://x.com/WvanAmsterdam/status/1156121579564294145?s=20
+<!-- https://twitter.com/WvanAmsterdam/status/827844631115206656 -->
+<!-- https://twitter.com/WvanAmsterdam/status/ -->
 
-- first tweet that went 'viral' (out of own circle); recommending a paper
-https://x.com/WvanAmsterdam/status/1199301062026518528?s=20
+<!-- ## first tweet on causal inference (1 like): -->
+<!-- https://x.com/WvanAmsterdam/status/1000032772373827587?s=20 -->
+
+## first ad for own paper on causal ML (liked by judea pearl)
+
+{{< tweet WvanAmsterdam 1113060473342091270 >}}
+
+<!-- https://x.com/WvanAmsterdam/status/1113060473342091270?s=20 -->
+
+## first joke (kind-of success)
+
+{{< tweet WvanAmsterdam 1156121579564294145 >}}
+<!-- https://x.com/WvanAmsterdam/status/1156121579564294145?s=20 -->
+
+## first tweet that went 'viral': recommending a paper
+
+::::{.columns}
+
+:::{.column width="40%"}
+{{< tweet WvanAmsterdam 1199301062026518528 >}}
+<!-- https://x.com/WvanAmsterdam/status/1199301062026518528?s=20 -->
+
+:::
+
+:::{.column width="40%"}
 
 - 259 retweets
 - 697 likes
@@ -68,7 +85,12 @@ https://x.com/WvanAmsterdam/status/1199301062026518528?s=20
 - 8 new followers
 - elias bareinboim (respected researcher in field) reached out and congratulated me
 
-- first paper run-through tweet (35 retweet, 86 likes); now 20 citations
+:::
+::::
+
+
+## first paper run-through tweet (35 retweet, 86 likes); now 20 citations
+
 https://x.com/WvanAmsterdam/status/1204732856867704833?s=20
 
 - nice reactions:

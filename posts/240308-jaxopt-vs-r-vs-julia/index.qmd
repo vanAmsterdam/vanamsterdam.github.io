@@ -1,13 +1,78 @@
 ---
 title: "Speed comparison of JaxOpt, R and Julia"
-jupyter: julia-1.10
+draft: true
+#jupyter: julia-1.10
+execute:
+  eval: false
 ---
 
 ## Let's put them to the test
 
+## generating data
+
+:::: {.columns}
+
+::: {.column width="30%"}
+r
+```{julia}
+#| label: r-data
+#| echo: true
+#| eval: false
+make_data <- function(n=1e3L) {
+    x = rnorm(n*10)
+    X = matrix(x, ncol=10)
+    eta = rowSums(X)
+    y = eta > 0
+    # return only first 9 column to have some noise
+    X2 = X2[,1:9]
+    return(list(X=X,y=y))
+}
+```
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+```{julia}
+#| label: julia-data
+#| echo: true
+#| eval: false
+function make_data(n::Integer=1000)
+    X = randn(n,10)
+    eta = vec(sum(X, dims=2))
+    y = eta .> 0
+    X2 = X[:,1:9]
+    return X2, y
+end
+```
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="30%"}
+```{julia}
+#| label: julia-data2
+#| echo: true
+#| eval: false
+function make_data(n::Integer=1000)
+    X = randn(n,10)
+    eta = vec(sum(X, dims=2))
+    y = eta .> 0
+    X2 = X[:,1:9]
+    return X2, y
+end
+```
+:::
+
+::::
+
 ### Julia
 
 ```{julia}
+#| eval: false
+
 using CategoricalArrays, DataFrames, GLM, Random, StatsBase
 using Base.Threads
 import Base.Threads.@threads

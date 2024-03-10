@@ -1,0 +1,104 @@
+---
+title: Wouter's twitter experi(ments/ences)
+date: 2024/03/12
+format:
+  revealjs:
+    embed-resources: true
+  #pdf: default
+---
+
+# Why (I) use X?
+
+## Twitter is dead, long live X....????
+
+## Why (I) use X?
+
+1. learn
+  - papers
+  - events
+  - discussions of (/ with?) famous researchers
+
+2. advertise work
+
+rct of tweeted papers: 4x citations in 1y (group of 58k followers) 
+https://x.com/JSheltzer/status/1272574976454012930?s=20
+
+3. connect
+
+## Why not use X?
+
+- twitter is dead, and X is dying
+- distractions
+- politics
+
+
+## X compared to
+
+- linkedin: *fake* interactions
+- twitter: *too real* interactions
+
+# My X experi(ments/ences)
+
+## Twitter history and status
+
+- joined: Jan 2014
+- first tweet: 
+<!--https://x.com/WvanAmsterdam/status/432149806535168000?s=20-->
+<!--retweet:-->
+<!--https://x.com/Pontifex/status/425573891369472000?s=20-->
+
+- first tweet that got a like:
+https://twitter.com/WvanAmsterdam/status/827844631115206656
+
+- first tweet on causal inference (1 like):
+https://x.com/WvanAmsterdam/status/1000032772373827587?s=20
+
+- first ad for own paper on causal ML (liked by judea pearl)
+https://x.com/WvanAmsterdam/status/1113060473342091270?s=20
+
+- first joke (kind-of success)
+https://x.com/WvanAmsterdam/status/1156121579564294145?s=20
+
+- first tweet that went 'viral' (out of own circle); recommending a paper
+https://x.com/WvanAmsterdam/status/1199301062026518528?s=20
+
+- 259 retweets
+- 697 likes
+- 126k views
+- 8 new followers
+- elias bareinboim (respected researcher in field) reached out and congratulated me
+
+- first paper run-through tweet (35 retweet, 86 likes); now 20 citations
+https://x.com/WvanAmsterdam/status/1204732856867704833?s=20
+
+- nice reactions:
+  - https://x.com/JAASANTINHA/status/1221926874953154563?s=20
+  - https://x.com/hilseth_mistrov/status/1204878693149134848?s=20
+
+- favorite tweet (meme on prediction models)
+https://x.com/WvanAmsterdam/status/1417886117530112000?s=20
+
+- snarky reply (Andrew Vickers):
+https://x.com/VickersBiostats/status/1417905175948374016?s=20
+
+- reply from yudea pearl
+https://x.com/yudapearl/status/1428026853365673986?s=20
+
+- biggest own tweet (thesis cover):
+https://x.com/WvanAmsterdam/status/1564209229745033217?s=20
+
+- 93k impressions
+- 673 likes
+- 53 retweets
+- 6 new followers
+
+- ask for help (prospective general population cohorts)
+https://x.com/WvanAmsterdam/status/1582304674321158144?s=20
+## Twitter post 1 using embed plugin
+
+To embed a Tweet into your Quarto html document you can use the shortcode like this:
+
+<!--{{< tweet wvanamsterdam 1733080959988183513 >}}-->
+
+## twitter post with html embedding
+

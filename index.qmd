@@ -59,6 +59,8 @@ PhD. machine learning for healthcare | 2022 | co-advised by [Rajesh Ranganath](h
 
 ## Selected papers
 
+[google scholar](https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&hl=nl&oi=sra)
+
 When accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\
 *van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track*\
 [pdf](papers/2024_selffulfilling_ml4h.pdf)

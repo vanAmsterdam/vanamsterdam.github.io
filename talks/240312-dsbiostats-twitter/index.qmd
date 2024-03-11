@@ -5,6 +5,7 @@ format:
   revealjs:
     incremental: true
     embed-resources: true
+    pdf-separate-fragment: true
   #pdf: default
 ---
 
@@ -12,14 +13,31 @@ format:
 
 ## Why (I) use X?
 
+:::: {.columns}
+::: {.column width="60%"}
 1. learn
     i) papers
     ii) events (AAAI 2019)
     iii) discussions of (/ with?) famous researchers
-2. advertise work
-    i) RCT of tweeted papers: 4x citations in 1y (group of 58k followers) 
+2. connect
+3. advertise work
+<!--i) RCT of tweeted papers: 4x citations in 1y (group of 58k followers) -->
 <!-- https://x.com/JSheltzer/status/1272574976454012930?s=20 -->
-3. connect
+:::
+
+::: {.column width="40%"}
+
+::: {.fragment}
+
+{{< tweet JSheltzer 1272574976454012930 >}}
+
+:::
+
+:::
+
+<!-- https://x.com/JSheltzer/status/1272574976454012930?s=20 -->
+
+::::
 
 ## Why not use X?
 
@@ -45,7 +63,7 @@ format:
 <!--retweet:-->
 <!--https://x.com/Pontifex/status/425573891369472000?s=20-->
 - 500-ish followers (Maarten has approx. 41400)
-- 500-ish following
+- 500-ish following (this determines your timeline)
 - 15-minutes a day but waning
 
 
@@ -59,7 +77,7 @@ format:
 <!-- ## first tweet on causal inference (1 like): -->
 <!-- https://x.com/WvanAmsterdam/status/1000032772373827587?s=20 -->
 
-## first ad for own paper on causal ML (liked by judea pearl)
+## first ad for own paper on causal ML
 
 {{< tweet WvanAmsterdam 1113060473342091270 >}}
 
@@ -80,50 +98,138 @@ format:
 
 :::
 
-:::{.column width="40%"}
+:::{.column width="60%"}
 
 - 259 retweets
 - 697 likes
 - 126k views
 - 8 new followers
-- elias bareinboim (respected researcher in field) reached out and congratulated me
+- respected researcher in field asked if I'm interested in doing a post-doc
 
 :::
 ::::
 
 
-## first paper run-through tweet (35 retweet, 86 likes); now 20 citations
+## first paper run-through tweet
 
-https://x.com/WvanAmsterdam/status/1204732856867704833?s=20
+{{< tweet WvanAmsterdam 1204732856867704833 >}}
 
-- nice reactions:
-  - https://x.com/JAASANTINHA/status/1221926874953154563?s=20
-  - https://x.com/hilseth_mistrov/status/1204878693149134848?s=20
+## first paper run-through tweet
 
-- favorite tweet (meme on prediction models)
-https://x.com/WvanAmsterdam/status/1417886117530112000?s=20
+{{< tweet WvanAmsterdam 1204732858155327488 >}}
 
-- snarky reply (Andrew Vickers):
-https://x.com/VickersBiostats/status/1417905175948374016?s=20
+## first paper run-through tweet
 
-- reply from yudea pearl
-https://x.com/yudapearl/status/1428026853365673986?s=20
+{{< tweet WvanAmsterdam 1204732865273040896 >}}
 
-- biggest own tweet (thesis cover):
-https://x.com/WvanAmsterdam/status/1564209229745033217?s=20
+## first paper run-through tweet
+
+{{< tweet WvanAmsterdam 1204732873988825089 >}}
+
+## first paper run-through tweet
+
+{{< tweet WvanAmsterdam 1204732876387950593 >}}
+
+## first paper run-through tweet
+::::{.columns}
+:::{.column width="40%"}
+{{< tweet WvanAmsterdam 1204732856867704833 >}}
+:::
+<!--https://x.com/WvanAmsterdam/status/1204732856867704833?s=20-->
+
+:::{.column width="60%"}
+
+- 35 retweets
+- 86 likes
+- 18k views
+- 0 new followers
+- now 20 citations (5 if not for twitter?)
+
+:::
+::::
+
+## reactions to paper run-through tweet
+
+{{< tweet JAASANTINHA 1221926874953154563 >}}
+  <!--- https://x.com/JAASANTINHA/status/1221926874953154563?s=20-->
+
+## reactions to paper run-through tweet
+
+{{< tweet hilseth_mistrov 1204878693149134848 >}}
+  <!--- https://x.com/hilseth_mistrov/status/1204878693149134848?s=20-->
+
+## favorite tweet (meme)
+
+::::{.columns}
+:::{.column width="40%"}
+{{< tweet WvanAmsterdam 1417886117530112000 >}}
+:::
+
+:::{.column width="60%"}
+
+![](meme.jpeg)
+
+:::
+::::
+
+## reactions to meme-tweet
+
+{{< tweet JAASANTINHA 1417936729600823300 >}}
+https://x.com/JAASANTINHA/status/1417936729600823300?s=20
+
+## reactions to meme-tweet
+
+<!--{{< tweet VickersBiostats 1417905175948374016 >}}-->
+
+```{=html}
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">This has been a finding from decision curve analysis for at least 10 years!</p>&mdash; Andrew Vickers (@VickersBiostats) <a href="https://twitter.com/VickersBiostats/status/1417905175948374016?ref_src=twsrc%5Etfw">July 21, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+<!--- snarky reply (Andrew Vickers):-->
+<!--https://x.com/VickersBiostats/status/1417905175948374016?s=20-->
+
+<!--- reply from yudea pearl-->
+<!--https://x.com/yudapearl/status/1428026853365673986?s=20-->
+
+## biggest own tweet (thesis cover):
+
+::::{.columns}
+:::{.column width="40%"}
+{{< tweet WvanAmsterdam 1564209229745033217 >}}
+<!--https://x.com/WvanAmsterdam/status/1564209229745033217?s=20-->
+:::
+
+:::{.column width="60%"}
 
 - 93k impressions
 - 673 likes
 - 53 retweets
 - 6 new followers
 
-- ask for help (prospective general population cohorts)
-https://x.com/WvanAmsterdam/status/1582304674321158144?s=20
-## Twitter post 1 using embed plugin
+:::
+::::
 
-To embed a Tweet into your Quarto html document you can use the shortcode like this:
+## ask for help-tweet
 
-<!--{{< tweet wvanamsterdam 1733080959988183513 >}}-->
+{{< tweet WvanAmsterdam 1582304674321158144 >}}
+<!--https://x.com/WvanAmsterdam/status/1582304674321158144?s=20-->
 
-## twitter post with html embedding
+<!--- ask for help (prospective general population cohorts)-->
+<!--## Twitter post 1 using embed plugin-->
+
+# To tweet or not to tweet?
+
+## Use X for
+
+1. learning
+2. connecting
+3. advertising:
+   i) new work
+   ii) vacancies
+
+## I may leave X
+
+not sure where to go
+
+
 

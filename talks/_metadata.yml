@@ -1,17 +1,19 @@
-# Enable banner style title blocks
+# execute when source changes
+execute:
+  freeze: auto
+
+# banner style title blocks
 title-block-banner: true
+
 toc: true
+toc-depth: 1
 page-layout: article
 citation: true
+
+footer: "&copy;Wouter van Amsterdam @WvanAmsterdam"
 
 author:
   - name: Wouter van Amsterdam
     url: https://vanamsterdam.github.io
     affiliation: University Medical Center Utrecht
-    #affiliation-url: 
-    #orcid: 
-    
-# freeze computational output when source changed
-# execute when source changes
-execute:
-  freeze: auto
+

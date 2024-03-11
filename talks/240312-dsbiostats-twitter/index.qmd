@@ -32,6 +32,9 @@ format:
 
 - linkedin: *fake* interactions
 - twitter: *too real* interactions
+- mastodon: too hacky / nerdy?
+- threads: twitter clone by meta (facebook)
+- bluesky: way to go?
 
 # My X-peri(ments/ences)
 
@@ -41,7 +44,7 @@ format:
 <!--https://x.com/WvanAmsterdam/status/432149806535168000?s=20-->
 <!--retweet:-->
 <!--https://x.com/Pontifex/status/425573891369472000?s=20-->
-- 500-ish followers
+- 500-ish followers (Maarten has approx. 41400)
 - 500-ish following
 - 15-minutes a day but waning
 

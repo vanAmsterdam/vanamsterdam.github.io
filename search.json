@@ -11,7 +11,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "Why (I) use X?",
-    "text": "Why (I) use X?\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nadvertise work\n\nRCT of tweeted papers: 4x citations in 1y (group of 58k followers) \n\nconnect"
+    "text": "Why (I) use X?\n\n\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nconnect\nadvertise work"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
@@ -32,7 +32,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "Twitter history and status",
-    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following\n15-minutes a day but waning"
+    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following (this determines your timeline)\n15-minutes a day but waning"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
@@ -42,11 +42,11 @@
     "text": "first tweet that got a like"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml-liked-by-judea-pearl",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml-liked-by-judea-pearl",
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
     "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first ad for own paper on causal ML (liked by judea pearl)",
-    "text": "first ad for own paper on causal ML (liked by judea pearl)"
+    "section": "first ad for own paper on causal ML",
+    "text": "first ad for own paper on causal ML"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
@@ -60,21 +60,112 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "first tweet that went ‘viral’: recommending a paper",
-    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nelias bareinboim (respected researcher in field) reached out and congratulated me"
+    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nrespected researcher in field asked if I’m interested in doing a post-doc"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-35-retweet-86-likes-now-20-citations",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-35-retweet-86-likes-now-20-citations",
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
     "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet (35 retweet, 86 likes); now 20 citations",
-    "text": "first paper run-through tweet (35 retweet, 86 likes); now 20 citations\nhttps://x.com/WvanAmsterdam/status/1204732856867704833?s=20\n\nnice reactions:\n\nhttps://x.com/JAASANTINHA/status/1221926874953154563?s=20\nhttps://x.com/hilseth_mistrov/status/1204878693149134848?s=20\n\nfavorite tweet (meme on prediction models) https://x.com/WvanAmsterdam/status/1417886117530112000?s=20\nsnarky reply (Andrew Vickers): https://x.com/VickersBiostats/status/1417905175948374016?s=20\nreply from yudea pearl https://x.com/yudapearl/status/1428026853365673986?s=20\nbiggest own tweet (thesis cover): https://x.com/WvanAmsterdam/status/1564209229745033217?s=20\n93k impressions\n673 likes\n53 retweets\n6 new followers\nask for help (prospective general population cohorts) https://x.com/WvanAmsterdam/status/1582304674321158144?s=20 ## Twitter post 1 using embed plugin\n\nTo embed a Tweet into your Quarto html document you can use the shortcode like this:"
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-post-with-html-embedding",
-    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-post-with-html-embedding",
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
     "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "twitter post with html embedding",
-    "text": "twitter post with html embedding"
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet\n\n\n\n\n\n35 retweets\n86 likes\n18k views\n0 new followers\nnow 20 citations (5 if not for twitter?)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to paper run-through tweet",
+    "text": "reactions to paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to paper run-through tweet",
+    "text": "reactions to paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
+    "href": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "favorite tweet (meme)",
+    "text": "favorite tweet (meme)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to meme-tweet",
+    "text": "reactions to meme-tweet\n\nhttps://x.com/JAASANTINHA/status/1417936729600823300?s=20"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to meme-tweet",
+    "text": "reactions to meme-tweet\n\nThis has been a finding from decision curve analysis for at least 10 years!— Andrew Vickers (@VickersBiostats) July 21, 2021"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
+    "href": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "biggest own tweet (thesis cover):",
+    "text": "biggest own tweet (thesis cover):\n\n\n\n\n\n\n93k impressions\n673 likes\n53 retweets\n6 new followers"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "ask for help-tweet",
+    "text": "ask for help-tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
+    "href": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Use X for",
+    "text": "Use X for\n\nlearning\nconnecting\nadvertising:\n\nnew work\nvacancies"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
+    "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "I may leave X",
+    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam @WvanAmsterdam"
   },
   {
     "objectID": "posts/210725-counterfactualvsinterventional.html",
@@ -130,7 +221,7 @@
     "href": "talks.html",
     "title": "Talks",
     "section": "",
-    "text": "Wouter’s twitter X-peri(ments/ences)\n\n\n\n\n\n\n\n\n\n\n\nMar 12, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "Wouter’s twitter X-peri(ments/ences)\n\n\n\n\n\n\n\n\n\n\n\nMar 12, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",

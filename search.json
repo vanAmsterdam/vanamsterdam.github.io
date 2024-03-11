@@ -4,7 +4,77 @@
     "href": "posts.html",
     "title": "Posts",
     "section": "",
-    "text": "Post 1\n\n\n\n\n\n\ncode\n\n\nwriting\n\n\nr\n\n\n\nfirst post to test out quarto\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
+    "text": "The difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Why (I) use X?",
+    "text": "Why (I) use X?\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nadvertise work\n\nRCT of tweeted papers: 4x citations in 1y (group of 58k followers) \n\nconnect"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
+    "href": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Why not use X?",
+    "text": "Why not use X?\n\ntwitter is dead, and X is dying\ndistractions\npolitics"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
+    "href": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "X compared to",
+    "text": "X compared to\n\nlinkedin: fake interactions\ntwitter: too real interactions\nmastodon: too hacky / nerdy?\nthreads: twitter clone by meta (facebook)\nbluesky: way to go?"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
+    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Twitter history and status",
+    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following\n15-minutes a day but waning"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first tweet that got a like",
+    "text": "first tweet that got a like"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml-liked-by-judea-pearl",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml-liked-by-judea-pearl",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first ad for own paper on causal ML (liked by judea pearl)",
+    "text": "first ad for own paper on causal ML (liked by judea pearl)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first joke (kind-of success)",
+    "text": "first joke (kind-of success)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first tweet that went ‘viral’: recommending a paper",
+    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nelias bareinboim (respected researcher in field) reached out and congratulated me"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-35-retweet-86-likes-now-20-citations",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-35-retweet-86-likes-now-20-citations",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet (35 retweet, 86 likes); now 20 citations",
+    "text": "first paper run-through tweet (35 retweet, 86 likes); now 20 citations\nhttps://x.com/WvanAmsterdam/status/1204732856867704833?s=20\n\nnice reactions:\n\nhttps://x.com/JAASANTINHA/status/1221926874953154563?s=20\nhttps://x.com/hilseth_mistrov/status/1204878693149134848?s=20\n\nfavorite tweet (meme on prediction models) https://x.com/WvanAmsterdam/status/1417886117530112000?s=20\nsnarky reply (Andrew Vickers): https://x.com/VickersBiostats/status/1417905175948374016?s=20\nreply from yudea pearl https://x.com/yudapearl/status/1428026853365673986?s=20\nbiggest own tweet (thesis cover): https://x.com/WvanAmsterdam/status/1564209229745033217?s=20\n93k impressions\n673 likes\n53 retweets\n6 new followers\nask for help (prospective general population cohorts) https://x.com/WvanAmsterdam/status/1582304674321158144?s=20 ## Twitter post 1 using embed plugin\n\nTo embed a Tweet into your Quarto html document you can use the shortcode like this:"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-post-with-html-embedding",
+    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-post-with-html-embedding",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "twitter post with html embedding",
+    "text": "twitter post with html embedding"
   },
   {
     "objectID": "posts/210725-counterfactualvsinterventional.html",
@@ -35,20 +105,6 @@
     "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
   },
   {
-    "objectID": "posts/240308-post1.html",
-    "href": "posts/240308-post1.html",
-    "title": "Post 1",
-    "section": "",
-    "text": "like it?\n\n\n\nset.seed(123)\nx = rnorm(100)\ns_y = rnorm(100)\ny = x + s_y\nplot(y~x)"
-  },
-  {
-    "objectID": "posts/240308-post1.html#this-is-post-one",
-    "href": "posts/240308-post1.html#this-is-post-one",
-    "title": "Post 1",
-    "section": "",
-    "text": "like it?\n\n\n\nset.seed(123)\nx = rnorm(100)\ns_y = rnorm(100)\ny = x + s_y\nplot(y~x)"
-  },
-  {
     "objectID": "posts/210720-good_predictions_bad_decisions.html",
     "href": "posts/210720-good_predictions_bad_decisions.html",
     "title": "When good predictions lead to bad decisions",
@@ -70,6 +126,13 @@
     "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
   },
   {
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks",
+    "section": "",
+    "text": "Wouter’s twitter X-peri(ments/ences)\n\n\n\n\n\n\n\n\n\n\n\nMar 12, 2024\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Wouter van Amsterdam, MD, PhD",
@@ -81,14 +144,14 @@
     "href": "index.html#selected-papers",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Selected papers",
-    "text": "Selected papers\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\npdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\npdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\npdf\nDecision making in cancer: Causal questions require causal answers.\nvan Amsterdam, W. A. C., de Jong, P. A., Suijkerbuijk, K. P. M., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2022). ArXiv pre-print\npdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\npdf"
+    "text": "Selected papers\ngoogle scholar\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\npdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\npdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\npdf\nDecision making in cancer: Causal questions require causal answers.\nvan Amsterdam, W. A. C., de Jong, P. A., Suijkerbuijk, K. P. M., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2022). ArXiv pre-print\npdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\npdf"
   },
   {
     "objectID": "index.html#posts",
     "href": "index.html#posts",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Posts",
-    "text": "Posts\n\n\n\n\n\n\n\n\nPost 1\n\n\nfirst post to test out quarto\n\n\n\nWouter van Amsterdam\n\n\nMar 8, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 25, 2021\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 20, 2021\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Posts\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 25, 2021\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 20, 2021\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#contact",

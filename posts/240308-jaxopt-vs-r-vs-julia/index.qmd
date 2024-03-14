@@ -1,124 +1,243 @@
 ---
-title: "Speed comparison of JaxOpt, R and Julia"
-draft: true
-#jupyter: julia-1.10
-execute:
-  eval: false
+title: The need for speed, performing simulation studies in R, JAX and Julia
+bibliography: references.bib
+eval: false
 ---
 
-## Let's put them to the test
 
-## generating data
+When using simulations to support scientific claims, the more experiments the better.
+Having the ability to perform many experiments fast allows researchers to:
 
-:::: {.columns}
+- test bigger (or finer) experimental grids
+- attain lower variance by having more repeated experiments
+- test new ideas faster
 
-::: {.column width="30%"}
-r
-```{julia}
-#| label: r-data
-#| echo: true
-#| eval: false
+The R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed, especially when it comes to leveraging GPUs for calculations that are amenable to vectorization (such as performing simulation studies across a large grid).
+In recent years, [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html) (developed by Google) and [Julia](https://julialang.org) have arisen as general scientific computation frameworks.
+Jax and Julia have grown in popularity both in the neural network community as in other scientific communities [e.g. @DifferentiableUniverseInitiativeJax_cosmo2024; @SciMLOpenSource]
+In this blog post I'll compare R with JAX and Julia for a simple simulation study setup with logistic regression.
+
+We'll look at the following comparisons:
+
+1. R single thread
+2 .R multi-threaded
+3. JAX on CPU
+4. JAX on GPU (NVIDIA quadro P-6000)
+5. Julia single thread
+6. Julia multi-threading
+
+## R vs JAX vs Julia a high level overview
+Without going in too much details, JAX works by translating python code into an intermediate language that can be run very efficiently on different hardware backends (CPU, GPU, TPU) through just-in-time compilation (JIT).
+JAX prides itself on providing composable transformations for vectorization (`vmap`), paralellization (`pmap`) and automatic differentiation (`grad`), all compatible with `jit`
+In R, most of the heavy lifting in terms of computation (such as fitting a logistic regression model) is implemented in high-speed languages such as C++ or Fortran.
+The usual R-code merely provides an interface to these languages and allows the user to feed in data and analyze results.
+Whereas using JAX and R means working with two languages (one language to write accessible code, another to do fast computation), Julia is a just-in-time compiled language where such translation is not needed.
+
+## The basic setup
+
+We'll be running a simple logistic regression simulation setup, where for each observation:
+
+$$
+\begin{align}
+\mathbf{x}_{\text{full}} &\sim \mathcal{N}(0,I) \in \mathbb{R}^{10} \\
+y &= ||\mathbf{x}||_0 > 0 \\
+\mathbf{x}_{\text{obs}} &= [x_0\ x_i \ldots x_9]
+\end{align}
+$$
+
+So $y$ is the sum of elements of $\mathbf{x}_{\text{full}}$ and the observed $\mathbf{x}_{\text{obs}}$ contains only the first 9 out of 10 elements of $\mathbf{x}_{\text{full}}$.
+
+We will model this data with standard logistic regression:
+
+$$
+\text{logit}(y) = \mathbf{x}_{\text{obs}} \boldsymbol{\beta}' 
+$$
+
+where $\boldsymbol{\beta} = [\beta_1,\ldots,\beta_9]$ is a 9-dimensional parameter vector that is to be estimated (we're excluding the usual intercept term).
+We'll generate `nrep` independent datasets and estimate $\boldsymbol{\beta}$ in each one, and finally calculate the average parameter estimates $\frac{1}{\text{nrep}}\sum_{i=1}^{\text{nrep}}\boldsymbol{\beta}^i$, averaged over each repetition i.
+
+## The code
+
+Making the data
+
+::: {.panel-tabset}
+## R
+
+``` {.r}
 make_data <- function(n=1e3L) {
     x = rnorm(n*10)
     X = matrix(x, ncol=10)
     eta = rowSums(X)
     y = eta > 0
     # return only first 9 column to have some noise
-    X2 = X2[,1:9]
+    X = X[,1:9]
     return(list(X=X,y=y))
 }
 ```
-:::
 
-::: {.column width="5%"}
-:::
+## Python
 
-::: {.column width="30%"}
-```{julia}
-#| label: julia-data
-#| echo: true
-#| eval: false
+``` {.python}
+def make_data(k, n=int(1e3)):
+    X_full = random.normal(k, (n,10)) # Jax needs explicit keys for psuedo random number generation
+    eta = jnp.sum(X_full, axis=-1)
+    y = eta > 0
+    # return only first 9 column to have some noise
+    X = X_full[:,:9]
+    return (X, y)
+```
+
+## Julia
+
+``` {.julia}
 function make_data(n::Integer=1000)
     X = randn(n,10)
     eta = vec(sum(X, dims=2))
-    y = eta .> 0
+    y = eta .> 0 # vectorized greater than 0 comparison
     X2 = X[:,1:9]
     return X2, y
 end
 ```
+
 :::
 
-::: {.column width="5%"}
-:::
+The write the code for a single analysis step, generating data and fitting the logistic regression.
+Note that in Jax there is no `glm` function so we need to specify an objective to minimize (`binary_logreg`, as defined in [JaxOpt](https://jaxopt.github.io/stable/_autosummary/jaxopt.objective.binary_logreg.html)), and then use a generic solver (here: LBFGS, also from [JaxOpt](https://jaxopt.github.io/stable/_autosummary/jaxopt.LBFGS.html#jaxopt.LBFGS).
+The Julia code looks more like the R code
 
-::: {.column width="30%"}
-```{julia}
-#| label: julia-data2
-#| echo: true
-#| eval: false
-function make_data(n::Integer=1000)
-    X = randn(n,10)
-    eta = vec(sum(X, dims=2))
-    y = eta .> 0
-    X2 = X[:,1:9]
-    return X2, y
-end
+::: {.panel-tabset}
+## R
+
+``` {.r}
+solve <- function(data) {
+  fit = glm(data$y~data$X-1, family='binomial')
+  return(coef(fit))
+}
+one_iter <- function(...) {
+  data = make_data()
+  coefs = solve(data)
+  return(coefs)
+}
 ```
-:::
 
-::::
+## Python
 
-### Julia
+``` {.python}
+# initialize a generic solver with the correct objective function
+solver = LBFGS(binary_logreg)
 
-```{julia}
-#| eval: false
+@jit
+def solve(k):
+    # need to specify parameter initialization values
+    w_init = jnp.zeros((9,))
+    data = make_data(k)
+    param, state = solver.run(w_init, data)
+    return param
+```
 
-using CategoricalArrays, DataFrames, GLM, Random, StatsBase
-using Base.Threads
-import Base.Threads.@threads
+## Julia
 
-# rng = StableRNG(123)
-nreps = 2
-
-Random.seed!(123)
-
-function make_data(n::Integer=1000)
-    X = randn(n,10)
-    eta = vec(sum(X, dims=2))
-    y = eta .> 0
-    X2 = X[:,1:9]
-    return X2, y
-end
-
+``` {.julia}
 function solve(i::Int64=1)
     X, y = make_data()
     fit = glm(X, y, Bernoulli())
     coefs = coef(fit)
     return coefs
 end
+```
+
+:::
+
+Finally we run the experiments `nrep` times and calculate the average coefficient vector
+
+::: {.panel-tabset}
+## R
+
+``` {.r}
+res <- map(1:nreps, one_iter)
+outmat <- do.call(rbind, res)
+print(colMeans(outmat))
+```
+
+## Python
+
+``` {.python}
+def run_exp(k, nreps=2):
+    ks = random.split(k, nreps)
+    params = vmap(solve)(ks)
+    return params
+
+param = run_exp(k0, args.nreps)
+print(jnp.mean(param, axis=0))
+```
+
+## Julia
+
+``` {.julia}
+outmat = zeros(nreps, 9)
 
 iis = 1:nreps
 
-# outvec = Threads.Atomic{Float64}(nreps*9)
-coefs = [Threads.Atomic{Float64}(0.0) for i in 1:9]
-# outmat = Array{Float64,2}(undef, nreps, 9)
-# outmat = zeros(nreps, 9)
-@threads for i in iis
+@threads for i in 1:nreps
     solution = solve()
-    for j in 1:9
-        Threads.atomic_add!(coefs[j], solution[j])
-    end
-
-    # outmat[i,:] = solve()
+    outmat[i,:] = solve()
 end
 
-# out = solve.(iis)
-# matout = reduct(hcat, out)'
-
-coef_vec = vec([coefi[] for coefi in coefs])
-means = coef_vec ./ nreps
-# means = mean(outmat, dims=1)
-# sums = ThreadsX.sum(solve(i) for i in iis, dims=1)
-# means = sums / nreps
+means = mean(outmat, dims=1)
 print(means)
+
 ```
+
+:::
+
+## The speed
+
+Speed plots
+
+## Conclusions
+
+assuming familiarity R > Julia > JAX
+
+Dimensions:
+
+- have GPU -- have many threads
+- rely on standard stats / need summary stats -- have custom objectives / need autograd
+
+
+
+## Discussion
+
+JAX was able to get a 86 times speed-up compared to single-threaded R, and 8 times compared to R on 10 threads.
+JAX does come with some 'sharp bits' (see link) that if not followed correctly lead to suboptimal performance and/or unexpected behavior, e.g. it requires functional programming.
+
+Note that JAX-opt gives pretty-bare bones results with only parameters, likelihood of the observed data at the final parameter estimate and some optimization statistics (number of iterations, convergence).
+But not e.g. variance estimates and all sorts of other things returned by glm in R.
+
+In conculsion, should you learn JAX for simulations? 
+- If you can program in python / numpy, yes
+- If you'll write custom objectives and want to apply gradient-based optimization, yes.
+- If you don't have a GPU but have many CPU-threads available, probably no
+
+Finally, when it comes to analyzing results from millions of simulation experiments, R's data.table really shines when it comes to speed in reading, writing, subsetting and analyzing results.
+It's orders of magnitudes faster than pythons pandas for many tasks and pretty much the fastest framework for in-memory data.frame-style operations across all languages.
+
+My workflow:
+1. run simulations in JAX
+2. analyze results in R using data.table
+
+## Extensions
+
+Julia is another JIT-compiled language that would be interesting to compare against.
+
+
+## Computing environment
+
+All tests conducted on linux cluster with 12 threads and a NVIDIA Quadro P-6000 GPU
+
+
+## References
+
+::: {#refs}
+:::
+
+

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Wouter van Amsterdam">
+<meta name="dcterms.date" content="2024-04-18">
 
-<title>Wouter van Amsterdam - Posts</title>
+<title>Wouter van Amsterdam - AI and its (mis)uses in medical research and practice</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E4W5XMDCR7"></script>
 
 <script type="text/javascript">
@@ -109,40 +80,11 @@ gtag('js', new Date());
 gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Wouter van Amsterdam - Posts">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Wouter van Amsterdam - AI and its (mis)uses in medical research and practice">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="Wouter van Amsterdam - Posts">
+<meta name="twitter:title" content="Wouter van Amsterdam - AI and its (mis)uses in medical research and practice">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
 </head>
@@ -150,11 +92,11 @@ window.Quarto = {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Wouter van Amsterdam</span>
     </a>
   </div>
@@ -165,27 +107,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html#selected-papers"> 
+    <a class="nav-link" href="../../index.html#selected-papers"> 
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./talks.html"> 
+    <a class="nav-link" href="../../talks.html"> 
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html#teaching"> 
+    <a class="nav-link" href="../../index.html#teaching"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html#activities"> 
+    <a class="nav-link" href="../../index.html#activities"> 
 <span class="menu-text">Activities</span></a>
   </li>  
 </ul>
@@ -197,142 +139,105 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">AI and its (mis)uses in medical research and practice</h1>
+                      </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://vanamsterdam.github.io">Wouter van Amsterdam</a> </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University Medical Center Utrecht
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 18, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="causal inference">causal inference <span class="quarto-category-count">(2)</span></div><div class="category" data-category="predictions">predictions <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statistics">statistics <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-ai" id="toc-what-is-ai" class="nav-link active" data-scroll-target="#what-is-ai">What is AI?</a></li>
+  <li><a href="#using-ai-in-research-and-medical-practice" id="toc-using-ai-in-research-and-medical-practice" class="nav-link" data-scroll-target="#using-ai-in-research-and-medical-practice">Using AI in research and medical practice</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Posts</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="what-is-ai" class="level1">
+<h1>What is AI?</h1>
+<section id="overview-of-ai-and-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-ai-and-machine-learning">Overview of AI and machine learning</h2>
+</section>
+<section id="different-tasks-of-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="different-tasks-of-machine-learning">Different tasks of machine learning</h2>
+<ul>
+<li>generation</li>
+<li>conditional generation</li>
+<li>discrimination</li>
+<li>policy learning</li>
+</ul>
+</section>
+<section id="what-is-a-large-language-model-like-chatgpt" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-large-language-model-like-chatgpt">What is a large-language model like chatGPT?</h2>
+</section>
+</section>
+<section id="using-ai-in-research-and-medical-practice" class="level1">
+<h1>Using AI in research and medical practice</h1>
+<section id="ml-versus-statistics-when-to-use-what" class="level2">
+<h2 class="anchored" data-anchor-id="ml-versus-statistics-when-to-use-what">ML versus statistics, when to use what</h2>
+</section>
+<section id="safe-use-of-ai-models-in-medical-practice" class="level2">
+<h2 class="anchored" data-anchor-id="safe-use-of-ai-models-in-medical-practice">Safe use of AI models in medical practice</h2>
+</section>
+<section id="when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies" class="level2">
+<h2 class="anchored" data-anchor-id="when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies">When accurate prediction models yield harmful self-fulfilling prophecies</h2>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1710445305680" data-listing-reading-time-sort="6" data-listing-word-count-sort="1055">
-<div class="thumbnail">
-<p><a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external"></a></p><a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external">The need for speed, performing simulation studies in R, JAX and Julia</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external">When using simulations to support scientific claims, the more experiments the better. Having the ability to perform many experiments fast allows researchers to:</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external"></a></p><a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external">
-<div class="listing-author">
-Wouter van Amsterdam
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="causal inference,statistics" data-listing-date-sort="1627164000000" data-listing-file-modified-sort="1709905610036" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687">
-<div class="thumbnail">
-<p><a href="./posts/210725-counterfactualvsinterventional.html" class="no-external"></a></p><a href="./posts/210725-counterfactualvsinterventional.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/210725-counterfactualvsinterventional.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/210725-counterfactualvsinterventional.html" class="no-external">The difference between intervention and counterfactuals</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/210725-counterfactualvsinterventional.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('causal inference'); return false;">
-causal inference
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statistics'); return false;">
-statistics
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/210725-counterfactualvsinterventional.html" class="no-external">Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/210725-counterfactualvsinterventional.html" class="no-external">
-<div class="listing-date">
-Jul 25, 2021
-</div>
-<div class="listing-author">
-Wouter van Amsterdam
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="causal inference,predictions" data-listing-date-sort="1626732000000" data-listing-file-modified-sort="1710328195341" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1226">
-<div class="thumbnail">
-<p><a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external"></a></p><a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external">When good predictions lead to bad decisions</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('causal inference'); return false;">
-causal inference
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('predictions'); return false;">
-predictions
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external">A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external">
-<div class="listing-date">
-Jul 20, 2021
-</div>
-<div class="listing-author">
-Wouter van Amsterdam
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{van amsterdam2024,
+  author = {van Amsterdam, Wouter},
+  title = {AI and Its (Mis)uses in Medical Research and Practice},
+  date = {2024-04-18},
+  url = {https://vanamsterdam.github.io/talks/240418-ii-spring-meeting},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van amsterdam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Amsterdam, Wouter van. 2024. <span>“AI and Its (Mis)uses in Medical
+Research and Practice.”</span> April 18, 2024. <a href="https://vanamsterdam.github.io/talks/240418-ii-spring-meeting">https://vanamsterdam.github.io/talks/240418-ii-spring-meeting</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

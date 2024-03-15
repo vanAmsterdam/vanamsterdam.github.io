@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/210720-good_predictions_bad_decisions.html"
     ]
@@ -9,14 +10,16 @@
   {
     "listing": "/talks.html",
     "items": [
-      "/talks/240312-dsbiostats-twitter/index.html"
+      "/talks/240418-ii-spring-meeting/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
       "/posts/210725-counterfactualvsinterventional.html",
-      "/posts/210720-good_predictions_bad_decisions.html"
+      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
+      "/posts/210720-good_predictions_bad_decisions.html",
+      "/talks/240418-ii-spring-meeting/index.html"
     ]
   }
 ]

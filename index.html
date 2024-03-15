@@ -97,6 +97,34 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-talks-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-talks-listing'] = new List('listing-talks-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
   </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E4W5XMDCR7"></script>
 
@@ -105,11 +133,6 @@ ul.task-list li input[type="checkbox"] {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
- 
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'analytics_storage': 'denied'
-  });
 gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
 </script>
 
@@ -177,16 +200,24 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
-<span class="menu-text">Posts</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./index.html#selected-papers"> 
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./talks.html"> 
 <span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html#teaching"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html#activities"> 
+<span class="menu-text">Activities</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -206,7 +237,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#selected-papers" id="toc-selected-papers" class="nav-link active" data-scroll-target="#selected-papers">Selected papers</a></li>
+  <li><a href="#talks" id="toc-talks" class="nav-link" data-scroll-target="#talks">Talks</a></li>
+  <li><a href="#teaching" id="toc-teaching" class="nav-link" data-scroll-target="#teaching">Teaching</a></li>
   <li><a href="#posts" id="toc-posts" class="nav-link" data-scroll-target="#posts">Posts</a></li>
+  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities">Activities</a></li>
   <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -280,7 +314,6 @@ PhD. machine learning for healthcare | 2022 | co-advised by <a href="https://cim
 
 <section id="selected-papers" class="level2">
 <h2 data-anchor-id="selected-papers">Selected papers</h2>
-<p><a href="https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&amp;hl=nl&amp;oi=sra">google scholar</a></p>
 <p>When accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).<br>
 <em>van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., &amp; Ciná, G. (2024). ML4H 2023 findings-track</em><br>
 <a href="papers/2024_selffulfilling_ml4h.pdf">pdf</a></p>
@@ -295,8 +328,64 @@ PhD. machine learning for healthcare | 2022 | co-advised by <a href="https://cim
 <p>Eliminating biasing signals in lung cancer images for prognosis predictions with deep learning.<br>
 <em>van Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., &amp; Eijkemans, M. J. C. (2019). Npj Digital Medicine</em><br>
 <a href="https://www.nature.com/articles/s41746-019-0194-x.pdf">pdf</a></p>
-<!--## Talks-->
-<!--## Teaching-->
+<p>More papers at <a href="https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&amp;hl=nl&amp;oi=sra">google scholar</a></p>
+</section>
+<section id="talks" class="level2">
+<h2 data-anchor-id="talks"><a href="./talks.html">Talks</a></h2>
+<div id="listing-talks-listing" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1713391200000" data-listing-file-modified-sort="1710341744411" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="56">
+<a href="./talks/240418-ii-spring-meeting/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+AI and its (mis)uses in medical research and practice
+</h5>
+<div class="card-text listing-description">
+
+
+<section id="overview-of-ai-and-machine-learning" class="level2">
+
+</section>
+<section id="different-tasks-of-machine-learning" class="level2">
+
+<ul>
+<li>generation</li>
+<li>conditional generation</li>
+<li>discrimination</li>
+<li>policy learning</li>
+</ul>
+</section>
+<section id="what-is-a-large-language-model-like-chatgpt" class="level2">
+
+</section>
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Wouter van Amsterdam
+</div>
+<div class="listing-date">
+Apr 18, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="teaching" class="level2">
+<h2 data-anchor-id="teaching">Teaching</h2>
+<ul>
+<li>2023 Big Data summer school</li>
+<li>2024 <a href="https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science">Introduction to Causal Inference and Causal Data Science summer school</a></li>
+</ul>
 </section>
 <section id="posts" class="level2">
 <h2 data-anchor-id="posts"><a href="./posts.html">Posts</a></h2>
@@ -325,7 +414,27 @@ Jul 25, 2021
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="causal inference,predictions" data-listing-date-sort="1626732000000" data-listing-file-modified-sort="1709905431003" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1226">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1710445305680" data-listing-reading-time-sort="6" data-listing-word-count-sort="1055">
+<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+The need for speed, performing simulation studies in R, JAX and Julia
+</h5>
+<div class="card-text listing-description">
+When using simulations to support scientific claims, the more experiments the better. Having the ability to perform many experiments fast allows researchers to:
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+Wouter van Amsterdam
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="causal inference,predictions" data-listing-date-sort="1626732000000" data-listing-file-modified-sort="1710328195341" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1226">
 <a href="./posts/210720-good_predictions_bad_decisions.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
@@ -353,6 +462,12 @@ Jul 20, 2021
 No matching items
 </div>
 </div>
+</section>
+<section id="activities" class="level2">
+<h2 data-anchor-id="activities">Activities</h2>
+<ul>
+<li>2023-<a href="https://www.vvsor.nl/biometrics/">BMS-ANed</a> (Dutch biometrics society, board member)</li>
+</ul>
 </section>
 <section id="contact" class="level2">
 <h2 data-anchor-id="contact">Contact</h2>

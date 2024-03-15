@@ -4,168 +4,105 @@
     "href": "posts.html",
     "title": "Posts",
     "section": "",
-    "text": "The difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
+    "text": "The need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Why (I) use X?",
-    "text": "Why (I) use X?\n\n\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nconnect\nadvertise work"
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks",
+    "section": "",
+    "text": "AI and its (mis)uses in medical research and practice\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
-    "href": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Why not use X?",
-    "text": "Why not use X?\n\ntwitter is dead, and X is dying\ndistractions\npolitics"
+    "objectID": "posts/210720-good_predictions_bad_decisions.html",
+    "href": "posts/210720-good_predictions_bad_decisions.html",
+    "title": "When good predictions lead to bad decisions",
+    "section": "",
+    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
-    "href": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "X compared to",
-    "text": "X compared to\n\nlinkedin: fake interactions\ntwitter: too real interactions\nmastodon: too hacky / nerdy?\nthreads: twitter clone by meta (facebook)\nbluesky: way to go?"
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Defining the policies",
+    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
-    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Twitter history and status",
-    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following (this determines your timeline)\n15-minutes a day but waning"
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Expected utility of different policies",
+    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first tweet that got a like",
-    "text": "first tweet that got a like"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "",
+    "text": "When using simulations to support scientific claims, the more experiments the better. Having the ability to perform many experiments fast allows researchers to:\nThe R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed, especially when it comes to leveraging GPUs for calculations that are amenable to vectorization (such as performing simulation studies across a large grid). In recent years, JAX (developed by Google) and Julia have arisen as general scientific computation frameworks. Jax and Julia have grown in popularity both in the neural network community as in other scientific communities (e.g. “DifferentiableUniverseInitiative/Jax_cosmo” 2024; “SciML: Open Source Software for Scientific Machine Learning” n.d.) In this blog post I’ll compare R with JAX and Julia for a simple simulation study setup with logistic regression.\nWe’ll look at the following comparisons:"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first ad for own paper on causal ML",
-    "text": "first ad for own paper on causal ML"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#r-vs-jax-vs-julia-a-high-level-overview",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#r-vs-jax-vs-julia-a-high-level-overview",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "R vs JAX vs Julia a high level overview",
+    "text": "R vs JAX vs Julia a high level overview\nWithout going in too much details, JAX works by translating python code into an intermediate language that can be run very efficiently on different hardware backends (CPU, GPU, TPU) through just-in-time compilation (JIT). JAX prides itself on providing composable transformations for vectorization (vmap), paralellization (pmap) and automatic differentiation (grad), all compatible with jit In R, most of the heavy lifting in terms of computation (such as fitting a logistic regression model) is implemented in high-speed languages such as C++ or Fortran. The usual R-code merely provides an interface to these languages and allows the user to feed in data and analyze results. Whereas using JAX and R means working with two languages (one language to write accessible code, another to do fast computation), Julia is a just-in-time compiled language where such translation is not needed."
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first joke (kind-of success)",
-    "text": "first joke (kind-of success)"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-basic-setup",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-basic-setup",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "The basic setup",
+    "text": "The basic setup\nWe’ll be running a simple logistic regression simulation setup, where for each observation:\n\\[\n\\begin{align}\n\\mathbf{x}_{\\text{full}} &\\sim \\mathcal{N}(0,I) \\in \\mathbb{R}^{10} \\\\\ny &= ||\\mathbf{x}||_0 &gt; 0 \\\\\n\\mathbf{x}_{\\text{obs}} &= [x_0\\ x_i \\ldots x_9]\n\\end{align}\n\\]\nSo \\(y\\) is the sum of elements of \\(\\mathbf{x}_{\\text{full}}\\) and the observed \\(\\mathbf{x}_{\\text{obs}}\\) contains only the first 9 out of 10 elements of \\(\\mathbf{x}_{\\text{full}}\\).\nWe will model this data with standard logistic regression:\n\\[\n\\text{logit}(y) = \\mathbf{x}_{\\text{obs}} \\boldsymbol{\\beta}'\n\\]\nwhere \\(\\boldsymbol{\\beta} = [\\beta_1,\\ldots,\\beta_9]\\) is a 9-dimensional parameter vector that is to be estimated (we’re excluding the usual intercept term). We’ll generate nrep independent datasets and estimate \\(\\boldsymbol{\\beta}\\) in each one, and finally calculate the average parameter estimates \\(\\frac{1}{\\text{nrep}}\\sum_{i=1}^{\\text{nrep}}\\boldsymbol{\\beta}^i\\), averaged over each repetition i."
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first tweet that went ‘viral’: recommending a paper",
-    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nrespected researcher in field asked if I’m interested in doing a post-doc"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-code",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-code",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "The code",
+    "text": "The code\nMaking the data\n\nRPythonJulia\n\n\nmake_data &lt;- function(n=1e3L) {\n    x = rnorm(n*10)\n    X = matrix(x, ncol=10)\n    eta = rowSums(X)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X[,1:9]\n    return(list(X=X,y=y))\n}\n\n\ndef make_data(k, n=int(1e3)):\n    X_full = random.normal(k, (n,10)) # Jax needs explicit keys for psuedo random number generation\n    eta = jnp.sum(X_full, axis=-1)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[:,:9]\n    return (X, y)\n\n\nfunction make_data(n::Integer=1000)\n    X = randn(n,10)\n    eta = vec(sum(X, dims=2))\n    y = eta .&gt; 0 # vectorized greater than 0 comparison\n    X2 = X[:,1:9]\n    return X2, y\nend\n\n\n\nThe write the code for a single analysis step, generating data and fitting the logistic regression. Note that in Jax there is no glm function so we need to specify an objective to minimize (binary_logreg, as defined in JaxOpt), and then use a generic solver (here: LBFGS, also from JaxOpt. The Julia code looks more like the R code\n\nRPythonJulia\n\n\nsolve &lt;- function(data) {\n  fit = glm(data$y~data$X-1, family='binomial')\n  return(coef(fit))\n}\none_iter &lt;- function(...) {\n  data = make_data()\n  coefs = solve(data)\n  return(coefs)\n}\n\n\n# initialize a generic solver with the correct objective function\nsolver = LBFGS(binary_logreg)\n\n@jit\ndef solve(k):\n    # need to specify parameter initialization values\n    w_init = jnp.zeros((9,))\n    data = make_data(k)\n    param, state = solver.run(w_init, data)\n    return param\n\n\nfunction solve(i::Int64=1)\n    X, y = make_data()\n    fit = glm(X, y, Bernoulli())\n    coefs = coef(fit)\n    return coefs\nend\n\n\n\nFinally we run the experiments nrep times and calculate the average coefficient vector\n\nRPythonJulia\n\n\nres &lt;- map(1:nreps, one_iter)\noutmat &lt;- do.call(rbind, res)\nprint(colMeans(outmat))\n\n\ndef run_exp(k, nreps=2):\n    ks = random.split(k, nreps)\n    params = vmap(solve)(ks)\n    return params\n\nparam = run_exp(k0, args.nreps)\nprint(jnp.mean(param, axis=0))\n\n\noutmat = zeros(nreps, 9)\n\niis = 1:nreps\n\n@threads for i in 1:nreps\n    solution = solve()\n    outmat[i,:] = solve()\nend\n\nmeans = mean(outmat, dims=1)\nprint(means)"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-speed",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-speed",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "The speed",
+    "text": "The speed\nSpeed plots"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#conclusions",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#conclusions",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Conclusions",
+    "text": "Conclusions\nassuming familiarity R &gt; Julia &gt; JAX\nDimensions:\n\nhave GPU – have many threads\nrely on standard stats / need summary stats – have custom objectives / need autograd"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#discussion",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#discussion",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Discussion",
+    "text": "Discussion\nJAX was able to get a 86 times speed-up compared to single-threaded R, and 8 times compared to R on 10 threads. JAX does come with some ‘sharp bits’ (see link) that if not followed correctly lead to suboptimal performance and/or unexpected behavior, e.g. it requires functional programming.\nNote that JAX-opt gives pretty-bare bones results with only parameters, likelihood of the observed data at the final parameter estimate and some optimization statistics (number of iterations, convergence). But not e.g. variance estimates and all sorts of other things returned by glm in R.\nIn conculsion, should you learn JAX for simulations? - If you can program in python / numpy, yes - If you’ll write custom objectives and want to apply gradient-based optimization, yes. - If you don’t have a GPU but have many CPU-threads available, probably no\nFinally, when it comes to analyzing results from millions of simulation experiments, R’s data.table really shines when it comes to speed in reading, writing, subsetting and analyzing results. It’s orders of magnitudes faster than pythons pandas for many tasks and pretty much the fastest framework for in-memory data.frame-style operations across all languages.\nMy workflow: 1. run simulations in JAX 2. analyze results in R using data.table"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#extensions",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#extensions",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Extensions",
+    "text": "Extensions\nJulia is another JIT-compiled language that would be interesting to compare against."
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#computing-environment",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#computing-environment",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Computing environment",
+    "text": "Computing environment\nAll tests conducted on linux cluster with 12 threads and a NVIDIA Quadro P-6000 GPU"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet\n\n\n\n\n\n35 retweets\n86 likes\n18k views\n0 new followers\nnow 20 citations (5 if not for twitter?)"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
-    "href": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "favorite tweet (meme)",
-    "text": "favorite tweet (meme)"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to meme-tweet",
-    "text": "reactions to meme-tweet\n\nhttps://x.com/JAASANTINHA/status/1417936729600823300?s=20"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to meme-tweet",
-    "text": "reactions to meme-tweet\n\nThis has been a finding from decision curve analysis for at least 10 years!— Andrew Vickers (@VickersBiostats) July 21, 2021"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
-    "href": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "biggest own tweet (thesis cover):",
-    "text": "biggest own tweet (thesis cover):\n\n\n\n\n\n\n93k impressions\n673 likes\n53 retweets\n6 new followers"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "ask for help-tweet",
-    "text": "ask for help-tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
-    "href": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Use X for",
-    "text": "Use X for\n\nlearning\nconnecting\nadvertising:\n\nnew work\nvacancies"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
-    "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "I may leave X",
-    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam @WvanAmsterdam"
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#references",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#references",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "References",
+    "text": "References\n\n\n“DifferentiableUniverseInitiative/Jax_cosmo.” 2024. Differentiable Universe Initiative. https://github.com/DifferentiableUniverseInitiative/jax_cosmo.\n\n\n“SciML: Open Source Software for Scientific Machine Learning.” n.d. Accessed March 14, 2024. https://sciml.ai."
   },
   {
     "objectID": "posts/210725-counterfactualvsinterventional.html",
@@ -196,32 +133,39 @@
     "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
   },
   {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html",
-    "href": "posts/210720-good_predictions_bad_decisions.html",
-    "title": "When good predictions lead to bad decisions",
+    "objectID": "talks/240418-ii-spring-meeting/index.html",
+    "href": "talks/240418-ii-spring-meeting/index.html",
+    "title": "AI and its (mis)uses in medical research and practice",
     "section": "",
-    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
+    "text": "generation\nconditional generation\ndiscrimination\npolicy learning"
   },
   {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Defining the policies",
-    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Expected utility of different policies",
-    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
-  },
-  {
-    "objectID": "talks.html",
-    "href": "talks.html",
-    "title": "Talks",
+    "objectID": "talks/240418-ii-spring-meeting/index.html#different-tasks-of-machine-learning",
+    "href": "talks/240418-ii-spring-meeting/index.html#different-tasks-of-machine-learning",
+    "title": "AI and its (mis)uses in medical research and practice",
     "section": "",
-    "text": "Wouter’s twitter X-peri(ments/ences)\n\n\n\n\n\n\n\n\n\n\n\nMar 12, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
+    "text": "generation\nconditional generation\ndiscrimination\npolicy learning"
+  },
+  {
+    "objectID": "talks/240418-ii-spring-meeting/index.html#ml-versus-statistics-when-to-use-what",
+    "href": "talks/240418-ii-spring-meeting/index.html#ml-versus-statistics-when-to-use-what",
+    "title": "AI and its (mis)uses in medical research and practice",
+    "section": "ML versus statistics, when to use what",
+    "text": "ML versus statistics, when to use what"
+  },
+  {
+    "objectID": "talks/240418-ii-spring-meeting/index.html#safe-use-of-ai-models-in-medical-practice",
+    "href": "talks/240418-ii-spring-meeting/index.html#safe-use-of-ai-models-in-medical-practice",
+    "title": "AI and its (mis)uses in medical research and practice",
+    "section": "Safe use of AI models in medical practice",
+    "text": "Safe use of AI models in medical practice"
+  },
+  {
+    "objectID": "talks/240418-ii-spring-meeting/index.html#when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies",
+    "href": "talks/240418-ii-spring-meeting/index.html#when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies",
+    "title": "AI and its (mis)uses in medical research and practice",
+    "section": "When accurate prediction models yield harmful self-fulfilling prophecies",
+    "text": "When accurate prediction models yield harmful self-fulfilling prophecies"
   },
   {
     "objectID": "index.html",
@@ -235,14 +179,35 @@
     "href": "index.html#selected-papers",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Selected papers",
-    "text": "Selected papers\ngoogle scholar\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\npdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\npdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\npdf\nDecision making in cancer: Causal questions require causal answers.\nvan Amsterdam, W. A. C., de Jong, P. A., Suijkerbuijk, K. P. M., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2022). ArXiv pre-print\npdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\npdf"
+    "text": "Selected papers\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\npdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\npdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\npdf\nDecision making in cancer: Causal questions require causal answers.\nvan Amsterdam, W. A. C., de Jong, P. A., Suijkerbuijk, K. P. M., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2022). ArXiv pre-print\npdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\npdf\nMore papers at google scholar"
+  },
+  {
+    "objectID": "index.html#talks",
+    "href": "index.html#talks",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Talks",
+    "text": "Talks\n\n\n\n\n\n\n\n\nAI and its (mis)uses in medical research and practice\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nApr 18, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#teaching",
+    "href": "index.html#teaching",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Teaching",
+    "text": "Teaching\n\n2023 Big Data summer school\n2024 Introduction to Causal Inference and Causal Data Science summer school"
   },
   {
     "objectID": "index.html#posts",
     "href": "index.html#posts",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Posts",
-    "text": "Posts\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 25, 2021\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 20, 2021\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Posts\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 25, 2021\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 20, 2021\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#activities",
+    "href": "index.html#activities",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Activities",
+    "text": "Activities\n\n2023-BMS-ANed (Dutch biometrics society, board member)"
   },
   {
     "objectID": "index.html#contact",

@@ -9,6 +9,10 @@ categories:
 #rmd: false
 #header-includes:
   #- \usepackage{mathrsfs}
+format:
+    html: default
+    epub:
+        html-math-method: mathml
 ---
 
 # Introduction

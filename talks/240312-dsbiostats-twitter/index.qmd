@@ -7,6 +7,7 @@ format:
     embed-resources: true
     pdf-separate-fragment: true
   #pdf: default
+draft: true
 ---
 
 # Why (I) use X?

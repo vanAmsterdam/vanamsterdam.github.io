@@ -25,11 +25,16 @@ about:
       text: google-scholar
       href: https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&hl=nl&oi=sra
 listing:
-  id: post-listing
-  contents: posts
-  max-items: 3
-  categories: false
-  type: grid
+  - id: post-listing
+    contents: posts
+    max-items: 3
+    categories: false
+    type: grid
+  - id: talks-listing
+    contents: talks
+    max-items: 3
+    categories: false
+    type: grid
 ---
 
 :::{#hero-heading}
@@ -59,8 +64,6 @@ PhD. machine learning for healthcare | 2022 | co-advised by [Rajesh Ranganath](h
 
 ## Selected papers
 
-[google scholar](https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&hl=nl&oi=sra)
-
 When accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\
 *van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track*\
 [pdf](papers/2024_selffulfilling_ml4h.pdf)
@@ -81,14 +84,26 @@ Eliminating biasing signals in lung cancer images for prognosis predictions with
 *van Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine*\
 [pdf](https://www.nature.com/articles/s41746-019-0194-x.pdf)
 
-<!--## Talks-->
+More papers at [google scholar](https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&hl=nl&oi=sra)
 
-<!--## Teaching-->
+## [Talks](talks.qmd)
+
+::: {#talks-listing}
+:::
+
+## Teaching
+
+- 2023 Big Data summer school
+- 2024 [Introduction to Causal Inference and Causal Data Science summer school](https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science)
 
 ## [Posts](posts.qmd)
 
 ::: {#post-listing}
 :::
+
+## Activities
+
+- 2023-[BMS-ANed](https://www.vvsor.nl/biometrics/) (Dutch biometrics society, board member)
 
 ## Contact
 wamster3 at umcutrecht dot nl

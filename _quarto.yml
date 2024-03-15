@@ -14,14 +14,16 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - posts.qmd
       - text: Papers
         href: index.qmd#selected-papers
       - text: Talks
         href: talks.qmd
-  google-analytics:
-    tracking-id: "G-E4W5XMDCR7"
-    storage: none
+      - text: Teaching
+        href: index.qmd#teaching
+      - posts.qmd
+      - text: Activities
+        href: index.qmd#activities
+  google-analytics: "G-E4W5XMDCR7"
 
 format:
   html:

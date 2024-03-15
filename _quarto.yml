@@ -1,5 +1,7 @@
 project:
   type: website
+  render:
+    - "!talks/240312-dsbiostats-twitter"
 
 website:
   title: "Wouter van Amsterdam"
@@ -23,7 +25,9 @@ website:
       - posts.qmd
       - text: Activities
         href: index.qmd#activities
-  google-analytics: "G-E4W5XMDCR7"
+  google-analytics:
+    tracking-id: "G-E4W5XMDCR7"
+    storage: none
 
 format:
   html:

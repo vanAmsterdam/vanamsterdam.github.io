@@ -1,18 +1,26 @@
-# using CategoricalArrays, DataFrames, GLM, StableRNGs, StatsBase
-using CategoricalArrays, DataFrames, GLM, Random, StatsBase
-using Base.Threads
+using Random, GLM, StatsBase, ArgParse
 import Base.Threads.@threads
-# using ThreadsX
 
-nreps = 100000
-Random.seed!(123)
+function parse_cmdline()
+    parser = ArgParseSettings()
+
+    @add_arg_table parser begin
+        "nreps"
+          help = "number of repetitions"
+          required = false
+          arg_type = Int
+          default = 10
+    end
+
+    return parse_args(parser)
+end
 
 function make_data(n::Integer=1000)
-    X = randn(n,10)
-    eta = vec(sum(X, dims=2))
-    y = eta .> 0
-    X2 = X[:,1:9]
-    return X2, y
+    X_full = randn(n,10)
+    eta = vec(sum(X_full, dims=2))
+    y = eta .> 0 # vectorized greater than 0 comparison
+    X = X_full[:,1:9]
+    return X, y
 end
 
 function solve(i::Int64=1)
@@ -22,22 +30,20 @@ function solve(i::Int64=1)
     return coefs
 end
 
-outmat = zeros(nreps, 9)
+function main()
+    args = parse_cmdline()
+    nreps = get(args, "nreps", 10)
 
-iis = 1:nreps
+    Random.seed!(240316)
+    outmat = zeros(nreps, 9)
 
-# outvec = Threads.Atomic{Float64}(nreps*9)
-# coefs = [Threads.Atomic{Float64}(0.0) for i in 1:9]
-# outmat = Array{Float64,2}(undef, nreps, 9)
-@threads for i in iis
-    solution = solve()
-    # for j in 1:9
-        # Threads.atomic_add!(coefs[j], solution[j])
-    # end
+    @threads for i in 1:nreps # use @threads for multi-threading
+        solution = solve()
+        outmat[i,:] = solve()
+    end
 
-    outmat[i,:] = solve()
+    means = mean(outmat, dims=1)
+    print(means)
 end
 
-means = mean(outmat, dims=1)
-print(means)
-
+main()

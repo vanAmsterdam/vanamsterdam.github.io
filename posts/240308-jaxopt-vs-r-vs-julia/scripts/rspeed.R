@@ -9,7 +9,7 @@ if (length(args) == 0) {
 } else {
   nreps = as.integer(args[1])
   nthreads = as.integer(args[2])
-  library(furrr)
+  suppressMessages(library(furrr))
   plan(multisession, workers=nthreads)
 }
 

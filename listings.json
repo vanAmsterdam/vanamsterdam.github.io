@@ -9,14 +9,17 @@
   },
   {
     "listing": "/talks.html",
-    "items": []
+    "items": [
+      "/talks/240312-dsbiostats-twitter/index.html"
+    ]
   },
   {
     "listing": "/index.html",
     "items": [
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
-      "/posts/210720-good_predictions_bad_decisions.html"
+      "/posts/210720-good_predictions_bad_decisions.html",
+      "/talks/240312-dsbiostats-twitter/index.html"
     ]
   }
 ]

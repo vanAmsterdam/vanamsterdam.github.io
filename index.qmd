@@ -48,10 +48,10 @@ Students enrolled at Utrecht University or UMC Utrecht can find open master proj
 #### Education
 **University Medical Center Utrecht / Utrecht University** 
 
-BSc. in Physics | 2010\
-M.D. | 2017\
-MSc. in epidemiology (med. statistics track) | 2021\
-PhD. machine learning for healthcare | 2022 | co-advised by [Rajesh Ranganath](https://cims.nyu.edu/~rajeshr/) from NYU
+2010 | BSc. Physics\
+2017 | M.D.\
+2021 | MSc. Epidemiology (med. statistics track) \
+2022 | PhD. machine learning for healthcare | co-advised by [Rajesh Ranganath](https://cims.nyu.edu/~rajeshr/) from NYU
 
 #### Experience
 

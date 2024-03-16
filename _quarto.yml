@@ -1,7 +1,7 @@
 project:
   type: website
-  render:
-    - "!talks/240312-dsbiostats-twitter"
+  #render:
+    #- "!talks/240312-dsbiostats-twitter"
 
 website:
   title: "Wouter van Amsterdam"

@@ -33,6 +33,5 @@ if __name__ == '__main__':
     ks = random.split(k0, args.nreps)
     params = vmap(solve)(ks) # vmap vectorizes computations
     means = jnp.mean(params, axis=0)
-    print(means)
-
+    print(means[0])
 

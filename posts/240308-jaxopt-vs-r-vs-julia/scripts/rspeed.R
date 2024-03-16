@@ -39,5 +39,5 @@ if (nthreads == 1) {
 
 outmat <- do.call(rbind, params)
 means <- colMeans(outmat)
-print(means)
+print(means[1])
 

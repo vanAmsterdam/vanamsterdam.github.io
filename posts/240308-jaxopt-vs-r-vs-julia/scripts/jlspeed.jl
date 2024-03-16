@@ -43,7 +43,7 @@ function main()
     end
 
     means = mean(outmat, dims=1)
-    print(means)
+    print(means[1])
 end
 
 main()

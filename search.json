@@ -4,14 +4,14 @@
     "href": "posts.html",
     "title": "Posts",
     "section": "",
-    "text": "The need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
+    "text": "The need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nr\n\n\njulia\n\n\njax\n\n\npython\n\n\n\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "talks.html",
     "href": "talks.html",
     "title": "Talks",
     "section": "",
-    "text": "AI and its (mis)uses in medical research and practice\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
+    "text": "No matching items"
   },
   {
     "objectID": "posts/210720-good_predictions_bad_decisions.html",
@@ -39,7 +39,7 @@
     "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
     "title": "The need for speed, performing simulation studies in R, JAX and Julia",
     "section": "",
-    "text": "When using simulations to support scientific claims, the more experiments the better. Having the ability to perform many experiments fast allows researchers to:\nThe R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed, especially when it comes to leveraging GPUs for calculations that are amenable to vectorization (such as performing simulation studies across a large grid). In recent years, JAX (developed by Google) and Julia have arisen as general scientific computation frameworks. Jax and Julia have grown in popularity both in the neural network community as in other scientific communities (e.g. “DifferentiableUniverseInitiative/Jax_cosmo” 2024; “SciML: Open Source Software for Scientific Machine Learning” n.d.) In this blog post I’ll compare R with JAX and Julia for a simple simulation study setup with logistic regression.\nWe’ll look at the following comparisons:"
+    "text": "When using simulations to support scientific claims, the more experiments the better. Having the ability to perform many experiments fast allows researchers to:\nThe R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed, especially when it comes to leveraging GPUs for calculations that are amenable to vectorization (such as performing simulation studies across a large grid). In recent years, JAX (developed by Google) and Julia have arisen as general scientific computation frameworks. JAX and Julia have grown in popularity both in the neural network community as in other scientific communities (e.g. “DifferentiableUniverseInitiative/Jax_cosmo” 2024; “SciML: Open Source Software for Scientific Machine Learning” n.d.) In this blog post I’ll compare R with JAX and Julia for a simple simulation study setup with logistic regression.\nWe’ll look at the following comparisons:"
   },
   {
     "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#r-vs-jax-vs-julia-a-high-level-overview",
@@ -53,14 +53,14 @@
     "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-basic-setup",
     "title": "The need for speed, performing simulation studies in R, JAX and Julia",
     "section": "The basic setup",
-    "text": "The basic setup\nWe’ll be running a simple logistic regression simulation setup, where for each observation:\n\\[\n\\begin{align}\n\\mathbf{x}_{\\text{full}} &\\sim \\mathcal{N}(0,I) \\in \\mathbb{R}^{10} \\\\\ny &= ||\\mathbf{x}||_0 &gt; 0 \\\\\n\\mathbf{x}_{\\text{obs}} &= [x_0\\ x_i \\ldots x_9]\n\\end{align}\n\\]\nSo \\(y\\) is the sum of elements of \\(\\mathbf{x}_{\\text{full}}\\) and the observed \\(\\mathbf{x}_{\\text{obs}}\\) contains only the first 9 out of 10 elements of \\(\\mathbf{x}_{\\text{full}}\\).\nWe will model this data with standard logistic regression:\n\\[\n\\text{logit}(y) = \\mathbf{x}_{\\text{obs}} \\boldsymbol{\\beta}'\n\\]\nwhere \\(\\boldsymbol{\\beta} = [\\beta_1,\\ldots,\\beta_9]\\) is a 9-dimensional parameter vector that is to be estimated (we’re excluding the usual intercept term). We’ll generate nrep independent datasets and estimate \\(\\boldsymbol{\\beta}\\) in each one, and finally calculate the average parameter estimates \\(\\frac{1}{\\text{nrep}}\\sum_{i=1}^{\\text{nrep}}\\boldsymbol{\\beta}^i\\), averaged over each repetition i."
+    "text": "The basic setup\nWe’ll be running a simple logistic regression simulation setup, where for each observation:\n\\[\n\\begin{align}\n\\mathbf{x}_{\\text{full}} &\\sim \\mathcal{N}(0,I) \\in \\mathbb{R}^{10} \\\\\ny &= ||\\mathbf{x}||_0 &gt; 0 \\\\\n\\mathbf{x}_{\\text{obs}} &= [x_0\\ x_i \\ldots x_9]\n\\end{align}\n\\]\nSo \\(y\\) is the sum of elements of \\(\\mathbf{x}_{\\text{full}}\\) and the observed \\(\\mathbf{x}_{\\text{obs}}\\) contains only the first 9 out of 10 elements of \\(\\mathbf{x}_{\\text{full}}\\).\nWe will model this data with logistic regression:\n\\[\n\\text{logit}(y) = \\mathbf{x}_{\\text{obs}} \\boldsymbol{\\beta}'\n\\]\nwhere \\(\\boldsymbol{\\beta} = [\\beta_1,\\ldots,\\beta_9]\\) is a 9-dimensional parameter vector that is to be estimated (we’re excluding the usual intercept term). We’ll generate nrep independent datasets and estimate \\(\\boldsymbol{\\beta}\\) in each one, and finally calculate the average parameter estimates \\(\\frac{1}{\\text{nrep}}\\sum_{i=1}^{\\text{nrep}}\\boldsymbol{\\beta}^i\\), averaged over each repetition i."
   },
   {
     "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-code",
     "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-code",
     "title": "The need for speed, performing simulation studies in R, JAX and Julia",
     "section": "The code",
-    "text": "The code\nMaking the data\n\nRPythonJulia\n\n\nmake_data &lt;- function(n=1e3L) {\n    x = rnorm(n*10)\n    X = matrix(x, ncol=10)\n    eta = rowSums(X)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X[,1:9]\n    return(list(X=X,y=y))\n}\n\n\ndef make_data(k, n=int(1e3)):\n    X_full = random.normal(k, (n,10)) # Jax needs explicit keys for psuedo random number generation\n    eta = jnp.sum(X_full, axis=-1)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[:,:9]\n    return (X, y)\n\n\nfunction make_data(n::Integer=1000)\n    X = randn(n,10)\n    eta = vec(sum(X, dims=2))\n    y = eta .&gt; 0 # vectorized greater than 0 comparison\n    X2 = X[:,1:9]\n    return X2, y\nend\n\n\n\nThe write the code for a single analysis step, generating data and fitting the logistic regression. Note that in Jax there is no glm function so we need to specify an objective to minimize (binary_logreg, as defined in JaxOpt), and then use a generic solver (here: LBFGS, also from JaxOpt. The Julia code looks more like the R code\n\nRPythonJulia\n\n\nsolve &lt;- function(data) {\n  fit = glm(data$y~data$X-1, family='binomial')\n  return(coef(fit))\n}\none_iter &lt;- function(...) {\n  data = make_data()\n  coefs = solve(data)\n  return(coefs)\n}\n\n\n# initialize a generic solver with the correct objective function\nsolver = LBFGS(binary_logreg)\n\n@jit\ndef solve(k):\n    # need to specify parameter initialization values\n    w_init = jnp.zeros((9,))\n    data = make_data(k)\n    param, state = solver.run(w_init, data)\n    return param\n\n\nfunction solve(i::Int64=1)\n    X, y = make_data()\n    fit = glm(X, y, Bernoulli())\n    coefs = coef(fit)\n    return coefs\nend\n\n\n\nFinally we run the experiments nrep times and calculate the average coefficient vector\n\nRPythonJulia\n\n\nres &lt;- map(1:nreps, one_iter)\noutmat &lt;- do.call(rbind, res)\nprint(colMeans(outmat))\n\n\ndef run_exp(k, nreps=2):\n    ks = random.split(k, nreps)\n    params = vmap(solve)(ks)\n    return params\n\nparam = run_exp(k0, args.nreps)\nprint(jnp.mean(param, axis=0))\n\n\noutmat = zeros(nreps, 9)\n\niis = 1:nreps\n\n@threads for i in 1:nreps\n    solution = solve()\n    outmat[i,:] = solve()\nend\n\nmeans = mean(outmat, dims=1)\nprint(means)"
+    "text": "The code\nMaking the data\n\nRPythonJulia\n\n\nmake_data &lt;- function(n=1e3L) {\n    x_vec = rnorm(n*10)\n    X_full = matrix(x_vec, ncol=10)\n    eta = rowSums(X_full)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[,1:9]\n    return(list(X=X,y=y))\n}\n\n\ndef make_data(k, n=int(1e3)):\n    X_full = random.normal(k, (n,10)) # JAX needs explicit keys for psuedo random number generation\n    eta = jnp.sum(X_full, axis=-1)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[:,:9]\n    return (X, y)\n\n\nfunction make_data(n::Integer=1000)\n    X_full = randn(n,10)\n    eta = vec(sum(X_full, dims=2))\n    y = eta .&gt; 0 # vectorized greater than 0 comparison\n    X = X_full[:,1:9]\n    return X, y\nend\n\n\n\nThe write the code for a single analysis step, generating data and fitting the logistic regression. For R and Julia we will use the glm function to estimate the logistic regression model. The Julia code looks much like the R code In JAX there is no glm function. Instead, we need to specify an objective function and will use a general purpose optimizer. JaxOpt conveniently provides both binary_logreg as an objective functoin and LBFGS, a popular general purpose optimizer.\n\nRPythonJulia\n\n\nsolve &lt;- function(...) {\n  data = make_data()\n  fit = glm(data$y~data$X-1, family='binomial')\n  coefs = coef(fit)\n  return(coefs)\n}\n\n\n# initialize a generic solver with the correct objective function\nsolver = LBFGS(binary_logreg)\nw_init = jnp.zeros((9,))\n\n@jit # jit toggles just-in-time compilation, one of the main features of JAX\ndef solve(k):\n    # need to specify parameter initialization values\n    data = make_data(k)\n    param, state = solver.run(w_init, data)\n    return param\n\n\nfunction solve(i::Int64=1)\n    X, y = make_data()\n    fit = glm(X, y, Bernoulli())\n    coefs = coef(fit)\n    return coefs\nend\n\n\n\nFinally we run the experiments nrep times and calculate the average coefficient vector\n\nRPythonJulia\n\n\nset.seed(240316)\nparams &lt;- lapply(1:nreps, solve)\noutmat &lt;- do.call(rbind, params)\nmeans &lt;- colMeans(outmat)\nprint(means)\n\n\nk0 = random.PRNGKey(240316)\nks = random.split(k, nreps)\nparams = vmap(solve)(ks) # vmap vectorizes computations\nmeans = jnp.mean(params, axis=0)\nprint(means)\n\n\nRandom.seed!(240316)\noutmat = zeros(nreps, 9)\n\n@threads for i in 1:nreps # use @threads for multi-threading\n    solution = solve()\n    outmat[i,:] = solve()\nend\n\nmeans = mean(outmat, dims=1)\nprint(means)"
   },
   {
     "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-speed",
@@ -81,7 +81,7 @@
     "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#discussion",
     "title": "The need for speed, performing simulation studies in R, JAX and Julia",
     "section": "Discussion",
-    "text": "Discussion\nJAX was able to get a 86 times speed-up compared to single-threaded R, and 8 times compared to R on 10 threads. JAX does come with some ‘sharp bits’ (see link) that if not followed correctly lead to suboptimal performance and/or unexpected behavior, e.g. it requires functional programming.\nNote that JAX-opt gives pretty-bare bones results with only parameters, likelihood of the observed data at the final parameter estimate and some optimization statistics (number of iterations, convergence). But not e.g. variance estimates and all sorts of other things returned by glm in R.\nIn conculsion, should you learn JAX for simulations? - If you can program in python / numpy, yes - If you’ll write custom objectives and want to apply gradient-based optimization, yes. - If you don’t have a GPU but have many CPU-threads available, probably no\nFinally, when it comes to analyzing results from millions of simulation experiments, R’s data.table really shines when it comes to speed in reading, writing, subsetting and analyzing results. It’s orders of magnitudes faster than pythons pandas for many tasks and pretty much the fastest framework for in-memory data.frame-style operations across all languages.\nMy workflow: 1. run simulations in JAX 2. analyze results in R using data.table"
+    "text": "Discussion\nJAX was able to get a 86 times speed-up compared to single-threaded R, and 8 times compared to R on 10 threads. JAX does come with some ‘sharp bits’ (see link) that if not followed correctly lead to suboptimal performance and/or unexpected behavior, e.g. it requires functional programming.\nNote that JAX-opt gives pretty-bare bones results with only parameters, likelihood of the observed data at the final parameter estimate and some optimization statistics (number of iterations, convergence). But not e.g. variance estimates and all sorts of other things returned by glm in R.\nIn conculsion, should you learn JAX for simulations? - If you can program in python / numpy, yes - If you’ll write custom objectives and want to apply gradient-based optimization, yes. - If you don’t have a GPU but have many CPU-threads available, probably no\nFinally, when it comes to analyzing results from millions of simulation experiments, R’s data.table really shines when it comes to speed in reading, writing, subsetting and analyzing results. It’s orders of magnitudes faster than pythons pandas for many tasks and pretty much the fastest framework for in-memory data.frame-style operations across all languages.\nMy workflow: 1. run simulations in JAX 2. analyze results in R using data.table\n\nLimitations\nCannot easily set number of threads in JAX (see e.g. this issue on github)."
   },
   {
     "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#extensions",
@@ -96,6 +96,13 @@
     "title": "The need for speed, performing simulation studies in R, JAX and Julia",
     "section": "Computing environment",
     "text": "Computing environment\nAll tests conducted on linux cluster with 12 threads and a NVIDIA Quadro P-6000 GPU"
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#full-scripts",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#full-scripts",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Full scripts",
+    "text": "Full scripts\n\nRPythonJulia\n\n\n# rspeed\nargs = commandArgs(trailingOnly = T)\nif (length(args) == 0) {\n  nreps = 100\n  nthreads = 1\n} else if (length(args) == 1) {\n  nreps = as.integer(args[1])\n  nthreads = 1\n} else {\n  nreps = as.integer(args[1])\n  nthreads = as.integer(args[2])\n  library(furrr)\n  plan(multisession, workers=nthreads)\n}\n\nmake_data &lt;- function(n=1e3L) {\n    x_vec = rnorm(n*10)\n    X_full = matrix(x_vec, ncol=10)\n    eta = rowSums(X_full)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[,1:9]\n    return(list(X=X,y=y))\n}\n\nsolve &lt;- function(...) {\n  data = make_data()\n  fit = glm(data$y~data$X-1, family='binomial')\n  coefs = coef(fit)\n  return(coefs)\n}\n\nif (nthreads == 1) {\n    set.seed(240316)\n    params &lt;- lapply(1:nreps, solve)\n} else {\n    params &lt;- future_map(1:nreps, solve, .options=furrr_options(seed=240316))\n}\n\noutmat &lt;- do.call(rbind, params)\nmeans &lt;- colMeans(outmat)\nprint(means)\n\n\n\nimport jax, jaxopt\n# jax.config.update('jax_platform_name', 'cpu')\nfrom jax import numpy as jnp, random, vmap, jit\nfrom jaxopt import LBFGS\nfrom jaxopt.objective import binary_logreg\nfrom argparse import ArgumentParser\n\nparser = ArgumentParser()\nparser.add_argument('nreps', nargs=\"?\", type=int, default=int(10))\n\ndef make_data(k, n=int(1e3)):\n    X_full = random.normal(k, (n,10)) # JAX needs explicit keys for psuedo random number generation\n    eta = jnp.sum(X_full, axis=-1)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[:,:9]\n    return (X, y)\n\n# initialize a generic solver with the correct objective function\nsolver = LBFGS(binary_logreg)\nw_init = jnp.zeros((9,))\n\n@jit # jit toggles just-in-time compilation, one of the main features of JAX\ndef solve(k):\n    # need to specify parameter initialization values\n    data = make_data(k)\n    param, state = solver.run(w_init, data)\n    return param\n\nif __name__ == '__main__':\n    args = parser.parse_args()\n    k0 = random.PRNGKey(240316)\n    ks = random.split(k0, args.nreps)\n    params = vmap(solve)(ks) # vmap vectorizes computations\n    means = jnp.mean(params, axis=0)\n    print(means)\n\n\n\n\nusing Random, GLM, StatsBase, ArgParse\nimport Base.Threads.@threads\n\nfunction parse_cmdline()\n    parser = ArgParseSettings()\n\n    @add_arg_table parser begin\n        \"nreps\"\n          help = \"number of repetitions\"\n          required = false\n          arg_type = Int\n          default = 10\n    end\n\n    return parse_args(parser)\nend\n\nfunction make_data(n::Integer=1000)\n    X_full = randn(n,10)\n    eta = vec(sum(X_full, dims=2))\n    y = eta .&gt; 0 # vectorized greater than 0 comparison\n    X = X_full[:,1:9]\n    return X, y\nend\n\nfunction solve(i::Int64=1)\n    X, y = make_data()\n    fit = glm(X, y, Bernoulli())\n    coefs = coef(fit)\n    return coefs\nend\n\nfunction main()\n    args = parse_cmdline()\n    nreps = get(args, \"nreps\", 10)\n\n    Random.seed!(240316)\n    outmat = zeros(nreps, 9)\n\n    @threads for i in 1:nreps # use @threads for multi-threading\n        solution = solve()\n        outmat[i,:] = solve()\n    end\n\n    means = mean(outmat, dims=1)\n    print(means)\nend\n\nmain()"
   },
   {
     "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#references",
@@ -133,46 +140,11 @@
     "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
   },
   {
-    "objectID": "talks/240418-ii-spring-meeting/index.html",
-    "href": "talks/240418-ii-spring-meeting/index.html",
-    "title": "AI and its (mis)uses in medical research and practice",
-    "section": "",
-    "text": "generation\nconditional generation\ndiscrimination\npolicy learning"
-  },
-  {
-    "objectID": "talks/240418-ii-spring-meeting/index.html#different-tasks-of-machine-learning",
-    "href": "talks/240418-ii-spring-meeting/index.html#different-tasks-of-machine-learning",
-    "title": "AI and its (mis)uses in medical research and practice",
-    "section": "",
-    "text": "generation\nconditional generation\ndiscrimination\npolicy learning"
-  },
-  {
-    "objectID": "talks/240418-ii-spring-meeting/index.html#ml-versus-statistics-when-to-use-what",
-    "href": "talks/240418-ii-spring-meeting/index.html#ml-versus-statistics-when-to-use-what",
-    "title": "AI and its (mis)uses in medical research and practice",
-    "section": "ML versus statistics, when to use what",
-    "text": "ML versus statistics, when to use what"
-  },
-  {
-    "objectID": "talks/240418-ii-spring-meeting/index.html#safe-use-of-ai-models-in-medical-practice",
-    "href": "talks/240418-ii-spring-meeting/index.html#safe-use-of-ai-models-in-medical-practice",
-    "title": "AI and its (mis)uses in medical research and practice",
-    "section": "Safe use of AI models in medical practice",
-    "text": "Safe use of AI models in medical practice"
-  },
-  {
-    "objectID": "talks/240418-ii-spring-meeting/index.html#when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies",
-    "href": "talks/240418-ii-spring-meeting/index.html#when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies",
-    "title": "AI and its (mis)uses in medical research and practice",
-    "section": "When accurate prediction models yield harmful self-fulfilling prophecies",
-    "text": "When accurate prediction models yield harmful self-fulfilling prophecies"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "",
-    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \n\n\nWouter van Amsterdam is an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.\nMaster students with a background in statistics or machine learning who want to work with me are welcome to contact me. Students enrolled at Utrecht University or UMC Utrecht can find open master projects on konjoin\n\n\n\nUniversity Medical Center Utrecht / Utrecht University\nBSc. in Physics | 2010\nM.D. | 2017\nMSc. in epidemiology (med. statistics track) | 2021\nPhD. machine learning for healthcare | 2022 | co-advised by Rajesh Ranganath from NYU\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf)"
+    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \n\n\nWouter van Amsterdam is an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.\nMaster students with a background in statistics or machine learning who want to work with me are welcome to contact me. Students enrolled at Utrecht University or UMC Utrecht can find open master projects on konjoin\n\n\n\nUniversity Medical Center Utrecht / Utrecht University\n2010 | BSc. Physics\n2017 | M.D.\n2021 | MSc. Epidemiology (med. statistics track)\n2022 | PhD. machine learning for healthcare | co-advised by Rajesh Ranganath from NYU\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf)"
   },
   {
     "objectID": "index.html#selected-papers",
@@ -186,7 +158,7 @@
     "href": "index.html#talks",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Talks",
-    "text": "Talks\n\n\n\n\n\n\n\n\nAI and its (mis)uses in medical research and practice\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nApr 18, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Talks\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#teaching",

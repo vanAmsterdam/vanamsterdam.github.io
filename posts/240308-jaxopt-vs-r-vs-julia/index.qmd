@@ -255,7 +255,7 @@ ggplot(timings[nthreads==max_threads], aes(x=nreps, y=min_total, col=language)) 
 ggplot(timings[nthreads==max_threads], aes(x=nreps, y=n_per_min, col=language)) +
   geom_point() + geom_line() + 
   scale_x_log10() + scale_y_log10() + 
-  ggtitle(paste0("time to run experiments with ", max_threads, " threads"))
+  ggtitle(paste0("experiments per minute with ", max_threads, " threads"))
 ```
 
 Now let's check how the number of threads matter for R and julia

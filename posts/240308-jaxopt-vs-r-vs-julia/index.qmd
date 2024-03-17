@@ -198,6 +198,115 @@ print(means)
 
 ## The speed
 
+First, let's see how speed scales with the number of repetitions
+
+```{r}
+#| label: fig-times
+#| eval: true
+#| echo: false
+
+suppressMessages(library(data.table))
+suppressMessages(library(purrr))
+library(readr)
+library(stringr)
+library(ggplot2); theme_set(theme_bw())
+library(knitr)
+
+lns <- readr::read_lines('timings.txt')
+
+timings <- data.table(raw_string=lns)
+timings[, string:=str_trim(raw_string)] # remove white space
+timings <- timings[str_starts(string, "Rscript|julia|python")] # remove warings / errors
+timings[, command:=word(string)]
+timings[command=='Rscript', language:='r']
+timings[command=='python', language:='jax']
+timings[command=='julia', language:='julia']
+timings[, time_str:=str_extract(string, "(?<=cpu\\ )(.*)(?= total)")]
+timings[, milliseconds:=str_extract(time_str, "(\\d+)$")]
+timings[, seconds:=str_extract(time_str, "(\\d+)(?=.)")]
+timings[, minutes:=str_extract(time_str, "(\\d+)(?=:)")]
+timings[, nreps:=as.integer(str_extract(string, "(\\d+)(?= nreps)"))]
+timings[, nthreads:=as.integer(str_extract(string, "(\\d+)(?= nthreads)"))]
+max_threads <- max(timings$nthreads, na.rm=T)
+
+numvars <- c('minutes', 'seconds', 'milliseconds')
+walk(numvars, ~set(timings, j=.x, value=as.numeric(timings[[.x]])))
+timings[is.na(minutes), minutes:=0]
+timings[, sec_total:=60*minutes + seconds + milliseconds / 1000]
+timings[, min_total:=sec_total / 60]
+timings[is.na(nthreads) & language == 'jax', nthreads:=max_threads]
+timings[is.na(nthreads) & language %in% c('r', 'julia'), nthreads:=1L]
+
+# add some vars
+timings[, n_per_min:=nreps / min_total]
+timings[, log_n_per_min:=log(n_per_min)]
+
+ggplot(timings[nthreads==max_threads], aes(x=nreps, y=min_total, col=language)) +
+  geom_point() + geom_line() + 
+  scale_x_log10() + scale_y_log10() + 
+  ggtitle(paste0("time to run experiments with ", max_threads, " threads"))
+```
+
+```{r}
+#| label: fig-speeds
+#| eval: true
+#| echo: false
+
+ggplot(timings[nthreads==max_threads], aes(x=nreps, y=n_per_min, col=language)) +
+  geom_point() + geom_line() + 
+  scale_x_log10() + scale_y_log10() + 
+  ggtitle(paste0("time to run experiments with ", max_threads, " threads"))
+```
+
+Now let's check how the number of threads matter for R and julia
+
+```{r}
+#| label: fig-threads
+#| eval: true
+#| echo: false
+
+ggplot(timings[language!='jax'], aes(x=nreps, y=n_per_min, col=language)) +
+  geom_point() + geom_line(aes(linetype=factor(nthreads))) + 
+  scale_x_log10() + scale_y_log10() + 
+  facet_grid(~language) +
+  ggtitle("time to run experiments")
+```
+
+Let's see the top speeds per language
+
+```{r}
+#| label: tbl-best-per-language
+#| eval: true
+#| echo: false
+
+timings[order(-n_per_min), lang_order:=1:.N, by='language']
+tabcols <- c('nreps', 'nthreads', 'min_total', 'log_n_per_min', 'language')
+kable(timings[lang_order==1, .SD, .SDcols=tabcols])
+```
+
+Let's see the top performing settings, also compared to the best R setting
+
+```{r}
+#| label: tbl-topspeeds
+#| eval: true
+#| echo: false
+
+best_r_speed <- as.numeric(timings[lang_order==1&language=='r', n_per_min])
+timings[, vs_r_speedup:=n_per_min/best_r_speed]
+tabcols <- c(tabcols, 'vs_r_speedup')
+kable(timings[order(-n_per_min), .SD, .SDcols=tabcols][1:5])
+```
+
+All results:
+
+```{r}
+#| label: tbl-speeds
+#| eval: true
+#| echo: false
+
+kable(timings[, .SD, .SDcols=tabcols])
+```
+
 Speed plots
 
 ## Conclusions

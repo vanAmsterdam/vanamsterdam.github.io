@@ -1,0 +1,5 @@
+real	0m5.635s julia 1000 nreps 1 nthreads
+real	0m5.932s jax 1000 nreps 12 nthreads
+real	0m4.136s r 1000 nreps 1 nthreads
+real	0m5.465s julia 1000 nreps 8 nthreads
+real	0m4.873s r 1000 nreps 8 nthreads

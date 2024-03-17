@@ -7,6 +7,7 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser()
 parser.add_argument('nreps', nargs="?", type=int, default=int(10))
+parser.add_argument('primitive', nargs="?", type=str, default="vmap")
 
 def make_data(k, n=int(1e3)):
     X_full = random.normal(k, (n,10)) # JAX needs explicit keys for psuedo random number generation
@@ -26,18 +27,17 @@ def solve(k):
     param, state = solver.run(w_init, data)
     return param
 
-# scan is a jax optimized way of looping
-def scannable_solve(carry, k):
-    params = solve(k)
-    return carry, params
-
 if __name__ == '__main__':
     args = parser.parse_args()
     k0 = random.PRNGKey(240316)
     ks = random.split(k0, args.nreps)
-    _, params = lax.scan(scannable_solve, None, ks)
-    # params = vmap(solve)(ks) # vmap vectorizes computations
-    # params = vmap(solve)(ks) # vmap vectorizes computations
+    if args.primitive == 'map':
+        params = lax.map(solve, ks)
+    elif args.primitive == 'vmap':
+        params = vmap(solve)(ks)
+    else:
+        raise ValueError(f"unrecognized primitive: {args.primitive}, choose map or vmap")
+
     means = jnp.mean(params, axis=0)
     print(means[0])
 

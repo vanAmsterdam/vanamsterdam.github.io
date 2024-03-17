@@ -12,3 +12,6 @@ python scripts/jaxspeed.py $nreps  64.71s user 201.69s system 24% cpu 17:47.04 t
 There were 29 warnings (use warnings() to see them)
 Rscript scripts/rspeed.R $nreps $nthreads  4.15s user 0.28s system 6% cpu 1:06.77 total 100000 nreps 8 nthreads
 julia -t $nthreads scripts/jlspeed.jl $nreps  135.41s user 15.00s system 585% cpu 25.679 total 100000 nreps 8 nthreads
+julia scripts/jlspeed.jl $nreps  6792.14s user 555.29s system 99% cpu 2:02:42.19 total 10000000 nreps 
+python scripts/jaxspeed.py $nreps  6.22s user 4.45s system 66% cpu 16.086 total 10000000 nreps 
+julia -t $nthreads scripts/jlspeed.jl $nreps  12110.65s user 1992.50s system 375% cpu 1:02:40.59 total 10000000 nreps 8 nthreads

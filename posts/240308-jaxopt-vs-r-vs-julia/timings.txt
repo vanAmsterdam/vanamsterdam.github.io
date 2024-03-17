@@ -1,17 +1,36 @@
+julia scripts/jlspeed.jl $nreps  3.89s user 0.33s system 99% cpu 4.251 total 1000 nreps 
+python scripts/jaxspeed.py $nreps  3.86s user 0.55s system 188% cpu 2.338 total 1000 nreps 
 Warning message:
 glm.fit: fitted probabilities numerically 0 or 1 occurred 
-Rscript scripts/rspeed.R $nreps  2.71s user 0.27s system 92% cpu 3.207 total 1000 nreps 
-julia scripts/jlspeed.jl $nreps  4.02s user 0.33s system 91% cpu 4.771 total 1000 nreps 
-python scripts/jaxspeed.py $nreps  4.50s user 0.81s system 144% cpu 3.668 total 1000 nreps 
-Rscript scripts/rspeed.R $nreps $nthreads  0.61s user 0.09s system 26% cpu 2.663 total 1000 nreps 8 nthreads
-julia -t $nthreads scripts/jlspeed.jl $nreps  16.21s user 0.28s system 477% cpu 3.453 total 1000 nreps 8 nthreads
+Rscript scripts/rspeed.R $nreps  2.53s user 0.25s system 96% cpu 2.891 total 1000 nreps 
+julia -t $nthreads scripts/jlspeed.jl $nreps  15.44s user 0.31s system 489% cpu 3.215 total 1000 nreps 8 nthreads
+Rscript scripts/rspeed.R $nreps $nthreads  0.60s user 0.08s system 26% cpu 2.528 total 1000 nreps 8 nthreads
+julia scripts/jlspeed.jl $nreps  9.99s user 0.57s system 106% cpu 9.874 total 10000 nreps 
+python scripts/jaxspeed.py $nreps  9.08s user 2.73s system 221% cpu 5.328 total 10000 nreps 
+Warning messages:
+1: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+2: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+3: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+4: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+5: glm.fit: fitted probabilities numerically 0 or 1 occurred 
+Rscript scripts/rspeed.R $nreps  24.56s user 1.91s system 99% cpu 26.609 total 10000 nreps 
+julia -t $nthreads scripts/jlspeed.jl $nreps  25.45s user 1.49s system 556% cpu 4.841 total 10000 nreps 8 nthreads
+Warning message:
+glm.fit: fitted probabilities numerically 0 or 1 occurred 
+Rscript scripts/rspeed.R $nreps $nthreads  0.89s user 0.10s system 11% cpu 8.251 total 10000 nreps 8 nthreads
+julia scripts/jlspeed.jl $nreps  70.52s user 4.64s system 100% cpu 1:14.90 total 100000 nreps 
+python scripts/jaxspeed.py $nreps  64.87s user 22.55s system 222% cpu 39.378 total 100000 nreps 
 There were 33 warnings (use warnings() to see them)
-Rscript scripts/rspeed.R $nreps  260.41s user 15.65s system 99% cpu 4:36.87 total 100000 nreps 
-julia scripts/jlspeed.jl $nreps  71.06s user 4.69s system 100% cpu 1:15.62 total 100000 nreps 
-python scripts/jaxspeed.py $nreps  64.71s user 201.69s system 24% cpu 17:47.04 total 100000 nreps 
+Rscript scripts/rspeed.R $nreps  255.77s user 14.00s system 99% cpu 4:30.21 total 100000 nreps 
+julia -t $nthreads scripts/jlspeed.jl $nreps  117.09s user 14.27s system 604% cpu 21.718 total 100000 nreps 8 nthreads
 There were 29 warnings (use warnings() to see them)
-Rscript scripts/rspeed.R $nreps $nthreads  4.15s user 0.28s system 6% cpu 1:06.77 total 100000 nreps 8 nthreads
-julia -t $nthreads scripts/jlspeed.jl $nreps  135.41s user 15.00s system 585% cpu 25.679 total 100000 nreps 8 nthreads
-julia scripts/jlspeed.jl $nreps  6792.14s user 555.29s system 99% cpu 2:02:42.19 total 10000000 nreps 
-python scripts/jaxspeed.py $nreps  6.22s user 4.45s system 66% cpu 16.086 total 10000000 nreps 
-julia -t $nthreads scripts/jlspeed.jl $nreps  12110.65s user 1992.50s system 375% cpu 1:02:40.59 total 10000000 nreps 8 nthreads
+Rscript scripts/rspeed.R $nreps $nthreads  3.61s user 0.27s system 6% cpu 1:02.89 total 100000 nreps 8 nthreads
+julia scripts/jlspeed.jl $nreps  679.32s user 57.44s system 99% cpu 12:20.09 total 1000000 nreps 
+python scripts/jaxspeed.py $nreps  622.34s user 234.74s system 223% cpu 6:23.55 total 1000000 nreps 
+There were 50 or more warnings (use warnings() to see the first 50)
+Rscript scripts/rspeed.R $nreps  2723.45s user 149.66s system 99% cpu 47:57.95 total 1000000 nreps 
+julia -t $nthreads scripts/jlspeed.jl $nreps  1162.49s user 165.47s system 613% cpu 3:36.55 total 1000000 nreps 8 nthreads
+There were 50 or more warnings (use warnings() to see the first 50)
+Rscript scripts/rspeed.R $nreps $nthreads  37.80s user 5.96s system 5% cpu 12:15.96 total 1000000 nreps 8 nthreads
+julia scripts/jlspeed.jl $nreps  6765.99s user 559.66s system 99% cpu 2:02:18.46 total 10000000 nreps 
+python scripts/jaxspeed.py $nreps  6226.31s user 2332.39s system 225% cpu 1:03:08.23 total 10000000 nreps 

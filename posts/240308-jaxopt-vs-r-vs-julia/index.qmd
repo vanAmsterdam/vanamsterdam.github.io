@@ -225,9 +225,16 @@ timings[, milliseconds:=as.integer(str_extract(time_str, "(\\d+)$"))]
 timings[, seconds     :=as.integer(str_extract(time_str, "(\\d+)(?=.)"))]
 timings[, minutes     :=as.integer(str_extract(time_str, "(\\d+)(?=:)"))]
 timings[is.na(minutes), minutes:=0]
+timings[, jax_primitive:='map']
+timings[, machine:='macm1']
+timings[, nthreads:=as.integer(str_extract(string, "(\\d+)(?= nthreads)"))]
+timings[, max_threads:=max(nthreads, na.rm=T)]
+timings[is.na(nthreads) & language == 'jax', nthreads:=max_threads]
+timings[is.na(nthreads) & language %in% c('r', 'julia'), nthreads:=1L]
 
 # check if there are timings from bash
 if (file.exists('bashtimings.txt')) {
+# if (F) {
   blns <- readr::read_lines('bashtimings.txt')
   btimings <- data.table(raw_string=blns)
   btimings[, string:=str_trim(raw_string)] # remove white space
@@ -235,32 +242,36 @@ if (file.exists('bashtimings.txt')) {
   btimings[, minutes:=as.integer(str_extract(string, "^(\\d+)"))]
   btimings[, seconds:=as.integer(str_extract(string, "(?<=m)(\\d+)"))]
   btimings[, milliseconds:=as.integer(str_extract(string, "(?<=m)(\\d+)"))]
+  btimings[, nthreads:=as.integer(str_extract(string, "(\\d+)(?= nthreads)"))]
   btimings[, language:=str_extract(string, "(?<=s )[a-z]+")]
-  timings <- rbindlist(list(
-    macm1=timings,
-    linux=btimings
-  ), idcol="machine", fill=T)
+  btimings[, jax_primitive:='vmap']
+  btimings[, machine:='linux']
+  timings <- rbindlist(list(timings, btimings
+  ), fill=T)
 }
 
 timings[, nreps:=as.integer(str_extract(string, "(\\d+)(?= nreps)"))]
-timings[, nthreads:=as.integer(str_extract(string, "(\\d+)(?= nthreads)"))]
-max_threads <- max(timings$nthreads, na.rm=T)
+# max_threads <- timings[, max(nthreads, na.rm=T), by='machine']
+timings[, max_threads:=max(nthreads), by='machine']
 
 timings[, sec_total:=60*minutes + seconds + milliseconds / 1000]
 timings[, min_total:=sec_total / 60]
-timings[is.na(nthreads) & language == 'jax', nthreads:=max_threads]
-timings[is.na(nthreads) & language %in% c('r', 'julia'), nthreads:=1L]
 
 # add some vars
 timings[, n_per_min:=nreps / min_total]
 timings[, log_n_per_min:=log(n_per_min)]
 
+timings <- timings[n_per_min < 1e6]
+
 ggplot(timings[nthreads==max_threads], aes(x=nreps, y=min_total, col=language)) +
   geom_point() + geom_line() + 
   scale_x_log10() + scale_y_log10() + 
-  ggtitle(paste0("time to run experiments with ", max_threads, " threads")) + 
-  facet_grid(machine~.)
+  ggtitle(paste0("time to run experiments with max threads")) +
+  facet_grid(machine+nthreads~., labeller='label_both')
 ```
+
+Something quirky is happening here, Jax takes less time to complete 10e5 experiments than 10e6 experiments.
+This indicates an error: out of memory.
 
 ```{r}
 #| label: fig-speeds
@@ -270,8 +281,8 @@ ggplot(timings[nthreads==max_threads], aes(x=nreps, y=min_total, col=language)) 
 ggplot(timings[nthreads==max_threads], aes(x=nreps, y=n_per_min, col=language)) +
   geom_point() + geom_line() + 
   scale_x_log10() + scale_y_log10() + 
-  ggtitle(paste0("experiments per minute with ", max_threads, " threads")) + 
-  facet_grid(machine~.)
+  ggtitle(paste0("experiments per minute with max threads")) +
+  facet_grid(machine+nthreads~., labeller='label_both')
 ```
 
 Now let's check how the number of threads matter for R and julia
@@ -285,6 +296,7 @@ ggplot(timings[language!='jax'], aes(x=nreps, y=n_per_min, col=language)) +
   geom_point() + geom_line(aes(linetype=factor(nthreads))) + 
   scale_x_log10() + scale_y_log10() + 
   facet_grid(machine~language) +
+  # facet_grid(~language) +
   ggtitle("time to run experiments")
 ```
 
@@ -296,7 +308,7 @@ Let's see the top speeds per language
 #| echo: false
 
 timings[order(-n_per_min), lang_order:=1:.N, by=c('language', 'machine')]
-tabcols <- c('nreps', 'nthreads', 'min_total', 'log_n_per_min', 'language', 'machine')
+tabcols <- c('nreps', 'nthreads', 'min_total', 'n_per_min', 'language', 'machine')
 kable(timings[lang_order==1, .SD, .SDcols=tabcols])
 ```
 
@@ -311,7 +323,7 @@ Let's see the top performing settings, also compared to the best R setting
 best_r_speeds <- timings[lang_order==1&language=='r', list(n_per_min, machine)]
 timings[best_r_speeds, vs_r_speedup:=n_per_min/i.n_per_min, on='machine']
 tabcols <- c(tabcols, 'vs_r_speedup')
-kable(timings[order(-n_per_min), .SD, .SDcols=tabcols][1:5])
+kable(timings[order(-n_per_min), .SD, .SDcols=tabcols][1:10])
 ```
 
 All results:

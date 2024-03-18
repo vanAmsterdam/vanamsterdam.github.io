@@ -34,3 +34,4 @@ There were 50 or more warnings (use warnings() to see the first 50)
 Rscript scripts/rspeed.R $nreps $nthreads  37.80s user 5.96s system 5% cpu 12:15.96 total 1000000 nreps 8 nthreads
 julia scripts/jlspeed.jl $nreps  6765.99s user 559.66s system 99% cpu 2:02:18.46 total 10000000 nreps 
 python scripts/jaxspeed.py $nreps  6226.31s user 2332.39s system 225% cpu 1:03:08.23 total 10000000 nreps 
+julia -t $nthreads scripts/jlspeed.jl $nreps  13539.06s user 2099.13s system 345% cpu 1:15:26.92 total 10000000 nreps 8 nthreads

@@ -28,3 +28,5 @@ real	1m55.940s julia 1000000 nreps 12 nthreads
 real	10m59.323s r 1000000 nreps 12 nthreads
 real	18m37.215s julia 10000000 nreps 1 nthreads
 real	0m5.342s jax 10000000 nreps 12 nthreads r 10000000 nreps 1 nthreads
+real	22m29.845s julia 10000000 nreps 6 nthreads
+real	18m38.203s julia 10000000 nreps 12 nthreads

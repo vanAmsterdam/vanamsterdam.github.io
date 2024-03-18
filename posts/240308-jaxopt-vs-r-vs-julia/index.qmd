@@ -184,7 +184,7 @@ outmat = zeros(nreps, 9)
 
 @threads for i in 1:nreps # use @threads for multi-threading
     solution = solve()
-    outmat[i,:] = solve()
+    outmat[i,:] = solution
 end
 
 means = mean(outmat, dims=1)
@@ -195,64 +195,86 @@ print(means)
 :::
 
 I benchmarked each run with an external `time` command in Bash or ZSH and wrote the results to a file.
-See [runexps.sh](runexps.sh)
+
+::: {.panel-tabset}
+## Bash (linux)
+
+```{bash}
+#| code-fold: true
+{{< include brunexps.sh >}}
+```
+
+## ZSH (macos)
+
+```{bash}
+#| code-fold: true
+{{< include runexps.sh >}}
+```
+:::
+
+The hardware available for this comparison is a 
+
+- macm1: 2020 macbook air M1, 8Gb, 8 threads
+- linux: linux machine with 12 threads (Intel(R) Xeon(R) W-2135 CPU @ 3.70GH )
 
 ## The speed
 
-First, let's see how running time increases with 
+First, let's see how running time increases with the number of experiments, using all available threads.
 
 ```{r}
 #| label: fig-times
+#| fig-cap: "Time to run experiments on the maximum number of threads"
 #| eval: true
-#| echo: false
+#| code-fold: true
 
-suppressMessages(library(data.table))
-suppressMessages(library(purrr))
-library(stringr)
-library(ggplot2); theme_set(theme_bw())
-library(knitr)
+suppressMessages({
+    library(dplyr)
+    library(data.table)
+    library(purrr)
+    library(stringr)
+    library(ggplot2); theme_set(theme_bw())
+    library(knitr)
+    library(kableExtra)
+})
 
+# get timings from mac
 lns <- readr::read_lines('timings.txt')
+# get timings from linux machine
+blns <- readr::read_lines('bashtimings.txt')
 
-timings <- data.table(raw_string=lns)
+# remove lines with warnings / errors printed to txt file
+lns <- str_subset(lns, "^Rscript|julia|python")
+mtimings <- data.table(raw_string=lns)
+btimings <- data.table(raw_string=blns)
+
+# remove white space and first word (for linux)
+timings <- rbindlist(list(macm1=mtimings, linux=btimings), idcol='machine')
 timings[, string:=str_trim(raw_string)] # remove white space
-timings <- timings[str_starts(string, "Rscript|julia|python")] # remove warings / errors
-timings[, command:=word(string)]
+timings[, string:=str_replace(string, "^real\t", "")] # remove first word linux
+
+# find the language from the string
+timings[machine=='macm1', command:=word(string)]
 timings[command=='Rscript', language:='r']
 timings[command=='python', language:='jax']
 timings[command=='julia', language:='julia']
-timings[, time_str:=str_extract(string, "(?<=cpu\\ )(.*)(?= total)")]
+timings[machine=='linux', language:=str_extract(string, "(?<=s )[a-z]+")]
+
+# grab the time 
+timings[machine=='macm1', time_str:=str_extract(string, "(?<=cpu\\ )(.*)(?= total)")]
 timings[, milliseconds:=as.integer(str_extract(time_str, "(\\d+)$"))]
 timings[, seconds     :=as.integer(str_extract(time_str, "(\\d+)(?=.)"))]
 timings[, minutes     :=as.integer(str_extract(time_str, "(\\d+)(?=:)"))]
 timings[is.na(minutes), minutes:=0]
-timings[, jax_primitive:='map']
-timings[, machine:='macm1']
+timings[machine=='linux', minutes:=as.integer(str_extract(string, "^(\\d+)"))]
+timings[machine=='linux', seconds:=as.integer(str_extract(string, "(?<=m)(\\d+)"))]
+timings[machine=='linux', milliseconds:=as.integer(str_extract(string, "(\\d+)(?=s)"))]
+
+# grab number of threads and reps
 timings[, nthreads:=as.integer(str_extract(string, "(\\d+)(?= nthreads)"))]
-timings[, max_threads:=max(nthreads, na.rm=T)]
+timings[, max_threads:=max(nthreads, na.rm=T), by='machine']
 timings[is.na(nthreads) & language == 'jax', nthreads:=max_threads]
 timings[is.na(nthreads) & language %in% c('r', 'julia'), nthreads:=1L]
-
-# check if there are timings from bash
-if (file.exists('bashtimings.txt')) {
-# if (F) {
-  blns <- readr::read_lines('bashtimings.txt')
-  btimings <- data.table(raw_string=blns)
-  btimings[, string:=str_trim(raw_string)] # remove white space
-  btimings[, string:=str_replace(string, "real\t", "")]
-  btimings[, minutes:=as.integer(str_extract(string, "^(\\d+)"))]
-  btimings[, seconds:=as.integer(str_extract(string, "(?<=m)(\\d+)"))]
-  btimings[, milliseconds:=as.integer(str_extract(string, "(?<=m)(\\d+)"))]
-  btimings[, nthreads:=as.integer(str_extract(string, "(\\d+)(?= nthreads)"))]
-  btimings[, language:=str_extract(string, "(?<=s )[a-z]+")]
-  btimings[, jax_primitive:='vmap']
-  btimings[, machine:='linux']
-  timings <- rbindlist(list(timings, btimings
-  ), fill=T)
-}
-
 timings[, nreps:=as.integer(str_extract(string, "(\\d+)(?= nreps)"))]
-# max_threads <- timings[, max(nthreads, na.rm=T), by='machine']
 timings[, max_threads:=max(nthreads), by='machine']
 
 timings[, sec_total:=60*minutes + seconds + milliseconds / 1000]
@@ -260,29 +282,40 @@ timings[, min_total:=sec_total / 60]
 
 # add some vars
 timings[, n_per_min:=nreps / min_total]
-timings[, log_n_per_min:=log(n_per_min)]
+timings[, n_per_min3:=n_per_min/1000]
 
 timings <- timings[n_per_min < 1e6]
+
+
+fwrite(timings, 'allresults.csv', row.names=F)
 
 ggplot(timings[nthreads==max_threads], aes(x=nreps, y=min_total, col=language)) +
   geom_point() + geom_line() + 
   scale_x_log10() + scale_y_log10() + 
-  ggtitle(paste0("time to run experiments with max threads")) +
   facet_grid(machine+nthreads~., labeller='label_both')
 ```
 
-Something quirky is happening here, Jax takes less time to complete 10e5 experiments than 10e6 experiments.
-This indicates an error: out of memory.
+Note that Jax doesn't go farther than 1e5 repetitions.
+What is happening is that I've used `vmap` in Jax, which triggers auto-vectorization.
+This allows Jax to find whether intermediate steps could be combined into more efficient operations
+For example, a vector-vector multiplication *vectorized* over an input vectors is equivalent to a single matrix-vector multiplication.
+Jax's intermediate language finds this out and then swaps in the more efficient approach.
+Vectorized code runs in parallel and can be much faster.
+A downside compared to looping approaches is that everything should be loaded memory at once.
+This is why Jax fails after 1e5 experiments: the machine runs out of memory.
+Instead, we could use other primitives such as `scan` or `map`, possibly combined with `vmap`, but that is for later.
+
+Let's look at the speeds.
 
 ```{r}
 #| label: fig-speeds
+#| fig-cap: "Speed: number of repetitions per minute versus of number of experiments"
 #| eval: true
 #| echo: false
 
 ggplot(timings[nthreads==max_threads], aes(x=nreps, y=n_per_min, col=language)) +
   geom_point() + geom_line() + 
   scale_x_log10() + scale_y_log10() + 
-  ggtitle(paste0("experiments per minute with max threads")) +
   facet_grid(machine+nthreads~., labeller='label_both')
 ```
 
@@ -290,56 +323,76 @@ Now let's check how the number of threads matter for R and julia
 
 ```{r}
 #| label: fig-threads
+#| fig-cap: "Scaling of speed with number of threads"
 #| eval: true
 #| echo: false
 
 ggplot(timings[language!='jax'], aes(x=nreps, y=n_per_min, col=language)) +
   geom_point() + geom_line(aes(linetype=factor(nthreads))) + 
   scale_x_log10() + scale_y_log10() + 
-  facet_grid(machine~language) +
-  # facet_grid(~language) +
-  ggtitle("time to run experiments")
+  facet_grid(machine~language)
 ```
 
-Let's see the top speeds per language
+```{r}
+#| label: tab-threads
+#| tbl-cap: "Scaling of speed with number of threads, number of experiments per minute (1000s)"
+#| eval: true
+#| echo: false
+
+tw <- dcast(timings[language!='jax'], language+nreps~machine+nthreads, value.var='n_per_min3')
+tw[, `:=`(speedup6=linux_6/linux_1, speedup12=linux_12/linux_1, speedup8=macm1_8/macm1_1)]
+outcols <- c('language', 'nreps', 'linux_1', 'linux_6', 'speedup6', 'linux_12', 'speedup12', 'macm1_1', 'macm1_8', 'speedup8')
+
+tw[, .SD, .SDcols=outcols] %>%
+  mutate_if(is.double, ~format(round(., 1), nsmall = 1)) %>%
+  kable(align='r') %>%
+  column_spec(3, border_right=T) %>%
+  column_spec(5, border_right=T) %>%
+  column_spec(7, border_right=T) %>%
+  column_spec(8, border_left=T, border_right=T) %>%
+  kable_styling()
+```
+
+Let's see the top speeds per language, also compered to the top R speed on that machine.
 
 ```{r}
 #| label: tbl-best-per-language
+#| tbl-cap: "Best speeds per language and machine"
 #| eval: true
 #| echo: false
 
 timings[order(-n_per_min), lang_order:=1:.N, by=c('language', 'machine')]
-tabcols <- c('nreps', 'nthreads', 'min_total', 'n_per_min', 'language', 'machine')
-kable(timings[lang_order==1, .SD, .SDcols=tabcols])
+best_r_speeds <- timings[lang_order==1&language=='r', list(n_per_min, machine)]
+timings[best_r_speeds, vs_r_speedup:=n_per_min/i.n_per_min, on='machine']
+
+tabcols <- c('nreps', 'nthreads', 'min_total', 'n_per_min3', 'vs_r_speedup', 'language', 'machine')
+
+timings[lang_order==1, .SD, .SDcols=tabcols] %>%
+    mutate_if(is.double, ~format(round(., 1), nsmall = 1)) %>%
+    kable(align='r')
 ```
 
-Let's see the top performing settings, also compared to the best R setting
+Top 10 speeds overall
 
 ```{r}
 #| label: tbl-topspeeds
+#| tbl-cap: "top 10 speeds overall"
 #| eval: true
 #| echo: false
 
-# best_r_speed <- as.numeric(timings[lang_order==1&language=='r', n_per_min])
-best_r_speeds <- timings[lang_order==1&language=='r', list(n_per_min, machine)]
-timings[best_r_speeds, vs_r_speedup:=n_per_min/i.n_per_min, on='machine']
-tabcols <- c(tabcols, 'vs_r_speedup')
-kable(timings[order(-n_per_min), .SD, .SDcols=tabcols][1:10])
+timings[order(-n_per_min), .SD, .SDcols=tabcols][1:10] %>%
+    mutate_if(is.double, ~format(round(., 1), nsmall = 1)) %>%
+    kable()
 ```
 
-All results:
-
-```{r}
-#| label: tbl-speeds
-#| eval: true
-#| echo: false
-
-kable(timings[, .SD, .SDcols=tabcols])
-```
-
-Speed plots
+All results are available in a csv file [here](allresults.csv)
 
 ## Conclusions
+
+1. julia and Jax where faster than R:
+  - julia: 3.3x faster on 8-thread Mac M1, 9.6x faster on 12-thread linux machine
+  - Jax: 1.7x faster on both machines
+2. julia 
 
 assuming familiarity R > Julia > JAX
 

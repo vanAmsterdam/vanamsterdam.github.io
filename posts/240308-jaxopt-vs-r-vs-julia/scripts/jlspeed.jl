@@ -39,7 +39,7 @@ function main()
 
     @threads for i in 1:nreps # use @threads for multi-threading
         solution = solve()
-        outmat[i,:] = solve()
+        outmat[i,:] = solution
     end
 
     means = mean(outmat, dims=1)

@@ -26,11 +26,10 @@ In this blog post I'll compare R with JAX and Julia for a simple simulation stud
 We'll look at the following comparisons:
 
 1. R single thread
-2 .R multi-threaded
+2. R multi-threaded
 3. JAX on CPU
-4. JAX on GPU (NVIDIA quadro P-6000)
-5. Julia single thread
-6. Julia multi-threading
+4. Julia single thread
+5. Julia multi-threading
 
 ## R vs JAX vs Julia a high level overview
 Without going in too much details, JAX works by translating python code into an intermediate language that can be run very efficiently on different hardware backends (CPU, GPU, TPU) through just-in-time compilation (JIT).
@@ -64,8 +63,7 @@ We'll generate `nrep` independent datasets and estimate $\boldsymbol{\beta}$ in 
 
 ## The code
 
-
-Making the data
+Making the data is pretty similar in all cases, except that Jax requires an explicit random key.
 
 ::: {.panel-tabset}
 ## R
@@ -108,12 +106,12 @@ end
 
 :::
 
-The write the code for a single analysis step, generating data and fitting the logistic regression.
+Now we'll write the code for a single analysis step, generating data and fitting the logistic regression.
 For R and Julia we will use the `glm` function to estimate the logistic regression model.
 The Julia code looks much like the R code
 In JAX there is no `glm` function.
 Instead, we need to specify an objective function and will use a general purpose optimizer.
-[JaxOpt](https://jaxopt.github.io/) conveniently provides both `binary_logreg` as an objective functoin and `LBFGS`, a popular general purpose optimizer.
+[JaxOpt](https://jaxopt.github.io/) provides both `binary_logreg` as an objective function and `LBFGS`, a popular general purpose optimizer, which we'll use here.
 
 ::: {.panel-tabset}
 ## R
@@ -196,9 +194,12 @@ print(means)
 
 :::
 
+I benchmarked each run with an external `time` command in Bash or ZSH and wrote the results to a file.
+See [runexps.sh](runexps.sh)
+
 ## The speed
 
-First, let's see how speed scales with the number of repetitions
+First, let's see how running time increases with 
 
 ```{r}
 #| label: fig-times

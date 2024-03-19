@@ -1,20 +1,20 @@
-real	0m5.417s jax 1000 nreps 12 nthreads
+real	0m5.417s jax 1000 nreps 12 nthreads vmap primitive
 real	0m4.065s r 1000 nreps 1 nthreads
 real	0m4.139s r 1000 nreps 6 nthreads
 real	0m6.509s r 1000 nreps 12 nthreads
-real	0m8.984s jax 10000 nreps 12 nthreads
+real	0m8.984s jax 10000 nreps 12 nthreads vmap primitive
 real	0m39.319s r 10000 nreps 1 nthreads
 real	0m11.317s r 10000 nreps 6 nthreads
 real	0m11.456s r 10000 nreps 12 nthreads
-real	0m39.661s jax 100000 nreps 12 nthreads
+real	0m39.661s jax 100000 nreps 12 nthreads vmap primitive
 real	6m51.731s r 100000 nreps 1 nthreads
 real	1m21.023s r 100000 nreps 6 nthreads
 real	1m6.798s r 100000 nreps 12 nthreads
-real	0m32.441s jax 1000000 nreps 12 nthreads
+real	0m32.441s jax 1000000 nreps 12 nthreads vmap primitive
 real	72m8.260s r 1000000 nreps 1 nthreads
 real	14m7.036s r 1000000 nreps 6 nthreads
 real	10m59.323s r 1000000 nreps 12 nthreads
-real	0m5.342s jax 10000000 nreps 12 nthreads
+real	0m5.342s jax 10000000 nreps 12 nthreads vmap primitive
 real	0m5.586s julia 1000 nreps 1 nthreads
 real	0m5.102s julia 1000 nreps 6 nthreads
 real	0m5.442s julia 1000 nreps 12 nthreads
@@ -30,3 +30,8 @@ real	0m59.924s julia 1000000 nreps 12 nthreads
 real	59m19.014s julia 10000000 nreps 1 nthreads
 real	11m25.188s julia 10000000 nreps 6 nthreads
 real	9m26.418s julia 10000000 nreps 12 nthreads
+real	0m3.963s jax 1000 nreps 12 nthreads map primitive
+real	0m10.417s jax 10000 nreps 12 nthreads map primitive
+real	1m19.385s jax 100000 nreps 12 nthreads map primitive
+real	12m38.007s jax 1000000 nreps 12 nthreads map primitive
+real	126m5.976s jax 10000000 nreps 12 nthreads map primitive

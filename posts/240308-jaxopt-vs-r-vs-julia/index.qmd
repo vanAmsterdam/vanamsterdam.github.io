@@ -10,7 +10,6 @@ categories:
 - python
 ---
 
-
 When using simulations to support scientific claims, the more experiments the better.
 Having the ability to perform many experiments fast allows researchers to:
 
@@ -33,7 +32,7 @@ We'll look at the following comparisons:
 
 ## R vs JAX vs Julia a high level overview
 Without going in too much details, JAX works by translating python code into an intermediate language that can be run very efficiently on different hardware backends (CPU, GPU, TPU) through just-in-time compilation (JIT).
-JAX prides itself on providing composable transformations for vectorization (`vmap`), paralellization (`pmap`) and automatic differentiation (`grad`), all compatible with `jit`
+JAX prides itself on providing composable transformations for vectorization (`vmap`), paralellization (`pmap`) and automatic differentiation (`grad`), all compatible with `jit`.
 In R, most of the heavy lifting in terms of computation (such as fitting a logistic regression model) is implemented in high-speed languages such as C++ or Fortran.
 The usual R-code merely provides an interface to these languages and allows the user to feed in data and analyze results.
 Whereas using JAX and R means working with two languages (one language to write accessible code, another to do fast computation), Julia is a just-in-time compiled language where such translation is not needed.
@@ -61,7 +60,17 @@ $$
 where $\boldsymbol{\beta} = [\beta_1,\ldots,\beta_9]$ is a 9-dimensional parameter vector that is to be estimated (we're excluding the usual intercept term).
 We'll generate `nrep` independent datasets and estimate $\boldsymbol{\beta}$ in each one, and finally calculate the average parameter estimates $\frac{1}{\text{nrep}}\sum_{i=1}^{\text{nrep}}\boldsymbol{\beta}^i$, averaged over each repetition i.
 
+### Hardware
+
+The hardware available for this comparison is a 
+
+- macm1: 2020 macbook air M1, 8Gb RAM, 8 threads
+- linux: linux machine, 64Gb RAM, 12 threads (Intel(R) Xeon(R) W-2135 CPU @ 3.70GH )
+
+
 ## The code
+
+### Making data
 
 Making the data is pretty similar in all cases, except that Jax requires an explicit random key.
 
@@ -105,6 +114,8 @@ end
 ```
 
 :::
+
+### Run single experiment
 
 Now we'll write the code for a single analysis step, generating data and fitting the logistic regression.
 For R and Julia we will use the `glm` function to estimate the logistic regression model.
@@ -153,7 +164,15 @@ end
 
 :::
 
-Finally we run the experiments `nrep` times and calculate the average coefficient vector
+### Iterate over runs / settings
+
+Finally we run the experiments `nrep` times and calculate the average coefficient vector.
+
+#### Jax primitive: map versus vmap
+Note that in jax there are multiple ways to do this, most notably `map` and `vmap`.
+Whereas `map` may offer speedups compared to R due to jit-compiliation, for most purposes `vmap` [is recommended](https://jax.readthedocs.io/en/latest/_autosummary/jax.lax.map.html) as it allows jax to find ways of making the computation more efficient.
+Note that in our case, vectorization may not be too beneficial as running `LBFGS` on different datasets may not lend itself to vectorizations (compared e.g. to neural network computations on batches of data).
+A downside of vectorization is that it requires more memory: all the datasets and optimization steps happen in parallel, whereas with loop-based execution, only the coefficients of each time step need to be stored.
 
 ::: {.panel-tabset}
 ## R
@@ -194,6 +213,8 @@ print(means)
 
 :::
 
+### Bash scripts for speed comparisons
+
 I benchmarked each run with an external `time` command in Bash or ZSH and wrote the results to a file.
 
 ::: {.panel-tabset}
@@ -212,14 +233,12 @@ I benchmarked each run with an external `time` command in Bash or ZSH and wrote 
 ```
 :::
 
-The hardware available for this comparison is a 
-
-- macm1: 2020 macbook air M1, 8Gb, 8 threads
-- linux: linux machine with 12 threads (Intel(R) Xeon(R) W-2135 CPU @ 3.70GH )
-
 ## The speed
 
+### Runs vs Time
+
 First, let's see how running time increases with the number of experiments, using all available threads.
+You cannot easily set number of threads in JAX (see e.g. [this](https://github.com/google/jax/issues/1539) issue on github), so all jax computations use all threads.
 
 ```{r}
 #| label: fig-times
@@ -259,16 +278,6 @@ timings[command=='python', language:='jax']
 timings[command=='julia', language:='julia']
 timings[machine=='linux', language:=str_extract(string, "(?<=s )[a-z]+")]
 
-# grab the time 
-timings[machine=='macm1', time_str:=str_extract(string, "(?<=cpu\\ )(.*)(?= total)")]
-timings[, milliseconds:=as.integer(str_extract(time_str, "(\\d+)$"))]
-timings[, seconds     :=as.integer(str_extract(time_str, "(\\d+)(?=.)"))]
-timings[, minutes     :=as.integer(str_extract(time_str, "(\\d+)(?=:)"))]
-timings[is.na(minutes), minutes:=0]
-timings[machine=='linux', minutes:=as.integer(str_extract(string, "^(\\d+)"))]
-timings[machine=='linux', seconds:=as.integer(str_extract(string, "(?<=m)(\\d+)"))]
-timings[machine=='linux', milliseconds:=as.integer(str_extract(string, "(\\d+)(?=s)"))]
-
 # grab number of threads and reps
 timings[, nthreads:=as.integer(str_extract(string, "(\\d+)(?= nthreads)"))]
 timings[, max_threads:=max(nthreads, na.rm=T), by='machine']
@@ -277,14 +286,34 @@ timings[is.na(nthreads) & language %in% c('r', 'julia'), nthreads:=1L]
 timings[, nreps:=as.integer(str_extract(string, "(\\d+)(?= nreps)"))]
 timings[, max_threads:=max(nthreads), by='machine']
 
-timings[, sec_total:=60*minutes + seconds + milliseconds / 1000]
+# find jax primitive
+timings[, jaxprimitive:=str_extract(string, "(\\w+)(?= primitive)")]
+timings[machine=='macm1'&language=='jax'&is.na(jaxprimitive), jaxprimitive:='map']
+#timings <- timings[!(language=='jax' & jaxprimitive!='map')]
+timings[language=='jax', language:=paste0(language, '-', jaxprimitive)]
+
+# grab the time 
+timings[machine=='macm1', time_str:=str_extract(string, "(?<=cpu\\ )(.*)(?= total)")]
+timings[, milliseconds:=as.integer(str_extract(time_str, "(\\d+)$"))]
+timings[, seconds     :=as.integer(str_extract(time_str, "(\\d+)(?=.)"))]
+timings[, minutes     :=as.integer(str_extract(time_str, "(\\d+)(?=:)"))]
+timings[, hours       :=as.integer(str_extract(time_str, "(\\d+)(?=:(\\d+:))"))]
+timings[machine=='linux', minutes:=as.integer(str_extract(string, "^(\\d+)"))]
+timings[machine=='linux', seconds:=as.integer(str_extract(string, "(?<=m)(\\d+)"))]
+timings[machine=='linux', milliseconds:=as.integer(str_extract(string, "(\\d+)(?=s)"))]
+timings[is.na(minutes), minutes:=0]
+timings[is.na(hours), hours:=0]
+
+
+timings[, sec_total:=60*60*hours + 60*minutes + seconds + milliseconds / 1000]
 timings[, min_total:=sec_total / 60]
 
 # add some vars
 timings[, n_per_min:=nreps / min_total]
 timings[, n_per_min3:=n_per_min/1000]
 
-timings <- timings[n_per_min < 1e6]
+# remove a couple of failed runs where time went down for more experiments (= out of memmory)
+timings <- timings[n_per_min < 1.5e6]
 
 
 fwrite(timings, 'allresults.csv', row.names=F)
@@ -292,6 +321,7 @@ fwrite(timings, 'allresults.csv', row.names=F)
 ggplot(timings[nthreads==max_threads], aes(x=nreps, y=min_total, col=language)) +
   geom_point() + geom_line() + 
   scale_x_log10() + scale_y_log10() + 
+  # facet_grid(machine+nthreads~jaxprimitive, labeller='label_both')
   facet_grid(machine+nthreads~., labeller='label_both')
 ```
 
@@ -304,6 +334,8 @@ Vectorized code runs in parallel and can be much faster.
 A downside compared to looping approaches is that everything should be loaded memory at once.
 This is why Jax fails after 1e5 experiments: the machine runs out of memory.
 Instead, we could use other primitives such as `scan` or `map`, possibly combined with `vmap`, but that is for later.
+
+### Runs vs Speed
 
 Let's look at the speeds.
 
@@ -319,6 +351,12 @@ ggplot(timings[nthreads==max_threads], aes(x=nreps, y=n_per_min, col=language)) 
   facet_grid(machine+nthreads~., labeller='label_both')
 ```
 
+Why is the speed going down for julia on the macm1 machine after 1e6 experiments? 
+Turns out there is not enough RAM to fit the experiments and the system switches to swamp memory which is much slower than using RAM (even on a mac arm64).
+The speed of R stopped increasing after 1e6 experiments so I didn't run more experiments.
+
+### Threads vs Speed
+
 Now let's check how the number of threads matter for R and julia
 
 ```{r}
@@ -327,7 +365,7 @@ Now let's check how the number of threads matter for R and julia
 #| eval: true
 #| echo: false
 
-ggplot(timings[language!='jax'], aes(x=nreps, y=n_per_min, col=language)) +
+ggplot(timings[!str_starts(language, 'jax')], aes(x=nreps, y=n_per_min, col=language)) +
   geom_point() + geom_line(aes(linetype=factor(nthreads))) + 
   scale_x_log10() + scale_y_log10() + 
   facet_grid(machine~language)
@@ -339,19 +377,25 @@ ggplot(timings[language!='jax'], aes(x=nreps, y=n_per_min, col=language)) +
 #| eval: true
 #| echo: false
 
-tw <- dcast(timings[language!='jax'], language+nreps~machine+nthreads, value.var='n_per_min3')
+tw <- dcast(timings[!str_starts(language, 'jax')], language+nreps~machine+nthreads, value.var='n_per_min3')
 tw[, `:=`(speedup6=linux_6/linux_1, speedup12=linux_12/linux_1, speedup8=macm1_8/macm1_1)]
 outcols <- c('language', 'nreps', 'linux_1', 'linux_6', 'speedup6', 'linux_12', 'speedup12', 'macm1_1', 'macm1_8', 'speedup8')
 
 tw[, .SD, .SDcols=outcols] %>%
   mutate_if(is.double, ~format(round(., 1), nsmall = 1)) %>%
   kable(align='r') %>%
+  row_spec(4, hline_after=T) %>%
   column_spec(3, border_right=T) %>%
   column_spec(5, border_right=T) %>%
   column_spec(7, border_right=T) %>%
   column_spec(8, border_left=T, border_right=T) %>%
   kable_styling()
 ```
+
+Speed increases with increasing number of threads, though not with a simple linear scaling in the number of threads.
+
+
+### Top speeds per language
 
 Let's see the top speeds per language, also compered to the top R speed on that machine.
 
@@ -365,12 +409,22 @@ timings[order(-n_per_min), lang_order:=1:.N, by=c('language', 'machine')]
 best_r_speeds <- timings[lang_order==1&language=='r', list(n_per_min, machine)]
 timings[best_r_speeds, vs_r_speedup:=n_per_min/i.n_per_min, on='machine']
 
-tabcols <- c('nreps', 'nthreads', 'min_total', 'n_per_min3', 'vs_r_speedup', 'language', 'machine')
+tabcolnames <- c('nreps'='n experiments',
+                 'nthreads'='n threads',
+                 'min_total'='running time (minutes)',
+                 'n_per_min3'='experiments per minute (x1000)',
+                 'vs_r_speedup'='speed-up vs best R',
+                 'language'='language',
+                 'machine'='machine')
+tabcols <- names(tabcolnames)
 
 timings[lang_order==1, .SD, .SDcols=tabcols] %>%
+    .[order(machine,language)] %>%
     mutate_if(is.double, ~format(round(., 1), nsmall = 1)) %>%
-    kable(align='r')
+    kable(align='r', col.names=tabcolnames)
 ```
+
+## Top speeds overall
 
 Top 10 speeds overall
 
@@ -382,59 +436,50 @@ Top 10 speeds overall
 
 timings[order(-n_per_min), .SD, .SDcols=tabcols][1:10] %>%
     mutate_if(is.double, ~format(round(., 1), nsmall = 1)) %>%
-    kable()
+    kable(align='r', col.names = tabcolnames)
 ```
 
 All results are available in a csv file [here](allresults.csv)
 
-## Conclusions
+## Takeaways
 
-1. julia and Jax where faster than R:
-  - julia: 3.3x faster on 8-thread Mac M1, 9.6x faster on 12-thread linux machine
-  - Jax: 1.7x faster on both machines
-2. julia 
+### Speed
 
-assuming familiarity R > Julia > JAX
+In this setup
 
-Dimensions:
+1. julia was 10-11 times faster than R
+2. jax was 1.7 times faster than R on a mac m1, but 0.9 times faster on a 12-thread linux machine
 
-- have GPU -- have many threads
-- rely on standard stats / need summary stats -- have custom objectives / need autograd
+### Code
 
+1. Julia code seems quite close to R code.
+2. Jax comes with some [sharp bits](https://jax.readthedocs.io/en/latest/notebooks/Common_Gotchas_in_JAX.html) and may be harder to program efficiently. One concrete example with my own previous simulation studies is that I used first used `jax.numpy` arrays for different parameters and then a `scipy` function to find all combinations of these parameters. Creating this grid of parameters this way forced copying of `jax.numpy` arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Jax relies on pure functions that cannot depend on global variables.
 
+### Caveats
 
-## Discussion
+1. Jax needs to recompile when the size of the data changes. When running experiments with e.g. different sizes of data, jax will become slower because it needs to recompile (or different fixes should be applied, e.g. padding smaller data with dummy data and giving these 0 weights in the objective calculation)
+2. I didn't have a CUDA-enabled GPU machine for this comparison, `vmap` may be come (much) more performant on a GPU
+3. Jax gives bare bones results. If you want to do e.g. significance testing of coefficients, or model comparisons, you will need to find implementations for this or implement this yourself. R and julia (specifically the [GLM package](https://juliastats.org/GLM.jl/stable/) provide a much wider suite of methods
+4. In jax I used general purpose optimizer. There may be more efficient ways of estimating a logistic regression model, whose optimizations are implemented in R and julia but not jax. In this sense it may not be a *fair* comparison, though these optimizations would need to be sought or implemented in jax.
+5. Jax has *autograd*. When writing custom objective functions, the general purpose optimizer approach of jax may be a benefit.
 
-JAX was able to get a 86 times speed-up compared to single-threaded R, and 8 times compared to R on 10 threads.
-JAX does come with some 'sharp bits' (see link) that if not followed correctly lead to suboptimal performance and/or unexpected behavior, e.g. it requires functional programming.
+### Extensions
 
-Note that JAX-opt gives pretty-bare bones results with only parameters, likelihood of the observed data at the final parameter estimate and some optimization statistics (number of iterations, convergence).
-But not e.g. variance estimates and all sorts of other things returned by glm in R.
+The [julia domumentation states](https://docs.julialang.org/en/v1/manual/multi-threading/#Atomic-Operations) that certain operations to *atomic* data structures can be done in a safe-way while multithreading.
+Instead of returning all coefficients of all datasets, we could calculate the average value of the coefficients (and e.g. the avareage of the squares of the values) with less memory overhead by:
+1. instantiate an atomic vector of 9 coefficients, 2. let every experiment (which may be in different threads) add its value to this shared atomic vector with `atomic_add!` and 3. at the end, calculate the mean by dividing by `nreps`.
 
-In conculsion, should you learn JAX for simulations? 
-- If you can program in python / numpy, yes
-- If you'll write custom objectives and want to apply gradient-based optimization, yes.
-- If you don't have a GPU but have many CPU-threads available, probably no
+Custom objective functions
 
-Finally, when it comes to analyzing results from millions of simulation experiments, R's data.table really shines when it comes to speed in reading, writing, subsetting and analyzing results.
-It's orders of magnitudes faster than pythons pandas for many tasks and pretty much the fastest framework for in-memory data.frame-style operations across all languages.
+## Conclusion
 
-My workflow:
-1. run simulations in JAX
-2. analyze results in R using data.table
+What should you use for glm-like simulations?
 
-### Limitations
-
-Cannot easily set number of threads in JAX (see e.g. [this](https://github.com/google/jax/issues/1539) issue on github).
-
-## Extensions
-
-Julia is another JIT-compiled language that would be interesting to compare against.
-
+- probably, julia
+- if you have GPU, maybe jax
+- if you need to write custom objective functions, remains to be determined
 
 ## Computing environment
-
-All tests conducted on linux cluster with 12 threads and a NVIDIA Quadro P-6000 GPU
 
 
 ## Full scripts

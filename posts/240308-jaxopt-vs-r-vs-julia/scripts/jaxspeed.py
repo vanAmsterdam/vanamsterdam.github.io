@@ -19,10 +19,11 @@ def make_data(k, n=int(1e3)):
 
 # initialize a generic solver with the correct objective function
 solver = LBFGS(binary_logreg)
+# need to specify parameter initialization values
 w_init = jnp.zeros((9,))
 
+@jit # jit toggles just-in-time compilation, one of the main features of JAX
 def solve(k):
-    # need to specify parameter initialization values
     data = make_data(k)
     param, state = solver.run(w_init, data)
     return param

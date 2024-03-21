@@ -93,8 +93,8 @@ More papers at [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 ## Teaching
 
-- 2023 Big Data summer school
 - 2024 [Introduction to Causal Inference and Causal Data Science summer school](https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science)
+- 2023 Big Data summer school
 
 ## [Posts](posts.qmd)
 
@@ -103,7 +103,10 @@ More papers at [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 ## Activities
 
-- 2023-[BMS-ANed](https://www.vvsor.nl/biometrics/) (Dutch biometrics society, board member)
+- board member [BMS-ANed](https://www.vvsor.nl/biometrics/) (Dutch biometrics society, board member)
+- coordinator of UMC Utrecht [AI methods lab](https://www.umcutrecht.nl/en/ai-lab-methodology)
+- ambassador for [Applied Data Science](https://www.uu.nl/en/research/applied-data-science) of Utrecht University
+- co-coordinator of [Causal Data Science Special Interest Group](https://www.uu.nl/en/research/applied-data-science/sig-causal-data-science) of Utrecht University
 
 ## Contact
 wamster3 at umcutrecht dot nl

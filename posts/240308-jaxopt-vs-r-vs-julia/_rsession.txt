@@ -1,0 +1,29 @@
+─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.3.2 (2023-10-31)
+ os       macOS Sonoma 14.3
+ system   aarch64, darwin23.0.0
+ ui       RStudio
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       Europe/Amsterdam
+ date     2024-03-21
+ rstudio  2023.12.1+402 Ocean Storm (desktop)
+ pandoc   3.1.12.2 @ /opt/homebrew/bin/ (via rmarkdown)
+
+─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ package     * version date (UTC) lib source
+ data.table  * 1.14.8  2023-02-17 [1] CRAN (R 4.3.1)
+ dplyr       * 1.1.2   2023-04-20 [1] CRAN (R 4.3.1)
+ ggplot2     * 3.4.2   2023-04-03 [1] CRAN (R 4.3.1)
+ kableExtra  * 1.4.0   2024-01-24 [1] CRAN (R 4.3.2)
+ knitr       * 1.43    2023-05-25 [1] CRAN (R 4.3.1)
+ purrr       * 1.0.1   2023-01-10 [1] CRAN (R 4.3.1)
+ sessioninfo * 1.2.2   2021-12-06 [1] CRAN (R 4.3.2)
+ stringr     * 1.5.0   2022-12-02 [1] CRAN (R 4.3.1)
+
+ [1] /opt/homebrew/lib/R/4.3/site-library
+ [2] /opt/homebrew/Cellar/r/4.3.2/lib/R/library
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

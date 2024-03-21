@@ -8,30 +8,34 @@ categories:
 - julia
 - jax
 - python
+- "simulation studies"
 ---
 
+Simulation experiments are important when evaluating methods but also for applied work in for example power analyses [e.g. @vanamsterdamAssociationMuscleQuantity2022] or sensitivity analyses [e.g. @vanamsterdamIndividualTreatmentEffect2022].
 When using simulations to support scientific claims, the more experiments the better.
-Having the ability to perform many experiments fast allows researchers to:
+Being able to perform simulation experiments faster allows researchers to:
 
 - test bigger (or finer) experimental grids
 - attain lower variance by having more repeated experiments
 - test new ideas faster
 
-The R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed, especially when it comes to leveraging GPUs for calculations that are amenable to vectorization (such as performing simulation studies across a large grid).
+The R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed.
+<!--, especially when it comes to leveraging GPUs for calculations that are amenable to vectorization (such as performing simulation studies across a large grid).-->
 In recent years, [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html) (developed by Google) and [Julia](https://julialang.org) have arisen as general scientific computation frameworks.
-JAX and Julia have grown in popularity both in the neural network community as in other scientific communities [e.g. @DifferentiableUniverseInitiativeJax_cosmo2024; @SciMLOpenSource]
+JAX and Julia have grown in popularity both in the neural network community as in other scientific communities [e.g. @DifferentiableUniverseInitiativeJax_cosmo2024; @SciMLOpenSource].
 In this blog post I'll compare R with JAX and Julia for a simple simulation study setup with logistic regression.
 
 We'll look at the following comparisons:
 
 1. R single thread
 2. R multi-threaded
-3. JAX on CPU
+3. JAX
 4. Julia single thread
 5. Julia multi-threading
 
-## R vs JAX vs Julia a high level overview
-Without going in too much details, JAX works by translating python code into an intermediate language that can be run very efficiently on different hardware backends (CPU, GPU, TPU) through just-in-time compilation (JIT).
+## JAX and Julia vs R: a high level overview
+JAX is a rising star in computer science and natural sciences.
+Without going in too much details, JAX works by translating python code into an intermediate language that can be run very efficiently on different hardware backends (CPU, GPU, TPU), possibly with just-in-time compilation (JIT).
 JAX prides itself on providing composable transformations for vectorization (`vmap`), paralellization (`pmap`) and automatic differentiation (`grad`), all compatible with `jit`.
 In R, most of the heavy lifting in terms of computation (such as fitting a logistic regression model) is implemented in high-speed languages such as C++ or Fortran.
 The usual R-code merely provides an interface to these languages and allows the user to feed in data and analyze results.
@@ -39,7 +43,7 @@ Whereas using JAX and R means working with two languages (one language to write 
 
 ## The basic setup
 
-We'll be running a simple logistic regression simulation setup, where for each observation:
+We'll use a simple logistic regression simulation setup, where for each observation:
 
 $$
 \begin{align}
@@ -54,15 +58,18 @@ So $y$ is the sum of elements of $\mathbf{x}_{\text{full}}$ and the observed $\m
 We will model this data with logistic regression:
 
 $$
-\text{logit}(y) = \mathbf{x}_{\text{obs}} \boldsymbol{\beta}' 
+\begin{align}
+    \text{logit}(y) &= \mathbf{x}_{\text{obs}} \boldsymbol{\beta}'\\
+    y &\sim \text{Bernoulli} (\sigma (\mathbf{x}_{\text{obs}} \boldsymbol{\beta}'))
+\end{align}
 $$
 
 where $\boldsymbol{\beta} = [\beta_1,\ldots,\beta_9]$ is a 9-dimensional parameter vector that is to be estimated (we're excluding the usual intercept term).
-We'll generate `nrep` independent datasets and estimate $\boldsymbol{\beta}$ in each one, and finally calculate the average parameter estimates $\frac{1}{\text{nrep}}\sum_{i=1}^{\text{nrep}}\boldsymbol{\beta}^i$, averaged over each repetition i.
+We'll generate `nrep` independent datasets and estimate $\boldsymbol{\beta}$ in each one, and finally calculate the average parameter estimates $\frac{1}{\text{nrep}}\sum_{i=1}^{\text{nrep}}\boldsymbol{\beta}^i$.
 
 ### Hardware
 
-The hardware available for this comparison is a 
+The hardware I had available for this comparison is:
 
 - macm1: 2020 macbook air M1, 8Gb RAM, 8 threads
 - linux: linux machine, 64Gb RAM, 12 threads (Intel(R) Xeon(R) W-2135 CPU @ 3.70GH )
@@ -72,7 +79,7 @@ The hardware available for this comparison is a
 
 ### Making data
 
-Making the data is pretty similar in all cases, except that Jax requires an explicit random key.
+Making the data is pretty similar in all cases, except that JAX requires an explicit random key.
 
 ::: {.panel-tabset}
 ## R
@@ -119,8 +126,8 @@ end
 
 Now we'll write the code for a single analysis step, generating data and fitting the logistic regression.
 For R and Julia we will use the `glm` function to estimate the logistic regression model.
-The Julia code looks much like the R code
-In JAX there is no `glm` function.
+The Julia code looks much like the R code.
+As far as I know there is no equivalent `glm` function implemented in JAX.
 Instead, we need to specify an objective function and will use a general purpose optimizer.
 [JaxOpt](https://jaxopt.github.io/) provides both `binary_logreg` as an objective function and `LBFGS`, a popular general purpose optimizer, which we'll use here.
 
@@ -145,7 +152,6 @@ w_init = jnp.zeros((9,))
 
 @jit # jit toggles just-in-time compilation, one of the main features of JAX
 def solve(k):
-    # need to specify parameter initialization values
     data = make_data(k)
     param, state = solver.run(w_init, data)
     return param
@@ -168,9 +174,12 @@ end
 
 Finally we run the experiments `nrep` times and calculate the average coefficient vector.
 
-#### Jax primitive: map versus vmap
-Note that in jax there are multiple ways to do this, most notably `map` and `vmap`.
-Whereas `map` may offer speedups compared to R due to jit-compiliation, for most purposes `vmap` [is recommended](https://jax.readthedocs.io/en/latest/_autosummary/jax.lax.map.html) as it allows jax to find ways of making the computation more efficient.
+#### JAX primitive: map versus vmap
+Note that in JAX there are multiple ways to do this, most notably `map` and `vmap`.
+Whereas `map` may offer speedups compared to R due to jit-compiliation, for most purposes `vmap` [is recommended](https://jax.readthedocs.io/en/latest/_autosummary/jax.lax.map.html) as it allows JAX to find ways of making the computation more efficient.
+For example, a vector-vector multiplication *vectorized* over an input of vectors is equivalent to a single matrix-vector multiplication.
+JAX's intermediate language finds these possible optimizations and swaps in the more efficient approach.
+Vectorized code runs in parallel and can be much faster.
 Note that in our case, vectorization may not be too beneficial as running `LBFGS` on different datasets may not lend itself to vectorizations (compared e.g. to neural network computations on batches of data).
 A downside of vectorization is that it requires more memory: all the datasets and optimization steps happen in parallel, whereas with loop-based execution, only the coefficients of each time step need to be stored.
 
@@ -178,21 +187,31 @@ A downside of vectorization is that it requires more memory: all the datasets an
 ## R
 
 ``` {.r}
-set.seed(240316)
-params <- lapply(1:nreps, solve)
+if (nthreads == 1) {
+    set.seed(240316)
+    params <- lapply(1:nreps, solve)
+} else {
+    params <- future_map(1:nreps, solve, .options=furrr_options(seed=240316))
+}
 outmat <- do.call(rbind, params)
 means <- colMeans(outmat)
-print(means)
+print(means[1])
 ```
 
 ## Python
 
 ``` {.python}
 k0 = random.PRNGKey(240316)
-ks = random.split(k, nreps)
-params = vmap(solve)(ks) # vmap vectorizes computations
+ks = random.split(k0, args.nreps)
+if args.primitive == 'map':
+    params = lax.map(solve, ks)
+elif args.primitive == 'vmap':
+    params = vmap(solve)(ks)
+else:
+    raise ValueError(f"unrecognized primitive: {args.primitive}, choose map or vmap")
+
 means = jnp.mean(params, axis=0)
-print(means)
+print(means[0])
 ```
 
 ## Julia
@@ -207,8 +226,7 @@ outmat = zeros(nreps, 9)
 end
 
 means = mean(outmat, dims=1)
-print(means)
-
+print(means[1])
 ```
 
 :::
@@ -235,10 +253,10 @@ I benchmarked each run with an external `time` command in Bash or ZSH and wrote 
 
 ## The speed
 
-### Runs vs Time
+### Running time
 
 First, let's see how running time increases with the number of experiments, using all available threads.
-You cannot easily set number of threads in JAX (see e.g. [this](https://github.com/google/jax/issues/1539) issue on github), so all jax computations use all threads.
+You cannot easily set number of threads in JAX (see e.g. [this](https://github.com/google/jax/issues/1539) issue on github), so all JAX computations use all threads.
 
 ```{r}
 #| label: fig-times
@@ -287,10 +305,11 @@ timings[, nreps:=as.integer(str_extract(string, "(\\d+)(?= nreps)"))]
 timings[, max_threads:=max(nthreads), by='machine']
 
 # find jax primitive
-timings[, jaxprimitive:=str_extract(string, "(\\w+)(?= primitive)")]
-timings[machine=='macm1'&language=='jax'&is.na(jaxprimitive), jaxprimitive:='map']
-#timings <- timings[!(language=='jax' & jaxprimitive!='map')]
-timings[language=='jax', language:=paste0(language, '-', jaxprimitive)]
+timings[, primitive:=str_extract(string, "(\\w+)(?= primitive)")]
+timings[machine=='macm1'&language=='jax'&is.na(primitive), primitive:='map']
+#timings <- timings[!(language=='jax' & primitive!='map')]
+# timings[language=='jax', language:=paste0(language, '-', primitive)]
+timings[language!='jax', primitive:='map']
 
 # grab the time 
 timings[machine=='macm1', time_str:=str_extract(string, "(?<=cpu\\ )(.*)(?= total)")]
@@ -312,30 +331,34 @@ timings[, min_total:=sec_total / 60]
 timings[, n_per_min:=nreps / min_total]
 timings[, n_per_min3:=n_per_min/1000]
 
-# remove a couple of failed runs where time went down for more experiments (= out of memmory)
-timings <- timings[n_per_min < 1.5e6]
+# remove a couple of failed runs where time went down for more experiments (= out of memory)
+#timings <- timings[n_per_min < 1.5e6]
 
 
 fwrite(timings, 'allresults.csv', row.names=F)
 
 ggplot(timings[nthreads==max_threads], aes(x=nreps, y=min_total, col=language)) +
-  geom_point() + geom_line() + 
+  geom_point() + geom_line(aes(linetype=primitive)) + 
   scale_x_log10() + scale_y_log10() + 
-  # facet_grid(machine+nthreads~jaxprimitive, labeller='label_both')
+  # facet_grid(machine+nthreads~primitive, labeller='label_both')
   facet_grid(machine+nthreads~., labeller='label_both')
 ```
 
-Note that Jax doesn't go farther than 1e5 repetitions.
-What is happening is that I've used `vmap` in Jax, which triggers auto-vectorization.
-This allows Jax to find whether intermediate steps could be combined into more efficient operations
-For example, a vector-vector multiplication *vectorized* over an input vectors is equivalent to a single matrix-vector multiplication.
-Jax's intermediate language finds this out and then swaps in the more efficient approach.
-Vectorized code runs in parallel and can be much faster.
-A downside compared to looping approaches is that everything should be loaded memory at once.
-This is why Jax fails after 1e5 experiments: the machine runs out of memory.
-Instead, we could use other primitives such as `scan` or `map`, possibly combined with `vmap`, but that is for later.
+Note that for JAX `vmap` the clock time actually goes *down* when the number of experiment increases.
+This is not some magic speedup but the machine running out of memory and thus not completing the experiment, a downside of vectorization.
+We'll exclude these runs of the further comparisons.
+For `map` this is not the case.
 
-### Runs vs Speed
+```{r}
+#| label: exclude-oom
+#| eval: true
+#| echo: false
+
+timings <- timings[!((language == 'jax') & (primitive != 'map') & (nreps > 1e5))]
+
+```
+
+### Speed
 
 Let's look at the speeds.
 
@@ -346,18 +369,18 @@ Let's look at the speeds.
 #| echo: false
 
 ggplot(timings[nthreads==max_threads], aes(x=nreps, y=n_per_min, col=language)) +
-  geom_point() + geom_line() + 
+  geom_point() + geom_line(aes(linetype=primitive)) + 
   scale_x_log10() + scale_y_log10() + 
   facet_grid(machine+nthreads~., labeller='label_both')
 ```
 
-Why is the speed going down for julia on the macm1 machine after 1e6 experiments? 
-Turns out there is not enough RAM to fit the experiments and the system switches to swamp memory which is much slower than using RAM (even on a mac arm64).
+Why is the speed going down for Julia on the macm1 machine after 1e6 experiments? 
+Turns out there is not enough RAM to fit the experiments and the system switches to swap memory which is much slower than using RAM (even on a mac arm64).
 The speed of R stopped increasing after 1e6 experiments so I didn't run more experiments.
 
 ### Threads vs Speed
 
-Now let's check how the number of threads matter for R and julia
+Now let's check how much extra speed we get from using more threads in R and Julia.
 
 ```{r}
 #| label: fig-threads
@@ -393,6 +416,7 @@ tw[, .SD, .SDcols=outcols] %>%
 ```
 
 Speed increases with increasing number of threads, though not with a simple linear scaling in the number of threads.
+The speed increase is similar for R and Julia.
 
 
 ### Top speeds per language
@@ -415,6 +439,7 @@ tabcolnames <- c('nreps'='n experiments',
                  'n_per_min3'='experiments per minute (x1000)',
                  'vs_r_speedup'='speed-up vs best R',
                  'language'='language',
+                 'primitive'='primitive',
                  'machine'='machine')
 tabcols <- names(tabcolnames)
 
@@ -424,7 +449,7 @@ timings[lang_order==1, .SD, .SDcols=tabcols] %>%
     kable(align='r', col.names=tabcolnames)
 ```
 
-## Top speeds overall
+### Top speeds overall
 
 Top 10 speeds overall
 
@@ -445,42 +470,77 @@ All results are available in a csv file [here](allresults.csv)
 
 ### Speed
 
-In this setup
+In this setup, both on a Mac M1 and a Linux machine,
 
-1. julia was 10-11 times faster than R
-2. jax was 1.7 times faster than R on a mac m1, but 0.9 times faster on a 12-thread linux machine
+1. Julia was 10-11 times faster than R
+2. JAX was 1.7 times faster than R
 
 ### Code
 
 1. Julia code seems quite close to R code.
-2. Jax comes with some [sharp bits](https://jax.readthedocs.io/en/latest/notebooks/Common_Gotchas_in_JAX.html) and may be harder to program efficiently. One concrete example with my own previous simulation studies is that I used first used `jax.numpy` arrays for different parameters and then a `scipy` function to find all combinations of these parameters. Creating this grid of parameters this way forced copying of `jax.numpy` arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Jax relies on pure functions that cannot depend on global variables.
+2. In this simple example, JAX code doesn't seem to dounting. However, JAX comes with some [sharp bits](https://jax.readthedocs.io/en/latest/notebooks/Common_Gotchas_in_JAX.html) and may be harder to program efficiently.[^1]
+   
+[^1]: One concrete example with my own previous simulation studies [@vanamsterdamConditionalAverageTreatment2023] is that I used first used `jax.numpy` arrays for different parameters and then a `scipy` function to create all combinations of these parameters. Creating this grid of parameters this way forced copying of `jax.numpy` arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Also, JAX relies on pure functions that cannot depend on global variables.
 
 ### Caveats
 
-1. Jax needs to recompile when the size of the data changes. When running experiments with e.g. different sizes of data, jax will become slower because it needs to recompile (or different fixes should be applied, e.g. padding smaller data with dummy data and giving these 0 weights in the objective calculation)
+1. JAX needs to recompile when the size of the data changes. When running experiments with e.g. different sizes of data, JAX will become slower because it needs to recompile, or you'll need to find other solutions like padding smaller data with dummy data and giving these dummy data 0 weights in the objective functions.
 2. I didn't have a CUDA-enabled GPU machine for this comparison, `vmap` may be come (much) more performant on a GPU
-3. Jax gives bare bones results. If you want to do e.g. significance testing of coefficients, or model comparisons, you will need to find implementations for this or implement this yourself. R and julia (specifically the [GLM package](https://juliastats.org/GLM.jl/stable/) provide a much wider suite of methods
-4. In jax I used general purpose optimizer. There may be more efficient ways of estimating a logistic regression model, whose optimizations are implemented in R and julia but not jax. In this sense it may not be a *fair* comparison, though these optimizations would need to be sought or implemented in jax.
-5. Jax has *autograd*. When writing custom objective functions, the general purpose optimizer approach of jax may be a benefit.
+3. JAX gives bare bones results. If you want to do e.g. significance testing of coefficients, or model comparisons, you will need to find implementations for this or implement this yourself. R and Julia (specifically the [GLM package](https://juliastats.org/GLM.jl/stable/) provide a much wider suite of methods
+4. In JAX I used general purpose optimizer. There may be more efficient ways of estimating a logistic regression model, whose optimizations are implemented in R and Julia but not JAX. In this sense it may not be a *fair* comparison, though these optimizations would need to be sought or implemented in JAX.
+5. JAX has *autograd*. When writing custom objective functions, the general purpose optimizer approach of JAX may be a benefit.
 
 ### Extensions
 
-The [julia domumentation states](https://docs.julialang.org/en/v1/manual/multi-threading/#Atomic-Operations) that certain operations to *atomic* data structures can be done in a safe-way while multithreading.
-Instead of returning all coefficients of all datasets, we could calculate the average value of the coefficients (and e.g. the avareage of the squares of the values) with less memory overhead by:
-1. instantiate an atomic vector of 9 coefficients, 2. let every experiment (which may be in different threads) add its value to this shared atomic vector with `atomic_add!` and 3. at the end, calculate the mean by dividing by `nreps`.
+#### Optimizing memory usage
 
-Custom objective functions
+Since in this case we only need the avarage of the coefficients we need not store all intermediate results. All languages may beccome much more efficient if we can program this in.
+
+- The [julia domumentation states](https://docs.julialang.org/en/v1/manual/multi-threading/#Atomic-Operations) that certain operations to *atomic* data structures can be done in a safe-way while multithreading. Instead of returning all coefficients of all datasets, we could calculate the average value of the coefficients (and e.g. the avareage of the squares of the values) with less memory overhead by:
+    1. instantiate an atomic vector of 9 coefficients
+    2. let every experiment (which may be in different threads) add its value to this shared atomic vector with `atomic_add!`
+    3. at the end, calculate the mean by dividing by `nreps`.
+- R functions can also overwrite global variables, but a question is whether this can be done in a multi-threading safe way
+- In JAX we may use `scan` to keep track of a running sum of coefficients and then `vmap` a bunch of `scan` computations
+
+In future posts I plan to dive in to dive in to these optimizations to squeeze more out of these languages.
 
 ## Conclusion
 
-What should you use for glm-like simulations?
+::: {.callout-tip}
+## What should you use for glm-like simulation studies?
 
-- probably, julia
-- if you have GPU, maybe jax
-- if you need to write custom objective functions, remains to be determined
+Probably, Julia
+:::
 
-## Computing environment
+## Session Info
 
+::: {.panel-tabset}
+## R
+
+``` {.r}
+#| echo: false
+#| eval: false
+library(sessioninfo)
+session_info(pkgs = "attached", to_file="_rsession.txt")
+
+{{< include _rsession.txt >}}
+```
+
+
+
+## Python
+
+``` {.python}
+{{< include _pythonenv.txt >}}
+```
+
+## Julia
+
+``` {.julia}
+{{< include jlspeed/Project.toml >}}
+```
+:::
 
 ## Full scripts
 
@@ -493,9 +553,7 @@ What should you use for glm-like simulations?
 
 ## Python
 
-``` {.python}
 {{< include scripts/jaxspeed.py >}}
-```
 
 ## Julia
 

@@ -4,7 +4,8 @@
     "items": [
       "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
       "/posts/210725-counterfactualvsinterventional.html",
-      "/posts/210720-good_predictions_bad_decisions.html"
+      "/posts/210720-good_predictions_bad_decisions.html",
+      "/posts/190816-lm-functional-form.html"
     ]
   },
   {
@@ -16,6 +17,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/190816-lm-functional-form.html",
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
       "/posts/210720-good_predictions_bad_decisions.html",

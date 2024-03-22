@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Wouter van Amsterdam">
+<meta name="dcterms.date" content="2019-08-16">
 
-<title>Wouter van Amsterdam - Wouter van Amsterdam, MD, PhD</title>
+<title>Wouter van Amsterdam - Finding the functional form for multiple linear regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,63 +104,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-post-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-post-listing'] = new List('listing-post-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-talks-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-talks-listing'] = new List('listing-talks-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E4W5XMDCR7"></script>
 
 <script type="text/javascript">
@@ -171,26 +149,24 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Wouter van Amsterdam - Wouter van Amsterdam, MD, PhD">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Wouter van Amsterdam - Finding the functional form for multiple linear regression">
 <meta property="og:description" content="Wouter van Amsterdam’s academic home page">
-<meta property="og:image" content="https://vanamsterdam.github.io/wvanamsterdam_square.jpg">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="Wouter van Amsterdam - Wouter van Amsterdam, MD, PhD">
+<meta name="twitter:title" content="Wouter van Amsterdam - Finding the functional form for multiple linear regression">
 <meta name="twitter:description" content="Wouter van Amsterdam’s academic home page">
-<meta name="twitter:image" content="https://vanamsterdam.github.io/wvanamsterdam_square.jpg">
 <meta name="twitter:site" content="@wvanamsterdam">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Wouter van Amsterdam</span>
     </a>
   </div>
@@ -201,27 +177,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html#selected-papers"> 
+    <a class="nav-link" href="../index.html#selected-papers"> 
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./talks.html"> 
+    <a class="nav-link" href="../talks.html"> 
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html#teaching"> 
+    <a class="nav-link" href="../index.html#teaching"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
+    <a class="nav-link" href="../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html#activities"> 
+    <a class="nav-link" href="../index.html#activities"> 
 <span class="menu-text">Activities</span></a>
   </li>  
 </ul>
@@ -233,7 +209,53 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Finding the functional form for multiple linear regression</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">statistics</div>
+                <div class="quarto-category">simulations</div>
+                <div class="quarto-category">linear regression</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://vanamsterdam.github.io">Wouter van Amsterdam</a> </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University Medical Center Utrecht
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 16, 2019</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">March 22, 2024</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -241,235 +263,155 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#selected-papers" id="toc-selected-papers" class="nav-link active" data-scroll-target="#selected-papers">Selected papers</a></li>
-  <li><a href="#talks" id="toc-talks" class="nav-link" data-scroll-target="#talks">Talks</a></li>
-  <li><a href="#teaching" id="toc-teaching" class="nav-link" data-scroll-target="#teaching">Teaching</a></li>
-  <li><a href="#posts" id="toc-posts" class="nav-link" data-scroll-target="#posts">Posts</a></li>
-  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities">Activities</a></li>
-  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
+  <li><a href="#functional-relationship-in-linear-regression" id="toc-functional-relationship-in-linear-regression" class="nav-link active" data-scroll-target="#functional-relationship-in-linear-regression">Functional relationship in linear regression</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a>
+  <ul class="collapse">
+  <li><a href="#incorrect-marginal-association" id="toc-incorrect-marginal-association" class="nav-link" data-scroll-target="#incorrect-marginal-association">Incorrect: marginal association</a></li>
+  <li><a href="#correct-partial-residual-plot" id="toc-correct-partial-residual-plot" class="nav-link" data-scroll-target="#correct-partial-residual-plot">Correct: partial residual plot</a></li>
+  <li><a href="#partial-residual-plot-when-y-not-linear-in-x" id="toc-partial-residual-plot-when-y-not-linear-in-x" class="nav-link" data-scroll-target="#partial-residual-plot-when-y-not-linear-in-x">Partial residual plot when y not linear in x</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<div class="quarto-about-trestles content">
-  <div class="about-entity">
-    <img src="wvanamsterdam_square.jpg" class="about-image
-  round " style="height: 20em; width: 20em;">
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Wouter van Amsterdam, MD, PhD</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header>
-    <div class="about-links">
-  <a href="https://x.com/wvanamsterdam" class="about-link" rel="" target="">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">Twitter</span>
-  </a>
-  <a href="https://www.linkedin.com/in/wouter-van-amsterdam-06b09023" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">Linkedin</span>
-  </a>
-  <a href="https://orcid.org/0000-0002-3181-0810" class="about-link" rel="" target="">
-    <i class="bi bi-orcid"></i>
-     <span class="about-link-text">ORCID</span>
-  </a>
-  <a href="https://github.com/vanamsterdam" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">github</span>
-  </a>
-  <a href="https://pubmed.ncbi.nlm.nih.gov/?term=van+Amsterdam%2C+W%5BAuthor%5D&amp;sort=" class="about-link" rel="" target="">
-    <i class="bi bi-pubmed"></i>
-     <span class="about-link-text">pubmed</span>
-  </a>
-  <a href="https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&amp;hl=nl&amp;oi=sra" class="about-link" rel="" target="">
-    <i class="bi bi-scholar"></i>
-     <span class="about-link-text">google-scholar</span>
-  </a>
-</div>
-  </div>
-  <div class="about-contents"><div id="hero-heading">
-<section id="bio" class="level4">
-<h4 data-anchor-id="bio">Bio</h4>
-<p>Wouter van Amsterdam is an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.</p>
-<p>Master students with a background in statistics or machine learning who want to work with me are welcome to contact me. Students enrolled at Utrecht University or UMC Utrecht can find open master projects on <a href="https://uu.konjoin.nl/profile/wouter-van-amsterdam">konjoin</a></p>
-</section>
-<section id="education" class="level4">
-<h4 data-anchor-id="education">Education</h4>
-<p><strong>University Medical Center Utrecht / Utrecht University</strong></p>
-<p>2010 | BSc. Physics<br>
-2017 | M.D.<br>
-2021 | MSc. Epidemiology (med. statistics track)<br>
-2022 | PhD. machine learning for healthcare | co-advised by <a href="https://cims.nyu.edu/~rajeshr/">Rajesh Ranganath</a> from NYU</p>
-</section>
-<section id="experience" class="level4">
-<h4 data-anchor-id="experience">Experience</h4>
-<p><strong>UMC Utrecht</strong>| Assistant Professor | 2023 - now<br>
-<strong>Babylon Health</strong> | Senior Research Scientist | 2021 - 2023</p>
-<p><a href="cv.pdf">CV (pdf)</a></p>
-</section>
-</div></div>
-</div>
 
-<section id="selected-papers" class="level2">
-<h2 data-anchor-id="selected-papers">Selected papers</h2>
-<p>When accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).<br>
-<em>van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., &amp; Ciná, G. (2024). ML4H 2023 findings-track</em><br>
-<a href="papers/2024_selffulfilling_ml4h.pdf">pdf</a></p>
-<p>Individual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.&nbsp; <em>van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., &amp; Ranganath, R. (2022). Scientific Reports</em><br>
-<a href="https://www.nature.com/articles/s41598-022-09775-9.pdf">pdf</a></p>
-<p>Conditional average treatment effect estimation with marginally constrained models.<br>
-<em>van Amsterdam, W. A. C., &amp; Ranganath, R. (2023). Journal of Causal Inference</em><br>
-<a href="papers/2023_offset_jci.pdf">pdf</a></p>
-<p>Decision making in cancer: Causal questions require causal answers.<br>
-<em>van Amsterdam, W. A. C., de Jong, P. A., Suijkerbuijk, K. P. M., Verhoeff, J. J. C., Leiner, T., &amp; Ranganath, R. (2022). ArXiv pre-print</em><br>
-<a href="papers/2022_comment_arxiv.pdf">pdf</a></p>
-<p>Eliminating biasing signals in lung cancer images for prognosis predictions with deep learning.<br>
-<em>van Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., &amp; Eijkemans, M. J. C. (2019). Npj Digital Medicine</em><br>
-<a href="https://www.nature.com/articles/s41746-019-0194-x.pdf">pdf</a></p>
-<p>More papers at <a href="https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&amp;hl=nl&amp;oi=sra">google scholar</a></p>
+<section id="functional-relationship-in-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="functional-relationship-in-linear-regression">Functional relationship in linear regression</h2>
+<p>A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a <a href="https://en.wikipedia.org/wiki/Partial_residual_plot">partial residual plot</a>. Here I will generate some data to illustrate this</p>
 </section>
-<section id="talks" class="level2">
-<h2 data-anchor-id="talks"><a href="./talks.html">Talks</a></h2>
-<div id="listing-talks-listing" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1710198000000" data-listing-file-modified-sort="1710590862088" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="427">
-<a href="./talks/240312-dsbiostats-twitter/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Wouter’s twitter X-peri(ments/ences)
-</h5>
-<div class="card-text listing-description">
-
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressMessages</span>({<span class="fu">require</span>(ggplot2); <span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())})</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max=</span><span class="dv">2</span><span class="sc">*</span>pi)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> .<span class="dv">5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">sin</span>(x) <span class="sc">+</span> <span class="fu">rnorm</span>(N, <span class="at">sd=</span>.<span class="dv">25</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sy <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">sd=</span>.<span class="dv">1</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> w <span class="sc">+</span> sy</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x,w,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Wouter van Amsterdam
+<p>The data consists of two real-valued ‘independent’ variables <span class="math inline">\(x,w\)</span>, where</p>
+<p><span class="math display">\[
+\begin{align}
+x &amp;\sim U(0, 2 \pi) \\
+\epsilon_w &amp;\sim N(0, 0.25) \\
+\epsilon_y &amp;\sim N(0, 0.1) \\
+w &amp;:= \frac{x}{2} + \sin(x) \\
+y &amp;:= x + w + \epsilon_y
+\end{align}
+\]</span></p>
+<p>Clearly <span class="math inline">\(y\)</span> is linear in both <span class="math inline">\(x\)</span> and <span class="math inline">\(w\)</span>. A plot of the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>w,<span class="at">col=</span>y, <span class="at">size=</span>y)) <span class="sc">+</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="190816-lm-functional-form_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>joint distribution of x, w, y</figcaption>
+</figure>
 </div>
-<div class="listing-date">
-Mar 12, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
 </div>
 </div>
 </section>
-<section id="teaching" class="level2">
-<h2 data-anchor-id="teaching">Teaching</h2>
-<ul>
-<li>2024 <a href="https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science">Introduction to Causal Inference and Causal Data Science summer school</a></li>
-<li>2023 Big Data summer school</li>
-</ul>
-</section>
-<section id="posts" class="level2">
-<h2 data-anchor-id="posts"><a href="./posts.html">Posts</a></h2>
-<div id="listing-post-listing" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="statistics,simulations,linear regression" data-listing-date-sort="1565906400000" data-listing-file-modified-sort="1711111480516" data-listing-date-modified-sort="1711062000000" data-listing-reading-time-sort="2" data-listing-word-count-sort="356">
-<a href="./posts/190816-lm-functional-form.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/190816-lm-functional-form_files/figure-html/unnamed-chunk-2-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Finding the functional form for multiple linear regression
-</h5>
-<div class="card-text listing-description">
-A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the…
+<section id="plots" class="level2">
+<h2 class="anchored" data-anchor-id="plots">Plots</h2>
+<section id="incorrect-marginal-association" class="level3">
+<h3 class="anchored" data-anchor-id="incorrect-marginal-association">Incorrect: marginal association</h3>
+<p>Let’s say we’re particularly interested in the relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span>, both conditional on <span class="math inline">\(w\)</span>. Looking at the <em>marginal</em> association between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> with a scatterplot will set us on the wrong foot, because of the association between <span class="math inline">\(x\)</span> and <span class="math inline">\(w\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="190816-lm-functional-form_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>marginal association between x and y</figcaption>
+</figure>
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Wouter van Amsterdam
-</div>
-<div class="listing-date">
-Aug 16, 2019
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="causal inference,statistics" data-listing-date-sort="1627164000000" data-listing-file-modified-sort="1709905610036" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687">
-<a href="./posts/210725-counterfactualvsinterventional.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-The difference between intervention and counterfactuals
-</h5>
-<div class="card-text listing-description">
-Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Wouter van Amsterdam
-</div>
-<div class="listing-date">
-Jul 25, 2021
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="r,julia,jax,python,simulation studies" data-listing-file-modified-sort="1711113866117" data-listing-reading-time-sort="14" data-listing-word-count-sort="2624">
-<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/240308-jaxopt-vs-r-vs-julia/index_files/figure-html/fig-times-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-The need for speed, performing simulation studies in R, JAX and Julia
-</h5>
-<div class="card-text listing-description">
-Simulation experiments are important when evaluating methods but also for applied work in for example power analyses <span class="citation" data-cites="vanamsterdamAssociationMuscleQuantity2022">(e.g. Amsterdam, Harlianto, et al. 2022)</span> or sensitivity…<span class="citation" data-cites="vanamsterdamIndividualTreatmentEffect2022"></span>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Wouter van Amsterdam
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
 </div>
 </div>
 </section>
-<section id="activities" class="level2">
-<h2 data-anchor-id="activities">Activities</h2>
-<ul>
-<li>board member <a href="https://www.vvsor.nl/biometrics/">BMS-ANed</a> (Dutch biometrics society, board member)</li>
-<li>coordinator of UMC Utrecht <a href="https://www.umcutrecht.nl/en/ai-lab-methodology">AI methods lab</a></li>
-<li>ambassador for <a href="https://www.uu.nl/en/research/applied-data-science">Applied Data Science</a> of Utrecht University</li>
-<li>co-coordinator of <a href="https://www.uu.nl/en/research/applied-data-science/sig-causal-data-science">Causal Data Science Special Interest Group</a> of Utrecht University</li>
-</ul>
+<section id="correct-partial-residual-plot" class="level3">
+<h3 class="anchored" data-anchor-id="correct-partial-residual-plot">Correct: partial residual plot</h3>
+<p>To construct the correct plot, we can generate a partial residual plot, which is created with <code>resid(lm(y~x+w))+b_x x ~ x</code>.</p>
+<p>Where <code>b_x</code> is the regression coefficient found through linear regression of <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span> and <span class="math inline">\(w\)</span>. In a plot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lmfit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x<span class="sc">+</span>w)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>yresid <span class="ot">&lt;-</span> <span class="fu">resid</span>(lmfit)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>b_x <span class="ot">&lt;-</span> <span class="fu">coef</span>(lmfit)[<span class="st">'x'</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plotdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, <span class="at">y=</span>yresid <span class="sc">+</span> b_x <span class="sc">*</span> x)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plotdata, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"resid(lm(y~x+w)) + b_x x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-partialresid" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-partialresid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="190816-lm-functional-form_files/figure-html/fig-partialresid-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partialresid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: partial residual plot
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="contact" class="level2">
-<h2 data-anchor-id="contact">Contact</h2>
-<p>wamster3 at umcutrecht dot nl</p>
-
-
+<section id="partial-residual-plot-when-y-not-linear-in-x" class="level3">
+<h3 class="anchored" data-anchor-id="partial-residual-plot-when-y-not-linear-in-x">Partial residual plot when y not linear in x</h3>
+<p>What if <span class="math inline">\(y\)</span> were not linear in <span class="math inline">\(x\)</span>?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> w <span class="sc">+</span> sy</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lmfit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y2 <span class="sc">~</span> x <span class="sc">+</span> w)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>b_x2 <span class="ot">&lt;-</span> <span class="fu">coef</span>(lmfit2)[<span class="st">'x'</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plotdata2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, <span class="at">y=</span><span class="fu">resid</span>(lmfit2) <span class="sc">+</span> b_x2 <span class="sc">*</span> x)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plotdata2, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"resid(lm(y~x+w)) + b_x x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="190816-lm-functional-form_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>partial residual plot when y not linear in x</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The functional relationship between an outcome and a covariate in a linear regression conditional on other covariates is visualized with a <a href="https://en.wikipedia.org/wiki/Partial_residual_plot">partial residual plot</a>, or:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lmfit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x<span class="sc">+</span>w)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">resid</span>(lmfit) <span class="sc">+</span> <span class="fu">coef</span>(lmfit)[<span class="st">'x'</span>] <span class="sc">*</span> x <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{van amsterdam2019,
+  author = {van Amsterdam, Wouter},
+  title = {Finding the Functional Form for Multiple Linear Regression},
+  date = {2019-08-16},
+  url = {https://vanamsterdam.github.io/posts/190816-lm-functional-form.html},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van amsterdam2019" class="csl-entry quarto-appendix-citeas" role="listitem">
+Amsterdam, Wouter van. 2019. <span>“Finding the Functional Form for
+Multiple Linear Regression.”</span> August 16, 2019. <a href="https://vanamsterdam.github.io/posts/190816-lm-functional-form.html">https://vanamsterdam.github.io/posts/190816-lm-functional-form.html</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -634,6 +576,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -1016,6 +965,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="vanamsterdam/vanamsterdam.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkxODQ3NTY3NDc=" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 
 

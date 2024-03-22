@@ -8,7 +8,7 @@ categories:
 - julia
 - jax
 - python
-- "simulation studies"
+- simulation studies
 ---
 
 Simulation experiments are important when evaluating methods but also for applied work in for example power analyses [e.g. @vanamsterdamAssociationMuscleQuantity2022] or sensitivity analyses [e.g. @vanamsterdamIndividualTreatmentEffect2022].

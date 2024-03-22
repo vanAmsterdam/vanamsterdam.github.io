@@ -1,8 +1,6 @@
 ---
 title: Partial residual plots with multiply imputed data
-<!--bibliography: references.bib-->
 eval: true
-draft: true
 categories:
 - r
 - linear regression

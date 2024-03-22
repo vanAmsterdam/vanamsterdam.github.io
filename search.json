@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Posts",
     "section": "",
-    "text": "The need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nr\n\n\njulia\n\n\njax\n\n\npython\n\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\n\n\n\nstatistics\n\n\nsimulations\n\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
+    "text": "Partial residual plots with multiply imputed data\n\n\n\n\n\n\nr\n\n\nlinear regression\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nr\n\n\njulia\n\n\njax\n\n\npython\n\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\n\n\n\nstatistics\n\n\nsimulations\n\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
@@ -231,6 +231,41 @@
     "text": "Conclusion\nThe functional relationship between an outcome and a covariate in a linear regression conditional on other covariates is visualized with a partial residual plot, or:\n\nlmfit &lt;- lm(y~x+w)\nplot(resid(lmfit) + coef(lmfit)['x'] * x ~ x)"
   },
   {
+    "objectID": "posts/240322-mice-partial-residual-plot.html",
+    "href": "posts/240322-mice-partial-residual-plot.html",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "",
+    "text": "In an earlier blog post I show how to plot the dependence of a response variable on covariate, both conditional on other covariates with a partial residual plot In this post I investigate how to do this when there are missing values using package mice.\nThis post will rely in Hanne Oberman’s vignette on ggmice, a plotting package for mice::mids objects."
+  },
+  {
+    "objectID": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
+    "href": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Data and imputation",
+    "text": "Data and imputation\nIn this post we’ll use the boys dataset which is provided in the mice package. The mice package implements multiple imputation through chained equations1.\n\nlibrary(mice)\nlibrary(ggplot2); theme_set(theme_bw())\n\ndf &lt;- boys\n\nnimps &lt;- 5\nimp &lt;- mice(df, m = nimps, method = \"pmm\")"
+  },
+  {
+    "objectID": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
+    "href": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Partial residual plot with complete data",
+    "text": "Partial residual plot with complete data\nWe’ll assume we’re interested in how weight (wgt) depends on height (hgt), corrected for all other variables. Both have missing values in the dataset.\nWe can use one of the imputed datasets to show how partial residual plots are made with complete data. With complete data, partial residual plots can be created like so:\n\ndf1 &lt;- complete(imp, 1)\n\nget_partial_resid &lt;- function(data) {\n  fit &lt;- lm(wgt~., data=data)\n  yresid &lt;- resid(fit)\n  return(yresid + coef(fit)['hgt'] * data$hgt)\n}\n\nplotdata1 &lt;- data.frame(hgt=df1$hgt, y=get_partial_resid(df1))\n\nggplot(plotdata1, aes(x=hgt, y=y)) + geom_point()\n\n\n\n\n\n\n\nFigure 1: Partial residual plot on complete data\n\n\n\n\n\nNote how this differs from the marginal association between hgt and wgt. The difference between the plots is explained by other covariates that are correlated both with hgt and wgt.\n\nggplot(df1, aes(x=hgt, y=wgt)) + geom_point()\n\n\n\n\n\n\n\nFigure 2: marginal association between age and height"
+  },
+  {
+    "objectID": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
+    "href": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Putting them together",
+    "text": "Putting them together\nThe issue with the partial residual plot Figure 1 is that the residuals depend on the imputed values for all variables. How to go about this? We can treat the residuals as we would ‘coefficients’ in imputation and use Rubin’s rules on them. Let’s see how to do this with mice.\n\nimpdfs &lt;- complete(imp, \"all\")\nimpdfs &lt;- lapply(impdfs, function(data) data.frame(data, partial_resid=get_partial_resid(data)))\nimpdfs &lt;- lapply(1:nimps, function(i) data.frame(impdfs[[i]], impidx=i))\nimpdf_long &lt;- do.call(rbind, impdfs)\n\nNote that we cannot directly pool the residuals because they may be correlated with the imputed values for hgt. Pooling imputed values for hgt and the partial residual removes this correlation. Instead we could just plot all the values.\n\nggplot(impdf_long, aes(x=hgt, y=partial_resid)) + geom_point(aes(shape=factor(impidx)), alpha=0.5)\n\n\n\n\n\n\n\nFigure 3: partial residual plot with imputed datasets\n\n\n\n\n\nIn the future I’d like to learn how to make good bivariate estimates of these points (e.g. fitting a bivariate normal distribution). This should for example also come up in calculating sensitivity and specificity on multiply imputed datasets, as these are clearly correlated. Fully bayesian imputation is another possibility obviously."
+  },
+  {
+    "objectID": "posts/240322-mice-partial-residual-plot.html#footnotes",
+    "href": "posts/240322-mice-partial-residual-plot.html#footnotes",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nmultiple imputation with chained equations sequentially imputes values for all variables with missing values by building prediction models for each variable based on other variables. This imputation is done multiple times with multiple random seeds and thus results in a number of different imputed datasets. A typical analysis workflow is to do these imputations and on each imputed dataset fit a model of interest. The coefficients of these models can then be pooled using Rubin’s rules.↩︎"
+  },
+  {
     "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
     "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
     "title": "The need for speed, performing simulation studies in R, JAX and Julia",
@@ -368,7 +403,7 @@
     "href": "index.html#posts",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Posts",
-    "text": "Posts\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nAug 16, 2019\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 25, 2021\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Posts\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nAug 16, 2019\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 25, 2021\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#activities",

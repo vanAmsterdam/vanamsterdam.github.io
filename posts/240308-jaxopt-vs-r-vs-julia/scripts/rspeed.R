@@ -36,7 +36,6 @@ if (nthreads == 1) {
 } else {
     params <- future_map(1:nreps, solve, .options=furrr_options(seed=240316))
 }
-
 outmat <- do.call(rbind, params)
 means <- colMeans(outmat)
 print(means[1])

@@ -35,8 +35,13 @@ julia -t $nthreads scripts/jlspeed.jl $nreps  342.87s user 27.67s system 99% cpu
 julia -t $nthreads scripts/jlspeed.jl $nreps  596.00s user 81.17s system 609% cpu 1:51.02 total 1000000 nreps 8 nthreads
 julia -t $nthreads scripts/jlspeed.jl $nreps  3389.66s user 282.42s system 99% cpu 1:01:20.94 total 10000000 nreps 1 nthreads
 julia -t $nthreads scripts/jlspeed.jl $nreps  5701.98s user 1199.38s system 283% cpu 40:32.81 total 10000000 nreps 8 nthreads
-python scripts/jaxspeed.py $nreps vmap  5.45s user 0.45s system 132% cpu 4.463 total 1000 nreps 8 threads vmap primitive
-python scripts/jaxspeed.py $nreps vmap  9.28s user 1.65s system 216% cpu 5.051 total 10000 nreps 8 threads vmap primitive
-python scripts/jaxspeed.py $nreps vmap  66.13s user 219.76s system 17% cpu 26:50.98 total 100000 nreps 8 threads vmap primitive
-python scripts/jaxspeed.py $nreps vmap  4.52s user 6.35s system 29% cpu 37.359 total 1000000 nreps 8 threads vmap primitive
-python scripts/jaxspeed.py $nreps vmap  4.78s user 5.27s system 31% cpu 32.202 total 10000000 nreps 8 threads vmap primitive
+python scripts/jaxspeed.py $nreps vmap  5.10s user 0.34s system 144% cpu 3.762 total 1000 nreps 8 threads vmapnojit primitive
+python scripts/jaxspeed.py $nreps vmap  9.34s user 1.58s system 222% cpu 4.907 total 10000 nreps 8 threads vmapnojit primitive
+python scripts/jaxspeed.py $nreps vmap  62.56s user 138.68s system 29% cpu 11:21.99 total 100000 nreps 8 threads vmapnojit primitive
+python scripts/jaxspeed.py $nreps vmap  4.28s user 6.85s system 23% cpu 47.837 total 1000000 nreps 8 threads vmapnojit primitive
+python scripts/jaxspeed.py $nreps vmap  4.74s user 5.27s system 50% cpu 19.762 total 10000000 nreps 8 threads vmapnojit primitive
+python scripts/jaxspeed.py $nreps vmap  5.15s user 0.56s system 70% cpu 8.043 total 1000 nreps 8 threads vmap primitive
+python scripts/jaxspeed.py $nreps vmap  9.40s user 1.46s system 218% cpu 4.968 total 10000 nreps 8 threads vmap primitive
+python scripts/jaxspeed.py $nreps vmap  64.07s user 322.20s system 14% cpu 43:27.14 total 100000 nreps 8 threads vmap primitive
+python scripts/jaxspeed.py $nreps vmap  5.92s user 4.43s system 39% cpu 25.997 total 1000000 nreps 8 threads vmap primitive
+python scripts/jaxspeed.py $nreps vmap  5.97s user 4.55s system 54% cpu 19.310 total 10000000 nreps 8 threads vmap primitive

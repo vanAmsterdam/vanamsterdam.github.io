@@ -15,3 +15,8 @@ author:
 # execute when source changes
 execute:
   freeze: auto
+
+# allow commenting
+comments:
+  giscus:
+    repo: vanamsterdam/vanamsterdam.github.io

@@ -310,6 +310,7 @@ timings[machine=='macm1'&language=='jax'&is.na(primitive), primitive:='map']
 #timings <- timings[!(language=='jax' & primitive!='map')]
 # timings[language=='jax', language:=paste0(language, '-', primitive)]
 timings[language!='jax', primitive:='map']
+timings <- timings[!str_ends(primitive, 'nojit')]
 
 # grab the time 
 timings[machine=='macm1', time_str:=str_extract(string, "(?<=cpu\\ )(.*)(?= total)")]
@@ -478,7 +479,7 @@ In this setup, both on a Mac M1 and a Linux machine,
 ### Code
 
 1. Julia code seems quite close to R code.
-2. In this simple example, JAX code doesn't seem to dounting. However, JAX comes with some [sharp bits](https://jax.readthedocs.io/en/latest/notebooks/Common_Gotchas_in_JAX.html) and may be harder to program efficiently.[^1]
+2. In this simple example, the JAX code doesn't seem too dounting. However, JAX comes with some [sharp bits](https://jax.readthedocs.io/en/latest/notebooks/Common_Gotchas_in_JAX.html) and may be harder to program efficiently.[^1]
    
 [^1]: One concrete example with my own previous simulation studies [@vanamsterdamConditionalAverageTreatment2023] is that I used first used `jax.numpy` arrays for different parameters and then a `scipy` function to create all combinations of these parameters. Creating this grid of parameters this way forced copying of `jax.numpy` arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Also, JAX relies on pure functions that cannot depend on global variables.
 
@@ -488,7 +489,7 @@ In this setup, both on a Mac M1 and a Linux machine,
 2. I didn't have a CUDA-enabled GPU machine for this comparison, `vmap` may be come (much) more performant on a GPU
 3. JAX gives bare bones results. If you want to do e.g. significance testing of coefficients, or model comparisons, you will need to find implementations for this or implement this yourself. R and Julia (specifically the [GLM package](https://juliastats.org/GLM.jl/stable/) provide a much wider suite of methods
 4. In JAX I used general purpose optimizer. There may be more efficient ways of estimating a logistic regression model, whose optimizations are implemented in R and Julia but not JAX. In this sense it may not be a *fair* comparison, though these optimizations would need to be sought or implemented in JAX.
-5. JAX has *autograd*. When writing custom objective functions, the general purpose optimizer approach of JAX may be a benefit.
+5. JAX has *autograd*. When writing custom objective functions JAX can automatically calculate gradients and hessians, making it possible to use general purpose first or second order optimizers [e.g. @vanamsterdamConditionalAverageTreatment2023].
 
 ### Extensions
 
@@ -548,17 +549,17 @@ session_info(pkgs = "attached", to_file="_rsession.txt")
 ## R
 
 ``` {.r}
-{{< include scripts/rspeed.R >}}
+{{< include _scripts/rspeed.R >}}
 ```
 
 ## Python
 
-{{< include scripts/jaxspeed.py >}}
+{{< include _scripts/jaxspeed.py >}}
 
 ## Julia
 
 ``` {.julia}
-{{< include scripts/jlspeed.jl >}}
+{{< include _scripts/jlspeed.jl >}}
 ```
 :::
 

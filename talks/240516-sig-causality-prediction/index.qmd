@@ -1,0 +1,21 @@
+---
+title: "Causality and prediction: developing and validating models for decision making"
+date: 2024/05/16
+format:
+  html
+draft: true
+---
+
+## Abstract
+
+Causal inference and prediction are often thought of as separate entities, where causal inference is taken to mean estimating a parameter of a distribution and prediction means estimating a conditional expectation.
+However, in many settings such as health care and advertisement, prediction models are increasingly used for decision making.
+
+In the first part of this talk I show how naively using prediction models for decision making can lead to the unwanted situation of *harmful self-fulfilling prophecies*: models that cause harm when used for decision making but paradoxically are still found to predict accurately in validation studies.
+
+In the second part I describe how we might mitigate these unwanted situations and instead validate and develop models that are useful for decision support.
+Models for decision support should be evaluated by considering the introduction of the model as an *intervention* that changes the treatment policy.
+How then to develop models that lead to good treatment policies?
+*Prediction under intervention* models bring causal inference and prediction together by viewing the prediction estimands as conditional expectations with a do-expression.
+These models provide a rational basis for decision making.
+Finally, I describe several challenges in developing and validating prediction under intervention models and some mitigation strategies.

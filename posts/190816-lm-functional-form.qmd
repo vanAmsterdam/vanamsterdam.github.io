@@ -88,7 +88,7 @@ ggplot(plotdata, aes(x=x,y=y)) +
   ylab("resid(lm(y~x+w)) + b_x x")
 ```
 
-### Partial residual plot when y not linear in x
+### Partial residual plot when y is not linear in x
 
 What if $y$ were not linear in $x$?
 

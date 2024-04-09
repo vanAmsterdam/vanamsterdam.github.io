@@ -28,17 +28,31 @@ def solve(k):
     param, state = solver.run(w_init, data)
     return param
 
+# make a scan version that doesn't store the full coefficients
+def solve_scan(carry, x=None):
+    k_old, param_old = carry
+    k = random.split(k_old)[0]
+    data = make_data(k)
+    param, _ = solver.run(w_init, data)
+    return (k, param_old + param), None
+
 if __name__ == '__main__':
     args = parser.parse_args()
     k0 = random.PRNGKey(240316)
-    ks = random.split(k0, args.nreps)
     if args.primitive == 'map':
+        ks = random.split(k0, args.nreps)
         params = lax.map(solve, ks)
+        means = jnp.mean(params, axis=0)
     elif args.primitive == 'vmap':
+        ks = random.split(k0, args.nreps)
         params = vmap(solve)(ks)
+        means = jnp.mean(params, axis=0)
+    elif args.primitive == 'scan':
+        carry = (k0, w_init)
+        (k_final, params), _ = lax.scan(solve_scan, carry, None, length=args.nreps)
+        means = params / args.nreps
     else:
-        raise ValueError(f"unrecognized primitive: {args.primitive}, choose map or vmap")
-
-    means = jnp.mean(params, axis=0)
+        raise ValueError(f"unrecognized primitive: {args.primitive}, choose map, vmap or scan")
     print(means[0])
+
 

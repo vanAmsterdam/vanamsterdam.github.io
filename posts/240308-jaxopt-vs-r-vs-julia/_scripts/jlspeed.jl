@@ -10,6 +10,11 @@ function parse_cmdline()
           required = false
           arg_type = Int
           default = 10
+        "method"
+          help = "method argument for glm function, either cholesky (default) or QR"
+          required = false
+          arg_type = String
+          default = "cholesky"
     end
 
     return parse_args(parser)
@@ -23,6 +28,7 @@ function make_data(n::Integer=1000)
     return X, y
 end
 
+# function solve(i::Int64=1, method::String="cholesky")
 function solve(i::Int64=1)
     X, y = make_data()
     fit = glm(X, y, Bernoulli())

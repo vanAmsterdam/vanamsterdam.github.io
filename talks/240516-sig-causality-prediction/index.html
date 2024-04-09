@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Wouter van Amsterdam">
-<meta name="dcterms.date" content="2024-03-08">
-<meta name="description" content="first post to test out quarto">
+<meta name="dcterms.date" content="2024-05-16">
 
-<title>Wouter van Amsterdam - Post 1</title>
+<title>Wouter van Amsterdam - Causality and prediction: developing and validating models for decision making</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,61 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -121,12 +86,12 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Wouter van Amsterdam - Post 1">
-<meta property="og:description" content="first post to test out quarto">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Wouter van Amsterdam - Causality and prediction: developing and validating models for decision making">
+<meta property="og:description" content="Wouter van Amsterdam’s academic home page">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="Wouter van Amsterdam - Post 1">
-<meta name="twitter:description" content="first post to test out quarto">
+<meta name="twitter:title" content="Wouter van Amsterdam - Causality and prediction: developing and validating models for decision making">
+<meta name="twitter:description" content="Wouter van Amsterdam’s academic home page">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
 </head>
@@ -138,7 +103,7 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Wouter van Amsterdam</span>
     </a>
   </div>
@@ -149,27 +114,27 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html#selected-papers"> 
+    <a class="nav-link" href="../../index.html#selected-papers"> 
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../talks.html"> 
+    <a class="nav-link" href="../../talks.html"> 
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html#teaching"> 
+    <a class="nav-link" href="../../index.html#teaching"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts.html"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html#activities"> 
+    <a class="nav-link" href="../../index.html#activities"> 
 <span class="menu-text">Activities</span></a>
   </li>  
 </ul>
@@ -184,18 +149,8 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Post 1</h1>
-                  <div>
-        <div class="description">
-          first post to test out quarto
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">code</div>
-                <div class="quarto-category">writing</div>
-                <div class="quarto-category">r</div>
-              </div>
-                  </div>
+      <h1 class="title">Causality and prediction: developing and validating models for decision making</h1>
+                      </div>
   </div>
     
   <div class="quarto-title-meta-author">
@@ -218,7 +173,7 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 8, 2024</p>
+        <p class="date">May 16, 2024</p>
       </div>
     </div>
     
@@ -230,16 +185,7 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#this-is-post-one" id="toc-this-is-post-one" class="nav-link active" data-scroll-target="#this-is-post-one">This is post one</a>
-  <ul class="collapse">
-  <li><a href="#generate-some-data" id="toc-generate-some-data" class="nav-link" data-scroll-target="#generate-some-data">generate some data</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -248,39 +194,26 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
 
 
 
-<section id="this-is-post-one" class="level2">
-<h2 class="anchored" data-anchor-id="this-is-post-one">This is post one</h2>
-<p>like it?</p>
-<section id="generate-some-data" class="level3">
-<h3 class="anchored" data-anchor-id="generate-some-data">generate some data</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>s_y <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> x <span class="sc">+</span> s_y</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="240308-post1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>Causal inference and prediction are often thought of as separate entities, where causal inference is taken to mean estimating a parameter of a distribution and prediction means estimating a conditional expectation. However, in many settings such as health care and advertisement, prediction models are increasingly used for decision making.</p>
+<p>In the first part of this talk I show how naively using prediction models for decision making can lead to the unwanted situation of <em>harmful self-fulfilling prophecies</em>: models that cause harm when used for decision making but paradoxically are still found to predict accurately in validation studies.</p>
+<p>In the second part I describe how we might mitigate these unwanted situations and instead validate and develop models that are useful for decision support. Models for decision support should be evaluated by considering the introduction of the model as an <em>intervention</em> that changes the treatment policy. How then to develop models that lead to good treatment policies? <em>Prediction under intervention</em> models bring causal inference and prediction together by viewing the prediction estimands as conditional expectations with a do-expression. These models provide a rational basis for decision making. Finally, I describe several challenges in developing and validating prediction under intervention models and some mitigation strategies.</p>
 
 
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{van amsterdam2024,
   author = {van Amsterdam, Wouter},
-  title = {Post 1},
-  date = {2024-03-08},
-  url = {https://vanamsterdam.github.io/posts/240308-post1.html},
+  title = {Causality and Prediction: Developing and Validating Models
+    for Decision Making},
+  date = {2024-05-16},
+  url = {https://vanamsterdam.github.io/talks/240516-sig-causality-prediction},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van amsterdam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Amsterdam, Wouter van. 2024. <span>“Post 1.”</span> March 8, 2024. <a href="https://vanamsterdam.github.io/posts/240308-post1.html">https://vanamsterdam.github.io/posts/240308-post1.html</a>.
+Amsterdam, Wouter van. 2024. <span>“Causality and Prediction: Developing
+and Validating Models for Decision Making.”</span> May 16, 2024. <a href="https://vanamsterdam.github.io/talks/240516-sig-causality-prediction">https://vanamsterdam.github.io/talks/240516-sig-causality-prediction</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -835,10 +768,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://giscus.app/client.js" data-repo="vanamsterdam/vanamsterdam.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkxODQ3NTY3NDc=" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

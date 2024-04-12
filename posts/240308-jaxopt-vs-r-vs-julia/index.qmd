@@ -356,7 +356,7 @@ For `map` this is not the case.
 #| eval: true
 #| echo: false
 
-timings <- timings[!((language == 'jax') & (primitive != 'map') & (nreps > 1e5))]
+timings <- timings[!((language == 'jax') & (!primitive %in% c('map', 'scan')) & (nreps > 1e5))]
 
 ```
 

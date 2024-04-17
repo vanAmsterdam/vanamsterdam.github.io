@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="Wouter van Amsterdam">
-  <meta name="dcterms.date" content="2024-04-18">
-  <title>Wouter van Amsterdam - AI and its (mis)uses in medical research and practice</title>
+  <title>Wouter van Amsterdam - demo presentation for quarto features</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -30,28 +29,8 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-      margin-bottom: 0em;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E4W5XMDCR7"></script>
 
   <script type="text/javascript">
@@ -66,10 +45,10 @@
     });
   gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
   </script>
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -355,9 +334,9 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Wouter van Amsterdam - AI and its (mis)uses in medical research and practice">
+<meta property="og:title" content="Wouter van Amsterdam - demo presentation for quarto features">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="Wouter van Amsterdam - AI and its (mis)uses in medical research and practice">
+<meta name="twitter:title" content="Wouter van Amsterdam - demo presentation for quarto features">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
 </head>
@@ -367,614 +346,76 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">AI and its (mis)uses in medical research and practice</h1>
+  <h1 class="title">demo presentation for quarto features</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="https://vanamsterdam.github.io">Wouter van Amsterdam</a> 
+Wouter van Amsterdam 
 </div>
-        <p class="quarto-title-affiliation">
-            University Medical Center Utrecht
-          </p>
-    </div>
+</div>
 </div>
 
-  <p class="date">2024-04-18</p>
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Table of contents</h2>
-<ul>
-<li class="fragment"><a href="#/what-is-ai" id="/toc-what-is-ai">What is AI?</a></li>
-<li class="fragment"><a href="#/what-is-a-large-language-model-like-chatgpt" id="/toc-what-is-a-large-language-model-like-chatgpt">What is a large-language model like chatGPT?</a></li>
-<li class="fragment"><a href="#/using-ml-in-research" id="/toc-using-ml-in-research">Using ML in research</a></li>
-<li class="fragment"><a href="#/safe-use-of-ai-models-in-medical-practice" id="/toc-safe-use-of-ai-models-in-medical-practice">Safe use of AI models in medical practice</a></li>
-</ul>
-</nav>
 </section>
-<section>
-<section id="what-is-ai" class="title-slide slide level1 center">
-<h1>What is AI?</h1>
-
-</section>
-<section id="what-is-ai-1" class="slide level2">
-<h2>What is AI?</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What is artificial intelligence?</strong></p>
-</div>
-<div class="callout-content">
-<p>computers doing tasks that normally require intelligence <sup>1</sup></p>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What is artificial <em>general</em> intelligence?</strong></p>
-</div>
-<div class="callout-content">
-<p>General purpose AI that performs a range of tasks in different domains like humans</p>
-</div>
-</div>
-</div>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>these are my own definitions</p></li></ol></aside></section>
-<section id="ai-subsumes-rule-based-systems-and-machine-learning" class="slide level2">
-<h2>AI subsumes rule-based systems and machine learning</h2>
-<ul>
-<li class="fragment">Rule-based AI: knowledge base of rules</li>
-<li class="fragment">Machine learning: statistical learning from examples
-<ul>
-<li class="fragment">(traditional) machine learning (logistic regression, SVM, RF, GBM)</li>
-<li class="fragment">modern machine learning: deep learning and foundation models</li>
-</ul></li>
-</ul>
-</section>
-<section id="rule-based-systems-are-ai" class="slide level2">
-<h2>Rule-based systems are AI</h2>
-<ul>
-<li class="fragment">rule: all cows are animals</li>
-<li class="fragment">observation: this is a cow <span class="math inline">\(\to\)</span> it is an animal</li>
-<li class="fragment">applications:
-<ul>
-<li class="fragment">medication interaction checkers</li>
-<li class="fragment">bedside patient monitors</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="machine-learning-statistical-learning-from-examples">machine learning: statistical learning from examples</h3>
-</section>
-<section id="ml-tasks" class="slide level2">
-<h2>ML tasks</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/gen_scatter.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<p>data: <span class="math display">\[l_i,w_i,s_i \sim p(l,w,s)\]</span></p>
-</div>
-</div>
-</section>
-<section id="ml-tasks-generation" class="slide level2">
-<h2>ML tasks: generation</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/gen_full.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<p>use samples to learn model for <em>joint</em> distribution <span class="math inline">\(p\)</span> <span class="math display">\[
-  l_j,w_j,s_j \sim p_{\theta}(l,w,s)
-\]</span></p>
-</div>
-</div>
-</section>
-<section id="ml-tasks-conditional-generation" class="slide level2">
-<h2>ML tasks: conditional generation</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/gen_boy.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<p>use samples to learn model for <em>conditional</em> distribution <span class="math inline">\(p\)</span> <span class="math display">\[
-  l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})
-\]</span></p>
-</div>
-</div>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;">task</th>
-<th style="text-align: left;"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">generation</td>
-<td style="text-align: left;"><span class="math inline">\(l_j,w_j,s_j \sim p_{\theta}(l,w,s)\)</span></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="ml-tasks-conditional-generation-2" class="slide level2">
-<h2>ML tasks: conditional generation 2</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/gen_scatter.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<p>use samples to learn model for <em>conditional</em> distribution <span class="math inline">\(p\)</span> of one variable <span class="math display">\[
-s_j \sim p_{\theta}(s|l=l_i,w=w_i)
-\]</span></p>
-</div>
-</div>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;">task</th>
-<th style="text-align: left;"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">generation</td>
-<td style="text-align: left;"><span class="math inline">\(l_j,w_j,s_j \sim p_{\theta}(l,w,s)\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">conditional generation</td>
-<td style="text-align: left;"><span class="math inline">\(l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})\)</span></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="ml-tasks-discrimination" class="slide level2">
-<h2>ML tasks: discrimination</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/class_logistic.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<p>call this one variable <em>outcome</em> and <em>classify</em> when expected value passes threshold (e.g.&nbsp;0.5): <span class="math display">\[
-s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
-\]</span></p>
-</div>
-</div>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;">task</th>
-<th style="text-align: left;"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">generation</td>
-<td style="text-align: left;"><span class="math inline">\(l_j,w_j,s_j \sim p_{\theta}(l,w,s)\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">conditional generation</td>
-<td style="text-align: left;"><span class="math inline">\(l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">discrimination</td>
-<td style="text-align: left;"><span class="math inline">\(p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5\)</span></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="ml-tasks-reinforcement-learning" class="slide level2">
-<h2>ML tasks: reinforcement learning</h2>
-<p>Maybe not so useful for clinical research as requires many experiments</p>
-
-<img data-src="figs/reinforcement_learning.png" style="width:80.0%" class="r-stretch"></section>
-<section id="machine-learning-is-statistical-learning-with-flexible-models" class="slide level2">
-<h2>Machine learning is statistical learning with flexible models</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><span class="fragment" data-fragment-index="1">- There is no fundamental difference between statistics and machine learning</span></p>
-<p><span class="fragment" data-fragment-index="2">- both optimize parameters to improve some criterion (loss / likelihood) that measures model fit to data</span></p>
-<p><span class="fragment" data-fragment-index="3">- models used in machine learning are more flexible</span></p>
-</div><div class="column" style="width:50%;">
+<section id="stacking-images" class="slide level2">
+<h2>stacking images</h2>
 <div class="r-stack">
-<p><img data-src="figs/ml_vs_stats.png" class="fragment" data-fragment-index="1"></p>
-<p><img data-src="figs/a_machine_learning.jpeg" class="fragment" data-fragment-index="2"></p>
-<p><img data-src="figs/curve_fitting_xkcd_ 2048.png" class="fragment" data-fragment-index="3"></p>
-</div>
-</div>
-</div>
-<p>::::::</p>
-</section>
-<section id="ml-models-can-fit-more-functions-but-also-more-likely-to-overfit" class="slide level2">
-<h2>ML models can fit more functions but also more likely to overfit</h2>
-<div class="r-stack">
-<p><img data-src="figs/overfitting_underfitting1.png" class="fragment"></p>
-<p><img data-src="figs/overfitting_underfitting2.png" class="fragment"></p>
-<p><img data-src="figs/overfitting_underfitting3.png" class="fragment"></p>
+<p><img data-src="240418-ii-spring-meeting/figs/policy_changea1.png" class="fragment"></p>
+<p><img data-src="240418-ii-spring-meeting/figs/policy_changea2.png" class="fragment"></p>
 </div>
 </section>
-<section id="should-pick-the-right-amount-of-model-complexity" class="slide level2">
-<h2>Should pick the ‘right’ amount of model complexity</h2>
-
-<img data-src="figs/bias_variance.png" class="r-stretch"></section></section>
-<section>
-<section id="what-is-a-large-language-model-like-chatgpt" class="title-slide slide level1 center">
-<h1>What is a large-language model like chatGPT?</h1>
-
-</section>
-<section id="what-is-a-large-language-model-like-chatgpt-1" class="slide level2">
-<h2>What is a large-language model like chatGPT?</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What is chatGPT?</strong></p>
-</div>
-<div class="callout-content">
-<p>a stochastic auto-regressive next-word predictor with a chatbot interface</p>
-</div>
-</div>
-</div>
-<ul>
-<li class="fragment">trained by predicting the next &lt;…&gt;
-<ul>
-<li class="fragment">in a <em>large</em> corpus of text</li>
-<li class="fragment">with a <em>large</em> model</li>
-<li class="fragment">for a <em>long</em> time on <em>expensive</em> hardware</li>
-</ul></li>
-</ul>
-</section>
-<section id="auto-regressive-conditional-generation" class="slide level2">
-<h2>auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    p_{\text{chatGPT}}(\text{first-word}&amp;|\text{prompt})\\
-\end{align}\]</span></p>
-</section>
-<section id="auto-regressive-conditional-generation-1" class="slide level2">
-<h2>auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    p_{\text{chatGPT}}(\text{first-word}&amp;|\text{prompt})\\
-    p_{\text{chatGPT}}(\text{second-word}&amp;|\text{first-word},\text{prompt})\\
-\end{align}\]</span></p>
-</section>
-<section id="auto-regressive-conditional-generation-2" class="slide level2">
-<h2>auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    p_{\text{chatGPT}}(\text{first-word}&amp;|\text{prompt})\\
-    p_{\text{chatGPT}}(\text{second-word}&amp;|\text{first-word},\text{prompt})\\
-    p_{\text{chatGPT}}(\text{next-word}&amp;|\text{previous-words},\text{prompt})
-\end{align}\]</span></p>
-</section>
-<section id="gpt-4-scale" class="slide level2">
-<h2>GPT-4 scale</h2>
-<div class="r-stack">
-<p><img data-src="figs/gpt4_size1.jpeg" class="fragment" data-fragment-index="1"></p>
-<p><img data-src="figs/gpt4_size2.jpeg" class="fragment" data-fragment-index="2"></p>
-<p><img data-src="figs/gpt4_size3.jpeg" class="fragment" data-fragment-index="3"></p>
-</div>
-</section>
-<section id="rule-based-vs-llms" class="slide level2">
-<h2>rule-based vs LLMs</h2>
-<div class="columns">
-<div class="column" style="width:0.5;">
-<ul>
-<li class="fragment">deduction from explicit knowledge</li>
-<li class="fragment">knowledge verifiable and fast</li>
-<li class="fragment">constrained to deducible</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/library_bing.jpeg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
-</figure>
-</div>
-</div><div class="column" style="width:0.5;">
-<ul>
-<li class="fragment">extracted from observed data</li>
-<li class="fragment">unverifiable and compute intensive</li>
-<li class="fragment">“chatGPT seems to <em>know</em>(?) much”</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/brain_bing.jpeg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="using-ml-in-research" class="title-slide slide level1 center">
-<h1>Using ML in research</h1>
-
-</section>
-<section id="ml-versus-statistics-when-to-use-what" class="slide level2">
-<h2>ML versus statistics, when to use what</h2>
-<p>have more data and more complex functions (images) – have more domain knowledge and less data</p>
-</section>
-<section id="a-sobering-note" class="slide level2">
-<h2>A sobering note</h2>
-<p><span class="fragment" data-fragment-index="1">- ML in medicine has been ‘hot’ since at least the 90s <span class="citation" data-cites="cooperEvaluationMachinelearningMethods1997">(<a href="#/references" role="doc-biblioref" onclick="">Cooper et al. 1997</a>)</span></span></p>
-<p><span class="fragment" data-fragment-index="2">- not much evidence that it outperforms regression on most tasks <span class="citation" data-cites="christodoulouSystematicReviewShows2019">(<a href="#/references" role="doc-biblioref" onclick="">Christodoulou et al. 2019</a>)</span></span></p>
-<p><span class="fragment" data-fragment-index="3">- though many poorly performed studies <span class="citation" data-cites="dhimanMethodologicalConductPrognostic2022">(<a href="#/references" role="doc-biblioref" onclick="">Dhiman et al. 2022</a>)</span></span></p>
-<div class="r-stack">
-<p><img data-src="figs/ml_1997.png" class="fragment" data-fragment-index="1"></p>
-<p><img data-src="figs/ml_review_performance.png" class="fragment" data-fragment-index="2"></p>
-<p><img data-src="figs/ml_review_methods.png" class="fragment" data-fragment-index="3"></p>
-</div>
-</section></section>
-<section>
-<section id="safe-use-of-ai-models-in-medical-practice" class="title-slide slide level1 center">
-<h1>Safe use of AI models in medical practice</h1>
-
-</section>
-<section id="two-questions" class="slide level2">
-<h2>two questions</h2>
-<p>Question 1</p>
-<ul>
-<li class="fragment">prediction model of <span class="math inline">\(Y|X\)</span> fits the data really well (AUC = 0.99 and perfect calibration)</li>
-<li class="fragment">will changing <span class="math inline">\(X\)</span> induce a change <span class="math inline">\(Y\)</span>?</li>
-</ul>
-<p>Question 2</p>
-<ul>
-<li class="fragment">Give statins when risk of cardiovascular event in 10 years exceeds 10%</li>
-<li class="fragment">ML model based on age, medication history, cardiac CT-scan predicts this very well</li>
-<li class="fragment">will using this model for treatment decisions improve patient outcomes?</li>
-</ul>
-</section>
-<section id="improving-the-world-is-a-causal-task" class="slide level2">
-<h2>Improving the world is a causal task</h2>
-<ul>
-<li class="fragment">statistics / ML: what to expect when we passively observe the world</li>
-<li class="fragment"><em>not</em> how we can <em>intervene</em> to make things better</li>
-<li class="fragment">Question 1
-<ul>
-<li class="fragment">yellowish fingers predict lung cancer, paint fingers to skin color?</li>
-<li class="fragment">weight loss predicts death in lung cancer, send patients to couch with McDonalds? <img data-src="figs/couch_patato.jpeg" style="width:40.0%" alt="image"></li>
-</ul></li>
-</ul>
-</section>
-<section id="when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies" class="slide level2 center">
-<h2>When accurate prediction models yield harmful self-fulfilling prophecies</h2>
-</section>
-<section class="slide level2">
-
-<div class="r-stack">
-<p><img data-src="figs/new_overview1a.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/new_overview1b.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/new_overview1c.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/new_overview2a.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/new_overview2b.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/new_overview3a.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/new_overview3b.png" class="fragment" style="height:18cm"></p>
-</div>
-</section>
-<section id="prediction-modeling-is-very-popular-in-medical-research" class="slide level2">
-<h2>Prediction modeling is very popular in medical research</h2>
-
-<img data-src="figs/predmodelsoverview.png" style="width:70.0%" class="r-stretch"></section>
-<section class="slide level2">
-
-<p>building models for decision support without regards for the historic treatment policy is a bad idea</p>
-<div class="r-stack">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/policy_changea1.png" class="fragment" style="width:100.0%"></p>
-<figcaption>image</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/policy_changea3.png" class="fragment" style="width:100.0%"></p>
-<figcaption>image</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/policy_changeax.png" class="fragment" style="width:100.0%"></p>
-<figcaption>image</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/policy_changeb2.png" class="fragment" style="width:100.0%"></p>
-<figcaption>image</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/policy_changebx.png" class="fragment" style="width:100.0%"></p>
-<figcaption>image</figcaption>
-</figure>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>The question is not “is my model accurate before / after deploytment”, but did deploying the model improve patient outcomes?</p>
-</div>
-</div>
-</div>
-</section>
-<section id="treatment-naive-risk-models" class="slide level2">
-<h2>Treatment-naive risk models</h2>
-<div class="r-stack">
-<p><img data-src="figs/txnaive1.png" class="fragment"></p>
-<p><img data-src="figs/txnaive2.png" class="fragment"></p>
-</div>
-</section>
-<section id="other-risk-models" class="slide level2">
-<h2>Other risk models:</h2>
-<p><span class="fragment" data-fragment-index="1">- condition on given treatment and traits</span></p>
-<p><span class="fragment" data-fragment-index="2">- unobserved confounding (hat type) leads to wrong treatment decisions</span></p>
-<div class="r-stack">
-<p><img data-src="figs/postdecision1.png" class="fragment" data-fragment-index="1"></p>
-<p><img data-src="figs/postdecision2.png" class="fragment" data-fragment-index="2"></p>
-</div>
-</section>
-<section id="recommended-validation-practices-do-not-protect-against-harm" class="slide level2">
-<h2>Recommended validation practices do not protect against harm</h2>
-<p>because they do not evaluate the policy change</p>
-<p><img data-src="figs/tripod_title.png"> <img data-src="figs/ajcc_title.png"></p>
-</section>
-<section id="bigger-data-does-not-protect-against-harmful-risk-models" class="slide level2">
-<h2>Bigger data does not protect against harmful risk models</h2>
-
-<img data-src="figs/biggerdata.png" style="width:80.0%" class="r-stretch"></section>
-<section id="more-flexible-models-do-not-protect-against-harmful-risk-models" class="slide level2">
-<h2>More flexible models do not protect against harmful risk models</h2>
-
-<img data-src="figs/morelayers.png" style="width:50.0%" class="r-stretch"></section>
-<section id="gap-between-prediction-accuracy-and-value-for-decision-making" class="slide level2">
-<h2>Gap between prediction accuracy and value for decision making</h2>
-
-<img data-src="figs/mindthegap.png" style="width:80.0%" class="r-stretch"></section>
-<section id="section" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title"></h2>
-<div style="margin-top: 200px; font-size: 3em; color: red;">
-<p>What to do?</p>
-</div>
-</section>
-<section id="section-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title"></h2>
-<div style="margin-top: 100px">
-<p>What to do?</p>
-</div>
+<section id="foo" class="slide level2">
+<h2>foo</h2>
 <ol type="1">
-<li class="fragment"><p>Evaluate policy change (cluster randomized controlled trial)</p></li>
-<li class="fragment"><p>Build models that are likely to have value for decision making</p></li>
+<li class="fragment">one</li>
+<li class="fragment">two</li>
 </ol>
-</section>
-<section id="prediction-under-intervention-models" class="slide level2">
-<h2>Prediction-under-intervention models</h2>
-<p>Predict outcome <em>under hypothetical intervention</em> of giving certain treatment</p>
-
-<img data-src="figs/predictionunderintervention.png" class="r-stretch"></section>
-<section id="when-developing-risk-models" class="slide level2">
-<h2>When developing risk models,</h2>
-<p>always discuss:</p>
-<div class="r-stack">
-<p><img data-src="figs/policy_changeb1.png" class="fragment" style="height:11cm" data-fragment-index="1"></p>
-<p><img data-src="figs/policy_changeb2.png" class="fragment" style="height:11cm" data-fragment-index="2"></p>
-<p><img data-src="figs/policy_changebx.png" class="fragment" style="height:11cm" data-fragment-index="3"></p>
+<div class="fragment fade-in-then-out">
+<p><span class="math display">\[\begin{aligned}
+{\bf{Net Benefit}} = \frac{{\bf{TP}}}{\text{N}} - \frac{{\bf{FP}}}{\text{N}} * {\frac{{p_{t}}}{{1 - p_{t}}}}
+\end{aligned}\]</span></p>
 </div>
-<p><span class="fragment" data-fragment-index="2">1. what is effect on treatment policy?</span></p>
-<p><span class="fragment" data-fragment-index="3">2. what is effect on patient outcomes?</span></p>
-</section>
-<section class="slide level2">
-
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Don’t assume predicting well leads to good decisions</strong></p>
-</div>
-<div class="callout-content">
-<p>think about the policy change</p>
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="figs/comment_qr.png" style="height:8cm"></p>
-<p>From algorithms to action: improving patient care requires causality</p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="figs/qr_selffulfilling.png" style="height:8cm"></p>
-<p>When accurate prediction models yield harmful sel-fulfilling prophecies</p>
-</div>
+<div class="fragment fade-in">
+<p><span class="math display">\[\begin{aligned}
+\color{green}{\bf{Net Benefit}} = \frac{\color{green}{\bf{TP}}}{\text{N}} - \frac{\color{red}{\bf{FP}}}{\text{N}} * {\frac{{p_{t}}}{{1 - p_{t}}}}
+\end{aligned}\]</span></p>
 </div>
 </section>
-<section id="take-aways" class="slide level2">
-<h2>take-aways</h2>
-<ul>
-<li class="fragment">AI subsumes rule-based programs and machine learning</li>
-<li class="fragment">machine learning is statistical learning from data with flexible mdoels</li>
-<li class="fragment">modern machine learning does well with scale</li>
-<li class="fragment">chatGPT is based on auto-regressive next-token prediction and reinforcement learning with human feedback</li>
-<li class="fragment">chatGPT produces beautiful mistakes: eloquently written logical fallacies</li>
-<li class="fragment">chatGPT does well on natural-language-like tasks</li>
-<li class="fragment">prediction: what to expect when passively observing the world</li>
-<li class="fragment">causal inference: what happens when I change something?</li>
-<li class="fragment">prediction models can cause harmful self-fulfilling prophecies when used for decision making</li>
-<li class="fragment">when building prediction models for decision support, you cannot ignore decisions on the treatments in historic data</li>
-<li class="fragment">models for prediction-under-intervention have foreseeable effects when used for decision making</li>
-<li class="fragment">ultimate test of model utility is determined by outcomes in (cluster) RCT</li>
-</ul>
+<section id="auto-animate" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">auto-animate</h2>
+<div style="margin-top: 100px;">
+<p>Animating content</p>
+</div>
 </section>
-<section class="slide level2 smaller scrollable" id="references">
-
-<p>thank you</p>
+<section id="auto-animate-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">auto-animate</h2>
+<div style="margin-top: 200px; font-size: 3em; color: red;">
+<p>Animating content</p>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>©Wouter van Amsterdam <span class="citation" data-cites="WvanAmsterdam">(<a href="#/references" role="doc-biblioref" onclick=""><strong>WvanAmsterdam?</strong></a>)</span></p>
+<p>©Wouter van Amsterdam <span class="citation" data-cites="WvanAmsterdam">@WvanAmsterdam</span></p>
 </div>
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-christodoulouSystematicReviewShows2019" class="csl-entry" role="listitem">
-Christodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. <span>“A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.”</span> <em>Journal of Clinical Epidemiology</em> 110 (June): 12–22. <a href="https://doi.org/10.1016/j.jclinepi.2019.02.004">https://doi.org/10.1016/j.jclinepi.2019.02.004</a>.
-</div>
-<div id="ref-cooperEvaluationMachinelearningMethods1997" class="csl-entry" role="listitem">
-Cooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. <span>“An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.”</span> <em>Artificial Intelligence in Medicine</em> 9 (2): 107–38. <a href="https://doi.org/10.1016/S0933-3657(96)00367-3">https://doi.org/10.1016/S0933-3657(96)00367-3</a>.
-</div>
-<div id="ref-dhimanMethodologicalConductPrognostic2022" class="csl-entry" role="listitem">
-Dhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. <span>“Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.”</span> <em>BMC Medical Research Methodology</em> 22 (1): 101. <a href="https://doi.org/10.1186/s12874-022-01577-x">https://doi.org/10.1186/s12874-022-01577-x</a>.
-</div>
-</div>
-</section></section>
-
+</section>
     </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -989,7 +430,7 @@ Dhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bul
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': true,
+'smaller': false,
  
         // Display controls in the bottom right corner
         controls: false,

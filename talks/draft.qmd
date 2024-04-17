@@ -1,0 +1,47 @@
+---
+title: "demo presentation for quarto features"
+author: "Wouter van Amsterdam"
+draft: true
+format:
+    revealjs:
+        incremental: true
+---
+
+## stacking images
+
+::: {.r-stack}
+![](240418-ii-spring-meeting/figs/policy_changea1.png){.fragment}
+
+![](240418-ii-spring-meeting/figs/policy_changea2.png){.fragment}
+:::
+
+## foo
+
+1. one
+2. two
+
+::: {.fragment .fade-in-then-out}
+$$\begin{aligned}
+{\bf{Net Benefit}} = \frac{{\bf{TP}}}{\text{N}} - \frac{{\bf{FP}}}{\text{N}} * {\frac{{p_{t}}}{{1 - p_{t}}}}
+\end{aligned}$$
+:::
+
+::: {.fragment .fade-in}
+$$\begin{aligned}
+\color{green}{\bf{Net Benefit}} = \frac{\color{green}{\bf{TP}}}{\text{N}} - \frac{\color{red}{\bf{FP}}}{\text{N}} * {\frac{{p_{t}}}{{1 - p_{t}}}}
+\end{aligned}$$
+:::
+
+## auto-animate {auto-animate=true}
+
+::: {style="margin-top: 100px;"}
+Animating content
+:::
+
+## auto-animate {auto-animate=true}
+
+::: {style="margin-top: 200px; font-size: 3em; color: red;"}
+Animating content
+:::
+
+

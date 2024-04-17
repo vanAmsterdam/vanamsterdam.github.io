@@ -1,0 +1,479 @@
+---
+title: AI and its (mis)uses in medical research and practice
+date: 2024/04/18
+draft: false
+format:
+    revealjs:
+        incremental: true
+        smaller: true
+execution:
+    echo: false
+bibliography: references.bib
+cls: apa.csl
+---
+
+# What is AI? 
+
+
+## What is AI?
+
+:::{.callout-tip}
+## What is artificial intelligence?
+computers doing tasks that normally require intelligence ^[these are my own definitions]
+:::
+
+:::{.fragment}
+:::{.callout-tip}
+## What is artificial *general* intelligence?
+General purpose AI that performs a range of tasks in different domains like humans
+:::
+:::
+
+## AI subsumes rule-based systems and machine learning
+
+-   Rule-based AI: knowledge base of rules
+-   Machine learning: statistical learning from examples
+    -   (traditional) machine learning (logistic regression, SVM, RF,
+    GBM)
+    -   modern machine learning: deep learning and foundation models
+
+## Rule-based systems are AI
+
+-   rule: all cows are animals
+-   observation: this is a cow $\to$ it is an animal
+-   applications:
+    - medication interaction checkers
+    - bedside patient monitors
+
+---
+
+### machine learning: statistical learning from examples
+    
+## ML tasks
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/gen_scatter.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+data:
+$$l_i,w_i,s_i \sim p(l,w,s)$$
+::::
+:::
+
+## ML tasks: generation
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/gen_full.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+use samples to learn model for *joint* distribution $p$
+$$
+  l_j,w_j,s_j \sim p_{\theta}(l,w,s)
+$$
+::::
+:::
+
+## ML tasks: conditional generation
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/gen_boy.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+use samples to learn model for *conditional* distribution $p$
+$$
+  l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})
+$$
+::::
+:::
+|task| |
+|---:|:---|
+|generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
+
+## ML tasks: conditional generation 2
+
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/gen_scatter.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+use samples to learn model for *conditional* distribution $p$
+of one variable
+$$
+s_j \sim p_{\theta}(s|l=l_i,w=w_i)
+$$
+::::
+:::
+
+|task| |
+|---:|:---|
+|generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
+|conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
+
+## ML tasks: discrimination
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/class_logistic.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+call this one variable *outcome* and *classify* when expected value passes threshold (e.g. 0.5):
+$$
+s_j = p_{\theta}(s|l=l_i,w=w_i) > 0.5
+$$
+::::
+:::
+
+|task| |
+|---:|:---|
+|generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
+|conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
+|discrimination|$p_{\theta}(s|l=l_i,w=w_i) > 0.5$|
+
+## ML tasks: reinforcement learning
+
+Maybe not so useful for clinical research as requires many experiments
+
+![](figs/reinforcement_learning.png){width="80%"}
+
+## Machine learning is statistical learning with flexible models
+
+:::: {.columns}
+::: {.column width="50%"}
+
+[-   There is no fundamental difference between statistics and machine
+    learning]{.fragment fragment-index=1}
+
+[-   both optimize parameters to improve some criterion (loss /
+    likelihood) that measures model fit to data]{.fragment fragment-index=2}
+
+[-   models used in machine learning are more flexible]{.fragment fragment-index=3}
+:::
+
+::: {.column width="50%"}
+
+::: {.r-stack}
+
+![](figs/ml_vs_stats.png){.fragment fragment-index=1}
+
+![](figs/a_machine_learning.jpeg){.fragment fragment-index=2}
+
+![](figs/curve_fitting_xkcd_ 2048.png){.fragment fragment-index=3}
+
+:::
+:::
+:::::
+::::::
+
+## ML models can fit more functions but also more likely to overfit
+
+::: {.r-stack}
+![](figs/overfitting_underfitting1.png){.fragment}
+
+![](figs/overfitting_underfitting2.png){.fragment}
+
+![](figs/overfitting_underfitting3.png){.fragment}
+:::
+
+## Should pick the 'right' amount of model complexity
+
+![](figs/bias_variance.png)
+
+# What is a large-language model like chatGPT?
+
+## What is a large-language model like chatGPT?
+
+:::{.callout-tip}
+## What is chatGPT?
+a stochastic auto-regressive next-word predictor with a chatbot interface
+:::
+
+- trained by predicting the next <...>
+   - in a *large* corpus of text
+   - with a *large* model
+   - for a *long* time on *expensive* hardware
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    p_{\text{chatGPT}}(\text{first-word}&|\text{prompt})\\
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    p_{\text{chatGPT}}(\text{first-word}&|\text{prompt})\\
+    p_{\text{chatGPT}}(\text{second-word}&|\text{first-word},\text{prompt})\\
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    p_{\text{chatGPT}}(\text{first-word}&|\text{prompt})\\
+    p_{\text{chatGPT}}(\text{second-word}&|\text{first-word},\text{prompt})\\
+    p_{\text{chatGPT}}(\text{next-word}&|\text{previous-words},\text{prompt})
+\end{align}
+
+## GPT-4 scale
+
+::: {.r-stack}
+
+![](figs/gpt4_size1.jpeg){.fragment fragment-index=1}
+
+![](figs/gpt4_size2.jpeg){.fragment fragment-index=2}
+
+![](figs/gpt4_size3.jpeg){.fragment fragment-index=3}
+
+:::
+
+## rule-based vs LLMs
+
+:::: {.columns}
+::: {.column width=0.5}
+
+-   deduction from explicit knowledge
+-   knowledge verifiable and fast
+-   constrained to deducible
+
+![](figs/library_bing.jpeg){fig-align="center" width="80%"}
+
+:::
+
+::: {.column width=0.5}
+
+-   extracted from observed data
+-   unverifiable and compute intensive
+-   "chatGPT seems to *know*(?) much"
+
+![](figs/brain_bing.jpeg){fig-align="center" width="80%"}
+
+:::
+::::
+
+# Using ML in research
+
+## ML versus statistics, when to use what
+
+have more data and more complex functions (images) -- have more domain knowledge and less data
+
+## A sobering note
+
+[- ML in medicine has been 'hot' since at least the 90s [@cooperEvaluationMachinelearningMethods1997]]{.fragment fragment-index=1}
+
+[- not much evidence that it outperforms regression on most tasks [@christodoulouSystematicReviewShows2019]]{.fragment fragment-index=2}
+
+[- though many poorly performed studies [@dhimanMethodologicalConductPrognostic2022]]{.fragment fragment-index=3}
+
+::: {.r-stack}
+![](figs/ml_1997.png){.fragment fragment-index=1}
+
+![](figs/ml_review_performance.png){.fragment fragment-index=2}
+
+![](figs/ml_review_methods.png){.fragment fragment-index=3}
+:::
+
+
+# Safe use of AI models in medical practice
+
+## two questions
+
+Question 1
+
+- prediction model of $Y|X$ fits the data really well (AUC = 0.99 and perfect calibration)
+- will changing $X$ induce a change $Y$?
+
+Question 2
+
+- Give statins when risk of cardiovascular event in 10 years exceeds 10%
+- ML model based on age, medication history, cardiac CT-scan predicts this very well 
+- will using this model for treatment decisions improve patient outcomes?
+
+## Improving the world is a causal task
+
+-   statistics / ML: what to expect when we passively observe the world
+-   *not* how we can *intervene* to make things better
+-   Question 1
+    -   yellowish fingers predict lung cancer, paint fingers to skin
+        color?
+    -   weight loss predicts death in lung cancer, send patients to
+        couch with McDonalds?
+        ![image](figs/couch_patato.jpeg){width="40%"}
+
+## When accurate prediction models yield harmful self-fulfilling prophecies{.center}
+
+---
+
+:::{.r-stack}
+
+![](figs/new_overview1a.png){.fragment height=18cm}
+
+![](figs/new_overview1b.png){.fragment height=18cm}
+
+![](figs/new_overview1c.png){.fragment height=18cm}
+
+![](figs/new_overview2a.png){.fragment height=18cm}
+
+![](figs/new_overview2b.png){.fragment height=18cm}
+
+![](figs/new_overview3a.png){.fragment height=18cm}
+
+![](figs/new_overview3b.png){.fragment height=18cm}
+
+:::
+
+## Prediction modeling is very popular in medical research
+
+![](figs/predmodelsoverview.png){width="70%"}
+
+---
+
+building models for decision support without regards for the historic treatment policy is a bad idea
+
+:::{.r-stack}
+
+![image](figs/policy_changea1.png){.fragment width="100%"}
+
+![image](figs/policy_changea3.png){.fragment width="100%"}
+
+![image](figs/policy_changeax.png){.fragment width="100%"}
+
+![image](figs/policy_changeb2.png){.fragment width="100%"}
+
+![image](figs/policy_changebx.png){.fragment width="100%"}
+
+:::
+
+--- 
+
+:::{.callout-note}
+The question is not "is my model accurate before / after deploytment", but did deploying the model improve patient outcomes?
+:::
+
+
+## Treatment-naive risk models
+
+:::{.r-stack}
+
+![](figs/txnaive1.png){.fragment}
+
+![](figs/txnaive2.png){.fragment}
+
+:::
+
+## Other risk models:
+
+[- condition on given treatment and traits]{.fragment fragment-index=1}
+
+[- unobserved confounding (hat type) leads to wrong treatment decisions]{.fragment fragment-index=2}
+
+:::{.r-stack}
+
+![](figs/postdecision1.png){.fragment fragment-index=1}
+
+![](figs/postdecision2.png){.fragment fragment-index=2} 
+
+:::
+
+##  Recommended validation practices do not protect against harm
+
+because they do not evaluate the policy change
+
+![](figs/tripod_title.png)
+![](figs/ajcc_title.png)
+
+## Bigger data does not protect against harmful risk models
+
+![](figs/biggerdata.png){width="80%"}
+
+## More flexible models do not protect against harmful risk models
+
+![](figs/morelayers.png){width="50%"}
+
+## Gap between prediction accuracy and value for decision making
+
+![](figs/mindthegap.png){width="80%"}
+
+## {auto-animate=true}
+
+::: {style="margin-top: 200px; font-size: 3em; color: red;"}
+What to do?
+:::
+
+## {auto-animate=true}
+
+::: {style="margin-top: 100px"}
+What to do?
+:::
+
+1.  Evaluate policy change (cluster randomized controlled trial)
+
+2.  Build models that are likely to have value for decision making
+
+## Prediction-under-intervention models
+Predict outcome *under hypothetical intervention* of giving certain treatment
+
+![](figs/predictionunderintervention.png){width="\\textwidth"}
+
+## When developing risk models,
+
+always discuss:
+
+::: {.r-stack}
+
+![](figs/policy_changeb1.png){.fragment fragment-index=1 height="11cm"}
+
+![](figs/policy_changeb2.png){.fragment fragment-index=2 height="11cm"}
+
+![](figs/policy_changebx.png){.fragment fragment-index=3 height="11cm"}
+
+:::
+
+[1.  what is effect on treatment policy?]{.fragment fragment-index=2}
+
+[2.  what is effect on patient outcomes?]{.fragment fragment-index=3}
+
+---
+
+:::{.callout-tip}
+## Don't assume predicting well leads to good decisions
+think about the policy change
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+![](figs/comment_qr.png){height=8cm}
+
+From algorithms to action: improving patient care requires causality
+:::
+
+::: {.column width="50%"}
+![](figs/qr_selffulfilling.png){height=8cm}
+
+When accurate prediction models yield harmful sel-fulfilling prophecies
+:::
+::::
+
+## take-aways
+
+-   AI subsumes rule-based programs and machine learning
+-   machine learning is statistical learning from data with flexible
+    mdoels
+-   modern machine learning does well with scale
+-   chatGPT is based on auto-regressive next-token prediction and
+    reinforcement learning with human feedback
+-   chatGPT produces beautiful mistakes: eloquently written logical
+    fallacies
+-   chatGPT does well on natural-language-like tasks
+-   prediction: what to expect when passively observing the world
+-   causal inference: what happens when I change something?
+-   prediction models can cause harmful self-fulfilling prophecies when
+    used for decision making
+-   when building prediction models for decision support, you cannot
+    ignore decisions on the treatments in historic data
+-   models for prediction-under-intervention have foreseeable effects
+    when used for decision making
+-   ultimate test of model utility is determined by outcomes in
+    (cluster) RCT
+
+---
+
+thank you
+

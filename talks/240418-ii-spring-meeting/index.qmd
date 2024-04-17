@@ -45,18 +45,9 @@ General purpose AI that performs a range of tasks in different domains like huma
     - medication interaction checkers
     - bedside patient monitors
 
+---
 
-## machine learning: statistical learning from examples
-
--   observe examples from some distribution (age, sex, BMI, medication,
-    side-effect)
--   *learn* "patterns" in the data
--   different tasks in hierarchical order:
-    -   generation
-    -   conditional generation
-    -   discrimination
-    -   reinforcement learning
-        - (maybe not so useful for medicine as requires many experiments)
+### machine learning: statistical learning from examples
     
 ## ML tasks
 ::: {.columns}
@@ -124,7 +115,7 @@ $$
 ![](figs/class_logistic.png){width="100%" fig-align="center"}
 ::::
 :::: {.column width="50%"}
-call this variable *outcome* and *classify* as when expected value passes threshold (e.g. 0.5):
+call this one variable *outcome* and *classify* when expected value passes threshold (e.g. 0.5):
 $$
 s_j = p_{\theta}(s|l=l_i,w=w_i) > 0.5
 $$
@@ -186,23 +177,7 @@ Maybe not so useful for clinical research as requires many experiments
 
 ![](figs/bias_variance.png)
 
-## A sobering note
-
-[- ML in medicine has been 'hot' since at least the 90s [@cooperEvaluationMachinelearningMethods1997]]{.fragment fragment-index=1}
-
-[- not much evidence that it outperforms regression on most tasks [@christodoulouSystematicReviewShows2019]]{.fragment fragment-index=2}
-
-[- though many poorly performed studies [@dhimanMethodologicalConductPrognostic2022]]{.fragment fragment-index=3}
-
-::: {.r-stack}
-![](figs/ml_1997.png){.fragment fragment-index=1}
-
-![](figs/ml_review_performance.png){.fragment fragment-index=2}
-
-![](figs/ml_review_methods.png){.fragment fragment-index=3}
-:::
-
----
+# What is a large-language model like chatGPT?
 
 ## What is a large-language model like chatGPT?
 
@@ -211,16 +186,31 @@ Maybe not so useful for clinical research as requires many experiments
 a stochastic auto-regressive next-word predictor with a chatbot interface
 :::
 
-- trained by predicting the next <...?>
+- trained by predicting the next <...>
    - in a *large* corpus of text
    - with a *large* model
    - for a *long* time on *expensive* hardware
-- this is akin to conditional generation:
 
+## auto-regressive conditional generation:
 
-[$$
-p_{\text{chatGPT}}(\text{next-word}|\text{previously-generated-word},\text{prompt})
-$$]{.fragment}
+\begin{align}
+    p_{\text{chatGPT}}(\text{first-word}&|\text{prompt})\\
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    p_{\text{chatGPT}}(\text{first-word}&|\text{prompt})\\
+    p_{\text{chatGPT}}(\text{second-word}&|\text{first-word},\text{prompt})\\
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    p_{\text{chatGPT}}(\text{first-word}&|\text{prompt})\\
+    p_{\text{chatGPT}}(\text{second-word}&|\text{first-word},\text{prompt})\\
+    p_{\text{chatGPT}}(\text{next-word}&|\text{previous-words},\text{prompt})
+\end{align}
 
 ## GPT-4 scale
 
@@ -240,671 +230,250 @@ $$]{.fragment}
 ::: {.column width=0.5}
 
 -   deduction from explicit knowledge
-
 -   knowledge verifiable and fast
-
 -   constrained to deducible
 
-![](figs/library_bing.jpeg)
+![](figs/library_bing.jpeg){fig-align="center" width="80%"}
 
 :::
 
 ::: {.column width=0.5}
 
 -   extracted from observed data
-
 -   unverifiable and compute intensive
-
 -   "chatGPT seems to *know*(?) much"
 
-![](figs/brain_bing.jpeg)
+![](figs/brain_bing.jpeg){fig-align="center" width="80%"}
 
 :::
 ::::
 
-# Using AI in research and medical practice
+# Using ML in research
 
 ## ML versus statistics, when to use what
 
-## Safe use of AI models in medical practice
+have more data and more complex functions (images) -- have more domain knowledge and less data
 
-## When accurate prediction models yield harmful self-fulfilling prophecies
+## A sobering note
 
-## The rest
+[- ML in medicine has been 'hot' since at least the 90s [@cooperEvaluationMachinelearningMethods1997]]{.fragment fragment-index=1}
 
+[- not much evidence that it outperforms regression on most tasks [@christodoulouSystematicReviewShows2019]]{.fragment fragment-index=2}
 
+[- though many poorly performed studies [@dhimanMethodologicalConductPrognostic2022]]{.fragment fragment-index=3}
 
-:::::: frame
-### Machine learning tasks
+::: {.r-stack}
+![](figs/ml_1997.png){.fragment fragment-index=1}
 
-::::: columns
-::: column
-0.5
+![](figs/ml_review_performance.png){.fragment fragment-index=2}
 
-<figure>
-<p><embed src="figs/gen_scatter.pdf" /> <embed src="figs/gen_iso.pdf" />
-<embed src="figs/gen_girl.pdf" /> <embed
-src="figs/gen_scatter.pdf" /></p>
-</figure>
+![](figs/ml_review_methods.png){.fragment fragment-index=3}
 :::
 
-::: column
-0.5
 
-<figure>
-<p><embed src="figs/gen_full.pdf" /> <embed src="figs/gen_boy.pdf" />
-<embed src="figs/class_logistic.pdf" /></p>
-</figure>
-:::
-:::::
-::::::
+# Safe use of AI models in medical practice
 
-::: frame
-### Machine learning task: reinforcement learning
-
-#### Maybe not so useful for clinical research as requires many experiments
-
-![image](figs/reinforcement_learning.png){width="80%"}
-:::
-
-:::::: frame
-### Machine learning is statistical learning with flexible models
-
-::::: columns
-::: column
-0.5
-
--   There is no fundamental difference between statistics and machine
-    learning
-
--   both optimize parameters to improve some criterion (loss /
-    likelihood) that measures model fit to data
-
--   models used in machine learning are more flexible
-:::
-
-::: column
-0.5
-
-<figure>
-<p><img src="figs/ml_vs_stats.png" style="width:90.0%" alt="image" />
-<img src="figs/a_machine_learning.jpeg" style="width:90.0%"
-alt="image" /> <img src="figs/curve_fitting_xkcd_ 2048.png"
-style="width:90.0%" alt="image" /></p>
-</figure>
-:::
-:::::
-::::::
-
-::: frame
-### machine learning and statistics differences
-
--   whereas statistics is more concered with *inference* regarding
-    parameters of a distribution (e.g. difference in survival time
-    between treatments) in which the bespoke model is an integral part,
-    machine learning focusses more on prediction accuracy, treating the
-    model as a black box
-
--   can learn more complicated relationships (non-linearities,
-    interactions)
-
--   also: can learn feature representations
-
--   nothing comes for free: need (much) more data
-:::
-
-::: frame
-### models with much learning capacity can overfit
-
-#### meaning they fit the noise in the training data and fail to genearlize to new data
-
-<figure>
-<p><img src="figs/overfitting_underfitting.png" style="width:80.0%"
-alt="image" /> <img src="figs/bias_variance.png" style="width:80.0%"
-alt="image" /></p>
-</figure>
-:::
-
-::: frame
-### Modern machine learning (neural networks a.k.a. deep learning)
-
-#### computational models with multiple layers loosely inspired by mammalian brain
-
-<figure>
-<p><img src="figs/nn.png" style="width:90.0%" alt="image" /> <img
-src="figs/cnn_overview.jpg" style="width:90.0%" alt="image" /></p>
-</figure>
-:::
-
-::: frame
-### Modern machine learning (neural networks a.k.a. deep learning)
-
--   For complex tasks, neural networks keep getting better with:
-
-    -   more compute resources
-
-    -   bigger data
-
-    -   bigger models (enabled by data and compute)
-:::
-
-::: frame
-### modern machine learning: deep learning and foundation models
-
--   build models to (extreme) scale in data, compute and number of
-    parameters ![image](figs/biggerdata.png){width="70%"}
-
--   classical learning theory does not seem to apply (huge models that
-    don't overfit)
-
--   e.g. convolutional neural networks
-    ![image](figs/breastcancersweden.png){width="70%"}
-
--   large language models like chatGPT
-:::
-
-::: frame
-### Large language models
-
-#### auto-regressive next word predictors
-
--   large language models learn from large datasets with self-supervised
-    objectives
-
--   fine-tune for tasks
-
--   not well-understood but very impressive
-:::
-
-::: frame
-### Training large language models like chatGPT
-
-#### masked-word prediction
-
-![image](figs/nextwordpred.jpeg){width="60%"}
-
--   On a large corpus: predict the most likely \[mask\] in this sentence
-    (answer = word)
-
--   Next text generation: start with 'prompt' (=context) and predict
-    next likely word
-
--   one-word at a time, each time updating the *context* (=
-    *auto-regressive*)
-
-[^1]
-:::
-
-::: frame
-### Does this create 'good answers'? Internet is full of harmful text
-
-#### Need a filter
-
--   problem: no single good answer, some are unwanted (e.g. abusive)
-
--   let pre-trained model generate 2 responses to many prompts
-
--   let human judge which of the 2 is better
-
--   reinforcement-learning with human feedback (RLHF)
-
--   huge difference in user experience
-:::
-
-::: frame
-### writing a good prompt
-
-#### tasks that look like language modeling
-
--   provide context
-
-    -   not: "describe vancomycin"
-
-    -   but: "I'm in training as an hospital pharmacist, learning more
-        about antiobiotic treatments in the intensive care, what is
-        important for me to know about vancomycin?"
-
--   tasks that look like natural language completion will tend to work
-    well
-
-    -   not: \[statement\] $\to$ TRUE/FALSE
-
-    -   but: is the following statement true? \[statement\], please
-        provide your answer below
-:::
-
-:::::: frame
-### rule-based vs LLMs
-
-::::: columns
-::: column
-0.5 rule-based
-
--   deduction from explicit knowledge
-
--   knowledge verifiable and fast
-
--   constrained to deducible
-
-<figure>
-<p><img src="figs/library_bing.jpeg" style="width:60.0%" alt="image" />
-<img src="figs/clippit.png" style="width:60.0%" alt="image" /></p>
-</figure>
-:::
-
-::: column
-0.5
-
--   extracted from observed data
-
--   unverifiable and compute intensive
-
--   "chatGPT seems to *know*(?) much"
-
-<figure>
-<p><img src="figs/brain_bing.jpeg" style="width:60.0%" alt="image" />
-<img src="figs/chatgpt.jpg" style="width:60.0%" alt="image" /></p>
-</figure>
-:::
-:::::
-::::::
-
-::: frame
-### new research in LLMs
-
-#### presented at NeurIPS, december 2023 (toolformer, META-AI)
-
-<figure>
-<p><img src="figs/toolformer_motivation.png" style="width:80.0%"
-alt="image" /> <img src="figs/toolformer.png" style="width:80.0%"
-alt="image" /></p>
-</figure>
-:::
-
-::: frame
-### Take-away part 1:
-
-#### overview of AI and mL
-
--   AI subsumes rule-based programs and machine learning
-
--   ML is statistical learning with flexible models
-
--   modern ML uses large models that seem to violate classical learning
-    theory
-
--   chatGPT is based on auto-regressive next-token prediction and
-    reinforcement learning with human feedback
-
--   chatGPT produces beautiful mistakes: eloquently written logical
-    fallacies, and thus needs expert 'supervision'
-
--   chatGPT does well on natural-language-like tasks (i.e. not \"is this
-    sentence true or false\")
-:::
-
-::: frame
-but what to *do*?
-:::
-
-::: frame
-### two questions
+## two questions
 
 Question 1
 
--   prediction model of $Y|X$ fits the data really well (AUC = 0.99 and
-    perfect calibration)
+- prediction model of $Y|X$ fits the data really well (AUC = 0.99 and perfect calibration)
+- will changing $X$ induce a change $Y$?
 
--   will changing $X$ induce a change $Y$?
-:::
+Question 2
 
-::: frame
-### Improving the world is a causal task
+- Give statins when risk of cardiovascular event in 10 years exceeds 10%
+- ML model based on age, medication history, cardiac CT-scan predicts this very well 
+- will using this model for treatment decisions improve patient outcomes?
+
+## Improving the world is a causal task
 
 -   statistics / ML: what to expect when we passively observe the world
-
 -   *not* how we can *intervene* to make things better
-
 -   Question 1
-
     -   yellowish fingers predict lung cancer, paint fingers to skin
         color?
-
     -   weight loss predicts death in lung cancer, send patients to
         couch with McDonalds?
+        ![image](figs/couch_patato.jpeg){width="40%"}
 
-    ![image](figs/couch_patato.jpeg){width="40%"}
+## When accurate prediction models yield harmful self-fulfilling prophecies{.center}
+
+---
+
+:::{.r-stack}
+
+![](figs/new_overview1a.png){.fragment height=18cm}
+
+![](figs/new_overview1b.png){.fragment height=18cm}
+
+![](figs/new_overview1c.png){.fragment height=18cm}
+
+![](figs/new_overview2a.png){.fragment height=18cm}
+
+![](figs/new_overview2b.png){.fragment height=18cm}
+
+![](figs/new_overview3a.png){.fragment height=18cm}
+
+![](figs/new_overview3b.png){.fragment height=18cm}
+
 :::
 
-::: frame
-### How to learn about the effects of interventions?
+## Prediction modeling is very popular in medical research
 
-#### Do the interventions in (psuedo) experiments
+![](figs/predmodelsoverview.png){width="70%"}
 
--   Why not look back at data and compare outcomes of patients treated
-    with different medications?
+---
 
--   Patients who take anti-hypertensive medications have more heart
-    attacks
+building models for decision support without regards for the historic treatment policy is a bad idea
 
--   confounding by indication
+:::{.r-stack}
+
+![image](figs/policy_changea1.png){.fragment width="100%"}
+
+![image](figs/policy_changea3.png){.fragment width="100%"}
+
+![image](figs/policy_changeax.png){.fragment width="100%"}
+
+![image](figs/policy_changeb2.png){.fragment width="100%"}
+
+![image](figs/policy_changebx.png){.fragment width="100%"}
+
 :::
 
-::: frame
-### Causal inference
+--- 
 
-#### Studies causal questions, answers that tell us what to do
-
--   studies questions on effects of interventions
-
--   statistics / ML: what to expect when we passively observe the world
-
--   causal inference: what if I change something?
-
--   field of causal inference provides a language to express causal
-    quantities
-
--   and tell us how to anser them
-
--   these answers tell us what to do
+:::{.callout-note}
+The question is not "is my model accurate before / after deploytment", but did deploying the model improve patient outcomes?
 :::
 
-::: frame
-### Causal effects defined with potential outcomes
 
-#### The individual treatment effect
+## Treatment-naive risk models
 
-<figure>
-<p><img src="figs/ite1.png" style="width:80.0%" alt="image" /> <img
-src="figs/ite2.png" style="width:80.0%" alt="image" /> <embed
-src="figs/ite3.pdf" style="width:80.0%" /> <embed src="figs/ite_pos.pdf"
-style="width:80.0%" /></p>
-</figure>
+:::{.r-stack}
+
+![](figs/txnaive1.png){.fragment}
+
+![](figs/txnaive2.png){.fragment}
+
 :::
 
-::: frame
-### Causal effects defined with potential outcomes
+## Other risk models:
 
-#### The average treatment effect
+[- condition on given treatment and traits]{.fragment fragment-index=1}
 
-<figure>
-<p><img src="figs/ate1.png" alt="image" /> <img src="figs/ate2.png"
-alt="image" /> <img src="figs/ate3.png" alt="image" /> <img
-src="figs/ate.png" alt="image" /></p>
-</figure>
+[- unobserved confounding (hat type) leads to wrong treatment decisions]{.fragment fragment-index=2}
+
+:::{.r-stack}
+
+![](figs/postdecision1.png){.fragment fragment-index=1}
+
+![](figs/postdecision2.png){.fragment fragment-index=2} 
+
 :::
 
-::: frame
-### Treatment effect estimation requires exchangeability
+##  Recommended validation practices do not protect against harm
 
-#### Which is hard to ensure in non-experimental (observational data)
+because they do not evaluate the policy change
 
-<figure>
-<div class="center">
+![](figs/tripod_title.png)
+![](figs/ajcc_title.png)
 
-</div>
-</figure>
+## Bigger data does not protect against harmful risk models
+
+![](figs/biggerdata.png){width="80%"}
+
+## More flexible models do not protect against harmful risk models
+
+![](figs/morelayers.png){width="50%"}
+
+## Gap between prediction accuracy and value for decision making
+
+![](figs/mindthegap.png){width="80%"}
+
+## {auto-animate=true}
+
+::: {style="margin-top: 200px; font-size: 3em; color: red;"}
+What to do?
 :::
 
-::: frame
-### Randomized controlled trials gaurantee exchangeability
+## {auto-animate=true}
 
-#### Thus allow for causal inference
-
-<figure>
-<div class="center">
-
-</div>
-</figure>
-
-$$\begin{aligned}
-            \onslide<2->{Y_t &= Y|T=t}
-            %\onslide<3->{Y|do(T),Z &= Y|T,Z \\}
-            %\onslide<4->{Y|do(T) &= \sum_Z Y|T,Z}
-        
-\end{aligned}$$
+::: {style="margin-top: 100px"}
+What to do?
 :::
-
-::: frame
-### Causal inference
-
-#### summary
-
--   defines causal quantities / questions
-
--   need exchangeability to estimate treatment effects
-
--   holds by design in RCTs
-
--   may hold outside of RCTs (=observational data), conditional on
-    covariates
-
--   may be unobserved confounding
-
--   RCT for everything?
-:::
-
-:::: frame
-### Problems with RCTs for medical decision making
-
-#### RCTs solve confounding but have their own limitations
-
-::: columns
-:::
-::::
-
-:::::: frame
-### Ways forward
-
--   make right assumptions with observational data
-
-    -   known confounders
-
-    -   known functional forms for phenomena
-
--   use observational and RCT data
-
--   *active area of research*
-
-    -   ML x CI: more flexible causal inference
-
-    -   other way around: make ML more robust with CI insights
-
-        -   sources of variation (*domain shifts*)
-
-        -   unwanted biases
-
-        -   make ML more efficient by generating pre-training data
-
-::::: columns
-::: column
-0.7
-
-<figure>
-<p><img src="figs/elimbias_title.png" style="width:80.0%" alt="image" />
-<img src="figs/protect_title.png" style="width:80.0%" alt="image" />
-<img src="figs/offset_title.png" style="width:80.0%" alt="image" /></p>
-</figure>
-:::
-
-::: column
-0.3
-
-<figure>
-<p><img src="figs/qr_elimbias.png" style="width:80.0%" alt="image" />
-<img src="figs/qr_protect.png" style="width:80.0%" alt="image" /> <img
-src="figs/qr_offset.png" style="width:80.0%" alt="image" /></p>
-</figure>
-:::
-:::::
-::::::
-
-::: frame
-ML and causal inference\
-Question 2: risk prediction model used for treatment decisions\
-accurate outcome prediction models can yield harmful self-fulfilling
-prophecies\
-:::
-
-::: frame
-#### accurate outcome prediction models can yield harmful self-fulfilling prophecies
-
-<figure>
-<p><embed src="figs/new_overview1a.pdf" style="width:70.0%" /> <embed
-src="figs/new_overview1b.pdf" style="width:70.0%" /> <embed
-src="figs/new_overview1c.pdf" style="width:70.0%" /> <embed
-src="figs/new_overview2a.pdf" style="width:70.0%" /> <embed
-src="figs/new_overview2b.pdf" style="width:70.0%" /> <embed
-src="figs/new_overview3a.pdf" style="width:70.0%" /> <embed
-src="figs/new_overview3b.pdf" style="width:70.0%" /></p>
-</figure>
-:::
-
-::: frame
-### Prediction modeling very popular in medical research
-
-![image](figs/predmodelsoverview.pdf){width="70%"}
-:::
-
-::: frame
-building models for decision support without regards for the historic
-treatment policy is a bad idea
-:::
-
-::: frame
-![image](figs/policy_changea1.png){width="\\textwidth"}
-![image](figs/policy_changea3.png){width="\\textwidth"}
-![image](figs/policy_changeax.png){width="\\textwidth"}
-![image](figs/policy_changeb2.png){width="\\textwidth"}
-![image](figs/policy_changebx.png){width="\\textwidth"}
-:::
-
-::: frame
-the question is not "is my model accurate before / after deploytment",
-but did deploying the model improve patient outcomes?
-:::
-
-::: frame
-Treatment-naive risk models
-![image](figs/txnaive1.png){width="\\textwidth"}
-![image](figs/txnaive2.png){width="\\textwidth"}
-:::
-
-::: frame
-Other risk models: condition on given treatment and traits
-![image](figs/postdecision1.png){width=".9\\textwidth"}
-:::
-
-::: frame
-Other risk models: condition on given treatment and traits
-![image](figs/postdecision2.png){width=".9\\textwidth"} unobserved
-confounding (hat type) leads to wrong treatment decisions
-:::
-
-::: frame
-Recommended validation practices do not protect against harmbecause they
-do not evaluate the policy change
-![image](figs/tripod_title.png){width=".5\\textwidth"}
-![image](figs/ajcc_title.png){width=".5\\textwidth"}
-:::
-
-::: frame
-Bigger data does not protect against harmful risk models
-![image](figs/biggerdata.png){width="80%"}
-:::
-
-::: frame
-More flexible models do not protect against harmful risk models
-![image](figs/morelayers.png){width="50%"}
-:::
-
-::: frame
-### Gap between prediction accuracy and value for decision making
-
-![image](figs/mindthegap.pdf){width="80%"}
-:::
-
-::: frame
-[what to do?]{.alert}
 
 1.  Evaluate policy change (cluster randomized controlled trial)
 
 2.  Build models that are likely to have value for decision making
+
+## Prediction-under-intervention models
+Predict outcome *under hypothetical intervention* of giving certain treatment
+
+![](figs/predictionunderintervention.png){width="\\textwidth"}
+
+## When developing risk models,
+
+always discuss:
+
+::: {.r-stack}
+
+![](figs/policy_changeb1.png){.fragment fragment-index=1 height="11cm"}
+
+![](figs/policy_changeb2.png){.fragment fragment-index=2 height="11cm"}
+
+![](figs/policy_changebx.png){.fragment fragment-index=3 height="11cm"}
+
 :::
 
-::: frame
-Prediction-under-intervention modelsPredict outcome *under hypothetical
-intervention* of giving certain treatment
-![image](figs/predictionunderintervention.png){width="\\textwidth"}
+[1.  what is effect on treatment policy?]{.fragment fragment-index=2}
+
+[2.  what is effect on patient outcomes?]{.fragment fragment-index=3}
+
+---
+
+:::{.callout-tip}
+## Don't assume predicting well leads to good decisions
+think about the policy change
 :::
 
-::: frame
-When developing risk models, always discuss:
-![image](figs/policy_changeb1.png){height=".6\\textheight"}
-![image](figs/policy_changeb2.png){height=".6\\textheight"}
-![image](figs/policy_changebx.png){height=".6\\textheight"}
+:::: {.columns}
+::: {.column width="50%"}
+![](figs/comment_qr.png){height=8cm}
 
-1.  what is effect on treatment policy?
-
-2.  what is effect on patient outcomes?
+From algorithms to action: improving patient care requires causality
 :::
 
-:::::: frame
-Takeaway Don't assume predicting well leads to good decisions, think
-about the policy change\
- \
+::: {.column width="50%"}
+![](figs/qr_selffulfilling.png){height=8cm}
 
-::::: columns
-::: column
-0.5 ![image](figs/comment_qr.png){width=".5\\textwidth"}\
-Decision making in cancer: causal questions require causal answers
-:::
-
-::: column
-0.5 ![image](figs/qr_selffulfilling.png){width=".5\\textwidth"}\
 When accurate prediction models yield harmful sel-fulfilling prophecies
 :::
-:::::
-::::::
+::::
 
-::: frame
-### take-aways
+## take-aways
 
 -   AI subsumes rule-based programs and machine learning
-
 -   machine learning is statistical learning from data with flexible
     mdoels
-
 -   modern machine learning does well with scale
-
 -   chatGPT is based on auto-regressive next-token prediction and
     reinforcement learning with human feedback
-
 -   chatGPT produces beautiful mistakes: eloquently written logical
     fallacies
-
 -   chatGPT does well on natural-language-like tasks
-
 -   prediction: what to expect when passively observing the world
-
 -   causal inference: what happens when I change something?
-
 -   prediction models can cause harmful self-fulfilling prophecies when
     used for decision making
-
 -   when building prediction models for decision support, you cannot
     ignore decisions on the treatments in historic data
-
 -   models for prediction-under-intervention have foreseeable effects
     when used for decision making
-
 -   ultimate test of model utility is determined by outcomes in
     (cluster) RCT
-:::
 
-::: frame
+---
+
 thank you
-:::
-
-[^1]: image by akshay pachaar
 

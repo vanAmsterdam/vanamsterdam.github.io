@@ -12,6 +12,10 @@ citation: true
 
 footer: "&copy;Wouter van Amsterdam @WvanAmsterdam"
 
+format:
+  revealjs:
+    include-before: [ '<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {enableAssistiveMml: false}});</script>']
+
 author:
   - name: Wouter van Amsterdam
     url: https://vanamsterdam.github.io

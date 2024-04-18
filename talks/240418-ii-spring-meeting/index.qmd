@@ -459,13 +459,13 @@ think about the policy change
 ::: {.column width="50%"}
 ![](figs/comment_qr.png){height=8cm}
 
-From algorithms to action: improving patient care requires causality
+From algorithms to action: improving patient care requires causality [@vanamsterdamAlgorithmsActionImproving2024]
 :::
 
 ::: {.column width="50%"}
 ![](figs/qr_selffulfilling.png){height=8cm}
 
-When accurate prediction models yield harmful sel-fulfilling prophecies
+When accurate prediction models yield harmful sel-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2024a]
 :::
 ::::
 

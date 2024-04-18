@@ -298,7 +298,7 @@
     "href": "talks/240418-ii-spring-meeting/index.html#ml-versus-statistics-when-to-use-what",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "ML versus statistics, when to use what",
-    "text": "ML versus statistics, when to use what\nhave more data and more complex functions (images) – have more domain knowledge and less data"
+    "text": "ML versus statistics, when to use what\n\n\nmachine learning\n\nhave more data\nmore complex functions (images)\n\n\nstatistics (e.g. GLMs)\n\nless data\nmore domain knowledge"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#a-sobering-note",
@@ -319,7 +319,7 @@
     "href": "talks/240418-ii-spring-meeting/index.html#improving-the-world-is-a-causal-task",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "Improving the world is a causal task",
-    "text": "Improving the world is a causal task\n\nstatistics / ML: what to expect when we passively observe the world\nnot how we can intervene to make things better\nQuestion 1\n\nyellowish fingers predict lung cancer, paint fingers to skin color?\nweight loss predicts death in lung cancer, send patients to couch with McDonalds?"
+    "text": "Improving the world is a causal task\n\nstatistics / ML: what to expect when we passively observe the world\nnot how we can intervene to make things better, this requires causality\nQuestion 1\n\nyellowish fingers predict lung cancer, paint fingers to skin color?\nweight loss predicts death in lung cancer, send patients to couch with McDonalds?"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies",
@@ -410,14 +410,14 @@
     "href": "talks/240418-ii-spring-meeting/index.html#take-aways",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "take-aways",
-    "text": "take-aways\n\nAI subsumes rule-based programs and machine learning\nmachine learning is statistical learning from data with flexible mdoels\nmodern machine learning does well with scale\nchatGPT is based on auto-regressive next-token prediction and reinforcement learning with human feedback\nchatGPT produces beautiful mistakes: eloquently written logical fallacies\nchatGPT does well on natural-language-like tasks\nprediction: what to expect when passively observing the world\ncausal inference: what happens when I change something?\nprediction models can cause harmful self-fulfilling prophecies when used for decision making\nwhen building prediction models for decision support, you cannot ignore decisions on the treatments in historic data\nmodels for prediction-under-intervention have foreseeable effects when used for decision making\nultimate test of model utility is determined by outcomes in (cluster) RCT"
+    "text": "take-aways\n\nAI subsumes rule-based programs and machine learning\nmachine learning is statistical learning from data with flexible models #- modern machine learning does well with scale\nchatGPT does auto-regressive next-word prediction #reinforcement learning with human feedback\nchatGPT produces beautiful mistakes: eloquently written logical fallacies #- chatGPT does well on natural-language-like tasks\nprediction: what to expect when passively observing the world\ncausality: what happens when I change something?\nprediction models can cause harmful self-fulfilling prophecies when used for decision making\nwhen building prediction models for decision support, you cannot ignore decisions on the treatments in historic data\nmodels for prediction-under-intervention have foreseeable effects when used for decision making\nultimate test of model utility is determined by outcomes in (cluster) RCT"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#references",
     "href": "talks/240418-ii-spring-meeting/index.html#references",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "",
-    "text": "thank you\n\n\n\n©Wouter van Amsterdam (WvanAmsterdam?)\n\n\n\n\nChristodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. “A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.” Journal of Clinical Epidemiology 110 (June): 12–22. https://doi.org/10.1016/j.jclinepi.2019.02.004.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nDhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. “Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.” BMC Medical Research Methodology 22 (1): 101. https://doi.org/10.1186/s12874-022-01577-x."
+    "text": "thank you\n\n\n\n©Wouter van Amsterdam (WvanAmsterdam?)\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” arXiv. https://doi.org/10.48550/arXiv.2209.07397.\n\n\nChristodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. “A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.” Journal of Clinical Epidemiology 110 (June): 12–22. https://doi.org/10.1016/j.jclinepi.2019.02.004.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nDhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. “Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.” BMC Medical Research Methodology 22 (1): 101. https://doi.org/10.1186/s12874-022-01577-x."
   },
   {
     "objectID": "posts/210725-counterfactualvsinterventional.html",

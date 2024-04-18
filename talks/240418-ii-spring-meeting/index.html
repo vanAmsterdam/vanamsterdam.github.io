@@ -714,7 +714,21 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 </section>
 <section id="ml-versus-statistics-when-to-use-what" class="slide level2">
 <h2>ML versus statistics, when to use what</h2>
-<p>have more data and more complex functions (images) – have more domain knowledge and less data</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>machine learning</strong></p>
+<ul>
+<li class="fragment">have more data</li>
+<li class="fragment">more complex functions (images)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>statistics (e.g.&nbsp;GLMs)</strong></p>
+<ul>
+<li class="fragment">less data</li>
+<li class="fragment">more domain knowledge</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="a-sobering-note" class="slide level2">
 <h2>A sobering note</h2>
@@ -750,11 +764,11 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 <h2>Improving the world is a causal task</h2>
 <ul>
 <li class="fragment">statistics / ML: what to expect when we passively observe the world</li>
-<li class="fragment"><em>not</em> how we can <em>intervene</em> to make things better</li>
+<li class="fragment"><em>not</em> how we can <em>intervene</em> to make things better, this requires <em>causality</em></li>
 <li class="fragment">Question 1
 <ul>
 <li class="fragment">yellowish fingers predict lung cancer, paint fingers to skin color?</li>
-<li class="fragment">weight loss predicts death in lung cancer, send patients to couch with McDonalds? <img data-src="figs/couch_patato.jpeg" style="width:40.0%" alt="image"></li>
+<li class="fragment">weight loss predicts death in lung cancer, send patients to couch with McDonalds? <img data-src="figs/couch_patato.jpeg" style="width:40.0%"></li>
 </ul></li>
 </ul>
 </section>
@@ -779,7 +793,19 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 <img data-src="figs/predmodelsoverview.png" style="width:70.0%" class="r-stretch"></section>
 <section class="slide level2">
 
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
 <p>building models for decision support without regards for the historic treatment policy is a bad idea</p>
+</div>
+</div>
+</div>
 <div class="r-stack">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -912,10 +938,10 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="figs/comment_qr.png" style="height:8cm"></p>
-<p>From algorithms to action: improving patient care requires causality</p>
+<p>From algorithms to action: improving patient care requires causality <span class="citation" data-cites="vanamsterdamAlgorithmsActionImproving2024">(<a href="#/references" role="doc-biblioref" onclick="">Amsterdam, Jong, et al. 2024</a>)</span></p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="figs/qr_selffulfilling.png" style="height:8cm"></p>
-<p>When accurate prediction models yield harmful sel-fulfilling prophecies</p>
+<p>When accurate prediction models yield harmful sel-fulfilling prophecies <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2024a">(<a href="#/references" role="doc-biblioref" onclick="">Amsterdam, Geloven, et al. 2024</a>)</span></p>
 </div>
 </div>
 </section>
@@ -923,13 +949,11 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 <h2>take-aways</h2>
 <ul>
 <li class="fragment">AI subsumes rule-based programs and machine learning</li>
-<li class="fragment">machine learning is statistical learning from data with flexible mdoels</li>
-<li class="fragment">modern machine learning does well with scale</li>
-<li class="fragment">chatGPT is based on auto-regressive next-token prediction and reinforcement learning with human feedback</li>
-<li class="fragment">chatGPT produces beautiful mistakes: eloquently written logical fallacies</li>
-<li class="fragment">chatGPT does well on natural-language-like tasks</li>
+<li class="fragment">machine learning is statistical learning from data with flexible models #- modern machine learning does well with scale</li>
+<li class="fragment">chatGPT does auto-regressive next-word prediction #reinforcement learning with human feedback</li>
+<li class="fragment">chatGPT produces beautiful mistakes: eloquently written logical fallacies #- chatGPT does well on natural-language-like tasks</li>
 <li class="fragment">prediction: what to expect when passively observing the world</li>
-<li class="fragment">causal inference: what happens when I change something?</li>
+<li class="fragment">causality: what happens when I change something?</li>
 <li class="fragment">prediction models can cause harmful self-fulfilling prophecies when used for decision making</li>
 <li class="fragment">when building prediction models for decision support, you cannot ignore decisions on the treatments in historic data</li>
 <li class="fragment">models for prediction-under-intervention have foreseeable effects when used for decision making</li>
@@ -946,6 +970,12 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-vanamsterdamWhenAccuratePrediction2024a" class="csl-entry" role="listitem">
+Amsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. <span>“When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.2312.01210">https://doi.org/10.48550/arXiv.2312.01210</a>.
+</div>
+<div id="ref-vanamsterdamAlgorithmsActionImproving2024" class="csl-entry" role="listitem">
+Amsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. <span>“From Algorithms to Action: Improving Patient Care Requires Causality.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.2209.07397">https://doi.org/10.48550/arXiv.2209.07397</a>.
+</div>
 <div id="ref-christodoulouSystematicReviewShows2019" class="csl-entry" role="listitem">
 Christodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. <span>“A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.”</span> <em>Journal of Clinical Epidemiology</em> 110 (June): 12–22. <a href="https://doi.org/10.1016/j.jclinepi.2019.02.004">https://doi.org/10.1016/j.jclinepi.2019.02.004</a>.
 </div>

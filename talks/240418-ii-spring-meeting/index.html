@@ -7,7 +7,8 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="Wouter van Amsterdam">
@@ -432,11 +433,7 @@
 <h2>AI subsumes rule-based systems and machine learning</h2>
 <ul>
 <li class="fragment">Rule-based AI: knowledge base of rules</li>
-<li class="fragment">Machine learning: statistical learning from examples
-<ul>
-<li class="fragment">(traditional) machine learning (logistic regression, SVM, RF, GBM)</li>
-<li class="fragment">modern machine learning: deep learning and foundation models</li>
-</ul></li>
+<li class="fragment">Machine learning: statistical learning from examples #- (traditional) machine learning (logistic regression, SVM, RF, #GBM) #- modern machine learning: deep learning and foundation models</li>
 </ul>
 </section>
 <section id="rule-based-systems-are-ai" class="slide level2">
@@ -465,7 +462,46 @@
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
-<p>data: <span class="math display">\[l_i,w_i,s_i \sim p(l,w,s)\]</span></p>
+<p>data:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">i</th>
+<th style="text-align: right;">length</th>
+<th style="text-align: right;">weight</th>
+<th style="text-align: right;">sex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">boy</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">girl</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">girl</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><span class="math display">\[l_i,w_i,s_i \sim p(l,w,s)\]</span></p>
+</div>
 </div>
 </div>
 </section>
@@ -479,7 +515,7 @@
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
-<p>use samples to learn model for <em>joint</em> distribution <span class="math inline">\(p\)</span> <span class="math display">\[
+<p>use samples to learn model <span class="math inline">\(p_{\theta}\)</span> for <em>joint</em> distribution <span class="math inline">\(p\)</span> <span class="math display">\[
   l_j,w_j,s_j \sim p_{\theta}(l,w,s)
 \]</span></p>
 </div>
@@ -526,7 +562,7 @@
 </div>
 </div><div class="column" style="width:50%;">
 <p>use samples to learn model for <em>conditional</em> distribution <span class="math inline">\(p\)</span> of one variable <span class="math display">\[
-s_j \sim p_{\theta}(s|l=l_i,w=w_i)
+s_j \sim p_{\theta}(s|l=l',w=w')
 \]</span></p>
 </div>
 </div>
@@ -560,7 +596,7 @@ s_j \sim p_{\theta}(s|l=l_i,w=w_i)
 </div>
 </div><div class="column" style="width:50%;">
 <p>call this one variable <em>outcome</em> and <em>classify</em> when expected value passes threshold (e.g.&nbsp;0.5): <span class="math display">\[
-s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
+s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 \]</span></p>
 </div>
 </div>
@@ -589,7 +625,10 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 </section>
 <section id="ml-tasks-reinforcement-learning" class="slide level2">
 <h2>ML tasks: reinforcement learning</h2>
-<p>Maybe not so useful for clinical research as requires many experiments</p>
+<ul>
+<li class="fragment">e.g.&nbsp;computers playing games</li>
+<li class="fragment">maybe not so useful for clinical research as requires many experiments</li>
+</ul>
 
 <img data-src="figs/reinforcement_learning.png" style="width:80.0%" class="r-stretch"></section>
 <section id="machine-learning-is-statistical-learning-with-flexible-models" class="slide level2">
@@ -601,13 +640,12 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 <p><span class="fragment" data-fragment-index="3">- models used in machine learning are more flexible</span></p>
 </div><div class="column" style="width:50%;">
 <div class="r-stack">
-<p><img data-src="figs/ml_vs_stats.png" class="fragment" data-fragment-index="1"></p>
-<p><img data-src="figs/a_machine_learning.jpeg" class="fragment" data-fragment-index="2"></p>
-<p><img data-src="figs/curve_fitting_xkcd_ 2048.png" class="fragment" data-fragment-index="3"></p>
+<p><img data-src="figs/ml_vs_stats.png" class="fragment" style="width:10cm" data-fragment-index="1"></p>
+<p><img data-src="figs/a_machine_learning.jpeg" class="fragment" style="width:10cm" data-fragment-index="2"></p>
+<p><img data-src="figs/curve_fitting_xkcd_ 2048.png" class="fragment" style="width:10cm" data-fragment-index="3"></p>
 </div>
 </div>
 </div>
-<p>::::::</p>
 </section>
 <section id="ml-models-can-fit-more-functions-but-also-more-likely-to-overfit" class="slide level2">
 <h2>ML models can fit more functions but also more likely to overfit</h2>
@@ -653,22 +691,38 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 <section id="auto-regressive-conditional-generation" class="slide level2">
 <h2>auto-regressive conditional generation:</h2>
 <p><span class="math display">\[\begin{align}
-    p_{\text{chatGPT}}(\text{first-word}&amp;|\text{prompt})\\
+    \text{word}_1 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
 \end{align}\]</span></p>
 </section>
 <section id="auto-regressive-conditional-generation-1" class="slide level2">
 <h2>auto-regressive conditional generation:</h2>
 <p><span class="math display">\[\begin{align}
-    p_{\text{chatGPT}}(\text{first-word}&amp;|\text{prompt})\\
-    p_{\text{chatGPT}}(\text{second-word}&amp;|\text{first-word},\text{prompt})\\
+    \text{word}_1 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})
 \end{align}\]</span></p>
 </section>
 <section id="auto-regressive-conditional-generation-2" class="slide level2">
 <h2>auto-regressive conditional generation:</h2>
 <p><span class="math display">\[\begin{align}
-    p_{\text{chatGPT}}(\text{first-word}&amp;|\text{prompt})\\
-    p_{\text{chatGPT}}(\text{second-word}&amp;|\text{first-word},\text{prompt})\\
-    p_{\text{chatGPT}}(\text{next-word}&amp;|\text{previous-words},\text{prompt})
+    \text{word}_1 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})
+\end{align}\]</span></p>
+</section>
+<section id="auto-regressive-conditional-generation-3" class="slide level2">
+<h2>auto-regressive conditional generation:</h2>
+<p><span class="math display">\[\begin{align}
+    \text{word}_1 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
+    \text{word}_n &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
+\end{align}\]</span></p>
+</section>
+<section id="auto-regressive-conditional-generation-4" class="slide level2">
+<h2>auto-regressive conditional generation:</h2>
+<p><span class="math display">\[\begin{align}
+    \text{word}_1 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
+    \text{word}_n &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})\\
+    \text{STOP}   &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
 \end{align}\]</span></p>
 </section>
 <section id="gpt-4-scale" class="slide level2">
@@ -859,7 +913,23 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 <h2>Treatment-naive risk models</h2>
 <div class="r-stack">
 <p><img data-src="figs/txnaive1.png" class="fragment"></p>
-<p><img data-src="figs/txnaive2.png" class="fragment"></p>
+<p><img data-src="figs/txnaive2b.png" class="fragment"></p>
+</div>
+</section>
+<section id="is-this-obvious" class="slide level2">
+<h2>Is this obvious?</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>It may seem obvious that you should not ignore historical treatments in your prediction models, if you want to improve treatment decisions, but many of these models are published daily, and some guidelines even allow for implementing these models based on predictve performance only</p>
+</div>
+</div>
 </div>
 </section>
 <section id="other-risk-models" class="slide level2">
@@ -874,7 +944,7 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 <section id="recommended-validation-practices-do-not-protect-against-harm" class="slide level2">
 <h2>Recommended validation practices do not protect against harm</h2>
 <p>because they do not evaluate the policy change</p>
-<p><img data-src="figs/tripod_title.png"> <img data-src="figs/ajcc_title.png"></p>
+<p><img data-src="figs/ajcc_title.png" style="height:5cm"> <img data-src="figs/tripod_title.png" style="height:5cm"> <img data-src="figs/tripod_ai.png" style="height:5cm"></p>
 </section>
 <section id="bigger-data-does-not-protect-against-harmful-risk-models" class="slide level2">
 <h2>Bigger data does not protect against harmful risk models</h2>
@@ -949,9 +1019,9 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 <h2>take-aways</h2>
 <ul>
 <li class="fragment">AI subsumes rule-based programs and machine learning</li>
-<li class="fragment">machine learning is statistical learning from data with flexible models #- modern machine learning does well with scale</li>
-<li class="fragment">chatGPT does auto-regressive next-word prediction #reinforcement learning with human feedback</li>
-<li class="fragment">chatGPT produces beautiful mistakes: eloquently written logical fallacies #- chatGPT does well on natural-language-like tasks</li>
+<li class="fragment">machine learning is statistical learning from data with flexible models</li>
+<li class="fragment">chatGPT does auto-regressive next-word prediction</li>
+<li class="fragment">chatGPT produces beautiful mistakes: eloquently written logical fallacies</li>
 <li class="fragment">prediction: what to expect when passively observing the world</li>
 <li class="fragment">causality: what happens when I change something?</li>
 <li class="fragment">prediction models can cause harmful self-fulfilling prophecies when used for decision making</li>
@@ -966,7 +1036,7 @@ s_j = p_{\theta}(s|l=l_i,w=w_i) &gt; 0.5
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>©Wouter van Amsterdam <span class="citation" data-cites="WvanAmsterdam">(<a href="#/references" role="doc-biblioref" onclick=""><strong>WvanAmsterdam?</strong></a>)</span></p>
+<p>©Wouter van Amsterdam (<i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i>: WvanAmsterdam)</p>
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

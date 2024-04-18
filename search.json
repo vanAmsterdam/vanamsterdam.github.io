@@ -165,7 +165,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "I may leave X",
-    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam @WvanAmsterdam"
+    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#what-is-ai-1",
@@ -179,7 +179,7 @@
     "href": "talks/240418-ii-spring-meeting/index.html#ai-subsumes-rule-based-systems-and-machine-learning",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "AI subsumes rule-based systems and machine learning",
-    "text": "AI subsumes rule-based systems and machine learning\n\nRule-based AI: knowledge base of rules\nMachine learning: statistical learning from examples\n\n(traditional) machine learning (logistic regression, SVM, RF, GBM)\nmodern machine learning: deep learning and foundation models"
+    "text": "AI subsumes rule-based systems and machine learning\n\nRule-based AI: knowledge base of rules\nMachine learning: statistical learning from examples #- (traditional) machine learning (logistic regression, SVM, RF, #GBM) #- modern machine learning: deep learning and foundation models"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#rule-based-systems-are-ai",
@@ -193,14 +193,14 @@
     "href": "talks/240418-ii-spring-meeting/index.html#ml-tasks",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "ML tasks",
-    "text": "ML tasks\n\n\n\n\n\n\n\n\ndata: \\[l_i,w_i,s_i \\sim p(l,w,s)\\]"
+    "text": "ML tasks\n\n\n\n\n\n\n\n\ndata:\n\n\n\ni\nlength\nweight\nsex\n\n\n\n\n1\n137\n30\nboy\n\n\n2\n122\n24\ngirl\n\n\n3\n101\n18\ngirl\n\n\n…\n…\n…\n…\n\n\n\n\n\\[l_i,w_i,s_i \\sim p(l,w,s)\\]"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#ml-tasks-generation",
     "href": "talks/240418-ii-spring-meeting/index.html#ml-tasks-generation",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "ML tasks: generation",
-    "text": "ML tasks: generation\n\n\n\n\n\n\n\n\nuse samples to learn model for joint distribution \\(p\\) \\[\n  l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\n\\]"
+    "text": "ML tasks: generation\n\n\n\n\n\n\n\n\nuse samples to learn model \\(p_{\\theta}\\) for joint distribution \\(p\\) \\[\n  l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\n\\]"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#ml-tasks-conditional-generation",
@@ -214,28 +214,28 @@
     "href": "talks/240418-ii-spring-meeting/index.html#ml-tasks-conditional-generation-2",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "ML tasks: conditional generation 2",
-    "text": "ML tasks: conditional generation 2\n\n\n\n\n\n\n\n\nuse samples to learn model for conditional distribution \\(p\\) of one variable \\[\ns_j \\sim p_{\\theta}(s|l=l_i,w=w_i)\n\\]\n\n\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\nconditional generation\n\\(l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\\)"
+    "text": "ML tasks: conditional generation 2\n\n\n\n\n\n\n\n\nuse samples to learn model for conditional distribution \\(p\\) of one variable \\[\ns_j \\sim p_{\\theta}(s|l=l',w=w')\n\\]\n\n\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\nconditional generation\n\\(l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\\)"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#ml-tasks-discrimination",
     "href": "talks/240418-ii-spring-meeting/index.html#ml-tasks-discrimination",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "ML tasks: discrimination",
-    "text": "ML tasks: discrimination\n\n\n\n\n\n\n\n\ncall this one variable outcome and classify when expected value passes threshold (e.g. 0.5): \\[\ns_j = p_{\\theta}(s|l=l_i,w=w_i) &gt; 0.5\n\\]\n\n\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\nconditional generation\n\\(l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\\)\n\n\ndiscrimination\n\\(p_{\\theta}(s|l=l_i,w=w_i) &gt; 0.5\\)"
+    "text": "ML tasks: discrimination\n\n\n\n\n\n\n\n\ncall this one variable outcome and classify when expected value passes threshold (e.g. 0.5): \\[\ns_j = p_{\\theta}(s|l=l',w=w') &gt; 0.5\n\\]\n\n\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\nconditional generation\n\\(l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\\)\n\n\ndiscrimination\n\\(p_{\\theta}(s|l=l_i,w=w_i) &gt; 0.5\\)"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#ml-tasks-reinforcement-learning",
     "href": "talks/240418-ii-spring-meeting/index.html#ml-tasks-reinforcement-learning",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "ML tasks: reinforcement learning",
-    "text": "ML tasks: reinforcement learning\nMaybe not so useful for clinical research as requires many experiments"
+    "text": "ML tasks: reinforcement learning\n\ne.g. computers playing games\nmaybe not so useful for clinical research as requires many experiments"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#machine-learning-is-statistical-learning-with-flexible-models",
     "href": "talks/240418-ii-spring-meeting/index.html#machine-learning-is-statistical-learning-with-flexible-models",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "Machine learning is statistical learning with flexible models",
-    "text": "Machine learning is statistical learning with flexible models\n\n\n- There is no fundamental difference between statistics and machine learning\n- both optimize parameters to improve some criterion (loss / likelihood) that measures model fit to data\n- models used in machine learning are more flexible\n\n\n\n\n\n\n\n\n::::::"
+    "text": "Machine learning is statistical learning with flexible models\n\n\n- There is no fundamental difference between statistics and machine learning\n- both optimize parameters to improve some criterion (loss / likelihood) that measures model fit to data\n- models used in machine learning are more flexible"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#ml-models-can-fit-more-functions-but-also-more-likely-to-overfit",
@@ -263,21 +263,35 @@
     "href": "talks/240418-ii-spring-meeting/index.html#auto-regressive-conditional-generation",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "auto-regressive conditional generation:",
-    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    p_{\\text{chatGPT}}(\\text{first-word}&|\\text{prompt})\\\\\n\\end{align}\\]"
+    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\text{word}_1 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{prompt})\\\\\n\\end{align}\\]"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#auto-regressive-conditional-generation-1",
     "href": "talks/240418-ii-spring-meeting/index.html#auto-regressive-conditional-generation-1",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "auto-regressive conditional generation:",
-    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    p_{\\text{chatGPT}}(\\text{first-word}&|\\text{prompt})\\\\\n    p_{\\text{chatGPT}}(\\text{second-word}&|\\text{first-word},\\text{prompt})\\\\\n\\end{align}\\]"
+    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\text{word}_1 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{prompt})\\\\\n    \\text{word}_2 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{word}_1,\\text{prompt})\n\\end{align}\\]"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#auto-regressive-conditional-generation-2",
     "href": "talks/240418-ii-spring-meeting/index.html#auto-regressive-conditional-generation-2",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "auto-regressive conditional generation:",
-    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    p_{\\text{chatGPT}}(\\text{first-word}&|\\text{prompt})\\\\\n    p_{\\text{chatGPT}}(\\text{second-word}&|\\text{first-word},\\text{prompt})\\\\\n    p_{\\text{chatGPT}}(\\text{next-word}&|\\text{previous-words},\\text{prompt})\n\\end{align}\\]"
+    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\text{word}_1 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{prompt})\\\\\n    \\text{word}_2 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{word}_1,\\text{prompt})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240418-ii-spring-meeting/index.html#auto-regressive-conditional-generation-3",
+    "href": "talks/240418-ii-spring-meeting/index.html#auto-regressive-conditional-generation-3",
+    "title": "AI and its (mis)uses in medical research and practice",
+    "section": "auto-regressive conditional generation:",
+    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\text{word}_1 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{prompt})\\\\\n    \\text{word}_2 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{word}_1,\\text{prompt})\\\\\n    \\text{word}_n &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{word}_{n-1},\\ldots,\\text{word}_1,\\text{prompt})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240418-ii-spring-meeting/index.html#auto-regressive-conditional-generation-4",
+    "href": "talks/240418-ii-spring-meeting/index.html#auto-regressive-conditional-generation-4",
+    "title": "AI and its (mis)uses in medical research and practice",
+    "section": "auto-regressive conditional generation:",
+    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\text{word}_1 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{prompt})\\\\\n    \\text{word}_2 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{word}_1,\\text{prompt})\\\\\n    \\text{word}_n &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{word}_{n-1},\\ldots,\\text{word}_1,\\text{prompt})\\\\\n    \\text{STOP}   &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{word}_{n-1},\\ldots,\\text{word}_1,\\text{prompt})\n\\end{align}\\]"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#gpt-4-scale",
@@ -341,6 +355,13 @@
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "Treatment-naive risk models",
     "text": "Treatment-naive risk models"
+  },
+  {
+    "objectID": "talks/240418-ii-spring-meeting/index.html#is-this-obvious",
+    "href": "talks/240418-ii-spring-meeting/index.html#is-this-obvious",
+    "title": "AI and its (mis)uses in medical research and practice",
+    "section": "Is this obvious?",
+    "text": "Is this obvious?\n\n\n\n\n\n\nTip\n\n\nIt may seem obvious that you should not ignore historical treatments in your prediction models, if you want to improve treatment decisions, but many of these models are published daily, and some guidelines even allow for implementing these models based on predictve performance only"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#other-risk-models",
@@ -410,14 +431,14 @@
     "href": "talks/240418-ii-spring-meeting/index.html#take-aways",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "take-aways",
-    "text": "take-aways\n\nAI subsumes rule-based programs and machine learning\nmachine learning is statistical learning from data with flexible models #- modern machine learning does well with scale\nchatGPT does auto-regressive next-word prediction #reinforcement learning with human feedback\nchatGPT produces beautiful mistakes: eloquently written logical fallacies #- chatGPT does well on natural-language-like tasks\nprediction: what to expect when passively observing the world\ncausality: what happens when I change something?\nprediction models can cause harmful self-fulfilling prophecies when used for decision making\nwhen building prediction models for decision support, you cannot ignore decisions on the treatments in historic data\nmodels for prediction-under-intervention have foreseeable effects when used for decision making\nultimate test of model utility is determined by outcomes in (cluster) RCT"
+    "text": "take-aways\n\nAI subsumes rule-based programs and machine learning\nmachine learning is statistical learning from data with flexible models\nchatGPT does auto-regressive next-word prediction\nchatGPT produces beautiful mistakes: eloquently written logical fallacies\nprediction: what to expect when passively observing the world\ncausality: what happens when I change something?\nprediction models can cause harmful self-fulfilling prophecies when used for decision making\nwhen building prediction models for decision support, you cannot ignore decisions on the treatments in historic data\nmodels for prediction-under-intervention have foreseeable effects when used for decision making\nultimate test of model utility is determined by outcomes in (cluster) RCT"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#references",
     "href": "talks/240418-ii-spring-meeting/index.html#references",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "",
-    "text": "thank you\n\n\n\n©Wouter van Amsterdam (WvanAmsterdam?)\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” arXiv. https://doi.org/10.48550/arXiv.2209.07397.\n\n\nChristodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. “A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.” Journal of Clinical Epidemiology 110 (June): 12–22. https://doi.org/10.1016/j.jclinepi.2019.02.004.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nDhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. “Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.” BMC Medical Research Methodology 22 (1): 101. https://doi.org/10.1186/s12874-022-01577-x."
+    "text": "thank you\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” arXiv. https://doi.org/10.48550/arXiv.2209.07397.\n\n\nChristodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. “A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.” Journal of Clinical Epidemiology 110 (June): 12–22. https://doi.org/10.1016/j.jclinepi.2019.02.004.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nDhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. “Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.” BMC Medical Research Methodology 22 (1): 101. https://doi.org/10.1186/s12874-022-01577-x."
   },
   {
     "objectID": "posts/210725-counterfactualvsinterventional.html",

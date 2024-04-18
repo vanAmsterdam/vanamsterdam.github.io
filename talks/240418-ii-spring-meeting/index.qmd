@@ -252,7 +252,25 @@ a stochastic auto-regressive next-word predictor with a chatbot interface
 
 ## ML versus statistics, when to use what
 
-have more data and more complex functions (images) -- have more domain knowledge and less data
+:::: {.columns}
+::: {.column width="50%"}
+
+**machine learning**
+
+ - have more data 
+ - more complex functions (images)
+
+:::
+
+::: {.column width="50%"}
+
+**statistics (e.g. GLMs)**
+
+ - less data
+ - more domain knowledge
+
+:::
+::::
 
 ## A sobering note
 
@@ -288,14 +306,12 @@ Question 2
 
 ## Improving the world is a causal task
 
--   statistics / ML: what to expect when we passively observe the world
--   *not* how we can *intervene* to make things better
--   Question 1
-    -   yellowish fingers predict lung cancer, paint fingers to skin
-        color?
-    -   weight loss predicts death in lung cancer, send patients to
-        couch with McDonalds?
-        ![image](figs/couch_patato.jpeg){width="40%"}
+-  statistics / ML: what to expect when we passively observe the world
+-  *not* how we can *intervene* to make things better, this requires *causality*
+-  Question 1
+    - yellowish fingers predict lung cancer, paint fingers to skin color?
+    - weight loss predicts death in lung cancer, send patients to couch with McDonalds?
+        ![](figs/couch_patato.jpeg){width="40%"}
 
 ## When accurate prediction models yield harmful self-fulfilling prophecies{.center}
 
@@ -325,7 +341,9 @@ Question 2
 
 ---
 
+:::{.callout-tip}
 building models for decision support without regards for the historic treatment policy is a bad idea
+:::
 
 :::{.r-stack}
 
@@ -454,24 +472,18 @@ When accurate prediction models yield harmful sel-fulfilling prophecies
 ## take-aways
 
 -   AI subsumes rule-based programs and machine learning
--   machine learning is statistical learning from data with flexible
-    mdoels
--   modern machine learning does well with scale
--   chatGPT is based on auto-regressive next-token prediction and
-    reinforcement learning with human feedback
--   chatGPT produces beautiful mistakes: eloquently written logical
-    fallacies
--   chatGPT does well on natural-language-like tasks
+-   machine learning is statistical learning from data with flexible models
+#-   modern machine learning does well with scale
+-   chatGPT does auto-regressive next-word prediction
+    #reinforcement learning with human feedback
+-   chatGPT produces beautiful mistakes: eloquently written logical fallacies
+#-   chatGPT does well on natural-language-like tasks
 -   prediction: what to expect when passively observing the world
--   causal inference: what happens when I change something?
--   prediction models can cause harmful self-fulfilling prophecies when
-    used for decision making
--   when building prediction models for decision support, you cannot
-    ignore decisions on the treatments in historic data
--   models for prediction-under-intervention have foreseeable effects
-    when used for decision making
--   ultimate test of model utility is determined by outcomes in
-    (cluster) RCT
+-   causality: what happens when I change something?
+-   prediction models can cause harmful self-fulfilling prophecies when used for decision making
+-   when building prediction models for decision support, you cannot ignore decisions on the treatments in historic data
+-   models for prediction-under-intervention have foreseeable effects when used for decision making
+-   ultimate test of model utility is determined by outcomes in (cluster) RCT
 
 ---
 

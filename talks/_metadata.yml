@@ -10,7 +10,7 @@ toc-depth: 1
 page-layout: article
 citation: true
 
-footer: "&copy;Wouter van Amsterdam @WvanAmsterdam"
+footer: "&copy;Wouter van Amsterdam ({{< bi twitter-x >}}: WvanAmsterdam)"
 
 format:
   revealjs:

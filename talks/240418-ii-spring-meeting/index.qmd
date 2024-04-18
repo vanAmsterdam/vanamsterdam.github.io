@@ -33,9 +33,9 @@ General purpose AI that performs a range of tasks in different domains like huma
 
 -   Rule-based AI: knowledge base of rules
 -   Machine learning: statistical learning from examples
-    -   (traditional) machine learning (logistic regression, SVM, RF,
-    GBM)
-    -   modern machine learning: deep learning and foundation models
+    #-   (traditional) machine learning (logistic regression, SVM, RF,
+    #GBM)
+    #-   modern machine learning: deep learning and foundation models
 
 ## Rule-based systems are AI
 
@@ -56,7 +56,18 @@ General purpose AI that performs a range of tasks in different domains like huma
 ::::
 :::: {.column width="50%"}
 data:
+
+|i |length|weight|sex|
+|-:|-----:|-----:|--:|
+|1|137|30|boy|
+|2|122|24|girl|
+|3|101|18|girl|
+|...|...|...|...|
+
+::: {.fragment}
 $$l_i,w_i,s_i \sim p(l,w,s)$$
+:::
+
 ::::
 :::
 
@@ -66,7 +77,7 @@ $$l_i,w_i,s_i \sim p(l,w,s)$$
 ![](figs/gen_full.png){width="100%" fig-align="center"}
 ::::
 :::: {.column width="50%"}
-use samples to learn model for *joint* distribution $p$
+use samples to learn model $p_{\theta}$ for *joint* distribution $p$
 $$
   l_j,w_j,s_j \sim p_{\theta}(l,w,s)
 $$
@@ -99,7 +110,7 @@ $$
 use samples to learn model for *conditional* distribution $p$
 of one variable
 $$
-s_j \sim p_{\theta}(s|l=l_i,w=w_i)
+s_j \sim p_{\theta}(s|l=l',w=w')
 $$
 ::::
 :::
@@ -117,7 +128,7 @@ $$
 :::: {.column width="50%"}
 call this one variable *outcome* and *classify* when expected value passes threshold (e.g. 0.5):
 $$
-s_j = p_{\theta}(s|l=l_i,w=w_i) > 0.5
+s_j = p_{\theta}(s|l=l',w=w') > 0.5
 $$
 ::::
 :::
@@ -130,7 +141,8 @@ $$
 
 ## ML tasks: reinforcement learning
 
-Maybe not so useful for clinical research as requires many experiments
+- e.g. computers playing games
+- maybe not so useful for clinical research as requires many experiments
 
 ![](figs/reinforcement_learning.png){width="80%"}
 
@@ -152,16 +164,15 @@ Maybe not so useful for clinical research as requires many experiments
 
 ::: {.r-stack}
 
-![](figs/ml_vs_stats.png){.fragment fragment-index=1}
+![](figs/ml_vs_stats.png){.fragment fragment-index=1 width=10cm}
 
-![](figs/a_machine_learning.jpeg){.fragment fragment-index=2}
+![](figs/a_machine_learning.jpeg){.fragment fragment-index=2 width=10cm}
 
-![](figs/curve_fitting_xkcd_ 2048.png){.fragment fragment-index=3}
+![](figs/curve_fitting_xkcd_ 2048.png){.fragment fragment-index=3 width=10cm}
 
 :::
 :::
-:::::
-::::::
+::::
 
 ## ML models can fit more functions but also more likely to overfit
 
@@ -194,22 +205,38 @@ a stochastic auto-regressive next-word predictor with a chatbot interface
 ## auto-regressive conditional generation:
 
 \begin{align}
-    p_{\text{chatGPT}}(\text{first-word}&|\text{prompt})\\
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
 \end{align}
 
 ## auto-regressive conditional generation:
 
 \begin{align}
-    p_{\text{chatGPT}}(\text{first-word}&|\text{prompt})\\
-    p_{\text{chatGPT}}(\text{second-word}&|\text{first-word},\text{prompt})\\
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})
 \end{align}
 
 ## auto-regressive conditional generation:
 
 \begin{align}
-    p_{\text{chatGPT}}(\text{first-word}&|\text{prompt})\\
-    p_{\text{chatGPT}}(\text{second-word}&|\text{first-word},\text{prompt})\\
-    p_{\text{chatGPT}}(\text{next-word}&|\text{previous-words},\text{prompt})
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
+    \text{word}_n &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
+    \text{word}_n &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})\\
+    \text{STOP}   &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
 \end{align}
 
 ## GPT-4 scale
@@ -372,7 +399,15 @@ The question is not "is my model accurate before / after deploytment", but did d
 
 ![](figs/txnaive1.png){.fragment}
 
-![](figs/txnaive2.png){.fragment}
+![](figs/txnaive2b.png){.fragment}
+
+:::
+
+## Is this obvious?
+
+::: {.callout-tip}
+
+It may seem obvious that you should not ignore historical treatments in your prediction models, if you want to improve treatment decisions, but many of these models are published daily, and some guidelines even allow for implementing these models based on predictve performance only
 
 :::
 
@@ -394,8 +429,9 @@ The question is not "is my model accurate before / after deploytment", but did d
 
 because they do not evaluate the policy change
 
-![](figs/tripod_title.png)
-![](figs/ajcc_title.png)
+![](figs/ajcc_title.png){height="5cm"}
+![](figs/tripod_title.png){height="5cm"}
+![](figs/tripod_ai.png){height="5cm"}
 
 ## Bigger data does not protect against harmful risk models
 
@@ -473,11 +509,8 @@ When accurate prediction models yield harmful sel-fulfilling prophecies [@vanams
 
 -   AI subsumes rule-based programs and machine learning
 -   machine learning is statistical learning from data with flexible models
-#-   modern machine learning does well with scale
 -   chatGPT does auto-regressive next-word prediction
-    #reinforcement learning with human feedback
 -   chatGPT produces beautiful mistakes: eloquently written logical fallacies
-#-   chatGPT does well on natural-language-like tasks
 -   prediction: what to expect when passively observing the world
 -   causality: what happens when I change something?
 -   prediction models can cause harmful self-fulfilling prophecies when used for decision making

@@ -1,0 +1,59 @@
+---
+title: "Assigning causality for treatment-intent modelling"
+subtitle: "ESTRO workshop on causal inference"
+date: 2024-05-07
+categories:
+    - "causal inference"
+    - invited
+    - oncology
+---
+
+## Why causal inference
+
+- With statistical learning we can learn what to expect when we passively observe the world
+- health care professionals are typically concerned with improving the world, meaning making changes (interventions) that improve outcomes
+- the best way to learn about what interventions (or treatments) are most effective is by performing them in a randomized controlled trial (RCT)
+- though RCTs are ideal from a theoretical point of view, they are challenged by logistical, financial and ethical issues
+
+## Potential outcome framework: from ITE to ATE
+
+## DAGs: identifying confounders, colliders and mediators
+
+- other uses:
+  - missing data mechanisms 
+  - selection diagrams
+  - transportability
+
+## Setting up a causal inference study
+
+1. define question and target trial
+    - treatment intent or per-protocol analysis?
+2. gather data
+3. formalize assumptions
+4. causal inference method
+5. sensitivity analyses
+6. statistical inference
+7. interpret
+
+## opportunities and challenges in oncology
+
+## challenges: unobserved confounding by overall fitness
+
+proxy methods, IV methods, front door
+
+## opportunities:
+
+- new biomarkers
+- generalization to population
+- risk based treatment decisions
+
+## other applications
+
+prediction under intervention
+
+## resources
+
+- book of why
+- what if
+  
+

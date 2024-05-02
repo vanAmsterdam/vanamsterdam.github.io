@@ -28,34 +28,72 @@ format:
 
 ### health care professionals are typically concerned with improving the world, meaning making changes (interventions) that improve outcomes
 
-- the best way to learn about what interventions (or treatments) are most effective is by performing them in a randomized controlled trial (RCT)
-- in causal inference we destinguish invertentional / RCT data from observational data (=passively collected)
+- the best way to learn about what treatments (or *interventions*) are most effective is by performing them in a randomized controlled trial (RCT)
+- in causal inference we destinguish these experimental data from RCTs from observational data (=passively collected)
 - though RCTs are ideal from a theoretical point of view, they are challenged by logistical, financial and ethical issues
 - RCT for every possible change (e.g. dose adjustment, radiotherapy fractioning) infeasible, but we have observational data
 
-## What is causal inference
+## What is causal inference?
 
-- (as a verb) [statistical inference]{style="color: red"} about a [causal question]{style="color: red"}
-- (as a field) define causal quantities and deduce how to them from available data given assumptions
+[- (as a verb) [statistical inference]{style="color: red"} about a [causal question]{style="color: red"}]{.fragment fragment-index=1}
+
+[- (as a field) define causal quantities and deduce how to them from available data given assumptions]{.fragment fragment-index=2}
+
+[- (in practice abstractly) perform an experiment (trial) or [emulate]{.alert} performing an experiment from non-experimental (observational) data]{.fragment fragment-index=4}
+
+[- (in practice concretely)]{.fragment fragment-index=5}
+
+:::{.r-stack}
 
 
-:::{.callout-tip .fragment .fade-in-then-out}
+::::{.callout-tip .fragment .fade-in-then-out fragment-index=2}
 
 ## backdoor rule
 
 $$\Pr(Y=1|\text{do}(T=1)) = E_z \Pr(Y=1|T=1,Z=z)$$
 
+::::
+
+::::{.fragment fragment-index=5}
+
+```{r}
+#| eval: false
+#| echo: true
+
+fit <- lm(y~t+z)
+coef(fit)["t"]
+```
+::::
+
+
 :::
 
+## Causal inference frameworks, a high-level introduction
 
-- (in practice) perform an experiment (trial) or [emulate]{.alert} performing an experiment from non-experimental (observational) data
-- (concretely)
+### Potential outcome framework
 
-:::{.fragment}
+- for individual: define *potential outcome* as outcome that would be observed when giving a certain treatment
+- define *individual treatment effect* (ITE) as difference in potential outcomes under treatments
+- *fundamental problem*: only one potential outcome observed (the other is *counterfactual*)
+- average of ITEs is the *average treatment effect* (ATE): can be estimated in RCTs, providing evidence for treatment guidelines
 
-:::
+## Causal inference frameworks, a high-level introduction
 
-## Potential outcome framework: from ITE to ATE
+### Directed acyclic graphs / structural causal models
+
+- formalize model of world with variables (treatment, determinants of treatment, outcome) and *causal relationships* between these variables
+- define treatment effect as perfect intervention on a variable (i.e. force treatment = surgery) and calculate outcomes ($\Pr(Y=1|\text{do}(T=1))$)
+- can be estimated from data when the right assumptions are met for data available
+
+## Causal inference frameworks
+
+### Differences and agreements
+
+- when given same data and assumptions, inferences are the same
+- main concerns in both settings: identify confounders, assume positivity
+- inferences rely on unverifyable assumptions
+- PO: definitions less abstract
+- DAGs: specifying assumptions less abstract
 
 ## DAGs: identifying confounders, colliders and mediators
 
@@ -67,15 +105,14 @@ $$\Pr(Y=1|\text{do}(T=1)) = E_z \Pr(Y=1|T=1,Z=z)$$
 ## Setting up a causal inference study
 
 1. define question and target trial
-    - treatment intent or per-protocol analysis?
 2. gather data
 3. formalize assumptions
-4. causal inference method
+4. decide how to estimate
 5. sensitivity analyses
 6. statistical inference
 7. interpret
 
-## opportunities and challenges in oncology
+# opportunities and challenges of causal inference with observational data in oncology
 
 ## challenges: unobserved confounding by overall fitness
 
@@ -83,17 +120,14 @@ proxy methods, IV methods, front door
 
 ## opportunities:
 
-- new biomarkers
-- generalization to population
-- risk based treatment decisions
+- new biomarkers: need estimate of treatment effect before running a trial
+- generalization of RCT estimates to general population
+- risk based treatment decisions: e.g. decide on adjuvant therapy based on risk of recurrence under no adjuvant therapy (this risk has / needs a *causal* interpretation, i.e. *risk the intervention of not given adjuvant therapy as would be observed in the control arm of an RCT*)
+- prediction-under-intervention: expected outcome under hypothetical treatment options
 
-## other applications
+## Further resources
 
-prediction under intervention
-
-## resources
-
-- book of why
-- what if
+- book of why - Pearl, Mackenzie
+- what if - Robins, Hernan
   
 

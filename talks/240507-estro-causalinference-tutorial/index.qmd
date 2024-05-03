@@ -1,6 +1,6 @@
 ---
 title: "Assigning causality for treatment-intent modelling"
-subtitle: "ESTRO workshop Understanding dose-effects: Can we go beyond association?"
+subtitle: "ESTRO workshop 'Understanding dose-effects: Can we go beyond association?'"
 date: 2024-05-07
 categories:
     - "causal inference"
@@ -10,6 +10,7 @@ format:
     clean-revealjs:
     #revealjs:
         incremental: true
+        pdf-separate-fragments: true
 ---
 
 ## Why causal inference
@@ -17,11 +18,11 @@ format:
 ### We want to know what to do
 
 - statistical learning from passively collected data:
-  - observe: patients with metastases [poor survival]{.fragment .alert}
+  - observe: patients with metastases [poor survival]{.fragment style="color:red;"}
 - from these data we can learn what to expect when we passively observe the world
   - observe: stage I lung cancer patients
-      - with surgery: [good survival]{.fg}
-      - with radiotherapy: [poor survival]{.bg}
+      - with surgery: [good survival]{style="color:green"}
+      - with radiotherapy: [poor survival]{style="color:red"}
 - if we now stop using radiotherapy and only operate, regardless of age, comorbidities, fitness, will patients live longer?
 
 ## Why causal inference
@@ -81,22 +82,54 @@ coef(fit)["t"]
 
 ### Directed acyclic graphs / structural causal models
 
-- formalize model of world with variables (treatment, determinants of treatment, outcome) and *causal relationships* between these variables
-- define treatment effect as perfect intervention on a variable (i.e. force treatment = surgery) and calculate outcomes ($\Pr(Y=1|\text{do}(T=1))$)
-- can be estimated from data when the right assumptions are met for data available
+[- formalize model of world with variables (treatment, determinants of treatment, outcome) and *causal relationships* between these variables]{.fragment}
+
+[- define treatment effect as perfect intervention on a variable (i.e. force treatment = surgery) and calculate outcomes ($\Pr(Y=1|\text{do}(T=1))$)]{.fragment}
+
+[- can be estimated from data when the right assumptions are met for data available]{.fragment}
+
+<!--:::{.fragment fragment-index=2}-->
+
+<!--```{dot}-->
+  <!--digraph G {-->
+
+  <!--graph [rankdir=TB]-->
+
+  <!--node [shape=ellipse]-->
+  <!--U [label="Confounders"]-->
+
+  <!--node [shape=box, height=0.3, width=0.3]-->
+  <!--G [label="Genotype"]-->
+  <!--X [label="Phenotype"]-->
+  <!--Y [label="Outcome"]-->
+  <!--{ rank = same; G X Y }-->
+
+  <!--G -> X [minlen=3]-->
+  <!--U -> X-->
+  <!--U -> Y-->
+  <!--X -> Y [minlen=3]-->
+  <!--}-->
+<!--```-->
+
+<!--:::-->
 
 ## Causal inference frameworks
 
 ### Differences and agreements
 
+- frameworks address the question of [identification]{style="color:orange;"}: can a causal question be estimated from observed data?
 - when given same data and assumptions, inferences are the same
 - main concerns in both settings: identify confounders, assume positivity
 - inferences rely on unverifyable assumptions
 - PO: definitions less abstract
 - DAGs: specifying assumptions less abstract
 
-## DAGs: identifying confounders, colliders and mediators
+## DAGs: other uses
 
+- read off variable 'types'
+  - confounders (ancestors of treatment and outcome)
+  - colliders (common effects)
+  - mediators
 - other uses:
   - missing data mechanisms 
   - selection diagrams
@@ -114,9 +147,15 @@ coef(fit)["t"]
 
 # opportunities and challenges of causal inference with observational data in oncology
 
-## challenges: unobserved confounding by overall fitness
+## challenge: unobserved confounding by overall fitness
 
-proxy methods, IV methods, front door
+![](proxydag.png)
+
+need other methods of identification
+
+- proxy methods
+- instrumental variable methods
+- front door adjustment
 
 ## opportunities:
 

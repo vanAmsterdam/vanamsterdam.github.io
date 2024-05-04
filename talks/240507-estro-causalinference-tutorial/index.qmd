@@ -7,13 +7,18 @@ categories:
     - invited
     - oncology
 format:
-    clean-revealjs:
-    #revealjs:
+    #pptx: 
+        #reference-doc: estro-template.pptx
+        #incremental: true
+    #clean-revealjs:
+    revealjs:
+        theme: custom.scss
         incremental: true
         pdf-separate-fragments: true
+        background-image: "./estrobg.png"
 ---
 
-## Why causal inference
+## Why causal inference {background-image="estrobg.png" background-size="contain"}
 
 ### We want to know what to do
 
@@ -23,7 +28,16 @@ format:
   - observe: stage I lung cancer patients
       - with surgery: [good survival]{style="color:green"}
       - with radiotherapy: [poor survival]{style="color:red"}
-- if we now stop using radiotherapy and only operate, regardless of age, comorbidities, fitness, will patients live longer?
+
+## Why causal inference {background-image="estrobg.png" background-size="contain"}
+
+### We want to know what to do
+
+::: {.r-fit-text}
+
+if we now stop using radiotherapy and only operate, regardless of age, comorbidities, fitness, will patients live longer?
+
+:::
 
 ## Why causal inference
 
@@ -47,7 +61,7 @@ format:
 :::{.r-stack}
 
 
-::::{.callout-tip .fragment .fade-in-then-out fragment-index=2}
+::::{.callout-tip .fragment .current-visible fragment-index=2}
 
 ## backdoor rule
 

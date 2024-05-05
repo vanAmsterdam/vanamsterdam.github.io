@@ -1,0 +1,100 @@
+\documentclass[aspectratio=169]{beamer}
+\newcommand\beamermathcolor[1]{\color{#1}\setbeamercolor{math text}{fg=#1}}
+\beamertemplatenavigationsymbolsempty
+\DeclareMathOperator{\EX}{\mathbb{E}}% expected value
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{mathtools} % MoveEqLeft
+\usepackage{tikz}
+\usepackage{multimedia}
+\usetikzlibrary{positioning}
+%for animation
+\tikzset{
+  invisible/.style={opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+  },
+}
+%\usetheme{uu} % Choose your desired theme
+
+\title{Causal Inference 2: confounders, colliders, mediators; and propensity scores}
+\author{Wouter van Amsterdam, MD, PhD}
+\institute{Department of Data Science and Biostatistics\\
+	Julius Center for Health Sciences and Primary Care\\
+	University Medical Center Utrecht}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}<1-2>[t]
+	\begin{figure}[htpb]
+	%\begin{center}
+
+	\begin{tikzpicture}[scale=.9, transform shape]
+		  % Nodes
+		\node[draw] (z) at (0, 3) {$U=$ fitness};
+		  \node[draw] (t) at (-3, 0) {$T=$ surgery vs radiotherapy};
+		  \node[draw] (y) at (3, 0) {$Y=$ 1-year survival};
+          \node[draw,visible on=<4>] (x) at (-7.5,0) {$X=$ hospital};
+		  \node[draw, visible on=<3>] (w) at (4.5,3) {$W=$ performance score};
+
+		  % Edges
+		  \draw[->,visible on=<1>] (z) -- (t);
+		  \draw[->] (z) -- (y);
+		  \draw[->] (t) -- (y);
+          \draw[->,visible on=<3>] (z) -- (w);
+          \draw[->,visible on=<4>] (x) -- (t);
+	\end{tikzpicture}
+	%\end{center}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}[t]
+	\begin{figure}[htpb]
+	%\begin{center}
+
+	\begin{tikzpicture}[scale=.9, transform shape]
+		  % Nodes
+		\node[draw, fill=gray!20] (z) at (0, 3) {$U=$ fitness};
+		  \node[draw] (t) at (-3, 0) {$T=$ surgery vs radiotherapy};
+		  \node[draw] (y) at (3, 0) {$Y=$ 1-year survival};
+          \node[draw,visible on=<3>] (x) at (-7.5,0) {$X=$ hospital};
+		  \node[draw, visible on=<2>] (w) at (4.5,3) {$W=$ performance score};
+
+		  % Edges
+		  \draw[->] (z) -- (t);
+		  \draw[->] (z) -- (y);
+		  \draw[->] (t) -- (y);
+          \draw[->,visible on=<2>] (z) -- (w);
+          \draw[->,visible on=<3>] (x) -- (t);
+	\end{tikzpicture}
+	%\end{center}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[t]
+	\begin{figure}[htpb]
+	%\begin{center}
+
+	\begin{tikzpicture}[scale=.9, transform shape]
+		  % Nodes
+		\node[draw, fill=gray!20] (z) at (0, 3) {$U=$ fitness};
+		  \node[draw] (t) at (-3, 0) {$T=$ planned dose};
+		  \node[draw] (y) at (3, 0) {$Y=$ 1-year survival};
+		  \node[draw] (m) at (0, -1) {$M=$ delivered dose};
+
+		  % Edges
+		  \draw[->] (z) -- (t);
+		  \draw[->] (z) -- (y);
+		  \draw[->] (t) -- (m);
+		  \draw[->] (m) -- (y);
+	\end{tikzpicture}
+	%\end{center}
+	\end{figure}
+\end{frame}
+
+
+\end{document}
+

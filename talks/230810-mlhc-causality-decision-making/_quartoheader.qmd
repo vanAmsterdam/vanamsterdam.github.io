@@ -1,0 +1,5 @@
+---
+date: "2023-08-10"
+title: "The value of observational causal inference for medical decision making"
+subtitle: "MLHC causality pre-conference workshop"
+---

@@ -1,5 +1,6 @@
 ---
 title: Wouter's twitter X-peri(ments/ences)
+subtitle: "Data Science and Biostatistics department lunch talk"
 date: 2024/03/12
 format:
   revealjs:
@@ -177,13 +178,13 @@ format:
 {{< tweet JAASANTINHA 1417936729600823300 >}}
 https://x.com/JAASANTINHA/status/1417936729600823300?s=20
 
-## reactions to meme-tweet
+<!--## reactions to meme-tweet-->
 
 <!--{{< tweet VickersBiostats 1417905175948374016 >}}-->
 
-```{=html}
-<blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">This has been a finding from decision curve analysis for at least 10 years!</p>&mdash; Andrew Vickers (@VickersBiostats) <a href="https://twitter.com/VickersBiostats/status/1417905175948374016?ref_src=twsrc%5Etfw">July 21, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-```
+<!--```{=html}-->
+<!--<blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">This has been a finding from decision curve analysis for at least 10 years!</p>&mdash; Andrew Vickers (@VickersBiostats) <a href="https://twitter.com/VickersBiostats/status/1417905175948374016?ref_src=twsrc%5Etfw">July 21, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
+<!--```-->
 
 <!--- snarky reply (Andrew Vickers):-->
 <!--https://x.com/VickersBiostats/status/1417905175948374016?s=20-->

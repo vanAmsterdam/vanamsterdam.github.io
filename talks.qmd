@@ -1,8 +1,15 @@
 ---
 title: "Talks"
 listing:
+  id: talks-listings
   contents: talks
   sort: "date desc"
-  type: default
-  categories: true
+  type: table
+  categories: false
+  fields: [date, title, subtitle]
 ---
+
+Here is a selection of my talks.
+
+::: {#talks-listings}
+:::

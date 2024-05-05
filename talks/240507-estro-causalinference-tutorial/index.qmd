@@ -2,6 +2,7 @@
 footer: ""
 date: "2024-05-07"
 title: "An intro to causal inference and its uses in radiotherapy"
+subtitle: "ESTRO - Understanding dose-effects: Can we go beyond association - symposium"
 ---
 
 ## {background-image=pngslides/page_001.png background-size=contain background-repeat=no-repeat}

@@ -16,8 +16,6 @@ need these for rendering pptx to quarto:
 - pdftk
 - python3
 
-
-
 ## rendering pptx presentations
 
 1. save slides.pptx in a subdir of talks
@@ -28,3 +26,4 @@ need these for rendering pptx to quarto:
 3. save as `slides.pdf`
 4. write a custom header with title and date info in a file called  \_quartoheader.qmd
 5. run `make render-talks-pdf`
+6. add the created index.qmd and png files in pngslides to git (and possibly the pdf)

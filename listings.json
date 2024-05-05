@@ -12,6 +12,7 @@
   {
     "listing": "/talks.html",
     "items": [
+      "/talks/240507-estro-causalinference-tutorial/index.html",
       "/talks/240418-ii-spring-meeting/index.html",
       "/talks/240312-dsbiostats-twitter/index.html"
     ]
@@ -25,6 +26,7 @@
       "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
       "/posts/210720-good_predictions_bad_decisions.html",
       "/talks/240418-ii-spring-meeting/index.html",
+      "/talks/240507-estro-causalinference-tutorial/index.html",
       "/talks/240312-dsbiostats-twitter/index.html"
     ]
   }

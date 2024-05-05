@@ -5,39 +5,43 @@
     <lastmod>2024-03-08T12:40:59.389Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/talks/240312-dsbiostats-twitter/index.html</loc>
-    <lastmod>2024-03-16T12:07:42.088Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240418-ii-spring-meeting/index.html</loc>
-    <lastmod>2024-04-18T11:49:11.018Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/210725-counterfactualvsinterventional.html</loc>
-    <lastmod>2024-03-08T13:46:50.036Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/index.html</loc>
-    <lastmod>2024-04-17T19:11:07.173Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html</loc>
-    <lastmod>2024-03-22T14:41:31.693Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/190816-lm-functional-form.html</loc>
-    <lastmod>2024-03-22T14:44:25.319Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/210720-good_predictions_bad_decisions.html</loc>
-    <lastmod>2024-03-13T11:09:55.341Z</lastmod>
+    <loc>https://vanamsterdam.github.io/talks/240507-estro-causalinference-tutorial/index.html</loc>
+    <lastmod>2024-05-05T14:50:01.675Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks.html</loc>
     <lastmod>2024-03-09T20:03:22.424Z</lastmod>
   </url>
   <url>
+    <loc>https://vanamsterdam.github.io/posts/210720-good_predictions_bad_decisions.html</loc>
+    <lastmod>2024-03-13T11:09:55.341Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/190816-lm-functional-form.html</loc>
+    <lastmod>2024-03-22T14:44:25.319Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html</loc>
+    <lastmod>2024-03-22T14:41:31.693Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/index.html</loc>
+    <lastmod>2024-04-17T19:11:07.173Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/210725-counterfactualvsinterventional.html</loc>
+    <lastmod>2024-03-08T13:46:50.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240418-ii-spring-meeting/index.html</loc>
+    <lastmod>2024-04-18T11:49:11.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240312-dsbiostats-twitter/index.html</loc>
+    <lastmod>2024-03-16T12:07:42.088Z</lastmod>
+  </url>
+  <url>
     <loc>https://vanamsterdam.github.io/index.html</loc>
-    <lastmod>2024-04-09T18:28:04.637Z</lastmod>
+    <lastmod>2024-04-18T15:25:23.356Z</lastmod>
   </url>
 </urlset>

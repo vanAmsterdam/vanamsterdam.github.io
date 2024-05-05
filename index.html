@@ -107,9 +107,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -337,78 +337,101 @@ window.Quarto = {
 </section>
 <section id="talks" class="level2">
 <h2 data-anchor-id="talks"><a href="./talks.html">Talks</a></h2>
-<div id="listing-talks-listing" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1713394800000" data-listing-file-modified-sort="1713440951018" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1197">
-<a href="./talks/240418-ii-spring-meeting/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-AI and its (mis)uses in medical research and practice
-</h5>
-<div class="card-text listing-description">
-
+<div id="listing-talks-listing" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-talks-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-talks-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Wouter van Amsterdam
-</div>
-<div class="listing-date">
-Apr 18, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1715036400000" data-listing-file-modified-sort="1714920601675" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<a href="./talks/240507-estro-causalinference-tutorial/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-An intro to causal inference and its uses in radiotherapy
-</h5>
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Wouter van Amsterdam
-</div>
-<div class="listing-date">
-May 7, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1710201600000" data-listing-file-modified-sort="1710590862088" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="427">
-<a href="./talks/240312-dsbiostats-twitter/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Wouter’s twitter X-peri(ments/ences)
-</h5>
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Wouter van Amsterdam
-</div>
-<div class="listing-date">
-Mar 12, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+Subtitle
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1715036400000" data-listing-file-modified-sort="1714922685934" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="An intro to causal inference and its uses in radiotherapy" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 7, 2024</span>
+</td>
+<td>
+<a href="./talks/240507-estro-causalinference-tutorial/index.html" class="title listing-title">An intro to causal inference and its uses in radiotherapy</a>
+</td>
+<td>
+<span class="listing-subtitle">ESTRO - Understanding dose-effects: Can we go beyond association - symposium</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1713394800000" data-listing-file-modified-sort="1714922685933" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1197" data-listing-title-sort="AI and its (mis)uses in medical research and practice" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Apr 18, 2024</span>
+</td>
+<td>
+<a href="./talks/240418-ii-spring-meeting/index.html" class="title listing-title">AI and its (mis)uses in medical research and practice</a>
+</td>
+<td>
+<span class="listing-subtitle">Infection and Immunity spring meeting</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1710201600000" data-listing-file-modified-sort="1714922685932" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="427" data-listing-title-sort="Wouter's twitter X-peri(ments/ences)" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Mar 12, 2024</span>
+</td>
+<td>
+<a href="./talks/240312-dsbiostats-twitter/index.html" class="title listing-title">Wouter’s twitter X-peri(ments/ences)</a>
+</td>
+<td>
+<span class="listing-subtitle">Data Science and Biostatistics department lunch talk</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1691622000000" data-listing-file-modified-sort="1714922685869" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="The value of observational causal inference for medical decision making" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Aug 10, 2023</span>
+</td>
+<td>
+<a href="./talks/230810-mlhc-causality-decision-making/index.html" class="title listing-title">The value of observational causal inference for medical decision making</a>
+</td>
+<td>
+<span class="listing-subtitle">MLHC causality pre-conference workshop</span>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1687561200000" data-listing-file-modified-sort="1714922685818" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="My risk model is super accurate so it will be useful for treatment decision making, right? Wrong!" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jun 24, 2023</span>
+</td>
+<td>
+<a href="./talks/230624-chill-lightning-talk/index.html" class="title listing-title">My risk model is super accurate so it will be useful for treatment decision making, right? Wrong!</a>
+</td>
+<td>
+<span class="listing-subtitle">CHIL 2023 - lightning talk</span>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

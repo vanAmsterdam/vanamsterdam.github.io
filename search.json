@@ -7,102 +7,200 @@
     "text": "Partial residual plots with multiply imputed data\n\n\n\n\n\n\nr\n\n\nlinear regression\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nr\n\n\njulia\n\n\njax\n\n\npython\n\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\n\n\n\nstatistics\n\n\nsimulations\n\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "talks.html",
-    "href": "talks.html",
-    "title": "Talks",
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Why (I) use X?",
+    "text": "Why (I) use X?\n\n\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nconnect\nadvertise work"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
+    "href": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Why not use X?",
+    "text": "Why not use X?\n\ntwitter is dead, and X is dying\ndistractions\npolitics"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
+    "href": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "X compared to",
+    "text": "X compared to\n\nlinkedin: fake interactions\ntwitter: too real interactions\nmastodon: too hacky / nerdy?\nthreads: twitter clone by meta (facebook)\nbluesky: way to go?"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
+    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Twitter history and status",
+    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following (this determines your timeline)\n15-minutes a day but waning"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first tweet that got a like",
+    "text": "first tweet that got a like"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first ad for own paper on causal ML",
+    "text": "first ad for own paper on causal ML"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first joke (kind-of success)",
+    "text": "first joke (kind-of success)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first tweet that went ‘viral’: recommending a paper",
+    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nrespected researcher in field asked if I’m interested in doing a post-doc"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet\n\n\n\n\n\n35 retweets\n86 likes\n18k views\n0 new followers\nnow 20 citations (5 if not for twitter?)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to paper run-through tweet",
+    "text": "reactions to paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to paper run-through tweet",
+    "text": "reactions to paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
+    "href": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "favorite tweet (meme)",
+    "text": "favorite tweet (meme)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to meme-tweet",
+    "text": "reactions to meme-tweet\n\nhttps://x.com/JAASANTINHA/status/1417936729600823300?s=20"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
+    "href": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "biggest own tweet (thesis cover):",
+    "text": "biggest own tweet (thesis cover):\n\n\n\n\n\n\n93k impressions\n673 likes\n53 retweets\n6 new followers"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "ask for help-tweet",
+    "text": "ask for help-tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
+    "href": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Use X for",
+    "text": "Use X for\n\nlearning\nconnecting\nadvertising:\n\nnew work\nvacancies"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
+    "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "I may leave X",
+    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)"
+  },
+  {
+    "objectID": "talks/230301-lungsurv-manchester/index.html#section-105",
+    "href": "talks/230301-lungsurv-manchester/index.html#section-105",
+    "title": "Individual treatment effect estimation in the presence of unobserved confounding using proxies",
     "section": "",
-    "text": "An intro to causal inference and its uses in radiotherapy\n\n\n\n\n\n\n\n\n\n\n\nMay 7, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nAI and its (mis)uses in medical research and practice\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWouter’s twitter X-peri(ments/ences)\n\n\n\n\n\n\n\n\n\n\n\nMar 12, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
+    "text": "©Wouter van Amsterdam (: WvanAmsterdam)"
   },
   {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html",
-    "href": "posts/210720-good_predictions_bad_decisions.html",
-    "title": "When good predictions lead to bad decisions",
+    "objectID": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
+    "href": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
+    "title": "The value of observational causal inference for medical decision making",
     "section": "",
-    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
+    "text": "©Wouter van Amsterdam (: WvanAmsterdam)"
   },
   {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Defining the policies",
-    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Expected utility of different policies",
-    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
-  },
-  {
-    "objectID": "posts/190816-lm-functional-form.html",
-    "href": "posts/190816-lm-functional-form.html",
-    "title": "Finding the functional form for multiple linear regression",
+    "objectID": "posts/210725-counterfactualvsinterventional.html",
+    "href": "posts/210725-counterfactualvsinterventional.html",
+    "title": "The difference between intervention and counterfactuals",
     "section": "",
-    "text": "A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a partial residual plot. Here I will generate some data to illustrate this"
+    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
   },
   {
-    "objectID": "posts/190816-lm-functional-form.html#functional-relationship-in-linear-regression",
-    "href": "posts/190816-lm-functional-form.html#functional-relationship-in-linear-regression",
-    "title": "Finding the functional form for multiple linear regression",
+    "objectID": "posts/210725-counterfactualvsinterventional.html#intro",
+    "href": "posts/210725-counterfactualvsinterventional.html#intro",
+    "title": "The difference between intervention and counterfactuals",
     "section": "",
-    "text": "A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a partial residual plot. Here I will generate some data to illustrate this"
+    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
   },
   {
-    "objectID": "posts/190816-lm-functional-form.html#data",
-    "href": "posts/190816-lm-functional-form.html#data",
-    "title": "Finding the functional form for multiple linear regression",
-    "section": "Data",
-    "text": "Data\n\nsuppressMessages({require(ggplot2); theme_set(theme_bw())})\nset.seed(12345)\nN = 1000\nx &lt;- runif(N, min = 0, max=2*pi)\nw &lt;- .5*x + sin(x) + rnorm(N, sd=.25)\nsy &lt;- rnorm(N, sd=.1)\ny &lt;- x + w + sy\ndf = data.frame(x,w,y)\n\nThe data consists of two real-valued ‘independent’ variables \\(x,w\\), where\n\\[\n\\begin{align}\nx &\\sim U(0, 2 \\pi) \\\\\n\\epsilon_w &\\sim N(0, 0.25) \\\\\n\\epsilon_y &\\sim N(0, 0.1) \\\\\nw &:= \\frac{x}{2} + \\sin(x) \\\\\ny &:= x + w + \\epsilon_y\n\\end{align}\n\\]\nClearly \\(y\\) is linear in both \\(x\\) and \\(w\\). A plot of the data:\n\nggplot(df, aes(x=x, y=w,col=y, size=y)) + \n  geom_point() + theme_minimal()\n\n\n\n\njoint distribution of x, w, y"
+    "objectID": "posts/210725-counterfactualvsinterventional.html#example",
+    "href": "posts/210725-counterfactualvsinterventional.html#example",
+    "title": "The difference between intervention and counterfactuals",
+    "section": "Example",
+    "text": "Example\nTo illustrate the difference between a counterfactual prediction and an interventional prediction (or conditional average treatment effect estimates), consider this very simple setup.\nYou have data from a randomized trial with two treatment arms \\(t \\in \\{0,1\\}\\) and an outcome \\(Y\\) on a continuous scale. Denote \\(Y_0\\) the potential outcome under intervening on treatment \\(t=0\\) and \\(Y_1\\) the potential outcome under intervening on treatment \\(t=1\\). As we are dealing with data from a randomized trial, we can easily estimate the average treatment effect as \\(E[Y_1 - Y_0] = E[Y|t=0] - E[Y|t=1]\\), assuming consistency (ignorability and overlap are satisfied due to the study design).\nA counterfactual question is: what would have been the outcome \\(Y_0\\) under treatment \\(t=1\\), given that we observed the outcome \\(y_1\\) under treamtent \\(t=1\\), so it is \\(E[Y_0|Y=y_1, t=1]\\).\nNow assume that the data come from a mixture of Gaussians such that\n\\[y|t \\sim (1 - t) \\mathcal{N}(1,0.1^2) + t \\mathcal{N}(10,2.5^2)\\]\nAnd \\(p(t=1)=0.5\\) so both arms are equally large. Treatment \\(t=1\\) leads to higher outcome but also more spread. The relevant interventional expectations are easily calculated by just calculating group means \\(E[Y_0] = E[Y|t=0] = 1\\), \\(E[Y_1] = E[Y|t=1] = 10\\).\n\nCalculating the counterfactuals\nTo see that calculating counterfactuals requires more knowledge, namely of the structural equations, we now calculate the counterfactual prediction for a patient with \\(Y=Y_1=15\\). This is a patient with a relatively large ‘residual’, the outcome is 2 standard deviations above the mean for treatment group \\(t=1\\).\nFirst we calculate the counterfactual outcome under a wrong outcome model. Researchers tried to model the outcomes using linear regression, and failed to appreciate the difference in variances between the two treatment arms (heteroscedasticity). Assuming a large sample, they will arrive at a model:\n\\[\\hat{y}_{\\text{wrong}} = 1 + t * 9 + \\mathcal{N}(0,\\sigma^2)\\]\nWhere \\(\\sigma = \\sqrt{\\frac{0.1^2 + 2.5^2}{2}} \\approx 1.77\\) (standard devation of mixture of Gaussians with (conditional) mean of 0 and standard deviations 0.1 and 2.5, with 50 / 50 mixing). Note that the estimate of the treatment effect is correct, and so are \\(E[Y_0]\\) and \\(E[Y_1]\\). If there was a binary pre-treatment covariate, the conditional average treatment effect could be estimated by repeating this exercise for both levels of the covariate. To calculate the counterfactual outcome of our patient, we first need to determine the value of their noise variable for the outcome. According to \\(\\hat{y}_{\\text{wrong}}\\), the residual for a patient with \\(Y_1=15\\) is \\(5\\), which is \\(5/\\sigma \\approx 2.82\\) standard deviations away from the expected value for \\(t=1\\). Given this residual we can now calculate the counterfactual:\n\\[\\widehat{E_{\\text{wrong}}}[Y_0|Y=15,t=1] \\approx E[Y_0] + 2.82 \\sigma =6\\]\nGiven that we know the data generating mechanism, we know that this counterfactual prediction is 50 standard deviations from the conditional mean of \\(t=0\\) in the data generating mechanism, clearly this counterfactual prediction is wrong.\nIf we did model the data correctly with a mixture of Gaussians indexed by the treatment group, we would instead say that \\(Y_1=15\\) is 2 standard deviations above the conditional mean, and we would calculate:\n\\[\\widehat{E^*}[Y_0|Y=15,t=1] = E[Y_0] + 2 * 0.1 =1.2\\]\nWhich is correct."
   },
   {
-    "objectID": "posts/190816-lm-functional-form.html#plots",
-    "href": "posts/190816-lm-functional-form.html#plots",
-    "title": "Finding the functional form for multiple linear regression",
-    "section": "Plots",
-    "text": "Plots\n\nIncorrect: marginal association\nLet’s say we’re particularly interested in the relationship between \\(y\\) and \\(x\\), both conditional on \\(w\\). Looking at the marginal association between \\(y\\) and \\(x\\) with a scatterplot will set us on the wrong foot, because of the association between \\(x\\) and \\(w\\).\n\nggplot(df, aes(x=x,y=y)) + \n  geom_point()\n\n\n\n\nmarginal association between x and y\n\n\n\n\n\n\nCorrect: partial residual plot\nTo construct the correct plot, we can generate a partial residual plot, which is created with resid(lm(y~x+w))+b_x x ~ x.\nWhere b_x is the regression coefficient found through linear regression of \\(y\\) on \\(x\\) and \\(w\\). In a plot:\n\nlmfit &lt;- lm(y~x+w)\nyresid &lt;- resid(lmfit)\nb_x &lt;- coef(lmfit)['x']\nplotdata &lt;- data.frame(x, y=yresid + b_x * x)\n\nggplot(plotdata, aes(x=x,y=y)) + \n  geom_point() + \n  ylab(\"resid(lm(y~x+w)) + b_x x\")\n\n\n\n\n\n\n\nFigure 1: partial residual plot\n\n\n\n\n\n\n\nPartial residual plot when y is not linear in x\nWhat if \\(y\\) were not linear in \\(x\\)?\n\ny2 &lt;- x^2 + w + sy\nlmfit2 &lt;- lm(y2 ~ x + w)\nb_x2 &lt;- coef(lmfit2)['x']\nplotdata2 &lt;- data.frame(x, y=resid(lmfit2) + b_x2 * x)\n\nggplot(plotdata2, aes(x=x,y=y)) + \n  geom_point() + \n  ylab(\"resid(lm(y~x+w)) + b_x x\")\n\n\n\n\npartial residual plot when y not linear in x"
-  },
-  {
-    "objectID": "posts/190816-lm-functional-form.html#conclusion",
-    "href": "posts/190816-lm-functional-form.html#conclusion",
-    "title": "Finding the functional form for multiple linear regression",
+    "objectID": "posts/210725-counterfactualvsinterventional.html#conclusion",
+    "href": "posts/210725-counterfactualvsinterventional.html#conclusion",
+    "title": "The difference between intervention and counterfactuals",
     "section": "Conclusion",
-    "text": "Conclusion\nThe functional relationship between an outcome and a covariate in a linear regression conditional on other covariates is visualized with a partial residual plot, or:\n\nlmfit &lt;- lm(y~x+w)\nplot(resid(lmfit) + coef(lmfit)['x'] * x ~ x)"
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html",
-    "href": "posts/240322-mice-partial-residual-plot.html",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "",
-    "text": "In an earlier blog post I show how to plot the dependence of a response variable on covariate, both conditional on other covariates with a partial residual plot In this post I investigate how to do this when there are missing values using package mice.\nThis post will rely in Hanne Oberman’s vignette on ggmice, a plotting package for mice::mids objects."
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
-    "href": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Data and imputation",
-    "text": "Data and imputation\nIn this post we’ll use the boys dataset which is provided in the mice package. The mice package implements multiple imputation through chained equations1.\n\nlibrary(mice)\nlibrary(ggplot2); theme_set(theme_bw())\n\ndf &lt;- boys\n\nnimps &lt;- 5\nimp &lt;- mice(df, m = nimps, method = \"pmm\")"
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
-    "href": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Partial residual plot with complete data",
-    "text": "Partial residual plot with complete data\nWe’ll assume we’re interested in how weight (wgt) depends on height (hgt), corrected for all other variables. Both have missing values in the dataset.\nWe can use one of the imputed datasets to show how partial residual plots are made with complete data. With complete data, partial residual plots can be created like so:\n\ndf1 &lt;- complete(imp, 1)\n\nget_partial_resid &lt;- function(data) {\n  fit &lt;- lm(wgt~., data=data)\n  yresid &lt;- resid(fit)\n  return(yresid + coef(fit)['hgt'] * data$hgt)\n}\n\nplotdata1 &lt;- data.frame(hgt=df1$hgt, y=get_partial_resid(df1))\n\nggplot(plotdata1, aes(x=hgt, y=y)) + geom_point()\n\n\n\n\n\n\n\nFigure 1: Partial residual plot on complete data\n\n\n\n\n\nNote how this differs from the marginal association between hgt and wgt. The difference between the plots is explained by other covariates that are correlated both with hgt and wgt.\n\nggplot(df1, aes(x=hgt, y=wgt)) + geom_point()\n\n\n\n\n\n\n\nFigure 2: marginal association between age and height"
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
-    "href": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Putting them together",
-    "text": "Putting them together\nThe issue with the partial residual plot Figure 1 is that the residuals depend on the imputed values for all variables. How to go about this? We can treat the residuals as we would ‘coefficients’ in imputation and use Rubin’s rules on them. Let’s see how to do this with mice.\n\nimpdfs &lt;- complete(imp, \"all\")\nimpdfs &lt;- lapply(impdfs, function(data) data.frame(data, partial_resid=get_partial_resid(data)))\nimpdfs &lt;- lapply(1:nimps, function(i) data.frame(impdfs[[i]], impidx=i))\nimpdf_long &lt;- do.call(rbind, impdfs)\n\nNote that we cannot directly pool the residuals because they may be correlated with the imputed values for hgt. Pooling imputed values for hgt and the partial residual removes this correlation. Instead we could just plot all the values.\n\nggplot(impdf_long, aes(x=hgt, y=partial_resid)) + geom_point(aes(shape=factor(impidx)), alpha=0.5)\n\n\n\n\n\n\n\nFigure 3: partial residual plot with imputed datasets\n\n\n\n\n\nIn the future I’d like to learn how to make good bivariate estimates of these points (e.g. fitting a bivariate normal distribution). This should for example also come up in calculating sensitivity and specificity on multiply imputed datasets, as these are clearly correlated. Fully bayesian imputation is another possibility obviously."
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#footnotes",
-    "href": "posts/240322-mice-partial-residual-plot.html#footnotes",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nmultiple imputation with chained equations sequentially imputes values for all variables with missing values by building prediction models for each variable based on other variables. This imputation is done multiple times with multiple random seeds and thus results in a number of different imputed datasets. A typical analysis workflow is to do these imputations and on each imputed dataset fit a model of interest. The coefficients of these models can then be pooled using Rubin’s rules.↩︎"
+    "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
   },
   {
     "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
@@ -182,32 +280,102 @@
     "text": "Footnotes\n\n\nOne concrete example with my own previous simulation studies (Amsterdam and Ranganath 2023) is that I used first used jax.numpy arrays for different parameters and then a scipy function to create all combinations of these parameters. Creating this grid of parameters this way forced copying of jax.numpy arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Also, JAX relies on pure functions that cannot depend on global variables.↩︎"
   },
   {
-    "objectID": "posts/210725-counterfactualvsinterventional.html",
-    "href": "posts/210725-counterfactualvsinterventional.html",
-    "title": "The difference between intervention and counterfactuals",
+    "objectID": "posts/240322-mice-partial-residual-plot.html",
+    "href": "posts/240322-mice-partial-residual-plot.html",
+    "title": "Partial residual plots with multiply imputed data",
     "section": "",
-    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
+    "text": "In an earlier blog post I show how to plot the dependence of a response variable on covariate, both conditional on other covariates with a partial residual plot In this post I investigate how to do this when there are missing values using package mice.\nThis post will rely in Hanne Oberman’s vignette on ggmice, a plotting package for mice::mids objects."
   },
   {
-    "objectID": "posts/210725-counterfactualvsinterventional.html#intro",
-    "href": "posts/210725-counterfactualvsinterventional.html#intro",
-    "title": "The difference between intervention and counterfactuals",
+    "objectID": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
+    "href": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Data and imputation",
+    "text": "Data and imputation\nIn this post we’ll use the boys dataset which is provided in the mice package. The mice package implements multiple imputation through chained equations1.\n\nlibrary(mice)\nlibrary(ggplot2); theme_set(theme_bw())\n\ndf &lt;- boys\n\nnimps &lt;- 5\nimp &lt;- mice(df, m = nimps, method = \"pmm\")"
+  },
+  {
+    "objectID": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
+    "href": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Partial residual plot with complete data",
+    "text": "Partial residual plot with complete data\nWe’ll assume we’re interested in how weight (wgt) depends on height (hgt), corrected for all other variables. Both have missing values in the dataset.\nWe can use one of the imputed datasets to show how partial residual plots are made with complete data. With complete data, partial residual plots can be created like so:\n\ndf1 &lt;- complete(imp, 1)\n\nget_partial_resid &lt;- function(data) {\n  fit &lt;- lm(wgt~., data=data)\n  yresid &lt;- resid(fit)\n  return(yresid + coef(fit)['hgt'] * data$hgt)\n}\n\nplotdata1 &lt;- data.frame(hgt=df1$hgt, y=get_partial_resid(df1))\n\nggplot(plotdata1, aes(x=hgt, y=y)) + geom_point()\n\n\n\n\n\n\n\nFigure 1: Partial residual plot on complete data\n\n\n\n\n\nNote how this differs from the marginal association between hgt and wgt. The difference between the plots is explained by other covariates that are correlated both with hgt and wgt.\n\nggplot(df1, aes(x=hgt, y=wgt)) + geom_point()\n\n\n\n\n\n\n\nFigure 2: marginal association between age and height"
+  },
+  {
+    "objectID": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
+    "href": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Putting them together",
+    "text": "Putting them together\nThe issue with the partial residual plot Figure 1 is that the residuals depend on the imputed values for all variables. How to go about this? We can treat the residuals as we would ‘coefficients’ in imputation and use Rubin’s rules on them. Let’s see how to do this with mice.\n\nimpdfs &lt;- complete(imp, \"all\")\nimpdfs &lt;- lapply(impdfs, function(data) data.frame(data, partial_resid=get_partial_resid(data)))\nimpdfs &lt;- lapply(1:nimps, function(i) data.frame(impdfs[[i]], impidx=i))\nimpdf_long &lt;- do.call(rbind, impdfs)\n\nNote that we cannot directly pool the residuals because they may be correlated with the imputed values for hgt. Pooling imputed values for hgt and the partial residual removes this correlation. Instead we could just plot all the values.\n\nggplot(impdf_long, aes(x=hgt, y=partial_resid)) + geom_point(aes(shape=factor(impidx)), alpha=0.5)\n\n\n\n\n\n\n\nFigure 3: partial residual plot with imputed datasets\n\n\n\n\n\nIn the future I’d like to learn how to make good bivariate estimates of these points (e.g. fitting a bivariate normal distribution). This should for example also come up in calculating sensitivity and specificity on multiply imputed datasets, as these are clearly correlated. Fully bayesian imputation is another possibility obviously."
+  },
+  {
+    "objectID": "posts/240322-mice-partial-residual-plot.html#footnotes",
+    "href": "posts/240322-mice-partial-residual-plot.html#footnotes",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nmultiple imputation with chained equations sequentially imputes values for all variables with missing values by building prediction models for each variable based on other variables. This imputation is done multiple times with multiple random seeds and thus results in a number of different imputed datasets. A typical analysis workflow is to do these imputations and on each imputed dataset fit a model of interest. The coefficients of these models can then be pooled using Rubin’s rules.↩︎"
+  },
+  {
+    "objectID": "posts/190816-lm-functional-form.html",
+    "href": "posts/190816-lm-functional-form.html",
+    "title": "Finding the functional form for multiple linear regression",
     "section": "",
-    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
+    "text": "A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a partial residual plot. Here I will generate some data to illustrate this"
   },
   {
-    "objectID": "posts/210725-counterfactualvsinterventional.html#example",
-    "href": "posts/210725-counterfactualvsinterventional.html#example",
-    "title": "The difference between intervention and counterfactuals",
-    "section": "Example",
-    "text": "Example\nTo illustrate the difference between a counterfactual prediction and an interventional prediction (or conditional average treatment effect estimates), consider this very simple setup.\nYou have data from a randomized trial with two treatment arms \\(t \\in \\{0,1\\}\\) and an outcome \\(Y\\) on a continuous scale. Denote \\(Y_0\\) the potential outcome under intervening on treatment \\(t=0\\) and \\(Y_1\\) the potential outcome under intervening on treatment \\(t=1\\). As we are dealing with data from a randomized trial, we can easily estimate the average treatment effect as \\(E[Y_1 - Y_0] = E[Y|t=0] - E[Y|t=1]\\), assuming consistency (ignorability and overlap are satisfied due to the study design).\nA counterfactual question is: what would have been the outcome \\(Y_0\\) under treatment \\(t=1\\), given that we observed the outcome \\(y_1\\) under treamtent \\(t=1\\), so it is \\(E[Y_0|Y=y_1, t=1]\\).\nNow assume that the data come from a mixture of Gaussians such that\n\\[y|t \\sim (1 - t) \\mathcal{N}(1,0.1^2) + t \\mathcal{N}(10,2.5^2)\\]\nAnd \\(p(t=1)=0.5\\) so both arms are equally large. Treatment \\(t=1\\) leads to higher outcome but also more spread. The relevant interventional expectations are easily calculated by just calculating group means \\(E[Y_0] = E[Y|t=0] = 1\\), \\(E[Y_1] = E[Y|t=1] = 10\\).\n\nCalculating the counterfactuals\nTo see that calculating counterfactuals requires more knowledge, namely of the structural equations, we now calculate the counterfactual prediction for a patient with \\(Y=Y_1=15\\). This is a patient with a relatively large ‘residual’, the outcome is 2 standard deviations above the mean for treatment group \\(t=1\\).\nFirst we calculate the counterfactual outcome under a wrong outcome model. Researchers tried to model the outcomes using linear regression, and failed to appreciate the difference in variances between the two treatment arms (heteroscedasticity). Assuming a large sample, they will arrive at a model:\n\\[\\hat{y}_{\\text{wrong}} = 1 + t * 9 + \\mathcal{N}(0,\\sigma^2)\\]\nWhere \\(\\sigma = \\sqrt{\\frac{0.1^2 + 2.5^2}{2}} \\approx 1.77\\) (standard devation of mixture of Gaussians with (conditional) mean of 0 and standard deviations 0.1 and 2.5, with 50 / 50 mixing). Note that the estimate of the treatment effect is correct, and so are \\(E[Y_0]\\) and \\(E[Y_1]\\). If there was a binary pre-treatment covariate, the conditional average treatment effect could be estimated by repeating this exercise for both levels of the covariate. To calculate the counterfactual outcome of our patient, we first need to determine the value of their noise variable for the outcome. According to \\(\\hat{y}_{\\text{wrong}}\\), the residual for a patient with \\(Y_1=15\\) is \\(5\\), which is \\(5/\\sigma \\approx 2.82\\) standard deviations away from the expected value for \\(t=1\\). Given this residual we can now calculate the counterfactual:\n\\[\\widehat{E_{\\text{wrong}}}[Y_0|Y=15,t=1] \\approx E[Y_0] + 2.82 \\sigma =6\\]\nGiven that we know the data generating mechanism, we know that this counterfactual prediction is 50 standard deviations from the conditional mean of \\(t=0\\) in the data generating mechanism, clearly this counterfactual prediction is wrong.\nIf we did model the data correctly with a mixture of Gaussians indexed by the treatment group, we would instead say that \\(Y_1=15\\) is 2 standard deviations above the conditional mean, and we would calculate:\n\\[\\widehat{E^*}[Y_0|Y=15,t=1] = E[Y_0] + 2 * 0.1 =1.2\\]\nWhich is correct."
+    "objectID": "posts/190816-lm-functional-form.html#functional-relationship-in-linear-regression",
+    "href": "posts/190816-lm-functional-form.html#functional-relationship-in-linear-regression",
+    "title": "Finding the functional form for multiple linear regression",
+    "section": "",
+    "text": "A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a partial residual plot. Here I will generate some data to illustrate this"
   },
   {
-    "objectID": "posts/210725-counterfactualvsinterventional.html#conclusion",
-    "href": "posts/210725-counterfactualvsinterventional.html#conclusion",
-    "title": "The difference between intervention and counterfactuals",
+    "objectID": "posts/190816-lm-functional-form.html#data",
+    "href": "posts/190816-lm-functional-form.html#data",
+    "title": "Finding the functional form for multiple linear regression",
+    "section": "Data",
+    "text": "Data\n\nsuppressMessages({require(ggplot2); theme_set(theme_bw())})\nset.seed(12345)\nN = 1000\nx &lt;- runif(N, min = 0, max=2*pi)\nw &lt;- .5*x + sin(x) + rnorm(N, sd=.25)\nsy &lt;- rnorm(N, sd=.1)\ny &lt;- x + w + sy\ndf = data.frame(x,w,y)\n\nThe data consists of two real-valued ‘independent’ variables \\(x,w\\), where\n\\[\n\\begin{align}\nx &\\sim U(0, 2 \\pi) \\\\\n\\epsilon_w &\\sim N(0, 0.25) \\\\\n\\epsilon_y &\\sim N(0, 0.1) \\\\\nw &:= \\frac{x}{2} + \\sin(x) \\\\\ny &:= x + w + \\epsilon_y\n\\end{align}\n\\]\nClearly \\(y\\) is linear in both \\(x\\) and \\(w\\). A plot of the data:\n\nggplot(df, aes(x=x, y=w,col=y, size=y)) + \n  geom_point() + theme_minimal()\n\n\n\n\njoint distribution of x, w, y"
+  },
+  {
+    "objectID": "posts/190816-lm-functional-form.html#plots",
+    "href": "posts/190816-lm-functional-form.html#plots",
+    "title": "Finding the functional form for multiple linear regression",
+    "section": "Plots",
+    "text": "Plots\n\nIncorrect: marginal association\nLet’s say we’re particularly interested in the relationship between \\(y\\) and \\(x\\), both conditional on \\(w\\). Looking at the marginal association between \\(y\\) and \\(x\\) with a scatterplot will set us on the wrong foot, because of the association between \\(x\\) and \\(w\\).\n\nggplot(df, aes(x=x,y=y)) + \n  geom_point()\n\n\n\n\nmarginal association between x and y\n\n\n\n\n\n\nCorrect: partial residual plot\nTo construct the correct plot, we can generate a partial residual plot, which is created with resid(lm(y~x+w))+b_x x ~ x.\nWhere b_x is the regression coefficient found through linear regression of \\(y\\) on \\(x\\) and \\(w\\). In a plot:\n\nlmfit &lt;- lm(y~x+w)\nyresid &lt;- resid(lmfit)\nb_x &lt;- coef(lmfit)['x']\nplotdata &lt;- data.frame(x, y=yresid + b_x * x)\n\nggplot(plotdata, aes(x=x,y=y)) + \n  geom_point() + \n  ylab(\"resid(lm(y~x+w)) + b_x x\")\n\n\n\n\n\n\n\nFigure 1: partial residual plot\n\n\n\n\n\n\n\nPartial residual plot when y is not linear in x\nWhat if \\(y\\) were not linear in \\(x\\)?\n\ny2 &lt;- x^2 + w + sy\nlmfit2 &lt;- lm(y2 ~ x + w)\nb_x2 &lt;- coef(lmfit2)['x']\nplotdata2 &lt;- data.frame(x, y=resid(lmfit2) + b_x2 * x)\n\nggplot(plotdata2, aes(x=x,y=y)) + \n  geom_point() + \n  ylab(\"resid(lm(y~x+w)) + b_x x\")\n\n\n\n\npartial residual plot when y not linear in x"
+  },
+  {
+    "objectID": "posts/190816-lm-functional-form.html#conclusion",
+    "href": "posts/190816-lm-functional-form.html#conclusion",
+    "title": "Finding the functional form for multiple linear regression",
     "section": "Conclusion",
-    "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
+    "text": "Conclusion\nThe functional relationship between an outcome and a covariate in a linear regression conditional on other covariates is visualized with a partial residual plot, or:\n\nlmfit &lt;- lm(y~x+w)\nplot(resid(lmfit) + coef(lmfit)['x'] * x ~ x)"
+  },
+  {
+    "objectID": "posts/210720-good_predictions_bad_decisions.html",
+    "href": "posts/210720-good_predictions_bad_decisions.html",
+    "title": "When good predictions lead to bad decisions",
+    "section": "",
+    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
+  },
+  {
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Defining the policies",
+    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
+  },
+  {
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Expected utility of different policies",
+    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
+  },
+  {
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks",
+    "section": "",
+    "text": "Here is a selection of my talks.\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\nApr 18, 2024\n\n\nAI and its (mis)uses in medical research and practice\n\n\nInfection and Immunity spring meeting\n\n\n\n\nMar 12, 2024\n\n\nWouter’s twitter X-peri(ments/ences)\n\n\nData Science and Biostatistics department lunch talk\n\n\n\n\nAug 10, 2023\n\n\nThe value of observational causal inference for medical decision making\n\n\nMLHC causality pre-conference workshop\n\n\n\n\nJun 24, 2023\n\n\nMy risk model is super accurate so it will be useful for treatment decision making, right? Wrong!\n\n\nCHIL 2023 - lightning talk\n\n\n\n\nMar 1, 2023\n\n\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies\n\n\nSeminar at Manchester University\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#what-is-ai-1",
@@ -483,165 +651,11 @@
     "text": "thank you\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” arXiv. https://doi.org/10.48550/arXiv.2209.07397.\n\n\nChristodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. “A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.” Journal of Clinical Epidemiology 110 (June): 12–22. https://doi.org/10.1016/j.jclinepi.2019.02.004.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nDhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. “Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.” BMC Medical Research Methodology 22 (1): 101. https://doi.org/10.1186/s12874-022-01577-x."
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Why (I) use X?",
-    "text": "Why (I) use X?\n\n\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nconnect\nadvertise work"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
-    "href": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Why not use X?",
-    "text": "Why not use X?\n\ntwitter is dead, and X is dying\ndistractions\npolitics"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
-    "href": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "X compared to",
-    "text": "X compared to\n\nlinkedin: fake interactions\ntwitter: too real interactions\nmastodon: too hacky / nerdy?\nthreads: twitter clone by meta (facebook)\nbluesky: way to go?"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
-    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Twitter history and status",
-    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following (this determines your timeline)\n15-minutes a day but waning"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first tweet that got a like",
-    "text": "first tweet that got a like"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first ad for own paper on causal ML",
-    "text": "first ad for own paper on causal ML"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first joke (kind-of success)",
-    "text": "first joke (kind-of success)"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first tweet that went ‘viral’: recommending a paper",
-    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nrespected researcher in field asked if I’m interested in doing a post-doc"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet\n\n\n\n\n\n35 retweets\n86 likes\n18k views\n0 new followers\nnow 20 citations (5 if not for twitter?)"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
-    "href": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "favorite tweet (meme)",
-    "text": "favorite tweet (meme)"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to meme-tweet",
-    "text": "reactions to meme-tweet\n\nhttps://x.com/JAASANTINHA/status/1417936729600823300?s=20"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to meme-tweet",
-    "text": "reactions to meme-tweet\n\nThis has been a finding from decision curve analysis for at least 10 years!— Andrew Vickers (@VickersBiostats) July 21, 2021"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
-    "href": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "biggest own tweet (thesis cover):",
-    "text": "biggest own tweet (thesis cover):\n\n\n\n\n\n\n93k impressions\n673 likes\n53 retweets\n6 new followers"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "ask for help-tweet",
-    "text": "ask for help-tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
-    "href": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Use X for",
-    "text": "Use X for\n\nlearning\nconnecting\nadvertising:\n\nnew work\nvacancies"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
-    "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "I may leave X",
-    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)"
+    "objectID": "talks/230624-chill-lightning-talk/index.html#section-31",
+    "href": "talks/230624-chill-lightning-talk/index.html#section-31",
+    "title": "My risk model is super accurate so it will be useful for treatment decision making, right? Wrong!",
+    "section": "",
+    "text": "©Wouter van Amsterdam (: WvanAmsterdam)"
   },
   {
     "objectID": "index.html",
@@ -662,7 +676,7 @@
     "href": "index.html#talks",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Talks",
-    "text": "Talks\n\n\n\n\n\n\n\n\nAI and its (mis)uses in medical research and practice\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nApr 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nMay 7, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWouter’s twitter X-peri(ments/ences)\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nMar 12, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Talks\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\nApr 18, 2024\n\n\nAI and its (mis)uses in medical research and practice\n\n\nInfection and Immunity spring meeting\n\n\n\n\nMar 12, 2024\n\n\nWouter’s twitter X-peri(ments/ences)\n\n\nData Science and Biostatistics department lunch talk\n\n\n\n\nAug 10, 2023\n\n\nThe value of observational causal inference for medical decision making\n\n\nMLHC causality pre-conference workshop\n\n\n\n\nJun 24, 2023\n\n\nMy risk model is super accurate so it will be useful for treatment decision making, right? Wrong!\n\n\nCHIL 2023 - lightning talk\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#teaching",

@@ -1,5 +1,6 @@
 ---
 title: Wouter's twitter X-peri(ments/ences)
+subtitle: "Data Science and Biostatistics department lunch talk"
 date: 2024/03/12
 format:
   revealjs:

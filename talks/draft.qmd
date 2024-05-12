@@ -5,7 +5,21 @@ draft: true
 format:
     revealjs:
         incremental: true
+        theme: custom.scss
 ---
+
+## disappearing sublists (requires custom.scss)
+
+[see this SO post](https://stackoverflow.com/questions/26820084/hide-reveal-js-fragments-after-their-appearance/34111675#34111675)
+
+:::{.nonincremental}
+
+[- foo]{.fragment}
+
+[- bar]{.fragment .current-visible}
+
+[- baz]{.fragment}
+:::
 
 ## stacking images
 

@@ -1,0 +1,93 @@
+---
+title: Decision support based on AI in medical imaging
+subtitle: AI in medical imaging (AIBIA) parallel session
+date: 2024-05-15
+bibliography: references.bib
+format:
+    revealjs:
+        incremental: true
+        theme: custom.scss
+---
+
+## Uses of AI in medical imaging
+
+1. Acquisition 'from RAW to $X$'
+
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - k-space to MRI image
+   - raw projection data to CT image
+   - denoising
+   ::::
+   :::
+
+2. detection / segmentation on $X$ (i.e. deterministic functions)
+   
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - segmenting organs at risk in radiotherapy
+   ::::
+   :::
+
+3. inference / diagnosis
+
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - medical diagnosis
+   ::::
+   :::
+
+4. prognosis
+
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - expected survival time given CT-scan
+   ::::
+   :::
+
+5. treatment effect
+
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - effect of immunotherapy given T-cell distribution around tumor
+   ::::
+   :::
+
+## Decision support uses
+
+- Uses 4 and 5 (prognosis and treatment effect) have an element of future time
+- 4 is also typically aimed at decision support
+
+
+## How to estimate treatment effects based on images
+
+1. Perform a randomized controlled trial
+2. Collect (imaging) data at randomization
+3. Use e.g. [TARnet](@shalitEstimatingIndividualTreatment2017) to estimate outcomes conditional on image and treatment
+4. treatment effect $= f(X,T=1) - f(X,T=0)$
+
+. . .
+
+::: {.callout-tip}
+## What if you cannot do a (big enough) RCT?
+
+Emulate / approximate the ideal trial in observational data you do have, using **causal inference** techniques **(which rely on untestable assumptions)**
+
+:::
+
+## The in-between: predicting prognosis but using it for decision support
+
+
+::: {.callout-tip}
+## [@hildenPrognosisMedicineAnalysis1987]
+
+"Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.” 
+
+:::
+
+## When accurate prediction models yeild harmful self-fulfilling prophecies
+
+
+## References
+
+

@@ -1,0 +1,96 @@
+---
+title: "Causality and prediction: developing and validating models for decision making"
+subtitle: "Causal Data Science Special Interest Group - Utrecht"
+date: 2024-05-15
+#bibliography: references.bib
+draft: true
+format:
+    revealjs:
+        toc: false
+        incremental: true
+        #theme: custom.scss
+        auto-stretch: true
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+---
+
+## Causal inference
+
+$y_0:=$ survival time **if I don't treat the patient**
+
+$y_1:=$ survival time **if I treat with radiotherapy**
+
+```{r}
+#| fig-height: 8
+#| fig-width: 13
+library(ggplot2); theme_set(theme_void())
+library(dplyr)
+set.seed(123456)
+n=1e3
+mu = 0 
+b = 1 
+s = 1
+t = rbinom(n, 1, .5)
+s = rnorm(n, 0, s)
+y = b*t  + s
+mu0 = mean(y[t==0])
+mu1 = mean(y[t==1])
+delta = mu1 - mu0
+
+df = data.frame(t=factor(t),y)
+xmin = -3
+xmax = 4
+ymin = 0
+ymax = 0.5
+
+df %>%
+    filter(t==0) %>%
+    ggplot(aes(x=y, fill=t)) + geom_density(alpha=.5) + 
+    geom_vline(aes(xintercept=mu0), linetype=2) + 
+    labs(x="survival time", y="") + 
+    scale_x_continuous(breaks = mu0, labels="mu0", limits=c(xmin, xmax)) + 
+    scale_y_continuous(limits=c(ymin, ymax)) + 
+    theme(
+          axis.ticks.x = element_line(), axis.text.x = element_text(),
+          legend.position="none"
+          )
+
+```
+
+\begin{align}
+y_0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \\
+\end{align}
+
+## Causal inference
+
+$y_0:=$ survival time **if I don't treat the patient**
+
+$y_1:=$ survival time **if I treat with radiotherapy**
+
+```{r}
+#| fig-height: 8
+#| fig-width: 13
+df %>%
+    ggplot(aes(x=y, fill=t)) + geom_density(alpha=.5) + 
+    geom_vline(aes(xintercept=mu0), linetype=2) + 
+    geom_vline(aes(xintercept=mu1), linetype=2) + 
+    labs(x="survival time", y="") + 
+    scale_x_continuous(breaks = c(mu0,mu1), labels=c("mu0","mu1"), limits=c(xmin, xmax)) + 
+    scale_y_continuous(limits=c(ymin, ymax)) + 
+    theme(
+          axis.ticks.x = element_line(), axis.text.x = element_text(),
+          legend.position="none"
+          )
+```
+
+\begin{align}
+y_0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \\
+y_1 &= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \\
+\text{`treatment effect`} &:= E[y_1] - E[y_0] = \mu_1 - \mu_0
+\end{align}
+
+## References
+
+

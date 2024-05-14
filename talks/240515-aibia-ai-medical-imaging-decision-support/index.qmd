@@ -1,0 +1,352 @@
+---
+title: Decision support based on AI in medical imaging
+subtitle: AI in medical imaging (AIBIA) parallel session
+date: 2024-05-15
+bibliography: references.bib
+format:
+    revealjs:
+        toc: false
+        incremental: true
+        theme: custom.scss
+        auto-stretch: true
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+        pdf-separate-fragments: true
+        embed-resources: true
+---
+
+## Outline
+
+1. [different uses of AI in medical imaging](#ai-uses)
+2. [using AI for treatment effect estimation](#ai-treatment-effect)
+3. [warning: harmful self-fulfilling prophecies](#selffulfilling)
+
+<!--
+
+. . . 
+
+:::{.callout-tip}
+## Whenever using `X` for decision support
+
+Think about the causal implications.
+What does `X` assume in terms of treatments?
+How will using `X` affect decisions?
+
+:::
+
+-->
+
+# Uses of AI in medical imaging {#ai-uses}
+
+## Uses of AI in medical imaging
+
+1. Acquisition ($S \to X$)
+<!--
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - k-space to MRI image
+   - raw projection data to CT image
+   - denoising
+   ::::
+   :::
+-->
+
+2. detection / segmentation ($X \to X$)
+<!--
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - segmenting organs at risk in radiotherapy
+   ::::
+   :::
+-->
+
+3. inference / diagnosis ($X \to D$, both at prediction time)
+<!--
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - medical diagnosis
+   - psuedo CT from MRI
+   ::::
+   :::
+-->
+
+4. prognosis ($X \to Y$, $Y$ in the future)
+<!--
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - expected survival time given CT-scan
+   ::::
+   :::
+-->
+
+5. treatment effect ($X$ determines effect of a treatment)
+<!--
+   :::{.fragment .current-visible}
+   ::::{.nonincremental}
+   - effect of immunotherapy given T-cell distribution around tumor
+   ::::
+   :::
+-->
+
+## Why would you estimate treatment effects based on images? {#ai-treatment-effect}
+
+- treatments have different effects on patients based on their (disease) characteristics
+- for example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive
+- some characteristics may be well captured in medical imaging:
+  - T-cell distributions around tumors related to effect of immunotherapy in cancer
+<!--  - holistic view of 'body composition' on CT-scans -->
+
+
+## How to estimate treatment effects based on images?
+
+In principle the same as estimating a subgroup treatment effect (e.g. male vs female)
+
+1. Conduct a randomized controlled trial where the treatments of interest are randomly allocated
+2. Collect (imaging) data at randomization timepoint
+3. Use a statistical learning technique like TARnet [@shalitEstimatingIndividualTreatment2017] to estimate outcomes conditional on image and treatment
+4. conditional treatment effect $= f(X,T=1) - f(X,T=0)$
+
+. . .
+
+::: {.callout-tip icon=false}
+## What if you cannot do a (big enough) RCT?
+
+Emulate / approximate the ideal trial in observational data you do have, using **causal inference** techniques
+
+**(which rely on untestable assumptions)**
+
+:::
+
+
+## The in-between: predicting prognosis and using the predictions for decision support
+
+For example:
+
+1. give chemotherapy to cancer patients with high predicted risk of recurrence
+2. give statins to patients with a high risk of a heart attack
+
+. . . 
+
+::: {.callout-note icon=false}
+## TRIPOD+AI on prediction models [@collinsTRIPODAIStatement2024]
+
+“Their primary use is to support clinical decision making, such as ... **initiate treatment or lifestyle changes.**” 
+
+:::
+
+<!--
+. . . 
+
+::: {.callout-tip icon=false}
+## Hilden and Habbema on prognosis [@hildenPrognosisMedicineAnalysis1987]
+
+"Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.” 
+
+:::
+-->
+
+---
+
+:::{.callout-warning}
+
+## This may lead to bad situations when:
+
+1. ignoring the treatments patients may have had during training / validation
+2. only considering measures of predictive accuracy as sufficient evidence for safe deployment
+3. predictive accuracy (AUC) may be measured pre- or post-deployment of the model
+
+:::
+
+# When accurate prediction models yield harmful self-fulfilling prophecies{#selffulfilling}
+
+---
+
+:::{.r-stack}
+
+![](figs/new_overview1a.png){.fragment height=18cm}
+
+![](figs/new_overview1b.png){.fragment height=18cm}
+
+![](figs/new_overview1c.png){.fragment height=18cm}
+
+![](figs/new_overview2a.png){.fragment height=18cm}
+
+![](figs/new_overview2b.png){.fragment height=18cm}
+
+![](figs/new_overview3a.png){.fragment height=18cm}
+
+![](figs/new_overview3b.png){.fragment height=18cm}
+
+:::
+
+<!--
+
+## Prediction modeling is very popular in medical research
+
+![](figs/predmodelsoverview.png){fig-align='center'}
+
+---
+
+:::{.callout-tip}
+building models for decision support without regards for the historic treatment policy is a bad idea
+:::
+
+:::{.r-stack}
+
+![](figs/policy_changea1.png){.fragment width="100%"}
+
+![](figs/policy_changea3.png){.fragment width="100%"}
+
+![](figs/policy_changeax.png){.fragment width="100%"}
+
+![](figs/policy_changeb2.png){.fragment width="100%"}
+
+![](figs/policy_changebx.png){.fragment width="100%"}
+
+:::
+
+--- 
+
+:::{.callout-note}
+The question is not "is my model accurate before / after deploytment", but did deploying the model improve patient outcomes?
+:::
+
+
+## Treatment-naive risk models
+
+:::{.r-stack}
+
+![](figs/txnaive1.png){.fragment}
+
+![](figs/txnaive2b.png){.fragment}
+
+:::
+
+
+## Is this obvious?
+
+::: {.callout-tip}
+
+It may seem obvious that you should not ignore historical treatments in your prediction models, if you want to improve treatment decisions, but many of these models are published daily, and some guidelines even allow for implementing these models based on predictve performance only
+
+:::
+
+## Other risk models:
+
+[- condition on given treatment and traits]{.fragment fragment-index=1}
+
+[- unobserved confounding (hat type) leads to wrong treatment decisions]{.fragment fragment-index=2}
+
+:::{.r-stack}
+
+![](figs/postdecision1.png){.fragment fragment-index=1}
+
+![](figs/postdecision2.png){.fragment fragment-index=2} 
+
+:::
+
+##  Recommended validation practices do not protect against harm
+
+because they do not evaluate the policy change
+
+![](figs/ajcc_title.png){height="5cm"}
+![](figs/tripod_title.png){height="5cm"}
+![](figs/tripod_ai.png){height="5cm"}
+
+## Bigger data does not protect against harmful risk models
+
+![](figs/biggerdata.png){fig-align="center"}
+
+## More flexible models do not protect against harmful risk models
+
+![](figs/morelayers.png){fig-align="center"}
+
+## Gap between prediction accuracy and value for decision making
+
+![](figs/mindthegap.png){fig-align="center"}
+
+## {auto-animate=true}
+
+::: {style="margin-top: 200px; font-size: 3em; color: red;"}
+What to do?
+:::
+
+## {auto-animate=true}
+
+::: {style="margin-top: 100px"}
+What to do?
+:::
+
+1.  Evaluate policy change (cluster randomized controlled trial)
+2.  Build models that are likely to have value for decision making
+
+## Prediction-under-intervention models
+
+Predict outcome *under hypothetical intervention* of giving certain treatment
+
+![](figs/predictionunderintervention.png){width="\\textwidth"}
+
+## When developing risk models,
+
+always discuss:
+
+::: {.r-stack}
+
+![](figs/policy_changeb1.png){.fragment fragment-index=1 height="11cm"}
+
+![](figs/policy_changeb2.png){.fragment fragment-index=2 height="11cm"}
+
+![](figs/policy_changebx.png){.fragment fragment-index=3 height="11cm"}
+
+:::
+
+[1.  what is effect on treatment policy?]{.fragment fragment-index=2}
+
+[2.  what is effect on patient outcomes?]{.fragment fragment-index=3}
+
+---
+
+:::{.callout-tip}
+## Don't assume predicting well leads to good decisions
+think about the policy change
+:::
+
+-->
+
+## When building a prediction model, always discuss
+
+1. what treatments are assumed in the predicted risk?
+2. what is the effect of using the model on the treatment policy?
+3. what is the effect on patient outcomes?
+
+. . . 
+
+:::: {.columns}
+::: {.column width="50%"}
+![](figs/comment_qr.png){height=8cm}
+
+From algorithms to action: improving patient care requires causality [@amsterdamAlgorithmsActionImproving2024]
+:::
+
+::: {.column width="50%"}
+![](figs/qr_selffulfilling.png){height=8cm}
+
+When accurate prediction models yield harmful sel-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2024a]
+:::
+::::
+
+<!--
+
+## take-aways
+
+-   prediction models can cause harmful self-fulfilling prophecies when used for decision making
+-   when building prediction models for decision support, you cannot ignore decisions on the treatments in historic data
+-   ultimate test of model utility is determined by outcomes in (cluster) RCT
+
+-->
+
+## References
+
+

@@ -3,10 +3,9 @@ title: "Causality and prediction: developing and validating models for decision 
 subtitle: "Causal Data Science Special Interest Group - Utrecht"
 date: 2024-05-15
 #bibliography: references.bib
-draft: true
 format:
     revealjs:
-        toc: false
+        toc: true
         incremental: true
         #theme: custom.scss
         auto-stretch: true
@@ -16,15 +15,46 @@ format:
         height: 900
 ---
 
+# Prediction versus causal inference
+
+## Prediction
+
+1. have some features $X$ (patient characteristics, medical images, lab results)
+2. define relevant outcome $Y$ (e.g. 1-year survival, blood pressure, treatment complication)
+3. build prediction model $f: \mathbb{X} \to \mathbb{Y}$ that *predicts* $Y$ from $X$, typically:
+
+. . . 
+
+$$ \theta^* = \arg \min_{\theta} \sum_i^n ( f_{\theta}(x_i) - y_i )^2 $$
+
+. . . 
+
+Hoping that
+
+$$ \lim_{n \to \infty} f_{\theta^*} \to E[Y|X] $$
+
+## Prediction: typical approach
+
+1. define population, start a (prospective) longitudinal cohort
+2. measure $X$ at *prediction baseline*
+3. follow-up patients to measure $Y$
+4. fit model $f$ to $\{x_i,y_i\}$
+5. evaluate prediction performance with e.g. discrimination, calibration, $R^2$
+
 ## Causal inference
 
 $y_0:=$ survival time **if I don't treat the patient**
 
-$y_1:=$ survival time **if I treat with radiotherapy**
+. . . 
+
+$y_1:=$ survival time **if I do treat**
+
+. . .
 
 ```{r}
-#| fig-height: 8
+#| fig-height: 5
 #| fig-width: 13
+#| fig-align: center
 library(ggplot2); theme_set(theme_void())
 library(dplyr)
 set.seed(123456)
@@ -60,18 +90,19 @@ df %>%
 ```
 
 \begin{align}
-y_0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \\
+y_0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \to &P(Y=y|\text{do}(T=0))\\
 \end{align}
 
 ## Causal inference
 
 $y_0:=$ survival time **if I don't treat the patient**
 
-$y_1:=$ survival time **if I treat with radiotherapy**
+$y_1:=$ survival time **if I do treat**
 
 ```{r}
-#| fig-height: 8
+#| fig-height: 5
 #| fig-width: 13
+#| fig-align: center
 df %>%
     ggplot(aes(x=y, fill=t)) + geom_density(alpha=.5) + 
     geom_vline(aes(xintercept=mu0), linetype=2) + 
@@ -86,11 +117,278 @@ df %>%
 ```
 
 \begin{align}
-y_0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \\
-y_1 &= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \\
-\text{`treatment effect`} &:= E[y_1] - E[y_0] = \mu_1 - \mu_0
+y_0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \to &P(Y=y|\text{do}(T=0))\\
+y_1 &= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \to &P(Y=y|\text{do}(T=1))
 \end{align}
 
+. . . 
+
+\begin{align}
+\text{treatment effect} &:= E[y_1] - E[y_0] = \mu_1 - \mu_0 \\
+                        &:= E[P(Y|\text{do}(T=1))] - E[P(Y|\text{do}(T=0))]
+\end{align}
+
+## Causal inference: typical approach
+
+1. define target population and targeted treatment comparison
+2. run randomized controlled trial, randomizing treatment allocation
+3. measure patient outcomes
+4. estimate parameter that summarizes *average treatment effect* (ATE)
+
+. . . 
+
+::: {.callout-tip icon=false}
+## What if you cannot do a (big enough) RCT?
+
+Emulate / approximate the ideal trial in observational data you do have, using **causal inference** techniques
+
+**(which rely on untestable assumptions)**
+
+:::
+
+## Causal inference versus prediction
+
+:::{.columns}
+
+::::{.column width="50%"}
+
+prediction
+
+- typical estimand $E[Y|X]$
+- typical study: longitudinal cohort
+- typical interpretation: $X$ predicts $Y$
+- primary use: know what to expect assuming stable distribution
+
+::::
+
+::::{.column width="50%"}
+
+causal inference
+
+- typical estimand $E[y_1] - E[y_0]$
+- typical study: RCT
+- typical interpretation: *causal effect* of $T$ on $Y$
+- primary use: know what treatment to give
+
+::::
+
+:::
+
+## The in-between: using prediction models for (medical) decision making
+
+![](figs/8q4cne_meme_crossover.jpg){fig-align="center"}
+
+## Using prediction models for decision making is commonly thought of as a good idea
+
+For example:
+
+1. give chemotherapy to cancer patients with high predicted risk of recurrence
+2. give statins to patients with a high risk of a heart attack
+
+. . . 
+
+::: {.callout-note icon=false}
+## TRIPOD+AI on prediction models [@collinsTRIPODAIStatement2024]
+
+“Their primary use is to support clinical decision making, such as ... **initiate treatment or lifestyle changes.**” 
+
+:::
+
+---
+
+:::{.callout-warning}
+
+## This may lead to bad situations when:
+
+1. ignoring the treatments patients may have had during training / validation
+2. only considering measures of predictive accuracy as sufficient evidence for safe deployment
+3. predictive accuracy (AUC) may be measured pre- or post-deployment of the model
+
+:::
+
+# When accurate prediction models yield harmful self-fulfilling prophecies{#selffulfilling}
+
+---
+
+:::{.r-stack}
+
+![](figs/new_overview1a.png){.fragment height=18cm}
+
+![](figs/new_overview1b.png){.fragment height=18cm}
+
+![](figs/new_overview1c.png){.fragment height=18cm}
+
+![](figs/new_overview2a.png){.fragment height=18cm}
+
+![](figs/new_overview2b.png){.fragment height=18cm}
+
+![](figs/new_overview3a.png){.fragment height=18cm}
+
+![](figs/new_overview3b.png){.fragment height=18cm}
+
+:::
+
+
+## Prediction modeling is very popular in medical research
+
+![](figs/predmodelsoverview.png){fig-align='center'}
+
+---
+
+:::{.callout-tip}
+building models for decision support without regards for the historic treatment policy is a bad idea
+:::
+
+:::{.r-stack}
+
+![](figs/policy_changea1.png){.fragment width="100%"}
+
+![](figs/policy_changea3.png){.fragment width="100%"}
+
+![](figs/policy_changeax.png){.fragment width="100%"}
+
+![](figs/policy_changeb2.png){.fragment width="100%"}
+
+![](figs/policy_changebx.png){.fragment width="100%"}
+
+:::
+
+--- 
+
+:::{.callout-note}
+The question is not "is my model accurate before / after deploytment", but did deploying the model improve patient outcomes?
+:::
+
+
+## Treatment-naive risk models
+
+:::{.r-stack}
+
+![](figs/txnaive1.png){.fragment}
+
+![](figs/txnaive2b.png){.fragment}
+
+:::
+
+
+## Is this obvious?
+
+::: {.callout-tip}
+
+It may seem obvious that you should not ignore historical treatments in your prediction models, if you want to improve treatment decisions, but many of these models are published daily, and some guidelines even allow for implementing these models based on predictve performance only
+
+:::
+
+## Other risk models:
+
+[- condition on given treatment and traits]{.fragment fragment-index=1}
+
+[- unobserved confounding (hat type) leads to wrong treatment decisions]{.fragment fragment-index=2}
+
+:::{.r-stack}
+
+![](figs/postdecision1.png){.fragment fragment-index=1}
+
+![](figs/postdecision2.png){.fragment fragment-index=2} 
+
+:::
+
+##  Recommended validation practices do not protect against harm
+
+because they do not evaluate the policy change
+
+![](figs/ajcc_title.png){height="5cm"}
+![](figs/tripod_title.png){height="5cm"}
+![](figs/tripod_ai.png){height="5cm"}
+
+## Bigger data does not protect against harmful risk models
+
+![](figs/biggerdata.png){fig-align="center"}
+
+## More flexible models do not protect against harmful risk models
+
+![](figs/morelayers.png){fig-align="center"}
+
+## Gap between prediction accuracy and value for decision making
+
+![](figs/mindthegap.png){fig-align="center"}
+
+## {auto-animate=true}
+
+::: {style="margin-top: 200px; font-size: 3em; color: red;"}
+What to do?
+:::
+
+## {auto-animate=true}
+
+::: {style="margin-top: 100px"}
+What to do?
+:::
+
+1.  Evaluate policy change (cluster randomized controlled trial)
+2.  Build models that are likely to have value for decision making
+
+## Prediction-under-intervention models
+
+Predict outcome *under hypothetical intervention* of giving certain treatment
+
+![](figs/predictionunderintervention.png){width="\\textwidth"}
+
+## When developing risk models,
+
+always discuss:
+
+::: {.r-stack}
+
+![](figs/policy_changeb1.png){.fragment fragment-index=1 height="11cm"}
+
+![](figs/policy_changeb2.png){.fragment fragment-index=2 height="11cm"}
+
+![](figs/policy_changebx.png){.fragment fragment-index=3 height="11cm"}
+
+:::
+
+[1.  what is effect on treatment policy?]{.fragment fragment-index=2}
+
+[2.  what is effect on patient outcomes?]{.fragment fragment-index=3}
+
+---
+
+:::{.callout-tip}
+## Don't assume predicting well leads to good decisions
+think about the policy change
+:::
+
+
+## When building a prediction model, always discuss
+
+1. what treatments are assumed in the predicted risk?
+2. what is the effect of using the model on the treatment policy?
+3. what is the effect on patient outcomes?
+
+. . . 
+
+:::: {.columns}
+::: {.column width="50%"}
+![](figs/comment_qr.png){height=8cm}
+
+From algorithms to action: improving patient care requires causality [@amsterdamAlgorithmsActionImproving2024]
+:::
+
+::: {.column width="50%"}
+![](figs/qr_selffulfilling.png){height=8cm}
+
+When accurate prediction models yield harmful sel-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2024a]
+:::
+::::
+
+## Take-aways
+
+- Prediction and causal inference come together neatly by declaring $P(Y|\text{do},X)$ as the estimand
+- (mis)using prediction models for treatment decisions without causal thinking and evaluation is a bad idea
+- building and evaluating prediction-under-intervention models requires unconfoundedness
+
 ## References
+
 
 

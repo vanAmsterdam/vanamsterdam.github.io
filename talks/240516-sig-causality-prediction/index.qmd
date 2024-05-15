@@ -1,8 +1,7 @@
 ---
 title: "Causality and prediction: developing and validating models for decision making"
 subtitle: "Causal Data Science Special Interest Group - Utrecht"
-date: 2024-05-15
-#bibliography: references.bib
+date: 2024-05-16
 format:
     revealjs:
         toc: true
@@ -21,7 +20,7 @@ format:
 
 1. have some features $X$ (patient characteristics, medical images, lab results)
 2. define relevant outcome $Y$ (e.g. 1-year survival, blood pressure, treatment complication)
-3. build prediction model $f: \mathbb{X} \to \mathbb{Y}$ that *predicts* $Y$ from $X$, typically:
+3. build prediction model $f: \mathbb{X} \to \mathbb{Y}$ that *predicts* $Y$ from $X$, e.g.:
 
 . . . 
 
@@ -31,7 +30,7 @@ $$ \theta^* = \arg \min_{\theta} \sum_i^n ( f_{\theta}(x_i) - y_i )^2 $$
 
 Hoping that
 
-$$ \lim_{n \to \infty} f_{\theta^*} \to E[Y|X] $$
+$$ \lim_{n \to \infty} f_{\theta^*} = E[Y|X] $$
 
 ## Prediction: typical approach
 
@@ -43,16 +42,16 @@ $$ \lim_{n \to \infty} f_{\theta^*} \to E[Y|X] $$
 
 ## Causal inference
 
-$y_0:=$ survival time **if I don't treat the patient**
+$y^0:=$ survival time **if I don't treat the patient**
 
 . . . 
 
-$y_1:=$ survival time **if I do treat**
+$y^1:=$ survival time **if I do treat**
 
 . . .
 
 ```{r}
-#| fig-height: 5
+#| fig-height: 2.5
 #| fig-width: 13
 #| fig-align: center
 library(ggplot2); theme_set(theme_void())
@@ -90,17 +89,25 @@ df %>%
 ```
 
 \begin{align}
-y_0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \to &P(Y=y|\text{do}(T=0))\\
+y^0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma)\\
 \end{align}
+
+. . . 
+
+this formula for together with distribution over error term gives rise to a distribution over the outcome when intervening on treatment (i.e. an *interventional distribution*)
+
+$$
+ P(Y=y|\text{do}(T=0))
+$$
 
 ## Causal inference
 
-$y_0:=$ survival time **if I don't treat the patient**
+$y^0:=$ survival time **if I don't treat the patient**
 
-$y_1:=$ survival time **if I do treat**
+$y^1:=$ survival time **if I do treat**
 
 ```{r}
-#| fig-height: 5
+#| fig-height: 2.5
 #| fig-width: 13
 #| fig-align: center
 df %>%
@@ -117,14 +124,14 @@ df %>%
 ```
 
 \begin{align}
-y_0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \to &P(Y=y|\text{do}(T=0))\\
-y_1 &= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \to &P(Y=y|\text{do}(T=1))
+y^0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \to &P(Y=y|\text{do}(T=0))\\
+y^1 &= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma) \to &P(Y=y|\text{do}(T=1))
 \end{align}
 
 . . . 
 
 \begin{align}
-\text{treatment effect} &:= E[y_1] - E[y_0] = \mu_1 - \mu_0 \\
+\text{treatment effect} &:= E[y^1] - E[y^0] = \mu_1 - \mu_0 \\
                         &:= E[P(Y|\text{do}(T=1))] - E[P(Y|\text{do}(T=0))]
 \end{align}
 
@@ -157,7 +164,7 @@ prediction
 - typical estimand $E[Y|X]$
 - typical study: longitudinal cohort
 - typical interpretation: $X$ predicts $Y$
-- primary use: know what to expect assuming stable distribution
+- primary use: know what $Y$ to expect when observing $X$ *assuming no change in joint distribution*
 
 ::::
 
@@ -165,7 +172,7 @@ prediction
 
 causal inference
 
-- typical estimand $E[y_1] - E[y_0]$
+- typical estimand $E[y^1] - E[y^0]$
 - typical study: RCT
 - typical interpretation: *causal effect* of $T$ on $Y$
 - primary use: know what treatment to give
@@ -328,65 +335,146 @@ What to do?
 1.  Evaluate policy change (cluster randomized controlled trial)
 2.  Build models that are likely to have value for decision making
 
-## Prediction-under-intervention models
+# Building and validating models for decision support
 
-Predict outcome *under hypothetical intervention* of giving certain treatment
+## Deploying a model is an intervention that changes the way treatment decisions are made
 
-![](figs/predictionunderintervention.png){width="\\textwidth"}
+![](figs/policy_changebx.png){fig-align="center"}
 
-## When developing risk models,
+## How do we learn about the effect of an intervention?
 
-always discuss:
+With causal inference!
 
-::: {.r-stack}
-
-![](figs/policy_changeb1.png){.fragment fragment-index=1 height="11cm"}
-
-![](figs/policy_changeb2.png){.fragment fragment-index=2 height="11cm"}
-
-![](figs/policy_changebx.png){.fragment fragment-index=3 height="11cm"}
-
-:::
-
-[1.  what is effect on treatment policy?]{.fragment fragment-index=2}
-
-[2.  what is effect on patient outcomes?]{.fragment fragment-index=3}
-
----
-
-:::{.callout-tip}
-## Don't assume predicting well leads to good decisions
-think about the policy change
-:::
-
-
-## When building a prediction model, always discuss
-
-1. what treatments are assumed in the predicted risk?
-2. what is the effect of using the model on the treatment policy?
-3. what is the effect on patient outcomes?
+- for using a decision support model, the unit of intervention is usually *the doctor*
+- randomly assign *doctors* to have access to the model or not
+- measure differences in **treatment decisions** and **patient outcomes**
+- if using model improves outcomes, use that one
 
 . . . 
 
-:::: {.columns}
-::: {.column width="50%"}
-![](figs/comment_qr.png){height=8cm}
+:::{.callout-tip icon="false"}
 
-From algorithms to action: improving patient care requires causality [@amsterdamAlgorithmsActionImproving2024]
+## This is not a new idea [@cooperEvaluationMachinelearningMethods1997]
+
+“As one possibility, suppose that a trial is performed in which clinicians are randomized either to have or not to have access to such a decision aid in making decisions about where to treat patients who present with pneumonia.” 
+
 :::
 
-::: {.column width="50%"}
-![](figs/qr_selffulfilling.png){height=8cm}
+. . .
 
-When accurate prediction models yield harmful sel-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2024a]
+:::{.callout-warning}
+## What we don't learn
+was the model predicting anything sensible?
 :::
+
+## So build prediction models and trial them?
+
+Not a good idea
+
+- baking a cake without a recipe
+- hoping it turns into something nice
+- not pleasant to people that need to taste the experiment
+  - (i.e. patients may have side-effects / die)
+
+## Models that are likely to be valuable for decision making
+
+- prediction under hypothetical interventions (prediction-under-intervention) models predict expected outcomes under the *hypothetical intervention* of giving a certain treatment
+- this is not a new idea
+
+. . . 
+
+::: {.callout-tip icon=false}
+## Hilden and Habbema on prognosis [@hildenPrognosisMedicineAnalysis1987]
+"Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.” 
+:::
+
+- whereas *treatment-naive* prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option
+
+## Estimand for prediction-under-intervention models
+
+What is the estimand?
+
+- prediction: $E[Y|X]$
+- treatment effect: $E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]$
+- prediction-under-intervention: $E[Y|\text{do}(T=t),X]$
+
+--- 
+
+:::{.columns}
+
+::::{.column width="50%"}
+
+using *treatment naive* prediction models for decision support
+
+![](figs/8q4cne_meme_crossover.jpg)
+
 ::::
+
+::::{.column width="50%"}
+
+prediction-under-intervention
+
+![](figs/peanutbutter_chocolatesprinkles.jpg){.fragment}
+
+::::
+:::
+
+## Estimating prediction-under-intervention models
+
+- the estimand $E[Y|\text{do}(T=t),X]$ is an interventional distribution
+- RCTs randomly sample from interventional distributions
+- prediction-under-intervention models may be estimated and evaluated in RCT data
+- however, RCTs are typically designed to estimate a single parameter
+- prediction models need more data
+- in comes causal inference from observational data?
+
+## Challenges with observational data
+
+- assumption of no unobserved confounding may be hard to justify
+- but there's more between heaven (RCT) and earth (confounder adjustment)
+  - instrumental variable analysis (high variance estimates)
+  - proxy-variable methods
+  - constant relative treatment effect assumption
+  - diff-in-diff
+  - front-door analysis
+- these come with their own assumptions and trade-offs
+- do sensitivity analysis
+- may not have treatment information
+- may be many decision time-points, hard to formulate estimand over long time-horizon
+
+## How to proceed?
+
+- build prediction-under-intervention model with best data + assumptions
+- test policy value in historical RCT data
+  - for each patient in RCT, determine recommended treatment according to model
+  - if actual (randomly allocated) treatment is concordant, keep the patient
+  - if not, drop observation
+  - calculate expected outcomes in the subpopulation
+- then do a cluster RCT
 
 ## Take-aways
 
 - Prediction and causal inference come together neatly by declaring $P(Y|\text{do},X)$ as the estimand
 - (mis)using prediction models for treatment decisions without causal thinking and evaluation is a bad idea
 - building and evaluating prediction-under-intervention models requires unconfoundedness
+- prediction-under-intervention models can be evaluated with standard prediction accuracy metrics on RCT data
+
+. . .
+
+:::: {.columns}
+::: {.column width="50%"}
+![](figs/qr_comment.png){height=10cm fig-align='center'}
+
+From algorithms to action: improving patient care requires causality [@amsterdamAlgorithmsActionImproving2024]
+:::
+
+::: {.column width="50%"}
+![](figs/qr_selffulfilling.png){height=10cm fig-align='center'}
+
+When accurate prediction models yield harmful sel-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2024a]
+:::
+::::
+
 
 ## References
 

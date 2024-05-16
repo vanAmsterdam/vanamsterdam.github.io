@@ -42,11 +42,8 @@ $$ \lim_{n \to \infty} f_{\theta^*} = E[Y|X] $$
 
 ## Causal inference
 
-$y^0:=$ survival time **if I don't treat the patient**
+$y^0:=$ imaginative outcome **if I don't treat the patient**
 
-. . . 
-
-$y^1:=$ survival time **if I do treat**
 
 . . .
 
@@ -78,7 +75,7 @@ df %>%
     filter(t==0) %>%
     ggplot(aes(x=y, fill=t)) + geom_density(alpha=.5) + 
     geom_vline(aes(xintercept=mu0), linetype=2) + 
-    labs(x="survival time", y="") + 
+    labs(x="outcome", y="") + 
     scale_x_continuous(breaks = mu0, labels="mu0", limits=c(xmin, xmax)) + 
     scale_y_continuous(limits=c(ymin, ymax)) + 
     theme(
@@ -94,7 +91,7 @@ y^0 &= \mu_0 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma)
 
 . . . 
 
-this formula for together with distribution over error term gives rise to a distribution over the outcome when intervening on treatment (i.e. an *interventional distribution*)
+this formula together with distribution over error term gives rise to a distribution over the outcome when intervening on treatment (i.e. an *interventional distribution*)
 
 $$
  P(Y=y|\text{do}(T=0))
@@ -102,9 +99,9 @@ $$
 
 ## Causal inference
 
-$y^0:=$ survival time **if I don't treat the patient**
+$y^0:=$ imaginative outcome **if I don't treat the patient**
 
-$y^1:=$ survival time **if I do treat**
+$y^1:=$ imaginative outcome **if I do treat**
 
 ```{r}
 #| fig-height: 2.5
@@ -114,7 +111,7 @@ df %>%
     ggplot(aes(x=y, fill=t)) + geom_density(alpha=.5) + 
     geom_vline(aes(xintercept=mu0), linetype=2) + 
     geom_vline(aes(xintercept=mu1), linetype=2) + 
-    labs(x="survival time", y="") + 
+    labs(x="outcome", y="") + 
     scale_x_continuous(breaks = c(mu0,mu1), labels=c("mu0","mu1"), limits=c(xmin, xmax)) + 
     scale_y_continuous(limits=c(ymin, ymax)) + 
     theme(
@@ -132,7 +129,7 @@ y^1 &= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\sigma)
 
 \begin{align}
 \text{treatment effect} &:= E[y^1] - E[y^0] = \mu_1 - \mu_0 \\
-                        &:= E[P(Y|\text{do}(T=1))] - E[P(Y|\text{do}(T=0))]
+                        &:= E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]
 \end{align}
 
 ## Causal inference: typical approach
@@ -172,7 +169,7 @@ prediction
 
 causal inference
 
-- typical estimand $E[y^1] - E[y^0]$
+- typical estimand $E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]$
 - typical study: RCT
 - typical interpretation: *causal effect* of $T$ on $Y$
 - primary use: know what treatment to give
@@ -185,7 +182,7 @@ causal inference
 
 ![](figs/8q4cne_meme_crossover.jpg){fig-align="center"}
 
-## Using prediction models for decision making is commonly thought of as a good idea
+## Using prediction models for decision making is often thought of as a good idea
 
 For example:
 
@@ -271,11 +268,15 @@ The question is not "is my model accurate before / after deploytment", but did d
 
 :::{.r-stack}
 
-![](figs/txnaive1.png){.fragment}
+![](figs/txnaive1.png)
 
 ![](figs/txnaive2b.png){.fragment}
 
 :::
+
+\begin{align}
+    E[Y|X] \class{fragment}{= E[E_{t~\sim \pi_0(X)}[Y|X,t]]}
+\end{align}
 
 
 ## Is this obvious?
@@ -286,27 +287,27 @@ It may seem obvious that you should not ignore historical treatments in your pre
 
 :::
 
-## Other risk models:
-
-[- condition on given treatment and traits]{.fragment fragment-index=1}
-
-[- unobserved confounding (hat type) leads to wrong treatment decisions]{.fragment fragment-index=2}
-
-:::{.r-stack}
-
-![](figs/postdecision1.png){.fragment fragment-index=1}
-
-![](figs/postdecision2.png){.fragment fragment-index=2} 
-
-:::
-
 ##  Recommended validation practices do not protect against harm
 
 because they do not evaluate the policy change
 
-![](figs/ajcc_title.png){height="5cm"}
-![](figs/tripod_title.png){height="5cm"}
-![](figs/tripod_ai.png){height="5cm"}
+:::{.columns}
+
+::::{.column width="50%"}
+
+![](figs/ajcc_title.png){fig-align="center"}
+
+::::
+
+::::{.column width="50%"}
+
+![](figs/tripod_ai.png){fig-align="center"}
+
+::::
+
+:::
+
+
 
 ## Bigger data does not protect against harmful risk models
 
@@ -348,13 +349,14 @@ With causal inference!
 - for using a decision support model, the unit of intervention is usually *the doctor*
 - randomly assign *doctors* to have access to the model or not
 - measure differences in **treatment decisions** and **patient outcomes**
+- this called a cluster RCT
 - if using model improves outcomes, use that one
 
 . . . 
 
 :::{.callout-tip icon="false"}
 
-## This is not a new idea [@cooperEvaluationMachinelearningMethods1997]
+## Using cluster RCTs to evaluated models for decision making is not a new idea [@cooperEvaluationMachinelearningMethods1997]
 
 “As one possibility, suppose that a trial is performed in which clinicians are randomized either to have or not to have access to such a decision aid in making decisions about where to treat patients who present with pneumonia.” 
 
@@ -379,7 +381,6 @@ Not a good idea
 ## Models that are likely to be valuable for decision making
 
 - prediction under hypothetical interventions (prediction-under-intervention) models predict expected outcomes under the *hypothetical intervention* of giving a certain treatment
-- this is not a new idea
 
 . . . 
 
@@ -389,6 +390,7 @@ Not a good idea
 :::
 
 - whereas *treatment-naive* prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option
+- prediction-under-intervention is not a new idea, but language and methods on causality have come a long way since [@hildenPrognosisMedicineAnalysis1987].
 
 ## Estimand for prediction-under-intervention models
 
@@ -406,7 +408,7 @@ What is the estimand?
 
 using *treatment naive* prediction models for decision support
 
-![](figs/8q4cne_meme_crossover.jpg)
+![](figs/8q4cne_meme_crossover.jpg){fig-align="center"}
 
 ::::
 
@@ -414,7 +416,7 @@ using *treatment naive* prediction models for decision support
 
 prediction-under-intervention
 
-![](figs/peanutbutter_chocolatesprinkles.jpg){.fragment}
+![](figs/peanutbutter_chocolatesprinkles.jpg){.fragment fig-align="center"}
 
 ::::
 :::
@@ -432,10 +434,10 @@ prediction-under-intervention
 
 - assumption of no unobserved confounding may be hard to justify
 - but there's more between heaven (RCT) and earth (confounder adjustment)
-  - instrumental variable analysis (high variance estimates)
   - proxy-variable methods
   - constant relative treatment effect assumption
   - diff-in-diff
+  - instrumental variable analysis (high variance estimates)
   - front-door analysis
 - these come with their own assumptions and trade-offs
 - do sensitivity analysis
@@ -454,22 +456,21 @@ prediction-under-intervention
 
 ## Take-aways
 
-- Prediction and causal inference come together neatly by declaring $P(Y|\text{do},X)$ as the estimand
+- Prediction and causal inference come together neatly by declaring $E[Y|\text{do}(T=t),X]$ as the estimand
 - (mis)using prediction models for treatment decisions without causal thinking and evaluation is a bad idea
-- building and evaluating prediction-under-intervention models requires unconfoundedness
-- prediction-under-intervention models can be evaluated with standard prediction accuracy metrics on RCT data
+- deploying models for decision support is an intervention and should be evaluated as such
 
 . . .
 
 :::: {.columns}
 ::: {.column width="50%"}
-![](figs/qr_comment.png){height=10cm fig-align='center'}
+![](figs/qr_comment.png){height=8cm fig-align='center'}
 
 From algorithms to action: improving patient care requires causality [@amsterdamAlgorithmsActionImproving2024]
 :::
 
 ::: {.column width="50%"}
-![](figs/qr_selffulfilling.png){height=10cm fig-align='center'}
+![](figs/qr_selffulfilling.png){height=8cm fig-align='center'}
 
 When accurate prediction models yield harmful sel-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2024a]
 :::

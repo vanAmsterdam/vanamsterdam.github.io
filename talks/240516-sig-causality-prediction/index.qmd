@@ -180,7 +180,7 @@ causal inference
 
 ## The in-between: using prediction models for (medical) decision making
 
-![](figs/8q4cne_meme_crossover.jpg){fig-align="center"}
+![](figs/8q8oy7_meme_crossover.jpg){fig-align="center"}
 
 ## Using prediction models for decision making is often thought of as a good idea
 
@@ -408,7 +408,7 @@ What is the estimand?
 
 using *treatment naive* prediction models for decision support
 
-![](figs/8q4cne_meme_crossover.jpg){fig-align="center"}
+![](figs/8q8oy7_meme_crossover.jpg){fig-align="center"}
 
 ::::
 
@@ -439,7 +439,166 @@ prediction-under-intervention
   - diff-in-diff
   - instrumental variable analysis (high variance estimates)
   - front-door analysis
-- these come with their own assumptions and trade-offs
+
+## Proxy variables?
+
+:::::{.columns}
+
+::::{.column width="50%"}
+
+:::{.r-stack}
+
+![](figs/proxy_dag_01.png){.fragment fig-align="center"}
+
+![](figs/proxy_dag_02.png){.fragment fig-align="center"}
+
+![](figs/proxy_dag_03.png){.fragment fig-align="center"}
+
+![](figs/proxy_dag_04.png){.fragment fig-align="center"}
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+- problem: didn't observe confounder *fitness* so cannot do confounder adjustment
+- instead, leverage *assumptions* on confounder - proxy relationship (e.g. *monotonicity*)
+- effect may still be identifyable [@vanamsterdamIndividualTreatmentEffect2022]
+
+::::
+
+:::::
+
+## Constant relative treatment effect?{.smaller}
+
+```{r}
+
+
+n = 101
+rr = 0.5
+xs = seq(0,1, length.out=n)
+
+c = 8
+f0 = function(x) c* (x^2 - 1.9*x^3 + x^4 - .03 * x^5)
+y0 = f0(xs)
+y1 = rr * y0
+diffs = y1 - y0
+diffthresh = -0.2
+shouldtreat = diffs < diffthresh
+s0idx = which(!shouldtreat)
+s1idx = c(max(s0idx), setdiff(1:n, s0idx))
+
+xs0 = xs[s0idx]
+xs1 = xs[s1idx]
+y0s0 = y0[s0idx]
+y0s1 = y0[s1idx]
+y1s0 = y1[s0idx]
+y1s1 = y1[s1idx]
+
+#table(shouldtreat)
+
+pi0 = function(x) .2 + .6 * x
+y_pi0 = pi0(xs) * y1 + (1-pi0(xs)) * y0
+
+make_plot <- function(plotidx=1) {
+  cex = 2.3
+  plot(xs, y0, type='l', ylim=c(0,1),
+       xlab='X (patient characteristics)',
+       ylab='outcome risk',
+       col='red',
+       axes=F,
+       lwd=2,
+       # main="constant relative risk + varying untreated risk = varying absolute effect",
+       cex = cex,
+       cex.lab = cex
+       )
+  axis(1, cex.axis=cex)
+  axis(2, labels=F, cex.axis=cex)
+  leg = c("untreated risk")
+  legcols = c("red")
+  if (plotidx > 1) {
+    lines(xs, y1, col='blue', lwd=2)
+    leg = c(leg, "risk when treated")
+    legcols = c(legcols, "blue")
+    
+  }
+  if (plotidx == 3) {
+    polygon(c(xs0, rev(xs0)),
+            c(y0s0, rev(y1s0)),
+            col='gray')
+    polygon(c(xs1, rev(xs1)),
+            c(y0s1, rev(y1s1)),
+            col='darkgreen')
+    lines(xs, y0, col='red', lwd=2)
+    lines(xs, y1, col='blue', lwd=2)
+  }
+  if (plotidx == 4) {
+    lines(xs, y_pi0, col='orange', lwd=5)
+    leg = c(leg, "average risk under historic treatment policy")
+    legcols =c(legcols, "orange")
+  }
+  legend('topleft', inset=0.05,
+         legend=leg,
+         lty=1,
+         col=legcols,
+         cex=cex)
+}
+
+```
+
+::::::{.columns}
+
+:::::{.column width="60%"}
+
+:::{.r-stack}
+
+::::{.fragment}
+```{r}
+#| fig-height: 8
+make_plot(1)
+```
+::::
+
+::::{.fragment}
+```{r}
+#| fig-height: 8
+make_plot(2)
+```
+::::
+
+::::{.fragment}
+```{r}
+#| fig-height: 8
+make_plot(3)
+```
+::::
+
+::::{.fragment}
+```{r}
+#| fig-height: 8
+make_plot(4)
+```
+::::
+
+:::
+
+:::::
+
+:::::{.column width="40%"}
+
+- Widely used paradigm (cardiovascular risk, chemotherapy in breast cancer, ...)
+- Untreated risk is a quantity of the interventional distribution (i.e. *causal*)
+- Current risk-models: mix of treated / untreated patients [@amsterdamAlgorithmsActionImproving2024],
+- or ungrounded methods [@candidodosreisUpdatedPREDICTBreast2017; @xuPredictionCardiovascularDisease2021a].
+- Need better `causal' methods [@vanamsterdamConditionalAverageTreatment2023]
+:::::
+
+::::::
+
+## Prediction-under-intervention approaches sound great
+
+- but come with their own assumptions and trade-offs
 - do sensitivity analysis
 - may not have treatment information
 - may be many decision time-points, hard to formulate estimand over long time-horizon

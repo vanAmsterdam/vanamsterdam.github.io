@@ -9,6 +9,7 @@ toc: true
 toc-depth: 1
 page-layout: article
 citation: true
+bibliography: ../library.bib
 
 footer: "&copy;Wouter van Amsterdam ({{< bi twitter-x >}}: WvanAmsterdam)"
 

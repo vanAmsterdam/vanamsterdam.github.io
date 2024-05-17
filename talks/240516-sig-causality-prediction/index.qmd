@@ -606,11 +606,12 @@ make_plot(4)
 ## How to proceed?
 
 - build prediction-under-intervention model with best data + assumptions
-- test policy value in historical RCT data
-  - for each patient in RCT, determine recommended treatment according to model
+- test policy value in historical RCT data of competing policies (e.g. current practice vs policy by new model)
+  - for each patient in RCT, determine recommended treatment according to policy
   - if actual (randomly allocated) treatment is concordant, keep the patient
   - if not, drop observation
-  - calculate expected outcomes in the subpopulation
+  - calculate average outcomes in the subpopulation
+  - policy with highest average outcomes is best
 - then do a cluster RCT
 
 ## Take-aways

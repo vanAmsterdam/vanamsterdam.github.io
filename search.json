@@ -634,7 +634,7 @@
     "href": "talks/240516-sig-causality-prediction/index.html#how-to-proceed",
     "title": "Causality and prediction: developing and validating models for decision making",
     "section": "How to proceed?",
-    "text": "How to proceed?\n\nbuild prediction-under-intervention model with best data + assumptions\ntest policy value in historical RCT data\n\nfor each patient in RCT, determine recommended treatment according to model\nif actual (randomly allocated) treatment is concordant, keep the patient\nif not, drop observation\ncalculate expected outcomes in the subpopulation\n\nthen do a cluster RCT"
+    "text": "How to proceed?\n\nbuild prediction-under-intervention model with best data + assumptions\ntest policy value in historical RCT data of competing policies (e.g. current practice vs policy by new model)\n\nfor each patient in RCT, determine recommended treatment according to policy\nif actual (randomly allocated) treatment is concordant, keep the patient\nif not, drop observation\ncalculate average outcomes in the subpopulation\npolicy with highest average outcomes is best\n\nthen do a cluster RCT"
   },
   {
     "objectID": "talks/240516-sig-causality-prediction/index.html#take-aways",

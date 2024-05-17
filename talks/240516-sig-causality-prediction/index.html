@@ -930,12 +930,13 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <h2>How to proceed?</h2>
 <ul>
 <li class="fragment">build prediction-under-intervention model with best data + assumptions</li>
-<li class="fragment">test policy value in historical RCT data
+<li class="fragment">test policy value in historical RCT data of competing policies (e.g.&nbsp;current practice vs policy by new model)
 <ul>
-<li class="fragment">for each patient in RCT, determine recommended treatment according to model</li>
+<li class="fragment">for each patient in RCT, determine recommended treatment according to policy</li>
 <li class="fragment">if actual (randomly allocated) treatment is concordant, keep the patient</li>
 <li class="fragment">if not, drop observation</li>
-<li class="fragment">calculate expected outcomes in the subpopulation</li>
+<li class="fragment">calculate average outcomes in the subpopulation</li>
+<li class="fragment">policy with highest average outcomes is best</li>
 </ul></li>
 <li class="fragment">then do a cluster RCT</li>
 </ul>

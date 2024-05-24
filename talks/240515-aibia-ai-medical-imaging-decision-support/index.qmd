@@ -6,7 +6,7 @@ bibliography: references.bib
 format:
     revealjs:
         toc: false
-        incremental: true
+        incremental: false
         theme: custom.scss
         auto-stretch: true
         center: true

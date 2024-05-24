@@ -5,7 +5,7 @@ date: 2024/04/18
 draft: false
 format:
     revealjs:
-        incremental: true
+        incremental: false
         smaller: true
 execution:
     echo: false

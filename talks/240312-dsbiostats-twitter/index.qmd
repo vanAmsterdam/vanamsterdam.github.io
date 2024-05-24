@@ -4,9 +4,9 @@ subtitle: "Data Science and Biostatistics department lunch talk"
 date: 2024/03/12
 format:
   revealjs:
-    incremental: true
     embed-resources: true
     pdf-separate-fragment: true
+    incremental: false
   #pdf: default
 ---
 

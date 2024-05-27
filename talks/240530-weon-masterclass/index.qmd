@@ -16,7 +16,7 @@ format:
 
 # Uses of AI in health care
 
-## AI may have many uses in health care
+## AI may have many uses in health care {auto-animate=true}
 
 Use AI to make health care
 
@@ -43,6 +43,14 @@ better
 
 ::::
 
+:::
+
+
+## {auto-animate=true}
+
+::: {.nonincremental}
+- diagnosis (e.g. skin cancer from imaging)
+- prognosis (e.g. survival given medical image)
 :::
 
 . . .
@@ -314,8 +322,7 @@ evaluation:
 
 ## Take-aways
 
-- (mis)using AI prediction models for treatment decisions without causal thinking and evaluation is a bad idea
-- specifically, always think about
+- when developing an evaluating AI models for treatment decisions, think about
   - what is the effect of using this model on treatment decisions?
   - what is the effect of this policy change on patient outcomes?
 - deploying models for decision support is an intervention and should be evaluated as such
@@ -325,13 +332,13 @@ evaluation:
 
 :::: {.columns}
 ::: {.column width="50%"}
-![](figs/qr_comment.png){height=8cm fig-align='center'}
+![](figs/qr_comment.png){height=6cm fig-align='center'}
 
 From algorithms to action: improving patient care requires causality [@amsterdamAlgorithmsActionImproving2024]
 :::
 
 ::: {.column width="50%"}
-![](figs/qr_selffulfilling.png){height=8cm fig-align='center'}
+![](figs/qr_selffulfilling.png){height=6cm fig-align='center'}
 
 When accurate prediction models yield harmful sel-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2024a]
 :::

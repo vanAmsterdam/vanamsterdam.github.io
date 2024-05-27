@@ -921,7 +921,14 @@
     "href": "talks/240530-weon-masterclass/index.html#ai-may-have-many-uses-in-health-care",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
     "section": "AI may have many uses in health care",
-    "text": "AI may have many uses in health care\nUse AI to make health care\n\n\n\neasier / more efficient\n\nadministration / documentation\ntranslation\n\n\nbetter\n\ndiagnosis (e.g. skin cancer from imaging)\nprognosis (e.g. survival given medical image)\ntreatment effect (e.g. image biomarker)\n\n\n\n\n\n\n\n\nTip\n\n\nWhereas treatment effect estimation is typically thought of as a causal task requiring causal approaches (e.g. randomized controllerd trials), prognosis models are often advertised for making treatment decisions."
+    "text": "AI may have many uses in health care\nUse AI to make health care\n\n\n\neasier / more efficient\n\nadministration / documentation\ntranslation\n\n\nbetter\n\ndiagnosis (e.g. skin cancer from imaging)\nprognosis (e.g. survival given medical image)\ntreatment effect (e.g. image biomarker)"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#section",
+    "href": "talks/240530-weon-masterclass/index.html#section",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "",
+    "text": "diagnosis (e.g. skin cancer from imaging)\nprognosis (e.g. survival given medical image)\n\n\n\n\n\n\nTip\n\n\nWhereas treatment effect estimation is typically thought of as a causal task requiring causal approaches (e.g. randomized controllerd trials), prognosis models are often advertised for making treatment decisions."
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#the-in-between-using-prediction-models-for-medical-decision-making",
@@ -987,15 +994,15 @@
     "text": "Gap between prediction accuracy and value for decision making"
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#section",
-    "href": "talks/240530-weon-masterclass/index.html#section",
+    "objectID": "talks/240530-weon-masterclass/index.html#section-1",
+    "href": "talks/240530-weon-masterclass/index.html#section-1",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
     "section": "",
     "text": "What to do?"
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#section-1",
-    "href": "talks/240530-weon-masterclass/index.html#section-1",
+    "objectID": "talks/240530-weon-masterclass/index.html#section-2",
+    "href": "talks/240530-weon-masterclass/index.html#section-2",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
     "section": "",
     "text": "What to do?\n\n\nEvaluate policy change (cluster randomized controlled trial)\nBuild models that are likely to have value for decision making"
@@ -1047,7 +1054,7 @@
     "href": "talks/240530-weon-masterclass/index.html#take-aways",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
     "section": "Take-aways",
-    "text": "Take-aways\n\n(mis)using AI prediction models for treatment decisions without causal thinking and evaluation is a bad idea\nspecifically, always think about\n\nwhat is the effect of using this model on treatment decisions?\nwhat is the effect of this policy change on patient outcomes?\n\ndeploying models for decision support is an intervention and should be evaluated as such\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (Wouter A. C. van Amsterdam et al. 2024b)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (Wouter A. C. van Amsterdam et al. 2024a)"
+    "text": "Take-aways\n\nwhen developing an evaluating AI models for treatment decisions, think about\n\nwhat is the effect of using this model on treatment decisions?\nwhat is the effect of this policy change on patient outcomes?\n\ndeploying models for decision support is an intervention and should be evaluated as such\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (Wouter A. C. van Amsterdam et al. 2024b)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (Wouter A. C. van Amsterdam et al. 2024a)"
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#references",

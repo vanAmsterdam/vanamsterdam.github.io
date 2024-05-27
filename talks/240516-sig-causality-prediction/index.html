@@ -389,9 +389,9 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li class="fragment"><a href="#/prediction-versus-causal-inference" id="/toc-prediction-versus-causal-inference">Prediction versus causal inference</a></li>
-<li class="fragment"><a href="#/selffulfilling" id="/toc-selffulfilling">When accurate prediction models yield harmful self-fulfilling prophecies</a></li>
-<li class="fragment"><a href="#/building-and-validating-models-for-decision-support" id="/toc-building-and-validating-models-for-decision-support">Building and validating models for decision support</a></li>
+<li><a href="#/prediction-versus-causal-inference" id="/toc-prediction-versus-causal-inference">Prediction versus causal inference</a></li>
+<li><a href="#/selffulfilling" id="/toc-selffulfilling">When accurate prediction models yield harmful self-fulfilling prophecies</a></li>
+<li><a href="#/building-and-validating-models-for-decision-support" id="/toc-building-and-validating-models-for-decision-support">Building and validating models for decision support</a></li>
 </ul>
 </nav>
 </section>
@@ -403,9 +403,9 @@
 <section id="prediction" class="slide level2 center">
 <h2>Prediction</h2>
 <ol type="1">
-<li class="fragment">have some features <span class="math inline">\(X\)</span> (patient characteristics, medical images, lab results)</li>
-<li class="fragment">define relevant outcome <span class="math inline">\(Y\)</span> (e.g.&nbsp;1-year survival, blood pressure, treatment complication)</li>
-<li class="fragment">build prediction model <span class="math inline">\(f: \mathbb{X} \to \mathbb{Y}\)</span> that <em>predicts</em> <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span>, e.g.:</li>
+<li>have some features <span class="math inline">\(X\)</span> (patient characteristics, medical images, lab results)</li>
+<li>define relevant outcome <span class="math inline">\(Y\)</span> (e.g.&nbsp;1-year survival, blood pressure, treatment complication)</li>
+<li>build prediction model <span class="math inline">\(f: \mathbb{X} \to \mathbb{Y}\)</span> that <em>predicts</em> <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span>, e.g.:</li>
 </ol>
 <div class="fragment">
 <p><span class="math display">\[ \theta^* = \arg \min_{\theta} \sum_i^n ( f_{\theta}(x_i) - y_i )^2 \]</span></p>
@@ -418,11 +418,11 @@
 <section id="prediction-typical-approach" class="slide level2 center">
 <h2>Prediction: typical approach</h2>
 <ol type="1">
-<li class="fragment">define population, start a (prospective) longitudinal cohort</li>
-<li class="fragment">measure <span class="math inline">\(X\)</span> at <em>prediction baseline</em></li>
-<li class="fragment">follow-up patients to measure <span class="math inline">\(Y\)</span></li>
-<li class="fragment">fit model <span class="math inline">\(f\)</span> to <span class="math inline">\(\{x_i,y_i\}\)</span></li>
-<li class="fragment">evaluate prediction performance with e.g.&nbsp;discrimination, calibration, <span class="math inline">\(R^2\)</span></li>
+<li>define population, start a (prospective) longitudinal cohort</li>
+<li>measure <span class="math inline">\(X\)</span> at <em>prediction baseline</em></li>
+<li>follow-up patients to measure <span class="math inline">\(Y\)</span></li>
+<li>fit model <span class="math inline">\(f\)</span> to <span class="math inline">\(\{x_i,y_i\}\)</span></li>
+<li>evaluate prediction performance with e.g.&nbsp;discrimination, calibration, <span class="math inline">\(R^2\)</span></li>
 </ol>
 </section>
 <section id="causal-inference" class="slide level2 center">
@@ -468,10 +468,10 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <section id="causal-inference-typical-approach" class="slide level2 center">
 <h2>Causal inference: typical approach</h2>
 <ol type="1">
-<li class="fragment">define target population and targeted treatment comparison</li>
-<li class="fragment">run randomized controlled trial, randomizing treatment allocation</li>
-<li class="fragment">measure patient outcomes</li>
-<li class="fragment">estimate parameter that summarizes <em>average treatment effect</em> (ATE)</li>
+<li>define target population and targeted treatment comparison</li>
+<li>run randomized controlled trial, randomizing treatment allocation</li>
+<li>measure patient outcomes</li>
+<li>estimate parameter that summarizes <em>average treatment effect</em> (ATE)</li>
 </ol>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -493,18 +493,18 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <div class="column" style="width:50%;">
 <p>prediction</p>
 <ul>
-<li class="fragment">typical estimand <span class="math inline">\(E[Y|X]\)</span></li>
-<li class="fragment">typical study: longitudinal cohort</li>
-<li class="fragment">typical interpretation: <span class="math inline">\(X\)</span> predicts <span class="math inline">\(Y\)</span></li>
-<li class="fragment">primary use: know what <span class="math inline">\(Y\)</span> to expect when observing <span class="math inline">\(X\)</span> <em>assuming no change in joint distribution</em></li>
+<li>typical estimand <span class="math inline">\(E[Y|X]\)</span></li>
+<li>typical study: longitudinal cohort</li>
+<li>typical interpretation: <span class="math inline">\(X\)</span> predicts <span class="math inline">\(Y\)</span></li>
+<li>primary use: know what <span class="math inline">\(Y\)</span> to expect when observing <span class="math inline">\(X\)</span> <em>assuming no change in joint distribution</em></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p>causal inference</p>
 <ul>
-<li class="fragment">typical estimand <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
-<li class="fragment">typical study: RCT</li>
-<li class="fragment">typical interpretation: <em>causal effect</em> of <span class="math inline">\(T\)</span> on <span class="math inline">\(Y\)</span></li>
-<li class="fragment">primary use: know what treatment to give</li>
+<li>typical estimand <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
+<li>typical study: RCT</li>
+<li>typical interpretation: <em>causal effect</em> of <span class="math inline">\(T\)</span> on <span class="math inline">\(Y\)</span></li>
+<li>primary use: know what treatment to give</li>
 </ul>
 </div>
 </div>
@@ -517,8 +517,8 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <h2>Using prediction models for decision making is often thought of as a good idea</h2>
 <p>For example:</p>
 <ol type="1">
-<li class="fragment">give chemotherapy to cancer patients with high predicted risk of recurrence</li>
-<li class="fragment">give statins to patients with a high risk of a heart attack</li>
+<li>give chemotherapy to cancer patients with high predicted risk of recurrence</li>
+<li>give statins to patients with a high risk of a heart attack</li>
 </ol>
 <div class="fragment">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -545,9 +545,9 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 </div>
 <div class="callout-content">
 <ol type="1">
-<li class="fragment">ignoring the treatments patients may have had during training / validation</li>
-<li class="fragment">only considering measures of predictive accuracy as sufficient evidence for safe deployment</li>
-<li class="fragment">predictive accuracy (AUC) may be measured pre- or post-deployment of the model</li>
+<li>ignoring the treatments patients may have had during training / validation</li>
+<li>only considering measures of predictive accuracy as sufficient evidence for safe deployment</li>
+<li>predictive accuracy (AUC) may be measured pre- or post-deployment of the model</li>
 </ol>
 </div>
 </div>
@@ -682,8 +682,8 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <p>What to do?</p>
 </div>
 <ol type="1">
-<li class="fragment">Evaluate policy change (cluster randomized controlled trial)</li>
-<li class="fragment">Build models that are likely to have value for decision making</li>
+<li>Evaluate policy change (cluster randomized controlled trial)</li>
+<li>Build models that are likely to have value for decision making</li>
 </ol>
 </section></section>
 <section>
@@ -699,11 +699,11 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <h2>How do we learn about the effect of an intervention?</h2>
 <p>With causal inference!</p>
 <ul>
-<li class="fragment">for using a decision support model, the unit of intervention is usually <em>the doctor</em></li>
-<li class="fragment">randomly assign <em>doctors</em> to have access to the model or not</li>
-<li class="fragment">measure differences in <strong>treatment decisions</strong> and <strong>patient outcomes</strong></li>
-<li class="fragment">this called a cluster RCT</li>
-<li class="fragment">if using model improves outcomes, use that one</li>
+<li>for using a decision support model, the unit of intervention is usually <em>the doctor</em></li>
+<li>randomly assign <em>doctors</em> to have access to the model or not</li>
+<li>measure differences in <strong>treatment decisions</strong> and <strong>patient outcomes</strong></li>
+<li>this called a cluster RCT</li>
+<li>if using model improves outcomes, use that one</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -737,18 +737,18 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <h2>So build prediction models and trial them?</h2>
 <p>Not a good idea</p>
 <ul>
-<li class="fragment">baking a cake without a recipe</li>
-<li class="fragment">hoping it turns into something nice</li>
-<li class="fragment">not pleasant to people that need to taste the experiment
+<li>baking a cake without a recipe</li>
+<li>hoping it turns into something nice</li>
+<li>not pleasant to people that need to taste the experiment
 <ul>
-<li class="fragment">(i.e.&nbsp;patients may have side-effects / die)</li>
+<li>(i.e.&nbsp;patients may have side-effects / die)</li>
 </ul></li>
 </ul>
 </section>
 <section id="models-that-are-likely-to-be-valuable-for-decision-making" class="slide level2 center">
 <h2>Models that are likely to be valuable for decision making</h2>
 <ul>
-<li class="fragment">prediction under hypothetical interventions (prediction-under-intervention) models predict expected outcomes under the <em>hypothetical intervention</em> of giving a certain treatment</li>
+<li>prediction under hypothetical interventions (prediction-under-intervention) models predict expected outcomes under the <em>hypothetical intervention</em> of giving a certain treatment</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -762,8 +762,8 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 </div>
 </div>
 <ul>
-<li class="fragment">whereas <em>treatment-naive</em> prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option</li>
-<li class="fragment">prediction-under-intervention is not a new idea, but language and methods on causality have come a long way since <span class="citation" data-cites="hildenPrognosisMedicineAnalysis1987">(<a href="#/references" role="doc-biblioref" onclick="">Hilden and Habbema 1987</a>)</span>.</li>
+<li>whereas <em>treatment-naive</em> prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option</li>
+<li>prediction-under-intervention is not a new idea, but language and methods on causality have come a long way since <span class="citation" data-cites="hildenPrognosisMedicineAnalysis1987">(<a href="#/references" role="doc-biblioref" onclick="">Hilden and Habbema 1987</a>)</span>.</li>
 </ul>
 </div>
 </section>
@@ -771,9 +771,9 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <h2>Estimand for prediction-under-intervention models</h2>
 <p>What is the estimand?</p>
 <ul>
-<li class="fragment">prediction: <span class="math inline">\(E[Y|X]\)</span></li>
-<li class="fragment">treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
-<li class="fragment">prediction-under-intervention: <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span></li>
+<li>prediction: <span class="math inline">\(E[Y|X]\)</span></li>
+<li>treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
+<li>prediction-under-intervention: <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span></li>
 </ul>
 </section>
 <section class="slide level2 center">
@@ -799,25 +799,25 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <section id="estimating-prediction-under-intervention-models" class="slide level2 center">
 <h2>Estimating prediction-under-intervention models</h2>
 <ul>
-<li class="fragment">the estimand <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span> is an interventional distribution</li>
-<li class="fragment">RCTs randomly sample from interventional distributions</li>
-<li class="fragment">prediction-under-intervention models may be estimated and evaluated in RCT data</li>
-<li class="fragment">however, RCTs are typically designed to estimate a single parameter</li>
-<li class="fragment">prediction models need more data</li>
-<li class="fragment">in comes causal inference from observational data?</li>
+<li>the estimand <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span> is an interventional distribution</li>
+<li>RCTs randomly sample from interventional distributions</li>
+<li>prediction-under-intervention models may be estimated and evaluated in RCT data</li>
+<li>however, RCTs are typically designed to estimate a single parameter</li>
+<li>prediction models need more data</li>
+<li>in comes causal inference from observational data?</li>
 </ul>
 </section>
 <section id="challenges-with-observational-data" class="slide level2 center">
 <h2>Challenges with observational data</h2>
 <ul>
-<li class="fragment">assumption of no unobserved confounding may be hard to justify</li>
-<li class="fragment">but there’s more between heaven (RCT) and earth (confounder adjustment)
+<li>assumption of no unobserved confounding may be hard to justify</li>
+<li>but there’s more between heaven (RCT) and earth (confounder adjustment)
 <ul>
-<li class="fragment">proxy-variable methods</li>
-<li class="fragment">constant relative treatment effect assumption</li>
-<li class="fragment">diff-in-diff</li>
-<li class="fragment">instrumental variable analysis (high variance estimates)</li>
-<li class="fragment">front-door analysis</li>
+<li>proxy-variable methods</li>
+<li>constant relative treatment effect assumption</li>
+<li>diff-in-diff</li>
+<li>instrumental variable analysis (high variance estimates)</li>
+<li>front-door analysis</li>
 </ul></li>
 </ul>
 </section>
@@ -849,9 +849,9 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 </div>
 </div><div class="column" style="width:50%;">
 <ul>
-<li class="fragment">problem: didn’t observe confounder <em>fitness</em> so cannot do confounder adjustment</li>
-<li class="fragment">instead, leverage <em>assumptions</em> on confounder - proxy relationship (e.g.&nbsp;<em>monotonicity</em>)</li>
-<li class="fragment">effect may still be identifyable <span class="citation" data-cites="vanamsterdamIndividualTreatmentEffect2022">(<a href="#/references" role="doc-biblioref" onclick="">Wouter A. C. van Amsterdam et al. 2022</a>)</span></li>
+<li>problem: didn’t observe confounder <em>fitness</em> so cannot do confounder adjustment</li>
+<li>instead, leverage <em>assumptions</em> on confounder - proxy relationship (e.g.&nbsp;<em>monotonicity</em>)</li>
+<li>effect may still be identifyable <span class="citation" data-cites="vanamsterdamIndividualTreatmentEffect2022">(<a href="#/references" role="doc-biblioref" onclick="">Wouter A. C. van Amsterdam et al. 2022</a>)</span></li>
 </ul>
 </div>
 </div>
@@ -908,11 +908,11 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 </div>
 </div><div class="column" style="width:40%;">
 <ul>
-<li class="fragment">Widely used paradigm (cardiovascular risk, chemotherapy in breast cancer, …)</li>
-<li class="fragment">Untreated risk is a quantity of the interventional distribution (i.e.&nbsp;<em>causal</em>)</li>
-<li class="fragment">Current risk-models: mix of treated / untreated patients <span class="citation" data-cites="amsterdamAlgorithmsActionImproving2024">(<a href="#/references" role="doc-biblioref" onclick="">Wouter A. C. van Amsterdam et al. 2024b</a>)</span>,</li>
-<li class="fragment">or ungrounded methods <span class="citation" data-cites="candidodosreisUpdatedPREDICTBreast2017 xuPredictionCardiovascularDisease2021a">(<a href="#/references" role="doc-biblioref" onclick="">Candido dos Reis et al. 2017</a>; <a href="#/references" role="doc-biblioref" onclick="">Xu et al. 2021</a>)</span>.</li>
-<li class="fragment">Need better `causal’ methods <span class="citation" data-cites="vanamsterdamConditionalAverageTreatment2023">(<a href="#/references" role="doc-biblioref" onclick="">Wouter A. C. van Amsterdam and Ranganath 2023</a>)</span></li>
+<li>Widely used paradigm (cardiovascular risk, chemotherapy in breast cancer, …)</li>
+<li>Untreated risk is a quantity of the interventional distribution (i.e.&nbsp;<em>causal</em>)</li>
+<li>Current risk-models: mix of treated / untreated patients <span class="citation" data-cites="amsterdamAlgorithmsActionImproving2024">(<a href="#/references" role="doc-biblioref" onclick="">Wouter A. C. van Amsterdam et al. 2024b</a>)</span>,</li>
+<li>or ungrounded methods <span class="citation" data-cites="candidodosreisUpdatedPREDICTBreast2017 xuPredictionCardiovascularDisease2021a">(<a href="#/references" role="doc-biblioref" onclick="">Candido dos Reis et al. 2017</a>; <a href="#/references" role="doc-biblioref" onclick="">Xu et al. 2021</a>)</span>.</li>
+<li>Need better `causal’ methods <span class="citation" data-cites="vanamsterdamConditionalAverageTreatment2023">(<a href="#/references" role="doc-biblioref" onclick="">Wouter A. C. van Amsterdam and Ranganath 2023</a>)</span></li>
 </ul>
 </div>
 </div>
@@ -920,33 +920,33 @@ y^1 &amp;= \mu_1 + \epsilon, \quad \epsilon \overset{\mathrm{iid}}{\sim} N(0,\si
 <section id="prediction-under-intervention-approaches-sound-great" class="slide level2 center">
 <h2>Prediction-under-intervention approaches sound great</h2>
 <ul>
-<li class="fragment">but come with their own assumptions and trade-offs</li>
-<li class="fragment">do sensitivity analysis</li>
-<li class="fragment">may not have treatment information</li>
-<li class="fragment">may be many decision time-points, hard to formulate estimand over long time-horizon</li>
+<li>but come with their own assumptions and trade-offs</li>
+<li>do sensitivity analysis</li>
+<li>may not have treatment information</li>
+<li>may be many decision time-points, hard to formulate estimand over long time-horizon</li>
 </ul>
 </section>
 <section id="how-to-proceed" class="slide level2 center">
 <h2>How to proceed?</h2>
 <ul>
-<li class="fragment">build prediction-under-intervention model with best data + assumptions</li>
-<li class="fragment">test policy value in historical RCT data of competing policies (e.g.&nbsp;current practice vs policy by new model)
+<li>build prediction-under-intervention model with best data + assumptions</li>
+<li>test policy value in historical RCT data of competing policies (e.g.&nbsp;current practice vs policy by new model)
 <ul>
-<li class="fragment">for each patient in RCT, determine recommended treatment according to policy</li>
-<li class="fragment">if actual (randomly allocated) treatment is concordant, keep the patient</li>
-<li class="fragment">if not, drop observation</li>
-<li class="fragment">calculate average outcomes in the subpopulation</li>
-<li class="fragment">policy with highest average outcomes is best</li>
+<li>for each patient in RCT, determine recommended treatment according to policy</li>
+<li>if actual (randomly allocated) treatment is concordant, keep the patient</li>
+<li>if not, drop observation</li>
+<li>calculate average outcomes in the subpopulation</li>
+<li>policy with highest average outcomes is best</li>
 </ul></li>
-<li class="fragment">then do a cluster RCT</li>
+<li>then do a cluster RCT</li>
 </ul>
 </section>
 <section id="take-aways" class="slide level2 center">
 <h2>Take-aways</h2>
 <ul>
-<li class="fragment">Prediction and causal inference come together neatly by declaring <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span> as the estimand</li>
-<li class="fragment">(mis)using prediction models for treatment decisions without causal thinking and evaluation is a bad idea</li>
-<li class="fragment">deploying models for decision support is an intervention and should be evaluated as such</li>
+<li>Prediction and causal inference come together neatly by declaring <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span> as the estimand</li>
+<li>(mis)using prediction models for treatment decisions without causal thinking and evaluation is a bad idea</li>
+<li>deploying models for decision support is an intervention and should be evaluated as such</li>
 </ul>
 <div class="fragment">
 <div class="columns">

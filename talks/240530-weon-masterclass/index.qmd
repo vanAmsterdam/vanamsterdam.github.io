@@ -20,6 +20,8 @@ format:
 
 Use AI to make health care
 
+. . .
+
 ::: {.columns}
 
 :::: {.column width="50%}
@@ -144,14 +146,16 @@ The question is not "is my model accurate before / after deployment", but did de
     E[Y|X] \class{fragment}{= E[E_{t~\sim \pi_0(X)}[Y|X,t]]}
 \end{align}
 
+---
 
-## Is this obvious?
 
-::: {.callout-tip}
+[Is this obvious?]{.r-fit-text}
 
-It may seem obvious that you should not ignore historical treatments in your prediction models, if you want to improve treatment decisions, but many of these models are published daily, and some guidelines even allow for implementing these models based on predictve performance only
+<!--::: {.callout-tip}-->
 
-:::
+<!--It may seem obvious that you should not ignore historical treatments in your prediction models, if you want to improve treatment decisions, but many of these models are published daily, and some guidelines even allow for implementing these models based on predictve performance only-->
+
+<!--:::-->
 
 ## Prediction modeling is very popular in medical research
 
@@ -214,7 +218,7 @@ What to do?
 
 ## How do we learn about the effect of an intervention?
 
-With causal inference!
+<!--With causal inference!-->
 
 - for using a decision support model, the unit of intervention is usually *the doctor*
 - randomly assign *doctors* to have access to the model or not
@@ -251,6 +255,8 @@ Not a good idea
 ## Models that are likely to be valuable for decision making
 
 - prediction under hypothetical interventions (prediction-under-intervention) models predict expected outcomes under the *hypothetical intervention* of giving a certain treatment
+- doctor / patient can pick the treatment with *best* expected outcomes, depending on patient's values
+- whereas *treatment-naive* prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option
 
 . . . 
 
@@ -259,7 +265,6 @@ Not a good idea
 "Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.” 
 :::
 
-- whereas *treatment-naive* prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option
 - prediction-under-intervention is not a new idea, but language and methods on causality have come a long way since [@hildenPrognosisMedicineAnalysis1987].
 
 ## Estimand for prediction-under-intervention models
@@ -293,10 +298,19 @@ prediction-under-intervention
 
 ## More on prediction-under-intervention models
 
-- ideally estimated from RCTs
+development:
+
+- ideally estimated from RCTs, but these are often too small or don't measure the right data
 - alternatively can use observational data and causal inference methods
-- this approach relies on **strong assumptions** especially regarding confounding
+    - this approach relies on **strong assumptions** especially regarding confounding
 - but likely a better recipe than *treatment-naive* models
+
+. . .
+
+evaluation:
+
+- prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding [e.g. @keoghPredictionInterventionsEvaluation2024]
+- a new *policy* can be evaluated in historic RCTs
 
 ## Take-aways
 
@@ -304,8 +318,8 @@ prediction-under-intervention
 - specifically, always think about
   - what is the effect of using this model on treatment decisions?
   - what is the effect of this policy change on patient outcomes?
-- prediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making
 - deploying models for decision support is an intervention and should be evaluated as such
+- prediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making
 
 . . .
 

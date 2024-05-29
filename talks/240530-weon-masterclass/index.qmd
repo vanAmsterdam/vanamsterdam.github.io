@@ -137,7 +137,9 @@ For example:
 
 --- 
 
-[The question is not "is my model accurate before / after deployment", but did deploying the model improve patient outcomes?]{.r-fit-text}
+[The question is not "is my model accurate before / after deployment",]{.r-fit-text}
+
+[but did deploying the model improve patient outcomes?]{.r-fit-text .fragment}
 
 
 ## Treatment-naive risk models
@@ -347,9 +349,10 @@ When accurate prediction models yield harmful sel-fulfilling prophecies [@vanams
 :::
 ::::
 
-## Learn more about causal data science
+## New summerschool: Introduction to Causal Inference and Causal Data Science
 
-### New summerschool: Introduction to Causal Inference and Causal Data Science
+### Learn more about causal data science
+
 
 :::{.columns}
 
@@ -363,6 +366,7 @@ When accurate prediction models yield harmful sel-fulfilling prophecies [@vanams
   - Oisin Ryan
   - Bas Penning-de Vries
   - Wouter van Amsterdam
+- Sign up still possible
 
 :::::
 

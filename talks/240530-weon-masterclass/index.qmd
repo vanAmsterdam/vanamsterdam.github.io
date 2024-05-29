@@ -102,25 +102,24 @@ For example:
 
 :::{.r-stack}
 
-![](figs/new_overview1a.png){.fragment height=18cm}
+![](figs/rt_example1.png){.fragment height=18cm}
 
-![](figs/new_overview1b.png){.fragment height=18cm}
+![](figs/rt_example2.png){.fragment height=18cm}
 
-![](figs/new_overview1c.png){.fragment height=18cm}
+![](figs/rt_example3.png){.fragment height=18cm}
 
-![](figs/new_overview2a.png){.fragment height=18cm}
+![](figs/rt_example4.png){.fragment height=18cm}
 
-![](figs/new_overview2b.png){.fragment height=18cm}
+![](figs/rt_example5.png){.fragment height=18cm}
 
-![](figs/new_overview3a.png){.fragment height=18cm}
+![](figs/rt_example6.png){.fragment height=18cm}
 
-![](figs/new_overview3b.png){.fragment height=18cm}
+![](figs/rt_example.png){.fragment height=18cm}
 
 :::
 
 
-
-## building models for decision support without regards for the historic treatment policy is a bad idea
+## Building models for decision support without regards for the historic treatment policy is a bad idea
 
 :::{.r-stack}
 

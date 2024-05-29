@@ -357,10 +357,10 @@
     }
   </style>
 <meta property="og:title" content="Wouter van Amsterdam - Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies">
-<meta property="og:description" content="WEON masterclass - 2024">
+<meta property="og:description" content="WEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation">
 <meta property="og:site_name" content="Wouter van Amsterdam">
 <meta name="twitter:title" content="Wouter van Amsterdam - Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies">
-<meta name="twitter:description" content="WEON masterclass - 2024">
+<meta name="twitter:description" content="WEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
 </head>
@@ -371,7 +371,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies</h1>
-  <p class="subtitle">WEON masterclass - 2024</p>
+  <p class="subtitle">WEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -402,23 +402,21 @@
 </section>
 <section id="ai-may-have-many-uses-in-health-care" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">AI may have many uses in health care</h2>
-<p>Use AI to make health care</p>
-<div class="fragment">
+<h3 id="use-ai-to-make-health-care">Use AI to make health care</h3>
 <div class="columns">
 <div class="column" style="width:&quot;50%;">
-<p>easier / more efficient</p>
+<p>more efficient or easier</p>
 <ul>
 <li class="fragment">administration / documentation</li>
 <li class="fragment">translation</li>
 </ul>
 </div><div class="column" style="width:&quot;50%;">
-<p>better</p>
+<p>better: change decisions</p>
 <ul>
 <li class="fragment">diagnosis (e.g.&nbsp;skin cancer from imaging)</li>
 <li class="fragment">prognosis (e.g.&nbsp;survival given medical image)</li>
-<li class="fragment">treatment effect (e.g.&nbsp;image biomarker)</li>
+<li class="fragment">treatment effect (e.g.&nbsp;genetic biomarker)</li>
 </ul>
-</div>
 </div>
 </div>
 </section>
@@ -426,8 +424,8 @@
 <h2 data-id="quarto-animate-title"></h2>
 <div>
 <ul>
-<li>diagnosis (e.g.&nbsp;skin cancer from imaging)</li>
 <li>prognosis (e.g.&nbsp;survival given medical image)</li>
+<li>treatment effect (e.g.&nbsp;genetic biomarker)</li>
 </ul>
 </div>
 <div class="fragment">
@@ -443,8 +441,13 @@
 </div>
 </div>
 </section>
-<section id="the-in-between-using-prediction-models-for-medical-decision-making" class="slide level2 center">
-<h2>The in-between: using prediction models for (medical) decision making</h2>
+<section id="the-in-between-using-prediction-models-for-medical-decision-making" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">The in-between: using prediction models for (medical) decision making</h2>
+<div>
+<ul>
+<li>prognosis (e.g.&nbsp;survival given medical image)</li>
+</ul>
+</div>
 
 <img data-src="figs/8q8oy7_meme_crossover.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="using-prediction-models-for-decision-making-is-often-thought-of-as-a-good-idea" class="slide level2 center">
@@ -479,9 +482,8 @@
 </div>
 <div class="callout-content">
 <ol type="1">
-<li class="fragment">ignoring the treatments patients may have had during training / validation</li>
+<li class="fragment">ignoring the treatments patients may have had during training / validation of (AI) prediction model</li>
 <li class="fragment">only considering measures of predictive accuracy as sufficient evidence for safe deployment</li>
-<li class="fragment">predictive accuracy (AUC) may be measured pre- or post-deployment of the model</li>
 </ol>
 </div>
 </div>
@@ -516,19 +518,7 @@
 </section>
 <section class="slide level2 center">
 
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>The question is not “is my model accurate before / after deployment”, but did deploying the model improve patient outcomes?</p>
-</div>
-</div>
-</div>
+<p><span class="r-fit-text">The question is not “is my model accurate before / after deployment”, but did deploying the model improve patient outcomes?</span></p>
 </section>
 <section id="treatment-naive-risk-models" class="slide level2 center">
 <h2>Treatment-naive risk models</h2>
@@ -553,7 +543,7 @@
 <img data-src="figs/predmodelsoverview.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="recommended-validation-and-reporting-practices-do-not-protect-against-harm" class="slide level2 center">
 <h2>Recommended validation and reporting practices do not protect against harm</h2>
-<p>because they do not evaluate the policy change</p>
+<h3 id="because-they-do-not-evaluate-the-policy-change">because they do not evaluate the policy change</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
@@ -609,6 +599,7 @@
 <img data-src="figs/policy_changebx.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="how-do-we-learn-about-the-effect-of-an-intervention" class="slide level2 center">
 <h2>How do we learn about the effect of an intervention?</h2>
+<p>With a randomized experiment</p>
 <!--With causal inference!-->
 <ul>
 <li class="fragment">for using a decision support model, the unit of intervention is usually <em>the doctor</em></li>
@@ -645,22 +636,22 @@
 </div>
 </div>
 </section>
-<section id="so-build-prediction-models-and-trial-them" class="slide level2 center">
-<h2>So build prediction models and trial them?</h2>
+<section id="so-build-treatment-naive-prediction-models-and-trial-them-for-decision-support" class="slide level2 center">
+<h2>So build treatment-naive prediction models and trial them for decision support?</h2>
 <p>Not a good idea</p>
 <ul>
 <li class="fragment">baking a cake without a recipe</li>
 <li class="fragment">hoping it turns into something nice</li>
-<li class="fragment">not pleasant to people that need to taste the experiment
+<li class="fragment">not pleasant to people that need to taste result of the experiment
 <ul>
 <li class="fragment">(i.e.&nbsp;patients may have side-effects / die)</li>
 </ul></li>
 </ul>
 </section>
-<section id="models-that-are-likely-to-be-valuable-for-decision-making" class="slide level2 center">
-<h2>Models that are likely to be valuable for decision making</h2>
+<section id="we-should-build-models-that-are-likely-to-be-valuable-for-decision-making" class="slide level2 center">
+<h2>We should build models that are likely to be valuable for decision making</h2>
 <ul>
-<li class="fragment">prediction under hypothetical interventions (prediction-under-intervention) models predict expected outcomes under the <em>hypothetical intervention</em> of giving a certain treatment</li>
+<li class="fragment">models that predict outcomes under hypothetical interventions (<em>prediction-under-intervention models</em>) predict expected outcomes under the <em>hypothetical intervention</em> of giving a certain treatment</li>
 <li class="fragment">doctor / patient can pick the treatment with <em>best</em> expected outcomes, depending on patient’s values</li>
 <li class="fragment">whereas <em>treatment-naive</em> prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option</li>
 </ul>
@@ -723,17 +714,18 @@
 <div class="fragment">
 <p>evaluation:</p>
 <ul>
-<li class="fragment">prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding <span class="citation" data-cites="keoghPredictionInterventionsEvaluation2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Keogh and Geloven 2024</a>)</span></li>
+<li class="fragment">prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding <span class="citation" data-cites="keoghPredictionInterventionsEvaluation2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Keogh and van Geloven 2024</a>)</span></li>
 <li class="fragment">a new <em>policy</em> can be evaluated in historic RCTs</li>
+<li class="fragment">ultimate test is cluster RCT</li>
 </ul>
 </div>
 </section>
 <section id="take-aways" class="slide level2 center">
 <h2>Take-aways</h2>
 <ul>
-<li class="fragment">when developing an evaluating AI models for treatment decisions, think about
+<li class="fragment">when developing or evaluating AI models for medical decisions, think about
 <ul>
-<li class="fragment">what is the effect of using this model on treatment decisions?</li>
+<li class="fragment">what is the effect of using this model on medical decisions?</li>
 <li class="fragment">what is the effect of this policy change on patient outcomes?</li>
 </ul></li>
 <li class="fragment">deploying models for decision support is an intervention and should be evaluated as such</li>
@@ -759,10 +751,34 @@
 </div>
 </div>
 </section>
+<section id="learn-more-about-causal-data-science" class="slide level2 center">
+<h2>Learn more about causal data science</h2>
+<h3 id="new-summerschool-introduction-to-causal-inference-and-causal-data-science">New summerschool: Introduction to Causal Inference and Causal Data Science</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ul>
+<li>Dates: 5 Aug.&nbsp;- 9 Aug.&nbsp;2024</li>
+<li>Location: Utrecht</li>
+<li>Instructors:
+<ul>
+<li>Oisin Ryan</li>
+<li>Bas Penning-de Vries</li>
+<li>Wouter van Amsterdam</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/qr_causalsummerschool.png" style="width:10cm"></p>
+<p><a href="https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science">Course website</a></p>
+</div>
+</div>
+</section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
 <div class="quarto-auto-generated-content">
+<p><img src="umcu_blue.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>©Wouter van Amsterdam (<i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i>: WvanAmsterdam)</p>
 </div>
@@ -784,7 +800,7 @@ Cooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruc
 Hilden, Jørgen, and J. Dik F. Habbema. 1987. <span>“Prognosis in Medicine: <span>An</span> Analysis of Its Meaning and Rôles.”</span> <em>Theoretical Medicine</em> 8 (3): 349–65. <a href="https://doi.org/10.1007/BF00489469">https://doi.org/10.1007/BF00489469</a>.
 </div>
 <div id="ref-keoghPredictionInterventionsEvaluation2024" class="csl-entry" role="listitem">
-Keogh, Ruth H., and Nan van Geloven. 2024. <span>“Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.2304.10005">https://doi.org/10.48550/arXiv.2304.10005</a>.
+Keogh, Ruth H., and Nan van Geloven. 2024. <span>“Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.”</span> January 10, 2024. <a href="https://doi.org/10.48550/arXiv.2304.10005">https://doi.org/10.48550/arXiv.2304.10005</a>.
 </div>
 </div>
 </section></section>

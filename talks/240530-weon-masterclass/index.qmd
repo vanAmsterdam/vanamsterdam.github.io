@@ -1,32 +1,31 @@
 ---
 title: "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies"
-subtitle: "WEON masterclass - 2024"
+subtitle: "WEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation"
 date: 2024-05-30
 format:
     revealjs:
         toc: true
         incremental: true
-        #theme: custom.scss
+        theme: umcu.scss
         auto-stretch: true
         center: true
         fig-align: center
         width: 1600
         height: 900
+        logo: umcu_blue.png
 ---
 
 # Uses of AI in health care
 
 ## AI may have many uses in health care {auto-animate=true}
 
-Use AI to make health care
-
-. . .
+### Use AI to make health care
 
 ::: {.columns}
 
 :::: {.column width="50%}
 
-easier / more efficient
+more efficient or easier
 
 - administration / documentation
 - translation
@@ -35,11 +34,11 @@ easier / more efficient
 
 :::: {.column width="50%}
 
-better
+better: change decisions
 
 - diagnosis (e.g. skin cancer from imaging)
 - prognosis (e.g. survival given medical image)
-- treatment effect (e.g. image biomarker)
+- treatment effect (e.g. genetic biomarker)
 
 ::::
 
@@ -49,8 +48,8 @@ better
 ## {auto-animate=true}
 
 ::: {.nonincremental}
-- diagnosis (e.g. skin cancer from imaging)
 - prognosis (e.g. survival given medical image)
+- treatment effect (e.g. genetic biomarker)
 :::
 
 . . .
@@ -61,7 +60,11 @@ Whereas treatment effect estimation is typically thought of as a *causal* task r
 
 :::
 
-## The in-between: using prediction models for (medical) decision making
+## The in-between: using prediction models for (medical) decision making {auto-animate=true}
+
+::: {.nonincremental}
+- prognosis (e.g. survival given medical image)
+:::
 
 ![](figs/8q8oy7_meme_crossover.jpg){fig-align="center"}
 
@@ -87,9 +90,9 @@ For example:
 
 ## This may lead to bad situations when:
 
-1. ignoring the treatments patients may have had during training / validation
+1. ignoring the treatments patients may have had during training / validation of (AI) prediction model
 2. only considering measures of predictive accuracy as sufficient evidence for safe deployment
-3. predictive accuracy (AUC) may be measured pre- or post-deployment of the model
+
 
 :::
 
@@ -135,9 +138,7 @@ For example:
 
 --- 
 
-:::{.callout-note}
-The question is not "is my model accurate before / after deployment", but did deploying the model improve patient outcomes?
-:::
+[The question is not "is my model accurate before / after deployment", but did deploying the model improve patient outcomes?]{.r-fit-text}
 
 
 ## Treatment-naive risk models
@@ -171,7 +172,7 @@ The question is not "is my model accurate before / after deployment", but did de
 
 ## Recommended validation and reporting practices do not protect against harm
 
-because they do not evaluate the policy change
+### because they do not evaluate the policy change
 
 :::{.columns}
 
@@ -226,6 +227,8 @@ What to do?
 
 ## How do we learn about the effect of an intervention?
 
+With a randomized experiment
+
 <!--With causal inference!-->
 
 - for using a decision support model, the unit of intervention is usually *the doctor*
@@ -251,18 +254,18 @@ What to do?
 was the model predicting anything sensible?
 :::
 
-## So build prediction models and trial them?
+## So build treatment-naive prediction models and trial them for decision support?
 
 Not a good idea
 
 - baking a cake without a recipe
 - hoping it turns into something nice
-- not pleasant to people that need to taste the experiment
+- not pleasant to people that need to taste result of the experiment
   - (i.e. patients may have side-effects / die)
 
-## Models that are likely to be valuable for decision making
+## We should build models that are likely to be valuable for decision making
 
-- prediction under hypothetical interventions (prediction-under-intervention) models predict expected outcomes under the *hypothetical intervention* of giving a certain treatment
+- models that predict outcomes under hypothetical interventions (*prediction-under-intervention models*) predict expected outcomes under the *hypothetical intervention* of giving a certain treatment
 - doctor / patient can pick the treatment with *best* expected outcomes, depending on patient's values
 - whereas *treatment-naive* prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option
 
@@ -319,11 +322,12 @@ evaluation:
 
 - prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding [e.g. @keoghPredictionInterventionsEvaluation2024]
 - a new *policy* can be evaluated in historic RCTs
+- ultimate test is cluster RCT
 
 ## Take-aways
 
-- when developing an evaluating AI models for treatment decisions, think about
-  - what is the effect of using this model on treatment decisions?
+- when developing or evaluating AI models for medical decisions, think about
+  - what is the effect of using this model on medical decisions?
   - what is the effect of this policy change on patient outcomes?
 - deploying models for decision support is an intervention and should be evaluated as such
 - prediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making
@@ -344,6 +348,36 @@ When accurate prediction models yield harmful sel-fulfilling prophecies [@vanams
 :::
 ::::
 
+## Learn more about causal data science
+
+### New summerschool: Introduction to Causal Inference and Causal Data Science
+
+:::{.columns}
+
+::::{.column width="50%"}
+
+:::::{.nonincremental}
+
+- Dates: 5 Aug. - 9 Aug. 2024
+- Location: Utrecht
+- Instructors:
+  - Oisin Ryan
+  - Bas Penning-de Vries
+  - Wouter van Amsterdam
+
+:::::
+
+::::
+
+::::{.column width="50%"}
+
+![](figs/qr_causalsummerschool.png){width=10cm}
+
+[Course website](https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science)
+
+::::
+
+:::
 
 ## References
 

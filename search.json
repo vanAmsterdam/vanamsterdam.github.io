@@ -948,8 +948,8 @@
     "objectID": "talks/240530-weon-masterclass/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
     "href": "talks/240530-weon-masterclass/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "building models for decision support without regards for the historic treatment policy is a bad idea",
-    "text": "building models for decision support without regards for the historic treatment policy is a bad idea"
+    "section": "Building models for decision support without regards for the historic treatment policy is a bad idea",
+    "text": "Building models for decision support without regards for the historic treatment policy is a bad idea"
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#treatment-naive-risk-models",
@@ -1057,11 +1057,11 @@
     "text": "Take-aways\n\nwhen developing or evaluating AI models for medical decisions, think about\n\nwhat is the effect of using this model on medical decisions?\nwhat is the effect of this policy change on patient outcomes?\n\ndeploying models for decision support is an intervention and should be evaluated as such\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (Wouter A. C. van Amsterdam et al. 2024b)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (Wouter A. C. van Amsterdam et al. 2024a)"
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#learn-more-about-causal-data-science",
-    "href": "talks/240530-weon-masterclass/index.html#learn-more-about-causal-data-science",
+    "objectID": "talks/240530-weon-masterclass/index.html#new-summerschool-introduction-to-causal-inference-and-causal-data-science",
+    "href": "talks/240530-weon-masterclass/index.html#new-summerschool-introduction-to-causal-inference-and-causal-data-science",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Learn more about causal data science",
-    "text": "Learn more about causal data science\nNew summerschool: Introduction to Causal Inference and Causal Data Science\n\n\n\n\nDates: 5 Aug. - 9 Aug. 2024\nLocation: Utrecht\nInstructors:\n\nOisin Ryan\nBas Penning-de Vries\nWouter van Amsterdam\n\n\n\n\n\nCourse website"
+    "section": "New summerschool: Introduction to Causal Inference and Causal Data Science",
+    "text": "New summerschool: Introduction to Causal Inference and Causal Data Science\nLearn more about causal data science\n\n\n\n\nDates: 5 Aug. - 9 Aug. 2024\nLocation: Utrecht\nInstructors:\n\nOisin Ryan\nBas Penning-de Vries\nWouter van Amsterdam\n\nSign up still possible\n\n\n\n\nCourse website"
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#references",

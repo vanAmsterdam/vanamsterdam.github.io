@@ -497,13 +497,13 @@
 <section class="slide level2 center">
 
 <div class="r-stack">
-<p><img data-src="figs/rt_example1.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/rt_example2.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/rt_example3.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/rt_example4.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/rt_example5.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/rt_example6.png" class="fragment" style="height:18cm"></p>
-<p><img data-src="figs/rt_example.png" class="fragment" style="height:18cm"></p>
+<p><img data-src="figs/rt_example1.png" class="fragment" style="height:24cm"></p>
+<p><img data-src="figs/rt_example2.png" class="fragment" style="height:24cm"></p>
+<p><img data-src="figs/rt_example3.png" class="fragment" style="height:24cm"></p>
+<p><img data-src="figs/rt_example4.png" class="fragment" style="height:24cm"></p>
+<p><img data-src="figs/rt_example5.png" class="fragment" style="height:24cm"></p>
+<p><img data-src="figs/rt_example6.png" class="fragment" style="height:24cm"></p>
+<p><img data-src="figs/rt_example.png" class="fragment" style="height:24cm"></p>
 </div>
 </section>
 <section id="building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea" class="slide level2 center">
@@ -521,8 +521,8 @@
 <p><span class="r-fit-text">The question is not “is my model accurate before / after deployment”,</span></p>
 <p><span class="r-fit-text fragment">but did deploying the model improve patient outcomes?</span></p>
 </section>
-<section id="treatment-naive-risk-models" class="slide level2 center">
-<h2>Treatment-naive risk models</h2>
+<section id="treatment-naive-prediction-models" class="slide level2 center">
+<h2>Treatment-naive prediction models</h2>
 <div class="r-stack">
 <p><img data-src="figs/txnaive1.png"></p>
 <p><img data-src="figs/txnaive2b.png" class="fragment"></p>
@@ -530,6 +530,14 @@
 <p><span class="math display">\[\begin{align}
     E[Y|X] \class{fragment}{= E[E_{t~\sim \pi_0(X)}[Y|X,t]]}
 \end{align}\]</span></p>
+</section>
+<section id="treatment-naive-prediction-models-1" class="slide level2 center">
+<h2>Treatment-naive prediction models</h2>
+<p>Results from <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2024a">(<a href="#/references" role="doc-biblioref" onclick="">Wouter A. C. van Amsterdam et al. 2024a</a>)</span></p>
+<ol type="1">
+<li class="fragment">good or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change</li>
+<li class="fragment">models that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution</li>
+</ol>
 </section>
 <section class="slide level2 center">
 
@@ -542,8 +550,8 @@
 <h2>Prediction modeling is very popular in medical research</h2>
 
 <img data-src="figs/predmodelsoverview.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="recommended-validation-and-reporting-practices-do-not-protect-against-harm" class="slide level2 center">
-<h2>Recommended validation and reporting practices do not protect against harm</h2>
+<section id="recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm" class="slide level2 center">
+<h2>Recommended validation practices and reporting guidelines do not protect against harm</h2>
 <h3 id="because-they-do-not-evaluate-the-policy-change">because they do not evaluate the policy change</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -561,12 +569,12 @@
 </div>
 </div>
 </section>
-<section id="bigger-data-does-not-protect-against-harmful-risk-models" class="slide level2 center">
-<h2>Bigger data does not protect against harmful risk models</h2>
+<section id="bigger-data-does-not-protect-against-harmful-prediction-models" class="slide level2 center">
+<h2>Bigger data does not protect against harmful prediction models</h2>
 
 <img data-src="figs/biggerdata.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="more-flexible-models-do-not-protect-against-harmful-risk-models" class="slide level2 center">
-<h2>More flexible models do not protect against harmful risk models</h2>
+<section id="more-flexible-models-do-not-protect-against-harmful-prediction-models" class="slide level2 center">
+<h2>More flexible models do not protect against harmful prediction models</h2>
 
 <img data-src="figs/morelayers.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="gap-between-prediction-accuracy-and-value-for-decision-making" class="slide level2 center">
@@ -652,7 +660,7 @@
 <section id="we-should-build-models-that-are-likely-to-be-valuable-for-decision-making" class="slide level2 center">
 <h2>We should build models that are likely to be valuable for decision making</h2>
 <ul>
-<li class="fragment">models that predict outcomes under hypothetical interventions (<em>prediction-under-intervention models</em>) predict expected outcomes under the <em>hypothetical intervention</em> of giving a certain treatment</li>
+<li class="fragment">Build models that predict expected outcomes under <em>hypothetical interventions</em> (<em>prediction-under-intervention models</em>)</li>
 <li class="fragment">doctor / patient can pick the treatment with <em>best</em> expected outcomes, depending on patient’s values</li>
 <li class="fragment">whereas <em>treatment-naive</em> prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option</li>
 </ul>
@@ -716,7 +724,7 @@
 <p>evaluation:</p>
 <ul>
 <li class="fragment">prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding <span class="citation" data-cites="keoghPredictionInterventionsEvaluation2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Keogh and van Geloven 2024</a>)</span></li>
-<li class="fragment">a new <em>policy</em> can be evaluated in historic RCTs</li>
+<li class="fragment">a new <em>policy</em> can be evaluated in historic RCTs <span class="citation" data-cites="karmaliBloodPressureloweringTreatment2018">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Karmali et al. 2018</a>)</span></li>
 <li class="fragment">ultimate test is cluster RCT</li>
 </ul>
 </div>
@@ -724,7 +732,7 @@
 <section id="take-aways" class="slide level2 center">
 <h2>Take-aways</h2>
 <ul>
-<li class="fragment">when developing or evaluating AI models for medical decisions, think about
+<li class="fragment">when developing or evaluating (AI) prediction models for medical decisions, think about
 <ul>
 <li class="fragment">what is the effect of using this model on medical decisions?</li>
 <li class="fragment">what is the effect of this policy change on patient outcomes?</li>
@@ -782,7 +790,7 @@
 <div class="quarto-auto-generated-content">
 <p><img src="umcu_blue.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>©Wouter van Amsterdam (<i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i>: WvanAmsterdam)</p>
+<p>©Wouter van Amsterdam — <i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i> WvanAmsterdam — <i class="bi-file-slides " style="" role="img" aria-hidden="true"></i> vanamsterdam.github.com/talks</p>
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -800,6 +808,9 @@ Cooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruc
 </div>
 <div id="ref-hildenPrognosisMedicineAnalysis1987" class="csl-entry" role="listitem">
 Hilden, Jørgen, and J. Dik F. Habbema. 1987. <span>“Prognosis in Medicine: <span>An</span> Analysis of Its Meaning and Rôles.”</span> <em>Theoretical Medicine</em> 8 (3): 349–65. <a href="https://doi.org/10.1007/BF00489469">https://doi.org/10.1007/BF00489469</a>.
+</div>
+<div id="ref-karmaliBloodPressureloweringTreatment2018" class="csl-entry" role="listitem">
+Karmali, Kunal N., Donald M. Lloyd-Jones, Joep van der Leeuw, David C. Goff Jr, Salim Yusuf, Alberto Zanchetti, Paul Glasziou, et al. 2018. <span>“Blood Pressure-Lowering Treatment Strategies Based on Cardiovascular Risk Versus Blood Pressure: <span>A</span> Meta-Analysis of Individual Participant Data.”</span> <em>PLOS Medicine</em> 15 (3): e1002538. <a href="https://doi.org/10.1371/journal.pmed.1002538">https://doi.org/10.1371/journal.pmed.1002538</a>.
 </div>
 <div id="ref-keoghPredictionInterventionsEvaluation2024" class="csl-entry" role="listitem">
 Keogh, Ruth H., and Nan van Geloven. 2024. <span>“Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.”</span> January 10, 2024. <a href="https://doi.org/10.48550/arXiv.2304.10005">https://doi.org/10.48550/arXiv.2304.10005</a>.

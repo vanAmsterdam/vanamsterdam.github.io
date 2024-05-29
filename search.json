@@ -11,7 +11,7 @@
     "href": "talks/230624-chill-lightning-talk/index.html#section-31",
     "title": "My risk model is super accurate so it will be useful for treatment decision making, right? Wrong!",
     "section": "",
-    "text": "©Wouter van Amsterdam (: WvanAmsterdam)"
+    "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.com/talks"
   },
   {
     "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
@@ -60,14 +60,14 @@
     "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#references",
     "title": "Decision support based on AI in medical imaging",
     "section": "References",
-    "text": "References\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nShalit, Uri, Fredrik D. Johansson, and David Sontag. 2017. “Estimating Individual Treatment Effect: Generalization Bounds and Algorithms.” arXiv:1606.03976 [Cs, Stat], May. http://arxiv.org/abs/1606.03976."
+    "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.com/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nShalit, Uri, Fredrik D. Johansson, and David Sontag. 2017. “Estimating Individual Treatment Effect: Generalization Bounds and Algorithms.” arXiv:1606.03976 [Cs, Stat], May. http://arxiv.org/abs/1606.03976."
   },
   {
     "objectID": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
     "href": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
     "title": "The value of observational causal inference for medical decision making",
     "section": "",
-    "text": "©Wouter van Amsterdam (: WvanAmsterdam)"
+    "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.com/talks"
   },
   {
     "objectID": "talks.html",
@@ -480,7 +480,7 @@
     "href": "talks/240516-sig-causality-prediction/index.html#references",
     "title": "Causality and prediction: developing and validating models for decision making",
     "section": "References",
-    "text": "References\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” February 8, 2024. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nAmsterdam, Wouter A. C. van, and Rajesh Ranganath. 2023. “Conditional Average Treatment Effect Estimation with Marginally Constrained Models.” Journal of Causal Inference 11 (1): 20220027. https://doi.org/10.1515/jci-2022-0027.\n\n\nAmsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A. Bartholomeus, Aahlad Manas Puli, Pim A. de Jong, Tim Leiner, Anne S. R. van Lindert, Marinus J. C. Eijkemans, and Rajesh Ranganath. 2022. “Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage III Non-Small Cell Lung Cancer.” Scientific Reports 12 (1, 1): 5848. https://doi.org/10.1038/s41598-022-09775-9.\n\n\nCandido dos Reis, Francisco J., Gordon C. Wishart, Ed M. Dicks, David Greenberg, Jem Rashbass, Marjanka K. Schmidt, Alexandra J. van den Broek, et al. 2017. “An Updated PREDICT Breast Cancer Prognostication and Treatment Benefit Prediction Model with Independent Validation.” Breast Cancer Research 19 (1): 58. https://doi.org/gbhgpq.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nXu, Zhe, Matthew Arnold, David Stevens, Stephen Kaptoge, Lisa Pennells, Michael J Sweeting, Jessica Barrett, Emanuele Di Angelantonio, and Angela M Wood. 2021. “Prediction of Cardiovascular Disease Risk Accounting for Future Initiation of Statin Treatment.” American Journal of Epidemiology 190 (10): 2000–2014. https://doi.org/10.1093/aje/kwab031."
+    "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.com/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” February 8, 2024. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nAmsterdam, Wouter A. C. van, and Rajesh Ranganath. 2023. “Conditional Average Treatment Effect Estimation with Marginally Constrained Models.” Journal of Causal Inference 11 (1): 20220027. https://doi.org/10.1515/jci-2022-0027.\n\n\nAmsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A. Bartholomeus, Aahlad Manas Puli, Pim A. de Jong, Tim Leiner, Anne S. R. van Lindert, Marinus J. C. Eijkemans, and Rajesh Ranganath. 2022. “Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage III Non-Small Cell Lung Cancer.” Scientific Reports 12 (1, 1): 5848. https://doi.org/10.1038/s41598-022-09775-9.\n\n\nCandido dos Reis, Francisco J., Gordon C. Wishart, Ed M. Dicks, David Greenberg, Jem Rashbass, Marjanka K. Schmidt, Alexandra J. van den Broek, et al. 2017. “An Updated PREDICT Breast Cancer Prognostication and Treatment Benefit Prediction Model with Independent Validation.” Breast Cancer Research 19 (1): 58. https://doi.org/gbhgpq.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nXu, Zhe, Matthew Arnold, David Stevens, Stephen Kaptoge, Lisa Pennells, Michael J Sweeting, Jessica Barrett, Emanuele Di Angelantonio, and Angela M Wood. 2021. “Prediction of Cardiovascular Disease Risk Accounting for Future Initiation of Statin Treatment.” American Journal of Epidemiology 190 (10): 2000–2014. https://doi.org/10.1093/aje/kwab031."
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#what-is-ai-1",
@@ -753,14 +753,14 @@
     "href": "talks/240418-ii-spring-meeting/index.html#references",
     "title": "AI and its (mis)uses in medical research and practice",
     "section": "",
-    "text": "thank you\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” arXiv. https://doi.org/10.48550/arXiv.2209.07397.\n\n\nChristodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. “A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.” Journal of Clinical Epidemiology 110 (June): 12–22. https://doi.org/10.1016/j.jclinepi.2019.02.004.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nDhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. “Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.” BMC Medical Research Methodology 22 (1): 101. https://doi.org/10.1186/s12874-022-01577-x."
+    "text": "thank you\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.com/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” arXiv. https://doi.org/10.48550/arXiv.2209.07397.\n\n\nChristodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. “A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.” Journal of Clinical Epidemiology 110 (June): 12–22. https://doi.org/10.1016/j.jclinepi.2019.02.004.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nDhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. “Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.” BMC Medical Research Methodology 22 (1): 101. https://doi.org/10.1186/s12874-022-01577-x."
   },
   {
     "objectID": "talks/230301-lungsurv-manchester/index.html#section-105",
     "href": "talks/230301-lungsurv-manchester/index.html#section-105",
     "title": "Individual treatment effect estimation in the presence of unobserved confounding using proxies",
     "section": "",
-    "text": "©Wouter van Amsterdam (: WvanAmsterdam)"
+    "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.com/talks"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
@@ -914,7 +914,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "I may leave X",
-    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)"
+    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.com/talks"
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#ai-may-have-many-uses-in-health-care",
@@ -952,11 +952,18 @@
     "text": "Building models for decision support without regards for the historic treatment policy is a bad idea"
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#treatment-naive-risk-models",
-    "href": "talks/240530-weon-masterclass/index.html#treatment-naive-risk-models",
+    "objectID": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models",
+    "href": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Treatment-naive risk models",
-    "text": "Treatment-naive risk models\n\n\n\n\n\\[\\begin{align}\n    E[Y|X] \\class{fragment}{= E[E_{t~\\sim \\pi_0(X)}[Y|X,t]]}\n\\end{align}\\]"
+    "section": "Treatment-naive prediction models",
+    "text": "Treatment-naive prediction models\n\n\n\n\n\\[\\begin{align}\n    E[Y|X] \\class{fragment}{= E[E_{t~\\sim \\pi_0(X)}[Y|X,t]]}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models-1",
+    "href": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models-1",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Treatment-naive prediction models",
+    "text": "Treatment-naive prediction models\nResults from (Wouter A. C. van Amsterdam et al. 2024a)\n\ngood or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change\nmodels that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution"
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#prediction-modeling-is-very-popular-in-medical-research",
@@ -966,25 +973,25 @@
     "text": "Prediction modeling is very popular in medical research"
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#recommended-validation-and-reporting-practices-do-not-protect-against-harm",
-    "href": "talks/240530-weon-masterclass/index.html#recommended-validation-and-reporting-practices-do-not-protect-against-harm",
+    "objectID": "talks/240530-weon-masterclass/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
+    "href": "talks/240530-weon-masterclass/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Recommended validation and reporting practices do not protect against harm",
-    "text": "Recommended validation and reporting practices do not protect against harm\nbecause they do not evaluate the policy change"
+    "section": "Recommended validation practices and reporting guidelines do not protect against harm",
+    "text": "Recommended validation practices and reporting guidelines do not protect against harm\nbecause they do not evaluate the policy change"
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#bigger-data-does-not-protect-against-harmful-risk-models",
-    "href": "talks/240530-weon-masterclass/index.html#bigger-data-does-not-protect-against-harmful-risk-models",
+    "objectID": "talks/240530-weon-masterclass/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
+    "href": "talks/240530-weon-masterclass/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Bigger data does not protect against harmful risk models",
-    "text": "Bigger data does not protect against harmful risk models"
+    "section": "Bigger data does not protect against harmful prediction models",
+    "text": "Bigger data does not protect against harmful prediction models"
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#more-flexible-models-do-not-protect-against-harmful-risk-models",
-    "href": "talks/240530-weon-masterclass/index.html#more-flexible-models-do-not-protect-against-harmful-risk-models",
+    "objectID": "talks/240530-weon-masterclass/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
+    "href": "talks/240530-weon-masterclass/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "More flexible models do not protect against harmful risk models",
-    "text": "More flexible models do not protect against harmful risk models"
+    "section": "More flexible models do not protect against harmful prediction models",
+    "text": "More flexible models do not protect against harmful prediction models"
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#gap-between-prediction-accuracy-and-value-for-decision-making",
@@ -1033,7 +1040,7 @@
     "href": "talks/240530-weon-masterclass/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
     "section": "We should build models that are likely to be valuable for decision making",
-    "text": "We should build models that are likely to be valuable for decision making\n\nmodels that predict outcomes under hypothetical interventions (prediction-under-intervention models) predict expected outcomes under the hypothetical intervention of giving a certain treatment\ndoctor / patient can pick the treatment with best expected outcomes, depending on patient’s values\nwhereas treatment-naive prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option\n\n\n\n\n\nHilden and Habbema on prognosis (Hilden and Habbema 1987)\n\n\n“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”\n\n\n\n\nprediction-under-intervention is not a new idea, but language and methods on causality have come a long way since (Hilden and Habbema 1987)."
+    "text": "We should build models that are likely to be valuable for decision making\n\nBuild models that predict expected outcomes under hypothetical interventions (prediction-under-intervention models)\ndoctor / patient can pick the treatment with best expected outcomes, depending on patient’s values\nwhereas treatment-naive prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option\n\n\n\n\n\nHilden and Habbema on prognosis (Hilden and Habbema 1987)\n\n\n“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”\n\n\n\n\nprediction-under-intervention is not a new idea, but language and methods on causality have come a long way since (Hilden and Habbema 1987)."
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#estimand-for-prediction-under-intervention-models",
@@ -1047,14 +1054,14 @@
     "href": "talks/240530-weon-masterclass/index.html#more-on-prediction-under-intervention-models",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
     "section": "More on prediction-under-intervention models",
-    "text": "More on prediction-under-intervention models\ndevelopment:\n\nideally estimated from RCTs, but these are often too small or don’t measure the right data\nalternatively can use observational data and causal inference methods\n\nthis approach relies on strong assumptions especially regarding confounding\n\nbut likely a better recipe than treatment-naive models\n\n\nevaluation:\n\nprediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding (e.g. Keogh and van Geloven 2024)\na new policy can be evaluated in historic RCTs\nultimate test is cluster RCT"
+    "text": "More on prediction-under-intervention models\ndevelopment:\n\nideally estimated from RCTs, but these are often too small or don’t measure the right data\nalternatively can use observational data and causal inference methods\n\nthis approach relies on strong assumptions especially regarding confounding\n\nbut likely a better recipe than treatment-naive models\n\n\nevaluation:\n\nprediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding (e.g. Keogh and van Geloven 2024)\na new policy can be evaluated in historic RCTs (e.g. Karmali et al. 2018)\nultimate test is cluster RCT"
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#take-aways",
     "href": "talks/240530-weon-masterclass/index.html#take-aways",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
     "section": "Take-aways",
-    "text": "Take-aways\n\nwhen developing or evaluating AI models for medical decisions, think about\n\nwhat is the effect of using this model on medical decisions?\nwhat is the effect of this policy change on patient outcomes?\n\ndeploying models for decision support is an intervention and should be evaluated as such\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (Wouter A. C. van Amsterdam et al. 2024b)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (Wouter A. C. van Amsterdam et al. 2024a)"
+    "text": "Take-aways\n\nwhen developing or evaluating (AI) prediction models for medical decisions, think about\n\nwhat is the effect of using this model on medical decisions?\nwhat is the effect of this policy change on patient outcomes?\n\ndeploying models for decision support is an intervention and should be evaluated as such\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (Wouter A. C. van Amsterdam et al. 2024b)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (Wouter A. C. van Amsterdam et al. 2024a)"
   },
   {
     "objectID": "talks/240530-weon-masterclass/index.html#new-summerschool-introduction-to-causal-inference-and-causal-data-science",
@@ -1068,7 +1075,7 @@
     "href": "talks/240530-weon-masterclass/index.html#references",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
     "section": "References",
-    "text": "References\n\n\n\n\n©Wouter van Amsterdam (: WvanAmsterdam)\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” February 8, 2024. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nKeogh, Ruth H., and Nan van Geloven. 2024. “Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.” January 10, 2024. https://doi.org/10.48550/arXiv.2304.10005."
+    "text": "References\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.com/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” February 8, 2024. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nKarmali, Kunal N., Donald M. Lloyd-Jones, Joep van der Leeuw, David C. Goff Jr, Salim Yusuf, Alberto Zanchetti, Paul Glasziou, et al. 2018. “Blood Pressure-Lowering Treatment Strategies Based on Cardiovascular Risk Versus Blood Pressure: A Meta-Analysis of Individual Participant Data.” PLOS Medicine 15 (3): e1002538. https://doi.org/10.1371/journal.pmed.1002538.\n\n\nKeogh, Ruth H., and Nan van Geloven. 2024. “Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.” January 10, 2024. https://doi.org/10.48550/arXiv.2304.10005."
   },
   {
     "objectID": "index.html",

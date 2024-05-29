@@ -102,19 +102,19 @@ For example:
 
 :::{.r-stack}
 
-![](figs/rt_example1.png){.fragment height=18cm}
+![](figs/rt_example1.png){.fragment height=24cm}
 
-![](figs/rt_example2.png){.fragment height=18cm}
+![](figs/rt_example2.png){.fragment height=24cm}
 
-![](figs/rt_example3.png){.fragment height=18cm}
+![](figs/rt_example3.png){.fragment height=24cm}
 
-![](figs/rt_example4.png){.fragment height=18cm}
+![](figs/rt_example4.png){.fragment height=24cm}
 
-![](figs/rt_example5.png){.fragment height=18cm}
+![](figs/rt_example5.png){.fragment height=24cm}
 
-![](figs/rt_example6.png){.fragment height=18cm}
+![](figs/rt_example6.png){.fragment height=24cm}
 
-![](figs/rt_example.png){.fragment height=18cm}
+![](figs/rt_example.png){.fragment height=24cm}
 
 :::
 
@@ -142,7 +142,7 @@ For example:
 [but did deploying the model improve patient outcomes?]{.r-fit-text .fragment}
 
 
-## Treatment-naive risk models
+## Treatment-naive prediction models
 
 :::{.r-stack}
 
@@ -156,8 +156,14 @@ For example:
     E[Y|X] \class{fragment}{= E[E_{t~\sim \pi_0(X)}[Y|X,t]]}
 \end{align}
 
----
+## Treatment-naive prediction models
 
+Results from [@vanamsterdamWhenAccuratePrediction2024a]
+
+1. good or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change
+2. models that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn't change the distribution
+
+---
 
 [Is this obvious?]{.r-fit-text}
 
@@ -171,7 +177,7 @@ For example:
 
 ![](figs/predmodelsoverview.png){fig-align='center'}
 
-## Recommended validation and reporting practices do not protect against harm
+## Recommended validation practices and reporting guidelines do not protect against harm
 
 ### because they do not evaluate the policy change
 
@@ -193,11 +199,11 @@ For example:
 
 
 
-## Bigger data does not protect against harmful risk models
+## Bigger data does not protect against harmful prediction models
 
 ![](figs/biggerdata.png){fig-align="center"}
 
-## More flexible models do not protect against harmful risk models
+## More flexible models do not protect against harmful prediction models
 
 ![](figs/morelayers.png){fig-align="center"}
 
@@ -266,7 +272,7 @@ Not a good idea
 
 ## We should build models that are likely to be valuable for decision making
 
-- models that predict outcomes under hypothetical interventions (*prediction-under-intervention models*) predict expected outcomes under the *hypothetical intervention* of giving a certain treatment
+- Build models that predict expected outcomes under *hypothetical interventions* (*prediction-under-intervention models*)
 - doctor / patient can pick the treatment with *best* expected outcomes, depending on patient's values
 - whereas *treatment-naive* prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option
 
@@ -322,12 +328,12 @@ development:
 evaluation:
 
 - prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding [e.g. @keoghPredictionInterventionsEvaluation2024]
-- a new *policy* can be evaluated in historic RCTs
+- a new *policy* can be evaluated in historic RCTs [e.g. @karmaliBloodPressureloweringTreatment2018]
 - ultimate test is cluster RCT
 
 ## Take-aways
 
-- when developing or evaluating AI models for medical decisions, think about
+- when developing or evaluating (AI) prediction models for medical decisions, think about
   - what is the effect of using this model on medical decisions?
   - what is the effect of this policy change on patient outcomes?
 - deploying models for decision support is an intervention and should be evaluated as such

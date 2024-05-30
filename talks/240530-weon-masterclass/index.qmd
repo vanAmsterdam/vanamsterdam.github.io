@@ -5,7 +5,7 @@ date: 2024-05-30
 format:
     revealjs:
         toc: true
-        incremental: true
+        incremental: false
         theme: umcu.scss
         auto-stretch: true
         center: true

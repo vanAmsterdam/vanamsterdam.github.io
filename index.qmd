@@ -70,6 +70,15 @@ Students enrolled at Utrecht University or UMC Utrecht can find open master proj
 
 ## Selected papers
 
+Prognostic models for decision support need to report their targeted treatments and the expected changes in treatment decisions.\
+*van Amsterdam, W. A. C. and Cinà, Giovanni and Didelez, Vanessa and Keogh, Ruth H. and Peek, Niels and Sperrin, Matthew and Vickers, Andrew J. and van Geloven, Nan and Shalit, Uri (2024). BMJ Rapid-response*\
+[url](https://www.bmj.com/content/385/bmj-2023-078378/rr-1)
+
+From algorithms to action: improving patient care requires causality.\
+*van Amsterdam, W. A. C., de Jong, P. A., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2024). BMC Medical Informatics and Decision Making*\
+[10.1186/s12911-024-02513-3](10.1186/s12911-024-02513-3)
+[pdf](papers/2024_comment_bmc.pdf)
+
 When accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\
 *van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track*\
 [pdf](papers/2024_selffulfilling_ml4h.pdf)
@@ -82,15 +91,11 @@ Conditional average treatment effect estimation with marginally constrained mode
 *van Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference*\
 [pdf](papers/2023_offset_jci.pdf)
 
-Decision making in cancer: Causal questions require causal answers.\
-*van Amsterdam, W. A. C., de Jong, P. A., Suijkerbuijk, K. P. M., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2022). ArXiv pre-print*\
-[pdf](papers/2022_comment_arxiv.pdf)
-
 Eliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\
 *van Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine*\
 [pdf](https://www.nature.com/articles/s41746-019-0194-x.pdf)
 
-More papers at [google scholar](https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&hl=nl&oi=sra)
+More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&hl=nl&oi=sra)
 
 ## [Talks](talks.qmd)
 

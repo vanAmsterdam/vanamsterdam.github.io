@@ -389,9 +389,9 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li class="fragment"><a href="#/uses-of-ai-in-health-care" id="/toc-uses-of-ai-in-health-care">Uses of AI in health care</a></li>
-<li class="fragment"><a href="#/selffulfilling" id="/toc-selffulfilling">When accurate prediction models yield harmful self-fulfilling prophecies</a></li>
-<li class="fragment"><a href="#/building-and-validating-models-for-decision-support" id="/toc-building-and-validating-models-for-decision-support">Building and validating models for decision support</a></li>
+<li><a href="#/uses-of-ai-in-health-care" id="/toc-uses-of-ai-in-health-care">Uses of AI in health care</a></li>
+<li><a href="#/selffulfilling" id="/toc-selffulfilling">When accurate prediction models yield harmful self-fulfilling prophecies</a></li>
+<li><a href="#/building-and-validating-models-for-decision-support" id="/toc-building-and-validating-models-for-decision-support">Building and validating models for decision support</a></li>
 </ul>
 </nav>
 </section>
@@ -407,15 +407,15 @@
 <div class="column" style="width:&quot;50%;">
 <p>more efficient or easier</p>
 <ul>
-<li class="fragment">administration / documentation</li>
-<li class="fragment">translation</li>
+<li>administration / documentation</li>
+<li>translation</li>
 </ul>
 </div><div class="column" style="width:&quot;50%;">
 <p>better: change decisions</p>
 <ul>
-<li class="fragment">diagnosis (e.g.&nbsp;skin cancer from imaging)</li>
-<li class="fragment">prognosis (e.g.&nbsp;survival given medical image)</li>
-<li class="fragment">treatment effect (e.g.&nbsp;genetic biomarker)</li>
+<li>diagnosis (e.g.&nbsp;skin cancer from imaging)</li>
+<li>prognosis (e.g.&nbsp;survival given medical image)</li>
+<li>treatment effect (e.g.&nbsp;genetic biomarker)</li>
 </ul>
 </div>
 </div>
@@ -454,8 +454,8 @@
 <h2>Using prediction models for decision making is often thought of as a good idea</h2>
 <p>For example:</p>
 <ol type="1">
-<li class="fragment">give chemotherapy to cancer patients with high predicted risk of recurrence</li>
-<li class="fragment">give statins to patients with a high risk of a heart attack</li>
+<li>give chemotherapy to cancer patients with high predicted risk of recurrence</li>
+<li>give statins to patients with a high risk of a heart attack</li>
 </ol>
 <div class="fragment">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -482,8 +482,8 @@
 </div>
 <div class="callout-content">
 <ol type="1">
-<li class="fragment">ignoring the treatments patients may have had during training / validation of (AI) prediction model</li>
-<li class="fragment">only considering measures of predictive accuracy as sufficient evidence for safe deployment</li>
+<li>ignoring the treatments patients may have had during training / validation of (AI) prediction model</li>
+<li>only considering measures of predictive accuracy as sufficient evidence for safe deployment</li>
 </ol>
 </div>
 </div>
@@ -535,8 +535,8 @@
 <h2>Treatment-naive prediction models</h2>
 <p>Results from <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2024a">(<a href="#/references" role="doc-biblioref" onclick="">Wouter A. C. van Amsterdam et al. 2024a</a>)</span></p>
 <ol type="1">
-<li class="fragment">good or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change</li>
-<li class="fragment">models that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution</li>
+<li>good or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change</li>
+<li>models that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution</li>
 </ol>
 </section>
 <section class="slide level2 center">
@@ -593,8 +593,8 @@
 <p>What to do?</p>
 </div>
 <ol type="1">
-<li class="fragment">Evaluate policy change (cluster randomized controlled trial)</li>
-<li class="fragment">Build models that are likely to have value for decision making</li>
+<li>Evaluate policy change (cluster randomized controlled trial)</li>
+<li>Build models that are likely to have value for decision making</li>
 </ol>
 </section></section>
 <section>
@@ -611,11 +611,11 @@
 <p>With a randomized experiment</p>
 <!--With causal inference!-->
 <ul>
-<li class="fragment">for using a decision support model, the unit of intervention is usually <em>the doctor</em></li>
-<li class="fragment">randomly assign <em>doctors</em> to have access to the model or not</li>
-<li class="fragment">measure differences in <strong>treatment decisions</strong> and <strong>patient outcomes</strong></li>
-<li class="fragment">this called a cluster RCT</li>
-<li class="fragment">if using model improves outcomes, use that one</li>
+<li>for using a decision support model, the unit of intervention is usually <em>the doctor</em></li>
+<li>randomly assign <em>doctors</em> to have access to the model or not</li>
+<li>measure differences in <strong>treatment decisions</strong> and <strong>patient outcomes</strong></li>
+<li>this called a cluster RCT</li>
+<li>if using model improves outcomes, use that one</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -649,20 +649,20 @@
 <h2>So build treatment-naive prediction models and trial them for decision support?</h2>
 <p>Not a good idea</p>
 <ul>
-<li class="fragment">baking a cake without a recipe</li>
-<li class="fragment">hoping it turns into something nice</li>
-<li class="fragment">not pleasant to people that need to taste result of the experiment
+<li>baking a cake without a recipe</li>
+<li>hoping it turns into something nice</li>
+<li>not pleasant to people that need to taste result of the experiment
 <ul>
-<li class="fragment">(i.e.&nbsp;patients may have side-effects / die)</li>
+<li>(i.e.&nbsp;patients may have side-effects / die)</li>
 </ul></li>
 </ul>
 </section>
 <section id="we-should-build-models-that-are-likely-to-be-valuable-for-decision-making" class="slide level2 center">
 <h2>We should build models that are likely to be valuable for decision making</h2>
 <ul>
-<li class="fragment">Build models that predict expected outcomes under <em>hypothetical interventions</em> (<em>prediction-under-intervention models</em>)</li>
-<li class="fragment">doctor / patient can pick the treatment with <em>best</em> expected outcomes, depending on patient’s values</li>
-<li class="fragment">whereas <em>treatment-naive</em> prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option</li>
+<li>Build models that predict expected outcomes under <em>hypothetical interventions</em> (<em>prediction-under-intervention models</em>)</li>
+<li>doctor / patient can pick the treatment with <em>best</em> expected outcomes, depending on patient’s values</li>
+<li>whereas <em>treatment-naive</em> prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -676,7 +676,7 @@
 </div>
 </div>
 <ul>
-<li class="fragment">prediction-under-intervention is not a new idea, but language and methods on causality have come a long way since <span class="citation" data-cites="hildenPrognosisMedicineAnalysis1987">(<a href="#/references" role="doc-biblioref" onclick="">Hilden and Habbema 1987</a>)</span>.</li>
+<li>prediction-under-intervention is not a new idea, but language and methods on causality have come a long way since <span class="citation" data-cites="hildenPrognosisMedicineAnalysis1987">(<a href="#/references" role="doc-biblioref" onclick="">Hilden and Habbema 1987</a>)</span>.</li>
 </ul>
 </div>
 </section>
@@ -684,9 +684,9 @@
 <h2>Estimand for prediction-under-intervention models</h2>
 <p>What is the estimand?</p>
 <ul>
-<li class="fragment">prediction: <span class="math inline">\(E[Y|X]\)</span></li>
-<li class="fragment">treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
-<li class="fragment">prediction-under-intervention: <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span></li>
+<li>prediction: <span class="math inline">\(E[Y|X]\)</span></li>
+<li>treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
+<li>prediction-under-intervention: <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span></li>
 </ul>
 </section>
 <section class="slide level2 center">
@@ -713,32 +713,32 @@
 <h2>More on prediction-under-intervention models</h2>
 <p>development:</p>
 <ul>
-<li class="fragment">ideally estimated from RCTs, but these are often too small or don’t measure the right data</li>
-<li class="fragment">alternatively can use observational data and causal inference methods
+<li>ideally estimated from RCTs, but these are often too small or don’t measure the right data</li>
+<li>alternatively can use observational data and causal inference methods
 <ul>
-<li class="fragment">this approach relies on <strong>strong assumptions</strong> especially regarding confounding</li>
+<li>this approach relies on <strong>strong assumptions</strong> especially regarding confounding</li>
 </ul></li>
-<li class="fragment">but likely a better recipe than <em>treatment-naive</em> models</li>
+<li>but likely a better recipe than <em>treatment-naive</em> models</li>
 </ul>
 <div class="fragment">
 <p>evaluation:</p>
 <ul>
-<li class="fragment">prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding <span class="citation" data-cites="keoghPredictionInterventionsEvaluation2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Keogh and van Geloven 2024</a>)</span></li>
-<li class="fragment">a new <em>policy</em> can be evaluated in historic RCTs <span class="citation" data-cites="karmaliBloodPressureloweringTreatment2018">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Karmali et al. 2018</a>)</span></li>
-<li class="fragment">ultimate test is cluster RCT</li>
+<li>prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding <span class="citation" data-cites="keoghPredictionInterventionsEvaluation2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Keogh and van Geloven 2024</a>)</span></li>
+<li>a new <em>policy</em> can be evaluated in historic RCTs <span class="citation" data-cites="karmaliBloodPressureloweringTreatment2018">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Karmali et al. 2018</a>)</span></li>
+<li>ultimate test is cluster RCT</li>
 </ul>
 </div>
 </section>
 <section id="take-aways" class="slide level2 center">
 <h2>Take-aways</h2>
 <ul>
-<li class="fragment">when developing or evaluating (AI) prediction models for medical decisions, think about
+<li>when developing or evaluating (AI) prediction models for medical decisions, think about
 <ul>
-<li class="fragment">what is the effect of using this model on medical decisions?</li>
-<li class="fragment">what is the effect of this policy change on patient outcomes?</li>
+<li>what is the effect of using this model on medical decisions?</li>
+<li>what is the effect of this policy change on patient outcomes?</li>
 </ul></li>
-<li class="fragment">deploying models for decision support is an intervention and should be evaluated as such</li>
-<li class="fragment">prediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making</li>
+<li>deploying models for decision support is an intervention and should be evaluated as such</li>
+<li>prediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making</li>
 </ul>
 <div class="fragment">
 <div class="columns">

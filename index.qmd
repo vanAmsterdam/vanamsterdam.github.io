@@ -30,6 +30,7 @@ listing:
     max-items: 3
     categories: false
     type: grid
+    sort: "date desc"
   - id: talks-listing
     contents: talks
     max-items: 5

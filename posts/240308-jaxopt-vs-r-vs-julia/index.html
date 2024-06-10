@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Wouter van Amsterdam">
+<meta name="dcterms.date" content="2024-03-08">
 
 <title>Wouter van Amsterdam - The need for speed, performing simulation studies in R, JAX and Julia</title>
 <style>
@@ -261,6 +262,12 @@ window.Quarto = {
   <div class="quarto-title-meta">
 
         
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 8, 2024</p>
+      </div>
+    </div>
     
       
     </div>
@@ -1345,16 +1352,17 @@ Amsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A.
 <ol>
 <li id="fn1"><p>One concrete example with my own previous simulation studies <span class="citation" data-cites="vanamsterdamConditionalAverageTreatment2023">(<a href="#ref-vanamsterdamConditionalAverageTreatment2023" role="doc-biblioref">Amsterdam and Ranganath 2023</a>)</span> is that I used first used <code>jax.numpy</code> arrays for different parameters and then a <code>scipy</code> function to create all combinations of these parameters. Creating this grid of parameters this way forced copying of <code>jax.numpy</code> arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Also, JAX relies on pure functions that cannot depend on global variables.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{van amsterdam,
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{van amsterdam2024,
   author = {van Amsterdam, Wouter},
   title = {The Need for Speed, Performing Simulation Studies in {R,}
     {JAX} and {Julia}},
+  date = {2024-03-08},
   url = {https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van amsterdam" class="csl-entry quarto-appendix-citeas" role="listitem">
-Amsterdam, Wouter van. n.d. <span>“The Need for Speed, Performing
-Simulation Studies in R, JAX and Julia.”</span> <a href="https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia">https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van amsterdam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Amsterdam, Wouter van. 2024. <span>“The Need for Speed, Performing
+Simulation Studies in R, JAX and Julia.”</span> March 8, 2024. <a href="https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia">https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

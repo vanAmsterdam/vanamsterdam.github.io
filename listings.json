@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/240607-jama-causal-language/index.html",
       "/posts/240322-mice-partial-residual-plot.html",
       "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
       "/posts/210725-counterfactualvsinterventional.html",
@@ -27,6 +28,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/190816-lm-functional-form.html",
+      "/posts/240607-jama-causal-language/index.html",
       "/posts/240322-mice-partial-residual-plot.html",
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/240308-jaxopt-vs-r-vs-julia/index.html",

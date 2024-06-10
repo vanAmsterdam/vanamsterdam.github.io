@@ -3,6 +3,7 @@ title: The need for speed, performing simulation studies in R, JAX and Julia
 bibliography: references.bib
 eval: false
 draft: false
+date: 2024-03-08
 categories:
 - r
 - julia

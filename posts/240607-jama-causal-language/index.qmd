@@ -1,0 +1,31 @@
+---
+title: "Is the JAMA opening up their language for causal effects?"
+date: "2024-06-07"
+categories:
+- causal inference
+---
+
+![](8tdpee.jpg){fig-align="center"}
+
+Randomized controlled trials (RCTs) measure the *causal effect* of interventions, but results from observational studies should be interpreted as mere *associations*, right?
+In a great piece in the JAMA, Issa Dehabreh and Kirsten Bibbins-Domingo describe a framework with a more balanced view.
+
+Black-and-white thinking about causal effects dictated medical research for a long time.
+But then, some not-so-well conducted RCTs (e.g. no blinding of outcome assessment, selective loss to follow-up, ...) do not provide valid estimates of treatment effects. How can we distinguish the good 'causal' RCTs from the bad ones if the criterion for causality is whether a study is an RCT or not?
+
+In the past decades the field of *causal inference* produced several principled definitions of causal effects and established requirements for a study to yield valid causal estimates [e.g. @pearlBookWhyNew2018; @pearlCausality2009; @hernanCausalInferenceWhat2020].
+According to these approaches, RCTs are clearly preferable for treatment effect estimation as in RCTs the requirements for estimating causal effects can be *controlled experimentally*.
+Unfortunately, some relevant questions are very hard to answer using RCTs because of logistical or ethical limitations.
+At the same time, the definitions of causal effects from *causal inference* imply that causal effects can be estimated *outside* of RCTs with observational data as well.
+Though for observational studies, causal estimates are only valid when specific assumptions are met and unfortunately these assumptions cannot be checked with the data, so caution is required.
+But clearly, the black-and-white RCT=causation and observational=association must be replaced with a more nuanced view.
+
+For a long time, prestigious journals such as the Journal of the American Medical Association (JAMA) restricted the use of causal language (e.g. *effect* or *efficacy*) to reporting the primary results of RCTs [@InstructionsAuthorsJAMA], further entrenching the black-and-white mindset and evoking criticism from causal inference researchers [e.g. @hernanCWordScientificEuphemisms2018].
+Recently, the JAMA opened itself up for discussion on this topic with a very thoughtful [publication](http://jamanetwork.com/article.aspx?doi=10.1001/jama.2024.7741) by Issa Dehabreh and Kirsten Bibbins-Domingo [@dahabrehCausalInferenceEffects2024], accompanied by an [editorial](https://jamanetwork.com/journals/jama/fullarticle/2818747) [@flanaginWhatDoesProposed2024].
+
+As a researcher in causal inference and machine learning for healthcare I think this a great step towards a more rational and balanced approach to distinghuising causal effects from *assocations*.
+This is much needed because causal effects teach us what to do, i.e. what interventions will lead to better patient outcomes.
+Opening up the language to better express causal research questions and analysis approaches combined with the ability to incorporate both well conducted RCTs and observational studies (mentioning the assumptions required for their estimates to have a causal interpretation) when evaluating interventions will lead to better evidence accumulation and ultimately better outcomes for patients.
+
+![](8tdpk7.jpg){fig-align="center"}
+

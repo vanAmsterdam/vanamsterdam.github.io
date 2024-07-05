@@ -1,3 +1,22 @@
+@article{alaaMachineLearningGuide2021,
+  title = {Machine Learning to Guide the Use of Adjuvant Therapies for Breast Cancer},
+  author = {Alaa, Ahmed M. and Gurdasani, Deepti and Harris, Adrian L. and Rashbass, Jem and family=Schaar, given=Mihaela, prefix=van der, useprefix=true},
+  date = {2021-06-24},
+  journaltitle = {Nature Machine Intelligence},
+  shortjournal = {Nat Mach Intell},
+  pages = {1--11},
+  publisher = {Nature Publishing Group},
+  issn = {2522-5839},
+  doi = {10/gk6bh7},
+  abstract = {Accurate prediction of the individualized survival benefit of adjuvant therapy is key to making informed therapeutic decisions for patients with early invasive breast cancer. Machine learning technologies can enable accurate prognostication of patient outcomes under different treatment options by modelling complex interactions between risk factors in a data-driven fashion. Here, we use an automated and interpretable machine learning algorithm to develop a breast cancer prognostication and treatment benefit prediction model—Adjutorium—using data from large-scale cohorts of nearly one million women captured in the national cancer registries of the United Kingdom and the United States. We trained and internally validated the Adjutorium model on 395,862 patients from the UK National Cancer Registration and Analysis Service (NCRAS), and then externally validated the model among 571,635 patients from the US Surveillance, Epidemiology, and End Results (SEER) programme. Adjutorium exhibited significantly improved accuracy compared to the major prognostic tool in current clinical use (PREDICT v2.1) in both internal and external validation. Importantly, our model substantially improved accuracy in specific subgroups known to be under-served by existing models. Adjutorium is currently implemented as a web-based decision support tool (https://vanderschaar-lab.com/adjutorium/) to aid decisions on adjuvant therapy in women with early breast cancer, and can be publicly accessed by patients and clinicians worldwide.},
+  langid = {english},
+  annotation = {Bandiera\_abtest: a\\
+Cg\_type: Nature Research Journals\\
+Primary\_atype: Research\\
+Subject\_term: Breast cancer;Prognosis\\
+Subject\_term\_id: breast-cancer;prognosis}
+}
+
 @article{candidodosreisUpdatedPREDICTBreast2017,
   title = {An Updated {{PREDICT}} Breast Cancer Prognostication and Treatment Benefit Prediction Model with Independent Validation},
   author = {Candido dos Reis, Francisco J. and Wishart, Gordon C. and Dicks, Ed M. and Greenberg, David and Rashbass, Jem and Schmidt, Marjanka K. and family=Broek, given=Alexandra J., prefix=van den, useprefix=true and Ellis, Ian O. and Green, Andrew and Rakha, Emad and Maishman, Tom and Eccles, Diana M. and Pharoah, Paul D. P.},
@@ -71,6 +90,21 @@
   issn = {0098-7484},
   doi = {10.1001/jama.2024.8107},
   abstract = {The Special Communication “Causal Inferences About the Effects of Interventions From Observational Studies in Medical Journals,” published in this issue of JAMA, provides a rationale and framework for considering causal inference from observational studies published by medical journals. Our intent is to invite discussion of this framework, explore its application in the context of specific study designs, and actively examine how this framework could be implemented and used by authors, peer reviewers, and editors of medical journals, including JAMA and the journals of the JAMA Network. Our overarching goal is to ensure that findings from observational designs may be appropriately interpreted in thoughtful and circumspect manners and applied by readers, other researchers, and clinicians, with the ultimate goal of improving patient care and public and global health.}
+}
+
+@inproceedings{hartfordDeepIVFlexible2017,
+  title = {Deep {{IV}}: {{A Flexible Approach}} for {{Counterfactual Prediction}}},
+  shorttitle = {Deep {{IV}}},
+  booktitle = {International {{Conference}} on {{Machine Learning}}},
+  author = {Hartford, Jason and Lewis, Greg and Leyton-Brown, Kevin and Taddy, Matt},
+  date = {2017-07-17},
+  pages = {1414--1423},
+  publisher = {PMLR},
+  issn = {2640-3498},
+  url = {https://proceedings.mlr.press/v70/hartford17a.html},
+  urldate = {2021-09-18},
+  eventtitle = {International {{Conference}} on {{Machine Learning}}},
+  langid = {english}
 }
 
 @book{hernanCausalInferenceWhat2020,
@@ -149,8 +183,22 @@
   eprintclass = {stat},
   doi = {10.48550/arXiv.2304.10005},
   abstract = {Predictions under interventions are estimates of what a person's risk of an outcome would be if they were to follow a particular treatment strategy, given their individual characteristics. Such predictions can give important input to medical decision making. However, evaluating predictive performance of interventional predictions is challenging. Standard ways of evaluating predictive performance do not apply when using observational data, because prediction under interventions involves obtaining predictions of the outcome under conditions that are different to those that are observed for a subset of individuals in the validation dataset. This work describes methods for evaluating counterfactual performance of predictions under interventions for time-to-event outcomes. This means we aim to assess how well predictions would match the validation data if all individuals had followed the treatment strategy under which predictions are made. We focus on counterfactual performance evaluation using longitudinal observational data, and under treatment strategies that involve sustaining a particular treatment regime over time. We introduce an estimation approach using artificial censoring and inverse probability weighting which involves creating a validation dataset that mimics the treatment strategy under which predictions are made. We extend measures of calibration, discrimination (c-index and cumulative/dynamic AUCt) and overall prediction error (Brier score) to allow assessment of counterfactual performance. The methods are evaluated using a simulation study, including scenarios in which the methods should detect poor performance. Applying our methods in the context of liver transplantation shows that our procedure allows quantification of the performance of predictions supporting crucial decisions on organ allocation.},
-  pubstate = {preprint},
+  pubstate = {prepublished},
   keywords = {Statistics - Methodology}
+}
+
+@article{miaoIdentifyingCausalEffects2018,
+  title = {Identifying Causal Effects with Proxy Variables of an Unmeasured Confounder},
+  author = {Miao, Wang and Geng, Zhi and Tchetgen Tchetgen, Eric J},
+  date = {2018-12-01},
+  journaltitle = {Biometrika},
+  shortjournal = {Biometrika},
+  volume = {105},
+  number = {4},
+  pages = {987--993},
+  issn = {0006-3444},
+  doi = {10.1093/biomet/asy038},
+  abstract = {We consider a causal effect that is confounded by an unobserved variable, but for which observed proxy variables of the confounder are available. We show that with at least two independent proxy variables satisfying a certain rank condition, the causal effect can be nonparametrically identified, even if the measurement error mechanism, i.e., the conditional distribution of the proxies given the confounder, may not be identified. Our result generalizes the identification strategy of Kuroki \&amp; Pearl (2014), which rests on identification of the measurement error mechanism. When only one proxy for the confounder is available, or when the required rank condition is not met, we develop a strategy for testing the null hypothesis of no causal effect.}
 }
 
 @book{pearlBookWhyNew2018,
@@ -176,6 +224,33 @@
   langid = {english}
 }
 
+@unpublished{puliGeneralControlFunctions2021,
+  title = {General {{Control Functions}} for {{Causal Effect Estimation}} from {{Instrumental Variables}}},
+  author = {Puli, Aahlad Manas and Ranganath, Rajesh},
+  date = {2021-02-02},
+  eprint = {1907.03451},
+  eprinttype = {arXiv},
+  eprintclass = {cs, stat},
+  url = {http://arxiv.org/abs/1907.03451},
+  urldate = {2021-09-18},
+  abstract = {Causal effect estimation relies on separating the variation in the outcome into parts due to the treatment and due to the confounders. To achieve this separation, practitioners often use external sources of randomness that only influence the treatment called instrumental variables (IVs). We study variables constructed from treatment and IV that help estimate effects, called control functions. We characterize general control functions for effect estimation in a meta-identification result. Then, we show that structural assumptions on the treatment process allow the construction of general control functions, thereby guaranteeing identification. To construct general control functions and estimate effects, we develop the general control function method (GCFN). GCFN's first stage called variational decoupling (VDE) constructs general control functions by recovering the residual variation in the treatment given the IV. Using VDE's control function, GCFN's second stage estimates effects via regression. Further, we develop semi-supervised GCFN to construct general control functions using subsets of data that have both IV and confounders observed as supervision; this needs no structural treatment process assumptions. We evaluate GCFN on low and high dimensional simulated data and on recovering the causal effect of slave export on modern community trust.},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning}
+}
+
+@unpublished{shalitEstimatingIndividualTreatment2017,
+  title = {Estimating Individual Treatment Effect: Generalization Bounds and Algorithms},
+  shorttitle = {Estimating Individual Treatment Effect},
+  author = {Shalit, Uri and Johansson, Fredrik D. and Sontag, David},
+  date = {2017-05-16},
+  eprint = {1606.03976},
+  eprinttype = {arXiv},
+  eprintclass = {cs, stat},
+  url = {http://arxiv.org/abs/1606.03976},
+  urldate = {2021-09-23},
+  abstract = {There is intense interest in applying machine learning to problems of causal inference in fields such as healthcare, economics and education. In particular, individual-level causal inference has important applications such as precision medicine. We give a new theoretical analysis and family of algorithms for predicting individual treatment effect (ITE) from observational data, under the assumption known as strong ignorability. The algorithms learn a "balanced" representation such that the induced treated and control distributions look similar. We give a novel, simple and intuitive generalization-error bound showing that the expected ITE estimation error of a representation is bounded by a sum of the standard generalization-error of that representation and the distance between the treated and control distributions induced by the representation. We use Integral Probability Metrics to measure distances between distributions, deriving explicit bounds for the Wasserstein and Maximum Mean Discrepancy (MMD) distances. Experiments on real and simulated data show the new algorithms match or outperform the state-of-the-art.},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning}
+}
+
 @article{vanamsterdamAlgorithmsActionImproving2024,
   title = {From Algorithms to Action: Improving Patient Care Requires Causality},
   shorttitle = {From Algorithms to Action},
@@ -199,7 +274,7 @@
   url = {http://arxiv.org/abs/2204.13975},
   urldate = {2022-06-29},
   abstract = {Treatment effect estimates are often available from randomized controlled trials as a single average treatment effect for a certain patient population. Estimates of the conditional average treatment effect (CATE) are more useful for individualized treatment decision making, but randomized trials are often too small to estimate the CATE. There are several examples in medical literature where the assumption of a known constant relative treatment effect (e.g. an odds-ratio) is used to estimate CATE models from large observational datasets. One approach to estimating these CATE models is by using the relative treatment effect as an offset, while estimating the covariate-specific baseline risk. Whether this is a valid approach in the presence of unobserved confounding is unknown. We demonstrate for a simple example that offset models do not recover the true CATE in the presence of unobserved confounding. We then explore the magnitude of this bias in numerical experiments. For virtually all plausible confounding magnitudes, estimating the CATE using offset models is more accurate than assuming a single absolute treatment effect whenever there is sufficient variation in the baseline risk. Next, we observe that the odds-ratios reported in randomized controlled trials are not the odds-ratios that are needed in offset models because trials often report the marginal odds-ratio. We introduce a constraint to better use marginal odds-ratios from randomized controlled trials and find that the newly introduced constrained offset models have lower bias than standard offset models. Finally, we highlight directions for future research for exploiting the assumption of a constant relative treatment effect with offset models.},
-  pubstate = {preprint},
+  pubstate = {prepublished},
   keywords = {Statistics - Methodology}
 }
 
@@ -245,8 +320,22 @@
   eprintclass = {cs, stat},
   doi = {10.48550/arXiv.2312.01210},
   abstract = {Objective: Prediction models are popular in medical research and practice. By predicting an outcome of interest for specific patients, these models may help inform difficult treatment decisions, and are often hailed as the poster children for personalized, data-driven healthcare. Many prediction models are deployed for decision support based on their prediction accuracy in validation studies. We investigate whether this is a safe and valid approach. Materials and Methods: We show that using prediction models for decision making can lead to harmful decisions, even when the predictions exhibit good discrimination after deployment. These models are harmful self-fulfilling prophecies: their deployment harms a group of patients but the worse outcome of these patients does not invalidate the predictive power of the model. Results: Our main result is a formal characterization of a set of such prediction models. Next we show that models that are well calibrated before and after deployment are useless for decision making as they made no change in the data distribution. Discussion: Our results point to the need to revise standard practices for validation, deployment and evaluation of prediction models that are used in medical decisions. Conclusion: Outcome prediction models can yield harmful self-fulfilling prophecies when used for decision making, a new perspective on prediction model development, deployment and monitoring is needed.},
-  pubstate = {preprint},
+  pubstate = {prepublished},
   keywords = {Computer Science - Machine Learning,Statistics - Machine Learning,Statistics - Methodology}
+}
+
+@article{waldFittingStraightLines1940,
+  title = {The {{Fitting}} of {{Straight Lines}} If {{Both Variables}} Are {{Subject}} to {{Error}}},
+  author = {Wald, Abraham},
+  date = {1940-09},
+  journaltitle = {The Annals of Mathematical Statistics},
+  volume = {11},
+  number = {3},
+  pages = {284--300},
+  publisher = {Institute of Mathematical Statistics},
+  issn = {0003-4851, 2168-8990},
+  doi = {10.1214/aoms/1177731868},
+  abstract = {The Annals of Mathematical Statistics}
 }
 
 @article{xuPredictionCardiovascularDisease2021a,

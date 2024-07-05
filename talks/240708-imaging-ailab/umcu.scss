@@ -1,0 +1,55 @@
+/*-- scss:defaults --*/
+
+// Custom colours and variables
+
+$jet: #131516;
+$accent: #107895;
+$accent2: #9a2515;
+
+// UMCU colors (taken from official powerpoint template)
+$darkblue: #1961AB;
+//$umcudarkblue: #00539E;
+$lightblue: #0F84C9;
+$green: #79B829;
+$gray: #B7B1A9;
+$red: #D0103A;
+
+/*-- scss:rules --*/
+
+// title and headings
+
+.reveal h2 {
+  color: $darkblue;
+  font-weight: lighter;
+  font-size: 1.4em;
+}
+
+.reveal h3 {
+  color: $lightblue;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 0.95em;
+}
+
+.reveal h4 {
+  color: $red;
+  font-weight: normal;
+  margin-top: 1.25em;
+}
+
+// alerts etc.
+
+.alert {
+  color: $red;
+}
+
+.fg {
+  color: var(--col, $jet);
+}
+
+.bg {
+  background-color: var(--col, #fff);
+  padding: 0.1em;
+  border-radius: 5px;
+  display: inline-block;
+}

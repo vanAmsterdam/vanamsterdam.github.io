@@ -13,6 +13,7 @@
   {
     "listing": "/talks.html",
     "items": [
+      "/talks/240708-imaging-ailab/index.html",
       "/talks/240530-weon-masterclass/index.html",
       "/talks/240516-sig-causality-prediction/index.html",
       "/talks/240515-aibia-ai-medical-imaging-decision-support/index.html",
@@ -33,6 +34,7 @@
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/210720-good_predictions_bad_decisions.html",
       "/posts/190816-lm-functional-form.html",
+      "/talks/240708-imaging-ailab/index.html",
       "/talks/240530-weon-masterclass/index.html",
       "/talks/240516-sig-causality-prediction/index.html",
       "/talks/240515-aibia-ai-medical-imaging-decision-support/index.html",

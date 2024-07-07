@@ -67,7 +67,7 @@
     "href": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging",
     "title": "Medical imaging and AI for decision support",
     "section": "Use AI for medical imaging",
-    "text": "Use AI for medical imaging\nto make healthcare more efficient\n\nAcquisition (\\(S \\to X\\))\n\n\n\nk-space to MRI image\nraw projection data to CT image\ndenoising\n\n\n\ndetection / segmentation (\\(X \\to X\\))\n\n\n\nsegmenting organs at risk in radiotherapy\n\n\n\ninference / diagnosis (\\(X \\to D\\), both at prediction time)\n\n\n\nmedical diagnosis\npsuedo CT from MRI"
+    "text": "Use AI for medical imaging\nto make healthcare easier or more efficient\n\nAcquisition (\\(S \\to X\\))\n\n\n\nk-space to MRI image\nraw projection data to CT image\n\n\n\ndetection / segmentation (\\(X \\to X\\))\n\n\n\nsegmenting organs at risk in radiotherapy\n\n\n\ninference / diagnosis (\\(X \\to D\\), both at prediction time)\n\n\n\nmedical diagnosis\npsuedo CT from MRI"
   },
   {
     "objectID": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging-1",
@@ -81,14 +81,14 @@
     "href": "talks/240708-imaging-ailab/index.html#ai-treatment-effect",
     "title": "Medical imaging and AI for decision support",
     "section": "Why would you estimate treatment effects based on images?",
-    "text": "Why would you estimate treatment effects based on images?\n\ntreatments have different effects on patients based on their (disease) characteristics\nfor example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive\nsome characteristics may be well captured in medical imaging:\n\nT-cell distributions around tumors related to effect of immunotherapy in cancer\nheterogeneity of tumor on CT may predict response to radiotherapy\nholistic view of ‘body composition’ on CT-scans determines whether patient can tolerate chemotherapy"
+    "text": "Why would you estimate treatment effects based on images?\n\n\ntreatments have different effects on patients based on their (disease) characteristics\nfor example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive\nsome characteristics may be well captured in medical imaging:\n\nT-cell distributions around tumors related to effect of immunotherapy in cancer\nheterogeneity of tumor on CT may predict response to radiotherapy\nholistic view of ‘body composition’ on CT-scans determines whether patient can tolerate chemotherapy"
   },
   {
     "objectID": "talks/240708-imaging-ailab/index.html#how-to-estimate-treatment-effects-based-on-images",
     "href": "talks/240708-imaging-ailab/index.html#how-to-estimate-treatment-effects-based-on-images",
     "title": "Medical imaging and AI for decision support",
     "section": "How to estimate treatment effects based on images?",
-    "text": "How to estimate treatment effects based on images?\nIn principle the same as estimating a subgroup treatment effect (e.g. male vs female)\n\nConduct a randomized controlled trial where the treatments of interest are randomly allocated\nCollect (imaging) data at randomization timepoint\nUse a statistical learning technique like TARnet (Shalit, Johansson, and Sontag 2017) to estimate outcomes conditional on image and treatment\nconditional treatment effect \\(= f(X,T=1) - f(X,T=0)\\)\n\n\n\n\n\nWhat if you cannot do a (big enough) RCT?\n\n\nEmulate / approximate the ideal trial in observational data you do have, using causal inference techniques\n(which rely on untestable assumptions)"
+    "text": "How to estimate treatment effects based on images?\n\nIn principle the same as estimating a subgroup treatment effect (e.g. male vs female)\n\nConduct a randomized controlled trial where the treatments of interest are randomly allocated\nCollect (imaging) data at randomization timepoint\nUse a statistical learning technique like TARnet (Shalit, Johansson, and Sontag 2017) to estimate outcomes conditional on image and treatment\nconditional treatment effect \\(= f(X,T=1) - f(X,T=0)\\)\n\n\n\n\n\nWhat if you cannot do a (big enough) RCT?\n\n\nEmulate / approximate the ideal trial in observational data you do have, using causal inference techniques\n(which rely on untestable assumptions)"
   },
   {
     "objectID": "talks/240708-imaging-ailab/index.html#improving-decisions-with-ai",
@@ -161,13 +161,6 @@
     "text": "More flexible models do not protect against harmful prediction models"
   },
   {
-    "objectID": "talks/240708-imaging-ailab/index.html#gap-between-prediction-accuracy-and-value-for-decision-making",
-    "href": "talks/240708-imaging-ailab/index.html#gap-between-prediction-accuracy-and-value-for-decision-making",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Gap between prediction accuracy and value for decision making",
-    "text": "Gap between prediction accuracy and value for decision making"
-  },
-  {
     "objectID": "talks/240708-imaging-ailab/index.html#section",
     "href": "talks/240708-imaging-ailab/index.html#section",
     "title": "Medical imaging and AI for decision support",
@@ -207,14 +200,14 @@
     "href": "talks/240708-imaging-ailab/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
     "title": "Medical imaging and AI for decision support",
     "section": "We should build models that are likely to be valuable for decision making",
-    "text": "We should build models that are likely to be valuable for decision making\n\nBuild models that predict expected outcomes under hypothetical interventions (prediction-under-intervention models)\ndoctor / patient can pick the treatment with best expected outcomes, depending on patient’s values\nwhereas treatment-naive prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option\n\n\n\n\n\nHilden and Habbema on prognosis (Hilden and Habbema 1987)\n\n\n“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”\n\n\n\n\nprediction-under-intervention is not a new idea, but language and methods on causality have come a long way since (Hilden and Habbema 1987)."
+    "text": "We should build models that are likely to be valuable for decision making\n\nBuild models that predict expected outcomes under hypothetical interventions (prediction-under-intervention models)\ndoctor / patient can pick the treatment with best expected outcomes, depending on patient’s values and preferences\nwhereas treatment-naive prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option\n\n\n\n\n\nHilden and Habbema on prognosis (Hilden and Habbema 1987)\n\n\n“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”\n\n\n\n\nprediction-under-intervention is not a new idea, but language and methods on causality have come a long way since (Hilden and Habbema 1987)."
   },
   {
     "objectID": "talks/240708-imaging-ailab/index.html#estimand-for-prediction-under-intervention-models",
     "href": "talks/240708-imaging-ailab/index.html#estimand-for-prediction-under-intervention-models",
     "title": "Medical imaging and AI for decision support",
     "section": "Estimand for prediction-under-intervention models",
-    "text": "Estimand for prediction-under-intervention models\nWhat is the estimand?\n\nprediction: \\(E[Y|X]\\)\ntreatment effect: \\(E[Y|\\text{do}(T=1)] - E[Y|\\text{do}(T=0)]\\)\nprediction-under-intervention: \\(E[Y|\\text{do}(T=t),X]\\)"
+    "text": "Estimand for prediction-under-intervention models\nWhat is the estimand?\n\nprediction: \\(E[Y|X]\\)\naverage treatment effect: \\(E[Y|\\text{do}(T=1)] - E[Y|\\text{do}(T=0)]\\)\nconditional average treatment effect: \\(E[Y|\\text{do}(T=1),X] - E[Y|\\text{do}(T=0),X]\\)\nprediction-under-intervention: \\(E[Y|\\text{do}(T=t),X]\\)"
   },
   {
     "objectID": "talks/240708-imaging-ailab/index.html#more-on-prediction-under-intervention-models",
@@ -224,18 +217,18 @@
     "text": "More on prediction-under-intervention models\ndevelopment:\n\nideally estimated from RCTs, but these are often too small or don’t measure the right data\nalternatively can use observational data and causal inference methods\nassumption of no unobserved confounding often hard to justify in observational data\nbut there’s more between heaven (RCT) and earth (confounder adjustment)\n\nproxy-variable methods (e.g. Miao, Geng, and Tchetgen Tchetgen 2018; van Amsterdam et al. 2022)\nconstant relative treatment effect assumption (e.g. Alaa et al. 2021; van Amsterdam and Ranganath 2023; Candido dos Reis et al. 2017)\ndiff-in-diff\ninstrumental variable analysis (Wald 1940; Puli and Ranganath 2021; Hartford et al. 2017)\nfront-door analysis\n\nmany of these have potential new applications with AI and medical imaging"
   },
   {
-    "objectID": "talks/240708-imaging-ailab/index.html#evaluation-of-prediction-under-intervention",
-    "href": "talks/240708-imaging-ailab/index.html#evaluation-of-prediction-under-intervention",
+    "objectID": "talks/240708-imaging-ailab/index.html#evaluation-of-prediction-under-intervention-models",
+    "href": "talks/240708-imaging-ailab/index.html#evaluation-of-prediction-under-intervention-models",
     "title": "Medical imaging and AI for decision support",
-    "section": "Evaluation of prediction-under-intervention",
-    "text": "Evaluation of prediction-under-intervention\n\nbuilding prediction-under-intervention models from observational data relies on strong assumptions especially regarding confounding\n\n\nevaluation:\n\ntypical metrics (e.g. AUC or calibration) on observed data not sufficient as we want to predict well in data from other distribution than observed data\nprediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding (e.g. Keogh and van Geloven 2024)\na new policy can be evaluated in historic RCTs (e.g. Karmali et al. 2018)\nultimate test is cluster RCT\nif not perfect, likely a better recipe than treatment-naive models"
+    "section": "Evaluation of prediction-under-intervention models",
+    "text": "Evaluation of prediction-under-intervention models\n\nprediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding (e.g. Keogh and van Geloven 2024)\nin confounded observational data, typical metrics (e.g. AUC or calibration) are not sufficient as we want to predict well in data from other distribution than observed data (i.e. other treatment decisions)\na new policy can be evaluated in historic RCTs (e.g. Karmali et al. 2018)\nultimate test is cluster RCT\nif not perfect, likely a better recipe than treatment-naive models"
   },
   {
     "objectID": "talks/240708-imaging-ailab/index.html#take-aways",
     "href": "talks/240708-imaging-ailab/index.html#take-aways",
     "title": "Medical imaging and AI for decision support",
     "section": "Take-aways",
-    "text": "Take-aways\n\nwhen developing or evaluating (AI) prediction models for medical decisions, think about\n\nwhat is the effect of using this model on medical decisions?\nwhat is the effect of this policy change on patient outcomes?\n\ndeploying models for decision support is an intervention and should be evaluated as such\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (van Amsterdam, Jong, et al. 2024)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (van Amsterdam, van Geloven, et al. 2024)"
+    "text": "Take-aways\n\ndeploying models for decision support is an intervention and should be evaluated as such\nwhen developing or evaluating (AI) prediction models for medical decisions, think about\n\nwhat is the effect of using this model on medical decisions?\nwhat is the effect of this policy change on patient outcomes?\n\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (van Amsterdam, Jong, et al. 2024)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (van Amsterdam, van Geloven, et al. 2024)"
   },
   {
     "objectID": "talks/240708-imaging-ailab/index.html#references",

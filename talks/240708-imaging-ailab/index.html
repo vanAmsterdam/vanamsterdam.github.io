@@ -379,7 +379,7 @@
 <a href="https://vanamsterdam.github.io">Wouter van Amsterdam</a> 
 </div>
         <p class="quarto-title-affiliation">
-            University Medical Center Utrecht
+            Department of Data Science Methods, Julius Center, University Medical Center Utrecht
           </p>
     </div>
 </div>
@@ -402,7 +402,7 @@
 </section>
 <section id="use-ai-for-medical-imaging" class="slide level2 center">
 <h2>Use AI for medical imaging</h2>
-<h3 id="to-make-healthcare-more-efficient">to make healthcare more efficient</h3>
+<h3 id="to-make-healthcare-easier-or-more-efficient">to make healthcare easier or more efficient</h3>
 <ol type="1">
 <li class="fragment"><p>Acquisition (<span class="math inline">\(S \to X\)</span>)</p>
 <div class="fragment">
@@ -410,7 +410,6 @@
 <ul>
 <li>k-space to MRI image</li>
 <li>raw projection data to CT image</li>
-<li>denoising</li>
 </ul>
 </div>
 </div></li>
@@ -459,6 +458,7 @@
 </section>
 <section id="ai-treatment-effect" class="slide level2 center">
 <h2>Why would you estimate treatment effects based on images?</h2>
+<!-- TODO: make examples figures instead of text -->
 <ul>
 <li class="fragment">treatments have different effects on patients based on their (disease) characteristics</li>
 <li class="fragment">for example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive</li>
@@ -472,6 +472,7 @@
 </section>
 <section id="how-to-estimate-treatment-effects-based-on-images" class="slide level2 center">
 <h2>How to estimate treatment effects based on images?</h2>
+<!-- TODO: have mulitple steps in point 4 to build it up -->
 <p>In principle the same as estimating a subgroup treatment effect (e.g.&nbsp;male vs female)</p>
 <ol type="1">
 <li class="fragment">Conduct a randomized controlled trial where the treatments of interest are randomly allocated</li>
@@ -642,9 +643,10 @@
 <section id="more-flexible-models-do-not-protect-against-harmful-prediction-models" class="slide level2 center">
 <h2>More flexible models do not protect against harmful prediction models</h2>
 
+<!-- TODO make mindthegap background image -->
 <img data-src="figs/morelayers.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="gap-between-prediction-accuracy-and-value-for-decision-making" class="slide level2 center">
-<h2>Gap between prediction accuracy and value for decision making</h2>
+<section class="slide level2 center">
+
 
 <img data-src="figs/mindthegap.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section" class="slide level2 center" data-auto-animate="true">
@@ -727,7 +729,7 @@
 <h2>We should build models that are likely to be valuable for decision making</h2>
 <ul>
 <li class="fragment">Build models that predict expected outcomes under <em>hypothetical interventions</em> (<em>prediction-under-intervention models</em>)</li>
-<li class="fragment">doctor / patient can pick the treatment with <em>best</em> expected outcomes, depending on patient’s values</li>
+<li class="fragment">doctor / patient can pick the treatment with <em>best</em> expected outcomes, depending on patient’s values and preferences</li>
 <li class="fragment">whereas <em>treatment-naive</em> prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option</li>
 </ul>
 <div class="fragment">
@@ -751,7 +753,8 @@
 <p>What is the estimand?</p>
 <ul>
 <li class="fragment">prediction: <span class="math inline">\(E[Y|X]\)</span></li>
-<li class="fragment">treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
+<li class="fragment">average treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
+<li class="fragment">conditional average treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1),X] - E[Y|\text{do}(T=0),X]\)</span></li>
 <li class="fragment">prediction-under-intervention: <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span></li>
 </ul>
 </section>
@@ -793,31 +796,25 @@
 <li class="fragment">many of these have potential new applications with AI and medical imaging</li>
 </ul>
 </section>
-<section id="evaluation-of-prediction-under-intervention" class="slide level2 center">
-<h2>Evaluation of prediction-under-intervention</h2>
+<section id="evaluation-of-prediction-under-intervention-models" class="slide level2 center">
+<h2>Evaluation of prediction-under-intervention models</h2>
 <ul>
-<li class="fragment">building prediction-under-intervention models from observational data relies on <strong>strong assumptions</strong> especially regarding confounding</li>
-</ul>
-<div class="fragment">
-<p>evaluation:</p>
-<ul>
-<li class="fragment">typical metrics (e.g.&nbsp;AUC or calibration) on <em>observed data</em> not sufficient as we want to predict well in data from <em>other distribution than observed data</em></li>
 <li class="fragment">prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding <span class="citation" data-cites="keoghPredictionInterventionsEvaluation2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Keogh and van Geloven 2024</a>)</span></li>
+<li class="fragment">in confounded observational data, typical metrics (e.g.&nbsp;AUC or calibration) are not sufficient as we want to predict well in data from <em>other distribution than observed data</em> (i.e.&nbsp;other treatment decisions)</li>
 <li class="fragment">a new <em>policy</em> can be evaluated in historic RCTs <span class="citation" data-cites="karmaliBloodPressureloweringTreatment2018">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Karmali et al. 2018</a>)</span></li>
 <li class="fragment">ultimate test is cluster RCT</li>
 <li class="fragment">if not perfect, likely a better recipe than <em>treatment-naive</em> models</li>
 </ul>
-</div>
 </section>
 <section id="take-aways" class="slide level2 center">
 <h2>Take-aways</h2>
 <ul>
+<li class="fragment">deploying models for decision support is an intervention and should be evaluated as such</li>
 <li class="fragment">when developing or evaluating (AI) prediction models for medical decisions, think about
 <ul>
 <li class="fragment">what is the effect of using this model on medical decisions?</li>
 <li class="fragment">what is the effect of this policy change on patient outcomes?</li>
 </ul></li>
-<li class="fragment">deploying models for decision support is an intervention and should be evaluated as such</li>
 <li class="fragment">prediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making</li>
 </ul>
 <div class="fragment">

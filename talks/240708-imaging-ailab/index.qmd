@@ -19,7 +19,7 @@ format:
 
 ## Use AI for medical imaging
 
-### to make healthcare more efficient
+### to make healthcare easier or more efficient
 
 1. Acquisition ($S \to X$)
 
@@ -27,7 +27,6 @@ format:
    ::::{.nonincremental}
    - k-space to MRI image
    - raw projection data to CT image
-   - denoising
    ::::
    :::
 
@@ -74,6 +73,8 @@ format:
 
 ## Why would you estimate treatment effects based on images? {#ai-treatment-effect}
 
+<!-- TODO: make examples figures instead of text -->
+
 - treatments have different effects on patients based on their (disease) characteristics
 - for example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive
 - some characteristics may be well captured in medical imaging:
@@ -83,6 +84,8 @@ format:
 
 
 ## How to estimate treatment effects based on images?
+
+<!-- TODO: have mulitple steps in point 4 to build it up -->
 
 In principle the same as estimating a subgroup treatment effect (e.g. male vs female)
 
@@ -260,9 +263,15 @@ For example:
 
 ![](figs/morelayers.png){fig-align="center"}
 
-## Gap between prediction accuracy and value for decision making
+<!-- TODO make mindthegap background image -->
+
+---
+
+::: {.r-stretch}
 
 ![](figs/mindthegap.png){fig-align="center"}
+
+:::
 
 ## {auto-animate=true}
 
@@ -326,7 +335,7 @@ Not a good idea
 ## We should build models that are likely to be valuable for decision making
 
 - Build models that predict expected outcomes under *hypothetical interventions* (*prediction-under-intervention models*)
-- doctor / patient can pick the treatment with *best* expected outcomes, depending on patient's values
+- doctor / patient can pick the treatment with *best* expected outcomes, depending on patient's values and preferences
 - whereas *treatment-naive* prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option
 
 . . . 
@@ -343,7 +352,8 @@ Not a good idea
 What is the estimand?
 
 - prediction: $E[Y|X]$
-- treatment effect: $E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]$
+- average treatment effect: $E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]$
+- conditional average treatment effect: $E[Y|\text{do}(T=1),X] - E[Y|\text{do}(T=0),X]$
 - prediction-under-intervention: $E[Y|\text{do}(T=t),X]$
 
 --- 
@@ -382,26 +392,20 @@ development:
   - front-door analysis
 - many of these have potential new applications with AI and medical imaging
 
-## Evaluation of prediction-under-intervention 
+## Evaluation of prediction-under-intervention models
 
-- building prediction-under-intervention models from observational data relies on **strong assumptions** especially regarding confounding
-
-. . .
-
-evaluation:
-
-- typical metrics (e.g. AUC or calibration) on *observed data* not sufficient as we want to predict well in data from *other distribution than observed data*
 - prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding [e.g. @keoghPredictionInterventionsEvaluation2024]
+- in confounded observational data, typical metrics (e.g. AUC or calibration) are not sufficient as we want to predict well in data from *other distribution than observed data* (i.e. other treatment decisions)
 - a new *policy* can be evaluated in historic RCTs [e.g. @karmaliBloodPressureloweringTreatment2018]
 - ultimate test is cluster RCT
 - if not perfect, likely a better recipe than *treatment-naive* models
 
 ## Take-aways
 
+- deploying models for decision support is an intervention and should be evaluated as such
 - when developing or evaluating (AI) prediction models for medical decisions, think about
   - what is the effect of using this model on medical decisions?
   - what is the effect of this policy change on patient outcomes?
-- deploying models for decision support is an intervention and should be evaluated as such
 - prediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making
 
 . . .

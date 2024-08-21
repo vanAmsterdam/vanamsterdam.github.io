@@ -51,7 +51,7 @@ I am an assistant professor at the University Medical Center Utrecht, working on
 <!--His focus is the intersection of machine learning and causal inference.-->
 <!--This intersection goes two ways: machine learning can improve typical causal inference tasks such as estimating individual treatment effects and doing prediction-under-intervention.-->
 <!--On the other hand, causal inference provides a formal way to understanding and improving prediction model generalization and robustness.-->
-Wouter have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare.
+I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare.
 
 <!--Master students with a background in statistics or machine learning who want to work with me are welcome to contact me.-->
 <!--Students enrolled at Utrecht University or UMC Utrecht can find open master projects on [konjoin](https://uu.konjoin.nl/profile/wouter-van-amsterdam)-->
@@ -120,6 +120,16 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 ::: {#post-listing}
 :::
+
+## Students
+
+### Former 
+
+- [Samil Kilinc](https://www.linkedin.com/in/samil-tugkan-kilinc-1770dk) (Applied Data Science, 2024)
+- [Kiara Peek](www.linkedin.com/in/kiara-peek-9974b41b3) (Applied Data Science, 2024)
+- Myra van Laar (Biomedical Sciences)
+- Gijs Bartholomeus (Medicine)
+- Netanja Harlianto (Medicine)
 
 ## Activities
 

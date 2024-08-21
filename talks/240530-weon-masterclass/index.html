@@ -9,11 +9,11 @@
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.551">
+  <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Wouter van Amsterdam">
   <meta name="dcterms.date" content="2024-05-30">
-  <title>Wouter van Amsterdam - Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies</title>
+  <title>Wouter van Amsterdam – Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -356,10 +356,10 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Wouter van Amsterdam - Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies">
+<meta property="og:title" content="Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies – Wouter van Amsterdam">
 <meta property="og:description" content="WEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="Wouter van Amsterdam - Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies">
+<meta name="twitter:title" content="Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies – Wouter van Amsterdam">
 <meta name="twitter:description" content="WEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
@@ -417,8 +417,7 @@
 <li>prognosis (e.g.&nbsp;survival given medical image)</li>
 <li>treatment effect (e.g.&nbsp;genetic biomarker)</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title"></h2>
@@ -566,8 +565,7 @@
 <p><img data-src="figs/tripod_ai.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="bigger-data-does-not-protect-against-harmful-prediction-models" class="slide level2 center">
 <h2>Bigger data does not protect against harmful prediction models</h2>
@@ -706,8 +704,7 @@
 <p><img data-src="figs/peanutbutter_chocolatesprinkles.jpg" class="fragment quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="more-on-prediction-under-intervention-models" class="slide level2 center">
 <h2>More on prediction-under-intervention models</h2>
@@ -756,8 +753,7 @@
 </figure>
 </div>
 <p>When accurate prediction models yield harmful sel-fulfilling prophecies <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2024a">(<a href="#/references" role="doc-biblioref" onclick=""><strong>vanamsterdamWhenAccuratePrediction2024a?</strong></a>)</span></p>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="new-summerschool-introduction-to-causal-inference-and-causal-data-science" class="slide level2 center">
@@ -781,8 +777,7 @@
 </div><div class="column" style="width:50%;">
 <p><img data-src="figs/qr_causalsummerschool.png" style="width:10cm"></p>
 <p><a href="https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science">Course website</a></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
@@ -790,7 +785,7 @@
 <div class="quarto-auto-generated-content">
 <p><img src="umcu_blue.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>©Wouter van Amsterdam — <i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i> WvanAmsterdam — <i class="bi-file-slides " style="" role="img" aria-hidden="true"></i> vanamsterdam.github.com/talks</p>
+<p>©Wouter van Amsterdam — <i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i> WvanAmsterdam — <i class="bi-file-slides " style="" role="img" aria-hidden="true"></i> vanamsterdam.github.io/talks</p>
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -1053,18 +1048,7 @@ Keogh, Ruth H., and Nan van Geloven. 2024. <span>“Prediction Under Interventio
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1096,7 +1080,29 @@ Keogh, Ruth H., and Nan van Geloven. 2024. <span>“Prediction Under Interventio
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/vanamsterdam\.github\.io");
@@ -1104,7 +1110,7 @@ Keogh, Ruth H., and Nan van Geloven. 2024. <span>“Prediction Under Interventio
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

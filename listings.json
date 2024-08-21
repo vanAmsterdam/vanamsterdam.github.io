@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/240714-identification/index.html",
       "/posts/240607-jama-causal-language/index.html",
       "/posts/240322-mice-partial-residual-plot.html",
       "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
@@ -28,6 +29,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/240714-identification/index.html",
       "/posts/240607-jama-causal-language/index.html",
       "/posts/240322-mice-partial-residual-plot.html",
       "/posts/240308-jaxopt-vs-r-vs-julia/index.html",

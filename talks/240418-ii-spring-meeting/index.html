@@ -9,11 +9,11 @@
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.551">
+  <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Wouter van Amsterdam">
   <meta name="dcterms.date" content="2024-04-18">
-  <title>Wouter van Amsterdam - AI and its (mis)uses in medical research and practice</title>
+  <title>Wouter van Amsterdam – AI and its (mis)uses in medical research and practice</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -356,10 +356,10 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Wouter van Amsterdam - AI and its (mis)uses in medical research and practice">
+<meta property="og:title" content="AI and its (mis)uses in medical research and practice – Wouter van Amsterdam">
 <meta property="og:description" content="Infection and Immunity spring meeting">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="Wouter van Amsterdam - AI and its (mis)uses in medical research and practice">
+<meta name="twitter:title" content="AI and its (mis)uses in medical research and practice – Wouter van Amsterdam">
 <meta name="twitter:description" content="Infection and Immunity spring meeting">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
@@ -466,7 +466,7 @@
 </div>
 </div><div class="column" style="width:50%;">
 <p>data:</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">i</th>
@@ -505,8 +505,7 @@
 <div class="fragment">
 <p><span class="math display">\[l_i,w_i,s_i \sim p(l,w,s)\]</span></p>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="ml-tasks-generation" class="slide level2">
 <h2>ML tasks: generation</h2>
@@ -521,8 +520,7 @@
 <p>use samples to learn model <span class="math inline">\(p_{\theta}\)</span> for <em>joint</em> distribution <span class="math inline">\(p\)</span> <span class="math display">\[
   l_j,w_j,s_j \sim p_{\theta}(l,w,s)
 \]</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="ml-tasks-conditional-generation" class="slide level2">
 <h2>ML tasks: conditional generation</h2>
@@ -537,9 +535,8 @@
 <p>use samples to learn model for <em>conditional</em> distribution <span class="math inline">\(p\)</span> <span class="math display">\[
   l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})
 \]</span></p>
-</div>
-</div>
-<table>
+</div></div>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">task</th>
@@ -567,9 +564,8 @@
 <p>use samples to learn model for <em>conditional</em> distribution <span class="math inline">\(p\)</span> of one variable <span class="math display">\[
 s_j \sim p_{\theta}(s|l=l',w=w')
 \]</span></p>
-</div>
-</div>
-<table>
+</div></div>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">task</th>
@@ -601,9 +597,8 @@ s_j \sim p_{\theta}(s|l=l',w=w')
 <p>call this one variable <em>outcome</em> and <em>classify</em> when expected value passes threshold (e.g.&nbsp;0.5): <span class="math display">\[
 s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 \]</span></p>
-</div>
-</div>
-<table>
+</div></div>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: right;">task</th>
@@ -647,8 +642,7 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 <p><img data-src="figs/a_machine_learning.jpeg" class="fragment" style="width:10cm" data-fragment-index="2"></p>
 <p><img data-src="figs/curve_fitting_xkcd_ 2048.png" class="fragment" style="width:10cm" data-fragment-index="3"></p>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="ml-models-can-fit-more-functions-but-also-more-likely-to-overfit" class="slide level2">
 <h2>ML models can fit more functions but also more likely to overfit</h2>
@@ -761,8 +755,7 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 <p><img data-src="figs/brain_bing.jpeg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 </section></section>
 <section>
 <section id="using-ml-in-research" class="title-slide slide level1 center">
@@ -784,8 +777,7 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 <li>less data</li>
 <li>more domain knowledge</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="a-sobering-note" class="slide level2">
 <h2>A sobering note</h2>
@@ -1015,8 +1007,7 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 </div><div class="column" style="width:50%;">
 <p><img data-src="figs/qr_selffulfilling.png" style="height:8cm"></p>
 <p>When accurate prediction models yield harmful sel-fulfilling prophecies <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2024a">(<a href="#/references" role="doc-biblioref" onclick="">Amsterdam, Geloven, et al. 2024</a>)</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="take-aways" class="slide level2">
 <h2>take-aways</h2>
@@ -1039,7 +1030,7 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>©Wouter van Amsterdam — <i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i> WvanAmsterdam — <i class="bi-file-slides " style="" role="img" aria-hidden="true"></i> vanamsterdam.github.com/talks</p>
+<p>©Wouter van Amsterdam — <i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i> WvanAmsterdam — <i class="bi-file-slides " style="" role="img" aria-hidden="true"></i> vanamsterdam.github.io/talks</p>
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -1303,18 +1294,7 @@ Dhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bul
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1346,7 +1326,29 @@ Dhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bul
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/vanamsterdam\.github\.io");
@@ -1354,7 +1356,7 @@ Dhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bul
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

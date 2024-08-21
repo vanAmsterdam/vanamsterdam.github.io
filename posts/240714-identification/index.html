@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Wouter van Amsterdam">
-<meta name="dcterms.date" content="2019-08-16">
+<meta name="dcterms.date" content="2024-07-14">
 
-<title>Finding the functional form for multiple linear regression – Wouter van Amsterdam</title>
+<title>Identification - seeing is not doing – Wouter van Amsterdam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,61 +22,47 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -149,11 +135,11 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Finding the functional form for multiple linear regression – Wouter van Amsterdam">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Identification - seeing is not doing – Wouter van Amsterdam">
 <meta property="og:description" content="Wouter van Amsterdam’s academic home page">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="Finding the functional form for multiple linear regression – Wouter van Amsterdam">
+<meta name="twitter:title" content="Identification - seeing is not doing – Wouter van Amsterdam">
 <meta name="twitter:description" content="Wouter van Amsterdam’s academic home page">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
@@ -166,7 +152,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Wouter van Amsterdam</span>
     </a>
   </div>
@@ -177,27 +163,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html#selected-papers"> 
+    <a class="nav-link" href="../../index.html#selected-papers"> 
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../talks.html"> 
+    <a class="nav-link" href="../../talks.html"> 
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html#teaching"> 
+    <a class="nav-link" href="../../index.html#teaching"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts.html"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html#activities"> 
+    <a class="nav-link" href="../../index.html#activities"> 
 <span class="menu-text">Activities</span></a>
   </li>  
 </ul>
@@ -212,13 +198,8 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Finding the functional form for multiple linear regression</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">statistics</div>
-                <div class="quarto-category">simulations</div>
-                <div class="quarto-category">linear regression</div>
-              </div>
-                  </div>
+      <h1 class="title">Identification - seeing is not doing</h1>
+                      </div>
   </div>
     
   <div class="quarto-title-meta-author">
@@ -241,16 +222,10 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 16, 2019</p>
+        <p class="date">July 14, 2024</p>
       </div>
     </div>
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">March 22, 2024</p>
-      </div>
-    </div>
       
     </div>
     
@@ -263,15 +238,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#functional-relationship-in-linear-regression" id="toc-functional-relationship-in-linear-regression" class="nav-link active" data-scroll-target="#functional-relationship-in-linear-regression">Functional relationship in linear regression</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a>
-  <ul class="collapse">
-  <li><a href="#incorrect-marginal-association" id="toc-incorrect-marginal-association" class="nav-link" data-scroll-target="#incorrect-marginal-association">Incorrect: marginal association</a></li>
-  <li><a href="#correct-partial-residual-plot" id="toc-correct-partial-residual-plot" class="nav-link" data-scroll-target="#correct-partial-residual-plot">Correct: partial residual plot</a></li>
-  <li><a href="#partial-residual-plot-when-y-is-not-linear-in-x" id="toc-partial-residual-plot-when-y-is-not-linear-in-x" class="nav-link" data-scroll-target="#partial-residual-plot-when-y-is-not-linear-in-x">Partial residual plot when y is not linear in x</a></li>
-  </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#introduction-to-example" id="toc-introduction-to-example" class="nav-link active" data-scroll-target="#introduction-to-example">Introduction to example</a></li>
+  <li><a href="#parameterizing-the-example" id="toc-parameterizing-the-example" class="nav-link" data-scroll-target="#parameterizing-the-example">Parameterizing the example</a></li>
+  <li><a href="#finding-parameters-with-the-same-marginals-but-different-treatment-effects" id="toc-finding-parameters-with-the-same-marginals-but-different-treatment-effects" class="nav-link" data-scroll-target="#finding-parameters-with-the-same-marginals-but-different-treatment-effects">Finding parameters with the same marginals but different treatment effects</a></li>
   </ul>
 </nav>
     </div>
@@ -282,135 +251,287 @@ window.Quarto = {
 
 
 
-<section id="functional-relationship-in-linear-regression" class="level2">
-<h2 class="anchored" data-anchor-id="functional-relationship-in-linear-regression">Functional relationship in linear regression</h2>
-<p>A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a <a href="https://en.wikipedia.org/wiki/Partial_residual_plot">partial residual plot</a>. Here I will generate some data to illustrate this</p>
-</section>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressMessages</span>({<span class="fu">require</span>(ggplot2); <span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())})</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(N, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max=</span><span class="dv">2</span><span class="sc">*</span>pi)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> .<span class="dv">5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">sin</span>(x) <span class="sc">+</span> <span class="fu">rnorm</span>(N, <span class="at">sd=</span>.<span class="dv">25</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sy <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">sd=</span>.<span class="dv">1</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> w <span class="sc">+</span> sy</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(x,w,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The data consists of two real-valued ‘independent’ variables <span class="math inline">\(x,w\)</span>, where</p>
-<p><span class="math display">\[
-\begin{align}
-x &amp;\sim U(0, 2 \pi) \\
-\epsilon_w &amp;\sim N(0, 0.25) \\
-\epsilon_y &amp;\sim N(0, 0.1) \\
-w &amp;:= \frac{x}{2} + \sin(x) \\
-y &amp;:= x + w + \epsilon_y
-\end{align}
-\]</span></p>
-<p>Clearly <span class="math inline">\(y\)</span> is linear in both <span class="math inline">\(x\)</span> and <span class="math inline">\(w\)</span>. A plot of the data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>w,<span class="at">col=</span>y, <span class="at">size=</span>y)) <span class="sc">+</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="190816-lm-functional-form_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>joint distribution of x, w, y</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="plots" class="level2">
-<h2 class="anchored" data-anchor-id="plots">Plots</h2>
-<section id="incorrect-marginal-association" class="level3">
-<h3 class="anchored" data-anchor-id="incorrect-marginal-association">Incorrect: marginal association</h3>
-<p>Let’s say we’re particularly interested in the relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span>, both conditional on <span class="math inline">\(w\)</span>. Looking at the <em>marginal</em> association between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> with a scatterplot will set us on the wrong foot, because of the association between <span class="math inline">\(x\)</span> and <span class="math inline">\(w\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="190816-lm-functional-form_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>marginal association between x and y</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="correct-partial-residual-plot" class="level3">
-<h3 class="anchored" data-anchor-id="correct-partial-residual-plot">Correct: partial residual plot</h3>
-<p>To construct the correct plot, we can generate a partial residual plot, which is created with <code>resid(lm(y~x+w))+b_x x ~ x</code>.</p>
-<p>Where <code>b_x</code> is the regression coefficient found through linear regression of <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span> and <span class="math inline">\(w\)</span>. In a plot:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lmfit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x<span class="sc">+</span>w)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>yresid <span class="ot">&lt;-</span> <span class="fu">resid</span>(lmfit)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>b_x <span class="ot">&lt;-</span> <span class="fu">coef</span>(lmfit)[<span class="st">'x'</span>]</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plotdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, <span class="at">y=</span>yresid <span class="sc">+</span> b_x <span class="sc">*</span> x)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plotdata, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"resid(lm(y~x+w)) + b_x x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-partialresid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p>Some things I found confusing in causal inference: the terms identification, pointing to the concept of finding a unique solution, versus “seeing-is-not-doing”. In settings with unobserved confounding, we know that that marginal outcome rates do not equal causal effects. So seeing is not doing, but the estimate is unique right, even though its wrong. So in what sense is it not identified?</p>
+<p>We take Judea Pearl’s definition from the book Causality <span class="citation" data-cites="pearlCausality2009">(Definition 3.2.3 <a href="#ref-pearlCausality2009" role="doc-biblioref">Pearl 2009</a>)</span></p>
+<p>With an example we demonstrate ‘non-identified-ness’</p>
+<section id="introduction-to-example" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-to-example">Introduction to example</h3>
+<p>We consider this simple causal Directed Acyclic Graph over binary variables with with parameterized joint distribution</p>
+<div id="fig-dag" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-partialresid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="190816-lm-functional-form_files/figure-html/fig-partialresid-1.png" class="img-fluid figure-img" width="672">
+<div aria-describedby="fig-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<svg width="672" height="480" viewbox="0.00 0.00 134.00 116.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 130,-112 130,4 -4,4"></polygon>
+<!-- U -->
+<g id="node1" class="node">
+<title>U</title>
+<ellipse fill="none" stroke="black" cx="63" cy="-90" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="63" y="-85.8" font-family="Times,serif" font-size="14.00">U</text>
+</g>
+<!-- X -->
+<g id="node2" class="node">
+<title>X</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-18" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="27" y="-13.8" font-family="Times,serif" font-size="14.00">X</text>
+</g>
+<!-- U&#45;&gt;X -->
+<g id="edge1" class="edge">
+<title>U-&gt;X</title>
+<path fill="none" stroke="black" d="M54.65,-72.76C50.29,-64.28 44.85,-53.71 39.96,-44.2"></path>
+<polygon fill="black" stroke="black" points="42.99,-42.44 35.3,-35.15 36.77,-45.64 42.99,-42.44"></polygon>
+</g>
+<!-- Y -->
+<g id="node3" class="node">
+<title>Y</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-18" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="99" y="-13.8" font-family="Times,serif" font-size="14.00">Y</text>
+</g>
+<!-- U&#45;&gt;Y -->
+<g id="edge3" class="edge">
+<title>U-&gt;Y</title>
+<path fill="none" stroke="black" d="M71.35,-72.76C75.71,-64.28 81.15,-53.71 86.04,-44.2"></path>
+<polygon fill="black" stroke="black" points="89.23,-45.64 90.7,-35.15 83.01,-42.44 89.23,-45.64"></polygon>
+</g>
+<!-- X&#45;&gt;Y -->
+<g id="edge2" class="edge">
+<title>X-&gt;Y</title>
+<path fill="none" stroke="black" d="M54,-18C56.61,-18 59.23,-18 61.84,-18"></path>
+<polygon fill="black" stroke="black" points="61.93,-21.5 71.93,-18 61.93,-14.5 61.93,-21.5"></polygon>
+</g>
+</g>
+</svg>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partialresid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: partial residual plot
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
 </figcaption>
 </figure>
 </div>
-</div>
-</div>
 </section>
-<section id="partial-residual-plot-when-y-is-not-linear-in-x" class="level3">
-<h3 class="anchored" data-anchor-id="partial-residual-plot-when-y-is-not-linear-in-x">Partial residual plot when y is not linear in x</h3>
-<p>What if <span class="math inline">\(y\)</span> were not linear in <span class="math inline">\(x\)</span>?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> w <span class="sc">+</span> sy</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lmfit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y2 <span class="sc">~</span> x <span class="sc">+</span> w)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>b_x2 <span class="ot">&lt;-</span> <span class="fu">coef</span>(lmfit2)[<span class="st">'x'</span>]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plotdata2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, <span class="at">y=</span><span class="fu">resid</span>(lmfit2) <span class="sc">+</span> b_x2 <span class="sc">*</span> x)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plotdata2, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y)) <span class="sc">+</span> </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"resid(lm(y~x+w)) + b_x x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="190816-lm-functional-form_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>partial residual plot when y not linear in x</figcaption>
-</figure>
-</div>
-</div>
-</div>
+<section id="parameterizing-the-example" class="level3">
+<h3 class="anchored" data-anchor-id="parameterizing-the-example">Parameterizing the example</h3>
+<p>We follow the causal factorization in parameterizing the joint distribution. First we parameterize <span class="math inline">\(P(U)\)</span> and <span class="math inline">\(P(X|U)\)</span></p>
+<p><span class="math display">\[\begin{align}
+    P(U=1)         &amp;= p_u \\
+    P(X=1|U=u)     &amp;= (1-u)a_0 + u a_1
+\end{align}\]</span></p>
+<p>This leads to the following marginal for <span class="math inline">\(P(X)\)</span>:</p>
+<p><span class="math display">\[\begin{align}
+    P(X=1) &amp;= P(X=1|U=0)P(U=0) + P(X=1|U=1)P(U=1) \\
+           &amp;= a_0 (1-p_u) + a_1 p_u \\
+           &amp;= p_u (a_1 - a_0) + a_0 \\
+    P(X=0) &amp;= 1 - P(X=1) \\
+           &amp;= p_u (a_0 - a_1) - a_0
+\end{align}\]</span> {#eq-xmarginals}</p>
+<p>And the following <span class="math inline">\(P(U=1|X=x)\)</span>:</p>
+<p><span class="math display">\[\begin{align}
+  P(U=1|X=x) = &amp;\frac{P(U=1,X=x)}{P(X=x)} \\
+             = &amp;\frac{P(X=x|U=1)P(U=1)}{P(X=x)} \\
+             = &amp;(1-x) \frac{(1-a_1)p_u}{p_u (a_0 - a_1) - a_0} \\
+              &amp;+x \frac{a_1 p_u}{p_u (a_1 - a_0) + a_0} \\
+\end{align}\]</span></p>
+<p>To shorten notation we introduce:</p>
+<p><span class="math display">\[\begin{align}
+    \gamma_0 = \gamma_0(p_u,a_0,a_1) &amp;:= \frac{(1-a_1)p_u}{p_u (a_0 - a_1) - a_0} &amp;= P(U=1|X=0) \\
+    \gamma_1 = \gamma_1(p_u,a_0,a_1) &amp;:= \frac{a_1 p_u}{p_u (a_1 - a_0) + a_0}    &amp;= P(U=1|X=1)
+\end{align}\]</span></p>
+<p>We now parameterize <span class="math inline">\(P(Y=1|X=x,U=u)\)</span>:</p>
+<p><span id="eq-fy"><span class="math display">\[P(Y=1|X=x,U=u) = q + r x + s u + t xu \tag{1}\]</span></span></p>
+<p>As in the last conditional all back-door paths are closed, <span class="math inline">\(P(Y=1|X=x,U) = P(Y=1|\text{do}(X=x),U)\)</span></p>
+<p>The entire distribution is parameterized with 7 parameters:</p>
+<p><span id="eq-params"><span class="math display">\[p_u,a_0,a_1,q,r,s,t \tag{2}\]</span></span></p>
+<p>Assume we have observational data where we do not observe <span class="math inline">\(U\)</span>, this gives us three observations:</p>
+<p><span class="math display">\[\begin{align}
+    P(Y=1|X=0) = &amp;P(Y=1|X=0,U=0)P(U=0|X=0) \\
+                          &amp; + P(Y=1|X=0,U=1)P(U=1|X=0) \\
+                        = &amp;(1-\gamma_0) q + \gamma_0 (q + s) \\
+                        = &amp; q + \gamma_0 s \\
+    P(Y=1|X=1) = &amp;P(Y=1|X=1,U=0)P(U=0|X=1) \\
+                          &amp; + P(Y=1|X=1,U=1)P(U=1|X=1) \\
+                        = &amp;(1-\gamma_1) (q + r) + \gamma_1 (q + r + s + t) \\
+                        = &amp; q + r + \gamma_1 (s + t) \\
+    P(Y=1)       = &amp; P(Y=1|X=0)P(X=0) + P(Y=1|X=1)P(X=1) \\
+                        = &amp; (p_u(a_0 - a_1) - a_0)(q + \gamma_0 s) \\
+                          &amp; + (p_u(a_1 - a_0) + a_0)(q + r + \gamma_1 (s + t))
+\end{align}\]</span></p>
+<p>Define:</p>
+<p><span id="eq-pi0"><span class="math display">\[\pi_0 := P(Y=1|X=0) = q + \gamma_0 s \tag{3}\]</span></span> <span id="eq-pi1"><span class="math display">\[\pi_1 := P(Y=1|X=1) = q + r+ \gamma_1 (s + t) \tag{4}\]</span></span> <span id="eq-pi"><span class="math display">\[\pi   := P(Y=1) = P(X=0) \pi_0 + P(X=1) \pi_1 \tag{5}\]</span></span></p>
+<p>In the latter we may choose to express <span class="math inline">\(P(X=1)\)</span> in terms of <span class="math inline">\(p_u,a_0,a_1\)</span> when convenient.</p>
 </section>
+<section id="finding-parameters-with-the-same-marginals-but-different-treatment-effects" class="level3">
+<h3 class="anchored" data-anchor-id="finding-parameters-with-the-same-marginals-but-different-treatment-effects">Finding parameters with the same marginals but different treatment effects</h3>
+<p>Looking at the definition of identifiability:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition 3.2.3 (Identifiability)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(Q(M)\)</span> be any computable quantity of a model <span class="math inline">\(M\)</span>. We say that <span class="math inline">\(Q\)</span> is <strong>identifiable</strong> in a class <span class="math inline">\(\mathbb{M}\)</span> of models if, for any pairs of models <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> from <span class="math inline">\(\mathbb{M}\)</span>, <span class="math inline">\(Q(M_1) = Q(M_2)\)</span> whenever <span class="math inline">\(P_{M_1} (y) = P_{M_2} (y)\)</span>. If our observations are limited and permit only a partial set <span class="math inline">\(F_M\)</span> of features (of <span class="math inline">\(P_M(y)\)</span>) to be estimated, we define <span class="math inline">\(Q\)</span> to be identifiable from <span class="math inline">\(F_M\)</span> if <span class="math inline">\(Q(M_1) = Q(M_2)\)</span> whenever <span class="math inline">\(F_{M_1} = F_{M_2}\)</span>.</p>
+</div>
+</div>
+<p>We pick as query the Average Treatment Effect (ATE):</p>
+<p><span id="eq-ate"><span class="math display">\[\text{ATE} = E[Y|\text{do}(X=1)] - E[Y|\text{do}(X=0)] \tag{6}\]</span></span></p>
+<p>Are observed features <span class="math inline">\(F_M\)</span> of the distribution are</p>
+<p><span id="eq-observables"><span class="math display">\[\pi_1,\pi_0,\pi \tag{7}\]</span></span></p>
+<p>Can we find values of the parameters in <a href="#eq-params" class="quarto-xref">Equation&nbsp;2</a> for which the observables <a href="#eq-observables" class="quarto-xref">Equation&nbsp;7</a> are the same, but our target query <a href="#eq-ate" class="quarto-xref">Equation&nbsp;6</a> is not? If that is the case, we have proved (by counter-example) that the target query is not identified from our model assumptions on the DAG in <a href="#fig-dag" class="quarto-xref">Figure&nbsp;1</a> and the observables from the data <a href="#eq-observables" class="quarto-xref">Equation&nbsp;7</a>. It turns out, we quite easily can. If we set 4 out of 7 parameters and assume values for the three observables, we can solve for the other three parameters using the equations for the observables. Let’s choose some values for 2 parameters:</p>
+<p><span class="math display">\[p_u=0.5, t=0\]</span></p>
+<p>This means the ‘interaction’ term <span class="math inline">\(t\)</span> for <span class="math inline">\(X,U\)</span> is zero. And observables:</p>
+<p><span class="math display">\[\pi_0=0.3, \pi_1=0.7, \pi = 0.5\]</span></p>
+<p>The fact that <span class="math inline">\(\pi = 0.5 = P(X=0)\pi_0 + P(X=1)\pi_1\)</span> implies that</p>
+<p><span id="eq-xmarginal"><span class="math display">\[P(X=1)=0.5 \tag{8}\]</span></span></p>
+<p>by solving <span class="math inline">\(0.5 = (1-P(X=1)) 0.3 + P(X=1) 0.5\)</span>. Using <strong>?@eq-xmarginals</strong> we have that:</p>
+<p><span id="eq-as"><span class="math display">\[a_1 + a_0=1 \tag{9}\]</span></span></p>
+<section id="model-1-no-treatment-effect" class="level4">
+<h4 class="anchored" data-anchor-id="model-1-no-treatment-effect">Model 1: no treatment effect</h4>
+<p>Now we can start adding substantial differences based on confounding and the outcome mechanism. First let’s assume extreme confounding and no causal effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>, so:</p>
+<p><span id="eq-antecedent1"><span class="math display">\[r=0,a_0=0,a_1=1 \tag{10}\]</span></span></p>
+<p>We have now specified 5 parameters and used one constraint. Working with the equations for <span class="math inline">\(\pi_0,\pi_1\)</span> we can now solve for <span class="math inline">\(q,s\)</span>. First note that <span class="math inline">\(\gamma_0 = 0, \gamma_1 = 1\)</span>.</p>
+<p>We use <a href="#eq-pi0" class="quarto-xref">Equation&nbsp;3</a> for <span class="math inline">\(q\)</span>:</p>
+<p><span class="math display">\[\pi_0 = q + \gamma_0 s = q = 0.3\]</span></p>
+<p>And <a href="#eq-pi1" class="quarto-xref">Equation&nbsp;4</a> for <span class="math inline">\(s\)</span>:</p>
+<p><span class="math display">\[\begin{align}
+    \pi_1 &amp;= q + r + \gamma_1 (s+t) = q + s \\
+    0.7   &amp;= 0.3 + s \\
+          &amp;\Rightarrow s = 0.4
+\end{align}\]</span></p>
+<p>As <span class="math inline">\(r=t=0\)</span> we have that our query <span class="math inline">\(\text{ATE}=0\)</span></p>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>The functional relationship between an outcome and a covariate in a linear regression conditional on other covariates is visualized with a <a href="https://en.wikipedia.org/wiki/Partial_residual_plot">partial residual plot</a>, or:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lmfit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y<span class="sc">~</span>x<span class="sc">+</span>w)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">resid</span>(lmfit) <span class="sc">+</span> <span class="fu">coef</span>(lmfit)[<span class="st">'x'</span>] <span class="sc">*</span> x <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="model-2-no-confounding" class="level4">
+<h4 class="anchored" data-anchor-id="model-2-no-confounding">Model 2: no confounding</h4>
+<p>As an alternative we can say there is no confounding and the observed difference in <span class="math inline">\(\pi_1,\pi_0\)</span> is thus in fact due to the causal effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>, by setting:</p>
+<p><span class="math display">\[\begin{align}
+    a_0 = a_1 &amp;= 0.5 \\
+            q &amp;= 0.3 \\
+            r &amp;= \pi_1 - \pi_0 = 0.4 \\
+            s &amp;= 0
+\end{align}\]</span></p>
+<p>We can easily verify that these parameters are consistent with the observables and the above definitions of <span class="math inline">\(p_u,t\)</span> and the observeables.</p>
+</section>
+<section id="model-3-half-confounding" class="level4">
+<h4 class="anchored" data-anchor-id="model-3-half-confounding">Model 3: half-confounding</h4>
+<p>We have now proven that the query is not identified since we have two models that have different answers for out query, but lead to the same observed features of the observational distribution. Because <span class="citation" data-cites="seq-model2">(<a href="#ref-seq-model2" role="doc-biblioref"><strong>seq-model2?</strong></a>)</span> is a bit special (no-confounding), let’s just add another one in the mix.</p>
+<p>Assume <span class="math inline">\(r=0.2\)</span> so <span class="math inline">\(\text{ATE} = 0.2\)</span>. Let’s assume less extreme confounding than Model 1: <span class="math inline">\(a_0 = 0.25,a_1=0.75\)</span>. We can now work out the values for <span class="math inline">\(q\)</span> and <span class="math inline">\(s\)</span>. First note that</p>
+<p>Putting it in a Table:</p>
+<div id="tab-nonid">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>model</th>
+<th>ATE</th>
+<th><span class="math inline">\(\pi_0\)</span></th>
+<th><span class="math inline">\(\pi_1\)</span></th>
+<th>$</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0.3</td>
+<td>0.7</td>
+<td>0.5</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>0.4</td>
+<td>0.3</td>
+<td>0.7</td>
+<td>0.5</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0.2</td>
+<td>0.3</td>
+<td>0.7</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tab-params">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>model</th>
+<th><span class="math inline">\(p_u\)</span></th>
+<th><span class="math inline">\(a_0\)</span></th>
+<th><span class="math inline">\(a_1\)</span></th>
+<th><span class="math inline">\(q\)</span></th>
+<th><span class="math inline">\(r\)</span></th>
+<th><span class="math inline">\(s\)</span></th>
+<th><span class="math inline">\(t\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0.5</td>
+<td>0</td>
+<td>1</td>
+<td>0.3</td>
+<td>0</td>
+<td>0.4</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>0.3</td>
+<td>0.4</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0.5</td>
+<td>0.3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
+
+</section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{van_amsterdam2019,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-pearlCausality2009" class="csl-entry" role="listitem">
+Pearl, Judea. 2009. <em>Causality</em>. Cambridge University Press.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{van_amsterdam2024,
   author = {van Amsterdam, Wouter},
-  title = {Finding the Functional Form for Multiple Linear Regression},
-  date = {2019-08-16},
-  url = {https://vanamsterdam.github.io/posts/190816-lm-functional-form.html},
+  title = {Identification - Seeing Is Not Doing},
+  date = {2024-07-14},
+  url = {https://vanamsterdam.github.io/posts/240714-identification/},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van_amsterdam2019" class="csl-entry quarto-appendix-citeas" role="listitem">
-Amsterdam, Wouter van. 2019. <span>“Finding the Functional Form for
-Multiple Linear Regression.”</span> August 16, 2019. <a href="https://vanamsterdam.github.io/posts/190816-lm-functional-form.html">https://vanamsterdam.github.io/posts/190816-lm-functional-form.html</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van_amsterdam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Amsterdam, Wouter van. 2024. <span>“Identification - Seeing Is Not
+Doing.”</span> July 14, 2024. <a href="https://vanamsterdam.github.io/posts/240714-identification/">https://vanamsterdam.github.io/posts/240714-identification/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

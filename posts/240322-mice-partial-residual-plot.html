@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Wouter van Amsterdam">
 <meta name="dcterms.date" content="2024-03-22">
 
-<title>Wouter van Amsterdam - Partial residual plots with multiply imputed data</title>
+<title>Partial residual plots with multiply imputed data – Wouter van Amsterdam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -121,10 +121,10 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Wouter van Amsterdam - Partial residual plots with multiply imputed data">
+<meta property="og:title" content="Partial residual plots with multiply imputed data – Wouter van Amsterdam">
 <meta property="og:description" content="Wouter van Amsterdam’s academic home page">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="Wouter van Amsterdam - Partial residual plots with multiply imputed data">
+<meta name="twitter:title" content="Partial residual plots with multiply imputed data – Wouter van Amsterdam">
 <meta name="twitter:description" content="Wouter van Amsterdam’s academic home page">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
@@ -142,7 +142,7 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -173,7 +173,7 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -273,7 +273,7 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plotdata1, <span class="fu">aes</span>(<span class="at">x=</span>hgt, <span class="at">y=</span>y)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-partialresidualplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-partialresidualplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-partialresidualplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="240322-mice-partial-residual-plot_files/figure-html/fig-partialresidualplot-1.png" class="img-fluid figure-img" width="672">
@@ -289,7 +289,7 @@ Figure&nbsp;1: Partial residual plot on complete data
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df1, <span class="fu">aes</span>(<span class="at">x=</span>hgt, <span class="at">y=</span>wgt)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-marginalplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-marginalplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-marginalplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="240322-mice-partial-residual-plot_files/figure-html/fig-marginalplot-1.png" class="img-fluid figure-img" width="672">
@@ -325,7 +325,7 @@ Figure&nbsp;2: marginal association between age and height
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(impdf_long, <span class="fu">aes</span>(<span class="at">x=</span>hgt, <span class="at">y=</span>partial_resid)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span><span class="fu">factor</span>(impidx)), <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-partialresidualimp" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-partialresidualimp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-partialresidualimp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="240322-mice-partial-residual-plot_files/figure-html/fig-partialresidualimp-1.png" class="img-fluid figure-img" width="672">
@@ -348,14 +348,14 @@ Figure&nbsp;3: partial residual plot with imputed datasets
 <ol>
 <li id="fn1"><p>multiple imputation with chained equations sequentially imputes values for all variables with missing values by building prediction models for each variable based on other variables. This imputation is done multiple times with multiple random seeds and thus results in a number of different imputed datasets. A typical analysis workflow is to do these imputations and on each imputed dataset fit a model of interest. The coefficients of these models can then be pooled using Rubin’s rules.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{van amsterdam2024,
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{van_amsterdam2024,
   author = {van Amsterdam, Wouter},
   title = {Partial Residual Plots with Multiply Imputed Data},
   date = {2024-03-22},
   url = {https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van amsterdam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van_amsterdam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Amsterdam, Wouter van. 2024. <span>“Partial Residual Plots with Multiply
 Imputed Data.”</span> March 22, 2024. <a href="https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html">https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html</a>.
 </div></div></section></div></main> <!-- /main -->
@@ -538,18 +538,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -581,7 +570,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/vanamsterdam\.github\.io");
@@ -589,7 +600,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

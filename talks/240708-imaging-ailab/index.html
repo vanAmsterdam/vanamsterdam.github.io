@@ -9,11 +9,11 @@
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.551">
+  <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Wouter van Amsterdam">
   <meta name="dcterms.date" content="2024-07-08">
-  <title>Wouter van Amsterdam - Medical imaging and AI for decision support</title>
+  <title>Wouter van Amsterdam – Medical imaging and AI for decision support</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -356,10 +356,10 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Wouter van Amsterdam - Medical imaging and AI for decision support">
+<meta property="og:title" content="Medical imaging and AI for decision support – Wouter van Amsterdam">
 <meta property="og:description" content="Medical Imaging AI lab meeting">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="Wouter van Amsterdam - Medical imaging and AI for decision support">
+<meta name="twitter:title" content="Medical imaging and AI for decision support – Wouter van Amsterdam">
 <meta name="twitter:description" content="Medical Imaging AI lab meeting">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
@@ -389,9 +389,9 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li class="fragment"><a href="#/uses-of-ai-in-medical-imaging" id="/toc-uses-of-ai-in-medical-imaging">Uses of AI in medical imaging</a></li>
-<li class="fragment"><a href="#/selffulfilling" id="/toc-selffulfilling">When accurate prediction models yield harmful self-fulfilling prophecies</a></li>
-<li class="fragment"><a href="#/building-and-validating-models-for-decision-support" id="/toc-building-and-validating-models-for-decision-support">Building and validating models for decision support</a></li>
+<li><a href="#/uses-of-ai-in-medical-imaging" id="/toc-uses-of-ai-in-medical-imaging">Uses of AI in medical imaging</a></li>
+<li><a href="#/selffulfilling" id="/toc-selffulfilling">When accurate prediction models yield harmful self-fulfilling prophecies</a></li>
+<li><a href="#/building-and-validating-models-for-decision-support" id="/toc-building-and-validating-models-for-decision-support">Building and validating models for decision support</a></li>
 </ul>
 </nav>
 </section>
@@ -404,7 +404,7 @@
 <h2>Use AI for medical imaging</h2>
 <h3 id="to-make-healthcare-easier-or-more-efficient">to make healthcare easier or more efficient</h3>
 <ol type="1">
-<li class="fragment"><p>Acquisition (<span class="math inline">\(S \to X\)</span>)</p>
+<li><p>Acquisition (<span class="math inline">\(S \to X\)</span>)</p>
 <div class="fragment">
 <div>
 <ul>
@@ -413,7 +413,7 @@
 </ul>
 </div>
 </div></li>
-<li class="fragment"><p>detection / segmentation (<span class="math inline">\(X \to X\)</span>)</p>
+<li><p>detection / segmentation (<span class="math inline">\(X \to X\)</span>)</p>
 <div class="fragment">
 <div>
 <ul>
@@ -421,7 +421,7 @@
 </ul>
 </div>
 </div></li>
-<li class="fragment"><p>inference / diagnosis (<span class="math inline">\(X \to D\)</span>, both at prediction time)</p>
+<li><p>inference / diagnosis (<span class="math inline">\(X \to D\)</span>, both at prediction time)</p>
 <div class="fragment">
 <div>
 <ul>
@@ -436,7 +436,7 @@
 <h2>Use AI for medical imaging</h2>
 <h3 id="to-make-healthcare-better-improve-decisions">to make healthcare better (improve decisions)</h3>
 <ol start="4" type="1">
-<li class="fragment"><p>prognosis (<span class="math inline">\(X \to Y\)</span>, <span class="math inline">\(Y\)</span> in the future)</p>
+<li><p>prognosis (<span class="math inline">\(X \to Y\)</span>, <span class="math inline">\(Y\)</span> in the future)</p>
 <div class="fragment">
 <div>
 <ul>
@@ -444,7 +444,7 @@
 </ul>
 </div>
 </div></li>
-<li class="fragment"><p>treatment effect (<span class="math inline">\(X\)</span> determines effect of a treatment <span class="math inline">\(T\)</span> on outcome <span class="math inline">\(Y\)</span> in the future)</p></li>
+<li><p>treatment effect (<span class="math inline">\(X\)</span> determines effect of a treatment <span class="math inline">\(T\)</span> on outcome <span class="math inline">\(Y\)</span> in the future)</p></li>
 </ol>
 <!--
    :::{.fragment}
@@ -460,13 +460,13 @@
 <h2>Why would you estimate treatment effects based on images?</h2>
 <!-- TODO: make examples figures instead of text -->
 <ul>
-<li class="fragment">treatments have different effects on patients based on their (disease) characteristics</li>
-<li class="fragment">for example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive</li>
-<li class="fragment">some characteristics may be well captured in medical imaging:
+<li>treatments have different effects on patients based on their (disease) characteristics</li>
+<li>for example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive</li>
+<li>some characteristics may be well captured in medical imaging:
 <ul>
-<li class="fragment">T-cell distributions around tumors related to effect of immunotherapy in cancer</li>
-<li class="fragment">heterogeneity of tumor on CT may predict response to radiotherapy</li>
-<li class="fragment">holistic view of ‘body composition’ on CT-scans determines whether patient can tolerate chemotherapy</li>
+<li>T-cell distributions around tumors related to effect of immunotherapy in cancer</li>
+<li>heterogeneity of tumor on CT may predict response to radiotherapy</li>
+<li>holistic view of ‘body composition’ on CT-scans determines whether patient can tolerate chemotherapy</li>
 </ul></li>
 </ul>
 </section>
@@ -475,10 +475,10 @@
 <!-- TODO: have mulitple steps in point 4 to build it up -->
 <p>In principle the same as estimating a subgroup treatment effect (e.g.&nbsp;male vs female)</p>
 <ol type="1">
-<li class="fragment">Conduct a randomized controlled trial where the treatments of interest are randomly allocated</li>
-<li class="fragment">Collect (imaging) data at randomization timepoint</li>
-<li class="fragment">Use a statistical learning technique like TARnet <span class="citation" data-cites="shalitEstimatingIndividualTreatment2017">(<a href="#/references" role="doc-biblioref" onclick="">Shalit, Johansson, and Sontag 2017</a>)</span> to estimate outcomes conditional on image and treatment</li>
-<li class="fragment">conditional treatment effect <span class="math inline">\(= f(X,T=1) - f(X,T=0)\)</span></li>
+<li>Conduct a randomized controlled trial where the treatments of interest are randomly allocated</li>
+<li>Collect (imaging) data at randomization timepoint</li>
+<li>Use a statistical learning technique like TARnet <span class="citation" data-cites="shalitEstimatingIndividualTreatment2017">(<a href="#/references" role="doc-biblioref" onclick="">Shalit, Johansson, and Sontag 2017</a>)</span> to estimate outcomes conditional on image and treatment</li>
+<li>conditional treatment effect <span class="math inline">\(= f(X,T=1) - f(X,T=0)\)</span></li>
 </ol>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -503,9 +503,9 @@
 </ol>
 </div>
 <ul>
-<li class="fragment">Whereas treatment effect estimation is typically thought of as a <em>causal</em> task requiring <em>causal</em> approaches (e.g.&nbsp;randomized controllerd trials)</li>
-<li class="fragment">Prognosis models are often developed without any causal thinking (if it predicts it predicts)</li>
-<li class="fragment">but then advertised for making treatment decisions.</li>
+<li>Whereas treatment effect estimation is typically thought of as a <em>causal</em> task requiring <em>causal</em> approaches (e.g.&nbsp;randomized controllerd trials)</li>
+<li>Prognosis models are often developed without any causal thinking (if it predicts it predicts)</li>
+<li>but then advertised for making treatment decisions.</li>
 </ul>
 </section>
 <section id="the-in-between-using-prediction-models-for-medical-decision-making" class="slide level2 center" data-auto-animate="true">
@@ -521,8 +521,8 @@
 <h2>Using prediction models for decision making is often thought of as a good idea</h2>
 <p>For example:</p>
 <ol type="1">
-<li class="fragment">give chemotherapy to cancer patients with high predicted risk of recurrence</li>
-<li class="fragment">give statins to patients with a high risk of a heart attack</li>
+<li>give chemotherapy to cancer patients with high predicted risk of recurrence</li>
+<li>give statins to patients with a high risk of a heart attack</li>
 </ol>
 <div class="fragment">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -549,8 +549,8 @@
 </div>
 <div class="callout-content">
 <ol type="1">
-<li class="fragment">ignoring the treatments patients may have had during training / validation of (AI) prediction model</li>
-<li class="fragment">only considering measures of predictive accuracy as sufficient evidence for safe deployment</li>
+<li>ignoring the treatments patients may have had during training / validation of (AI) prediction model</li>
+<li>only considering measures of predictive accuracy as sufficient evidence for safe deployment</li>
 </ol>
 </div>
 </div>
@@ -602,8 +602,8 @@
 <h2>Treatment-naive prediction models</h2>
 <p><span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2024">(Results from <a href="#/references" role="doc-biblioref" onclick="">van Amsterdam, van Geloven, et al. 2024</a>)</span></p>
 <ol type="1">
-<li class="fragment">good or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change</li>
-<li class="fragment">models that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution</li>
+<li>good or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change</li>
+<li>models that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution</li>
 </ol>
 </section>
 <section class="slide level2 center">
@@ -633,8 +633,7 @@
 <p><img data-src="figs/tripod_ai.png" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="bigger-data-does-not-protect-against-harmful-prediction-models" class="slide level2 center">
 <h2>Bigger data does not protect against harmful prediction models</h2>
@@ -661,8 +660,8 @@
 <p>What to do?</p>
 </div>
 <ol type="1">
-<li class="fragment">Evaluate policy change (cluster randomized controlled trial)</li>
-<li class="fragment">Build models that are likely to have value for decision making</li>
+<li>Evaluate policy change (cluster randomized controlled trial)</li>
+<li>Build models that are likely to have value for decision making</li>
 </ol>
 </section></section>
 <section>
@@ -679,11 +678,11 @@
 <p>With a randomized experiment</p>
 <!--With causal inference!-->
 <ul>
-<li class="fragment">for using a decision support model, the unit of intervention is usually <em>the doctor</em></li>
-<li class="fragment">randomly assign <em>doctors</em> to have access to the model or not</li>
-<li class="fragment">measure differences in <strong>treatment decisions</strong> and <strong>patient outcomes</strong></li>
-<li class="fragment">this called a cluster RCT</li>
-<li class="fragment">if using model improves outcomes, use that one</li>
+<li>for using a decision support model, the unit of intervention is usually <em>the doctor</em></li>
+<li>randomly assign <em>doctors</em> to have access to the model or not</li>
+<li>measure differences in <strong>treatment decisions</strong> and <strong>patient outcomes</strong></li>
+<li>this called a cluster RCT</li>
+<li>if using model improves outcomes, use that one</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -717,20 +716,20 @@
 <h2>So build treatment-naive prediction models and trial them for decision support?</h2>
 <p>Not a good idea</p>
 <ul>
-<li class="fragment">baking a cake without a recipe</li>
-<li class="fragment">hoping it turns into something nice</li>
-<li class="fragment">not pleasant to people that need to taste result of the experiment
+<li>baking a cake without a recipe</li>
+<li>hoping it turns into something nice</li>
+<li>not pleasant to people that need to taste result of the experiment
 <ul>
-<li class="fragment">(i.e.&nbsp;patients may have side-effects / die)</li>
+<li>(i.e.&nbsp;patients may have side-effects / die)</li>
 </ul></li>
 </ul>
 </section>
 <section id="we-should-build-models-that-are-likely-to-be-valuable-for-decision-making" class="slide level2 center">
 <h2>We should build models that are likely to be valuable for decision making</h2>
 <ul>
-<li class="fragment">Build models that predict expected outcomes under <em>hypothetical interventions</em> (<em>prediction-under-intervention models</em>)</li>
-<li class="fragment">doctor / patient can pick the treatment with <em>best</em> expected outcomes, depending on patient’s values and preferences</li>
-<li class="fragment">whereas <em>treatment-naive</em> prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option</li>
+<li>Build models that predict expected outcomes under <em>hypothetical interventions</em> (<em>prediction-under-intervention models</em>)</li>
+<li>doctor / patient can pick the treatment with <em>best</em> expected outcomes, depending on patient’s values and preferences</li>
+<li>whereas <em>treatment-naive</em> prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -744,7 +743,7 @@
 </div>
 </div>
 <ul>
-<li class="fragment">prediction-under-intervention is not a new idea, but language and methods on causality have come a long way since <span class="citation" data-cites="hildenPrognosisMedicineAnalysis1987">(<a href="#/references" role="doc-biblioref" onclick="">Hilden and Habbema 1987</a>)</span>.</li>
+<li>prediction-under-intervention is not a new idea, but language and methods on causality have come a long way since <span class="citation" data-cites="hildenPrognosisMedicineAnalysis1987">(<a href="#/references" role="doc-biblioref" onclick="">Hilden and Habbema 1987</a>)</span>.</li>
 </ul>
 </div>
 </section>
@@ -752,10 +751,10 @@
 <h2>Estimand for prediction-under-intervention models</h2>
 <p>What is the estimand?</p>
 <ul>
-<li class="fragment">prediction: <span class="math inline">\(E[Y|X]\)</span></li>
-<li class="fragment">average treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
-<li class="fragment">conditional average treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1),X] - E[Y|\text{do}(T=0),X]\)</span></li>
-<li class="fragment">prediction-under-intervention: <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span></li>
+<li>prediction: <span class="math inline">\(E[Y|X]\)</span></li>
+<li>average treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1)] - E[Y|\text{do}(T=0)]\)</span></li>
+<li>conditional average treatment effect: <span class="math inline">\(E[Y|\text{do}(T=1),X] - E[Y|\text{do}(T=0),X]\)</span></li>
+<li>prediction-under-intervention: <span class="math inline">\(E[Y|\text{do}(T=t),X]\)</span></li>
 </ul>
 </section>
 <section class="slide level2 center">
@@ -775,47 +774,46 @@
 <p><img data-src="figs/peanutbutter_chocolatesprinkles.jpg" class="fragment quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="more-on-prediction-under-intervention-models" class="slide level2 center">
 <h2>More on prediction-under-intervention models</h2>
 <p>development:</p>
 <ul>
-<li class="fragment">ideally estimated from RCTs, but these are often too small or don’t measure the right data</li>
-<li class="fragment">alternatively can use observational data and causal inference methods</li>
-<li class="fragment">assumption of no unobserved confounding often hard to justify in observational data</li>
-<li class="fragment">but there’s more between heaven (RCT) and earth (confounder adjustment)
+<li>ideally estimated from RCTs, but these are often too small or don’t measure the right data</li>
+<li>alternatively can use observational data and causal inference methods</li>
+<li>assumption of no unobserved confounding often hard to justify in observational data</li>
+<li>but there’s more between heaven (RCT) and earth (confounder adjustment)
 <ul>
-<li class="fragment">proxy-variable methods <span class="citation" data-cites="miaoIdentifyingCausalEffects2018 vanamsterdamIndividualTreatmentEffect2022">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Miao, Geng, and Tchetgen Tchetgen 2018</a>; <a href="#/references" role="doc-biblioref" onclick="">van Amsterdam et al. 2022</a>)</span></li>
-<li class="fragment">constant relative treatment effect assumption <span class="citation" data-cites="alaaMachineLearningGuide2021 vanamsterdamConditionalAverageTreatment2023 candidodosreisUpdatedPREDICTBreast2017">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Alaa et al. 2021</a>; <a href="#/references" role="doc-biblioref" onclick="">van Amsterdam and Ranganath 2023</a>; <a href="#/references" role="doc-biblioref" onclick="">Candido dos Reis et al. 2017</a>)</span></li>
-<li class="fragment">diff-in-diff</li>
-<li class="fragment">instrumental variable analysis <span class="citation" data-cites="waldFittingStraightLines1940 puliGeneralControlFunctions2021 hartfordDeepIVFlexible2017">(<a href="#/references" role="doc-biblioref" onclick="">Wald 1940</a>; <a href="#/references" role="doc-biblioref" onclick="">Puli and Ranganath 2021</a>; <a href="#/references" role="doc-biblioref" onclick="">Hartford et al. 2017</a>)</span></li>
-<li class="fragment">front-door analysis</li>
+<li>proxy-variable methods <span class="citation" data-cites="miaoIdentifyingCausalEffects2018 vanamsterdamIndividualTreatmentEffect2022">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Miao, Geng, and Tchetgen Tchetgen 2018</a>; <a href="#/references" role="doc-biblioref" onclick="">van Amsterdam et al. 2022</a>)</span></li>
+<li>constant relative treatment effect assumption <span class="citation" data-cites="alaaMachineLearningGuide2021 vanamsterdamConditionalAverageTreatment2023 candidodosreisUpdatedPREDICTBreast2017">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Alaa et al. 2021</a>; <a href="#/references" role="doc-biblioref" onclick="">van Amsterdam and Ranganath 2023</a>; <a href="#/references" role="doc-biblioref" onclick="">Candido dos Reis et al. 2017</a>)</span></li>
+<li>diff-in-diff</li>
+<li>instrumental variable analysis <span class="citation" data-cites="waldFittingStraightLines1940 puliGeneralControlFunctions2021 hartfordDeepIVFlexible2017">(<a href="#/references" role="doc-biblioref" onclick="">Wald 1940</a>; <a href="#/references" role="doc-biblioref" onclick="">Puli and Ranganath 2021</a>; <a href="#/references" role="doc-biblioref" onclick="">Hartford et al. 2017</a>)</span></li>
+<li>front-door analysis</li>
 </ul></li>
-<li class="fragment">many of these have potential new applications with AI and medical imaging</li>
+<li>many of these have potential new applications with AI and medical imaging</li>
 </ul>
 </section>
 <section id="evaluation-of-prediction-under-intervention-models" class="slide level2 center">
 <h2>Evaluation of prediction-under-intervention models</h2>
 <ul>
-<li class="fragment">prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding <span class="citation" data-cites="keoghPredictionInterventionsEvaluation2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Keogh and van Geloven 2024</a>)</span></li>
-<li class="fragment">in confounded observational data, typical metrics (e.g.&nbsp;AUC or calibration) are not sufficient as we want to predict well in data from <em>other distribution than observed data</em> (i.e.&nbsp;other treatment decisions)</li>
-<li class="fragment">a new <em>policy</em> can be evaluated in historic RCTs <span class="citation" data-cites="karmaliBloodPressureloweringTreatment2018">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Karmali et al. 2018</a>)</span></li>
-<li class="fragment">ultimate test is cluster RCT</li>
-<li class="fragment">if not perfect, likely a better recipe than <em>treatment-naive</em> models</li>
+<li>prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding <span class="citation" data-cites="keoghPredictionInterventionsEvaluation2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Keogh and van Geloven 2024</a>)</span></li>
+<li>in confounded observational data, typical metrics (e.g.&nbsp;AUC or calibration) are not sufficient as we want to predict well in data from <em>other distribution than observed data</em> (i.e.&nbsp;other treatment decisions)</li>
+<li>a new <em>policy</em> can be evaluated in historic RCTs <span class="citation" data-cites="karmaliBloodPressureloweringTreatment2018">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Karmali et al. 2018</a>)</span></li>
+<li>ultimate test is cluster RCT</li>
+<li>if not perfect, likely a better recipe than <em>treatment-naive</em> models</li>
 </ul>
 </section>
 <section id="take-aways" class="slide level2 center">
 <h2>Take-aways</h2>
 <ul>
-<li class="fragment">deploying models for decision support is an intervention and should be evaluated as such</li>
-<li class="fragment">when developing or evaluating (AI) prediction models for medical decisions, think about
+<li>deploying models for decision support is an intervention and should be evaluated as such</li>
+<li>when developing or evaluating (AI) prediction models for medical decisions, think about
 <ul>
-<li class="fragment">what is the effect of using this model on medical decisions?</li>
-<li class="fragment">what is the effect of this policy change on patient outcomes?</li>
+<li>what is the effect of using this model on medical decisions?</li>
+<li>what is the effect of this policy change on patient outcomes?</li>
 </ul></li>
-<li class="fragment">prediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making</li>
+<li>prediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making</li>
 </ul>
 <div class="fragment">
 <div class="columns">
@@ -833,8 +831,7 @@
 </figure>
 </div>
 <p>When accurate prediction models yield harmful sel-fulfilling prophecies <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2024">(<a href="#/references" role="doc-biblioref" onclick="">van Amsterdam, van Geloven, et al. 2024</a>)</span></p>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
@@ -843,7 +840,7 @@
 <div class="quarto-auto-generated-content">
 <p><img src="umcu_blue.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>©Wouter van Amsterdam — <i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i> WvanAmsterdam — <i class="bi-file-slides " style="" role="img" aria-hidden="true"></i> vanamsterdam.github.com/talks</p>
+<p>©Wouter van Amsterdam — <i class="bi-twitter-x " style="" role="img" aria-hidden="true"></i> WvanAmsterdam — <i class="bi-file-slides " style="" role="img" aria-hidden="true"></i> vanamsterdam.github.io/talks</p>
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -1139,18 +1136,7 @@ Wald, Abraham. 1940. <span>“The <span>Fitting</span> of <span>Straight Lines</
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1182,7 +1168,29 @@ Wald, Abraham. 1940. <span>“The <span>Fitting</span> of <span>Straight Lines</
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/vanamsterdam\.github\.io");
@@ -1190,7 +1198,7 @@ Wald, Abraham. 1940. <span>“The <span>Fitting</span> of <span>Straight Lines</
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

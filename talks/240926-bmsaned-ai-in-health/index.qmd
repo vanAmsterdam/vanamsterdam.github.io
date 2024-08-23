@@ -1,0 +1,62 @@
+---
+title: AI in Health Care
+subtitle: BMS-Aned seminar
+date: 2024-09-26
+bibliography: ../../library.bib
+format:
+    revealjs:
+        incremental: true
+        theme: ../custom.scss
+        auto-stretch: true
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+        pdf-separate-fragments: true
+        embed-resources: false
+---
+
+# What is AI?
+
+## Definition
+
+:::{.callout-tip}
+
+## What is AI?
+
+Artificial Intelligence is the branch of computer science that focuses on creating systems capable of performing tasks that typically require human intelligence. 
+
+:::
+
+These tasks include: learning, reasoning, problem-solving, perception, natural language understanding, and decision-making.
+
+AI systems can be designed to operate autonomously, adapt to new inputs, and improve their performance over time.
+
+
+
+## History
+
+## What are AI tasks?
+
+## AI versus stats
+
+- scaling
+- emerging
+- continual learning
+
+# What is Deep Learning?
+
+# What is an LLM?
+
+# Pitfalls
+
+## Biases
+
+## Can we lose control?
+
+## Accuracy does not imply value for decision making
+
+## References
+
+
+

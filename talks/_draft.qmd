@@ -23,10 +23,12 @@ format:
 
 ## stacking images
 
-::: {.r-stack}
-![](240418-ii-spring-meeting/figs/policy_changea1.png){.fragment}
+<!--note: dont use fade-out for the first as then it's there at the beginning but fading out is a fragment step-->
 
-![](240418-ii-spring-meeting/figs/policy_changea2.png){.fragment}
+::: {.r-stack}
+![](240418-ii-spring-meeting/figs/policy_changea1.png){.fragment .fade-in-then-out}
+
+![](240418-ii-spring-meeting/figs/policy_changea2.png){.fragment .fade-in-then-out}
 :::
 
 ## foo

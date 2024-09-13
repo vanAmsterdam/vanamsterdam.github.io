@@ -68,6 +68,12 @@ Artificial Intelligence is the branch of computer science that focuses on creati
 
 :::
 
+## What is Machine Learning?
+
+::: {.center .large}
+Machine Learning is a subset of artificial intelligence that involves the use of algorithms and statistical models to enable computers to perform tasks without explicit instructions. Instead, they rely on patterns and inference from data.
+:::
+
 ## ML tasks
 
 ::: {.columns}
@@ -97,16 +103,19 @@ $$l_i,w_i,s_i \sim p(l,w,s)$$
 ![](figs/gen_full.png){width="100%" fig-align="center"}
 ::::
 :::: {.column width="50%"}
-use samples to learn model $p_{\theta}$ for *joint* distribution $p$
+formulate a model for *joint* distribution $p_{\theta}$
+
+use samples to optimize $\theta$
 $$
   l_j,w_j,s_j \sim p_{\theta}(l,w,s)
 $$
-::::
-:::
 
 |task| |
 |---:|:---|
 |generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
+
+::::
+:::
 
 ## ML tasks: conditional generation
 ::: {.columns}
@@ -118,13 +127,13 @@ use samples to learn model for *conditional* distribution $p$
 $$
   l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})
 $$
-::::
-:::
 
 |task| |
 |---:|:---|
 |generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
 |conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
+::::
+:::
 
 ## ML tasks: conditional generation 2
 
@@ -138,13 +147,13 @@ of one variable
 $$
 s_j \sim p_{\theta}(s|l=l',w=w')
 $$
-::::
-:::
 
 |task| |
 |---:|:---|
 |generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
 |conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
+::::
+:::
 
 ## ML tasks: discrimination
 ::: {.columns}
@@ -152,25 +161,26 @@ $$
 ![](figs/class_logistic.png){width="100%" fig-align="center"}
 ::::
 :::: {.column width="50%"}
-call this one variable *outcome* and *classify* when expected value passes threshold (e.g. 0.5):
+call this one variable *outcome* and *classify* when expected value[^1] passes threshold (e.g. 0.5)
 $$
 s_j = p_{\theta}(s|l=l',w=w') > 0.5
 $$
-::::
-:::
 
 |task| |
 |---:|:---|
 |generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
 |conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
 |discrimination|$p_{\theta}(s|l=l_i,w=w_i) > 0.5$|
+::::
+:::
+[^1]: either calculated directly or estimated by simulation
 
 ## ML tasks: reinforcement learning
 
 - e.g. computers playing games
 - maybe not so useful for clinical research as requires many experiments
 
-![](figs/reinforcement_learning.png){width="80%"}
+![](figs/reinforcement_learning.png){width="80%", fig-align="center"}
 
 ---
 
@@ -181,6 +191,79 @@ $$
 ![](figs/ai-landscape-3-ml.png){.fragment .fade-in-then-out}
 
 ![](figs/ai-landscape-4-rf-svm.png){.fragment .fade-in-then-out}
+
+![](figs/ai-landscape-5-dl.png){.fragment .fade-in-then-out}
+
+![](figs/ai-landscape-6-llm.png){.fragment .fade-in}
+
+:::
+
+## Neural Networks and Deep Learning
+
+### From Linear Regression ...
+
+:::{layout-ncol=2}
+
+![](./tikzs/linear-regression.png)
+
+::::{.column}
+
+$$y = \sum_{i=0}^5 x_i \beta_i$$
+
+- optimize $\beta_i$ to minimize mean squared error, e.g. using second-order methods
+
+::::
+
+:::
+
+## Neural Networks and Deep Learning
+
+### ... to 'Deep' Learning
+
+:::{layout-ncol=2}
+
+![](./tikzs/neural-network.png)
+
+::::{.column}
+
+\begin{align}
+    h_i &= w_{0i} + w_{1i} x_1 + \ldots \\
+    h_i &= g(h_i) \\
+      y &= \sum_{i=1}^3 h_i w_i
+\end{align}
+
+- sticked $h_i$ between input and output
+- $g$ is a non-linear function: each $h_i$ is a non-linear transformation of the input
+- renamed $\beta_i$ ('coefficients') to $w_{0i}$ and $w_i$ ('weights')
+
+::::
+
+:::
+
+## Neural Networks and Deep Learning
+
+### what is the diff?
+
+- problem: no longer convex
+- typical optimizers scale quadratically or worse with number of parameters
+- deep learning: many parameters, use gradient descent (first-order method) instead
+- note: can also do gradient descent on linear regression, but computationally inefficient.
+- big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)
+- new optimizers keep coming up (e.g. Adam)
+
+## Neural Network Architectures
+
+- Multilayer Perceptrons (MLPs): general purpose
+
+- hierarchical structure (e.g. images):
+    - Convolutional Neural Networks (CNNs): image recognition
+- sequence modeling (e.g. time series, natural language):
+    - Recurrent Neural Networks (RNNs): time series
+    - Transformers: natural language processing
+
+---
+
+:::{.r-stack}
 
 ![](figs/ai-landscape-5-dl.png){.fragment .fade-in-then-out}
 

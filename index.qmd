@@ -80,7 +80,7 @@ I'm a guest editor for a [special issue](https://www.biomedcentral.com/collectio
 ## Selected papers
 
 A causal viewpoint on prediction model performance under changes in case-mix: Discrimination and calibration respond differently for prognosis and diagnosis predictions.\
-van Amsterdam, W. A. C. (2024). arXiv preprint.\
+*van Amsterdam, W. A. C. (2024). arXiv preprint*\
 [url](https://doi.org/10.48550/arXiv.2409.01444)
 
 Causal Inference in Oncology: Why, What, How and When.\

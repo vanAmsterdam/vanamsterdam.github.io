@@ -1,66 +1,234 @@
 [
   {
-    "objectID": "posts.html",
-    "href": "posts.html",
-    "title": "Posts",
+    "objectID": "posts/190816-lm-functional-form.html",
+    "href": "posts/190816-lm-functional-form.html",
+    "title": "Finding the functional form for multiple linear regression",
     "section": "",
-    "text": "Identification - seeing is not doing\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nIs the JAMA opening up their language for causal effects?\n\n\n\n\n\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJun 7, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\n\n\n\nr\n\n\nlinear regression\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nr\n\n\njulia\n\n\njax\n\n\npython\n\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\n\n\n\nstatistics\n\n\nsimulations\n\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
+    "text": "A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a partial residual plot. Here I will generate some data to illustrate this"
   },
   {
-    "objectID": "talks/230624-chill-lightning-talk/index.html#section-31",
-    "href": "talks/230624-chill-lightning-talk/index.html#section-31",
-    "title": "My risk model is super accurate so it will be useful for treatment decision making, right? Wrong!",
+    "objectID": "posts/190816-lm-functional-form.html#functional-relationship-in-linear-regression",
+    "href": "posts/190816-lm-functional-form.html#functional-relationship-in-linear-regression",
+    "title": "Finding the functional form for multiple linear regression",
+    "section": "",
+    "text": "A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a partial residual plot. Here I will generate some data to illustrate this"
+  },
+  {
+    "objectID": "posts/190816-lm-functional-form.html#data",
+    "href": "posts/190816-lm-functional-form.html#data",
+    "title": "Finding the functional form for multiple linear regression",
+    "section": "Data",
+    "text": "Data\n\nsuppressMessages({require(ggplot2); theme_set(theme_bw())})\nset.seed(12345)\nN = 1000\nx &lt;- runif(N, min = 0, max=2*pi)\nw &lt;- .5*x + sin(x) + rnorm(N, sd=.25)\nsy &lt;- rnorm(N, sd=.1)\ny &lt;- x + w + sy\ndf = data.frame(x,w,y)\n\nThe data consists of two real-valued ‘independent’ variables \\(x,w\\), where\n\\[\n\\begin{align}\nx &\\sim U(0, 2 \\pi) \\\\\n\\epsilon_w &\\sim N(0, 0.25) \\\\\n\\epsilon_y &\\sim N(0, 0.1) \\\\\nw &:= \\frac{x}{2} + \\sin(x) \\\\\ny &:= x + w + \\epsilon_y\n\\end{align}\n\\]\nClearly \\(y\\) is linear in both \\(x\\) and \\(w\\). A plot of the data:\n\nggplot(df, aes(x=x, y=w,col=y, size=y)) + \n  geom_point() + theme_minimal()\n\n\n\n\njoint distribution of x, w, y"
+  },
+  {
+    "objectID": "posts/190816-lm-functional-form.html#plots",
+    "href": "posts/190816-lm-functional-form.html#plots",
+    "title": "Finding the functional form for multiple linear regression",
+    "section": "Plots",
+    "text": "Plots\n\nIncorrect: marginal association\nLet’s say we’re particularly interested in the relationship between \\(y\\) and \\(x\\), both conditional on \\(w\\). Looking at the marginal association between \\(y\\) and \\(x\\) with a scatterplot will set us on the wrong foot, because of the association between \\(x\\) and \\(w\\).\n\nggplot(df, aes(x=x,y=y)) + \n  geom_point()\n\n\n\n\nmarginal association between x and y\n\n\n\n\n\n\nCorrect: partial residual plot\nTo construct the correct plot, we can generate a partial residual plot, which is created with resid(lm(y~x+w))+b_x x ~ x.\nWhere b_x is the regression coefficient found through linear regression of \\(y\\) on \\(x\\) and \\(w\\). In a plot:\n\nlmfit &lt;- lm(y~x+w)\nyresid &lt;- resid(lmfit)\nb_x &lt;- coef(lmfit)['x']\nplotdata &lt;- data.frame(x, y=yresid + b_x * x)\n\nggplot(plotdata, aes(x=x,y=y)) + \n  geom_point() + \n  ylab(\"resid(lm(y~x+w)) + b_x x\")\n\n\n\n\n\n\n\nFigure 1: partial residual plot\n\n\n\n\n\n\n\nPartial residual plot when y is not linear in x\nWhat if \\(y\\) were not linear in \\(x\\)?\n\ny2 &lt;- x^2 + w + sy\nlmfit2 &lt;- lm(y2 ~ x + w)\nb_x2 &lt;- coef(lmfit2)['x']\nplotdata2 &lt;- data.frame(x, y=resid(lmfit2) + b_x2 * x)\n\nggplot(plotdata2, aes(x=x,y=y)) + \n  geom_point() + \n  ylab(\"resid(lm(y~x+w)) + b_x x\")\n\n\n\n\npartial residual plot when y not linear in x"
+  },
+  {
+    "objectID": "posts/190816-lm-functional-form.html#conclusion",
+    "href": "posts/190816-lm-functional-form.html#conclusion",
+    "title": "Finding the functional form for multiple linear regression",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe functional relationship between an outcome and a covariate in a linear regression conditional on other covariates is visualized with a partial residual plot, or:\n\nlmfit &lt;- lm(y~x+w)\nplot(resid(lmfit) + coef(lmfit)['x'] * x ~ x)"
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "",
+    "text": "Simulation experiments are important when evaluating methods but also for applied work in for example power analyses (e.g. Amsterdam, Harlianto, et al. 2022) or sensitivity analyses (e.g. Amsterdam, Verhoeff, et al. 2022). When using simulations to support scientific claims, the more experiments the better. Being able to perform simulation experiments faster allows researchers to:\nThe R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed.  In recent years, JAX (developed by Google) and Julia have arisen as general scientific computation frameworks. JAX and Julia have grown in popularity both in the neural network community as in other scientific communities (e.g. “DifferentiableUniverseInitiative/Jax_cosmo” 2024; “SciML: Open Source Software for Scientific Machine Learning” n.d.). In this blog post I’ll compare R with JAX and Julia for a simple simulation study setup with logistic regression.\nWe’ll look at the following comparisons:"
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#jax-and-julia-vs-r-a-high-level-overview",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#jax-and-julia-vs-r-a-high-level-overview",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "JAX and Julia vs R: a high level overview",
+    "text": "JAX and Julia vs R: a high level overview\nJAX is a rising star in computer science and natural sciences. Without going in too much details, JAX works by translating python code into an intermediate language that can be run very efficiently on different hardware backends (CPU, GPU, TPU), possibly with just-in-time compilation (JIT). JAX prides itself on providing composable transformations for vectorization (vmap), paralellization (pmap) and automatic differentiation (grad), all compatible with jit. In R, most of the heavy lifting in terms of computation (such as fitting a logistic regression model) is implemented in high-speed languages such as C++ or Fortran. The usual R-code merely provides an interface to these languages and allows the user to feed in data and analyze results. Whereas using JAX and R means working with two languages (one language to write accessible code, another to do fast computation), Julia is a just-in-time compiled language where such translation is not needed."
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-basic-setup",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-basic-setup",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "The basic setup",
+    "text": "The basic setup\nWe’ll use a simple logistic regression simulation setup, where for each observation:\n\\[\n\\begin{align}\n\\mathbf{x}_{\\text{full}} &\\sim \\mathcal{N}(0,I) \\in \\mathbb{R}^{10} \\\\\ny &= ||\\mathbf{x}||_0 &gt; 0 \\\\\n\\mathbf{x}_{\\text{obs}} &= [x_0\\ x_i \\ldots x_9]\n\\end{align}\n\\]\nSo \\(y\\) is the sum of elements of \\(\\mathbf{x}_{\\text{full}}\\) and the observed \\(\\mathbf{x}_{\\text{obs}}\\) contains only the first 9 out of 10 elements of \\(\\mathbf{x}_{\\text{full}}\\).\nWe will model this data with logistic regression:\n\\[\n\\begin{align}\n    \\text{logit}(y) &= \\mathbf{x}_{\\text{obs}} \\boldsymbol{\\beta}'\\\\\n    y &\\sim \\text{Bernoulli} (\\sigma (\\mathbf{x}_{\\text{obs}} \\boldsymbol{\\beta}'))\n\\end{align}\n\\]\nwhere \\(\\boldsymbol{\\beta} = [\\beta_1,\\ldots,\\beta_9]\\) is a 9-dimensional parameter vector that is to be estimated (we’re excluding the usual intercept term). We’ll generate nrep independent datasets and estimate \\(\\boldsymbol{\\beta}\\) in each one, and finally calculate the average parameter estimates \\(\\frac{1}{\\text{nrep}}\\sum_{i=1}^{\\text{nrep}}\\boldsymbol{\\beta}^i\\).\n\nHardware\nThe hardware I had available for this comparison is:\n\nmacm1: 2020 macbook air M1, 8Gb RAM, 8 threads\nlinux: linux machine, 64Gb RAM, 12 threads (Intel(R) Xeon(R) W-2135 CPU @ 3.70GH )"
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-code",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-code",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "The code",
+    "text": "The code\n\nMaking data\nMaking the data is pretty similar in all cases, except that JAX requires an explicit random key.\n\nRPythonJulia\n\n\nmake_data &lt;- function(n=1e3L) {\n    x_vec = rnorm(n*10)\n    X_full = matrix(x_vec, ncol=10)\n    eta = rowSums(X_full)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[,1:9]\n    return(list(X=X,y=y))\n}\n\n\ndef make_data(k, n=int(1e3)):\n    X_full = random.normal(k, (n,10)) # JAX needs explicit keys for psuedo random number generation\n    eta = jnp.sum(X_full, axis=-1)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[:,:9]\n    return (X, y)\n\n\nfunction make_data(n::Integer=1000)\n    X_full = randn(n,10)\n    eta = vec(sum(X_full, dims=2))\n    y = eta .&gt; 0 # vectorized greater than 0 comparison\n    X = X_full[:,1:9]\n    return X, y\nend\n\n\n\n\n\nRun single experiment\nNow we’ll write the code for a single analysis step, generating data and fitting the logistic regression. For R and Julia we will use the glm function to estimate the logistic regression model. The Julia code looks much like the R code. As far as I know there is no equivalent glm function implemented in JAX. Instead, we need to specify an objective function and will use a general purpose optimizer. JaxOpt provides both binary_logreg as an objective function and LBFGS, a popular general purpose optimizer, which we’ll use here.\n\nRPythonJulia\n\n\nsolve &lt;- function(...) {\n  data = make_data()\n  fit = glm(data$y~data$X-1, family='binomial')\n  coefs = coef(fit)\n  return(coefs)\n}\n\n\n# initialize a generic solver with the correct objective function\nsolver = LBFGS(binary_logreg)\nw_init = jnp.zeros((9,))\n\n@jit # jit toggles just-in-time compilation, one of the main features of JAX\ndef solve(k):\n    data = make_data(k)\n    param, state = solver.run(w_init, data)\n    return param\n\n\nfunction solve(i::Int64=1)\n    X, y = make_data()\n    fit = glm(X, y, Bernoulli())\n    coefs = coef(fit)\n    return coefs\nend\n\n\n\n\n\nIterate over runs / settings\nFinally we run the experiments nrep times and calculate the average coefficient vector.\n\nJAX primitive: map versus vmap\nNote that in JAX there are multiple ways to do this, most notably map and vmap. Whereas map may offer speedups compared to R due to jit-compiliation, for most purposes vmap is recommended as it allows JAX to find ways of making the computation more efficient. For example, a vector-vector multiplication vectorized over an input of vectors is equivalent to a single matrix-vector multiplication. JAX’s intermediate language finds these possible optimizations and swaps in the more efficient approach. Vectorized code runs in parallel and can be much faster. Note that in our case, vectorization may not be too beneficial as running LBFGS on different datasets may not lend itself to vectorizations (compared e.g. to neural network computations on batches of data). A downside of vectorization is that it requires more memory: all the datasets and optimization steps happen in parallel, whereas with loop-based execution, only the coefficients of each time step need to be stored.\n\nRPythonJulia\n\n\nif (nthreads == 1) {\n    set.seed(240316)\n    params &lt;- lapply(1:nreps, solve)\n} else {\n    params &lt;- future_map(1:nreps, solve, .options=furrr_options(seed=240316))\n}\noutmat &lt;- do.call(rbind, params)\nmeans &lt;- colMeans(outmat)\nprint(means[1])\n\n\nk0 = random.PRNGKey(240316)\nks = random.split(k0, args.nreps)\nif args.primitive == 'map':\n    params = lax.map(solve, ks)\nelif args.primitive == 'vmap':\n    params = vmap(solve)(ks)\nelse:\n    raise ValueError(f\"unrecognized primitive: {args.primitive}, choose map or vmap\")\n\nmeans = jnp.mean(params, axis=0)\nprint(means[0])\n\n\nRandom.seed!(240316)\noutmat = zeros(nreps, 9)\n\n@threads for i in 1:nreps # use @threads for multi-threading\n    solution = solve()\n    outmat[i,:] = solution\nend\n\nmeans = mean(outmat, dims=1)\nprint(means[1])\n\n\n\n\n\n\nBash scripts for speed comparisons\nI benchmarked each run with an external time command in Bash or ZSH and wrote the results to a file.\n\nBash (linux)ZSH (macos)\n\n\n\n\nCode\n#!/bin/bash\n\nfor nreps in 1000 10000 100000 1000000 10000000\ndo\n    echo $nreps\n    { time python scripts/jaxspeed.py $nreps map; } 2&gt;&1 | grep real &gt;&gt; bashtimings.txt\n    sed -i '$s/$/ jax '\"${nreps}\"' nreps 12 nthreads map primitive/' bashtimings.txt\n    { time python scripts/jaxspeed.py $nreps vmap; } 2&gt;&1 | grep real &gt;&gt; bashtimings.txt\n    sed -i '$s/$/ jax '\"${nreps}\"' nreps 12 nthreads vmap primitive/' bashtimings.txt\n\n    for nthreads in 1 6 12\n    do\n        echo $nthreads\n        { time julia -t $nthreads scripts/jlspeed.jl $nreps ; } 2&gt;&1 | grep real &gt;&gt; bashtimings.txt\n        sed -i '$s/$/ julia '\"${nreps}\"' nreps '\"${nthreads}\"' nthreads/' bashtimings.txt\n        { time Rscript scripts/rspeed.R $nreps $nthreads ; } 2&gt;&1 | grep real &gt;&gt; bashtimings.txt\n        sed -i '$s/$/ r '\"${nreps}\"' nreps '\"${nthreads}\"' nthreads/' bashtimings.txt\n    done\ndone\n\n\n\n\n\n\nCode\n#!/bin/zsh\n\nfor nreps in 1000 10000 100000 1000000 10000000\ndo\n    echo $nreps\n    { time python scripts/jaxspeed.py $nreps map ; } 2&gt;&gt; timings.txt\n    sed -i '' '$s/$/ '\"${nreps}\"' nreps 8 threads map primitive/' timings.txt\n    { time python scripts/jaxspeed.py $nreps vmap ; } 2&gt;&gt; timings.txt\n    sed -i '' '$s/$/ '\"${nreps}\"' nreps 8 threads vmap primitive/' timings.txt\n\n    for nthreads in 1 8\n    do\n        echo $nthreads\n        { time julia -t $nthreads scripts/jlspeed.jl $nreps ; } 2&gt;&gt; timings.txt\n        sed -i '' '$s/$/ '\"${nreps}\"' nreps '\"${nthreads}\"' nthreads/' timings.txt\n        { time Rscript scripts/rspeed.R $nreps $nthreads ; } 2&gt;&gt; timings.txt\n        sed -i '' '$s/$/ '\"${nreps}\"' nreps '\"${nthreads}\"' nthreads/' timings.txt\n    done\ndone"
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-speed",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-speed",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "The speed",
+    "text": "The speed\n\nRunning time\nFirst, let’s see how running time increases with the number of experiments, using all available threads. You cannot easily set number of threads in JAX (see e.g. this issue on github), so all JAX computations use all threads.\n\n\nCode\nsuppressMessages({\n    library(dplyr)\n    library(data.table)\n    library(purrr)\n    library(stringr)\n    library(ggplot2); theme_set(theme_bw())\n    library(knitr)\n    library(kableExtra)\n})\n\n# get timings from mac\nlns &lt;- readr::read_lines('timings.txt')\n# get timings from linux machine\nblns &lt;- readr::read_lines('bashtimings.txt')\n\n# remove lines with warnings / errors printed to txt file\nlns &lt;- str_subset(lns, \"^Rscript|julia|python\")\nmtimings &lt;- data.table(raw_string=lns)\nbtimings &lt;- data.table(raw_string=blns)\n\n# remove white space and first word (for linux)\ntimings &lt;- rbindlist(list(macm1=mtimings, linux=btimings), idcol='machine')\ntimings[, string:=str_trim(raw_string)] # remove white space\ntimings[, string:=str_replace(string, \"^real\\t\", \"\")] # remove first word linux\n\n# find the language from the string\ntimings[machine=='macm1', command:=word(string)]\ntimings[command=='Rscript', language:='r']\ntimings[command=='python', language:='jax']\ntimings[command=='julia', language:='julia']\ntimings[machine=='linux', language:=str_extract(string, \"(?&lt;=s )[a-z]+\")]\n\n# grab number of threads and reps\ntimings[, nthreads:=as.integer(str_extract(string, \"(\\\\d+)(?= nthreads)\"))]\ntimings[, max_threads:=max(nthreads, na.rm=T), by='machine']\ntimings[is.na(nthreads) & language == 'jax', nthreads:=max_threads]\ntimings[is.na(nthreads) & language %in% c('r', 'julia'), nthreads:=1L]\ntimings[, nreps:=as.integer(str_extract(string, \"(\\\\d+)(?= nreps)\"))]\ntimings[, max_threads:=max(nthreads), by='machine']\n\n# find jax primitive\ntimings[, primitive:=str_extract(string, \"(\\\\w+)(?= primitive)\")]\ntimings[machine=='macm1'&language=='jax'&is.na(primitive), primitive:='map']\n#timings &lt;- timings[!(language=='jax' & primitive!='map')]\n# timings[language=='jax', language:=paste0(language, '-', primitive)]\ntimings[language!='jax', primitive:='map']\ntimings &lt;- timings[!str_ends(primitive, 'nojit')]\n\n# grab the time \ntimings[machine=='macm1', time_str:=str_extract(string, \"(?&lt;=cpu\\\\ )(.*)(?= total)\")]\ntimings[, milliseconds:=as.integer(str_extract(time_str, \"(\\\\d+)$\"))]\ntimings[, seconds     :=as.integer(str_extract(time_str, \"(\\\\d+)(?=.)\"))]\ntimings[, minutes     :=as.integer(str_extract(time_str, \"(\\\\d+)(?=:)\"))]\ntimings[, hours       :=as.integer(str_extract(time_str, \"(\\\\d+)(?=:(\\\\d+:))\"))]\ntimings[machine=='linux', minutes:=as.integer(str_extract(string, \"^(\\\\d+)\"))]\ntimings[machine=='linux', seconds:=as.integer(str_extract(string, \"(?&lt;=m)(\\\\d+)\"))]\ntimings[machine=='linux', milliseconds:=as.integer(str_extract(string, \"(\\\\d+)(?=s)\"))]\ntimings[is.na(minutes), minutes:=0]\ntimings[is.na(hours), hours:=0]\n\n\ntimings[, sec_total:=60*60*hours + 60*minutes + seconds + milliseconds / 1000]\ntimings[, min_total:=sec_total / 60]\n\n# add some vars\ntimings[, n_per_min:=nreps / min_total]\ntimings[, n_per_min3:=n_per_min/1000]\n\n# remove a couple of failed runs where time went down for more experiments (= out of memory)\n#timings &lt;- timings[n_per_min &lt; 1.5e6]\n\n\nfwrite(timings, 'allresults.csv', row.names=F)\n\nggplot(timings[nthreads==max_threads], aes(x=nreps, y=min_total, col=language)) +\n  geom_point() + geom_line(aes(linetype=primitive)) + \n  scale_x_log10() + scale_y_log10() + \n  # facet_grid(machine+nthreads~primitive, labeller='label_both')\n  facet_grid(machine+nthreads~., labeller='label_both')\n\n\n\n\n\n\n\n\nFigure 1: Time to run experiments on the maximum number of threads\n\n\n\n\n\nNote that for JAX vmap the clock time actually goes down when the number of experiment increases. This is not some magic speedup but the machine running out of memory and thus not completing the experiment, a downside of vectorization. We’ll exclude these runs of the further comparisons. For map this is not the case.\n\n\nSpeed\nLet’s look at the speeds.\n\n\n\n\n\n\n\n\nFigure 2: Speed: number of repetitions per minute versus of number of experiments\n\n\n\n\n\nWhy is the speed going down for Julia on the macm1 machine after 1e6 experiments? Turns out there is not enough RAM to fit the experiments and the system switches to swap memory which is much slower than using RAM (even on a mac arm64). The speed of R stopped increasing after 1e6 experiments so I didn’t run more experiments.\n\n\nThreads vs Speed\nNow let’s check how much extra speed we get from using more threads in R and Julia.\n\n\n\n\n\n\n\n\nFigure 3: Scaling of speed with number of threads\n\n\n\n\n\n\n\n\nScaling of speed with number of threads, number of experiments per minute (1000s)\n\n\nlanguage\nnreps\nlinux_1\nlinux_6\nspeedup6\nlinux_12\nspeedup12\nmacm1_1\nmacm1_8\nspeedup8\n\n\n\n\njulia\n1e+03\n10.7\n11.8\n1.1\n11.0\n1.0\n16.2\n16.3\n1.0\n\n\njulia\n1e+04\n69.5\n108.1\n1.6\n101.0\n1.5\n96.9\n147.6\n1.5\n\n\njulia\n1e+05\n146.0\n514.8\n3.5\n567.1\n3.9\n151.3\n494.4\n3.3\n\n\njulia\n1e+06\n162.8\n857.3\n5.3\n1001.3\n6.2\n163.9\n983.6\n6.0\n\n\njulia\n1e+07\n168.6\n875.7\n5.2\n1059.3\n6.3\n163.9\n245.9\n1.5\n\n\nr\n1e+03\n14.8\n14.5\n1.0\n9.2\n0.6\n20.8\n23.7\n1.1\n\n\nr\n1e+04\n15.3\n53.0\n3.5\n52.4\n3.4\n22.5\n72.7\n3.2\n\n\nr\n1e+05\n14.6\n74.1\n5.1\n89.8\n6.2\n24.6\n98.2\n4.0\n\n\nr\n1e+06\n13.9\n70.8\n5.1\n91.0\n6.6\n20.9\n82.0\n3.9\n\n\n\n\n\n\n\nSpeed increases with increasing number of threads, though not with a simple linear scaling in the number of threads. The speed increase is similar for R and Julia.\n\n\nTop speeds per language\nLet’s see the top speeds per language, also compered to the top R speed on that machine.\n\n\n\n\nTable 1: Best speeds per language and machine\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn experiments\nn threads\nrunning time (minutes)\nexperiments per minute (x1000)\nspeed-up vs best R\nlanguage\nprimitive\nmachine\n\n\n\n\n1e+05\n12\n0.6\n161.9\n1.8\njax\nvmap\nlinux\n\n\n1e+07\n12\n9.4\n1059.3\n11.6\njulia\nmap\nlinux\n\n\n1e+06\n12\n11.0\n91.0\n1.0\nr\nmap\nlinux\n\n\n1e+06\n8\n6.1\n163.9\n1.7\njax\nmap\nmacm1\n\n\n1e+06\n8\n1.0\n983.6\n10.0\njulia\nmap\nmacm1\n\n\n1e+05\n8\n1.0\n98.2\n1.0\nr\nmap\nmacm1\n\n\n\n\n\n\n\n\n\n\nTop speeds overall\nTop 10 speeds overall\n\n\n\n\nTable 2: top 10 speeds overall\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn experiments\nn threads\nrunning time (minutes)\nexperiments per minute (x1000)\nspeed-up vs best R\nlanguage\nprimitive\nmachine\n\n\n\n\n1e+07\n12\n9.4\n1059.3\n11.6\njulia\nmap\nlinux\n\n\n1e+06\n12\n1.0\n1001.3\n11.0\njulia\nmap\nlinux\n\n\n1e+06\n8\n1.0\n983.6\n10.0\njulia\nmap\nmacm1\n\n\n1e+07\n6\n11.4\n875.7\n9.6\njulia\nmap\nlinux\n\n\n1e+06\n6\n1.2\n857.3\n9.4\njulia\nmap\nlinux\n\n\n1e+05\n12\n0.2\n567.1\n6.2\njulia\nmap\nlinux\n\n\n1e+05\n6\n0.2\n514.8\n5.7\njulia\nmap\nlinux\n\n\n1e+05\n8\n0.2\n494.4\n5.0\njulia\nmap\nmacm1\n\n\n1e+07\n8\n40.7\n245.9\n2.5\njulia\nmap\nmacm1\n\n\n1e+07\n1\n59.3\n168.6\n1.9\njulia\nmap\nlinux\n\n\n\n\n\n\n\n\nAll results are available in a csv file here"
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#takeaways",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#takeaways",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nSpeed\nIn this setup, both on a Mac M1 and a Linux machine,\n\nJulia was 10-11 times faster than R\nJAX was 1.7 times faster than R\n\n\n\nCode\n\nJulia code seems quite close to R code.\nIn this simple example, the JAX code doesn’t seem too dounting. However, JAX comes with some sharp bits and may be harder to program efficiently.1\n\n\n\nCaveats\n\nJAX needs to recompile when the size of the data changes. When running experiments with e.g. different sizes of data, JAX will become slower because it needs to recompile, or you’ll need to find other solutions like padding smaller data with dummy data and giving these dummy data 0 weights in the objective functions.\nI didn’t have a CUDA-enabled GPU machine for this comparison, vmap may be come (much) more performant on a GPU\nJAX gives bare bones results. If you want to do e.g. significance testing of coefficients, or model comparisons, you will need to find implementations for this or implement this yourself. R and Julia (specifically the GLM package provide a much wider suite of methods\nIn JAX I used general purpose optimizer. There may be more efficient ways of estimating a logistic regression model, whose optimizations are implemented in R and Julia but not JAX. In this sense it may not be a fair comparison, though these optimizations would need to be sought or implemented in JAX.\nJAX has autograd. When writing custom objective functions JAX can automatically calculate gradients and hessians, making it possible to use general purpose first or second order optimizers (e.g. Amsterdam and Ranganath 2023).\n\n\n\nExtensions\n\nOptimizing memory usage\nSince in this case we only need the avarage of the coefficients we need not store all intermediate results. All languages may beccome much more efficient if we can program this in.\n\nThe julia domumentation states that certain operations to atomic data structures can be done in a safe-way while multithreading. Instead of returning all coefficients of all datasets, we could calculate the average value of the coefficients (and e.g. the avareage of the squares of the values) with less memory overhead by:\n\ninstantiate an atomic vector of 9 coefficients\nlet every experiment (which may be in different threads) add its value to this shared atomic vector with atomic_add!\nat the end, calculate the mean by dividing by nreps.\n\nR functions can also overwrite global variables, but a question is whether this can be done in a multi-threading safe way\nIn JAX we may use scan to keep track of a running sum of coefficients and then vmap a bunch of scan computations\n\nIn future posts I plan to dive in to dive in to these optimizations to squeeze more out of these languages."
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#conclusion",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#conclusion",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Conclusion",
+    "text": "Conclusion\n\n\n\n\n\n\nWhat should you use for glm-like simulation studies?\n\n\n\nProbably, Julia"
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#session-info",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#session-info",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Session Info",
+    "text": "Session Info\n\nRPythonJulia\n\n\n#| echo: false\n#| eval: false\nlibrary(sessioninfo)\nsession_info(pkgs = \"attached\", to_file=\"_rsession.txt\")\n\n─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────────────────\n setting  value\n version  R version 4.3.2 (2023-10-31)\n os       macOS Sonoma 14.3\n system   aarch64, darwin23.0.0\n ui       RStudio\n language (EN)\n collate  en_US.UTF-8\n ctype    en_US.UTF-8\n tz       Europe/Amsterdam\n date     2024-03-21\n rstudio  2023.12.1+402 Ocean Storm (desktop)\n pandoc   3.1.12.2 @ /opt/homebrew/bin/ (via rmarkdown)\n\n─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n package     * version date (UTC) lib source\n data.table  * 1.14.8  2023-02-17 [1] CRAN (R 4.3.1)\n dplyr       * 1.1.2   2023-04-20 [1] CRAN (R 4.3.1)\n ggplot2     * 3.4.2   2023-04-03 [1] CRAN (R 4.3.1)\n kableExtra  * 1.4.0   2024-01-24 [1] CRAN (R 4.3.2)\n knitr       * 1.43    2023-05-25 [1] CRAN (R 4.3.1)\n purrr       * 1.0.1   2023-01-10 [1] CRAN (R 4.3.1)\n sessioninfo * 1.2.2   2021-12-06 [1] CRAN (R 4.3.2)\n stringr     * 1.5.0   2022-12-02 [1] CRAN (R 4.3.1)\n\n [1] /opt/homebrew/lib/R/4.3/site-library\n [2] /opt/homebrew/Cellar/r/4.3.2/lib/R/library\n\n───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n\njax==0.4.25\njaxlib==0.4.25\njaxopt==0.8.3\nml-dtypes==0.3.2\nnumpy==1.26.4\nopt-einsum==3.3.0\nscipy==1.12.0\n\n\nname = \"jlspeed\"\nuuid = \"a8cd5241-1987-4548-90e5-ac0f39e812f2\"\nauthors = [\"Wouter van Amsterdam\"]\nversion = \"0.1.0\"\n\n[deps]\nArgParse = \"c7e460c6-2fb9-53a9-8c5b-16f535851c63\"\nGLM = \"38e38edf-8417-5370-95a0-9cbb8c7f171a\"\nRandom = \"9a3f8284-a2c9-5f02-9a11-845980a1fd5c\"\nStatsBase = \"2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91\""
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#full-scripts",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#full-scripts",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Full scripts",
+    "text": "Full scripts\n\nRPythonJulia\n\n\n# rspeed\nargs = commandArgs(trailingOnly = T)\nif (length(args) == 0) {\n  nreps = 100\n  nthreads = 1\n} else if (length(args) == 1) {\n  nreps = as.integer(args[1])\n  nthreads = 1\n} else {\n  nreps = as.integer(args[1])\n  nthreads = as.integer(args[2])\n  suppressMessages(library(furrr))\n  plan(multisession, workers=nthreads)\n}\n\nmake_data &lt;- function(n=1e3L) {\n    x_vec = rnorm(n*10)\n    X_full = matrix(x_vec, ncol=10)\n    eta = rowSums(X_full)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[,1:9]\n    return(list(X=X,y=y))\n}\n\nsolve &lt;- function(...) {\n  data = make_data()\n  fit = glm(data$y~data$X-1, family='binomial')\n  coefs = coef(fit)\n  return(coefs)\n}\n\nif (nthreads == 1) {\n    set.seed(240316)\n    params &lt;- lapply(1:nreps, solve)\n} else {\n    params &lt;- future_map(1:nreps, solve, .options=furrr_options(seed=240316))\n}\noutmat &lt;- do.call(rbind, params)\nmeans &lt;- colMeans(outmat)\nprint(means[1])\n\n\n\nimport jax, jaxopt jax.config.update(‘jax_platform_name’, ‘cpu’) # make sure jax doesnt use a gpu if it’s available from jax import numpy as jnp, random, vmap, jit, lax from jaxopt import LBFGS from jaxopt.objective import binary_logreg from argparse import ArgumentParser\nparser = ArgumentParser() parser.add_argument(‘nreps’, nargs=“?”, type=int, default=int(10)) parser.add_argument(‘primitive’, nargs=“?”, type=str, default=“vmap”)\ndef make_data(k, n=int(1e3)): X_full = random.normal(k, (n,10)) # JAX needs explicit keys for psuedo random number generation eta = jnp.sum(X_full, axis=-1) y = eta &gt; 0 # return only first 9 column to have some noise X = X_full[:,:9] return (X, y)\n\ninitialize a generic solver with the correct objective function\nsolver = LBFGS(binary_logreg) # need to specify parameter initialization values w_init = jnp.zeros((9,))\n(jit?) # jit toggles just-in-time compilation, one of the main features of JAX def solve(k): data = make_data(k) param, state = solver.run(w_init, data) return param\nif name == ‘main’: args = parser.parse_args() k0 = random.PRNGKey(240316) ks = random.split(k0, args.nreps) if args.primitive == ‘map’: params = lax.map(solve, ks) elif args.primitive == ‘vmap’: params = vmap(solve)(ks) else: raise ValueError(f”unrecognized primitive: {args.primitive}, choose map or vmap”)\nmeans = jnp.mean(params, axis=0)\nprint(means[0])\n\n\n\nusing Random, GLM, StatsBase, ArgParse\nimport Base.Threads.@threads\n\nfunction parse_cmdline()\n    parser = ArgParseSettings()\n\n    @add_arg_table parser begin\n        \"nreps\"\n          help = \"number of repetitions\"\n          required = false\n          arg_type = Int\n          default = 10\n    end\n\n    return parse_args(parser)\nend\n\nfunction make_data(n::Integer=1000)\n    X_full = randn(n,10)\n    eta = vec(sum(X_full, dims=2))\n    y = eta .&gt; 0 # vectorized greater than 0 comparison\n    X = X_full[:,1:9]\n    return X, y\nend\n\nfunction solve(i::Int64=1)\n    X, y = make_data()\n    fit = glm(X, y, Bernoulli())\n    coefs = coef(fit)\n    return coefs\nend\n\nfunction main()\n    args = parse_cmdline()\n    nreps = get(args, \"nreps\", 10)\n\n    Random.seed!(240316)\n    outmat = zeros(nreps, 9)\n\n    @threads for i in 1:nreps # use @threads for multi-threading\n        solution = solve()\n        outmat[i,:] = solution\n    end\n\n    means = mean(outmat, dims=1)\n    print(means[1])\nend\n\nmain()"
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#references",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#references",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "References",
+    "text": "References\n\n\nAmsterdam, Wouter A. C. van, Netanja I. Harlianto, Joost J. C. Verhoeff, Pim Moeskops, Pim A. de Jong, and Tim Leiner. 2022. “The Association Between Muscle Quantity and Overall Survival Depends on Muscle Radiodensity: A Cohort Study in Non-Small-Cell Lung Cancer Patients.” Journal of Personalized Medicine 12 (7): 1191. https://doi.org/10.3390/jpm12071191.\n\n\nAmsterdam, Wouter A. C. van, and Rajesh Ranganath. 2023. “Conditional Average Treatment Effect Estimation with Marginally Constrained Models.” Journal of Causal Inference 11 (1): 20220027. https://doi.org/10.1515/jci-2022-0027.\n\n\nAmsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A. Bartholomeus, Aahlad Manas Puli, Pim A. de Jong, Tim Leiner, Anne S. R. van Lindert, Marinus J. C. Eijkemans, and Rajesh Ranganath. 2022. “Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage III Non-Small Cell Lung Cancer.” Scientific Reports 12 (1): 5848. https://doi.org/10.1038/s41598-022-09775-9.\n\n\n“DifferentiableUniverseInitiative/Jax_cosmo.” 2024. Differentiable Universe Initiative. https://github.com/DifferentiableUniverseInitiative/jax_cosmo.\n\n\n“SciML: Open Source Software for Scientific Machine Learning.” n.d. Accessed March 14, 2024. https://sciml.ai."
+  },
+  {
+    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#footnotes",
+    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#footnotes",
+    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nOne concrete example with my own previous simulation studies (Amsterdam and Ranganath 2023) is that I used first used jax.numpy arrays for different parameters and then a scipy function to create all combinations of these parameters. Creating this grid of parameters this way forced copying of jax.numpy arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Also, JAX relies on pure functions that cannot depend on global variables.↩︎"
+  },
+  {
+    "objectID": "posts/210725-counterfactualvsinterventional.html",
+    "href": "posts/210725-counterfactualvsinterventional.html",
+    "title": "The difference between intervention and counterfactuals",
+    "section": "",
+    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
+  },
+  {
+    "objectID": "posts/210725-counterfactualvsinterventional.html#intro",
+    "href": "posts/210725-counterfactualvsinterventional.html#intro",
+    "title": "The difference between intervention and counterfactuals",
+    "section": "",
+    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
+  },
+  {
+    "objectID": "posts/210725-counterfactualvsinterventional.html#example",
+    "href": "posts/210725-counterfactualvsinterventional.html#example",
+    "title": "The difference between intervention and counterfactuals",
+    "section": "Example",
+    "text": "Example\nTo illustrate the difference between a counterfactual prediction and an interventional prediction (or conditional average treatment effect estimates), consider this very simple setup.\nYou have data from a randomized trial with two treatment arms \\(t \\in \\{0,1\\}\\) and an outcome \\(Y\\) on a continuous scale. Denote \\(Y_0\\) the potential outcome under intervening on treatment \\(t=0\\) and \\(Y_1\\) the potential outcome under intervening on treatment \\(t=1\\). As we are dealing with data from a randomized trial, we can easily estimate the average treatment effect as \\(E[Y_1 - Y_0] = E[Y|t=0] - E[Y|t=1]\\), assuming consistency (ignorability and overlap are satisfied due to the study design).\nA counterfactual question is: what would have been the outcome \\(Y_0\\) under treatment \\(t=1\\), given that we observed the outcome \\(y_1\\) under treamtent \\(t=1\\), so it is \\(E[Y_0|Y=y_1, t=1]\\).\nNow assume that the data come from a mixture of Gaussians such that\n\\[y|t \\sim (1 - t) \\mathcal{N}(1,0.1^2) + t \\mathcal{N}(10,2.5^2)\\]\nAnd \\(p(t=1)=0.5\\) so both arms are equally large. Treatment \\(t=1\\) leads to higher outcome but also more spread. The relevant interventional expectations are easily calculated by just calculating group means \\(E[Y_0] = E[Y|t=0] = 1\\), \\(E[Y_1] = E[Y|t=1] = 10\\).\n\nCalculating the counterfactuals\nTo see that calculating counterfactuals requires more knowledge, namely of the structural equations, we now calculate the counterfactual prediction for a patient with \\(Y=Y_1=15\\). This is a patient with a relatively large ‘residual’, the outcome is 2 standard deviations above the mean for treatment group \\(t=1\\).\nFirst we calculate the counterfactual outcome under a wrong outcome model. Researchers tried to model the outcomes using linear regression, and failed to appreciate the difference in variances between the two treatment arms (heteroscedasticity). Assuming a large sample, they will arrive at a model:\n\\[\\hat{y}_{\\text{wrong}} = 1 + t * 9 + \\mathcal{N}(0,\\sigma^2)\\]\nWhere \\(\\sigma = \\sqrt{\\frac{0.1^2 + 2.5^2}{2}} \\approx 1.77\\) (standard devation of mixture of Gaussians with (conditional) mean of 0 and standard deviations 0.1 and 2.5, with 50 / 50 mixing). Note that the estimate of the treatment effect is correct, and so are \\(E[Y_0]\\) and \\(E[Y_1]\\). If there was a binary pre-treatment covariate, the conditional average treatment effect could be estimated by repeating this exercise for both levels of the covariate. To calculate the counterfactual outcome of our patient, we first need to determine the value of their noise variable for the outcome. According to \\(\\hat{y}_{\\text{wrong}}\\), the residual for a patient with \\(Y_1=15\\) is \\(5\\), which is \\(5/\\sigma \\approx 2.82\\) standard deviations away from the expected value for \\(t=1\\). Given this residual we can now calculate the counterfactual:\n\\[\\widehat{E_{\\text{wrong}}}[Y_0|Y=15,t=1] \\approx E[Y_0] + 2.82 \\sigma =6\\]\nGiven that we know the data generating mechanism, we know that this counterfactual prediction is 50 standard deviations from the conditional mean of \\(t=0\\) in the data generating mechanism, clearly this counterfactual prediction is wrong.\nIf we did model the data correctly with a mixture of Gaussians indexed by the treatment group, we would instead say that \\(Y_1=15\\) is 2 standard deviations above the conditional mean, and we would calculate:\n\\[\\widehat{E^*}[Y_0|Y=15,t=1] = E[Y_0] + 2 * 0.1 =1.2\\]\nWhich is correct."
+  },
+  {
+    "objectID": "posts/210725-counterfactualvsinterventional.html#conclusion",
+    "href": "posts/210725-counterfactualvsinterventional.html#conclusion",
+    "title": "The difference between intervention and counterfactuals",
+    "section": "Conclusion",
+    "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
+  },
+  {
+    "objectID": "posts/210720-good_predictions_bad_decisions.html",
+    "href": "posts/210720-good_predictions_bad_decisions.html",
+    "title": "When good predictions lead to bad decisions",
+    "section": "",
+    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
+  },
+  {
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Defining the policies",
+    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
+  },
+  {
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Expected utility of different policies",
+    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "",
+    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \n\n\nLearning from Historical data to make better decisions in the future is what drives my research. For this I work on the intersection of machine learning (for flexible data analysis) and causal inference (to learn to make better decisions).\nI am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.    I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare.\n\n\n\n\n\nUniversity Medical Center Utrecht / Utrecht University\n2010 | BSc. Physics\n2017 | M.D.\n2021 | MSc. Epidemiology (med. statistics track)\n2022 | PhD. machine learning for healthcare | co-advised by Rajesh Ranganath from NYU\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf)"
+  },
+  {
+    "objectID": "index.html#news",
+    "href": "index.html#news",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "News",
+    "text": "News\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
+  },
+  {
+    "objectID": "index.html#selected-papers",
+    "href": "index.html#selected-papers",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Selected papers",
+    "text": "Selected papers\nA causal viewpoint on prediction model performance under changes in case-mix: Discrimination and calibration respond differently for prognosis and diagnosis predictions.\nvan Amsterdam, W. A. C. (2024). arXiv preprint\nurl\nCausal Inference in Oncology: Why, What, How and When.\nvan Amsterdam, W. A. C., Elias, S., & Ranganath, R. (2024). Clinical Oncology.\nurl pdf\nPrognostic models for decision support need to report their targeted treatments and the expected changes in treatment decisions.\nvan Amsterdam, W. A. C. and Cinà, Giovanni and Didelez, Vanessa and Keogh, Ruth H. and Peek, Niels and Sperrin, Matthew and Vickers, Andrew J. and van Geloven, Nan and Shalit, Uri (2024). BMJ Rapid-response\nurl\nFrom algorithms to action: improving patient care requires causality.\nvan Amsterdam, W. A. C., de Jong, P. A., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2024). BMC Medical Informatics and Decision Making\n10.1186/s12911-024-02513-3 pdf\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\npdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\npdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\npdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\npdf\nMore papers on google scholar"
+  },
+  {
+    "objectID": "index.html#talks",
+    "href": "index.html#talks",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Talks",
+    "text": "Talks\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#teaching",
+    "href": "index.html#teaching",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Teaching",
+    "text": "Teaching\n\n2024 Introduction to Causal Inference and Causal Data Science summer school\n2023 Big Data summer school"
+  },
+  {
+    "objectID": "index.html#posts",
+    "href": "index.html#posts",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Posts",
+    "text": "Posts\n\n\n\n\n\n\n\n\nIs the JAMA opening up their language for causal effects?\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJun 7, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nMar 8, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#students",
+    "href": "index.html#students",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Students",
+    "text": "Students\n\nSu Li (Methodology and Statistics) - MSc. student\nFlorian Metwaly (Methodology and Statistics) - MSc. student\n\n\nFormer\n\nSamil Kilinc (Applied Data Science, 2024)\nKiara Peek (Applied Data Science, 2024)\nMyra van Laar (Biomedical Sciences)\nGijs Bartholomeus (Medicine)\nNetanja Harlianto (Medicine)"
+  },
+  {
+    "objectID": "index.html#activities",
+    "href": "index.html#activities",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Activities",
+    "text": "Activities\n\nboard member BMS-ANed (Dutch biometrics society, board member)\ncoordinator of UMC Utrecht AI methods lab\nambassador for Applied Data Science of Utrecht University\nco-coordinator of Causal Data Science Special Interest Group of Utrecht University"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Contact",
+    "text": "Contact\nwamster3 at umcutrecht dot nl"
+  },
+  {
+    "objectID": "talks/230301-lungsurv-manchester/index.html#section-105",
+    "href": "talks/230301-lungsurv-manchester/index.html#section-105",
+    "title": "Individual treatment effect estimation in the presence of unobserved confounding using proxies",
     "section": "",
     "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "Outline",
-    "text": "Outline\n\ndifferent uses of AI in medical imaging\nusing AI for treatment effect estimation\nwarning: harmful self-fulfilling prophecies"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#uses-of-ai-in-medical-imaging",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#uses-of-ai-in-medical-imaging",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "Uses of AI in medical imaging",
-    "text": "Uses of AI in medical imaging\n\nAcquisition (\\(S \\to X\\)) \ndetection / segmentation (\\(X \\to X\\)) \ninference / diagnosis (\\(X \\to D\\), both at prediction time) \nprognosis (\\(X \\to Y\\), \\(Y\\) in the future) \ntreatment effect (\\(X\\) determines effect of a treatment)"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#ai-treatment-effect",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#ai-treatment-effect",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "Why would you estimate treatment effects based on images?",
-    "text": "Why would you estimate treatment effects based on images?\n\ntreatments have different effects on patients based on their (disease) characteristics\nfor example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive\nsome characteristics may be well captured in medical imaging:\n\nT-cell distributions around tumors related to effect of immunotherapy in cancer"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#how-to-estimate-treatment-effects-based-on-images",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#how-to-estimate-treatment-effects-based-on-images",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "How to estimate treatment effects based on images?",
-    "text": "How to estimate treatment effects based on images?\nIn principle the same as estimating a subgroup treatment effect (e.g. male vs female)\n\nConduct a randomized controlled trial where the treatments of interest are randomly allocated\nCollect (imaging) data at randomization timepoint\nUse a statistical learning technique like TARnet (Shalit, Johansson, and Sontag 2017) to estimate outcomes conditional on image and treatment\nconditional treatment effect \\(= f(X,T=1) - f(X,T=0)\\)\n\n\n\n\n\nWhat if you cannot do a (big enough) RCT?\n\n\nEmulate / approximate the ideal trial in observational data you do have, using causal inference techniques\n(which rely on untestable assumptions)"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#the-in-between-predicting-prognosis-and-using-the-predictions-for-decision-support",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#the-in-between-predicting-prognosis-and-using-the-predictions-for-decision-support",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "The in-between: predicting prognosis and using the predictions for decision support",
-    "text": "The in-between: predicting prognosis and using the predictions for decision support\nFor example:\n\ngive chemotherapy to cancer patients with high predicted risk of recurrence\ngive statins to patients with a high risk of a heart attack\n\n\n\n\n\nTRIPOD+AI on prediction models (Collins et al. 2024)\n\n\n“Their primary use is to support clinical decision making, such as … initiate treatment or lifestyle changes.”"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#when-building-a-prediction-model-always-discuss",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#when-building-a-prediction-model-always-discuss",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "When building a prediction model, always discuss",
-    "text": "When building a prediction model, always discuss\n\nwhat treatments are assumed in the predicted risk?\nwhat is the effect of using the model on the treatment policy?\nwhat is the effect on patient outcomes?\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (W. A. C. van Amsterdam et al. 2024b)\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (W. A. C. van Amsterdam et al. 2024a)"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#references",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#references",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "References",
-    "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nShalit, Uri, Fredrik D. Johansson, and David Sontag. 2017. “Estimating Individual Treatment Effect: Generalization Bounds and Algorithms.” arXiv:1606.03976 [Cs, Stat], May. http://arxiv.org/abs/1606.03976."
   },
   {
     "objectID": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging",
@@ -448,214 +616,11 @@
     "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, and Rajesh Ranganath. 2023. “Conditional Average Treatment Effect Estimation with Marginally Constrained Models.” Journal of Causal Inference 11 (1): 20220027. https://doi.org/10.1515/jci-2022-0027.\n\n\nAmsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A. Bartholomeus, Aahlad Manas Puli, Pim A. de Jong, Tim Leiner, Anne S. R. van Lindert, Marinus J. C. Eijkemans, and Rajesh Ranganath. 2022. “Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage III Non-Small Cell Lung Cancer.” Scientific Reports 12 (1, 1): 5848. https://doi.org/10.1038/s41598-022-09775-9.\n\n\nCandido dos Reis, Francisco J., Gordon C. Wishart, Ed M. Dicks, David Greenberg, Jem Rashbass, Marjanka K. Schmidt, Alexandra J. van den Broek, et al. 2017. “An Updated PREDICT Breast Cancer Prognostication and Treatment Benefit Prediction Model with Independent Validation.” Breast Cancer Research 19 (1): 58. https://doi.org/gbhgpq.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nXu, Zhe, Matthew Arnold, David Stevens, Stephen Kaptoge, Lisa Pennells, Michael J Sweeting, Jessica Barrett, Emanuele Di Angelantonio, and Angela M Wood. 2021. “Prediction of Cardiovascular Disease Risk Accounting for Future Initiation of Statin Treatment.” American Journal of Epidemiology 190 (10): 2000–2014. https://doi.org/10.1093/aje/kwab031."
   },
   {
-    "objectID": "posts/210725-counterfactualvsinterventional.html",
-    "href": "posts/210725-counterfactualvsinterventional.html",
-    "title": "The difference between intervention and counterfactuals",
+    "objectID": "talks/230624-chill-lightning-talk/index.html#section-31",
+    "href": "talks/230624-chill-lightning-talk/index.html#section-31",
+    "title": "My risk model is super accurate so it will be useful for treatment decision making, right? Wrong!",
     "section": "",
-    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
-  },
-  {
-    "objectID": "posts/210725-counterfactualvsinterventional.html#intro",
-    "href": "posts/210725-counterfactualvsinterventional.html#intro",
-    "title": "The difference between intervention and counterfactuals",
-    "section": "",
-    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
-  },
-  {
-    "objectID": "posts/210725-counterfactualvsinterventional.html#example",
-    "href": "posts/210725-counterfactualvsinterventional.html#example",
-    "title": "The difference between intervention and counterfactuals",
-    "section": "Example",
-    "text": "Example\nTo illustrate the difference between a counterfactual prediction and an interventional prediction (or conditional average treatment effect estimates), consider this very simple setup.\nYou have data from a randomized trial with two treatment arms \\(t \\in \\{0,1\\}\\) and an outcome \\(Y\\) on a continuous scale. Denote \\(Y_0\\) the potential outcome under intervening on treatment \\(t=0\\) and \\(Y_1\\) the potential outcome under intervening on treatment \\(t=1\\). As we are dealing with data from a randomized trial, we can easily estimate the average treatment effect as \\(E[Y_1 - Y_0] = E[Y|t=0] - E[Y|t=1]\\), assuming consistency (ignorability and overlap are satisfied due to the study design).\nA counterfactual question is: what would have been the outcome \\(Y_0\\) under treatment \\(t=1\\), given that we observed the outcome \\(y_1\\) under treamtent \\(t=1\\), so it is \\(E[Y_0|Y=y_1, t=1]\\).\nNow assume that the data come from a mixture of Gaussians such that\n\\[y|t \\sim (1 - t) \\mathcal{N}(1,0.1^2) + t \\mathcal{N}(10,2.5^2)\\]\nAnd \\(p(t=1)=0.5\\) so both arms are equally large. Treatment \\(t=1\\) leads to higher outcome but also more spread. The relevant interventional expectations are easily calculated by just calculating group means \\(E[Y_0] = E[Y|t=0] = 1\\), \\(E[Y_1] = E[Y|t=1] = 10\\).\n\nCalculating the counterfactuals\nTo see that calculating counterfactuals requires more knowledge, namely of the structural equations, we now calculate the counterfactual prediction for a patient with \\(Y=Y_1=15\\). This is a patient with a relatively large ‘residual’, the outcome is 2 standard deviations above the mean for treatment group \\(t=1\\).\nFirst we calculate the counterfactual outcome under a wrong outcome model. Researchers tried to model the outcomes using linear regression, and failed to appreciate the difference in variances between the two treatment arms (heteroscedasticity). Assuming a large sample, they will arrive at a model:\n\\[\\hat{y}_{\\text{wrong}} = 1 + t * 9 + \\mathcal{N}(0,\\sigma^2)\\]\nWhere \\(\\sigma = \\sqrt{\\frac{0.1^2 + 2.5^2}{2}} \\approx 1.77\\) (standard devation of mixture of Gaussians with (conditional) mean of 0 and standard deviations 0.1 and 2.5, with 50 / 50 mixing). Note that the estimate of the treatment effect is correct, and so are \\(E[Y_0]\\) and \\(E[Y_1]\\). If there was a binary pre-treatment covariate, the conditional average treatment effect could be estimated by repeating this exercise for both levels of the covariate. To calculate the counterfactual outcome of our patient, we first need to determine the value of their noise variable for the outcome. According to \\(\\hat{y}_{\\text{wrong}}\\), the residual for a patient with \\(Y_1=15\\) is \\(5\\), which is \\(5/\\sigma \\approx 2.82\\) standard deviations away from the expected value for \\(t=1\\). Given this residual we can now calculate the counterfactual:\n\\[\\widehat{E_{\\text{wrong}}}[Y_0|Y=15,t=1] \\approx E[Y_0] + 2.82 \\sigma =6\\]\nGiven that we know the data generating mechanism, we know that this counterfactual prediction is 50 standard deviations from the conditional mean of \\(t=0\\) in the data generating mechanism, clearly this counterfactual prediction is wrong.\nIf we did model the data correctly with a mixture of Gaussians indexed by the treatment group, we would instead say that \\(Y_1=15\\) is 2 standard deviations above the conditional mean, and we would calculate:\n\\[\\widehat{E^*}[Y_0|Y=15,t=1] = E[Y_0] + 2 * 0.1 =1.2\\]\nWhich is correct."
-  },
-  {
-    "objectID": "posts/210725-counterfactualvsinterventional.html#conclusion",
-    "href": "posts/210725-counterfactualvsinterventional.html#conclusion",
-    "title": "The difference between intervention and counterfactuals",
-    "section": "Conclusion",
-    "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html",
-    "href": "posts/210720-good_predictions_bad_decisions.html",
-    "title": "When good predictions lead to bad decisions",
-    "section": "",
-    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Defining the policies",
-    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Expected utility of different policies",
-    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
-  },
-  {
-    "objectID": "posts/190816-lm-functional-form.html",
-    "href": "posts/190816-lm-functional-form.html",
-    "title": "Finding the functional form for multiple linear regression",
-    "section": "",
-    "text": "A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a partial residual plot. Here I will generate some data to illustrate this"
-  },
-  {
-    "objectID": "posts/190816-lm-functional-form.html#functional-relationship-in-linear-regression",
-    "href": "posts/190816-lm-functional-form.html#functional-relationship-in-linear-regression",
-    "title": "Finding the functional form for multiple linear regression",
-    "section": "",
-    "text": "A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the independent variables is. TLDR: the answer is a partial residual plot. Here I will generate some data to illustrate this"
-  },
-  {
-    "objectID": "posts/190816-lm-functional-form.html#data",
-    "href": "posts/190816-lm-functional-form.html#data",
-    "title": "Finding the functional form for multiple linear regression",
-    "section": "Data",
-    "text": "Data\n\nsuppressMessages({require(ggplot2); theme_set(theme_bw())})\nset.seed(12345)\nN = 1000\nx &lt;- runif(N, min = 0, max=2*pi)\nw &lt;- .5*x + sin(x) + rnorm(N, sd=.25)\nsy &lt;- rnorm(N, sd=.1)\ny &lt;- x + w + sy\ndf = data.frame(x,w,y)\n\nThe data consists of two real-valued ‘independent’ variables \\(x,w\\), where\n\\[\n\\begin{align}\nx &\\sim U(0, 2 \\pi) \\\\\n\\epsilon_w &\\sim N(0, 0.25) \\\\\n\\epsilon_y &\\sim N(0, 0.1) \\\\\nw &:= \\frac{x}{2} + \\sin(x) \\\\\ny &:= x + w + \\epsilon_y\n\\end{align}\n\\]\nClearly \\(y\\) is linear in both \\(x\\) and \\(w\\). A plot of the data:\n\nggplot(df, aes(x=x, y=w,col=y, size=y)) + \n  geom_point() + theme_minimal()\n\n\n\n\njoint distribution of x, w, y"
-  },
-  {
-    "objectID": "posts/190816-lm-functional-form.html#plots",
-    "href": "posts/190816-lm-functional-form.html#plots",
-    "title": "Finding the functional form for multiple linear regression",
-    "section": "Plots",
-    "text": "Plots\n\nIncorrect: marginal association\nLet’s say we’re particularly interested in the relationship between \\(y\\) and \\(x\\), both conditional on \\(w\\). Looking at the marginal association between \\(y\\) and \\(x\\) with a scatterplot will set us on the wrong foot, because of the association between \\(x\\) and \\(w\\).\n\nggplot(df, aes(x=x,y=y)) + \n  geom_point()\n\n\n\n\nmarginal association between x and y\n\n\n\n\n\n\nCorrect: partial residual plot\nTo construct the correct plot, we can generate a partial residual plot, which is created with resid(lm(y~x+w))+b_x x ~ x.\nWhere b_x is the regression coefficient found through linear regression of \\(y\\) on \\(x\\) and \\(w\\). In a plot:\n\nlmfit &lt;- lm(y~x+w)\nyresid &lt;- resid(lmfit)\nb_x &lt;- coef(lmfit)['x']\nplotdata &lt;- data.frame(x, y=yresid + b_x * x)\n\nggplot(plotdata, aes(x=x,y=y)) + \n  geom_point() + \n  ylab(\"resid(lm(y~x+w)) + b_x x\")\n\n\n\n\n\n\n\nFigure 1: partial residual plot\n\n\n\n\n\n\n\nPartial residual plot when y is not linear in x\nWhat if \\(y\\) were not linear in \\(x\\)?\n\ny2 &lt;- x^2 + w + sy\nlmfit2 &lt;- lm(y2 ~ x + w)\nb_x2 &lt;- coef(lmfit2)['x']\nplotdata2 &lt;- data.frame(x, y=resid(lmfit2) + b_x2 * x)\n\nggplot(plotdata2, aes(x=x,y=y)) + \n  geom_point() + \n  ylab(\"resid(lm(y~x+w)) + b_x x\")\n\n\n\n\npartial residual plot when y not linear in x"
-  },
-  {
-    "objectID": "posts/190816-lm-functional-form.html#conclusion",
-    "href": "posts/190816-lm-functional-form.html#conclusion",
-    "title": "Finding the functional form for multiple linear regression",
-    "section": "Conclusion",
-    "text": "Conclusion\nThe functional relationship between an outcome and a covariate in a linear regression conditional on other covariates is visualized with a partial residual plot, or:\n\nlmfit &lt;- lm(y~x+w)\nplot(resid(lmfit) + coef(lmfit)['x'] * x ~ x)"
-  },
-  {
-    "objectID": "posts/240714-identification/index.html",
-    "href": "posts/240714-identification/index.html",
-    "title": "Identification - seeing is not doing",
-    "section": "",
-    "text": "Some things I found confusing in causal inference: the terms identification, pointing to the concept of finding a unique solution, versus “seeing-is-not-doing”. In settings with unobserved confounding, we know that that marginal outcome rates do not equal causal effects. So seeing is not doing, but the estimate is unique right, even though its wrong. So in what sense is it not identified?\nWe take Judea Pearl’s definition from the book Causality (Definition 3.2.3 Pearl 2009)\nWith an example we demonstrate ‘non-identified-ness’\n\nIntroduction to example\nWe consider this simple causal Directed Acyclic Graph over binary variables with with parameterized joint distribution\n\n\n\n\n\n\n\n\n\n\nG\n\n\n\nU\n\nU\n\n\n\nX\n\nX\n\n\n\nU-&gt;X\n\n\n\n\n\nY\n\nY\n\n\n\nU-&gt;Y\n\n\n\n\n\nX-&gt;Y\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\nParameterizing the example\nWe follow the causal factorization in parameterizing the joint distribution. First we parameterize \\(P(U)\\) and \\(P(X|U)\\)\n\\[\\begin{align}\n    P(U=1)         &= p_u \\\\\n    P(X=1|U=u)     &= (1-u)a_0 + u a_1\n\\end{align}\\]\nThis leads to the following marginal for \\(P(X)\\):\n\\[\\begin{align}\n    P(X=1) &= P(X=1|U=0)P(U=0) + P(X=1|U=1)P(U=1) \\\\\n           &= a_0 (1-p_u) + a_1 p_u \\\\\n           &= p_u (a_1 - a_0) + a_0 \\\\\n    P(X=0) &= 1 - P(X=1) \\\\\n           &= p_u (a_0 - a_1) - a_0\n\\end{align}\\] {#eq-xmarginals}\nAnd the following \\(P(U=1|X=x)\\):\n\\[\\begin{align}\n  P(U=1|X=x) = &\\frac{P(U=1,X=x)}{P(X=x)} \\\\\n             = &\\frac{P(X=x|U=1)P(U=1)}{P(X=x)} \\\\\n             = &(1-x) \\frac{(1-a_1)p_u}{p_u (a_0 - a_1) - a_0} \\\\\n              &+x \\frac{a_1 p_u}{p_u (a_1 - a_0) + a_0} \\\\\n\\end{align}\\]\nTo shorten notation we introduce:\n\\[\\begin{align}\n    \\gamma_0 = \\gamma_0(p_u,a_0,a_1) &:= \\frac{(1-a_1)p_u}{p_u (a_0 - a_1) - a_0} &= P(U=1|X=0) \\\\\n    \\gamma_1 = \\gamma_1(p_u,a_0,a_1) &:= \\frac{a_1 p_u}{p_u (a_1 - a_0) + a_0}    &= P(U=1|X=1)\n\\end{align}\\]\nWe now parameterize \\(P(Y=1|X=x,U=u)\\):\n\\[P(Y=1|X=x,U=u) = q + r x + s u + t xu \\tag{1}\\]\nAs in the last conditional all back-door paths are closed, \\(P(Y=1|X=x,U) = P(Y=1|\\text{do}(X=x),U)\\)\nThe entire distribution is parameterized with 7 parameters:\n\\[p_u,a_0,a_1,q,r,s,t \\tag{2}\\]\nAssume we have observational data where we do not observe \\(U\\), this gives us three observations:\n\\[\\begin{align}\n    P(Y=1|X=0) = &P(Y=1|X=0,U=0)P(U=0|X=0) \\\\\n                          & + P(Y=1|X=0,U=1)P(U=1|X=0) \\\\\n                        = &(1-\\gamma_0) q + \\gamma_0 (q + s) \\\\\n                        = & q + \\gamma_0 s \\\\\n    P(Y=1|X=1) = &P(Y=1|X=1,U=0)P(U=0|X=1) \\\\\n                          & + P(Y=1|X=1,U=1)P(U=1|X=1) \\\\\n                        = &(1-\\gamma_1) (q + r) + \\gamma_1 (q + r + s + t) \\\\\n                        = & q + r + \\gamma_1 (s + t) \\\\\n    P(Y=1)       = & P(Y=1|X=0)P(X=0) + P(Y=1|X=1)P(X=1) \\\\\n                        = & (p_u(a_0 - a_1) - a_0)(q + \\gamma_0 s) \\\\\n                          & + (p_u(a_1 - a_0) + a_0)(q + r + \\gamma_1 (s + t))\n\\end{align}\\]\nDefine:\n\\[\\pi_0 := P(Y=1|X=0) = q + \\gamma_0 s \\tag{3}\\] \\[\\pi_1 := P(Y=1|X=1) = q + r+ \\gamma_1 (s + t) \\tag{4}\\] \\[\\pi   := P(Y=1) = P(X=0) \\pi_0 + P(X=1) \\pi_1 \\tag{5}\\]\nIn the latter we may choose to express \\(P(X=1)\\) in terms of \\(p_u,a_0,a_1\\) when convenient.\n\n\nFinding parameters with the same marginals but different treatment effects\nLooking at the definition of identifiability:\n\n\n\n\n\n\nDefinition 3.2.3 (Identifiability)\n\n\n\nLet \\(Q(M)\\) be any computable quantity of a model \\(M\\). We say that \\(Q\\) is identifiable in a class \\(\\mathbb{M}\\) of models if, for any pairs of models \\(M_1\\) and \\(M_2\\) from \\(\\mathbb{M}\\), \\(Q(M_1) = Q(M_2)\\) whenever \\(P_{M_1} (y) = P_{M_2} (y)\\). If our observations are limited and permit only a partial set \\(F_M\\) of features (of \\(P_M(y)\\)) to be estimated, we define \\(Q\\) to be identifiable from \\(F_M\\) if \\(Q(M_1) = Q(M_2)\\) whenever \\(F_{M_1} = F_{M_2}\\).\n\n\nWe pick as query the Average Treatment Effect (ATE):\n\\[\\text{ATE} = E[Y|\\text{do}(X=1)] - E[Y|\\text{do}(X=0)] \\tag{6}\\]\nAre observed features \\(F_M\\) of the distribution are\n\\[\\pi_1,\\pi_0,\\pi \\tag{7}\\]\nCan we find values of the parameters in Equation 2 for which the observables Equation 7 are the same, but our target query Equation 6 is not? If that is the case, we have proved (by counter-example) that the target query is not identified from our model assumptions on the DAG in Figure 1 and the observables from the data Equation 7. It turns out, we quite easily can. If we set 4 out of 7 parameters and assume values for the three observables, we can solve for the other three parameters using the equations for the observables. Let’s choose some values for 2 parameters:\n\\[p_u=0.5, t=0\\]\nThis means the ‘interaction’ term \\(t\\) for \\(X,U\\) is zero. And observables:\n\\[\\pi_0=0.3, \\pi_1=0.7, \\pi = 0.5\\]\nThe fact that \\(\\pi = 0.5 = P(X=0)\\pi_0 + P(X=1)\\pi_1\\) implies that\n\\[P(X=1)=0.5 \\tag{8}\\]\nby solving \\(0.5 = (1-P(X=1)) 0.3 + P(X=1) 0.5\\). Using ?@eq-xmarginals we have that:\n\\[a_1 + a_0=1 \\tag{9}\\]\n\nModel 1: no treatment effect\nNow we can start adding substantial differences based on confounding and the outcome mechanism. First let’s assume extreme confounding and no causal effect of \\(X\\) on \\(Y\\), so:\n\\[r=0,a_0=0,a_1=1 \\tag{10}\\]\nWe have now specified 5 parameters and used one constraint. Working with the equations for \\(\\pi_0,\\pi_1\\) we can now solve for \\(q,s\\). First note that \\(\\gamma_0 = 0, \\gamma_1 = 1\\).\nWe use Equation 3 for \\(q\\):\n\\[\\pi_0 = q + \\gamma_0 s = q = 0.3\\]\nAnd Equation 4 for \\(s\\):\n\\[\\begin{align}\n    \\pi_1 &= q + r + \\gamma_1 (s+t) = q + s \\\\\n    0.7   &= 0.3 + s \\\\\n          &\\Rightarrow s = 0.4\n\\end{align}\\]\nAs \\(r=t=0\\) we have that our query \\(\\text{ATE}=0\\)\n\n\nModel 2: no confounding\nAs an alternative we can say there is no confounding and the observed difference in \\(\\pi_1,\\pi_0\\) is thus in fact due to the causal effect of \\(X\\) on \\(Y\\), by setting:\n\\[\\begin{align}\n    a_0 = a_1 &= 0.5 \\\\\n            q &= 0.3 \\\\\n            r &= \\pi_1 - \\pi_0 = 0.4 \\\\\n            s &= 0\n\\end{align}\\]\nWe can easily verify that these parameters are consistent with the observables and the above definitions of \\(p_u,t\\) and the observeables.\n\n\nModel 3: half-confounding\nWe have now proven that the query is not identified since we have two models that have different answers for out query, but lead to the same observed features of the observational distribution. Because (seq-model2?) is a bit special (no-confounding), let’s just add another one in the mix.\nAssume \\(r=0.2\\) so \\(\\text{ATE} = 0.2\\). Let’s assume less extreme confounding than Model 1: \\(a_0 = 0.25,a_1=0.75\\). We can now work out the values for \\(q\\) and \\(s\\). First note that\nPutting it in a Table:\n\n\n\n\nmodel\nATE\n\\(\\pi_0\\)\n\\(\\pi_1\\)\n$\n\n\n\n\n1\n0\n0.3\n0.7\n0.5\n\n\n2\n0.4\n0.3\n0.7\n0.5\n\n\n3\n0.2\n0.3\n0.7\n0.5\n\n\n\n\n\n\n\n\nmodel\n\\(p_u\\)\n\\(a_0\\)\n\\(a_1\\)\n\\(q\\)\n\\(r\\)\n\\(s\\)\n\\(t\\)\n\n\n\n\n1\n0.5\n0\n1\n0.3\n0\n0.4\n0\n\n\n2\n0.5\n0.5\n0.5\n0.3\n0.4\n0\n0\n\n\n3\n0.5\n0.3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReferences\n\nPearl, Judea. 2009. Causality. Cambridge University Press.\n\nCitationBibTeX citation:@online{van_amsterdam2024,\n  author = {van Amsterdam, Wouter},\n  title = {Identification - Seeing Is Not Doing},\n  date = {2024-07-14},\n  url = {https://vanamsterdam.github.io/posts/240714-identification/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nAmsterdam, Wouter van. 2024. “Identification - Seeing Is Not\nDoing.” July 14, 2024. https://vanamsterdam.github.io/posts/240714-identification/."
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html",
-    "href": "posts/240322-mice-partial-residual-plot.html",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "",
-    "text": "In an earlier blog post I show how to plot the dependence of a response variable on covariate, both conditional on other covariates with a partial residual plot In this post I investigate how to do this when there are missing values using package mice.\nThis post will rely in Hanne Oberman’s vignette on ggmice, a plotting package for mice::mids objects."
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
-    "href": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Data and imputation",
-    "text": "Data and imputation\nIn this post we’ll use the boys dataset which is provided in the mice package. The mice package implements multiple imputation through chained equations1.\n\nlibrary(mice)\nlibrary(ggplot2); theme_set(theme_bw())\n\ndf &lt;- boys\n\nnimps &lt;- 5\nimp &lt;- mice(df, m = nimps, method = \"pmm\")"
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
-    "href": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Partial residual plot with complete data",
-    "text": "Partial residual plot with complete data\nWe’ll assume we’re interested in how weight (wgt) depends on height (hgt), corrected for all other variables. Both have missing values in the dataset.\nWe can use one of the imputed datasets to show how partial residual plots are made with complete data. With complete data, partial residual plots can be created like so:\n\ndf1 &lt;- complete(imp, 1)\n\nget_partial_resid &lt;- function(data) {\n  fit &lt;- lm(wgt~., data=data)\n  yresid &lt;- resid(fit)\n  return(yresid + coef(fit)['hgt'] * data$hgt)\n}\n\nplotdata1 &lt;- data.frame(hgt=df1$hgt, y=get_partial_resid(df1))\n\nggplot(plotdata1, aes(x=hgt, y=y)) + geom_point()\n\n\n\n\n\n\n\nFigure 1: Partial residual plot on complete data\n\n\n\n\n\nNote how this differs from the marginal association between hgt and wgt. The difference between the plots is explained by other covariates that are correlated both with hgt and wgt.\n\nggplot(df1, aes(x=hgt, y=wgt)) + geom_point()\n\n\n\n\n\n\n\nFigure 2: marginal association between age and height"
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
-    "href": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Putting them together",
-    "text": "Putting them together\nThe issue with the partial residual plot Figure 1 is that the residuals depend on the imputed values for all variables. How to go about this? We can treat the residuals as we would ‘coefficients’ in imputation and use Rubin’s rules on them. Let’s see how to do this with mice.\n\nimpdfs &lt;- complete(imp, \"all\")\nimpdfs &lt;- lapply(impdfs, function(data) data.frame(data, partial_resid=get_partial_resid(data)))\nimpdfs &lt;- lapply(1:nimps, function(i) data.frame(impdfs[[i]], impidx=i))\nimpdf_long &lt;- do.call(rbind, impdfs)\n\nNote that we cannot directly pool the residuals because they may be correlated with the imputed values for hgt. Pooling imputed values for hgt and the partial residual removes this correlation. Instead we could just plot all the values.\n\nggplot(impdf_long, aes(x=hgt, y=partial_resid)) + geom_point(aes(shape=factor(impidx)), alpha=0.5)\n\n\n\n\n\n\n\nFigure 3: partial residual plot with imputed datasets\n\n\n\n\n\nIn the future I’d like to learn how to make good bivariate estimates of these points (e.g. fitting a bivariate normal distribution). This should for example also come up in calculating sensitivity and specificity on multiply imputed datasets, as these are clearly correlated. Fully bayesian imputation is another possibility obviously."
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#footnotes",
-    "href": "posts/240322-mice-partial-residual-plot.html#footnotes",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nmultiple imputation with chained equations sequentially imputes values for all variables with missing values by building prediction models for each variable based on other variables. This imputation is done multiple times with multiple random seeds and thus results in a number of different imputed datasets. A typical analysis workflow is to do these imputations and on each imputed dataset fit a model of interest. The coefficients of these models can then be pooled using Rubin’s rules.↩︎"
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "",
-    "text": "Simulation experiments are important when evaluating methods but also for applied work in for example power analyses (e.g. Amsterdam, Harlianto, et al. 2022) or sensitivity analyses (e.g. Amsterdam, Verhoeff, et al. 2022). When using simulations to support scientific claims, the more experiments the better. Being able to perform simulation experiments faster allows researchers to:\nThe R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed.  In recent years, JAX (developed by Google) and Julia have arisen as general scientific computation frameworks. JAX and Julia have grown in popularity both in the neural network community as in other scientific communities (e.g. “DifferentiableUniverseInitiative/Jax_cosmo” 2024; “SciML: Open Source Software for Scientific Machine Learning” n.d.). In this blog post I’ll compare R with JAX and Julia for a simple simulation study setup with logistic regression.\nWe’ll look at the following comparisons:"
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#jax-and-julia-vs-r-a-high-level-overview",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#jax-and-julia-vs-r-a-high-level-overview",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "JAX and Julia vs R: a high level overview",
-    "text": "JAX and Julia vs R: a high level overview\nJAX is a rising star in computer science and natural sciences. Without going in too much details, JAX works by translating python code into an intermediate language that can be run very efficiently on different hardware backends (CPU, GPU, TPU), possibly with just-in-time compilation (JIT). JAX prides itself on providing composable transformations for vectorization (vmap), paralellization (pmap) and automatic differentiation (grad), all compatible with jit. In R, most of the heavy lifting in terms of computation (such as fitting a logistic regression model) is implemented in high-speed languages such as C++ or Fortran. The usual R-code merely provides an interface to these languages and allows the user to feed in data and analyze results. Whereas using JAX and R means working with two languages (one language to write accessible code, another to do fast computation), Julia is a just-in-time compiled language where such translation is not needed."
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-basic-setup",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-basic-setup",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "The basic setup",
-    "text": "The basic setup\nWe’ll use a simple logistic regression simulation setup, where for each observation:\n\\[\n\\begin{align}\n\\mathbf{x}_{\\text{full}} &\\sim \\mathcal{N}(0,I) \\in \\mathbb{R}^{10} \\\\\ny &= ||\\mathbf{x}||_0 &gt; 0 \\\\\n\\mathbf{x}_{\\text{obs}} &= [x_0\\ x_i \\ldots x_9]\n\\end{align}\n\\]\nSo \\(y\\) is the sum of elements of \\(\\mathbf{x}_{\\text{full}}\\) and the observed \\(\\mathbf{x}_{\\text{obs}}\\) contains only the first 9 out of 10 elements of \\(\\mathbf{x}_{\\text{full}}\\).\nWe will model this data with logistic regression:\n\\[\n\\begin{align}\n    \\text{logit}(y) &= \\mathbf{x}_{\\text{obs}} \\boldsymbol{\\beta}'\\\\\n    y &\\sim \\text{Bernoulli} (\\sigma (\\mathbf{x}_{\\text{obs}} \\boldsymbol{\\beta}'))\n\\end{align}\n\\]\nwhere \\(\\boldsymbol{\\beta} = [\\beta_1,\\ldots,\\beta_9]\\) is a 9-dimensional parameter vector that is to be estimated (we’re excluding the usual intercept term). We’ll generate nrep independent datasets and estimate \\(\\boldsymbol{\\beta}\\) in each one, and finally calculate the average parameter estimates \\(\\frac{1}{\\text{nrep}}\\sum_{i=1}^{\\text{nrep}}\\boldsymbol{\\beta}^i\\).\n\nHardware\nThe hardware I had available for this comparison is:\n\nmacm1: 2020 macbook air M1, 8Gb RAM, 8 threads\nlinux: linux machine, 64Gb RAM, 12 threads (Intel(R) Xeon(R) W-2135 CPU @ 3.70GH )"
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-code",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-code",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "The code",
-    "text": "The code\n\nMaking data\nMaking the data is pretty similar in all cases, except that JAX requires an explicit random key.\n\nRPythonJulia\n\n\nmake_data &lt;- function(n=1e3L) {\n    x_vec = rnorm(n*10)\n    X_full = matrix(x_vec, ncol=10)\n    eta = rowSums(X_full)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[,1:9]\n    return(list(X=X,y=y))\n}\n\n\ndef make_data(k, n=int(1e3)):\n    X_full = random.normal(k, (n,10)) # JAX needs explicit keys for psuedo random number generation\n    eta = jnp.sum(X_full, axis=-1)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[:,:9]\n    return (X, y)\n\n\nfunction make_data(n::Integer=1000)\n    X_full = randn(n,10)\n    eta = vec(sum(X_full, dims=2))\n    y = eta .&gt; 0 # vectorized greater than 0 comparison\n    X = X_full[:,1:9]\n    return X, y\nend\n\n\n\n\n\nRun single experiment\nNow we’ll write the code for a single analysis step, generating data and fitting the logistic regression. For R and Julia we will use the glm function to estimate the logistic regression model. The Julia code looks much like the R code. As far as I know there is no equivalent glm function implemented in JAX. Instead, we need to specify an objective function and will use a general purpose optimizer. JaxOpt provides both binary_logreg as an objective function and LBFGS, a popular general purpose optimizer, which we’ll use here.\n\nRPythonJulia\n\n\nsolve &lt;- function(...) {\n  data = make_data()\n  fit = glm(data$y~data$X-1, family='binomial')\n  coefs = coef(fit)\n  return(coefs)\n}\n\n\n# initialize a generic solver with the correct objective function\nsolver = LBFGS(binary_logreg)\nw_init = jnp.zeros((9,))\n\n@jit # jit toggles just-in-time compilation, one of the main features of JAX\ndef solve(k):\n    data = make_data(k)\n    param, state = solver.run(w_init, data)\n    return param\n\n\nfunction solve(i::Int64=1)\n    X, y = make_data()\n    fit = glm(X, y, Bernoulli())\n    coefs = coef(fit)\n    return coefs\nend\n\n\n\n\n\nIterate over runs / settings\nFinally we run the experiments nrep times and calculate the average coefficient vector.\n\nJAX primitive: map versus vmap\nNote that in JAX there are multiple ways to do this, most notably map and vmap. Whereas map may offer speedups compared to R due to jit-compiliation, for most purposes vmap is recommended as it allows JAX to find ways of making the computation more efficient. For example, a vector-vector multiplication vectorized over an input of vectors is equivalent to a single matrix-vector multiplication. JAX’s intermediate language finds these possible optimizations and swaps in the more efficient approach. Vectorized code runs in parallel and can be much faster. Note that in our case, vectorization may not be too beneficial as running LBFGS on different datasets may not lend itself to vectorizations (compared e.g. to neural network computations on batches of data). A downside of vectorization is that it requires more memory: all the datasets and optimization steps happen in parallel, whereas with loop-based execution, only the coefficients of each time step need to be stored.\n\nRPythonJulia\n\n\nif (nthreads == 1) {\n    set.seed(240316)\n    params &lt;- lapply(1:nreps, solve)\n} else {\n    params &lt;- future_map(1:nreps, solve, .options=furrr_options(seed=240316))\n}\noutmat &lt;- do.call(rbind, params)\nmeans &lt;- colMeans(outmat)\nprint(means[1])\n\n\nk0 = random.PRNGKey(240316)\nks = random.split(k0, args.nreps)\nif args.primitive == 'map':\n    params = lax.map(solve, ks)\nelif args.primitive == 'vmap':\n    params = vmap(solve)(ks)\nelse:\n    raise ValueError(f\"unrecognized primitive: {args.primitive}, choose map or vmap\")\n\nmeans = jnp.mean(params, axis=0)\nprint(means[0])\n\n\nRandom.seed!(240316)\noutmat = zeros(nreps, 9)\n\n@threads for i in 1:nreps # use @threads for multi-threading\n    solution = solve()\n    outmat[i,:] = solution\nend\n\nmeans = mean(outmat, dims=1)\nprint(means[1])\n\n\n\n\n\n\nBash scripts for speed comparisons\nI benchmarked each run with an external time command in Bash or ZSH and wrote the results to a file.\n\nBash (linux)ZSH (macos)\n\n\n\n\nCode\n#!/bin/bash\n\nfor nreps in 1000 10000 100000 1000000 10000000\ndo\n    echo $nreps\n    { time python scripts/jaxspeed.py $nreps map; } 2&gt;&1 | grep real &gt;&gt; bashtimings.txt\n    sed -i '$s/$/ jax '\"${nreps}\"' nreps 12 nthreads map primitive/' bashtimings.txt\n    { time python scripts/jaxspeed.py $nreps vmap; } 2&gt;&1 | grep real &gt;&gt; bashtimings.txt\n    sed -i '$s/$/ jax '\"${nreps}\"' nreps 12 nthreads vmap primitive/' bashtimings.txt\n\n    for nthreads in 1 6 12\n    do\n        echo $nthreads\n        { time julia -t $nthreads scripts/jlspeed.jl $nreps ; } 2&gt;&1 | grep real &gt;&gt; bashtimings.txt\n        sed -i '$s/$/ julia '\"${nreps}\"' nreps '\"${nthreads}\"' nthreads/' bashtimings.txt\n        { time Rscript scripts/rspeed.R $nreps $nthreads ; } 2&gt;&1 | grep real &gt;&gt; bashtimings.txt\n        sed -i '$s/$/ r '\"${nreps}\"' nreps '\"${nthreads}\"' nthreads/' bashtimings.txt\n    done\ndone\n\n\n\n\n\n\nCode\n#!/bin/zsh\n\nfor nreps in 1000 10000 100000 1000000 10000000\ndo\n    echo $nreps\n    { time python scripts/jaxspeed.py $nreps map ; } 2&gt;&gt; timings.txt\n    sed -i '' '$s/$/ '\"${nreps}\"' nreps 8 threads map primitive/' timings.txt\n    { time python scripts/jaxspeed.py $nreps vmap ; } 2&gt;&gt; timings.txt\n    sed -i '' '$s/$/ '\"${nreps}\"' nreps 8 threads vmap primitive/' timings.txt\n\n    for nthreads in 1 8\n    do\n        echo $nthreads\n        { time julia -t $nthreads scripts/jlspeed.jl $nreps ; } 2&gt;&gt; timings.txt\n        sed -i '' '$s/$/ '\"${nreps}\"' nreps '\"${nthreads}\"' nthreads/' timings.txt\n        { time Rscript scripts/rspeed.R $nreps $nthreads ; } 2&gt;&gt; timings.txt\n        sed -i '' '$s/$/ '\"${nreps}\"' nreps '\"${nthreads}\"' nthreads/' timings.txt\n    done\ndone"
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-speed",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#the-speed",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "The speed",
-    "text": "The speed\n\nRunning time\nFirst, let’s see how running time increases with the number of experiments, using all available threads. You cannot easily set number of threads in JAX (see e.g. this issue on github), so all JAX computations use all threads.\n\n\nCode\nsuppressMessages({\n    library(dplyr)\n    library(data.table)\n    library(purrr)\n    library(stringr)\n    library(ggplot2); theme_set(theme_bw())\n    library(knitr)\n    library(kableExtra)\n})\n\n# get timings from mac\nlns &lt;- readr::read_lines('timings.txt')\n# get timings from linux machine\nblns &lt;- readr::read_lines('bashtimings.txt')\n\n# remove lines with warnings / errors printed to txt file\nlns &lt;- str_subset(lns, \"^Rscript|julia|python\")\nmtimings &lt;- data.table(raw_string=lns)\nbtimings &lt;- data.table(raw_string=blns)\n\n# remove white space and first word (for linux)\ntimings &lt;- rbindlist(list(macm1=mtimings, linux=btimings), idcol='machine')\ntimings[, string:=str_trim(raw_string)] # remove white space\ntimings[, string:=str_replace(string, \"^real\\t\", \"\")] # remove first word linux\n\n# find the language from the string\ntimings[machine=='macm1', command:=word(string)]\ntimings[command=='Rscript', language:='r']\ntimings[command=='python', language:='jax']\ntimings[command=='julia', language:='julia']\ntimings[machine=='linux', language:=str_extract(string, \"(?&lt;=s )[a-z]+\")]\n\n# grab number of threads and reps\ntimings[, nthreads:=as.integer(str_extract(string, \"(\\\\d+)(?= nthreads)\"))]\ntimings[, max_threads:=max(nthreads, na.rm=T), by='machine']\ntimings[is.na(nthreads) & language == 'jax', nthreads:=max_threads]\ntimings[is.na(nthreads) & language %in% c('r', 'julia'), nthreads:=1L]\ntimings[, nreps:=as.integer(str_extract(string, \"(\\\\d+)(?= nreps)\"))]\ntimings[, max_threads:=max(nthreads), by='machine']\n\n# find jax primitive\ntimings[, primitive:=str_extract(string, \"(\\\\w+)(?= primitive)\")]\ntimings[machine=='macm1'&language=='jax'&is.na(primitive), primitive:='map']\n#timings &lt;- timings[!(language=='jax' & primitive!='map')]\n# timings[language=='jax', language:=paste0(language, '-', primitive)]\ntimings[language!='jax', primitive:='map']\ntimings &lt;- timings[!str_ends(primitive, 'nojit')]\n\n# grab the time \ntimings[machine=='macm1', time_str:=str_extract(string, \"(?&lt;=cpu\\\\ )(.*)(?= total)\")]\ntimings[, milliseconds:=as.integer(str_extract(time_str, \"(\\\\d+)$\"))]\ntimings[, seconds     :=as.integer(str_extract(time_str, \"(\\\\d+)(?=.)\"))]\ntimings[, minutes     :=as.integer(str_extract(time_str, \"(\\\\d+)(?=:)\"))]\ntimings[, hours       :=as.integer(str_extract(time_str, \"(\\\\d+)(?=:(\\\\d+:))\"))]\ntimings[machine=='linux', minutes:=as.integer(str_extract(string, \"^(\\\\d+)\"))]\ntimings[machine=='linux', seconds:=as.integer(str_extract(string, \"(?&lt;=m)(\\\\d+)\"))]\ntimings[machine=='linux', milliseconds:=as.integer(str_extract(string, \"(\\\\d+)(?=s)\"))]\ntimings[is.na(minutes), minutes:=0]\ntimings[is.na(hours), hours:=0]\n\n\ntimings[, sec_total:=60*60*hours + 60*minutes + seconds + milliseconds / 1000]\ntimings[, min_total:=sec_total / 60]\n\n# add some vars\ntimings[, n_per_min:=nreps / min_total]\ntimings[, n_per_min3:=n_per_min/1000]\n\n# remove a couple of failed runs where time went down for more experiments (= out of memory)\n#timings &lt;- timings[n_per_min &lt; 1.5e6]\n\n\nfwrite(timings, 'allresults.csv', row.names=F)\n\nggplot(timings[nthreads==max_threads], aes(x=nreps, y=min_total, col=language)) +\n  geom_point() + geom_line(aes(linetype=primitive)) + \n  scale_x_log10() + scale_y_log10() + \n  # facet_grid(machine+nthreads~primitive, labeller='label_both')\n  facet_grid(machine+nthreads~., labeller='label_both')\n\n\n\n\n\n\n\n\nFigure 1: Time to run experiments on the maximum number of threads\n\n\n\n\n\nNote that for JAX vmap the clock time actually goes down when the number of experiment increases. This is not some magic speedup but the machine running out of memory and thus not completing the experiment, a downside of vectorization. We’ll exclude these runs of the further comparisons. For map this is not the case.\n\n\nSpeed\nLet’s look at the speeds.\n\n\n\n\n\n\n\n\nFigure 2: Speed: number of repetitions per minute versus of number of experiments\n\n\n\n\n\nWhy is the speed going down for Julia on the macm1 machine after 1e6 experiments? Turns out there is not enough RAM to fit the experiments and the system switches to swap memory which is much slower than using RAM (even on a mac arm64). The speed of R stopped increasing after 1e6 experiments so I didn’t run more experiments.\n\n\nThreads vs Speed\nNow let’s check how much extra speed we get from using more threads in R and Julia.\n\n\n\n\n\n\n\n\nFigure 3: Scaling of speed with number of threads\n\n\n\n\n\n\n\n\nScaling of speed with number of threads, number of experiments per minute (1000s)\n\n\nlanguage\nnreps\nlinux_1\nlinux_6\nspeedup6\nlinux_12\nspeedup12\nmacm1_1\nmacm1_8\nspeedup8\n\n\n\n\njulia\n1e+03\n10.7\n11.8\n1.1\n11.0\n1.0\n16.2\n16.3\n1.0\n\n\njulia\n1e+04\n69.5\n108.1\n1.6\n101.0\n1.5\n96.9\n147.6\n1.5\n\n\njulia\n1e+05\n146.0\n514.8\n3.5\n567.1\n3.9\n151.3\n494.4\n3.3\n\n\njulia\n1e+06\n162.8\n857.3\n5.3\n1001.3\n6.2\n163.9\n983.6\n6.0\n\n\njulia\n1e+07\n168.6\n875.7\n5.2\n1059.3\n6.3\n163.9\n245.9\n1.5\n\n\nr\n1e+03\n14.8\n14.5\n1.0\n9.2\n0.6\n20.8\n23.7\n1.1\n\n\nr\n1e+04\n15.3\n53.0\n3.5\n52.4\n3.4\n22.5\n72.7\n3.2\n\n\nr\n1e+05\n14.6\n74.1\n5.1\n89.8\n6.2\n24.6\n98.2\n4.0\n\n\nr\n1e+06\n13.9\n70.8\n5.1\n91.0\n6.6\n20.9\n82.0\n3.9\n\n\n\n\n\n\n\nSpeed increases with increasing number of threads, though not with a simple linear scaling in the number of threads. The speed increase is similar for R and Julia.\n\n\nTop speeds per language\nLet’s see the top speeds per language, also compered to the top R speed on that machine.\n\n\n\n\nTable 1: Best speeds per language and machine\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn experiments\nn threads\nrunning time (minutes)\nexperiments per minute (x1000)\nspeed-up vs best R\nlanguage\nprimitive\nmachine\n\n\n\n\n1e+05\n12\n0.6\n161.9\n1.8\njax\nvmap\nlinux\n\n\n1e+07\n12\n9.4\n1059.3\n11.6\njulia\nmap\nlinux\n\n\n1e+06\n12\n11.0\n91.0\n1.0\nr\nmap\nlinux\n\n\n1e+06\n8\n6.1\n163.9\n1.7\njax\nmap\nmacm1\n\n\n1e+06\n8\n1.0\n983.6\n10.0\njulia\nmap\nmacm1\n\n\n1e+05\n8\n1.0\n98.2\n1.0\nr\nmap\nmacm1\n\n\n\n\n\n\n\n\n\n\nTop speeds overall\nTop 10 speeds overall\n\n\n\n\nTable 2: top 10 speeds overall\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn experiments\nn threads\nrunning time (minutes)\nexperiments per minute (x1000)\nspeed-up vs best R\nlanguage\nprimitive\nmachine\n\n\n\n\n1e+07\n12\n9.4\n1059.3\n11.6\njulia\nmap\nlinux\n\n\n1e+06\n12\n1.0\n1001.3\n11.0\njulia\nmap\nlinux\n\n\n1e+06\n8\n1.0\n983.6\n10.0\njulia\nmap\nmacm1\n\n\n1e+07\n6\n11.4\n875.7\n9.6\njulia\nmap\nlinux\n\n\n1e+06\n6\n1.2\n857.3\n9.4\njulia\nmap\nlinux\n\n\n1e+05\n12\n0.2\n567.1\n6.2\njulia\nmap\nlinux\n\n\n1e+05\n6\n0.2\n514.8\n5.7\njulia\nmap\nlinux\n\n\n1e+05\n8\n0.2\n494.4\n5.0\njulia\nmap\nmacm1\n\n\n1e+07\n8\n40.7\n245.9\n2.5\njulia\nmap\nmacm1\n\n\n1e+07\n1\n59.3\n168.6\n1.9\njulia\nmap\nlinux\n\n\n\n\n\n\n\n\nAll results are available in a csv file here"
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#takeaways",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#takeaways",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "Takeaways",
-    "text": "Takeaways\n\nSpeed\nIn this setup, both on a Mac M1 and a Linux machine,\n\nJulia was 10-11 times faster than R\nJAX was 1.7 times faster than R\n\n\n\nCode\n\nJulia code seems quite close to R code.\nIn this simple example, the JAX code doesn’t seem too dounting. However, JAX comes with some sharp bits and may be harder to program efficiently.1\n\n\n\nCaveats\n\nJAX needs to recompile when the size of the data changes. When running experiments with e.g. different sizes of data, JAX will become slower because it needs to recompile, or you’ll need to find other solutions like padding smaller data with dummy data and giving these dummy data 0 weights in the objective functions.\nI didn’t have a CUDA-enabled GPU machine for this comparison, vmap may be come (much) more performant on a GPU\nJAX gives bare bones results. If you want to do e.g. significance testing of coefficients, or model comparisons, you will need to find implementations for this or implement this yourself. R and Julia (specifically the GLM package provide a much wider suite of methods\nIn JAX I used general purpose optimizer. There may be more efficient ways of estimating a logistic regression model, whose optimizations are implemented in R and Julia but not JAX. In this sense it may not be a fair comparison, though these optimizations would need to be sought or implemented in JAX.\nJAX has autograd. When writing custom objective functions JAX can automatically calculate gradients and hessians, making it possible to use general purpose first or second order optimizers (e.g. Amsterdam and Ranganath 2023).\n\n\n\nExtensions\n\nOptimizing memory usage\nSince in this case we only need the avarage of the coefficients we need not store all intermediate results. All languages may beccome much more efficient if we can program this in.\n\nThe julia domumentation states that certain operations to atomic data structures can be done in a safe-way while multithreading. Instead of returning all coefficients of all datasets, we could calculate the average value of the coefficients (and e.g. the avareage of the squares of the values) with less memory overhead by:\n\ninstantiate an atomic vector of 9 coefficients\nlet every experiment (which may be in different threads) add its value to this shared atomic vector with atomic_add!\nat the end, calculate the mean by dividing by nreps.\n\nR functions can also overwrite global variables, but a question is whether this can be done in a multi-threading safe way\nIn JAX we may use scan to keep track of a running sum of coefficients and then vmap a bunch of scan computations\n\nIn future posts I plan to dive in to dive in to these optimizations to squeeze more out of these languages."
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#conclusion",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#conclusion",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "Conclusion",
-    "text": "Conclusion\n\n\n\n\n\n\nWhat should you use for glm-like simulation studies?\n\n\n\nProbably, Julia"
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#session-info",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#session-info",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "Session Info",
-    "text": "Session Info\n\nRPythonJulia\n\n\n#| echo: false\n#| eval: false\nlibrary(sessioninfo)\nsession_info(pkgs = \"attached\", to_file=\"_rsession.txt\")\n\n─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────────────────\n setting  value\n version  R version 4.3.2 (2023-10-31)\n os       macOS Sonoma 14.3\n system   aarch64, darwin23.0.0\n ui       RStudio\n language (EN)\n collate  en_US.UTF-8\n ctype    en_US.UTF-8\n tz       Europe/Amsterdam\n date     2024-03-21\n rstudio  2023.12.1+402 Ocean Storm (desktop)\n pandoc   3.1.12.2 @ /opt/homebrew/bin/ (via rmarkdown)\n\n─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n package     * version date (UTC) lib source\n data.table  * 1.14.8  2023-02-17 [1] CRAN (R 4.3.1)\n dplyr       * 1.1.2   2023-04-20 [1] CRAN (R 4.3.1)\n ggplot2     * 3.4.2   2023-04-03 [1] CRAN (R 4.3.1)\n kableExtra  * 1.4.0   2024-01-24 [1] CRAN (R 4.3.2)\n knitr       * 1.43    2023-05-25 [1] CRAN (R 4.3.1)\n purrr       * 1.0.1   2023-01-10 [1] CRAN (R 4.3.1)\n sessioninfo * 1.2.2   2021-12-06 [1] CRAN (R 4.3.2)\n stringr     * 1.5.0   2022-12-02 [1] CRAN (R 4.3.1)\n\n [1] /opt/homebrew/lib/R/4.3/site-library\n [2] /opt/homebrew/Cellar/r/4.3.2/lib/R/library\n\n───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n\njax==0.4.25\njaxlib==0.4.25\njaxopt==0.8.3\nml-dtypes==0.3.2\nnumpy==1.26.4\nopt-einsum==3.3.0\nscipy==1.12.0\n\n\nname = \"jlspeed\"\nuuid = \"a8cd5241-1987-4548-90e5-ac0f39e812f2\"\nauthors = [\"Wouter van Amsterdam\"]\nversion = \"0.1.0\"\n\n[deps]\nArgParse = \"c7e460c6-2fb9-53a9-8c5b-16f535851c63\"\nGLM = \"38e38edf-8417-5370-95a0-9cbb8c7f171a\"\nRandom = \"9a3f8284-a2c9-5f02-9a11-845980a1fd5c\"\nStatsBase = \"2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91\""
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#full-scripts",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#full-scripts",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "Full scripts",
-    "text": "Full scripts\n\nRPythonJulia\n\n\n# rspeed\nargs = commandArgs(trailingOnly = T)\nif (length(args) == 0) {\n  nreps = 100\n  nthreads = 1\n} else if (length(args) == 1) {\n  nreps = as.integer(args[1])\n  nthreads = 1\n} else {\n  nreps = as.integer(args[1])\n  nthreads = as.integer(args[2])\n  suppressMessages(library(furrr))\n  plan(multisession, workers=nthreads)\n}\n\nmake_data &lt;- function(n=1e3L) {\n    x_vec = rnorm(n*10)\n    X_full = matrix(x_vec, ncol=10)\n    eta = rowSums(X_full)\n    y = eta &gt; 0\n    # return only first 9 column to have some noise\n    X = X_full[,1:9]\n    return(list(X=X,y=y))\n}\n\nsolve &lt;- function(...) {\n  data = make_data()\n  fit = glm(data$y~data$X-1, family='binomial')\n  coefs = coef(fit)\n  return(coefs)\n}\n\nif (nthreads == 1) {\n    set.seed(240316)\n    params &lt;- lapply(1:nreps, solve)\n} else {\n    params &lt;- future_map(1:nreps, solve, .options=furrr_options(seed=240316))\n}\noutmat &lt;- do.call(rbind, params)\nmeans &lt;- colMeans(outmat)\nprint(means[1])\n\n\n\nimport jax, jaxopt jax.config.update(‘jax_platform_name’, ‘cpu’) # make sure jax doesnt use a gpu if it’s available from jax import numpy as jnp, random, vmap, jit, lax from jaxopt import LBFGS from jaxopt.objective import binary_logreg from argparse import ArgumentParser\nparser = ArgumentParser() parser.add_argument(‘nreps’, nargs=“?”, type=int, default=int(10)) parser.add_argument(‘primitive’, nargs=“?”, type=str, default=“vmap”)\ndef make_data(k, n=int(1e3)): X_full = random.normal(k, (n,10)) # JAX needs explicit keys for psuedo random number generation eta = jnp.sum(X_full, axis=-1) y = eta &gt; 0 # return only first 9 column to have some noise X = X_full[:,:9] return (X, y)\n\ninitialize a generic solver with the correct objective function\nsolver = LBFGS(binary_logreg) # need to specify parameter initialization values w_init = jnp.zeros((9,))\n(jit?) # jit toggles just-in-time compilation, one of the main features of JAX def solve(k): data = make_data(k) param, state = solver.run(w_init, data) return param\nif name == ‘main’: args = parser.parse_args() k0 = random.PRNGKey(240316) ks = random.split(k0, args.nreps) if args.primitive == ‘map’: params = lax.map(solve, ks) elif args.primitive == ‘vmap’: params = vmap(solve)(ks) else: raise ValueError(f”unrecognized primitive: {args.primitive}, choose map or vmap”)\nmeans = jnp.mean(params, axis=0)\nprint(means[0])\n\n\n\nusing Random, GLM, StatsBase, ArgParse\nimport Base.Threads.@threads\n\nfunction parse_cmdline()\n    parser = ArgParseSettings()\n\n    @add_arg_table parser begin\n        \"nreps\"\n          help = \"number of repetitions\"\n          required = false\n          arg_type = Int\n          default = 10\n    end\n\n    return parse_args(parser)\nend\n\nfunction make_data(n::Integer=1000)\n    X_full = randn(n,10)\n    eta = vec(sum(X_full, dims=2))\n    y = eta .&gt; 0 # vectorized greater than 0 comparison\n    X = X_full[:,1:9]\n    return X, y\nend\n\nfunction solve(i::Int64=1)\n    X, y = make_data()\n    fit = glm(X, y, Bernoulli())\n    coefs = coef(fit)\n    return coefs\nend\n\nfunction main()\n    args = parse_cmdline()\n    nreps = get(args, \"nreps\", 10)\n\n    Random.seed!(240316)\n    outmat = zeros(nreps, 9)\n\n    @threads for i in 1:nreps # use @threads for multi-threading\n        solution = solve()\n        outmat[i,:] = solution\n    end\n\n    means = mean(outmat, dims=1)\n    print(means[1])\nend\n\nmain()"
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#references",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#references",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "References",
-    "text": "References\n\n\nAmsterdam, Wouter A. C. van, Netanja I. Harlianto, Joost J. C. Verhoeff, Pim Moeskops, Pim A. de Jong, and Tim Leiner. 2022. “The Association Between Muscle Quantity and Overall Survival Depends on Muscle Radiodensity: A Cohort Study in Non-Small-Cell Lung Cancer Patients.” Journal of Personalized Medicine 12 (7): 1191. https://doi.org/10.3390/jpm12071191.\n\n\nAmsterdam, Wouter A. C. van, and Rajesh Ranganath. 2023. “Conditional Average Treatment Effect Estimation with Marginally Constrained Models.” Journal of Causal Inference 11 (1): 20220027. https://doi.org/10.1515/jci-2022-0027.\n\n\nAmsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A. Bartholomeus, Aahlad Manas Puli, Pim A. de Jong, Tim Leiner, Anne S. R. van Lindert, Marinus J. C. Eijkemans, and Rajesh Ranganath. 2022. “Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage III Non-Small Cell Lung Cancer.” Scientific Reports 12 (1): 5848. https://doi.org/10.1038/s41598-022-09775-9.\n\n\n“DifferentiableUniverseInitiative/Jax_cosmo.” 2024. Differentiable Universe Initiative. https://github.com/DifferentiableUniverseInitiative/jax_cosmo.\n\n\n“SciML: Open Source Software for Scientific Machine Learning.” n.d. Accessed March 14, 2024. https://sciml.ai."
-  },
-  {
-    "objectID": "posts/240308-jaxopt-vs-r-vs-julia/index.html#footnotes",
-    "href": "posts/240308-jaxopt-vs-r-vs-julia/index.html#footnotes",
-    "title": "The need for speed, performing simulation studies in R, JAX and Julia",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nOne concrete example with my own previous simulation studies (Amsterdam and Ranganath 2023) is that I used first used jax.numpy arrays for different parameters and then a scipy function to create all combinations of these parameters. Creating this grid of parameters this way forced copying of jax.numpy arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Also, JAX relies on pure functions that cannot depend on global variables.↩︎"
-  },
-  {
-    "objectID": "posts/240607-jama-causal-language/index.html",
-    "href": "posts/240607-jama-causal-language/index.html",
-    "title": "Is the JAMA opening up their language for causal effects?",
-    "section": "",
-    "text": "Randomized controlled trials (RCTs) measure the causal effect of interventions, but results from observational studies should be interpreted as mere associations, right? In a great piece in the JAMA, Issa Dehabreh and Kirsten Bibbins-Domingo describe a framework with a more balanced view.\nBlack-and-white thinking about causal effects dictated medical research for a long time. But then, some not-so-well conducted RCTs (e.g. no blinding of outcome assessment, selective loss to follow-up, …) do not provide valid estimates of treatment effects. How can we distinguish the good ‘causal’ RCTs from the bad ones if the criterion for causality is whether a study is an RCT or not?\nIn the past decades the field of causal inference produced several principled definitions of causal effects and established requirements for a study to yield valid causal estimates (e.g. Pearl and Mackenzie 2018; Pearl 2009; Hernan and Robins 2020). According to these approaches, RCTs are clearly preferable for treatment effect estimation as in RCTs the requirements for estimating causal effects can be controlled experimentally. Unfortunately, some relevant questions are very hard to answer using RCTs because of logistical or ethical limitations. At the same time, the definitions of causal effects from causal inference imply that causal effects can be estimated outside of RCTs with observational data as well. Though for observational studies, causal estimates are only valid when specific assumptions are met and unfortunately these assumptions cannot be checked with the data, so caution is required. But clearly, the black-and-white RCT=causation and observational=association must be replaced with a more nuanced view.\nFor a long time, prestigious journals such as the Journal of the American Medical Association (JAMA) restricted the use of causal language (e.g. effect or efficacy) to reporting the primary results of RCTs (“Instructions for Authors | JAMA | JAMA Network” n.d.), further entrenching the black-and-white mindset and evoking criticism from causal inference researchers (e.g. Hernán 2018). Recently, the JAMA opened itself up for discussion on this topic with a very thoughtful publication by Issa Dehabreh and Kirsten Bibbins-Domingo (Dahabreh and Bibbins-Domingo 2024), accompanied by an editorial (Flanagin et al. 2024).\nAs a researcher in causal inference and machine learning for healthcare I think this a great step towards a more rational and balanced approach to distinghuising causal effects from assocations. This is much needed because causal effects teach us what to do, i.e. what interventions will lead to better patient outcomes. Opening up the language to better express causal research questions and analysis approaches combined with the ability to incorporate both well conducted RCTs and observational studies (mentioning the assumptions required for their estimates to have a causal interpretation) when evaluating interventions will lead to better evidence accumulation and ultimately better outcomes for patients.\n\n\n\n\n\n\n\n\n\nReferences\n\nDahabreh, Issa J., and Kirsten Bibbins-Domingo. 2024. “Causal Inference About the Effects of Interventions From Observational Studies in Medical Journals.” JAMA 331 (21): 1845–53. https://doi.org/10.1001/jama.2024.7741.\n\n\nFlanagin, Annette, Roger J. Lewis, Christopher C. Muth, and Gregory Curfman. 2024. “What Does the Proposed Causal Inference Framework for Observational Studies Mean for JAMA and the JAMA Network Journals?” JAMA 331 (21): 1812–13. https://doi.org/10.1001/jama.2024.8107.\n\n\nHernan, Miguel A, and James M Robins. 2020. Causal Inference: What If.\n\n\nHernán, Miguel A. 2018. “The C-Word: Scientific Euphemisms Do Not Improve Causal Inference From Observational Data.” American Journal of Public Health 108 (5): 616–19. https://doi.org/10.2105/AJPH.2018.304337.\n\n\n“Instructions for Authors | JAMA | JAMA Network.” n.d. Accessed August 3, 2021. https://jamanetwork.com/journals/jama/pages/instructions-for-authors.\n\n\nPearl, Judea. 2009. Causality. Cambridge University Press.\n\n\nPearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Cause and Effect. 1st edition. New York: Basic Books.\n\nCitationBibTeX citation:@online{van_amsterdam2024,\n  author = {van Amsterdam, Wouter},\n  title = {Is the {JAMA} Opening up Their Language for Causal Effects?},\n  date = {2024-06-07},\n  url = {https://vanamsterdam.github.io/posts/240607-jama-causal-language/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nAmsterdam, Wouter van. 2024. “Is the JAMA Opening up Their\nLanguage for Causal Effects?” June 7, 2024. https://vanamsterdam.github.io/posts/240607-jama-causal-language/."
+    "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
   },
   {
     "objectID": "talks.html",
@@ -665,11 +630,214 @@
     "text": "Here is a selection of my talks.\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\nApr 18, 2024\n\n\nAI and its (mis)uses in medical research and practice\n\n\nInfection and Immunity spring meeting\n\n\n\n\nMar 12, 2024\n\n\nWouter’s twitter X-peri(ments/ences)\n\n\nData Science and Biostatistics department lunch talk\n\n\n\n\nAug 10, 2023\n\n\nThe value of observational causal inference for medical decision making\n\n\nMLHC causality pre-conference workshop\n\n\n\n\nJun 24, 2023\n\n\nMy risk model is super accurate so it will be useful for treatment decision making, right? Wrong!\n\n\nCHIL 2023 - lightning talk\n\n\n\n\nMar 1, 2023\n\n\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies\n\n\nSeminar at Manchester University\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "Outline",
+    "text": "Outline\n\ndifferent uses of AI in medical imaging\nusing AI for treatment effect estimation\nwarning: harmful self-fulfilling prophecies"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#uses-of-ai-in-medical-imaging",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#uses-of-ai-in-medical-imaging",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "Uses of AI in medical imaging",
+    "text": "Uses of AI in medical imaging\n\nAcquisition (\\(S \\to X\\)) \ndetection / segmentation (\\(X \\to X\\)) \ninference / diagnosis (\\(X \\to D\\), both at prediction time) \nprognosis (\\(X \\to Y\\), \\(Y\\) in the future) \ntreatment effect (\\(X\\) determines effect of a treatment)"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#ai-treatment-effect",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#ai-treatment-effect",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "Why would you estimate treatment effects based on images?",
+    "text": "Why would you estimate treatment effects based on images?\n\ntreatments have different effects on patients based on their (disease) characteristics\nfor example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive\nsome characteristics may be well captured in medical imaging:\n\nT-cell distributions around tumors related to effect of immunotherapy in cancer"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#how-to-estimate-treatment-effects-based-on-images",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#how-to-estimate-treatment-effects-based-on-images",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "How to estimate treatment effects based on images?",
+    "text": "How to estimate treatment effects based on images?\nIn principle the same as estimating a subgroup treatment effect (e.g. male vs female)\n\nConduct a randomized controlled trial where the treatments of interest are randomly allocated\nCollect (imaging) data at randomization timepoint\nUse a statistical learning technique like TARnet (Shalit, Johansson, and Sontag 2017) to estimate outcomes conditional on image and treatment\nconditional treatment effect \\(= f(X,T=1) - f(X,T=0)\\)\n\n\n\n\n\nWhat if you cannot do a (big enough) RCT?\n\n\nEmulate / approximate the ideal trial in observational data you do have, using causal inference techniques\n(which rely on untestable assumptions)"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#the-in-between-predicting-prognosis-and-using-the-predictions-for-decision-support",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#the-in-between-predicting-prognosis-and-using-the-predictions-for-decision-support",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "The in-between: predicting prognosis and using the predictions for decision support",
+    "text": "The in-between: predicting prognosis and using the predictions for decision support\nFor example:\n\ngive chemotherapy to cancer patients with high predicted risk of recurrence\ngive statins to patients with a high risk of a heart attack\n\n\n\n\n\nTRIPOD+AI on prediction models (Collins et al. 2024)\n\n\n“Their primary use is to support clinical decision making, such as … initiate treatment or lifestyle changes.”"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#when-building-a-prediction-model-always-discuss",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#when-building-a-prediction-model-always-discuss",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "When building a prediction model, always discuss",
+    "text": "When building a prediction model, always discuss\n\nwhat treatments are assumed in the predicted risk?\nwhat is the effect of using the model on the treatment policy?\nwhat is the effect on patient outcomes?\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (W. A. C. van Amsterdam et al. 2024b)\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (W. A. C. van Amsterdam et al. 2024a)"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#references",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#references",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "References",
+    "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nShalit, Uri, Fredrik D. Johansson, and David Sontag. 2017. “Estimating Individual Treatment Effect: Generalization Bounds and Algorithms.” arXiv:1606.03976 [Cs, Stat], May. http://arxiv.org/abs/1606.03976."
+  },
+  {
     "objectID": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
     "href": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
     "title": "The value of observational causal inference for medical decision making",
     "section": "",
     "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Why (I) use X?",
+    "text": "Why (I) use X?\n\n\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nconnect\nadvertise work"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
+    "href": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Why not use X?",
+    "text": "Why not use X?\n\ntwitter is dead, and X is dying\ndistractions\npolitics"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
+    "href": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "X compared to",
+    "text": "X compared to\n\nlinkedin: fake interactions\ntwitter: too real interactions\nmastodon: too hacky / nerdy?\nthreads: twitter clone by meta (facebook)\nbluesky: way to go?"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
+    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Twitter history and status",
+    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following (this determines your timeline)\n15-minutes a day but waning"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first tweet that got a like",
+    "text": "first tweet that got a like"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first ad for own paper on causal ML",
+    "text": "first ad for own paper on causal ML"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first joke (kind-of success)",
+    "text": "first joke (kind-of success)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first tweet that went ‘viral’: recommending a paper",
+    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nrespected researcher in field asked if I’m interested in doing a post-doc"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet\n\n\n\n\n\n35 retweets\n86 likes\n18k views\n0 new followers\nnow 20 citations (5 if not for twitter?)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to paper run-through tweet",
+    "text": "reactions to paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to paper run-through tweet",
+    "text": "reactions to paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
+    "href": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "favorite tweet (meme)",
+    "text": "favorite tweet (meme)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to meme-tweet",
+    "text": "reactions to meme-tweet\n\nhttps://x.com/JAASANTINHA/status/1417936729600823300?s=20"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
+    "href": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "biggest own tweet (thesis cover):",
+    "text": "biggest own tweet (thesis cover):\n\n\n\n\n\n\n93k impressions\n673 likes\n53 retweets\n6 new followers"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "ask for help-tweet",
+    "text": "ask for help-tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
+    "href": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Use X for",
+    "text": "Use X for\n\nlearning\nconnecting\nadvertising:\n\nnew work\nvacancies"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
+    "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "I may leave X",
+    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
   },
   {
     "objectID": "talks/240418-ii-spring-meeting/index.html#what-is-ai-1",
@@ -945,167 +1113,6 @@
     "text": "thank you\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” arXiv. https://doi.org/10.48550/arXiv.2209.07397.\n\n\nChristodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. “A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.” Journal of Clinical Epidemiology 110 (June): 12–22. https://doi.org/10.1016/j.jclinepi.2019.02.004.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nDhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. “Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.” BMC Medical Research Methodology 22 (1): 101. https://doi.org/10.1186/s12874-022-01577-x."
   },
   {
-    "objectID": "talks/230301-lungsurv-manchester/index.html#section-105",
-    "href": "talks/230301-lungsurv-manchester/index.html#section-105",
-    "title": "Individual treatment effect estimation in the presence of unobserved confounding using proxies",
-    "section": "",
-    "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Why (I) use X?",
-    "text": "Why (I) use X?\n\n\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nconnect\nadvertise work"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
-    "href": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Why not use X?",
-    "text": "Why not use X?\n\ntwitter is dead, and X is dying\ndistractions\npolitics"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
-    "href": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "X compared to",
-    "text": "X compared to\n\nlinkedin: fake interactions\ntwitter: too real interactions\nmastodon: too hacky / nerdy?\nthreads: twitter clone by meta (facebook)\nbluesky: way to go?"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
-    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Twitter history and status",
-    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following (this determines your timeline)\n15-minutes a day but waning"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first tweet that got a like",
-    "text": "first tweet that got a like"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first ad for own paper on causal ML",
-    "text": "first ad for own paper on causal ML"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first joke (kind-of success)",
-    "text": "first joke (kind-of success)"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first tweet that went ‘viral’: recommending a paper",
-    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nrespected researcher in field asked if I’m interested in doing a post-doc"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet\n\n\n\n\n\n35 retweets\n86 likes\n18k views\n0 new followers\nnow 20 citations (5 if not for twitter?)"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
-    "href": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "favorite tweet (meme)",
-    "text": "favorite tweet (meme)"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to meme-tweet",
-    "text": "reactions to meme-tweet\n\nhttps://x.com/JAASANTINHA/status/1417936729600823300?s=20"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
-    "href": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "biggest own tweet (thesis cover):",
-    "text": "biggest own tweet (thesis cover):\n\n\n\n\n\n\n93k impressions\n673 likes\n53 retweets\n6 new followers"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "ask for help-tweet",
-    "text": "ask for help-tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
-    "href": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Use X for",
-    "text": "Use X for\n\nlearning\nconnecting\nadvertising:\n\nnew work\nvacancies"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
-    "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "I may leave X",
-    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
-  },
-  {
     "objectID": "talks/240530-weon-masterclass/index.html#ai-may-have-many-uses-in-health-care",
     "href": "talks/240530-weon-masterclass/index.html#ai-may-have-many-uses-in-health-care",
     "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
@@ -1267,66 +1274,52 @@
     "text": "References\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nKarmali, Kunal N., Donald M. Lloyd-Jones, Joep van der Leeuw, David C. Goff Jr, Salim Yusuf, Alberto Zanchetti, Paul Glasziou, et al. 2018. “Blood Pressure-Lowering Treatment Strategies Based on Cardiovascular Risk Versus Blood Pressure: A Meta-Analysis of Individual Participant Data.” PLOS Medicine 15 (3): e1002538. https://doi.org/10.1371/journal.pmed.1002538.\n\n\nKeogh, Ruth H., and Nan van Geloven. 2024. “Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.” January 10, 2024. https://doi.org/10.48550/arXiv.2304.10005."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Wouter van Amsterdam, MD, PhD",
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Posts",
     "section": "",
-    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \n\n\nLearning from Historical data to make better decisions in the future is what drives my research. For this I work on the intersection of machine learning (for flexible data analysis) and causal inference (to learn to make better decisions).\nI am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.    I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare.\n\n\n\n\n\nUniversity Medical Center Utrecht / Utrecht University\n2010 | BSc. Physics\n2017 | M.D.\n2021 | MSc. Epidemiology (med. statistics track)\n2022 | PhD. machine learning for healthcare | co-advised by Rajesh Ranganath from NYU\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf)"
+    "text": "Is the JAMA opening up their language for causal effects?\n\n\n\n\n\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJun 7, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\n\n\n\nr\n\n\nlinear regression\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nr\n\n\njulia\n\n\njax\n\n\npython\n\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\n\n\n\nstatistics\n\n\nsimulations\n\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "index.html#news",
-    "href": "index.html#news",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "News",
-    "text": "News\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
+    "objectID": "posts/240322-mice-partial-residual-plot.html",
+    "href": "posts/240322-mice-partial-residual-plot.html",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "",
+    "text": "In an earlier blog post I show how to plot the dependence of a response variable on covariate, both conditional on other covariates with a partial residual plot In this post I investigate how to do this when there are missing values using package mice.\nThis post will rely in Hanne Oberman’s vignette on ggmice, a plotting package for mice::mids objects."
   },
   {
-    "objectID": "index.html#selected-papers",
-    "href": "index.html#selected-papers",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Selected papers",
-    "text": "Selected papers\nA causal viewpoint on prediction model performance under changes in case-mix: Discrimination and calibration respond differently for prognosis and diagnosis predictions.\nvan Amsterdam, W. A. C. (2024). arXiv preprint\nurl\nCausal Inference in Oncology: Why, What, How and When.\nvan Amsterdam, W. A. C., Elias, S., & Ranganath, R. (2024). Clinical Oncology.\nurl pdf\nPrognostic models for decision support need to report their targeted treatments and the expected changes in treatment decisions.\nvan Amsterdam, W. A. C. and Cinà, Giovanni and Didelez, Vanessa and Keogh, Ruth H. and Peek, Niels and Sperrin, Matthew and Vickers, Andrew J. and van Geloven, Nan and Shalit, Uri (2024). BMJ Rapid-response\nurl\nFrom algorithms to action: improving patient care requires causality.\nvan Amsterdam, W. A. C., de Jong, P. A., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2024). BMC Medical Informatics and Decision Making\n10.1186/s12911-024-02513-3 pdf\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\npdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\npdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\npdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\npdf\nMore papers on google scholar"
+    "objectID": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
+    "href": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Data and imputation",
+    "text": "Data and imputation\nIn this post we’ll use the boys dataset which is provided in the mice package. The mice package implements multiple imputation through chained equations1.\n\nlibrary(mice)\nlibrary(ggplot2); theme_set(theme_bw())\n\ndf &lt;- boys\n\nnimps &lt;- 5\nimp &lt;- mice(df, m = nimps, method = \"pmm\")"
   },
   {
-    "objectID": "index.html#talks",
-    "href": "index.html#talks",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Talks",
-    "text": "Talks\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\n\nNo matching items"
+    "objectID": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
+    "href": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Partial residual plot with complete data",
+    "text": "Partial residual plot with complete data\nWe’ll assume we’re interested in how weight (wgt) depends on height (hgt), corrected for all other variables. Both have missing values in the dataset.\nWe can use one of the imputed datasets to show how partial residual plots are made with complete data. With complete data, partial residual plots can be created like so:\n\ndf1 &lt;- complete(imp, 1)\n\nget_partial_resid &lt;- function(data) {\n  fit &lt;- lm(wgt~., data=data)\n  yresid &lt;- resid(fit)\n  return(yresid + coef(fit)['hgt'] * data$hgt)\n}\n\nplotdata1 &lt;- data.frame(hgt=df1$hgt, y=get_partial_resid(df1))\n\nggplot(plotdata1, aes(x=hgt, y=y)) + geom_point()\n\n\n\n\n\n\n\nFigure 1: Partial residual plot on complete data\n\n\n\n\n\nNote how this differs from the marginal association between hgt and wgt. The difference between the plots is explained by other covariates that are correlated both with hgt and wgt.\n\nggplot(df1, aes(x=hgt, y=wgt)) + geom_point()\n\n\n\n\n\n\n\nFigure 2: marginal association between age and height"
   },
   {
-    "objectID": "index.html#teaching",
-    "href": "index.html#teaching",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Teaching",
-    "text": "Teaching\n\n2024 Introduction to Causal Inference and Causal Data Science summer school\n2023 Big Data summer school"
+    "objectID": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
+    "href": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Putting them together",
+    "text": "Putting them together\nThe issue with the partial residual plot Figure 1 is that the residuals depend on the imputed values for all variables. How to go about this? We can treat the residuals as we would ‘coefficients’ in imputation and use Rubin’s rules on them. Let’s see how to do this with mice.\n\nimpdfs &lt;- complete(imp, \"all\")\nimpdfs &lt;- lapply(impdfs, function(data) data.frame(data, partial_resid=get_partial_resid(data)))\nimpdfs &lt;- lapply(1:nimps, function(i) data.frame(impdfs[[i]], impidx=i))\nimpdf_long &lt;- do.call(rbind, impdfs)\n\nNote that we cannot directly pool the residuals because they may be correlated with the imputed values for hgt. Pooling imputed values for hgt and the partial residual removes this correlation. Instead we could just plot all the values.\n\nggplot(impdf_long, aes(x=hgt, y=partial_resid)) + geom_point(aes(shape=factor(impidx)), alpha=0.5)\n\n\n\n\n\n\n\nFigure 3: partial residual plot with imputed datasets\n\n\n\n\n\nIn the future I’d like to learn how to make good bivariate estimates of these points (e.g. fitting a bivariate normal distribution). This should for example also come up in calculating sensitivity and specificity on multiply imputed datasets, as these are clearly correlated. Fully bayesian imputation is another possibility obviously."
   },
   {
-    "objectID": "index.html#posts",
-    "href": "index.html#posts",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Posts",
-    "text": "Posts\n\n\n\n\n\n\n\n\nIdentification - seeing is not doing\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nIs the JAMA opening up their language for causal effects?\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJun 7, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "objectID": "posts/240322-mice-partial-residual-plot.html#footnotes",
+    "href": "posts/240322-mice-partial-residual-plot.html#footnotes",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nmultiple imputation with chained equations sequentially imputes values for all variables with missing values by building prediction models for each variable based on other variables. This imputation is done multiple times with multiple random seeds and thus results in a number of different imputed datasets. A typical analysis workflow is to do these imputations and on each imputed dataset fit a model of interest. The coefficients of these models can then be pooled using Rubin’s rules.↩︎"
   },
   {
-    "objectID": "index.html#students",
-    "href": "index.html#students",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Students",
-    "text": "Students\n\nSu Li (Methodology and Statistics) - MSc. student\nFlorian Metwaly (Methodology and Statistics) - MSc. student\n\n\nFormer\n\nSamil Kilinc (Applied Data Science, 2024)\nKiara Peek (Applied Data Science, 2024)\nMyra van Laar (Biomedical Sciences)\nGijs Bartholomeus (Medicine)\nNetanja Harlianto (Medicine)"
-  },
-  {
-    "objectID": "index.html#activities",
-    "href": "index.html#activities",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Activities",
-    "text": "Activities\n\nboard member BMS-ANed (Dutch biometrics society, board member)\ncoordinator of UMC Utrecht AI methods lab\nambassador for Applied Data Science of Utrecht University\nco-coordinator of Causal Data Science Special Interest Group of Utrecht University"
-  },
-  {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Contact",
-    "text": "Contact\nwamster3 at umcutrecht dot nl"
+    "objectID": "posts/240607-jama-causal-language/index.html",
+    "href": "posts/240607-jama-causal-language/index.html",
+    "title": "Is the JAMA opening up their language for causal effects?",
+    "section": "",
+    "text": "Randomized controlled trials (RCTs) measure the causal effect of interventions, but results from observational studies should be interpreted as mere associations, right? In a great piece in the JAMA, Issa Dehabreh and Kirsten Bibbins-Domingo describe a framework with a more balanced view.\nBlack-and-white thinking about causal effects dictated medical research for a long time. But then, some not-so-well conducted RCTs (e.g. no blinding of outcome assessment, selective loss to follow-up, …) do not provide valid estimates of treatment effects. How can we distinguish the good ‘causal’ RCTs from the bad ones if the criterion for causality is whether a study is an RCT or not?\nIn the past decades the field of causal inference produced several principled definitions of causal effects and established requirements for a study to yield valid causal estimates (e.g. Pearl and Mackenzie 2018; Pearl 2009; Hernan and Robins 2020). According to these approaches, RCTs are clearly preferable for treatment effect estimation as in RCTs the requirements for estimating causal effects can be controlled experimentally. Unfortunately, some relevant questions are very hard to answer using RCTs because of logistical or ethical limitations. At the same time, the definitions of causal effects from causal inference imply that causal effects can be estimated outside of RCTs with observational data as well. Though for observational studies, causal estimates are only valid when specific assumptions are met and unfortunately these assumptions cannot be checked with the data, so caution is required. But clearly, the black-and-white RCT=causation and observational=association must be replaced with a more nuanced view.\nFor a long time, prestigious journals such as the Journal of the American Medical Association (JAMA) restricted the use of causal language (e.g. effect or efficacy) to reporting the primary results of RCTs (“Instructions for Authors | JAMA | JAMA Network” n.d.), further entrenching the black-and-white mindset and evoking criticism from causal inference researchers (e.g. Hernán 2018). Recently, the JAMA opened itself up for discussion on this topic with a very thoughtful publication by Issa Dehabreh and Kirsten Bibbins-Domingo (Dahabreh and Bibbins-Domingo 2024), accompanied by an editorial (Flanagin et al. 2024).\nAs a researcher in causal inference and machine learning for healthcare I think this a great step towards a more rational and balanced approach to distinghuising causal effects from assocations. This is much needed because causal effects teach us what to do, i.e. what interventions will lead to better patient outcomes. Opening up the language to better express causal research questions and analysis approaches combined with the ability to incorporate both well conducted RCTs and observational studies (mentioning the assumptions required for their estimates to have a causal interpretation) when evaluating interventions will lead to better evidence accumulation and ultimately better outcomes for patients.\n\n\n\n\n\n\n\n\n\nReferences\n\nDahabreh, Issa J., and Kirsten Bibbins-Domingo. 2024. “Causal Inference About the Effects of Interventions From Observational Studies in Medical Journals.” JAMA 331 (21): 1845–53. https://doi.org/10.1001/jama.2024.7741.\n\n\nFlanagin, Annette, Roger J. Lewis, Christopher C. Muth, and Gregory Curfman. 2024. “What Does the Proposed Causal Inference Framework for Observational Studies Mean for JAMA and the JAMA Network Journals?” JAMA 331 (21): 1812–13. https://doi.org/10.1001/jama.2024.8107.\n\n\nHernan, Miguel A, and James M Robins. 2020. Causal Inference: What If.\n\n\nHernán, Miguel A. 2018. “The C-Word: Scientific Euphemisms Do Not Improve Causal Inference From Observational Data.” American Journal of Public Health 108 (5): 616–19. https://doi.org/10.2105/AJPH.2018.304337.\n\n\n“Instructions for Authors | JAMA | JAMA Network.” n.d. Accessed August 3, 2021. https://jamanetwork.com/journals/jama/pages/instructions-for-authors.\n\n\nPearl, Judea. 2009. Causality. Cambridge University Press.\n\n\nPearl, Judea, and Dana Mackenzie. 2018. The Book of Why: The New Science of Cause and Effect. 1st edition. New York: Basic Books.\n\nCitationBibTeX citation:@online{van_amsterdam2024,\n  author = {van Amsterdam, Wouter},\n  title = {Is the {JAMA} Opening up Their Language for Causal Effects?},\n  date = {2024-06-07},\n  url = {https://vanamsterdam.github.io/posts/240607-jama-causal-language/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nAmsterdam, Wouter van. 2024. “Is the JAMA Opening up Their\nLanguage for Causal Effects?” June 7, 2024. https://vanamsterdam.github.io/posts/240607-jama-causal-language/."
   }
 ]

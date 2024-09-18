@@ -16,6 +16,13 @@ format:
         embed-resources: false
 ---
 
+## Disclaimer
+
+- of course, I used AI to help with the slides
+  - generate tikz diagrams
+  - generate vector illustrations in adobe illustrator
+  - write text and equations with github copilot
+
 # What is AI?
 
 ## Definition

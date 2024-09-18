@@ -123,6 +123,9 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 ## Students
 
+- Su Li (Methodology and Statistics) - MSc. student
+- Florian Metwaly (Methodology and Statistics) - MSc. student
+
 ### Former 
 
 - [Samil Kilinc](https://www.linkedin.com/in/samil-tugkan-kilinc-1770dk) (Applied Data Science, 2024)

@@ -145,7 +145,7 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 ## Activities
 
-- board member [BMS-ANed](https://www.vvsor.nl/biometrics/) (Dutch biometrics society, board member)
+- board member [BMS-ANed](https://www.vvsor.nl/biometrics/) (Dutch biometrics society)
 - coordinator of UMC Utrecht [AI methods lab](https://www.umcutrecht.nl/en/ai-lab-methodology)
 - ambassador for [Applied Data Science](https://www.uu.nl/en/research/applied-data-science) of Utrecht University
 - co-coordinator of [Causal Data Science Special Interest Group](https://www.uu.nl/en/research/applied-data-science/sig-causal-data-science) of Utrecht University

@@ -84,6 +84,10 @@ Artificial Intelligence is the branch of computer science that focuses on creati
 Machine Learning is a subset of artificial intelligence that involves the use of algorithms and statistical models to enable computers to perform tasks without explicit instructions. Instead, they rely on patterns and inference from data. [@samuelStudiesMachineLearning1959]
 :::
 
+---
+
+[What tasks can we perform with machine learning?]{.r-stretch}
+
 ## Assume we have this data
 
 ::: {.columns}
@@ -265,27 +269,6 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 - big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)
 - new optimizers keep coming up (e.g. Adam)
 
-## There are specialized neural network architectures for different types of data
-
-- Convolutional Neural Networks (CNNs): images
-- Recurrent Neural Networks (RNNs): time series
-- Transformers: natural language processing
-
-## Convolutional Neural Networks
-
-![](tikzs/cnn-pooling.png){width="100%" fig-align="center"}
-
-## Convolutional Neural Networks
-
-![LeNet-5 [@lecunGradientbasedLearningApplied1998]](figs/lenet-5.png){width="100%" fig-align="center"}
-
-## Why convolutional neural networks for images?
-
-- images exhibit much *local* structure, e.g. edges and textures
-- this local structure is hierarchical: edges form shapes, shapes form objects
-- convolutional neural networks: learn local structure, then combine these to learn higher-level structure
-- local structure is location invariant: exploited by convolution operation
-
 ## Training (convolutional) neural networks
 
 - regularization:
@@ -313,6 +296,27 @@ Whereas in regression models, model complexity is well-captured by the number of
 
 :::
 
+## There are specialized neural network architectures for different types of data
+
+- Convolutional Neural Networks (CNNs): images
+- Recurrent Neural Networks (RNNs): time series
+- Transformers: natural language processing
+
+## Convolutional Neural Networks
+
+![](tikzs/cnn-pooling.png){width="100%" fig-align="center"}
+
+## Convolutional Neural Networks
+
+![LeNet-5 [@lecunGradientbasedLearningApplied1998]](figs/lenet-5.png){width="100%" fig-align="center"}
+
+## Why convolutional neural networks for images?
+
+- images exhibit much *local* structure, e.g. edges and textures
+- this local structure is hierarchical: edges form shapes, shapes form objects
+- convolutional neural networks: learn local structure, then combine these to learn higher-level structure
+- local structure is location invariant: exploited by convolution operation
+
 ## For complex tasks, neural networks keep getting better with:
 
   [- more compute resources]{.fragment fragment-index=1}
@@ -333,7 +337,7 @@ Whereas in regression models, model complexity is well-captured by the number of
 
 ## scaling over time
 
-![](figs/modelsize_over_time.png){width=100%}
+![](figs/modelsize_over_time.png){width=100% fig-align=center}
 
 ## Neural Network Architectures
 
@@ -344,19 +348,7 @@ Whereas in regression models, model complexity is well-captured by the number of
  - scale! 
 
 
-
-## Scaling of neural networks
-
-
-## Neural Network Architectures
-
-- Multilayer Perceptrons (MLPs): general purpose (as @fig-mlp))
-
-- hierarchical structure (e.g. images):
-    - Convolutional Neural Networks (CNNs): image recognition
-- sequence modeling (e.g. time series, natural language):
-    - Recurrent Neural Networks (RNNs): time series
-    - Transformers: natural language processing
+# What is a large-language model like chatGPT?
 
 ---
 
@@ -368,16 +360,126 @@ Whereas in regression models, model complexity is well-captured by the number of
 
 :::
 
+## What is a large-language model like chatGPT?
 
-## AI versus stats
+:::{.callout-tip}
+## What is chatGPT?
+a stochastic auto-regressive next-word predictor with a chatbot interface
+:::
 
+- trained by predicting the next <...>
+   - in a *large* corpus of text
+   - with a *large* model
+   - for a *long* time on *expensive* hardware
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
+    \color{red}{drink} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
+    \color{red}{drink} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})\\
+    \text{STOP} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a} \ \color{red}{drink})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
+    \color{red}{friend} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
+    \color{red}{friend} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})\\
+    \text{STOP} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a} \ \color{red}{friend})
+\end{align}
+
+<!-- ## auto-regressive conditional generation:
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
+    \text{word}_n &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})\\
+    \text{STOP}   &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
+\end{align}
+
+-->
+
+## GPT-4 scale
+
+::: {.r-stack}
+
+![](figs/gpt4_size1.jpeg){.fragment fragment-index=1}
+
+![](figs/gpt4_size2.jpeg){.fragment fragment-index=2}
+
+![](figs/gpt4_size3.jpeg){.fragment fragment-index=3}
+
+:::
+
+## What we don't know about chatGPT
+
+- what data was it trained on, what architecture?
+- is this a 'stochastic parrot'?
+- arguably, it could learn almost anything
+- does it have a *world model*?
+- does next-word prediction imply understanding?
+- can we interrogate it to self-explain: chain of thought tests
+- are these explanations faithful?
+
+## AI wrap-up
+
+- been around for long
+- became *very* successful in past decades with deep learning
+- LLMs: next-word prediction
+- scaling: more data, more compute, bigger models
+
+# AI versus statistics
+
+- parameter counting
 - scaling
 - emerging
 - continual learning
-
-# What is Deep Learning?
-
-# What is an LLM?
 
 # Pitfalls
 

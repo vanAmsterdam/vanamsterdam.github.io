@@ -7,3 +7,16 @@
     line-height: 0px;
     font-size: 0px;
 }
+
+#topalign-id h2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center; /* Adjust if needed */
+}
+
+section.level2 {
+    top: 0px !important;
+}

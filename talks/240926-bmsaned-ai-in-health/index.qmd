@@ -6,7 +6,7 @@ bibliography: ../../library.bib
 format:
     revealjs:
         incremental: true
-        theme: ../custom.scss
+        css: ../../colors.scss
         auto-stretch: true
         center: true
         fig-align: center
@@ -48,6 +48,8 @@ Artificial Intelligence is the branch of computer science that focuses on creati
 - **1990s**: Machine learning began gaining traction, allowing AI systems to improve with experience.
 - **2010s**: Deep learning and neural networks revolutionized AI, enabling breakthroughs in areas like image recognition, natural language processing, and more.
 
+## AI Landscape: what is AI?
+
 ---
 
 :::{.r-stack}
@@ -78,17 +80,16 @@ Artificial Intelligence is the branch of computer science that focuses on creati
 ## What is Machine Learning?
 
 ::: {.center .large}
-Machine Learning is a subset of artificial intelligence that involves the use of algorithms and statistical models to enable computers to perform tasks without explicit instructions. Instead, they rely on patterns and inference from data.
+Machine Learning is a subset of artificial intelligence that involves the use of algorithms and statistical models to enable computers to perform tasks without explicit instructions. Instead, they rely on patterns and inference from data. [@samuelStudiesMachineLearning1959]
 :::
 
-## ML tasks
+## Assume we have this data
 
 ::: {.columns}
 :::: {.column width="50%"}
 ![](figs/gen_scatter.png){width="100%" fig-align="center"}
 ::::
 :::: {.column width="50%"}
-data:
 
 |i |length|weight|sex|
 |-:|-----:|-----:|--:|
@@ -98,6 +99,8 @@ data:
 |...|...|...|...|
 
 ::: {.fragment}
+We typically assume these data are (i.i.d.) samples from some unknown distribution $p(l,w,s)$:
+
 $$l_i,w_i,s_i \sim p(l,w,s)$$
 :::
 
@@ -110,16 +113,17 @@ $$l_i,w_i,s_i \sim p(l,w,s)$$
 ![](figs/gen_full.png){width="100%" fig-align="center"}
 ::::
 :::: {.column width="50%"}
-formulate a model for *joint* distribution $p_{\theta}$
+1. formulate a model for *joint* distribution $p_{\theta}$
+2. use samples to optimize $\theta$
+3. generate new samples
 
-use samples to optimize $\theta$
-$$
-  l_j,w_j,s_j \sim p_{\theta}(l,w,s)
-$$
+[$$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$$]{.fragment}
 
+:::{.fragment}
 |task| |
 |---:|:---|
 |generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
+:::
 
 ::::
 :::
@@ -135,10 +139,13 @@ $$
   l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})
 $$
 
+:::{.fragment}
 |task| |
 |---:|:---|
 |generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
 |conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
+:::
+
 ::::
 :::
 
@@ -185,9 +192,9 @@ $$
 ## ML tasks: reinforcement learning
 
 - e.g. computers playing games
-- maybe not so useful for clinical research as requires many experiments
+- typically requires many experiments, maybe not too useful in health care
 
-![](figs/reinforcement_learning.png){width="80%", fig-align="center"}
+![](figs/reinforcement_learning.png){width="60%", fig-align="center"}
 
 ---
 
@@ -249,14 +256,47 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 
 ## Neural Networks and Deep Learning
 
-### what is the diff?
+### what is the difference?
 
-- problem: no longer convex
-- typical optimizers scale quadratically or worse with number of parameters
-- deep learning: many parameters, use gradient descent (first-order method) instead
-- note: can also do gradient descent on linear regression, but computationally inefficient.
+- problems:
+  - no longer convex optimization
+  - typical optimizers scale quadratically or worse with number of parameters
+- deep learning: initialize parameters randomly, use gradient descent (first-order) methods
 - big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)
 - new optimizers keep coming up (e.g. Adam)
+
+## Why would neural networks work?
+
+- universal approximation theorem: a neural network with one hidden layer of sufficient width can approximate any continuous function
+- deep learning: can learn hierarchical representations of data
+
+## Convolutional Neural Networks
+
+![](tikzs/convolution.png){width="100%" fig-align="center"}
+
+## Convolutional Neural Networks: pooling
+
+![](tikzs/cnn-pooling.png){width="100%" fig-align="center"}
+
+## Why convolutional neural networks for images?
+
+- images exhibit much *local* structure, e.g. edges and textures
+- this local structure is hierarchical: edges form shapes, shapes form objects
+- convolutional neural networks: learn local structure, then combine these to learn higher-level structure
+- local structure is location invariant: exploited by convolution operation
+
+## Training (convolutional) neural networks
+
+- regularization:
+  - L1, L2: add penalty to weights
+  - early stopping: stop training when validation error starts increasing
+  - random initialization: initialize weights randomly
+  - dropout: randomly set some weights to zero
+
+## Early stopping
+
+![](tikzs/loss-curve.png){width="100%" fig-align="center"}
+
 
 ## Neural Network Architectures
 

@@ -6,7 +6,8 @@ bibliography: ../../library.bib
 format:
     revealjs:
         incremental: true
-        css: ../../colors.scss
+#        css: ../../colors.css
+        theme: ../custom.scss
         auto-stretch: true
         center: true
         fig-align: center
@@ -236,7 +237,7 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 
 :::{layout-ncol=2}
 
-![](./tikzs/neural-network.png)
+![](./tikzs/neural-network.png){#fig-mlp}
 
 ::::{.column}
 
@@ -254,10 +255,9 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 
 :::
 
-## Neural Networks and Deep Learning
+## Why would neural networks work?
 
-### what is the difference?
-
+- universal approximation theorem: a neural network with one hidden layer of sufficient width can approximate any continuous function
 - problems:
   - no longer convex optimization
   - typical optimizers scale quadratically or worse with number of parameters
@@ -265,18 +265,19 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 - big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)
 - new optimizers keep coming up (e.g. Adam)
 
-## Why would neural networks work?
+## There are specialized neural network architectures for different types of data
 
-- universal approximation theorem: a neural network with one hidden layer of sufficient width can approximate any continuous function
-- deep learning: can learn hierarchical representations of data
+- Convolutional Neural Networks (CNNs): images
+- Recurrent Neural Networks (RNNs): time series
+- Transformers: natural language processing
 
 ## Convolutional Neural Networks
 
-![](tikzs/convolution.png){width="100%" fig-align="center"}
-
-## Convolutional Neural Networks: pooling
-
 ![](tikzs/cnn-pooling.png){width="100%" fig-align="center"}
+
+## Convolutional Neural Networks
+
+![LeNet-5 [@lecunGradientbasedLearningApplied1998]](figs/lenet-5.png){width="100%" fig-align="center"}
 
 ## Why convolutional neural networks for images?
 
@@ -290,17 +291,66 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 - regularization:
   - L1, L2: add penalty to weights
   - early stopping: stop training when validation error starts increasing
-  - random initialization: initialize weights randomly
-  - dropout: randomly set some weights to zero
 
 ## Early stopping
 
 ![](tikzs/loss-curve.png){width="100%" fig-align="center"}
 
 
+## Training (convolutional) neural networks
+
+- regularization:
+  - L1, L2: add penalty to weights
+  - early stopping: stop training when validation error starts increasing
+  - random initialization: initialize weights randomly
+  - dropout: randomly set some weights to zero
+
+:::{.callout-note .fragment}
+
+## Parameter counting is a bad proxy for model complexity in neural networks
+
+Whereas in regression models, model complexity is well-captured by the number of parameters, this is not the case for neural networks. 
+
+:::
+
+## For complex tasks, neural networks keep getting better with:
+
+  [- more compute resources]{.fragment fragment-index=1}
+
+  [- bigger data]{.fragment fragment-index=2}
+
+  [- bigger models (enabled by data and compute)]{.fragment fragment-index=3}
+
+:::{.r-stack}
+
+![[@kaplanScalingLawsNeural2020]](figs/kaplan2020_scaling1.png){.fragment fragment-index=1 .fade-in-then-out width=100%}
+
+![[@kaplanScalingLawsNeural2020]](figs/kaplan2020_scaling2.png){.fragment fragment-index=2 .fade-in-then-out width=100%}
+
+![[@kaplanScalingLawsNeural2020]](figs/kaplan2020_scaling3.png){.fragment fragment-index=3 .fade-in-then-out width=100%}
+
+:::
+
+## scaling over time
+
+![](figs/modelsize_over_time.png){width=100%}
+
 ## Neural Network Architectures
 
-- Multilayer Perceptrons (MLPs): general purpose
+- common theme:
+ - use an architecture that fits the data type well 
+   - images with local structure: CNNs
+   - time series: RNNs
+ - scale! 
+
+
+
+## Scaling of neural networks
+
+
+## Neural Network Architectures
+
+- Multilayer Perceptrons (MLPs): general purpose (as @fig-mlp))
 
 - hierarchical structure (e.g. images):
     - Convolutional Neural Networks (CNNs): image recognition

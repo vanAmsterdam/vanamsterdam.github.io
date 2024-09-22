@@ -1,17 +1,15 @@
 ---
-title: "Talks"
+title: "Unlisted pages"
 listing:
-  id: talks-listings
+  id: unlisted-listings
   contents: talks
   sort: "date desc"
   type: table
   categories: false
   fields: [date, title, subtitle]
-  exclude:
+  include:
       categories: ["meetups"]
 ---
 
-Here is a selection of my talks.
-
-::: {#talks-listings}
+::: {#unlisted-listings}
 :::

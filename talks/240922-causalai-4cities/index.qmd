@@ -1,0 +1,38 @@
+---
+title: Causal Inference for AI meetup - Rotterdam / Leiden / Delft / Utrecht
+date: 2022-09-23
+output:
+    revealjs:
+        incremental: false
+categories:
+    - unlisted
+    - meetups
+---
+
+---
+
+![](4c.png)
+
+---
+
+![](speakers1.png)
+
+- Joost van Rosmalen (UMC Utrecht): *“Augmenting treatment arms with external data through propensity-score weighted power-priors: an application in expanded access.”*
+
+---
+
+![](speakers2.png)
+
+- Dimitris Rizopoulos (Erasmus MC): *“Using Joint Models for Longitudinal and Time-to-Event Data to Investigate the Causal Effect of Salvage Therapy after Prostatectomy”*
+
+---
+
+![](speakers3.png)
+
+- Doranne Thomassen (Leiden UMC): *“The role of estimands in clinical trials: a case study in oncology”*
+
+
+## Program
+
+- 30 minutes + 10 minutes Q&A
+- *borrel* afterwards

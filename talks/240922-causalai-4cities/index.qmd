@@ -36,3 +36,11 @@ categories:
 
 - 30 minutes + 10 minutes Q&A
 - *borrel* afterwards
+
+:::{layout-ncol=2}
+
+![Causal Inference in AI mailing-list](qr-4cities.png){width="60%"}
+
+![Utrecht - Special Interest Group Causal Data Science](qr-sig.png){width="60%"}
+
+:::

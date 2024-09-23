@@ -1173,7 +1173,7 @@
     "href": "talks/240922-causalai-4cities/index.html#program",
     "title": "Causal Inference for AI meetup - Rotterdam / Leiden / Delft / Utrecht",
     "section": "Program",
-    "text": "Program\n\n30 minutes + 10 minutes Q&A\nborrel afterwards\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
+    "text": "Program\n\n30 minutes + 10 minutes Q&A\nborrel afterwards\n\n\n\n\n\n\n\n\n\n\nCausal Inference in AI mailing-list\n\n\n\n\n\n\n\nUtrecht - Special Interest Group Causal Data Science\n\n\n\n\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
   },
   {
     "objectID": "talks/230624-chill-lightning-talk/index.html#section-31",
@@ -1292,7 +1292,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-62680\").innerHTML = tweet[\"html\"];"
+    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-22130\").innerHTML = tweet[\"html\"];"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",

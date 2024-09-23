@@ -669,7 +669,7 @@
     "href": "unlisted.html",
     "title": "Unlisted pages",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nSep 23, 2022\n\n\nCausal Inference for AI meetup - Rotterdam / Leiden / Delft / Utrecht\n\n\n \n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nSep 23, 2022\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/210720-good_predictions_bad_decisions.html",
@@ -1169,9 +1169,16 @@
     "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nShalit, Uri, Fredrik D. Johansson, and David Sontag. 2017. “Estimating Individual Treatment Effect: Generalization Bounds and Algorithms.” arXiv:1606.03976 [Cs, Stat], May. http://arxiv.org/abs/1606.03976."
   },
   {
+    "objectID": "talks/240922-causalai-4cities/index.html#causal-inference-groups",
+    "href": "talks/240922-causalai-4cities/index.html#causal-inference-groups",
+    "title": "Causal Inference for AI meetup",
+    "section": "Causal Inference groups",
+    "text": "Causal Inference groups\n\n\n\n\n\n\n\n\n\nCausal Inference in AI mailing-list\n\n\n\n\n\n\n\nUtrecht - Special Interest Group Causal Data Science"
+  },
+  {
     "objectID": "talks/240922-causalai-4cities/index.html#program",
     "href": "talks/240922-causalai-4cities/index.html#program",
-    "title": "Causal Inference for AI meetup - Rotterdam / Leiden / Delft / Utrecht",
+    "title": "Causal Inference for AI meetup",
     "section": "Program",
     "text": "Program\n\n30 minutes + 10 minutes Q&A\nborrel afterwards\n\n\n\n\n\n\n\n\n\n\nCausal Inference in AI mailing-list\n\n\n\n\n\n\n\nUtrecht - Special Interest Group Causal Data Science\n\n\n\n\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
   },
@@ -1292,7 +1299,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-22130\").innerHTML = tweet[\"html\"];"
+    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-25091\").innerHTML = tweet[\"html\"];"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",

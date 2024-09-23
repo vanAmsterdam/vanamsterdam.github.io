@@ -1,5 +1,6 @@
 ---
-title: Causal Inference for AI meetup - Rotterdam / Leiden / Delft / Utrecht
+title: Causal Inference for AI meetup
+subtitle: Rotterdam / Leiden / Delft / Utrecht
 date: 2022-09-23
 output:
     revealjs:
@@ -12,6 +13,18 @@ categories:
 ---
 
 ![](4c.png)
+
+## Causal Inference groups
+
+:::{layout-ncol=2}
+
+![Causal Inference in AI mailing-list](qr-4cities.png){width="60%"}
+
+::::{.fragment}
+![Utrecht - Special Interest Group Causal Data Science](qr-sig.png){width="60%"}
+::::
+
+:::
 
 ---
 

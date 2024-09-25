@@ -1,0 +1,634 @@
+---
+title: An introduction to AI for biostatisticians
+subtitle: BMS-Aned seminar
+date: 2024-09-26
+bibliography: ../../library.bib
+format:
+    revealjs:
+        incremental: true
+#        css: ../../colors.css
+        theme: ../custom.scss
+        auto-stretch: true
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+        pdf-separate-fragments: true
+        embed-resources: false
+---
+
+## Welcome! 
+
+- University Medical Center Utrecht
+  - Division: Julius Center for Health Sciences and Primary Care
+    - Department: Data Science & Biostatistics
+      - Sub-department: Data Science Methods
+
+- Background:
+  - physics (BSc.)
+  - medicine (MD.)
+  - machine learning / causal inference in healthcare (PhD.)
+  - epidemiology / biostatistics (MSc.)
+
+- Work on:
+  - causal inference and machine learning in health care
+  - methods and applications
+
+## Disclaimer
+
+- of course, I used AI to help with the slides
+  - generate tikz diagrams with github copilot
+  - write text and equations with github copilot
+  - generate vector illustrations in adobe illustrator
+  - generate png images with Bing chat
+- no competing interests
+
+---
+
+![](mentimeter_qr_code.png){width="80%" fig-align="center"}
+
+[bit.ly/ai-menti](https://bit.ly/ai-menti){.center}
+
+---
+
+```{=html}
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alwqcfps4hepk5y7n8pnu93br2pfcun9/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+```
+
+# What is AI? History / Definitions
+
+## Definition
+
+:::{.callout-tip}
+
+## What is AI?
+
+Artificial Intelligence is the branch of computer science that focuses on creating systems capable of performing tasks that typically require human intelligence. [@russellArtificialIntelligenceModern2020]
+
+:::
+
+- These tasks include: learning, reasoning, problem-solving, perception, natural language understanding, and decision-making.
+- AI systems can be designed to operate autonomously, adapt to new inputs, and improve their performance over time.
+
+## Early Milestones
+- **1940s**: Concept of AI emerged with Alan Turing's work on computation and intelligence.
+- **1956**: The term "Artificial Intelligence" was coined at the Dartmouth Conference by John McCarthy.
+- **1960s-1970s**: Early AI programs focused on solving algebra, proving theorems, and playing games (e.g., Chess).
+
+## Key Developments
+- **1980s**: Introduction of expert systems (rule-based systems for decision making).
+- **1990s**: Machine learning began gaining traction, allowing AI systems to improve with experience.
+- **2010s**: Deep learning and neural networks revolutionized AI, enabling breakthroughs in areas like image recognition, natural language processing, and more.
+
+## AI Landscape: what is AI?
+
+---
+
+:::{.r-stack}
+
+![](figs/ai-landscape-1-bare.png){.fragment .fade-in-then-out}
+
+![](figs/ai-landscape-2-rules.png){.fragment .fade-in-then-out}
+:::
+
+## Rule-based systems are AI
+
+::: {layout-ncol=2}
+
+- rule: all cows are animals
+- observation: this is a cow $\to$ it is an animal
+- applications in health care:
+  - medication interaction checkers
+  - bedside patient monitors
+    - e.g. if heart rate > 100, alert nurse
+
+![](figs/library_bing.jpeg){width="100%" fig-align="center"}
+
+:::
+
+---
+
+:::{.r-stack}
+
+![](figs/ai-landscape-2-rules.png){.fragment .fade-in-then-out}
+
+![](figs/ai-landscape-3-ml.png){.fragment .fade-in-then-out}
+
+:::
+
+# What is Machine Learning? What are ML tasks?
+
+---
+
+:::{.callout-tip}
+## What is Machine Learning?
+Machine Learning is a subset of artificial intelligence that involves the use of algorithms and statistical models to enable computers to perform tasks without explicit instructions. Instead, they rely on patterns and inference from data. [@samuelStudiesMachineLearning1959]
+:::
+
+[What tasks can we perform with machine learning?]{.r-stretch .fragment}
+
+## Assume we have this data
+
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/gen_scatter.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+
+|i |length|weight|sex|
+|-:|-----:|-----:|--:|
+|1|137|30|boy|
+|2|122|24|girl|
+|3|101|18|girl|
+|...|...|...|...|
+
+::: {.fragment}
+We typically assume these data are (i.i.d.) samples from some unknown distribution $p(l,w,s)$:
+
+$$l_i,w_i,s_i \sim p(l,w,s)$$
+:::
+
+::::
+:::
+
+## ML tasks: generation
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/gen_full.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+1. formulate a model for *joint* distribution $p_{\theta}$
+   - in statistics, this model family is typically 'small'
+   - in machine learning, this model family is typically 'large'
+2. use samples to optimize $\theta$
+3. generate new samples
+
+[$$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$$]{.fragment}
+
+:::{.fragment}
+|task| |
+|---:|:---|
+|generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
+:::
+
+::::
+:::
+
+## ML tasks: conditional generation
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/gen_boy.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+use samples to learn model for *conditional* distribution $p$
+$$
+  l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})
+$$
+
+:::{.fragment}
+|task| |
+|---:|:---|
+|generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
+|conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
+:::
+
+::::
+:::
+
+## ML tasks: conditional generation 2
+
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/gen_scatter.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+use samples to learn model for *conditional* distribution $p$
+of one variable
+$$
+s_j \sim p_{\theta}(s|l=l',w=w')
+$$
+
+|task| |
+|---:|:---|
+|generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
+|conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
+::::
+:::
+
+## ML tasks: discrimination
+::: {.columns}
+:::: {.column width="50%"}
+![](figs/class_logistic.png){width="100%" fig-align="center"}
+::::
+:::: {.column width="50%"}
+call this one variable *outcome* and *classify* when expected value[^1] passes threshold (e.g. 0.5)
+$$
+s_j = p_{\theta}(s|l=l',w=w') > 0.5
+$$
+
+|task| |
+|---:|:---|
+|generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
+|conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
+|discrimination|$p_{\theta}(s|l=l_i,w=w_i) > 0.5$|
+::::
+:::
+[^1]: either calculated directly or estimated by simulation
+
+## ML tasks: reinforcement learning
+
+- e.g. computers playing games
+- typically requires many experiments, maybe not too useful in health care
+
+![](figs/reinforcement_learning.png){width="60%", fig-align="center"}
+
+---
+
+:::{.r-stack}
+
+![](stats-vs-ai/Slide1.png){width="100%" fig-align="center"}{.fragment .fade-in-then-out}
+
+![](stats-vs-ai/Slide2.png){width="100%" fig-align="center"}{.fragment .fade-in-then-out}
+
+![](stats-vs-ai/Slide3.png){width="100%" fig-align="center"}{.fragment .fade-in}
+
+:::
+
+---
+
+:::{.r-stack}
+
+![](figs/ai-landscape-3-ml.png){.fragment .fade-in-then-out}
+
+![](figs/ai-landscape-4-rf-svm.png){.fragment .fade-in-then-out}
+
+![](figs/ai-landscape-5-dl.png){.fragment .fade-in-then-out}
+
+![](figs/ai-landscape-6-llm.png){.fragment .fade-in}
+
+:::
+
+# What is 'Deep Learning'?
+
+## Neural Networks and Deep Learning
+
+### From Linear Regression ...
+
+:::{layout-ncol=2}
+
+![](./tikzs/linear-regression.png)
+
+::::{.column}
+
+$$y = \sum_{i=0}^5 x_i \beta_i$$
+
+- optimize $\beta_i$ to minimize mean squared error, e.g. using second-order methods
+
+::::
+
+:::
+
+## Neural Networks and Deep Learning
+
+### ... to 'Deep' Learning
+
+:::{layout-ncol=2}
+
+![](./tikzs/neural-network.png){#fig-mlp}
+
+::::{.column}
+
+\begin{align}
+    h_i &= w_{0i} + w_{1i} x_1 + \ldots \\
+    h_i &= g(h_i) \\
+      y &= \sum_{i=1}^3 h_i w_i
+\end{align}
+
+- sticked $h_i$ between input and output
+- $g$ is a non-linear function: each $h_i$ is a non-linear transformation of the input
+- renamed $\beta_i$ ('coefficients') to $w_{0i}$ and $w_i$ ('weights')
+
+::::
+
+:::
+
+## Why would neural networks work?
+
+- universal approximation theorem: a neural network with one hidden layer of sufficient width can approximate any continuous function
+- problems:
+  - no longer convex optimization
+  - typical optimizers scale quadratically or worse with number of parameters
+  - deterministic computation, but not easily understandable (black box)
+- deep learning: initialize parameters randomly, use gradient descent (first-order) methods
+- big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)
+- new optimizers keep coming up (e.g. Adam)
+
+## Training neural networks
+
+- use framework to define 'forward-pass' of network (e.g. PyTorch, TensorFlow, Keras, Jax)
+- define loss function (e.g. mean squared error, cross-entropy (a.k.a. log-loss))
+- use optimizer to minimize loss function (e.g. Adam)
+- regularization:
+  - L1, L2: add penalty to weights
+  - early stopping: stop training when validation error starts increasing
+
+## Early stopping
+
+![](tikzs/loss-curve.png){width="100%" fig-align="center"}
+
+
+## Training neural networks
+
+- regularization:
+  - L1, L2: add penalty to weights
+  - early stopping: stop training when validation error starts increasing
+  - random initialization: initialize weights randomly
+  - dropout: randomly set some weights to zero
+  - batch normalization: normalize inputs of each layer
+  - data augmentation: increase diversity of training data
+
+:::{.callout-note .fragment}
+
+## Parameter counting is a bad proxy for model complexity in neural networks
+
+Whereas in regression models, model complexity is well-captured by the number of parameters, this is not the case for neural networks. 
+
+:::
+
+--- 
+
+::: {.r-stack}
+
+![](stats-vs-ai/Slide3.png){width="100%" fig-align="center" .fragment}
+
+![](stats-vs-ai/Slide4.png){width="100%" fig-align="center" .fragment}
+
+:::
+
+## There are specialized neural network architectures for different types of data
+
+- Convolutional Neural Networks (CNNs): images
+- Recurrent Neural Networks (RNNs): time series
+- Transformers: natural language processing
+
+## Convolutional Neural Networks
+
+![LeNet-5 [@lecunGradientbasedLearningApplied1998]](figs/lenet-5.png){width="100%" fig-align="center"}
+
+## Why convolutional neural networks for images?
+
+- images exhibit much *local* structure, e.g. edges and textures
+- this local structure is hierarchical: edges form shapes, shapes form objects
+- convolutional neural networks: learn local structure, then combine these to learn higher-level structure
+- local structure is location invariant: exploited by convolution operation
+
+## Where would CCNs be useful for images?
+
+- images crucial importance in many healthcare setting, e.g. dermatology, radiology
+- take lung cancer diagnosis on chest radiographs
+  - traditional statistical approach: ask radiologist to summarize medical image with some key features 
+    - tumor size, location
+  - CNN approach: learn directly from images to outcome
+    - learn representation while doing so
+    - incorporate domain knowledge (e.g. invariances to e.g. translations)
+
+---
+
+![deep learning for cell counting [@moenDeepLearningCellular2019]](figs/cell-counting.png){width="100%" fig-align="center"}
+
+## For complex tasks, neural networks keep getting better with:
+
+  [- more compute resources]{.fragment fragment-index=1}
+
+  [- bigger data]{.fragment fragment-index=2}
+
+  [- bigger models (enabled by data and compute)]{.fragment fragment-index=3}
+
+:::{.r-stack}
+
+![[@kaplanScalingLawsNeural2020]](figs/kaplan2020_scaling1.png){.fragment fragment-index=1 .fade-in-then-out width=100%}
+
+![[@kaplanScalingLawsNeural2020]](figs/kaplan2020_scaling2.png){.fragment fragment-index=2 .fade-in-then-out width=100%}
+
+![[@kaplanScalingLawsNeural2020]](figs/kaplan2020_scaling3.png){.fragment fragment-index=3 .fade-in-then-out width=100%}
+
+:::
+
+## scaling over time
+
+![](figs/modelsize_over_time.png){width=100% fig-align=center}
+
+## Neural Network Architectures
+
+- common theme:
+ - use an architecture that fits the data type well 
+   - images with local structure: CNNs
+   - time series: RNNs
+ - scale! 
+
+---
+
+::: {.r-stack}
+
+![](stats-vs-ai/Slide4.png){width="100%" fig-align="center" .fragment}
+
+![](stats-vs-ai/Slide5.png){width="100%" fig-align="center" .fragment}
+
+:::
+
+# What is a large-language model like chatGPT?
+
+---
+
+:::{.r-stack}
+
+![](figs/ai-landscape-5-dl.png){.fragment .fade-in-then-out}
+
+![](figs/ai-landscape-6-llm.png){.fragment .fade-in}
+
+:::
+
+## Neural Networks for Sequence data
+
+::: {layout-ncol=2}
+
+- many data are sequences: text, time series, DNA
+- specific architectures for sequence data
+  - Recurrent Neural Networks (RNNs):
+  - natural language processing: Transformers [@vaswaniAttentionAllYou2023]
+
+![Transformer Architecture](figs/transformer.png){height="100%" fig-align="center"}
+
+:::
+
+## What is a large-language model like chatGPT?
+
+:::{.callout-tip}
+## What is chatGPT?
+a stochastic auto-regressive next-word predictor with a chatbot interface
+:::
+
+::: {layout-ncol=2}
+
+- trained by predicting the next <...>
+   - in a *large* corpus of text
+   - with a *large* model
+   - for a *long* time on *expensive* hardware
+- post-processed to optimize user experience (remove offensive language, etc.)
+  - present test-user with two options, ask which is better
+
+![](figs/brain_bing.jpeg){width="60%" fig-align="center"}
+
+:::
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
+    \color{red}{drink} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})
+\end{align}
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
+    \color{red}{drink} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})\\
+    \text{STOP} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a} \ \color{red}{drink})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
+    \color{red}{friend} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
+    \color{red}{friend} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})\\
+    \text{STOP} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a} \ \color{red}{friend})
+\end{align}
+
+<!-- ## auto-regressive conditional generation:
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
+    \text{word}_n &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})\\
+    \text{STOP}   &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
+\end{align}
+
+-->
+
+## GPT-4 scale
+
+::: {.r-stack}
+
+![](figs/gpt4_size1.jpeg){.fragment fragment-index=1}
+
+![](figs/gpt4_size2.jpeg){.fragment fragment-index=2}
+
+![](figs/gpt4_size3.jpeg){.fragment fragment-index=3}
+
+:::
+
+## rule-based AI versus chatGPT
+
+::: {layout="[[7,7],[3,3]]"}
+
+::::{.column}
+- rule-based AI: 
+  - explicit rules
+  - no learning, restricted to rules
+  - dependable, verifiable
+::::
+
+::::{.column}
+- LLMs:
+  - no explicit rules
+  - learned from data, can 'learn' almost anything
+  - not dependable, not verifiable
+  - produces text that may have appeared in training data ('the internet')
+::::
+
+![](figs/library_bing.jpeg){width=20%}
+
+![](figs/brain_bing.jpeg){width=20%}
+
+:::
+
+
+## What we don't know about chatGPT
+
+- what data was it trained on, what is the architecture?
+- does it have a *world model*? does it *understand*?
+- does next-word prediction imply understanding?
+- can we interrogate it to self-explain: chain of thought tests?
+- are these explanations faithful?
+
+## What might LLMs be useful for in health care?
+
+- anything with expert control:
+    - administration: 
+      - draft discharge letters
+    - thinking 'outside the box':
+      - generate hypotheses (potential diagnoses)
+- more dangerous
+  - education
+- unreliable
+  - decision support
+
+## AI wrap-up
+
+- been around for long
+- became *very* successful in past decades with deep learning
+- images: convolutional neural networks
+- LLMs: next-word prediction
+- scaling: more data, more compute, bigger models
+
+<!--# Pitfalls-->
+
+<!--## Biases-->
+
+<!--## Can we lose control?-->
+
+<!--## Accuracy does not imply value for decision making-->
+
+## References
+
+
+

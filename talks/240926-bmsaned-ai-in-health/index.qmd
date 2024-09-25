@@ -24,6 +24,17 @@ format:
   - generate vector illustrations in adobe illustrator
   - write text and equations with github copilot
 
+
+---
+
+![bit.ly/ai-menti](mentimeter_qr_code.png){width="80%" fig-align="center"}
+
+## responses {#sec-menti}
+
+```{=html}
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alwqcfps4hepk5y7n8pnu93br2pfcun9/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+```
+
 # What is AI?
 
 ## Definition
@@ -316,6 +327,17 @@ Whereas in regression models, model complexity is well-captured by the number of
 - this local structure is hierarchical: edges form shapes, shapes form objects
 - convolutional neural networks: learn local structure, then combine these to learn higher-level structure
 - local structure is location invariant: exploited by convolution operation
+
+## Where would CCNs be useful for images?
+
+- images crucial importance in many healthcare setting, e.g. dermatology, radiology
+- take lung cancer diagnosis on chest radiographs
+  - traditional statistical approach: ask radiologist to summarize medical image with some key features 
+    - tumor size, location
+  - CNN approach: learn directly from images to outcome
+    - learn representation while doing so
+    - incorporate domain knowledge (e.g. invariances to e.g. translations)
+
 
 ## For complex tasks, neural networks keep getting better with:
 

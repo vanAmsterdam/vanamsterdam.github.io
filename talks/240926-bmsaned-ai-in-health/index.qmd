@@ -1,5 +1,5 @@
 ---
-title: AI in Health Care
+title: An introduction to AI for biostatisticians
 subtitle: BMS-Aned seminar
 date: 2024-09-26
 bibliography: ../../library.bib
@@ -17,25 +17,45 @@ format:
         embed-resources: false
 ---
 
+## Welcome! 
+
+- University Medical Center Utrecht
+  - Division: Julius Center for Health Sciences and Primary Care
+    - Department: Data Science & Biostatistics
+      - Sub-department: Data Science Methods
+
+- Background:
+  - physics (BSc.)
+  - medicine (MD.)
+  - machine learning / causal inference in healthcare (PhD.)
+  - epidemiology / biostatistics (MSc.)
+
+- Work on:
+  - causal inference and machine learning in health care
+  - methods and applications
+
 ## Disclaimer
 
 - of course, I used AI to help with the slides
-  - generate tikz diagrams
-  - generate vector illustrations in adobe illustrator
+  - generate tikz diagrams with github copilot
   - write text and equations with github copilot
-
+  - generate vector illustrations in adobe illustrator
+  - generate png images with Bing chat
+- no competing interests
 
 ---
 
-![bit.ly/ai-menti](mentimeter_qr_code.png){width="80%" fig-align="center"}
+![](mentimeter_qr_code.png){width="80%" fig-align="center"}
 
-## responses {#sec-menti}
+[bit.ly/ai-menti](https://bit.ly/ai-menti){.center}
+
+---
 
 ```{=html}
 <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alwqcfps4hepk5y7n8pnu93br2pfcun9/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 ```
 
-# What is AI?
+# What is AI? History / Definitions
 
 ## Definition
 
@@ -73,11 +93,18 @@ Artificial Intelligence is the branch of computer science that focuses on creati
 
 ## Rule-based systems are AI
 
--   rule: all cows are animals
--   observation: this is a cow $\to$ it is an animal
--   applications:
-    - medication interaction checkers
-    - bedside patient monitors
+::: {layout-ncol=2}
+
+- rule: all cows are animals
+- observation: this is a cow $\to$ it is an animal
+- applications in health care:
+  - medication interaction checkers
+  - bedside patient monitors
+    - e.g. if heart rate > 100, alert nurse
+
+![](figs/library_bing.jpeg){width="100%" fig-align="center"}
+
+:::
 
 ---
 
@@ -89,15 +116,16 @@ Artificial Intelligence is the branch of computer science that focuses on creati
 
 :::
 
-## What is Machine Learning?
-
-::: {.center .large}
-Machine Learning is a subset of artificial intelligence that involves the use of algorithms and statistical models to enable computers to perform tasks without explicit instructions. Instead, they rely on patterns and inference from data. [@samuelStudiesMachineLearning1959]
-:::
+# What is Machine Learning? What are ML tasks?
 
 ---
 
-[What tasks can we perform with machine learning?]{.r-stretch}
+:::{.callout-tip}
+## What is Machine Learning?
+Machine Learning is a subset of artificial intelligence that involves the use of algorithms and statistical models to enable computers to perform tasks without explicit instructions. Instead, they rely on patterns and inference from data. [@samuelStudiesMachineLearning1959]
+:::
+
+[What tasks can we perform with machine learning?]{.r-stretch .fragment}
 
 ## Assume we have this data
 
@@ -130,6 +158,8 @@ $$l_i,w_i,s_i \sim p(l,w,s)$$
 ::::
 :::: {.column width="50%"}
 1. formulate a model for *joint* distribution $p_{\theta}$
+   - in statistics, this model family is typically 'small'
+   - in machine learning, this model family is typically 'large'
 2. use samples to optimize $\theta$
 3. generate new samples
 
@@ -216,7 +246,17 @@ $$
 
 :::{.r-stack}
 
-![](figs/ai-landscape-2-rules.png){.fragment .fade-in-then-out}
+![](stats-vs-ai/Slide1.png){width="100%" fig-align="center"}{.fragment .fade-in-then-out}
+
+![](stats-vs-ai/Slide2.png){width="100%" fig-align="center"}{.fragment .fade-in-then-out}
+
+![](stats-vs-ai/Slide3.png){width="100%" fig-align="center"}{.fragment .fade-in}
+
+:::
+
+---
+
+:::{.r-stack}
 
 ![](figs/ai-landscape-3-ml.png){.fragment .fade-in-then-out}
 
@@ -227,6 +267,8 @@ $$
 ![](figs/ai-landscape-6-llm.png){.fragment .fade-in}
 
 :::
+
+# What is 'Deep Learning'?
 
 ## Neural Networks and Deep Learning
 
@@ -276,12 +318,16 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 - problems:
   - no longer convex optimization
   - typical optimizers scale quadratically or worse with number of parameters
+  - deterministic computation, but not easily understandable (black box)
 - deep learning: initialize parameters randomly, use gradient descent (first-order) methods
 - big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)
 - new optimizers keep coming up (e.g. Adam)
 
-## Training (convolutional) neural networks
+## Training neural networks
 
+- use framework to define 'forward-pass' of network (e.g. PyTorch, TensorFlow, Keras, Jax)
+- define loss function (e.g. mean squared error, cross-entropy (a.k.a. log-loss))
+- use optimizer to minimize loss function (e.g. Adam)
 - regularization:
   - L1, L2: add penalty to weights
   - early stopping: stop training when validation error starts increasing
@@ -291,13 +337,15 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 ![](tikzs/loss-curve.png){width="100%" fig-align="center"}
 
 
-## Training (convolutional) neural networks
+## Training neural networks
 
 - regularization:
   - L1, L2: add penalty to weights
   - early stopping: stop training when validation error starts increasing
   - random initialization: initialize weights randomly
   - dropout: randomly set some weights to zero
+  - batch normalization: normalize inputs of each layer
+  - data augmentation: increase diversity of training data
 
 :::{.callout-note .fragment}
 
@@ -307,15 +355,21 @@ Whereas in regression models, model complexity is well-captured by the number of
 
 :::
 
+--- 
+
+::: {.r-stack}
+
+![](stats-vs-ai/Slide3.png){width="100%" fig-align="center" .fragment}
+
+![](stats-vs-ai/Slide4.png){width="100%" fig-align="center" .fragment}
+
+:::
+
 ## There are specialized neural network architectures for different types of data
 
 - Convolutional Neural Networks (CNNs): images
 - Recurrent Neural Networks (RNNs): time series
 - Transformers: natural language processing
-
-## Convolutional Neural Networks
-
-![](tikzs/cnn-pooling.png){width="100%" fig-align="center"}
 
 ## Convolutional Neural Networks
 
@@ -338,6 +392,9 @@ Whereas in regression models, model complexity is well-captured by the number of
     - learn representation while doing so
     - incorporate domain knowledge (e.g. invariances to e.g. translations)
 
+---
+
+![deep learning for cell counting [@moenDeepLearningCellular2019]](figs/cell-counting.png){width="100%" fig-align="center"}
 
 ## For complex tasks, neural networks keep getting better with:
 
@@ -369,6 +426,15 @@ Whereas in regression models, model complexity is well-captured by the number of
    - time series: RNNs
  - scale! 
 
+---
+
+::: {.r-stack}
+
+![](stats-vs-ai/Slide4.png){width="100%" fig-align="center" .fragment}
+
+![](stats-vs-ai/Slide5.png){width="100%" fig-align="center" .fragment}
+
+:::
 
 # What is a large-language model like chatGPT?
 
@@ -382,6 +448,19 @@ Whereas in regression models, model complexity is well-captured by the number of
 
 :::
 
+## Neural Networks for Sequence data
+
+::: {layout-ncol=2}
+
+- many data are sequences: text, time series, DNA
+- specific architectures for sequence data
+  - Recurrent Neural Networks (RNNs):
+  - natural language processing: Transformers [@vaswaniAttentionAllYou2023]
+
+![Transformer Architecture](figs/transformer.png){height="100%" fig-align="center"}
+
+:::
+
 ## What is a large-language model like chatGPT?
 
 :::{.callout-tip}
@@ -389,10 +468,18 @@ Whereas in regression models, model complexity is well-captured by the number of
 a stochastic auto-regressive next-word predictor with a chatbot interface
 :::
 
+::: {layout-ncol=2}
+
 - trained by predicting the next <...>
    - in a *large* corpus of text
    - with a *large* model
    - for a *long* time on *expensive* hardware
+- post-processed to optimize user experience (remove offensive language, etc.)
+  - present test-user with two options, ask which is better
+
+![](figs/brain_bing.jpeg){width="60%" fig-align="center"}
+
+:::
 
 ## auto-regressive conditional generation:
 
@@ -479,37 +566,67 @@ a stochastic auto-regressive next-word predictor with a chatbot interface
 
 :::
 
+## rule-based AI versus chatGPT
+
+::: {layout="[[7,7],[3,3]]"}
+
+::::{.column}
+- rule-based AI: 
+  - explicit rules
+  - no learning, restricted to rules
+  - dependable, verifiable
+::::
+
+::::{.column}
+- LLMs:
+  - no explicit rules
+  - learned from data, can 'learn' almost anything
+  - not dependable, not verifiable
+  - produces text that may have appeared in training data ('the internet')
+::::
+
+![](figs/library_bing.jpeg){width=20%}
+
+![](figs/brain_bing.jpeg){width=20%}
+
+:::
+
+
 ## What we don't know about chatGPT
 
-- what data was it trained on, what architecture?
-- is this a 'stochastic parrot'?
-- arguably, it could learn almost anything
-- does it have a *world model*?
+- what data was it trained on, what is the architecture?
+- does it have a *world model*? does it *understand*?
 - does next-word prediction imply understanding?
-- can we interrogate it to self-explain: chain of thought tests
+- can we interrogate it to self-explain: chain of thought tests?
 - are these explanations faithful?
+
+## What might LLMs be useful for in health care?
+
+- anything with expert control:
+    - administration: 
+      - draft discharge letters
+    - thinking 'outside the box':
+      - generate hypotheses (potential diagnoses)
+- more dangerous
+  - education
+- unreliable
+  - decision support
 
 ## AI wrap-up
 
 - been around for long
 - became *very* successful in past decades with deep learning
+- images: convolutional neural networks
 - LLMs: next-word prediction
 - scaling: more data, more compute, bigger models
 
-# AI versus statistics
+<!--# Pitfalls-->
 
-- parameter counting
-- scaling
-- emerging
-- continual learning
+<!--## Biases-->
 
-# Pitfalls
+<!--## Can we lose control?-->
 
-## Biases
-
-## Can we lose control?
-
-## Accuracy does not imply value for decision making
+<!--## Accuracy does not imply value for decision making-->
 
 ## References
 

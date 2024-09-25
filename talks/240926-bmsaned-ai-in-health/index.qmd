@@ -246,11 +246,11 @@ $$
 
 :::{.r-stack}
 
-![](stats-vs-ai/Slide1.png){width="100%" fig-align="center"}{.fragment .fade-in-then-out}
+![](stats-vs-ai/Slide1.png){width="100%" fig-align="center" .fragment .fade-in-then-out}
 
-![](stats-vs-ai/Slide2.png){width="100%" fig-align="center"}{.fragment .fade-in-then-out}
+![](stats-vs-ai/Slide2.png){width="100%" fig-align="center" .fragment .fade-in-then-out}
 
-![](stats-vs-ai/Slide3.png){width="100%" fig-align="center"}{.fragment .fade-in}
+![](stats-vs-ai/Slide3.png){width="100%" fig-align="center" .fragment .fade-in}
 
 :::
 

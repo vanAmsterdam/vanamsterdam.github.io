@@ -1,6 +1,8 @@
 ---
 title: An introduction to AI for biostatisticians
 subtitle: BMS-Aned seminar
+aliases: 
+    - /talks/latest.html
 date: 2024-09-26
 bibliography: ../../library.bib
 format:
@@ -15,9 +17,10 @@ format:
         height: 900
         pdf-separate-fragments: true
         embed-resources: false
+        toc: false
 ---
 
-## Welcome! 
+## About
 
 - University Medical Center Utrecht
   - Division: Julius Center for Health Sciences and Primary Care
@@ -55,6 +58,13 @@ format:
 <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alwqcfps4hepk5y7n8pnu93br2pfcun9/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 ```
 
+# Today's talk
+
+- What is AI? History / Definitions
+- What is Machine Learning? What are ML tasks?
+- What is 'Deep Learning'?
+- What is a large-language model like chatGPT?
+
 # What is AI? History / Definitions
 
 ## Definition
@@ -77,10 +87,10 @@ Artificial Intelligence is the branch of computer science that focuses on creati
 
 ## Key Developments
 - **1980s**: Introduction of expert systems (rule-based systems for decision making).
-- **1990s**: Machine learning began gaining traction, allowing AI systems to improve with experience.
+- **1990s**: Machine learning began gaining traction, allowing AI systems to learn from data.
 - **2010s**: Deep learning and neural networks revolutionized AI, enabling breakthroughs in areas like image recognition, natural language processing, and more.
 
-## AI Landscape: what is AI?
+## AI landscape: what is AI?
 
 ---
 
@@ -158,8 +168,8 @@ $$l_i,w_i,s_i \sim p(l,w,s)$$
 ::::
 :::: {.column width="50%"}
 1. formulate a model for *joint* distribution $p_{\theta}$
-   - in statistics, this model family is typically 'small'
-   - in machine learning, this model family is typically 'large'
+   - statistics: 'small' model family
+   - machine learning: 'large' model family
 2. use samples to optimize $\theta$
 3. generate new samples
 
@@ -170,6 +180,8 @@ $$l_i,w_i,s_i \sim p(l,w,s)$$
 |---:|:---|
 |generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
 :::
+
+- application: simulate data for power calculations, privacy-preserving data sharing
 
 ::::
 :::
@@ -191,6 +203,8 @@ $$
 |generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
 |conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
 :::
+
+- application: imputation, question answering
 
 ::::
 :::
@@ -215,13 +229,15 @@ $$
 ::::
 :::
 
-## ML tasks: discrimination
+## ML tasks: discrimination / classification
 ::: {.columns}
 :::: {.column width="50%"}
 ![](figs/class_logistic.png){width="100%" fig-align="center"}
 ::::
 :::: {.column width="50%"}
-call this one variable *outcome* and *classify* when expected value[^1] passes threshold (e.g. 0.5)
+call this one variable *outcome* and
+- *classify* when majority of generated samples are of a certain class
+- or: have a model that outputs expected values
 $$
 s_j = p_{\theta}(s|l=l',w=w') > 0.5
 $$
@@ -231,16 +247,18 @@ $$
 |generation|$l_j,w_j,s_j \sim p_{\theta}(l,w,s)$|
 |conditional generation|$l_j,w_j \sim p_{\theta}(l,w|s=\text{boy})$|
 |discrimination|$p_{\theta}(s|l=l_i,w=w_i) > 0.5$|
+
+- application: prediction, diagnosis
 ::::
 :::
-[^1]: either calculated directly or estimated by simulation
+
 
 ## ML tasks: reinforcement learning
 
 - e.g. computers playing games
 - typically requires many experiments, maybe not too useful in health care
 
-![](figs/reinforcement_learning.png){width="60%", fig-align="center"}
+![](figs/reinforcement_learning.png){width="60%" fig-align="center"}
 
 ---
 
@@ -248,9 +266,7 @@ $$
 
 ![](stats-vs-ai/Slide1.png){width="100%" fig-align="center" .fragment .fade-in-then-out}
 
-![](stats-vs-ai/Slide2.png){width="100%" fig-align="center" .fragment .fade-in-then-out}
-
-![](stats-vs-ai/Slide3.png){width="100%" fig-align="center" .fragment .fade-in}
+![](stats-vs-ai/Slide2.png){width="100%" fig-align="center" .fragment .fade-in}
 
 :::
 
@@ -262,9 +278,7 @@ $$
 
 ![](figs/ai-landscape-4-rf-svm.png){.fragment .fade-in-then-out}
 
-![](figs/ai-landscape-5-dl.png){.fragment .fade-in-then-out}
-
-![](figs/ai-landscape-6-llm.png){.fragment .fade-in}
+![](figs/ai-landscape-5-dl.png){.fragment .fade-in}
 
 :::
 
@@ -294,7 +308,7 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 
 :::{layout-ncol=2}
 
-![](./tikzs/neural-network.png){#fig-mlp}
+![](./tikzs/neural-network.png)
 
 ::::{.column}
 
@@ -314,38 +328,64 @@ $$y = \sum_{i=0}^5 x_i \beta_i$$
 
 ## Why would neural networks work?
 
+- true underlying relationships may be non-linear
 - universal approximation theorem: a neural network with one hidden layer of sufficient width can approximate any continuous function
 - problems:
   - no longer convex optimization
-  - typical optimizers scale quadratically or worse with number of parameters
+  - typical second-order optimizers scale quadratically or worse with number of parameters
   - deterministic computation, but not easily understandable (black box)
-- deep learning: initialize parameters randomly, use gradient descent (first-order) methods
-- big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)
-- new optimizers keep coming up (e.g. Adam)
 
 ## Training neural networks
 
 - use framework to define 'forward-pass' of network (e.g. PyTorch, TensorFlow, Keras, Jax)
+- deep learning: initialize parameters randomly, use gradient descent (first-order) methods
 - define loss function (e.g. mean squared error, cross-entropy (a.k.a. log-loss))
-- use optimizer to minimize loss function (e.g. Adam)
+- use optimizer to minimize loss function (e.g. Stochastic Gradient Descent, Adam)
+
+## Stochastic gradient descent
+
+[$$L(\theta) = \sum_{i=1}^n \ell(y_i, f(x_i;\theta))$$]{.fragment}
+
+- take mini-batch of size $m << n$
+- calculate loss on mini-batch and approximate gradient:
+
+[$$\nabla L(\theta) \approx \frac{1}{m} \sum_{i=1}^m \nabla \ell(y_i, f(x_i;\theta))$$]{.fragment}
+
+- update parameter one step
+
+[$$\theta_{t+1} = \theta_t - \alpha \nabla L(\theta)$$]{.fragment}
+
+---
+
+![https://www.kaggle.com/code/ryanholbrook/stochastic-gradient-descent](figs/sgd-linear.gif){width="100%" fig-align="center"}
+
+## Training neural networks
+
+- big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)
+- train on training data, validate on validation data
+- after all tuning is done, evaluate on test data
+- how to prevent over-fitting?
+
+
+## Regularization
+
 - regularization:
-  - L1, L2: add penalty to weights
-  - early stopping: stop training when validation error starts increasing
+  - L1 (lasso) / L2 (Ridge): add penalty to weights 
 
 ## Early stopping
 
 ![](tikzs/loss-curve.png){width="100%" fig-align="center"}
 
-
-## Training neural networks
+## Regularization
 
 - regularization:
-  - L1, L2: add penalty to weights
+  - L1 (lasso) / L2 (Ridge): add penalty to weights 
   - early stopping: stop training when validation error starts increasing
   - random initialization: initialize weights randomly
-  - dropout: randomly set some weights to zero
-  - batch normalization: normalize inputs of each layer
-  - data augmentation: increase diversity of training data
+  - also:
+      - dropout: randomly set some weights to zero
+      - batch normalization: normalize inputs of each layer
+      - data augmentation: increase diversity of training data
 
 :::{.callout-note .fragment}
 
@@ -365,13 +405,49 @@ Whereas in regression models, model complexity is well-captured by the number of
 
 :::
 
-## There are specialized neural network architectures for different types of data
+--- 
 
-- Convolutional Neural Networks (CNNs): images
-- Recurrent Neural Networks (RNNs): time series
-- Transformers: natural language processing
+```{=html}
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alwqcfps4hepk5y7n8pnu93br2pfcun9/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+```
+
+# There are specialized neural network architectures for different types of data
 
 ## Convolutional Neural Networks
+### Image as matrix of pixel values
+
+![DOI: 10.1093/llc/fqy085](figs/img_as_matrix.png){width="100%" fig-align="center"}
+
+## Convolutional Neural Networks
+### Convolution operation
+
+:::{.r-stack}
+
+![](figs/conv1.jpeg){width="130%" fig-align="center" .fragment}
+
+![](figs/conv2.jpeg){width="130%" fig-align="center" .fragment}
+
+![](figs/conv3.jpeg){width="130%" fig-align="center" .fragment}
+
+:::
+
+## Convolutional Neural Networks
+### Images have local structure
+
+![](figs/cnn_overview.jpg){width="100%" fig-align="center"}
+
+## Convolutional Neural Networks
+### CNNs build hierarchical features with local invariant structure
+
+![](figs/cnn_features.png){width="100%" fig-align="center"}
+
+<!--
+
+# Convolutional Neural Networks
+
+![](tikzs/cnn-pooling.png){width="100%" fig-align="center"}
+
+# Convolutional Neural Networks
 
 ![LeNet-5 [@lecunGradientbasedLearningApplied1998]](figs/lenet-5.png){width="100%" fig-align="center"}
 
@@ -382,12 +458,15 @@ Whereas in regression models, model complexity is well-captured by the number of
 - convolutional neural networks: learn local structure, then combine these to learn higher-level structure
 - local structure is location invariant: exploited by convolution operation
 
-## Where would CCNs be useful for images?
+-->
+
+## Where would CNNs be useful in healthcare?
 
 - images crucial importance in many healthcare setting, e.g. dermatology, radiology
 - take lung cancer diagnosis on chest radiographs
   - traditional statistical approach: ask radiologist to summarize medical image with some key features 
     - tumor size, location
+    - outcome: benign or malignant
   - CNN approach: learn directly from images to outcome
     - learn representation while doing so
     - incorporate domain knowledge (e.g. invariances to e.g. translations)
@@ -395,6 +474,167 @@ Whereas in regression models, model complexity is well-captured by the number of
 ---
 
 ![deep learning for cell counting [@moenDeepLearningCellular2019]](figs/cell-counting.png){width="100%" fig-align="center"}
+
+
+---
+
+::: {.r-stack}
+
+![](stats-vs-ai/Slide4.png){width="100%" fig-align="center" .fragment}
+
+![](stats-vs-ai/Slide5.png){width="100%" fig-align="center" .fragment}
+
+:::
+
+# What is a large-language model like chatGPT?
+
+---
+
+:::{.r-stack}
+
+![](figs/ai-landscape-5-dl.png){.fragment .fade-in-then-out}
+
+![](figs/ai-landscape-6-llm.png){.fragment .fade-in}
+
+:::
+
+## Neural Networks for Sequence data
+
+::: {layout-ncol=2}
+
+- many data are sequences: text, time series, DNA
+- specific architectures for sequence data
+  - Recurrent Neural Networks (RNNs)
+  - natural language processing: Transformers [@vaswaniAttentionAllYou2023]
+
+![Transformer Architecture](figs/transformer.png){height="100%" fig-align="center"}
+
+:::
+
+## chatGPT: a stochastic auto-regressive conditional generator with a chatbot interface
+
+::: {layout-ncol=2}
+
+::::{.column}
+1. trained by predicting the next <...> (*word*)
+   - in a *large* corpus of text
+   - with a *large* model
+   - for a *long* time on *expensive* hardware
+2. post-processed to optimize user experience (remove offensive language, etc.)
+  - present test-user with two generated answers, ask which is better
+  - if user picks one, use that as training signal
+::::
+
+![](figs/brain_bing.jpeg){width="60%" fig-align="center"}
+
+:::
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})
+\end{align}
+
+## auto-regressive conditional generation:
+
+Prompt="Frank went to the bar and"
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
+\end{align}
+
+## auto-regressive conditional generation:
+
+Prompt="Frank went to the bar and"
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})
+\end{align}
+
+## auto-regressive conditional generation:
+
+Prompt="Frank went to the bar and"
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
+    \color{red}{drink} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})
+\end{align}
+
+## auto-regressive conditional generation:
+
+Prompt="Frank went to the bar and"
+
+\begin{align}
+    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
+    \color{red}{drink} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})\\
+    \text{STOP} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a} \ \color{red}{drink})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+Prompt="Frank went to the bar and"
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+Prompt="Frank went to the bar and"
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+Prompt="Frank went to the bar and"
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
+    \color{red}{friend} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})
+\end{align}
+
+## *stochastic* auto-regressive conditional generation:
+
+Prompt="Frank went to the bar and"
+
+\begin{align}
+    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
+    \color{red}{friend} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})\\
+    \text{STOP} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a} \ \color{red}{friend})
+\end{align}
+
+<!-- ## auto-regressive conditional generation:
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
+    \text{word}_n &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})\\
+    \text{STOP}   &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
+\end{align}
+
+-->
+
+## GPT-4 scale (underlying current ChatGPT)
+
+::: {.r-stack}
+
+![](figs/gpt4_size1.jpeg){.fragment fragment-index=1}
+
+![](figs/gpt4_size2.jpeg){.fragment fragment-index=2}
+
+![](figs/gpt4_size3.jpeg){.fragment fragment-index=3}
+
+:::
 
 ## For complex tasks, neural networks keep getting better with:
 
@@ -426,145 +666,6 @@ Whereas in regression models, model complexity is well-captured by the number of
    - time series: RNNs
  - scale! 
 
----
-
-::: {.r-stack}
-
-![](stats-vs-ai/Slide4.png){width="100%" fig-align="center" .fragment}
-
-![](stats-vs-ai/Slide5.png){width="100%" fig-align="center" .fragment}
-
-:::
-
-# What is a large-language model like chatGPT?
-
----
-
-:::{.r-stack}
-
-![](figs/ai-landscape-5-dl.png){.fragment .fade-in-then-out}
-
-![](figs/ai-landscape-6-llm.png){.fragment .fade-in}
-
-:::
-
-## Neural Networks for Sequence data
-
-::: {layout-ncol=2}
-
-- many data are sequences: text, time series, DNA
-- specific architectures for sequence data
-  - Recurrent Neural Networks (RNNs):
-  - natural language processing: Transformers [@vaswaniAttentionAllYou2023]
-
-![Transformer Architecture](figs/transformer.png){height="100%" fig-align="center"}
-
-:::
-
-## What is a large-language model like chatGPT?
-
-:::{.callout-tip}
-## What is chatGPT?
-a stochastic auto-regressive next-word predictor with a chatbot interface
-:::
-
-::: {layout-ncol=2}
-
-- trained by predicting the next <...>
-   - in a *large* corpus of text
-   - with a *large* model
-   - for a *long* time on *expensive* hardware
-- post-processed to optimize user experience (remove offensive language, etc.)
-  - present test-user with two options, ask which is better
-
-![](figs/brain_bing.jpeg){width="60%" fig-align="center"}
-
-:::
-
-## auto-regressive conditional generation:
-
-\begin{align}
-    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
-\end{align}
-
-## auto-regressive conditional generation:
-
-\begin{align}
-    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})
-\end{align}
-
-## auto-regressive conditional generation:
-
-\begin{align}
-    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
-    \color{red}{drink} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})
-\end{align}
-
-## auto-regressive conditional generation:
-
-\begin{align}
-    \color{green}{had} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
-    \color{red}{drink} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})\\
-    \text{STOP} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a} \ \color{red}{drink})
-\end{align}
-
-## *stochastic* auto-regressive conditional generation:
-
-\begin{align}
-    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
-\end{align}
-
-## *stochastic* auto-regressive conditional generation:
-
-\begin{align}
-    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})
-\end{align}
-
-## *stochastic* auto-regressive conditional generation:
-
-\begin{align}
-    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
-    \color{red}{friend} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})
-\end{align}
-
-## *stochastic* auto-regressive conditional generation:
-
-\begin{align}
-    \color{green}{met} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
-    \color{red}{friend} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})\\
-    \text{STOP} &\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a} \ \color{red}{friend})
-\end{align}
-
-<!-- ## auto-regressive conditional generation:
-
-## auto-regressive conditional generation:
-
-\begin{align}
-    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
-    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
-    \text{word}_n &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})\\
-    \text{STOP}   &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
-\end{align}
-
--->
-
-## GPT-4 scale
-
-::: {.r-stack}
-
-![](figs/gpt4_size1.jpeg){.fragment fragment-index=1}
-
-![](figs/gpt4_size2.jpeg){.fragment fragment-index=2}
-
-![](figs/gpt4_size3.jpeg){.fragment fragment-index=3}
-
-:::
 
 ## rule-based AI versus chatGPT
 
@@ -585,9 +686,9 @@ a stochastic auto-regressive next-word predictor with a chatbot interface
   - produces text that may have appeared in training data ('the internet')
 ::::
 
-![](figs/library_bing.jpeg){width=20%}
+![](figs/library_bing.jpeg){width=300 fig-align=center}
 
-![](figs/brain_bing.jpeg){width=20%}
+![](figs/brain_bing.jpeg){width=300 fig-align=center}
 
 :::
 
@@ -599,6 +700,7 @@ a stochastic auto-regressive next-word predictor with a chatbot interface
 - does next-word prediction imply understanding?
 - can we interrogate it to self-explain: chain of thought tests?
 - are these explanations faithful?
+- are these explanations correct?
 
 ## What might LLMs be useful for in health care?
 
@@ -629,6 +731,5 @@ a stochastic auto-regressive next-word predictor with a chatbot interface
 <!--## Accuracy does not imply value for decision making-->
 
 ## References
-
 
 

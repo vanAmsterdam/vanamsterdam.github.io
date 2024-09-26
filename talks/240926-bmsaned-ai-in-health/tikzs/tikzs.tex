@@ -6,6 +6,7 @@
 \usetikzlibrary{external}
 \usepackage{amsmath}
 \usepackage{pgfplots}
+\pgfplotsset{compat=newest}
 \usepackage{graphicx}
 
 \tikzexternalize
@@ -18,6 +19,73 @@
     \begin{tikzpicture}
         \node[draw] (x) at (0,0) {x};
     \end{tikzpicture}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \tikzsetnextfilename{sgd2d}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        view={0}{90},
+        xlabel=$\theta_1$,
+        ylabel=$\theta_2$,
+        title={Contour Plot with Optimization Paths},
+        colormap/viridis,
+        colorbar,
+        colorbar style={title=$J(\theta_1, \theta_2)$},
+    ]
+        % Define the loss function
+        \addplot[
+            contour gnuplot={
+                levels={0.5,1,1.5,2,2.5,3,3.5,4,4.5,5},
+                draw color=black,
+            },
+            samples=50,
+            domain=-3:3,
+        ] {x^2 + y^2};
+
+        % Gradient Descent Path
+        \addplot[
+            thick,
+            blue,
+            -stealth,
+            mark=*,
+            mark options={blue},
+        ] coordinates {
+            (-2.5, 2.5)
+            (-2, 2)
+            (-1.5, 1.5)
+            (-1, 1)
+            (-0.5, 0.5)
+            (0, 0)
+        };
+        \node[blue, above] at (axis cs:-2.5,2.5) {Start};
+        \node[blue, below] at (axis cs:0,0) {End};
+
+        % Stochastic Gradient Descent Path
+        \addplot[
+            thick,
+            red,
+            dashed,
+            -stealth,
+            mark=*,
+            mark options={red},
+        ] coordinates {
+            (-2.5, 2.5)
+            (-2.2, 2.1)
+            (-1.8, 1.7)
+            (-1.4, 1.3)
+            (-1, 1)
+            (-0.6, 0.7)
+            (-0.2, 0.3)
+            (0, 0)
+        };
+        \node[red, above] at (axis cs:-2.5,2.5) {Start};
+        \node[red, below] at (axis cs:0,0) {End};
+
+    \end{axis}
+\end{tikzpicture}
 \end{figure}
 
 \begin{figure}

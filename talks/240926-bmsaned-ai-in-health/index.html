@@ -380,19 +380,9 @@
 </div>
 
   <p class="date">2024-09-26</p>
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Table of contents</h2>
-<ul>
-<li class="fragment"><a href="#/what-is-ai-history-definitions" id="/toc-what-is-ai-history-definitions">What is AI? History / Definitions</a></li>
-<li class="fragment"><a href="#/what-is-machine-learning-what-are-ml-tasks" id="/toc-what-is-machine-learning-what-are-ml-tasks">What is Machine Learning? What are ML tasks?</a></li>
-<li class="fragment"><a href="#/what-is-deep-learning" id="/toc-what-is-deep-learning">What is ‘Deep Learning’?</a></li>
-<li class="fragment"><a href="#/what-is-a-large-language-model-like-chatgpt" id="/toc-what-is-a-large-language-model-like-chatgpt">What is a large-language model like chatGPT?</a></li>
-</ul>
-</nav>
 </section>
-<section id="welcome" class="slide level2 center">
-<h2>Welcome!</h2>
+<section id="about" class="slide level2 center">
+<h2>About</h2>
 <ul>
 <li class="fragment">University Medical Center Utrecht
 <ul>
@@ -440,6 +430,16 @@
 
 <div style="position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;"><iframe sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen="true" allowtransparency="true" frameborder="0" height="315" src="https://www.mentimeter.com/app/presentation/alwqcfps4hepk5y7n8pnu93br2pfcun9/embed" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" width="420"></iframe></div>
 </section>
+<section id="todays-talk" class="title-slide slide level1 center">
+<h1>Today’s talk</h1>
+<ul>
+<li class="fragment">What is AI? History / Definitions</li>
+<li class="fragment">What is Machine Learning? What are ML tasks?</li>
+<li class="fragment">What is ‘Deep Learning’?</li>
+<li class="fragment">What is a large-language model like chatGPT?</li>
+</ul>
+</section>
+
 <section>
 <section id="what-is-ai-history-definitions" class="title-slide slide level1 center">
 <h1>What is AI? History / Definitions</h1>
@@ -477,12 +477,12 @@
 <h2>Key Developments</h2>
 <ul>
 <li class="fragment"><strong>1980s</strong>: Introduction of expert systems (rule-based systems for decision making).</li>
-<li class="fragment"><strong>1990s</strong>: Machine learning began gaining traction, allowing AI systems to improve with experience.</li>
+<li class="fragment"><strong>1990s</strong>: Machine learning began gaining traction, allowing AI systems to learn from data.</li>
 <li class="fragment"><strong>2010s</strong>: Deep learning and neural networks revolutionized AI, enabling breakthroughs in areas like image recognition, natural language processing, and more.</li>
 </ul>
 </section>
 <section id="ai-landscape-what-is-ai" class="slide level2 center">
-<h2>AI Landscape: what is AI?</h2>
+<h2>AI landscape: what is AI?</h2>
 </section>
 <section class="slide level2 center">
 
@@ -616,8 +616,8 @@
 <ol type="1">
 <li class="fragment">formulate a model for <em>joint</em> distribution <span class="math inline">\(p_{\theta}\)</span>
 <ul>
-<li class="fragment">in statistics, this model family is typically ‘small’</li>
-<li class="fragment">in machine learning, this model family is typically ‘large’</li>
+<li class="fragment">statistics: ‘small’ model family</li>
+<li class="fragment">machine learning: ‘large’ model family</li>
 </ul></li>
 <li class="fragment">use samples to optimize <span class="math inline">\(\theta\)</span></li>
 <li class="fragment">generate new samples</li>
@@ -639,6 +639,9 @@
 </tbody>
 </table>
 </div>
+<ul>
+<li class="fragment">application: simulate data for power calculations, privacy-preserving data sharing</li>
+</ul>
 </div></div>
 </section>
 <section id="ml-tasks-conditional-generation" class="slide level2 center">
@@ -674,6 +677,9 @@
 </tbody>
 </table>
 </div>
+<ul>
+<li class="fragment">application: imputation, question answering</li>
+</ul>
 </div></div>
 </section>
 <section id="ml-tasks-conditional-generation-2" class="slide level2 center">
@@ -709,8 +715,8 @@ s_j \sim p_{\theta}(s|l=l',w=w')
 </table>
 </div></div>
 </section>
-<section id="ml-tasks-discrimination" class="slide level2 center">
-<h2>ML tasks: discrimination</h2>
+<section id="ml-tasks-discrimination-classification" class="slide level2 center">
+<h2>ML tasks: discrimination / classification</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
@@ -719,7 +725,7 @@ s_j \sim p_{\theta}(s|l=l',w=w')
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
-<p>call this one variable <em>outcome</em> and <em>classify</em> when expected value<sup>1</sup> passes threshold (e.g.&nbsp;0.5) <span class="math display">\[
+<p>call this one variable <em>outcome</em> and - <em>classify</em> when majority of generated samples are of a certain class - or: have a model that outputs expected values <span class="math display">\[
 s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 \]</span></p>
 <table class="caption-top">
@@ -744,16 +750,19 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 </tr>
 </tbody>
 </table>
+<ul>
+<li class="fragment">application: prediction, diagnosis</li>
+</ul>
 </div></div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>either calculated directly or estimated by simulation</p></li></ol></aside></section>
+</section>
 <section id="ml-tasks-reinforcement-learning" class="slide level2 center">
 <h2>ML tasks: reinforcement learning</h2>
 <ul>
 <li class="fragment">e.g.&nbsp;computers playing games</li>
 <li class="fragment">typically requires many experiments, maybe not too useful in health care</li>
 </ul>
-<p><img data-src="figs/reinforcement_learning.png">{width=“60%”, fig-align=“center”}</p>
-</section>
+
+<img data-src="figs/reinforcement_learning.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
 <section class="slide level2 center">
 
 <div class="r-stack">
@@ -764,12 +773,7 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="stats-vs-ai/Slide2.png" class="fragment fade-in-then-out quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="stats-vs-ai/Slide3.png" class="fragment fade-in quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="stats-vs-ai/Slide2.png" class="fragment fade-in quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -779,8 +783,7 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 <div class="r-stack">
 <p><img data-src="figs/ai-landscape-3-ml.png" class="fragment fade-in-then-out"></p>
 <p><img data-src="figs/ai-landscape-4-rf-svm.png" class="fragment fade-in-then-out"></p>
-<p><img data-src="figs/ai-landscape-5-dl.png" class="fragment fade-in-then-out"></p>
-<p><img data-src="figs/ai-landscape-6-llm.png" class="fragment fade-in"></p>
+<p><img data-src="figs/ai-landscape-5-dl.png" class="fragment fade-in"></p>
 </div>
 </section></section>
 <section>
@@ -815,17 +818,8 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-mlp" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-mlp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="./tikzs/neural-network.png" id="fig-mlp">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-mlp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1
-</figcaption>
-</figure>
-</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="./tikzs/neural-network.png"></p>
 </div>
 <div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><span class="math display">\[\begin{align}
@@ -844,28 +838,57 @@ Figure&nbsp;1
 <section id="why-would-neural-networks-work" class="slide level2 center">
 <h2>Why would neural networks work?</h2>
 <ul>
+<li class="fragment">true underlying relationships may be non-linear</li>
 <li class="fragment">universal approximation theorem: a neural network with one hidden layer of sufficient width can approximate any continuous function</li>
 <li class="fragment">problems:
 <ul>
 <li class="fragment">no longer convex optimization</li>
-<li class="fragment">typical optimizers scale quadratically or worse with number of parameters</li>
+<li class="fragment">typical second-order optimizers scale quadratically or worse with number of parameters</li>
 <li class="fragment">deterministic computation, but not easily understandable (black box)</li>
 </ul></li>
-<li class="fragment">deep learning: initialize parameters randomly, use gradient descent (first-order) methods</li>
-<li class="fragment">big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e.&nbsp;stochastic gradient descent)</li>
-<li class="fragment">new optimizers keep coming up (e.g.&nbsp;Adam)</li>
 </ul>
 </section>
 <section id="training-neural-networks" class="slide level2 center">
 <h2>Training neural networks</h2>
 <ul>
 <li class="fragment">use framework to define ‘forward-pass’ of network (e.g.&nbsp;PyTorch, TensorFlow, Keras, Jax)</li>
+<li class="fragment">deep learning: initialize parameters randomly, use gradient descent (first-order) methods</li>
 <li class="fragment">define loss function (e.g.&nbsp;mean squared error, cross-entropy (a.k.a. log-loss))</li>
-<li class="fragment">use optimizer to minimize loss function (e.g.&nbsp;Adam)</li>
+<li class="fragment">use optimizer to minimize loss function (e.g.&nbsp;Stochastic Gradient Descent, Adam)</li>
+</ul>
+</section>
+<section id="stochastic-gradient-descent" class="slide level2 center">
+<h2>Stochastic gradient descent</h2>
+<p><span class="fragment"><span class="math display">\[L(\theta) = \sum_{i=1}^n \ell(y_i, f(x_i;\theta))\]</span></span></p>
+<ul>
+<li class="fragment">take mini-batch of size <span class="math inline">\(m &lt;&lt; n\)</span></li>
+<li class="fragment">calculate loss on mini-batch and approximate gradient:</li>
+</ul>
+<p><span class="fragment"><span class="math display">\[\nabla L(\theta) \approx \frac{1}{m} \sum_{i=1}^m \nabla \ell(y_i, f(x_i;\theta))\]</span></span></p>
+<ul>
+<li class="fragment">update parameter one step</li>
+</ul>
+<p><span class="fragment"><span class="math display">\[\theta_{t+1} = \theta_t - \alpha \nabla L(\theta)\]</span></span></p>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="figs/sgd-linear.gif" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">https://www.kaggle.com/code/ryanholbrook/stochastic-gradient-descent</p></section>
+<section id="training-neural-networks-1" class="slide level2 center">
+<h2>Training neural networks</h2>
+<ul>
+<li class="fragment">big networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e.&nbsp;stochastic gradient descent)</li>
+<li class="fragment">train on training data, validate on validation data</li>
+<li class="fragment">after all tuning is done, evaluate on test data</li>
+<li class="fragment">how to prevent over-fitting?</li>
+</ul>
+</section>
+<section id="regularization" class="slide level2 center">
+<h2>Regularization</h2>
+<ul>
 <li class="fragment">regularization:
 <ul>
-<li class="fragment">L1, L2: add penalty to weights</li>
-<li class="fragment">early stopping: stop training when validation error starts increasing</li>
+<li class="fragment">L1 (lasso) / L2 (Ridge): add penalty to weights</li>
 </ul></li>
 </ul>
 </section>
@@ -873,17 +896,20 @@ Figure&nbsp;1
 <h2>Early stopping</h2>
 
 <img data-src="tikzs/loss-curve.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="training-neural-networks-1" class="slide level2 center">
-<h2>Training neural networks</h2>
+<section id="regularization-1" class="slide level2 center">
+<h2>Regularization</h2>
 <ul>
 <li class="fragment">regularization:
 <ul>
-<li class="fragment">L1, L2: add penalty to weights</li>
+<li class="fragment">L1 (lasso) / L2 (Ridge): add penalty to weights</li>
 <li class="fragment">early stopping: stop training when validation error starts increasing</li>
 <li class="fragment">random initialization: initialize weights randomly</li>
+<li class="fragment">also:
+<ul>
 <li class="fragment">dropout: randomly set some weights to zero</li>
 <li class="fragment">batch normalization: normalize inputs of each layer</li>
 <li class="fragment">data augmentation: increase diversity of training data</li>
+</ul></li>
 </ul></li>
 </ul>
 <div class="fragment">
@@ -917,29 +943,71 @@ Figure&nbsp;1
 </div>
 </div>
 </section>
-<section id="there-are-specialized-neural-network-architectures-for-different-types-of-data" class="slide level2 center">
-<h2>There are specialized neural network architectures for different types of data</h2>
-<ul>
-<li class="fragment">Convolutional Neural Networks (CNNs): images</li>
-<li class="fragment">Recurrent Neural Networks (RNNs): time series</li>
-<li class="fragment">Transformers: natural language processing</li>
-</ul>
+<section class="slide level2 center">
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;"><iframe sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen="true" allowtransparency="true" frameborder="0" height="315" src="https://www.mentimeter.com/app/presentation/alwqcfps4hepk5y7n8pnu93br2pfcun9/embed" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" width="420"></iframe></div>
+</section></section>
+<section>
+<section id="there-are-specialized-neural-network-architectures-for-different-types-of-data" class="title-slide slide level1 center">
+<h1>There are specialized neural network architectures for different types of data</h1>
+
 </section>
 <section id="convolutional-neural-networks" class="slide level2 center">
 <h2>Convolutional Neural Networks</h2>
+<h3 id="image-as-matrix-of-pixel-values">Image as matrix of pixel values</h3>
 
-<img data-src="figs/lenet-5.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">LeNet-5 <span class="citation" data-cites="lecunGradientbasedLearningApplied1998">(<a href="#/references" role="doc-biblioref" onclick="">Lecun et al. Nov./1998</a>)</span></p></section>
-<section id="why-convolutional-neural-networks-for-images" class="slide level2 center">
-<h2>Why convolutional neural networks for images?</h2>
-<ul>
-<li class="fragment">images exhibit much <em>local</em> structure, e.g.&nbsp;edges and textures</li>
-<li class="fragment">this local structure is hierarchical: edges form shapes, shapes form objects</li>
-<li class="fragment">convolutional neural networks: learn local structure, then combine these to learn higher-level structure</li>
-<li class="fragment">local structure is location invariant: exploited by convolution operation</li>
-</ul>
+<img data-src="figs/img_as_matrix.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">DOI: 10.1093/llc/fqy085</p></section>
+<section id="convolutional-neural-networks-1" class="slide level2 center">
+<h2>Convolutional Neural Networks</h2>
+<h3 id="convolution-operation">Convolution operation</h3>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/conv1.jpeg" class="fragment quarto-figure quarto-figure-center" style="width:130.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/conv2.jpeg" class="fragment quarto-figure quarto-figure-center" style="width:130.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/conv3.jpeg" class="fragment quarto-figure quarto-figure-center" style="width:130.0%"></p>
+</figure>
+</div>
+</div>
 </section>
-<section id="where-would-ccns-be-useful-for-images" class="slide level2 center">
-<h2>Where would CCNs be useful for images?</h2>
+<section id="convolutional-neural-networks-2" class="slide level2 center">
+<h2>Convolutional Neural Networks</h2>
+<h3 id="images-have-local-structure">Images have local structure</h3>
+
+<img data-src="figs/cnn_overview.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="convolutional-neural-networks-3" class="slide level2 center">
+<h2>Convolutional Neural Networks</h2>
+<h3 id="cnns-build-hierarchical-features-with-local-invariant-structure">CNNs build hierarchical features with local invariant structure</h3>
+
+<!--
+
+# Convolutional Neural Networks
+
+![](tikzs/cnn-pooling.png){width="100%" fig-align="center"}
+
+# Convolutional Neural Networks
+
+![LeNet-5 [@lecunGradientbasedLearningApplied1998]](figs/lenet-5.png){width="100%" fig-align="center"}
+
+## Why convolutional neural networks for images?
+
+- images exhibit much *local* structure, e.g. edges and textures
+- this local structure is hierarchical: edges form shapes, shapes form objects
+- convolutional neural networks: learn local structure, then combine these to learn higher-level structure
+- local structure is location invariant: exploited by convolution operation
+
+-->
+<img data-src="figs/cnn_features.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="where-would-cnns-be-useful-in-healthcare" class="slide level2 center">
+<h2>Where would CNNs be useful in healthcare?</h2>
 <ul>
 <li class="fragment">images crucial importance in many healthcare setting, e.g.&nbsp;dermatology, radiology</li>
 <li class="fragment">take lung cancer diagnosis on chest radiographs
@@ -947,6 +1015,7 @@ Figure&nbsp;1
 <li class="fragment">traditional statistical approach: ask radiologist to summarize medical image with some key features
 <ul>
 <li class="fragment">tumor size, location</li>
+<li class="fragment">outcome: benign or malignant</li>
 </ul></li>
 <li class="fragment">CNN approach: learn directly from images to outcome
 <ul>
@@ -960,6 +1029,186 @@ Figure&nbsp;1
 
 
 <img data-src="figs/cell-counting.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">deep learning for cell counting <span class="citation" data-cites="moenDeepLearningCellular2019">(<a href="#/references" role="doc-biblioref" onclick="">Moen et al. 2019</a>)</span></p></section>
+<section class="slide level2 center">
+
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="stats-vs-ai/Slide4.png" class="fragment quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="stats-vs-ai/Slide5.png" class="fragment quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</section></section>
+<section>
+<section id="what-is-a-large-language-model-like-chatgpt" class="title-slide slide level1 center">
+<h1>What is a large-language model like chatGPT?</h1>
+
+</section>
+<section class="slide level2 center">
+
+<div class="r-stack">
+<p><img data-src="figs/ai-landscape-5-dl.png" class="fragment fade-in-then-out"></p>
+<p><img data-src="figs/ai-landscape-6-llm.png" class="fragment fade-in"></p>
+</div>
+</section>
+<section id="neural-networks-for-sequence-data" class="slide level2 center">
+<h2>Neural Networks for Sequence data</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<ul>
+<li class="fragment">many data are sequences: text, time series, DNA</li>
+<li class="fragment">specific architectures for sequence data
+<ul>
+<li class="fragment">Recurrent Neural Networks (RNNs)</li>
+<li class="fragment">natural language processing: Transformers <span class="citation" data-cites="vaswaniAttentionAllYou2023">(<a href="#/references" role="doc-biblioref" onclick="">Vaswani et al. 2023</a>)</span></li>
+</ul></li>
+</ul>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/transformer.png" style="height:100.0%"></p>
+<figcaption>Transformer Architecture</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="chatgpt-a-stochastic-auto-regressive-conditional-generator-with-a-chatbot-interface" class="slide level2 center">
+<h2>chatGPT: a stochastic auto-regressive conditional generator with a chatbot interface</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="column quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<ol type="1">
+<li class="fragment">trained by predicting the next &lt;…&gt; (<em>word</em>)
+<ul>
+<li class="fragment">in a <em>large</em> corpus of text</li>
+<li class="fragment">with a <em>large</em> model</li>
+<li class="fragment">for a <em>long</em> time on <em>expensive</em> hardware</li>
+</ul></li>
+<li class="fragment">post-processed to optimize user experience (remove offensive language, etc.)</li>
+</ol>
+<ul>
+<li class="fragment">present test-user with two generated answers, ask which is better</li>
+<li class="fragment">if user picks one, use that as training signal</li>
+</ul>
+</div><div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/brain_bing.jpeg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="auto-regressive-conditional-generation" class="slide level2 center">
+<h2>auto-regressive conditional generation:</h2>
+<p><span class="math display">\[\begin{align}
+    \text{word}_1 &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})
+\end{align}\]</span></p>
+</section>
+<section id="auto-regressive-conditional-generation-1" class="slide level2 center">
+<h2>auto-regressive conditional generation:</h2>
+<p>Prompt=“Frank went to the bar and”</p>
+<p><span class="math display">\[\begin{align}
+    \color{green}{had} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
+\end{align}\]</span></p>
+</section>
+<section id="auto-regressive-conditional-generation-2" class="slide level2 center">
+<h2>auto-regressive conditional generation:</h2>
+<p>Prompt=“Frank went to the bar and”</p>
+<p><span class="math display">\[\begin{align}
+    \color{green}{had} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})
+\end{align}\]</span></p>
+</section>
+<section id="auto-regressive-conditional-generation-3" class="slide level2 center">
+<h2>auto-regressive conditional generation:</h2>
+<p>Prompt=“Frank went to the bar and”</p>
+<p><span class="math display">\[\begin{align}
+    \color{green}{had} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
+    \color{red}{drink} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})
+\end{align}\]</span></p>
+</section>
+<section id="auto-regressive-conditional-generation-4" class="slide level2 center">
+<h2>auto-regressive conditional generation:</h2>
+<p>Prompt=“Frank went to the bar and”</p>
+<p><span class="math display">\[\begin{align}
+    \color{green}{had} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
+    \color{red}{drink} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})\\
+    \text{STOP} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a} \ \color{red}{drink})
+\end{align}\]</span></p>
+</section>
+<section id="stochastic-auto-regressive-conditional-generation" class="slide level2 center">
+<h2><em>stochastic</em> auto-regressive conditional generation:</h2>
+<p>Prompt=“Frank went to the bar and”</p>
+<p><span class="math display">\[\begin{align}
+    \color{green}{met} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
+\end{align}\]</span></p>
+</section>
+<section id="stochastic-auto-regressive-conditional-generation-1" class="slide level2 center">
+<h2><em>stochastic</em> auto-regressive conditional generation:</h2>
+<p>Prompt=“Frank went to the bar and”</p>
+<p><span class="math display">\[\begin{align}
+    \color{green}{met} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})
+\end{align}\]</span></p>
+</section>
+<section id="stochastic-auto-regressive-conditional-generation-2" class="slide level2 center">
+<h2><em>stochastic</em> auto-regressive conditional generation:</h2>
+<p>Prompt=“Frank went to the bar and”</p>
+<p><span class="math display">\[\begin{align}
+    \color{green}{met} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
+    \color{red}{friend} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})
+\end{align}\]</span></p>
+</section>
+<section id="stochastic-auto-regressive-conditional-generation-3" class="slide level2 center">
+<h2><em>stochastic</em> auto-regressive conditional generation:</h2>
+<p>Prompt=“Frank went to the bar and”</p>
+<p><span class="math display">\[\begin{align}
+    \color{green}{met} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
+    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
+    \color{red}{friend} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})\\
+    \text{STOP} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a} \ \color{red}{friend})
+\end{align}\]</span></p>
+<!-- ## auto-regressive conditional generation:
+
+## auto-regressive conditional generation:
+
+\begin{align}
+    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
+    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
+    \text{word}_n &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})\\
+    \text{STOP}   &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
+\end{align}
+
+-->
+</section>
+<section id="gpt-4-scale-underlying-current-chatgpt" class="slide level2 center">
+<h2>GPT-4 scale (underlying current ChatGPT)</h2>
+<div class="r-stack">
+<p><img data-src="figs/gpt4_size1.jpeg" class="fragment" data-fragment-index="1"></p>
+<p><img data-src="figs/gpt4_size2.jpeg" class="fragment" data-fragment-index="2"></p>
+<p><img data-src="figs/gpt4_size3.jpeg" class="fragment" data-fragment-index="3"></p>
+</div>
+</section>
 <section id="for-complex-tasks-neural-networks-keep-getting-better-with" class="slide level2 center">
 <h2>For complex tasks, neural networks keep getting better with:</h2>
 <p><span class="fragment" data-fragment-index="1">- more compute resources</span></p>
@@ -1002,185 +1251,6 @@ Figure&nbsp;1
 <li class="fragment">scale!</li>
 </ul>
 </section>
-<section class="slide level2 center">
-
-<div class="r-stack">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="stats-vs-ai/Slide4.png" class="fragment quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="stats-vs-ai/Slide5.png" class="fragment quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</section></section>
-<section>
-<section id="what-is-a-large-language-model-like-chatgpt" class="title-slide slide level1 center">
-<h1>What is a large-language model like chatGPT?</h1>
-
-</section>
-<section class="slide level2 center">
-
-<div class="r-stack">
-<p><img data-src="figs/ai-landscape-5-dl.png" class="fragment fade-in-then-out"></p>
-<p><img data-src="figs/ai-landscape-6-llm.png" class="fragment fade-in"></p>
-</div>
-</section>
-<section id="neural-networks-for-sequence-data" class="slide level2 center">
-<h2>Neural Networks for Sequence data</h2>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<ul>
-<li class="fragment">many data are sequences: text, time series, DNA</li>
-<li class="fragment">specific architectures for sequence data
-<ul>
-<li class="fragment">Recurrent Neural Networks (RNNs):</li>
-<li class="fragment">natural language processing: Transformers <span class="citation" data-cites="vaswaniAttentionAllYou2023">(<a href="#/references" role="doc-biblioref" onclick="">Vaswani et al. 2023</a>)</span></li>
-</ul></li>
-</ul>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/transformer.png" style="height:100.0%"></p>
-<figcaption>Transformer Architecture</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="what-is-a-large-language-model-like-chatgpt-1" class="slide level2 center">
-<h2>What is a large-language model like chatGPT?</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What is chatGPT?</strong></p>
-</div>
-<div class="callout-content">
-<p>a stochastic auto-regressive next-word predictor with a chatbot interface</p>
-</div>
-</div>
-</div>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<ul>
-<li class="fragment">trained by predicting the next &lt;…&gt;
-<ul>
-<li class="fragment">in a <em>large</em> corpus of text</li>
-<li class="fragment">with a <em>large</em> model</li>
-<li class="fragment">for a <em>long</em> time on <em>expensive</em> hardware</li>
-</ul></li>
-<li class="fragment">post-processed to optimize user experience (remove offensive language, etc.)
-<ul>
-<li class="fragment">present test-user with two options, ask which is better</li>
-</ul></li>
-</ul>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figs/brain_bing.jpeg" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="auto-regressive-conditional-generation" class="slide level2 center">
-<h2>auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    \color{green}{had} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
-\end{align}\]</span></p>
-</section>
-<section id="auto-regressive-conditional-generation-1" class="slide level2 center">
-<h2>auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    \color{green}{had} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})
-\end{align}\]</span></p>
-</section>
-<section id="auto-regressive-conditional-generation-2" class="slide level2 center">
-<h2>auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    \color{green}{had} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
-    \color{red}{drink} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})
-\end{align}\]</span></p>
-</section>
-<section id="auto-regressive-conditional-generation-3" class="slide level2 center">
-<h2>auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    \color{green}{had} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had})\\
-    \color{red}{drink} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a})\\
-    \text{STOP} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{had} \ \color{orange}{a} \ \color{red}{drink})
-\end{align}\]</span></p>
-</section>
-<section id="stochastic-auto-regressive-conditional-generation" class="slide level2 center">
-<h2><em>stochastic</em> auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    \color{green}{met} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})
-\end{align}\]</span></p>
-</section>
-<section id="stochastic-auto-regressive-conditional-generation-1" class="slide level2 center">
-<h2><em>stochastic</em> auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    \color{green}{met} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})
-\end{align}\]</span></p>
-</section>
-<section id="stochastic-auto-regressive-conditional-generation-2" class="slide level2 center">
-<h2><em>stochastic</em> auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    \color{green}{met} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
-    \color{red}{friend} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})
-\end{align}\]</span></p>
-</section>
-<section id="stochastic-auto-regressive-conditional-generation-3" class="slide level2 center">
-<h2><em>stochastic</em> auto-regressive conditional generation:</h2>
-<p><span class="math display">\[\begin{align}
-    \color{green}{met} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and})\\
-    \color{orange}{a} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met})\\
-    \color{red}{friend} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a})\\
-    \text{STOP} &amp;\sim p_{\text{chatGPT}}(\text{word}|\text{Frank went to the bar and } \color{green}{met} \ \color{orange}{a} \ \color{red}{friend})
-\end{align}\]</span></p>
-<!-- ## auto-regressive conditional generation:
-
-## auto-regressive conditional generation:
-
-\begin{align}
-    \text{word}_1 &\sim p_{\text{chatGPT}}(\text{word}|\text{prompt})\\
-    \text{word}_2 &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_1,\text{prompt})\\
-    \text{word}_n &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})\\
-    \text{STOP}   &\sim p_{\text{chatGPT}}(\text{word}|\text{word}_{n-1},\ldots,\text{word}_1,\text{prompt})
-\end{align}
-
--->
-</section>
-<section id="gpt-4-scale" class="slide level2 center">
-<h2>GPT-4 scale</h2>
-<div class="r-stack">
-<p><img data-src="figs/gpt4_size1.jpeg" class="fragment" data-fragment-index="1"></p>
-<p><img data-src="figs/gpt4_size2.jpeg" class="fragment" data-fragment-index="2"></p>
-<p><img data-src="figs/gpt4_size3.jpeg" class="fragment" data-fragment-index="3"></p>
-</div>
-</section>
 <section id="rule-based-ai-versus-chatgpt" class="slide level2 center">
 <h2>rule-based AI versus chatGPT</h2>
 <div>
@@ -1210,10 +1280,18 @@ Figure&nbsp;1
 </div></div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="figs/library_bing.jpeg"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/library_bing.jpeg" class="quarto-figure quarto-figure-center" width="300"></p>
+</figure>
+</div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img data-src="figs/brain_bing.jpeg"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figs/brain_bing.jpeg" class="quarto-figure quarto-figure-center" width="300"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -1226,6 +1304,7 @@ Figure&nbsp;1
 <li class="fragment">does next-word prediction imply understanding?</li>
 <li class="fragment">can we interrogate it to self-explain: chain of thought tests?</li>
 <li class="fragment">are these explanations faithful?</li>
+<li class="fragment">are these explanations correct?</li>
 </ul>
 </section>
 <section id="what-might-llms-be-useful-for-in-health-care" class="slide level2 center">
@@ -1278,9 +1357,6 @@ Figure&nbsp;1
 <div id="ref-kaplanScalingLawsNeural2020" class="csl-entry" role="listitem">
 Kaplan, Jared, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei. 2020. <span>“Scaling <span>Laws</span> for <span>Neural Language Models</span>.”</span> January 22, 2020. <a href="https://doi.org/10.48550/arXiv.2001.08361">https://doi.org/10.48550/arXiv.2001.08361</a>.
 </div>
-<div id="ref-lecunGradientbasedLearningApplied1998" class="csl-entry" role="listitem">
-Lecun, Y., L. Bottou, Y. Bengio, and P. Haffner. Nov./1998. <span>“Gradient-Based Learning Applied to Document Recognition.”</span> <em>Proceedings of the IEEE</em> 86 (11): 2278–2324. <a href="https://doi.org/10.1109/5.726791">https://doi.org/10.1109/5.726791</a>.
-</div>
 <div id="ref-moenDeepLearningCellular2019" class="csl-entry" role="listitem">
 Moen, Erick, Dylan Bannon, Takamasa Kudo, William Graf, Markus Covert, and David Van Valen. 2019. <span>“Deep Learning for Cellular Image Analysis.”</span> <em>Nature Methods</em> 16 (12): 1233–46. <a href="https://doi.org/10.1038/s41592-019-0403-1">https://doi.org/10.1038/s41592-019-0403-1</a>.
 </div>
@@ -1295,7 +1371,6 @@ Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan 
 </div>
 </div>
 </section></section>
-
     </div>
   </div>
 

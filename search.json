@@ -693,11 +693,11 @@
     "text": "Here is a selection of my talks.\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nSep 26, 2024\n\n\nAn introduction to AI for biostatisticians\n\n\nBMS-Aned seminar\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\nApr 18, 2024\n\n\nAI and its (mis)uses in medical research and practice\n\n\nInfection and Immunity spring meeting\n\n\n\n\nMar 12, 2024\n\n\nWouter’s twitter X-peri(ments/ences)\n\n\nData Science and Biostatistics department lunch talk\n\n\n\n\nAug 10, 2023\n\n\nThe value of observational causal inference for medical decision making\n\n\nMLHC causality pre-conference workshop\n\n\n\n\nJun 24, 2023\n\n\nMy risk model is super accurate so it will be useful for treatment decision making, right? Wrong!\n\n\nCHIL 2023 - lightning talk\n\n\n\n\nMar 1, 2023\n\n\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies\n\n\nSeminar at Manchester University\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#welcome",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#welcome",
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#about",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#about",
     "title": "An introduction to AI for biostatisticians",
-    "section": "Welcome!",
-    "text": "Welcome!\n\nUniversity Medical Center Utrecht\n\nDivision: Julius Center for Health Sciences and Primary Care\n\nDepartment: Data Science & Biostatistics\n\nSub-department: Data Science Methods\n\n\n\nBackground:\n\nphysics (BSc.)\nmedicine (MD.)\nmachine learning / causal inference in healthcare (PhD.)\nepidemiology / biostatistics (MSc.)\n\nWork on:\n\ncausal inference and machine learning in health care\nmethods and applications"
+    "section": "About",
+    "text": "About\n\nUniversity Medical Center Utrecht\n\nDivision: Julius Center for Health Sciences and Primary Care\n\nDepartment: Data Science & Biostatistics\n\nSub-department: Data Science Methods\n\n\n\nBackground:\n\nphysics (BSc.)\nmedicine (MD.)\nmachine learning / causal inference in healthcare (PhD.)\nepidemiology / biostatistics (MSc.)\n\nWork on:\n\ncausal inference and machine learning in health care\nmethods and applications"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#disclaimer",
@@ -725,14 +725,14 @@
     "href": "talks/240926-bmsaned-ai-in-health/index.html#key-developments",
     "title": "An introduction to AI for biostatisticians",
     "section": "Key Developments",
-    "text": "Key Developments\n\n1980s: Introduction of expert systems (rule-based systems for decision making).\n1990s: Machine learning began gaining traction, allowing AI systems to improve with experience.\n2010s: Deep learning and neural networks revolutionized AI, enabling breakthroughs in areas like image recognition, natural language processing, and more."
+    "text": "Key Developments\n\n1980s: Introduction of expert systems (rule-based systems for decision making).\n1990s: Machine learning began gaining traction, allowing AI systems to learn from data.\n2010s: Deep learning and neural networks revolutionized AI, enabling breakthroughs in areas like image recognition, natural language processing, and more."
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#ai-landscape-what-is-ai",
     "href": "talks/240926-bmsaned-ai-in-health/index.html#ai-landscape-what-is-ai",
     "title": "An introduction to AI for biostatisticians",
-    "section": "AI Landscape: what is AI?",
-    "text": "AI Landscape: what is AI?"
+    "section": "AI landscape: what is AI?",
+    "text": "AI landscape: what is AI?"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#rule-based-systems-are-ai",
@@ -753,14 +753,14 @@
     "href": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-generation",
     "title": "An introduction to AI for biostatisticians",
     "section": "ML tasks: generation",
-    "text": "ML tasks: generation\n\n\n\n\n\n\n\n\n\nformulate a model for joint distribution \\(p_{\\theta}\\)\n\nin statistics, this model family is typically ‘small’\nin machine learning, this model family is typically ‘large’\n\nuse samples to optimize \\(\\theta\\)\ngenerate new samples\n\n\\[l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\]\n\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)"
+    "text": "ML tasks: generation\n\n\n\n\n\n\n\n\n\nformulate a model for joint distribution \\(p_{\\theta}\\)\n\nstatistics: ‘small’ model family\nmachine learning: ‘large’ model family\n\nuse samples to optimize \\(\\theta\\)\ngenerate new samples\n\n\\[l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\]\n\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\n\n\n\napplication: simulate data for power calculations, privacy-preserving data sharing"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-conditional-generation",
     "href": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-conditional-generation",
     "title": "An introduction to AI for biostatisticians",
     "section": "ML tasks: conditional generation",
-    "text": "ML tasks: conditional generation\n\n\n\n\n\n\n\n\nuse samples to learn model for conditional distribution \\(p\\) \\[\n  l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\n\\]\n\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\nconditional generation\n\\(l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\\)"
+    "text": "ML tasks: conditional generation\n\n\n\n\n\n\n\n\nuse samples to learn model for conditional distribution \\(p\\) \\[\n  l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\n\\]\n\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\nconditional generation\n\\(l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\\)\n\n\n\n\n\napplication: imputation, question answering"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-conditional-generation-2",
@@ -770,18 +770,18 @@
     "text": "ML tasks: conditional generation 2\n\n\n\n\n\n\n\n\nuse samples to learn model for conditional distribution \\(p\\) of one variable \\[\ns_j \\sim p_{\\theta}(s|l=l',w=w')\n\\]\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\nconditional generation\n\\(l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\\)"
   },
   {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-discrimination",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-discrimination",
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-discrimination-classification",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-discrimination-classification",
     "title": "An introduction to AI for biostatisticians",
-    "section": "ML tasks: discrimination",
-    "text": "ML tasks: discrimination\n\n\n\n\n\n\n\n\ncall this one variable outcome and classify when expected value1 passes threshold (e.g. 0.5) \\[\ns_j = p_{\\theta}(s|l=l',w=w') &gt; 0.5\n\\]\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\nconditional generation\n\\(l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\\)\n\n\ndiscrimination\n\\(p_{\\theta}(s|l=l_i,w=w_i) &gt; 0.5\\)\n\n\n\n\neither calculated directly or estimated by simulation"
+    "section": "ML tasks: discrimination / classification",
+    "text": "ML tasks: discrimination / classification\n\n\n\n\n\n\n\n\ncall this one variable outcome and - classify when majority of generated samples are of a certain class - or: have a model that outputs expected values \\[\ns_j = p_{\\theta}(s|l=l',w=w') &gt; 0.5\n\\]\n\n\n\ntask\n\n\n\n\n\ngeneration\n\\(l_j,w_j,s_j \\sim p_{\\theta}(l,w,s)\\)\n\n\nconditional generation\n\\(l_j,w_j \\sim p_{\\theta}(l,w|s=\\text{boy})\\)\n\n\ndiscrimination\n\\(p_{\\theta}(s|l=l_i,w=w_i) &gt; 0.5\\)\n\n\n\n\napplication: prediction, diagnosis"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-reinforcement-learning",
     "href": "talks/240926-bmsaned-ai-in-health/index.html#ml-tasks-reinforcement-learning",
     "title": "An introduction to AI for biostatisticians",
     "section": "ML tasks: reinforcement learning",
-    "text": "ML tasks: reinforcement learning\n\ne.g. computers playing games\ntypically requires many experiments, maybe not too useful in health care\n\n{width=“60%”, fig-align=“center”}"
+    "text": "ML tasks: reinforcement learning\n\ne.g. computers playing games\ntypically requires many experiments, maybe not too useful in health care"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#neural-networks-and-deep-learning",
@@ -795,21 +795,42 @@
     "href": "talks/240926-bmsaned-ai-in-health/index.html#neural-networks-and-deep-learning-1",
     "title": "An introduction to AI for biostatisticians",
     "section": "Neural Networks and Deep Learning",
-    "text": "Neural Networks and Deep Learning\n… to ‘Deep’ Learning\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\\[\\begin{align}\n    h_i &= w_{0i} + w_{1i} x_1 + \\ldots \\\\\n    h_i &= g(h_i) \\\\\n      y &= \\sum_{i=1}^3 h_i w_i\n\\end{align}\\]\n\nsticked \\(h_i\\) between input and output\n\\(g\\) is a non-linear function: each \\(h_i\\) is a non-linear transformation of the input\nrenamed \\(\\beta_i\\) (‘coefficients’) to \\(w_{0i}\\) and \\(w_i\\) (‘weights’)"
+    "text": "Neural Networks and Deep Learning\n… to ‘Deep’ Learning\n\n\n\n\n\n\n\n\n\n\\[\\begin{align}\n    h_i &= w_{0i} + w_{1i} x_1 + \\ldots \\\\\n    h_i &= g(h_i) \\\\\n      y &= \\sum_{i=1}^3 h_i w_i\n\\end{align}\\]\n\nsticked \\(h_i\\) between input and output\n\\(g\\) is a non-linear function: each \\(h_i\\) is a non-linear transformation of the input\nrenamed \\(\\beta_i\\) (‘coefficients’) to \\(w_{0i}\\) and \\(w_i\\) (‘weights’)"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#why-would-neural-networks-work",
     "href": "talks/240926-bmsaned-ai-in-health/index.html#why-would-neural-networks-work",
     "title": "An introduction to AI for biostatisticians",
     "section": "Why would neural networks work?",
-    "text": "Why would neural networks work?\n\nuniversal approximation theorem: a neural network with one hidden layer of sufficient width can approximate any continuous function\nproblems:\n\nno longer convex optimization\ntypical optimizers scale quadratically or worse with number of parameters\ndeterministic computation, but not easily understandable (black box)\n\ndeep learning: initialize parameters randomly, use gradient descent (first-order) methods\nbig networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)\nnew optimizers keep coming up (e.g. Adam)"
+    "text": "Why would neural networks work?\n\ntrue underlying relationships may be non-linear\nuniversal approximation theorem: a neural network with one hidden layer of sufficient width can approximate any continuous function\nproblems:\n\nno longer convex optimization\ntypical second-order optimizers scale quadratically or worse with number of parameters\ndeterministic computation, but not easily understandable (black box)"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#training-neural-networks",
     "href": "talks/240926-bmsaned-ai-in-health/index.html#training-neural-networks",
     "title": "An introduction to AI for biostatisticians",
     "section": "Training neural networks",
-    "text": "Training neural networks\n\nuse framework to define ‘forward-pass’ of network (e.g. PyTorch, TensorFlow, Keras, Jax)\ndefine loss function (e.g. mean squared error, cross-entropy (a.k.a. log-loss))\nuse optimizer to minimize loss function (e.g. Adam)\nregularization:\n\nL1, L2: add penalty to weights\nearly stopping: stop training when validation error starts increasing"
+    "text": "Training neural networks\n\nuse framework to define ‘forward-pass’ of network (e.g. PyTorch, TensorFlow, Keras, Jax)\ndeep learning: initialize parameters randomly, use gradient descent (first-order) methods\ndefine loss function (e.g. mean squared error, cross-entropy (a.k.a. log-loss))\nuse optimizer to minimize loss function (e.g. Stochastic Gradient Descent, Adam)"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-gradient-descent",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-gradient-descent",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "Stochastic gradient descent",
+    "text": "Stochastic gradient descent\n\\[L(\\theta) = \\sum_{i=1}^n \\ell(y_i, f(x_i;\\theta))\\]\n\ntake mini-batch of size \\(m &lt;&lt; n\\)\ncalculate loss on mini-batch and approximate gradient:\n\n\\[\\nabla L(\\theta) \\approx \\frac{1}{m} \\sum_{i=1}^m \\nabla \\ell(y_i, f(x_i;\\theta))\\]\n\nupdate parameter one step\n\n\\[\\theta_{t+1} = \\theta_t - \\alpha \\nabla L(\\theta)\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#training-neural-networks-1",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#training-neural-networks-1",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "Training neural networks",
+    "text": "Training neural networks\n\nbig networks require much memory and computation: do parallel on graphics processing units (GPUs) with mini-batches of data (i.e. stochastic gradient descent)\ntrain on training data, validate on validation data\nafter all tuning is done, evaluate on test data\nhow to prevent over-fitting?"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#regularization",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#regularization",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "Regularization",
+    "text": "Regularization\n\nregularization:\n\nL1 (lasso) / L2 (Ridge): add penalty to weights"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#early-stopping",
@@ -819,39 +840,130 @@
     "text": "Early stopping"
   },
   {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#training-neural-networks-1",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#training-neural-networks-1",
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#regularization-1",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#regularization-1",
     "title": "An introduction to AI for biostatisticians",
-    "section": "Training neural networks",
-    "text": "Training neural networks\n\nregularization:\n\nL1, L2: add penalty to weights\nearly stopping: stop training when validation error starts increasing\nrandom initialization: initialize weights randomly\ndropout: randomly set some weights to zero\nbatch normalization: normalize inputs of each layer\ndata augmentation: increase diversity of training data\n\n\n\n\n\n\n\n\n\nParameter counting is a bad proxy for model complexity in neural networks\n\n\nWhereas in regression models, model complexity is well-captured by the number of parameters, this is not the case for neural networks."
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#there-are-specialized-neural-network-architectures-for-different-types-of-data",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#there-are-specialized-neural-network-architectures-for-different-types-of-data",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "There are specialized neural network architectures for different types of data",
-    "text": "There are specialized neural network architectures for different types of data\n\nConvolutional Neural Networks (CNNs): images\nRecurrent Neural Networks (RNNs): time series\nTransformers: natural language processing"
+    "section": "Regularization",
+    "text": "Regularization\n\nregularization:\n\nL1 (lasso) / L2 (Ridge): add penalty to weights\nearly stopping: stop training when validation error starts increasing\nrandom initialization: initialize weights randomly\nalso:\n\ndropout: randomly set some weights to zero\nbatch normalization: normalize inputs of each layer\ndata augmentation: increase diversity of training data\n\n\n\n\n\n\n\n\n\n\nParameter counting is a bad proxy for model complexity in neural networks\n\n\nWhereas in regression models, model complexity is well-captured by the number of parameters, this is not the case for neural networks."
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#convolutional-neural-networks",
     "href": "talks/240926-bmsaned-ai-in-health/index.html#convolutional-neural-networks",
     "title": "An introduction to AI for biostatisticians",
     "section": "Convolutional Neural Networks",
-    "text": "Convolutional Neural Networks\n\nLeNet-5 (Lecun et al. Nov./1998)"
+    "text": "Convolutional Neural Networks\nImage as matrix of pixel values\n\nDOI: 10.1093/llc/fqy085"
   },
   {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#why-convolutional-neural-networks-for-images",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#why-convolutional-neural-networks-for-images",
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#convolutional-neural-networks-1",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#convolutional-neural-networks-1",
     "title": "An introduction to AI for biostatisticians",
-    "section": "Why convolutional neural networks for images?",
-    "text": "Why convolutional neural networks for images?\n\nimages exhibit much local structure, e.g. edges and textures\nthis local structure is hierarchical: edges form shapes, shapes form objects\nconvolutional neural networks: learn local structure, then combine these to learn higher-level structure\nlocal structure is location invariant: exploited by convolution operation"
+    "section": "Convolutional Neural Networks",
+    "text": "Convolutional Neural Networks\nConvolution operation"
   },
   {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#where-would-ccns-be-useful-for-images",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#where-would-ccns-be-useful-for-images",
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#convolutional-neural-networks-2",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#convolutional-neural-networks-2",
     "title": "An introduction to AI for biostatisticians",
-    "section": "Where would CCNs be useful for images?",
-    "text": "Where would CCNs be useful for images?\n\nimages crucial importance in many healthcare setting, e.g. dermatology, radiology\ntake lung cancer diagnosis on chest radiographs\n\ntraditional statistical approach: ask radiologist to summarize medical image with some key features\n\ntumor size, location\n\nCNN approach: learn directly from images to outcome\n\nlearn representation while doing so\nincorporate domain knowledge (e.g. invariances to e.g. translations)"
+    "section": "Convolutional Neural Networks",
+    "text": "Convolutional Neural Networks\nImages have local structure"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#convolutional-neural-networks-3",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#convolutional-neural-networks-3",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "Convolutional Neural Networks",
+    "text": "Convolutional Neural Networks\nCNNs build hierarchical features with local invariant structure"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#where-would-cnns-be-useful-in-healthcare",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#where-would-cnns-be-useful-in-healthcare",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "Where would CNNs be useful in healthcare?",
+    "text": "Where would CNNs be useful in healthcare?\n\nimages crucial importance in many healthcare setting, e.g. dermatology, radiology\ntake lung cancer diagnosis on chest radiographs\n\ntraditional statistical approach: ask radiologist to summarize medical image with some key features\n\ntumor size, location\noutcome: benign or malignant\n\nCNN approach: learn directly from images to outcome\n\nlearn representation while doing so\nincorporate domain knowledge (e.g. invariances to e.g. translations)"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#neural-networks-for-sequence-data",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#neural-networks-for-sequence-data",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "Neural Networks for Sequence data",
+    "text": "Neural Networks for Sequence data\n\n\n\n\n\n\n\nmany data are sequences: text, time series, DNA\nspecific architectures for sequence data\n\nRecurrent Neural Networks (RNNs)\nnatural language processing: Transformers (Vaswani et al. 2023)\n\n\n\n\n\n\n\nTransformer Architecture"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#chatgpt-a-stochastic-auto-regressive-conditional-generator-with-a-chatbot-interface",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#chatgpt-a-stochastic-auto-regressive-conditional-generator-with-a-chatbot-interface",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "chatGPT: a stochastic auto-regressive conditional generator with a chatbot interface",
+    "text": "chatGPT: a stochastic auto-regressive conditional generator with a chatbot interface\n\n\n\n\n\n\n\ntrained by predicting the next &lt;…&gt; (word)\n\nin a large corpus of text\nwith a large model\nfor a long time on expensive hardware\n\npost-processed to optimize user experience (remove offensive language, etc.)\n\n\npresent test-user with two generated answers, ask which is better\nif user picks one, use that as training signal"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "auto-regressive conditional generation:",
+    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\text{word}_1 &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{prompt})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-1",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-1",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "auto-regressive conditional generation:",
+    "text": "auto-regressive conditional generation:\nPrompt=“Frank went to the bar and”\n\\[\\begin{align}\n    \\color{green}{had} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-2",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-2",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "auto-regressive conditional generation:",
+    "text": "auto-regressive conditional generation:\nPrompt=“Frank went to the bar and”\n\\[\\begin{align}\n    \\color{green}{had} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-3",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-3",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "auto-regressive conditional generation:",
+    "text": "auto-regressive conditional generation:\nPrompt=“Frank went to the bar and”\n\\[\\begin{align}\n    \\color{green}{had} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had})\\\\\n    \\color{red}{drink} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had} \\ \\color{orange}{a})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-4",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-4",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "auto-regressive conditional generation:",
+    "text": "auto-regressive conditional generation:\nPrompt=“Frank went to the bar and”\n\\[\\begin{align}\n    \\color{green}{had} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had})\\\\\n    \\color{red}{drink} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had} \\ \\color{orange}{a})\\\\\n    \\text{STOP} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had} \\ \\color{orange}{a} \\ \\color{red}{drink})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "stochastic auto-regressive conditional generation:",
+    "text": "stochastic auto-regressive conditional generation:\nPrompt=“Frank went to the bar and”\n\\[\\begin{align}\n    \\color{green}{met} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-1",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-1",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "stochastic auto-regressive conditional generation:",
+    "text": "stochastic auto-regressive conditional generation:\nPrompt=“Frank went to the bar and”\n\\[\\begin{align}\n    \\color{green}{met} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-2",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-2",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "stochastic auto-regressive conditional generation:",
+    "text": "stochastic auto-regressive conditional generation:\nPrompt=“Frank went to the bar and”\n\\[\\begin{align}\n    \\color{green}{met} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met})\\\\\n    \\color{red}{friend} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met} \\ \\color{orange}{a})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-3",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-3",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "stochastic auto-regressive conditional generation:",
+    "text": "stochastic auto-regressive conditional generation:\nPrompt=“Frank went to the bar and”\n\\[\\begin{align}\n    \\color{green}{met} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met})\\\\\n    \\color{red}{friend} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met} \\ \\color{orange}{a})\\\\\n    \\text{STOP} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met} \\ \\color{orange}{a} \\ \\color{red}{friend})\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#gpt-4-scale-underlying-current-chatgpt",
+    "href": "talks/240926-bmsaned-ai-in-health/index.html#gpt-4-scale-underlying-current-chatgpt",
+    "title": "An introduction to AI for biostatisticians",
+    "section": "GPT-4 scale (underlying current ChatGPT)",
+    "text": "GPT-4 scale (underlying current ChatGPT)"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#for-complex-tasks-neural-networks-keep-getting-better-with",
@@ -875,83 +987,6 @@
     "text": "Neural Network Architectures\n\ncommon theme:\nuse an architecture that fits the data type well\n\nimages with local structure: CNNs\ntime series: RNNs\n\nscale!"
   },
   {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#neural-networks-for-sequence-data",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#neural-networks-for-sequence-data",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "Neural Networks for Sequence data",
-    "text": "Neural Networks for Sequence data\n\n\n\n\n\n\n\nmany data are sequences: text, time series, DNA\nspecific architectures for sequence data\n\nRecurrent Neural Networks (RNNs):\nnatural language processing: Transformers (Vaswani et al. 2023)\n\n\n\n\n\n\n\nTransformer Architecture"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#what-is-a-large-language-model-like-chatgpt-1",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#what-is-a-large-language-model-like-chatgpt-1",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "What is a large-language model like chatGPT?",
-    "text": "What is a large-language model like chatGPT?\n\n\n\n\n\n\nWhat is chatGPT?\n\n\na stochastic auto-regressive next-word predictor with a chatbot interface\n\n\n\n\n\n\n\n\n\n\ntrained by predicting the next &lt;…&gt;\n\nin a large corpus of text\nwith a large model\nfor a long time on expensive hardware\n\npost-processed to optimize user experience (remove offensive language, etc.)\n\npresent test-user with two options, ask which is better"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "auto-regressive conditional generation:",
-    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\color{green}{had} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-1",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-1",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "auto-regressive conditional generation:",
-    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\color{green}{had} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had})\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-2",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-2",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "auto-regressive conditional generation:",
-    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\color{green}{had} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had})\\\\\n    \\color{red}{drink} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had} \\ \\color{orange}{a})\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-3",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#auto-regressive-conditional-generation-3",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "auto-regressive conditional generation:",
-    "text": "auto-regressive conditional generation:\n\\[\\begin{align}\n    \\color{green}{had} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had})\\\\\n    \\color{red}{drink} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had} \\ \\color{orange}{a})\\\\\n    \\text{STOP} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{had} \\ \\color{orange}{a} \\ \\color{red}{drink})\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "stochastic auto-regressive conditional generation:",
-    "text": "stochastic auto-regressive conditional generation:\n\\[\\begin{align}\n    \\color{green}{met} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-1",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-1",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "stochastic auto-regressive conditional generation:",
-    "text": "stochastic auto-regressive conditional generation:\n\\[\\begin{align}\n    \\color{green}{met} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met})\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-2",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-2",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "stochastic auto-regressive conditional generation:",
-    "text": "stochastic auto-regressive conditional generation:\n\\[\\begin{align}\n    \\color{green}{met} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met})\\\\\n    \\color{red}{friend} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met} \\ \\color{orange}{a})\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-3",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#stochastic-auto-regressive-conditional-generation-3",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "stochastic auto-regressive conditional generation:",
-    "text": "stochastic auto-regressive conditional generation:\n\\[\\begin{align}\n    \\color{green}{met} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and})\\\\\n    \\color{orange}{a} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met})\\\\\n    \\color{red}{friend} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met} \\ \\color{orange}{a})\\\\\n    \\text{STOP} &\\sim p_{\\text{chatGPT}}(\\text{word}|\\text{Frank went to the bar and } \\color{green}{met} \\ \\color{orange}{a} \\ \\color{red}{friend})\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240926-bmsaned-ai-in-health/index.html#gpt-4-scale",
-    "href": "talks/240926-bmsaned-ai-in-health/index.html#gpt-4-scale",
-    "title": "An introduction to AI for biostatisticians",
-    "section": "GPT-4 scale",
-    "text": "GPT-4 scale"
-  },
-  {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#rule-based-ai-versus-chatgpt",
     "href": "talks/240926-bmsaned-ai-in-health/index.html#rule-based-ai-versus-chatgpt",
     "title": "An introduction to AI for biostatisticians",
@@ -963,7 +998,7 @@
     "href": "talks/240926-bmsaned-ai-in-health/index.html#what-we-dont-know-about-chatgpt",
     "title": "An introduction to AI for biostatisticians",
     "section": "What we don’t know about chatGPT",
-    "text": "What we don’t know about chatGPT\n\nwhat data was it trained on, what is the architecture?\ndoes it have a world model? does it understand?\ndoes next-word prediction imply understanding?\ncan we interrogate it to self-explain: chain of thought tests?\nare these explanations faithful?"
+    "text": "What we don’t know about chatGPT\n\nwhat data was it trained on, what is the architecture?\ndoes it have a world model? does it understand?\ndoes next-word prediction imply understanding?\ncan we interrogate it to self-explain: chain of thought tests?\nare these explanations faithful?\nare these explanations correct?"
   },
   {
     "objectID": "talks/240926-bmsaned-ai-in-health/index.html#what-might-llms-be-useful-for-in-health-care",
@@ -984,7 +1019,7 @@
     "href": "talks/240926-bmsaned-ai-in-health/index.html#references",
     "title": "An introduction to AI for biostatisticians",
     "section": "References",
-    "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nKaplan, Jared, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei. 2020. “Scaling Laws for Neural Language Models.” January 22, 2020. https://doi.org/10.48550/arXiv.2001.08361.\n\n\nLecun, Y., L. Bottou, Y. Bengio, and P. Haffner. Nov./1998. “Gradient-Based Learning Applied to Document Recognition.” Proceedings of the IEEE 86 (11): 2278–2324. https://doi.org/10.1109/5.726791.\n\n\nMoen, Erick, Dylan Bannon, Takamasa Kudo, William Graf, Markus Covert, and David Van Valen. 2019. “Deep Learning for Cellular Image Analysis.” Nature Methods 16 (12): 1233–46. https://doi.org/10.1038/s41592-019-0403-1.\n\n\nRussell, Stuart, and Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. Pearson. https://books.google.com?id=koFptAEACAAJ.\n\n\nSamuel, A. L. 1959. “Some Studies in Machine Learning Using the Game of Checkers.” IBM Journal of Research and Development 3 (3): 210–29. https://doi.org/10.1147/rd.33.0210.\n\n\nVaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2023. “Attention Is All You Need.” August 1, 2023. http://arxiv.org/abs/1706.03762."
+    "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nKaplan, Jared, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei. 2020. “Scaling Laws for Neural Language Models.” January 22, 2020. https://doi.org/10.48550/arXiv.2001.08361.\n\n\nMoen, Erick, Dylan Bannon, Takamasa Kudo, William Graf, Markus Covert, and David Van Valen. 2019. “Deep Learning for Cellular Image Analysis.” Nature Methods 16 (12): 1233–46. https://doi.org/10.1038/s41592-019-0403-1.\n\n\nRussell, Stuart, and Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. Pearson. https://books.google.com?id=koFptAEACAAJ.\n\n\nSamuel, A. L. 1959. “Some Studies in Machine Learning Using the Game of Checkers.” IBM Journal of Research and Development 3 (3): 210–29. https://doi.org/10.1147/rd.33.0210.\n\n\nVaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2023. “Attention Is All You Need.” August 1, 2023. http://arxiv.org/abs/1706.03762."
   },
   {
     "objectID": "talks/240516-sig-causality-prediction/index.html#prediction",
@@ -1593,7 +1628,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-35990\").innerHTML = tweet[\"html\"];"
+    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-34697\").innerHTML = tweet[\"html\"];"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",

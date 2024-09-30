@@ -46,9 +46,6 @@ listing:
 For this I work on the intersection of machine learning (for flexible data analysis) and causal inference (to learn to make better decisions).
 
 I am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.
-<!--His focus is the intersection of machine learning and causal inference.-->
-<!--This intersection goes two ways: machine learning can improve typical causal inference tasks such as estimating individual treatment effects and doing prediction-under-intervention.-->
-<!--On the other hand, causal inference provides a formal way to understanding and improving prediction model generalization and robustness.-->
 I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare, co-advised by [Rajesh Ranganath](https://cims.nyu.edu/~rajeshr/) from NYU.
 
 <!--Master students with a background in statistics or machine learning who want to work with me are welcome to contact me.-->

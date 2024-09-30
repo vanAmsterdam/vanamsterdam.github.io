@@ -7,7 +7,7 @@ date: 2024-09-26
 bibliography: ../../library.bib
 format:
     revealjs:
-        incremental: true
+        incremental: false
 #        css: ../../colors.css
         theme: ../custom.scss
         auto-stretch: true

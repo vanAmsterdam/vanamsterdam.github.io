@@ -46,7 +46,10 @@ format:
   - generate png images with Bing chat
 - no competing interests
 
+<!--
+
 ---
+
 
 ![](mentimeter_qr_code.png){width="80%" fig-align="center"}
 
@@ -57,6 +60,9 @@ format:
 ```{=html}
 <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alwqcfps4hepk5y7n8pnu93br2pfcun9/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 ```
+
+-->
+
 
 # Today's talk
 
@@ -405,11 +411,15 @@ Whereas in regression models, model complexity is well-captured by the number of
 
 :::
 
+<!--
+
 --- 
 
 ```{=html}
 <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/alwqcfps4hepk5y7n8pnu93br2pfcun9/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 ```
+
+-->
 
 # There are specialized neural network architectures for different types of data
 

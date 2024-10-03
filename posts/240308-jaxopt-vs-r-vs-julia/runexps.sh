@@ -7,15 +7,15 @@ do
     #sed -i '' '$s/$/ '"${nreps}"' nreps 8 threads map primitive/' timings.txt
     #{ time python _scripts/jaxspeed.py $nreps vmap ; } 2>> timings.txt
     #sed -i '' '$s/$/ '"${nreps}"' nreps 8 threads vmap primitive/' timings.txt
-    { time python _scripts/jaxspeed.py $nreps scan ; } 2>> timings.txt
-    sed -i '' '$s/$/ '"${nreps}"' nreps 8 threads scan primitive/' timings.txt
+    # { time python _scripts/jaxspeed.py $nreps scan ; } 2>> timings.txt
+    # sed -i '' '$s/$/ '"${nreps}"' nreps 8 threads scan primitive/' timings.txt
 
-    #for nthreads in 1 8
-    #do
-        #echo $nthreads
-        #{ time julia -t $nthreads _scripts/jlspeed.jl $nreps ; } 2>> timings.txt
-        #sed -i '' '$s/$/ '"${nreps}"' nreps '"${nthreads}"' nthreads/' timings.txt
+    for nthreads in 1 8 12
+    do
+        echo $nthreads
+        { time julia --project=./jlspeed -t $nthreads _scripts/jlspeed.jl $nreps ; } 2>> timings.txt
+        sed -i '' '$s/$/ '"${nreps}"' nreps '"${nthreads}"' nthreads/' timings.txt
         #{ time Rscript _scripts/rspeed.R $nreps $nthreads ; } 2>> timings.txt
         #sed -i '' '$s/$/ '"${nreps}"' nreps '"${nthreads}"' nthreads/' timings.txt
-    #done
+    done
 done

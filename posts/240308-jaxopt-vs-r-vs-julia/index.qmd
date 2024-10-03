@@ -12,7 +12,7 @@ categories:
 - simulation studies
 ---
 
-Simulation experiments are important when evaluating methods but also for applied work in for example power analyses [e.g. @vanamsterdamAssociationMuscleQuantity2022] or sensitivity analyses [e.g. @vanamsterdamIndividualTreatmentEffect2022].
+Simulation experiments are important when evaluating methods but also for applied work in for example power analyses or sensitivity analyses.
 When using simulations to support scientific claims, the more experiments the better.
 Being able to perform simulation experiments faster allows researchers to:
 
@@ -287,11 +287,12 @@ btimings <- data.table(raw_string=blns)
 
 # remove white space and first word (for linux)
 timings <- rbindlist(list(macm1=mtimings, linux=btimings), idcol='machine')
+timings[str_detect(raw_string, "project"), machine:="macm3"]
 timings[, string:=str_trim(raw_string)] # remove white space
 timings[, string:=str_replace(string, "^real\t", "")] # remove first word linux
 
 # find the language from the string
-timings[machine=='macm1', command:=word(string)]
+timings[machine%in%c('macm1', 'macm3'), command:=word(string)]
 timings[command=='Rscript', language:='r']
 timings[command=='python', language:='jax']
 timings[command=='julia', language:='julia']
@@ -314,7 +315,7 @@ timings[language!='jax', primitive:='map']
 timings <- timings[!str_ends(primitive, 'nojit')]
 
 # grab the time 
-timings[machine=='macm1', time_str:=str_extract(string, "(?<=cpu\\ )(.*)(?= total)")]
+timings[machine%in%c('macm1', 'macm3'), time_str:=str_extract(string, "(?<=cpu\\ )(.*)(?= total)")]
 timings[, milliseconds:=as.integer(str_extract(time_str, "(\\d+)$"))]
 timings[, seconds     :=as.integer(str_extract(time_str, "(\\d+)(?=.)"))]
 timings[, minutes     :=as.integer(str_extract(time_str, "(\\d+)(?=:)"))]

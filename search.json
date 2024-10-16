@@ -606,7 +606,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-31170\").innerHTML = tweet[\"html\"];"
+    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-56721\").innerHTML = tweet[\"html\"];"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
@@ -1565,7 +1565,7 @@
     "href": "index.html#news",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "News",
-    "text": "News\nTogether with Maarten van Smede, I’m recruiting a PhD student. For more information and to apply, see the UMC Utrecht website\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
+    "text": "News\nTogether with Maarten van Smeden, I’m recruiting a PhD student. For more information and to apply, see the UMC Utrecht website\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
   },
   {
     "objectID": "index.html#selected-papers",

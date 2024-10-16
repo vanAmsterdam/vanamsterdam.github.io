@@ -11,6 +11,22 @@
     ]
   },
   {
+    "listing": "/talks.html",
+    "items": [
+      "/talks/240926-bmsaned-ai-in-health/index.html",
+      "/talks/240708-imaging-ailab/index.html",
+      "/talks/240530-weon-masterclass/index.html",
+      "/talks/240516-sig-causality-prediction/index.html",
+      "/talks/240515-aibia-ai-medical-imaging-decision-support/index.html",
+      "/talks/240507-estro-causalinference-tutorial/index.html",
+      "/talks/240418-ii-spring-meeting/index.html",
+      "/talks/240312-dsbiostats-twitter/index.html",
+      "/talks/230810-mlhc-causality-decision-making/index.html",
+      "/talks/230624-chill-lightning-talk/index.html",
+      "/talks/230301-lungsurv-manchester/index.html"
+    ]
+  },
+  {
     "listing": "/unlisted.html",
     "items": [
       "/talks/240922-causalai-4cities/index.html"
@@ -37,22 +53,6 @@
       "/talks/230624-chill-lightning-talk/index.html",
       "/talks/230301-lungsurv-manchester/index.html",
       "/talks/240922-causalai-4cities/index.html"
-    ]
-  },
-  {
-    "listing": "/talks.html",
-    "items": [
-      "/talks/240926-bmsaned-ai-in-health/index.html",
-      "/talks/240708-imaging-ailab/index.html",
-      "/talks/240530-weon-masterclass/index.html",
-      "/talks/240516-sig-causality-prediction/index.html",
-      "/talks/240515-aibia-ai-medical-imaging-decision-support/index.html",
-      "/talks/240507-estro-causalinference-tutorial/index.html",
-      "/talks/240418-ii-spring-meeting/index.html",
-      "/talks/240312-dsbiostats-twitter/index.html",
-      "/talks/230810-mlhc-causality-decision-making/index.html",
-      "/talks/230624-chill-lightning-talk/index.html",
-      "/talks/230301-lungsurv-manchester/index.html"
     ]
   }
 ]

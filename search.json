@@ -1,444 +1,31 @@
 [
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#ai-may-have-many-uses-in-health-care",
-    "href": "talks/240530-weon-masterclass/index.html#ai-may-have-many-uses-in-health-care",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "AI may have many uses in health care",
-    "text": "AI may have many uses in health care\nUse AI to make health care\n\n\nmore efficient or easier\n\nadministration / documentation\ntranslation\n\n\nbetter: change decisions\n\ndiagnosis (e.g. skin cancer from imaging)\nprognosis (e.g. survival given medical image)\ntreatment effect (e.g. genetic biomarker)"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#section",
-    "href": "talks/240530-weon-masterclass/index.html#section",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "objectID": "posts/210725-counterfactualvsinterventional.html",
+    "href": "posts/210725-counterfactualvsinterventional.html",
+    "title": "The difference between intervention and counterfactuals",
     "section": "",
-    "text": "prognosis (e.g. survival given medical image)\ntreatment effect (e.g. genetic biomarker)\n\n\n\n\n\n\nTip\n\n\nWhereas treatment effect estimation is typically thought of as a causal task requiring causal approaches (e.g. randomized controllerd trials), prognosis models are often advertised for making treatment decisions."
+    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#the-in-between-using-prediction-models-for-medical-decision-making",
-    "href": "talks/240530-weon-masterclass/index.html#the-in-between-using-prediction-models-for-medical-decision-making",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "The in-between: using prediction models for (medical) decision making",
-    "text": "The in-between: using prediction models for (medical) decision making\n\n\nprognosis (e.g. survival given medical image)"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#using-prediction-models-for-decision-making-is-often-thought-of-as-a-good-idea",
-    "href": "talks/240530-weon-masterclass/index.html#using-prediction-models-for-decision-making-is-often-thought-of-as-a-good-idea",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Using prediction models for decision making is often thought of as a good idea",
-    "text": "Using prediction models for decision making is often thought of as a good idea\nFor example:\n\ngive chemotherapy to cancer patients with high predicted risk of recurrence\ngive statins to patients with a high risk of a heart attack\n\n\n\n\n\nTRIPOD+AI on prediction models (Collins et al. 2024)\n\n\n“Their primary use is to support clinical decision making, such as … initiate treatment or lifestyle changes.”"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
-    "href": "talks/240530-weon-masterclass/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Building models for decision support without regards for the historic treatment policy is a bad idea",
-    "text": "Building models for decision support without regards for the historic treatment policy is a bad idea"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models",
-    "href": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Treatment-naive prediction models",
-    "text": "Treatment-naive prediction models\n\n\n\n\n\\[\\begin{align}\n    E[Y|X] \\class{fragment}{= E[E_{t~\\sim \\pi_0(X)}[Y|X,t]]}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models-1",
-    "href": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models-1",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Treatment-naive prediction models",
-    "text": "Treatment-naive prediction models\nResults from (vanamsterdamWhenAccuratePrediction2024a?)\n\ngood or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change\nmodels that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#prediction-modeling-is-very-popular-in-medical-research",
-    "href": "talks/240530-weon-masterclass/index.html#prediction-modeling-is-very-popular-in-medical-research",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Prediction modeling is very popular in medical research",
-    "text": "Prediction modeling is very popular in medical research"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
-    "href": "talks/240530-weon-masterclass/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Recommended validation practices and reporting guidelines do not protect against harm",
-    "text": "Recommended validation practices and reporting guidelines do not protect against harm\nbecause they do not evaluate the policy change"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
-    "href": "talks/240530-weon-masterclass/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Bigger data does not protect against harmful prediction models",
-    "text": "Bigger data does not protect against harmful prediction models"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
-    "href": "talks/240530-weon-masterclass/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "More flexible models do not protect against harmful prediction models",
-    "text": "More flexible models do not protect against harmful prediction models"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#gap-between-prediction-accuracy-and-value-for-decision-making",
-    "href": "talks/240530-weon-masterclass/index.html#gap-between-prediction-accuracy-and-value-for-decision-making",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Gap between prediction accuracy and value for decision making",
-    "text": "Gap between prediction accuracy and value for decision making"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#section-1",
-    "href": "talks/240530-weon-masterclass/index.html#section-1",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "objectID": "posts/210725-counterfactualvsinterventional.html#intro",
+    "href": "posts/210725-counterfactualvsinterventional.html#intro",
+    "title": "The difference between intervention and counterfactuals",
     "section": "",
-    "text": "What to do?"
+    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#section-2",
-    "href": "talks/240530-weon-masterclass/index.html#section-2",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "",
-    "text": "What to do?\n\n\nEvaluate policy change (cluster randomized controlled trial)\nBuild models that are likely to have value for decision making"
+    "objectID": "posts/210725-counterfactualvsinterventional.html#example",
+    "href": "posts/210725-counterfactualvsinterventional.html#example",
+    "title": "The difference between intervention and counterfactuals",
+    "section": "Example",
+    "text": "Example\nTo illustrate the difference between a counterfactual prediction and an interventional prediction (or conditional average treatment effect estimates), consider this very simple setup.\nYou have data from a randomized trial with two treatment arms \\(t \\in \\{0,1\\}\\) and an outcome \\(Y\\) on a continuous scale. Denote \\(Y_0\\) the potential outcome under intervening on treatment \\(t=0\\) and \\(Y_1\\) the potential outcome under intervening on treatment \\(t=1\\). As we are dealing with data from a randomized trial, we can easily estimate the average treatment effect as \\(E[Y_1 - Y_0] = E[Y|t=0] - E[Y|t=1]\\), assuming consistency (ignorability and overlap are satisfied due to the study design).\nA counterfactual question is: what would have been the outcome \\(Y_0\\) under treatment \\(t=1\\), given that we observed the outcome \\(y_1\\) under treamtent \\(t=1\\), so it is \\(E[Y_0|Y=y_1, t=1]\\).\nNow assume that the data come from a mixture of Gaussians such that\n\\[y|t \\sim (1 - t) \\mathcal{N}(1,0.1^2) + t \\mathcal{N}(10,2.5^2)\\]\nAnd \\(p(t=1)=0.5\\) so both arms are equally large. Treatment \\(t=1\\) leads to higher outcome but also more spread. The relevant interventional expectations are easily calculated by just calculating group means \\(E[Y_0] = E[Y|t=0] = 1\\), \\(E[Y_1] = E[Y|t=1] = 10\\).\n\nCalculating the counterfactuals\nTo see that calculating counterfactuals requires more knowledge, namely of the structural equations, we now calculate the counterfactual prediction for a patient with \\(Y=Y_1=15\\). This is a patient with a relatively large ‘residual’, the outcome is 2 standard deviations above the mean for treatment group \\(t=1\\).\nFirst we calculate the counterfactual outcome under a wrong outcome model. Researchers tried to model the outcomes using linear regression, and failed to appreciate the difference in variances between the two treatment arms (heteroscedasticity). Assuming a large sample, they will arrive at a model:\n\\[\\hat{y}_{\\text{wrong}} = 1 + t * 9 + \\mathcal{N}(0,\\sigma^2)\\]\nWhere \\(\\sigma = \\sqrt{\\frac{0.1^2 + 2.5^2}{2}} \\approx 1.77\\) (standard devation of mixture of Gaussians with (conditional) mean of 0 and standard deviations 0.1 and 2.5, with 50 / 50 mixing). Note that the estimate of the treatment effect is correct, and so are \\(E[Y_0]\\) and \\(E[Y_1]\\). If there was a binary pre-treatment covariate, the conditional average treatment effect could be estimated by repeating this exercise for both levels of the covariate. To calculate the counterfactual outcome of our patient, we first need to determine the value of their noise variable for the outcome. According to \\(\\hat{y}_{\\text{wrong}}\\), the residual for a patient with \\(Y_1=15\\) is \\(5\\), which is \\(5/\\sigma \\approx 2.82\\) standard deviations away from the expected value for \\(t=1\\). Given this residual we can now calculate the counterfactual:\n\\[\\widehat{E_{\\text{wrong}}}[Y_0|Y=15,t=1] \\approx E[Y_0] + 2.82 \\sigma =6\\]\nGiven that we know the data generating mechanism, we know that this counterfactual prediction is 50 standard deviations from the conditional mean of \\(t=0\\) in the data generating mechanism, clearly this counterfactual prediction is wrong.\nIf we did model the data correctly with a mixture of Gaussians indexed by the treatment group, we would instead say that \\(Y_1=15\\) is 2 standard deviations above the conditional mean, and we would calculate:\n\\[\\widehat{E^*}[Y_0|Y=15,t=1] = E[Y_0] + 2 * 0.1 =1.2\\]\nWhich is correct."
   },
   {
-    "objectID": "talks/240530-weon-masterclass/index.html#deploying-a-model-is-an-intervention-that-changes-the-way-treatment-decisions-are-made",
-    "href": "talks/240530-weon-masterclass/index.html#deploying-a-model-is-an-intervention-that-changes-the-way-treatment-decisions-are-made",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Deploying a model is an intervention that changes the way treatment decisions are made",
-    "text": "Deploying a model is an intervention that changes the way treatment decisions are made"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#how-do-we-learn-about-the-effect-of-an-intervention",
-    "href": "talks/240530-weon-masterclass/index.html#how-do-we-learn-about-the-effect-of-an-intervention",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "How do we learn about the effect of an intervention?",
-    "text": "How do we learn about the effect of an intervention?\nWith a randomized experiment\n\n\nfor using a decision support model, the unit of intervention is usually the doctor\nrandomly assign doctors to have access to the model or not\nmeasure differences in treatment decisions and patient outcomes\nthis called a cluster RCT\nif using model improves outcomes, use that one\n\n\n\n\n\nUsing cluster RCTs to evaluated models for decision making is not a new idea (Cooper et al. 1997)\n\n\n“As one possibility, suppose that a trial is performed in which clinicians are randomized either to have or not to have access to such a decision aid in making decisions about where to treat patients who present with pneumonia.”\n\n\n\n\n\n\n\n\n\n\n\nWhat we don’t learn\n\n\nwas the model predicting anything sensible?"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#so-build-treatment-naive-prediction-models-and-trial-them-for-decision-support",
-    "href": "talks/240530-weon-masterclass/index.html#so-build-treatment-naive-prediction-models-and-trial-them-for-decision-support",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "So build treatment-naive prediction models and trial them for decision support?",
-    "text": "So build treatment-naive prediction models and trial them for decision support?\nNot a good idea\n\nbaking a cake without a recipe\nhoping it turns into something nice\nnot pleasant to people that need to taste result of the experiment\n\n(i.e. patients may have side-effects / die)"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
-    "href": "talks/240530-weon-masterclass/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "We should build models that are likely to be valuable for decision making",
-    "text": "We should build models that are likely to be valuable for decision making\n\nBuild models that predict expected outcomes under hypothetical interventions (prediction-under-intervention models)\ndoctor / patient can pick the treatment with best expected outcomes, depending on patient’s values\nwhereas treatment-naive prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option\n\n\n\n\n\nHilden and Habbema on prognosis (Hilden and Habbema 1987)\n\n\n“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”\n\n\n\n\nprediction-under-intervention is not a new idea, but language and methods on causality have come a long way since (Hilden and Habbema 1987)."
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#estimand-for-prediction-under-intervention-models",
-    "href": "talks/240530-weon-masterclass/index.html#estimand-for-prediction-under-intervention-models",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Estimand for prediction-under-intervention models",
-    "text": "Estimand for prediction-under-intervention models\nWhat is the estimand?\n\nprediction: \\(E[Y|X]\\)\ntreatment effect: \\(E[Y|\\text{do}(T=1)] - E[Y|\\text{do}(T=0)]\\)\nprediction-under-intervention: \\(E[Y|\\text{do}(T=t),X]\\)"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#more-on-prediction-under-intervention-models",
-    "href": "talks/240530-weon-masterclass/index.html#more-on-prediction-under-intervention-models",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "More on prediction-under-intervention models",
-    "text": "More on prediction-under-intervention models\ndevelopment:\n\nideally estimated from RCTs, but these are often too small or don’t measure the right data\nalternatively can use observational data and causal inference methods\n\nthis approach relies on strong assumptions especially regarding confounding\n\nbut likely a better recipe than treatment-naive models\n\n\nevaluation:\n\nprediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding (e.g. Keogh and van Geloven 2024)\na new policy can be evaluated in historic RCTs (e.g. Karmali et al. 2018)\nultimate test is cluster RCT"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#take-aways",
-    "href": "talks/240530-weon-masterclass/index.html#take-aways",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "Take-aways",
-    "text": "Take-aways\n\nwhen developing or evaluating (AI) prediction models for medical decisions, think about\n\nwhat is the effect of using this model on medical decisions?\nwhat is the effect of this policy change on patient outcomes?\n\ndeploying models for decision support is an intervention and should be evaluated as such\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (amsterdamAlgorithmsActionImproving2024?)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (vanamsterdamWhenAccuratePrediction2024a?)"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#new-summerschool-introduction-to-causal-inference-and-causal-data-science",
-    "href": "talks/240530-weon-masterclass/index.html#new-summerschool-introduction-to-causal-inference-and-causal-data-science",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "New summerschool: Introduction to Causal Inference and Causal Data Science",
-    "text": "New summerschool: Introduction to Causal Inference and Causal Data Science\nLearn more about causal data science\n\n\n\n\nDates: 5 Aug. - 9 Aug. 2024\nLocation: Utrecht\nInstructors:\n\nOisin Ryan\nBas Penning-de Vries\nWouter van Amsterdam\n\nSign up still possible\n\n\n\n\nCourse website"
-  },
-  {
-    "objectID": "talks/240530-weon-masterclass/index.html#references",
-    "href": "talks/240530-weon-masterclass/index.html#references",
-    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
-    "section": "References",
-    "text": "References\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nKarmali, Kunal N., Donald M. Lloyd-Jones, Joep van der Leeuw, David C. Goff Jr, Salim Yusuf, Alberto Zanchetti, Paul Glasziou, et al. 2018. “Blood Pressure-Lowering Treatment Strategies Based on Cardiovascular Risk Versus Blood Pressure: A Meta-Analysis of Individual Participant Data.” PLOS Medicine 15 (3): e1002538. https://doi.org/10.1371/journal.pmed.1002538.\n\n\nKeogh, Ruth H., and Nan van Geloven. 2024. “Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.” January 10, 2024. https://doi.org/10.48550/arXiv.2304.10005."
-  },
-  {
-    "objectID": "talks/230624-chill-lightning-talk/index.html#section-31",
-    "href": "talks/230624-chill-lightning-talk/index.html#section-31",
-    "title": "My risk model is super accurate so it will be useful for treatment decision making, right? Wrong!",
-    "section": "",
-    "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
-  },
-  {
-    "objectID": "talks/240922-causalai-4cities/index.html#causal-inference-groups",
-    "href": "talks/240922-causalai-4cities/index.html#causal-inference-groups",
-    "title": "Causal Inference for AI meetup",
-    "section": "Causal Inference groups",
-    "text": "Causal Inference groups\n\n\n\n\n\n\n\n\n\nCausal Inference in AI mailing-list\n\n\n\n\n\n\n\nUtrecht - Special Interest Group Causal Data Science"
-  },
-  {
-    "objectID": "talks/240922-causalai-4cities/index.html#program",
-    "href": "talks/240922-causalai-4cities/index.html#program",
-    "title": "Causal Inference for AI meetup",
-    "section": "Program",
-    "text": "Program\n\n30 minutes + 10 minutes Q&A\nborrel afterwards\n\n\n\n\n\n\n\n\n\n\nCausal Inference in AI mailing-list\n\n\n\n\n\n\n\nUtrecht - Special Interest Group Causal Data Science\n\n\n\n\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "Outline",
-    "text": "Outline\n\ndifferent uses of AI in medical imaging\nusing AI for treatment effect estimation\nwarning: harmful self-fulfilling prophecies"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#uses-of-ai-in-medical-imaging",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#uses-of-ai-in-medical-imaging",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "Uses of AI in medical imaging",
-    "text": "Uses of AI in medical imaging\n\nAcquisition (\\(S \\to X\\)) \ndetection / segmentation (\\(X \\to X\\)) \ninference / diagnosis (\\(X \\to D\\), both at prediction time) \nprognosis (\\(X \\to Y\\), \\(Y\\) in the future) \ntreatment effect (\\(X\\) determines effect of a treatment)"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#ai-treatment-effect",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#ai-treatment-effect",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "Why would you estimate treatment effects based on images?",
-    "text": "Why would you estimate treatment effects based on images?\n\ntreatments have different effects on patients based on their (disease) characteristics\nfor example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive\nsome characteristics may be well captured in medical imaging:\n\nT-cell distributions around tumors related to effect of immunotherapy in cancer"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#how-to-estimate-treatment-effects-based-on-images",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#how-to-estimate-treatment-effects-based-on-images",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "How to estimate treatment effects based on images?",
-    "text": "How to estimate treatment effects based on images?\nIn principle the same as estimating a subgroup treatment effect (e.g. male vs female)\n\nConduct a randomized controlled trial where the treatments of interest are randomly allocated\nCollect (imaging) data at randomization timepoint\nUse a statistical learning technique like TARnet (Shalit, Johansson, and Sontag 2017) to estimate outcomes conditional on image and treatment\nconditional treatment effect \\(= f(X,T=1) - f(X,T=0)\\)\n\n\n\n\n\nWhat if you cannot do a (big enough) RCT?\n\n\nEmulate / approximate the ideal trial in observational data you do have, using causal inference techniques\n(which rely on untestable assumptions)"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#the-in-between-predicting-prognosis-and-using-the-predictions-for-decision-support",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#the-in-between-predicting-prognosis-and-using-the-predictions-for-decision-support",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "The in-between: predicting prognosis and using the predictions for decision support",
-    "text": "The in-between: predicting prognosis and using the predictions for decision support\nFor example:\n\ngive chemotherapy to cancer patients with high predicted risk of recurrence\ngive statins to patients with a high risk of a heart attack\n\n\n\n\n\nTRIPOD+AI on prediction models (Collins et al. 2024)\n\n\n“Their primary use is to support clinical decision making, such as … initiate treatment or lifestyle changes.”"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#when-building-a-prediction-model-always-discuss",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#when-building-a-prediction-model-always-discuss",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "When building a prediction model, always discuss",
-    "text": "When building a prediction model, always discuss\n\nwhat treatments are assumed in the predicted risk?\nwhat is the effect of using the model on the treatment policy?\nwhat is the effect on patient outcomes?\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (W. A. C. van Amsterdam et al. 2024b)\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (W. A. C. van Amsterdam et al. 2024a)"
-  },
-  {
-    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#references",
-    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#references",
-    "title": "Decision support based on AI in medical imaging",
-    "section": "References",
-    "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nShalit, Uri, Fredrik D. Johansson, and David Sontag. 2017. “Estimating Individual Treatment Effect: Generalization Bounds and Algorithms.” arXiv:1606.03976 [Cs, Stat], May. http://arxiv.org/abs/1606.03976."
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging",
-    "href": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Use AI for medical imaging",
-    "text": "Use AI for medical imaging\nto make healthcare easier or more efficient\n\nAcquisition (\\(S \\to X\\))\n\n\n\nk-space to MRI image\nraw projection data to CT image\n\n\n\ndetection / segmentation (\\(X \\to X\\))\n\n\n\nsegmenting organs at risk in radiotherapy\n\n\n\ninference / diagnosis (\\(X \\to D\\), both at prediction time)\n\n\n\nmedical diagnosis\npsuedo CT from MRI"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging-1",
-    "href": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging-1",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Use AI for medical imaging",
-    "text": "Use AI for medical imaging\nto make healthcare better (improve decisions)\n\nprognosis (\\(X \\to Y\\), \\(Y\\) in the future)\n\n\n\nexpected survival time given CT-scan\n\n\n\ntreatment effect (\\(X\\) determines effect of a treatment \\(T\\) on outcome \\(Y\\) in the future)"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#ai-treatment-effect",
-    "href": "talks/240708-imaging-ailab/index.html#ai-treatment-effect",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Why would you estimate treatment effects based on images?",
-    "text": "Why would you estimate treatment effects based on images?\n\n\ntreatments have different effects on patients based on their (disease) characteristics\nfor example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive\nsome characteristics may be well captured in medical imaging:\n\nT-cell distributions around tumors related to effect of immunotherapy in cancer\nheterogeneity of tumor on CT may predict response to radiotherapy\nholistic view of ‘body composition’ on CT-scans determines whether patient can tolerate chemotherapy"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#how-to-estimate-treatment-effects-based-on-images",
-    "href": "talks/240708-imaging-ailab/index.html#how-to-estimate-treatment-effects-based-on-images",
-    "title": "Medical imaging and AI for decision support",
-    "section": "How to estimate treatment effects based on images?",
-    "text": "How to estimate treatment effects based on images?\n\nIn principle the same as estimating a subgroup treatment effect (e.g. male vs female)\n\nConduct a randomized controlled trial where the treatments of interest are randomly allocated\nCollect (imaging) data at randomization timepoint\nUse a statistical learning technique like TARnet (Shalit, Johansson, and Sontag 2017) to estimate outcomes conditional on image and treatment\nconditional treatment effect \\(= f(X,T=1) - f(X,T=0)\\)\n\n\n\n\n\nWhat if you cannot do a (big enough) RCT?\n\n\nEmulate / approximate the ideal trial in observational data you do have, using causal inference techniques\n(which rely on untestable assumptions)"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#improving-decisions-with-ai",
-    "href": "talks/240708-imaging-ailab/index.html#improving-decisions-with-ai",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Improving decisions with AI",
-    "text": "Improving decisions with AI\n\n\nprognosis (\\(X \\to Y\\), \\(Y\\) in the future)\ntreatment effect (\\(X\\) determines effect of a treatment \\(T\\) on outcome \\(Y\\) in the future)\n\n\n\nWhereas treatment effect estimation is typically thought of as a causal task requiring causal approaches (e.g. randomized controllerd trials)\nPrognosis models are often developed without any causal thinking (if it predicts it predicts)\nbut then advertised for making treatment decisions."
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#the-in-between-using-prediction-models-for-medical-decision-making",
-    "href": "talks/240708-imaging-ailab/index.html#the-in-between-using-prediction-models-for-medical-decision-making",
-    "title": "Medical imaging and AI for decision support",
-    "section": "The in-between: using prediction models for (medical) decision making",
-    "text": "The in-between: using prediction models for (medical) decision making\n\n\nprognosis (e.g. survival given medical image)"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#using-prediction-models-for-decision-making-is-often-thought-of-as-a-good-idea",
-    "href": "talks/240708-imaging-ailab/index.html#using-prediction-models-for-decision-making-is-often-thought-of-as-a-good-idea",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Using prediction models for decision making is often thought of as a good idea",
-    "text": "Using prediction models for decision making is often thought of as a good idea\nFor example:\n\ngive chemotherapy to cancer patients with high predicted risk of recurrence\ngive statins to patients with a high risk of a heart attack\n\n\n\n\n\nTRIPOD+AI on prediction models (Collins et al. 2024)\n\n\n“Their primary use is to support clinical decision making, such as … initiate treatment or lifestyle changes.”"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
-    "href": "talks/240708-imaging-ailab/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Building models for decision support without regards for the historic treatment policy is a bad idea",
-    "text": "Building models for decision support without regards for the historic treatment policy is a bad idea"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#treatment-naive-prediction-models",
-    "href": "talks/240708-imaging-ailab/index.html#treatment-naive-prediction-models",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Treatment-naive prediction models",
-    "text": "Treatment-naive prediction models\n\n\n\n\n\\[\\begin{align}\n    E[Y|X] \\class{fragment}{= E[E_{t~\\sim \\pi_0(X)}[Y|X,t]]}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#treatment-naive-prediction-models-1",
-    "href": "talks/240708-imaging-ailab/index.html#treatment-naive-prediction-models-1",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Treatment-naive prediction models",
-    "text": "Treatment-naive prediction models\n(Results from W. A. C. van Amsterdam, van Geloven, et al. 2024)\n\ngood or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change\nmodels that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#prediction-modeling-is-very-popular-in-medical-research",
-    "href": "talks/240708-imaging-ailab/index.html#prediction-modeling-is-very-popular-in-medical-research",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Prediction modeling is very popular in medical research",
-    "text": "Prediction modeling is very popular in medical research"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
-    "href": "talks/240708-imaging-ailab/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Recommended validation practices and reporting guidelines do not protect against harm",
-    "text": "Recommended validation practices and reporting guidelines do not protect against harm\nbecause they do not evaluate the policy change"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
-    "href": "talks/240708-imaging-ailab/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Bigger data does not protect against harmful prediction models",
-    "text": "Bigger data does not protect against harmful prediction models"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
-    "href": "talks/240708-imaging-ailab/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
-    "title": "Medical imaging and AI for decision support",
-    "section": "More flexible models do not protect against harmful prediction models",
-    "text": "More flexible models do not protect against harmful prediction models"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#section",
-    "href": "talks/240708-imaging-ailab/index.html#section",
-    "title": "Medical imaging and AI for decision support",
-    "section": "",
-    "text": "What to do?"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#section-1",
-    "href": "talks/240708-imaging-ailab/index.html#section-1",
-    "title": "Medical imaging and AI for decision support",
-    "section": "",
-    "text": "What to do?\n\n\nEvaluate policy change (cluster randomized controlled trial)\nBuild models that are likely to have value for decision making"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#deploying-a-model-is-an-intervention-that-changes-the-way-treatment-decisions-are-made",
-    "href": "talks/240708-imaging-ailab/index.html#deploying-a-model-is-an-intervention-that-changes-the-way-treatment-decisions-are-made",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Deploying a model is an intervention that changes the way treatment decisions are made",
-    "text": "Deploying a model is an intervention that changes the way treatment decisions are made"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#how-do-we-learn-about-the-effect-of-an-intervention",
-    "href": "talks/240708-imaging-ailab/index.html#how-do-we-learn-about-the-effect-of-an-intervention",
-    "title": "Medical imaging and AI for decision support",
-    "section": "How do we learn about the effect of an intervention?",
-    "text": "How do we learn about the effect of an intervention?\nWith a randomized experiment\n\n\nfor using a decision support model, the unit of intervention is usually the doctor\nrandomly assign doctors to have access to the model or not\nmeasure differences in treatment decisions and patient outcomes\nthis called a cluster RCT\nif using model improves outcomes, use that one\n\n\n\n\n\nUsing cluster RCTs to evaluated models for decision making is not a new idea (Cooper et al. 1997)\n\n\n“As one possibility, suppose that a trial is performed in which clinicians are randomized either to have or not to have access to such a decision aid in making decisions about where to treat patients who present with pneumonia.”\n\n\n\n\n\n\n\n\n\n\n\nWhat we don’t learn\n\n\nwas the model predicting anything sensible?"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#so-build-treatment-naive-prediction-models-and-trial-them-for-decision-support",
-    "href": "talks/240708-imaging-ailab/index.html#so-build-treatment-naive-prediction-models-and-trial-them-for-decision-support",
-    "title": "Medical imaging and AI for decision support",
-    "section": "So build treatment-naive prediction models and trial them for decision support?",
-    "text": "So build treatment-naive prediction models and trial them for decision support?\nNot a good idea\n\nbaking a cake without a recipe\nhoping it turns into something nice\nnot pleasant to people that need to taste result of the experiment\n\n(i.e. patients may have side-effects / die)"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
-    "href": "talks/240708-imaging-ailab/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
-    "title": "Medical imaging and AI for decision support",
-    "section": "We should build models that are likely to be valuable for decision making",
-    "text": "We should build models that are likely to be valuable for decision making\n\nBuild models that predict expected outcomes under hypothetical interventions (prediction-under-intervention models)\ndoctor / patient can pick the treatment with best expected outcomes, depending on patient’s values and preferences\nwhereas treatment-naive prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option\n\n\n\n\n\nHilden and Habbema on prognosis (Hilden and Habbema 1987)\n\n\n“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”\n\n\n\n\nprediction-under-intervention is not a new idea, but language and methods on causality have come a long way since (Hilden and Habbema 1987)."
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#estimand-for-prediction-under-intervention-models",
-    "href": "talks/240708-imaging-ailab/index.html#estimand-for-prediction-under-intervention-models",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Estimand for prediction-under-intervention models",
-    "text": "Estimand for prediction-under-intervention models\nWhat is the estimand?\n\nprediction: \\(E[Y|X]\\)\naverage treatment effect: \\(E[Y|\\text{do}(T=1)] - E[Y|\\text{do}(T=0)]\\)\nconditional average treatment effect: \\(E[Y|\\text{do}(T=1),X] - E[Y|\\text{do}(T=0),X]\\)\nprediction-under-intervention: \\(E[Y|\\text{do}(T=t),X]\\)"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#more-on-prediction-under-intervention-models",
-    "href": "talks/240708-imaging-ailab/index.html#more-on-prediction-under-intervention-models",
-    "title": "Medical imaging and AI for decision support",
-    "section": "More on prediction-under-intervention models",
-    "text": "More on prediction-under-intervention models\ndevelopment:\n\nideally estimated from RCTs, but these are often too small or don’t measure the right data\nalternatively can use observational data and causal inference methods\nassumption of no unobserved confounding often hard to justify in observational data\nbut there’s more between heaven (RCT) and earth (confounder adjustment)\n\nproxy-variable methods (e.g. Miao, Geng, and Tchetgen Tchetgen 2018; Wouter A. C. van Amsterdam et al. 2022)\nconstant relative treatment effect assumption (e.g. Alaa et al. 2021; Wouter A. C. van Amsterdam and Ranganath 2023; Candido dos Reis et al. 2017)\ndiff-in-diff\ninstrumental variable analysis (Wald 1940; Puli and Ranganath 2021; Hartford et al. 2017)\nfront-door analysis\n\nmany of these have potential new applications with AI and medical imaging"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#evaluation-of-prediction-under-intervention-models",
-    "href": "talks/240708-imaging-ailab/index.html#evaluation-of-prediction-under-intervention-models",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Evaluation of prediction-under-intervention models",
-    "text": "Evaluation of prediction-under-intervention models\n\nprediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding (e.g. Keogh and van Geloven 2024)\nin confounded observational data, typical metrics (e.g. AUC or calibration) are not sufficient as we want to predict well in data from other distribution than observed data (i.e. other treatment decisions)\na new policy can be evaluated in historic RCTs (e.g. Karmali et al. 2018)\nultimate test is cluster RCT\nif not perfect, likely a better recipe than treatment-naive models"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#take-aways",
-    "href": "talks/240708-imaging-ailab/index.html#take-aways",
-    "title": "Medical imaging and AI for decision support",
-    "section": "Take-aways",
-    "text": "Take-aways\n\ndeploying models for decision support is an intervention and should be evaluated as such\nwhen developing or evaluating (AI) prediction models for medical decisions, think about\n\nwhat is the effect of using this model on medical decisions?\nwhat is the effect of this policy change on patient outcomes?\n\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (W. A. C. van Amsterdam, Jong, et al. 2024)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (W. A. C. van Amsterdam, van Geloven, et al. 2024)"
-  },
-  {
-    "objectID": "talks/240708-imaging-ailab/index.html#references",
-    "href": "talks/240708-imaging-ailab/index.html#references",
-    "title": "Medical imaging and AI for decision support",
-    "section": "References",
-    "text": "References\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAlaa, Ahmed M., Deepti Gurdasani, Adrian L. Harris, Jem Rashbass, and Mihaela van der Schaar. 2021. “Machine Learning to Guide the Use of Adjuvant Therapies for Breast Cancer.” Nature Machine Intelligence, June, 1–11. https://doi.org/gk6bh7.\n\n\nAmsterdam, W.A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” February 8, 2024. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, W.A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nAmsterdam, Wouter A. C. van, and Rajesh Ranganath. 2023. “Conditional Average Treatment Effect Estimation with Marginally Constrained Models.” Journal of Causal Inference 11 (1): 20220027. https://doi.org/10.1515/jci-2022-0027.\n\n\nAmsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A. Bartholomeus, Aahlad Manas Puli, Pim A. de Jong, Tim Leiner, Anne S. R. van Lindert, Marinus J. C. Eijkemans, and Rajesh Ranganath. 2022. “Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage III Non-Small Cell Lung Cancer.” Scientific Reports 12 (1, 1): 5848. https://doi.org/10.1038/s41598-022-09775-9.\n\n\nCandido dos Reis, Francisco J., Gordon C. Wishart, Ed M. Dicks, David Greenberg, Jem Rashbass, Marjanka K. Schmidt, Alexandra J. van den Broek, et al. 2017. “An Updated PREDICT Breast Cancer Prognostication and Treatment Benefit Prediction Model with Independent Validation.” Breast Cancer Research 19 (1): 58. https://doi.org/gbhgpq.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHartford, Jason, Greg Lewis, Kevin Leyton-Brown, and Matt Taddy. 2017. “Deep IV: A Flexible Approach for Counterfactual Prediction.” In International Conference on Machine Learning, 1414–23. PMLR. https://proceedings.mlr.press/v70/hartford17a.html.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nKarmali, Kunal N., Donald M. Lloyd-Jones, Joep van der Leeuw, David C. Goff Jr, Salim Yusuf, Alberto Zanchetti, Paul Glasziou, et al. 2018. “Blood Pressure-Lowering Treatment Strategies Based on Cardiovascular Risk Versus Blood Pressure: A Meta-Analysis of Individual Participant Data.” PLOS Medicine 15 (3): e1002538. https://doi.org/10.1371/journal.pmed.1002538.\n\n\nKeogh, Ruth H., and Nan van Geloven. 2024. “Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.” January 10, 2024. https://doi.org/10.48550/arXiv.2304.10005.\n\n\nMiao, Wang, Zhi Geng, and Eric J Tchetgen Tchetgen. 2018. “Identifying Causal Effects with Proxy Variables of an Unmeasured Confounder.” Biometrika 105 (4): 987–93. https://doi.org/10.1093/biomet/asy038.\n\n\nPuli, Aahlad Manas, and Rajesh Ranganath. 2021. “General Control Functions for Causal Effect Estimation from Instrumental Variables.” http://arxiv.org/abs/1907.03451.\n\n\nShalit, Uri, Fredrik D. Johansson, and David Sontag. 2017. “Estimating Individual Treatment Effect: Generalization Bounds and Algorithms.” http://arxiv.org/abs/1606.03976.\n\n\nWald, Abraham. 1940. “The Fitting of Straight Lines If Both Variables Are Subject to Error.” The Annals of Mathematical Statistics 11 (3): 284–300. https://doi.org/10.1214/aoms/1177731868."
-  },
-  {
-    "objectID": "posts.html",
-    "href": "posts.html",
-    "title": "Posts",
-    "section": "",
-    "text": "Is the JAMA opening up their language for causal effects?\n\n\n\n\n\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJun 7, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\n\n\n\nr\n\n\nlinear regression\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nr\n\n\njulia\n\n\njax\n\n\npython\n\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\n\n\n\nstatistics\n\n\nsimulations\n\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "unlisted.html",
-    "href": "unlisted.html",
-    "title": "Unlisted pages",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nSep 23, 2022\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html",
-    "href": "posts/210720-good_predictions_bad_decisions.html",
-    "title": "When good predictions lead to bad decisions",
-    "section": "",
-    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Defining the policies",
-    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
-  },
-  {
-    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
-    "title": "When good predictions lead to bad decisions",
-    "section": "Expected utility of different policies",
-    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
+    "objectID": "posts/210725-counterfactualvsinterventional.html#conclusion",
+    "href": "posts/210725-counterfactualvsinterventional.html#conclusion",
+    "title": "The difference between intervention and counterfactuals",
+    "section": "Conclusion",
+    "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
   },
   {
     "objectID": "posts/240607-jama-causal-language/index.html",
@@ -525,132 +112,6 @@
     "text": "Footnotes\n\n\nOne concrete example with my own previous simulation studies (Amsterdam and Ranganath 2023) is that I used first used jax.numpy arrays for different parameters and then a scipy function to create all combinations of these parameters. Creating this grid of parameters this way forced copying of jax.numpy arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Also, JAX relies on pure functions that cannot depend on global variables.↩︎"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "",
-    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \nLearning from Historical data to make better decisions in the future\nI work on the intersection of machine learning (for flexible data analysis) and causal inference (to learn to make better decisions).\nI am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care. I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare, advised by Rajesh Ranganath from NYU and Joost Verhoeff, Tim Leiner and Pim de Jong from the UMC Utrecht.\n\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf)"
-  },
-  {
-    "objectID": "index.html#news",
-    "href": "index.html#news",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "News",
-    "text": "News\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
-  },
-  {
-    "objectID": "index.html#selected-papers",
-    "href": "index.html#selected-papers",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Selected papers",
-    "text": "Selected papers\nA causal viewpoint on prediction model performance under changes in case-mix: Discrimination and calibration respond differently for prognosis and diagnosis predictions.\nvan Amsterdam, W. A. C. (2024). arXiv preprint\nurl pdf\nCausal Inference in Oncology: Why, What, How and When.\nvan Amsterdam, W. A. C., Elias, S., & Ranganath, R. (2024). Clinical Oncology.\nurl pdf\nPrognostic models for decision support need to report their targeted treatments and the expected changes in treatment decisions.\nvan Amsterdam, W. A. C. and Cinà, Giovanni and Didelez, Vanessa and Keogh, Ruth H. and Peek, Niels and Sperrin, Matthew and Vickers, Andrew J. and van Geloven, Nan and Shalit, Uri (2024). BMJ Rapid-response\nurl\nFrom algorithms to action: improving patient care requires causality.\nvan Amsterdam, W. A. C., de Jong, P. A., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2024). BMC Medical Informatics and Decision Making\nurl pdf\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\nurl pdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\nurl pdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\nurl pdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\nurl pdf\nMore papers on google scholar"
-  },
-  {
-    "objectID": "index.html#talks",
-    "href": "index.html#talks",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Talks",
-    "text": "Talks\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nSep 26, 2024\n\n\nAn introduction to AI for biostatisticians\n\n\nBMS-Aned seminar\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#teaching",
-    "href": "index.html#teaching",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Teaching",
-    "text": "Teaching\n\n2024 Introduction to Causal Inference and Causal Data Science summer school\n2023 Big Data summer school"
-  },
-  {
-    "objectID": "index.html#posts",
-    "href": "index.html#posts",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Posts",
-    "text": "Posts\n\n\n\n\n\n\n\n\nIs the JAMA opening up their language for causal effects?\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJun 7, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nMar 8, 2024\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#students",
-    "href": "index.html#students",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Students",
-    "text": "Students\n\nSu Li (Methodology and Statistics) - MSc. student\nFlorian Metwaly (Methodology and Statistics) - MSc. student\n\n\nFormer\n\nSamil Kilinc (Applied Data Science, 2024)\nKiara Peek (Applied Data Science, 2024)\nMyra van Laar (Biomedical Sciences)\nGijs Bartholomeus (Medicine)\nNetanja Harlianto (Medicine)"
-  },
-  {
-    "objectID": "index.html#activities",
-    "href": "index.html#activities",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Activities",
-    "text": "Activities\n\nboard member BMS-ANed (Dutch biometrics society)\ncoordinator of UMC Utrecht AI methods lab\nambassador for Applied Data Science of Utrecht University\nco-coordinator of Causal Data Science Special Interest Group of Utrecht University"
-  },
-  {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
-    "title": "Wouter van Amsterdam, MD, PhD",
-    "section": "Contact",
-    "text": "Contact\nwamster3 at umcutrecht dot nl"
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html",
-    "href": "posts/240322-mice-partial-residual-plot.html",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "",
-    "text": "In an earlier blog post I show how to plot the dependence of a response variable on covariate, both conditional on other covariates with a partial residual plot In this post I investigate how to do this when there are missing values using package mice.\nThis post will rely in Hanne Oberman’s vignette on ggmice, a plotting package for mice::mids objects."
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
-    "href": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Data and imputation",
-    "text": "Data and imputation\nIn this post we’ll use the boys dataset which is provided in the mice package. The mice package implements multiple imputation through chained equations1.\n\nlibrary(mice)\nlibrary(ggplot2); theme_set(theme_bw())\n\ndf &lt;- boys\n\nnimps &lt;- 5\nimp &lt;- mice(df, m = nimps, method = \"pmm\")"
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
-    "href": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Partial residual plot with complete data",
-    "text": "Partial residual plot with complete data\nWe’ll assume we’re interested in how weight (wgt) depends on height (hgt), corrected for all other variables. Both have missing values in the dataset.\nWe can use one of the imputed datasets to show how partial residual plots are made with complete data. With complete data, partial residual plots can be created like so:\n\ndf1 &lt;- complete(imp, 1)\n\nget_partial_resid &lt;- function(data) {\n  fit &lt;- lm(wgt~., data=data)\n  yresid &lt;- resid(fit)\n  return(yresid + coef(fit)['hgt'] * data$hgt)\n}\n\nplotdata1 &lt;- data.frame(hgt=df1$hgt, y=get_partial_resid(df1))\n\nggplot(plotdata1, aes(x=hgt, y=y)) + geom_point()\n\n\n\n\n\n\n\nFigure 1: Partial residual plot on complete data\n\n\n\n\n\nNote how this differs from the marginal association between hgt and wgt. The difference between the plots is explained by other covariates that are correlated both with hgt and wgt.\n\nggplot(df1, aes(x=hgt, y=wgt)) + geom_point()\n\n\n\n\n\n\n\nFigure 2: marginal association between age and height"
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
-    "href": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Putting them together",
-    "text": "Putting them together\nThe issue with the partial residual plot Figure 1 is that the residuals depend on the imputed values for all variables. How to go about this? We can treat the residuals as we would ‘coefficients’ in imputation and use Rubin’s rules on them. Let’s see how to do this with mice.\n\nimpdfs &lt;- complete(imp, \"all\")\nimpdfs &lt;- lapply(impdfs, function(data) data.frame(data, partial_resid=get_partial_resid(data)))\nimpdfs &lt;- lapply(1:nimps, function(i) data.frame(impdfs[[i]], impidx=i))\nimpdf_long &lt;- do.call(rbind, impdfs)\n\nNote that we cannot directly pool the residuals because they may be correlated with the imputed values for hgt. Pooling imputed values for hgt and the partial residual removes this correlation. Instead we could just plot all the values.\n\nggplot(impdf_long, aes(x=hgt, y=partial_resid)) + geom_point(aes(shape=factor(impidx)), alpha=0.5)\n\n\n\n\n\n\n\nFigure 3: partial residual plot with imputed datasets\n\n\n\n\n\nIn the future I’d like to learn how to make good bivariate estimates of these points (e.g. fitting a bivariate normal distribution). This should for example also come up in calculating sensitivity and specificity on multiply imputed datasets, as these are clearly correlated. Fully bayesian imputation is another possibility obviously."
-  },
-  {
-    "objectID": "posts/240322-mice-partial-residual-plot.html#footnotes",
-    "href": "posts/240322-mice-partial-residual-plot.html#footnotes",
-    "title": "Partial residual plots with multiply imputed data",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nmultiple imputation with chained equations sequentially imputes values for all variables with missing values by building prediction models for each variable based on other variables. This imputation is done multiple times with multiple random seeds and thus results in a number of different imputed datasets. A typical analysis workflow is to do these imputations and on each imputed dataset fit a model of interest. The coefficients of these models can then be pooled using Rubin’s rules.↩︎"
-  },
-  {
-    "objectID": "posts/210725-counterfactualvsinterventional.html",
-    "href": "posts/210725-counterfactualvsinterventional.html",
-    "title": "The difference between intervention and counterfactuals",
-    "section": "",
-    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
-  },
-  {
-    "objectID": "posts/210725-counterfactualvsinterventional.html#intro",
-    "href": "posts/210725-counterfactualvsinterventional.html#intro",
-    "title": "The difference between intervention and counterfactuals",
-    "section": "",
-    "text": "Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl and presented in the ‘Book of Why’, interventional is rung 2 and counterfactuals are rung 3 (associations are rung 1). Models that predict the treatment effect for a new patient based on some covariates \\(X\\) require interventional models, not counterfactual. The difference between interventional and counterfactual models is relevant as counterfactual models require more assumptions, they require knowledge of the structural mechanisms. In words, the interventional question is “What is the expected outcome under treatment \\(t\\) given that we know \\(X\\)”, or “What is the expected difference in outcomes between treatment \\(t\\) and \\(t'\\) given that we know \\(X\\)”. The counterfactual question is “What would have been the outcome if we had given treatment \\(t'\\) given that we gave \\(t\\) and observed outcome \\(y\\)”."
-  },
-  {
-    "objectID": "posts/210725-counterfactualvsinterventional.html#example",
-    "href": "posts/210725-counterfactualvsinterventional.html#example",
-    "title": "The difference between intervention and counterfactuals",
-    "section": "Example",
-    "text": "Example\nTo illustrate the difference between a counterfactual prediction and an interventional prediction (or conditional average treatment effect estimates), consider this very simple setup.\nYou have data from a randomized trial with two treatment arms \\(t \\in \\{0,1\\}\\) and an outcome \\(Y\\) on a continuous scale. Denote \\(Y_0\\) the potential outcome under intervening on treatment \\(t=0\\) and \\(Y_1\\) the potential outcome under intervening on treatment \\(t=1\\). As we are dealing with data from a randomized trial, we can easily estimate the average treatment effect as \\(E[Y_1 - Y_0] = E[Y|t=0] - E[Y|t=1]\\), assuming consistency (ignorability and overlap are satisfied due to the study design).\nA counterfactual question is: what would have been the outcome \\(Y_0\\) under treatment \\(t=1\\), given that we observed the outcome \\(y_1\\) under treamtent \\(t=1\\), so it is \\(E[Y_0|Y=y_1, t=1]\\).\nNow assume that the data come from a mixture of Gaussians such that\n\\[y|t \\sim (1 - t) \\mathcal{N}(1,0.1^2) + t \\mathcal{N}(10,2.5^2)\\]\nAnd \\(p(t=1)=0.5\\) so both arms are equally large. Treatment \\(t=1\\) leads to higher outcome but also more spread. The relevant interventional expectations are easily calculated by just calculating group means \\(E[Y_0] = E[Y|t=0] = 1\\), \\(E[Y_1] = E[Y|t=1] = 10\\).\n\nCalculating the counterfactuals\nTo see that calculating counterfactuals requires more knowledge, namely of the structural equations, we now calculate the counterfactual prediction for a patient with \\(Y=Y_1=15\\). This is a patient with a relatively large ‘residual’, the outcome is 2 standard deviations above the mean for treatment group \\(t=1\\).\nFirst we calculate the counterfactual outcome under a wrong outcome model. Researchers tried to model the outcomes using linear regression, and failed to appreciate the difference in variances between the two treatment arms (heteroscedasticity). Assuming a large sample, they will arrive at a model:\n\\[\\hat{y}_{\\text{wrong}} = 1 + t * 9 + \\mathcal{N}(0,\\sigma^2)\\]\nWhere \\(\\sigma = \\sqrt{\\frac{0.1^2 + 2.5^2}{2}} \\approx 1.77\\) (standard devation of mixture of Gaussians with (conditional) mean of 0 and standard deviations 0.1 and 2.5, with 50 / 50 mixing). Note that the estimate of the treatment effect is correct, and so are \\(E[Y_0]\\) and \\(E[Y_1]\\). If there was a binary pre-treatment covariate, the conditional average treatment effect could be estimated by repeating this exercise for both levels of the covariate. To calculate the counterfactual outcome of our patient, we first need to determine the value of their noise variable for the outcome. According to \\(\\hat{y}_{\\text{wrong}}\\), the residual for a patient with \\(Y_1=15\\) is \\(5\\), which is \\(5/\\sigma \\approx 2.82\\) standard deviations away from the expected value for \\(t=1\\). Given this residual we can now calculate the counterfactual:\n\\[\\widehat{E_{\\text{wrong}}}[Y_0|Y=15,t=1] \\approx E[Y_0] + 2.82 \\sigma =6\\]\nGiven that we know the data generating mechanism, we know that this counterfactual prediction is 50 standard deviations from the conditional mean of \\(t=0\\) in the data generating mechanism, clearly this counterfactual prediction is wrong.\nIf we did model the data correctly with a mixture of Gaussians indexed by the treatment group, we would instead say that \\(Y_1=15\\) is 2 standard deviations above the conditional mean, and we would calculate:\n\\[\\widehat{E^*}[Y_0|Y=15,t=1] = E[Y_0] + 2 * 0.1 =1.2\\]\nWhich is correct."
-  },
-  {
-    "objectID": "posts/210725-counterfactualvsinterventional.html#conclusion",
-    "href": "posts/210725-counterfactualvsinterventional.html#conclusion",
-    "title": "The difference between intervention and counterfactuals",
-    "section": "Conclusion",
-    "text": "Conclusion\nTo calculate counterfactual predictions, you need to correctly specify the structural equations. For treatment recommendations for future patients, these are not needed, interventional estimates (conditional average treatment effect) are sufficient, and obviously the factual outcome is not observed yet so it is impossible to calculate counterfactuals (the factual is not yet known).\nPost-script: for ‘real’ patient counsellling the expected values under the treatments would generally not suffice, some measure of spread / uncertainty would be required. Ideally, one would learn the distribution of the potential outcomes."
-  },
-  {
     "objectID": "posts/190816-lm-functional-form.html",
     "href": "posts/190816-lm-functional-form.html",
     "title": "Finding the functional form for multiple linear regression",
@@ -684,6 +145,13 @@
     "title": "Finding the functional form for multiple linear regression",
     "section": "Conclusion",
     "text": "Conclusion\nThe functional relationship between an outcome and a covariate in a linear regression conditional on other covariates is visualized with a partial residual plot, or:\n\nlmfit &lt;- lm(y~x+w)\nplot(resid(lmfit) + coef(lmfit)['x'] * x ~ x)"
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Is the JAMA opening up their language for causal effects?\n\n\n\n\n\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJun 7, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\n\n\n\nr\n\n\nlinear regression\n\n\ndata visualization\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nr\n\n\njulia\n\n\njax\n\n\npython\n\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\n\n\n\ncausal inference\n\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\n\n\n\ncausal inference\n\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\n\n\n\nstatistics\n\n\nsimulations\n\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "talks.html",
@@ -1022,6 +490,510 @@
     "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nKaplan, Jared, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, and Dario Amodei. 2020. “Scaling Laws for Neural Language Models.” January 22, 2020. https://doi.org/10.48550/arXiv.2001.08361.\n\n\nMoen, Erick, Dylan Bannon, Takamasa Kudo, William Graf, Markus Covert, and David Van Valen. 2019. “Deep Learning for Cellular Image Analysis.” Nature Methods 16 (12): 1233–46. https://doi.org/10.1038/s41592-019-0403-1.\n\n\nRussell, Stuart, and Peter Norvig. 2020. Artificial Intelligence: A Modern Approach. Pearson. https://books.google.com?id=koFptAEACAAJ.\n\n\nSamuel, A. L. 1959. “Some Studies in Machine Learning Using the Game of Checkers.” IBM Journal of Research and Development 3 (3): 210–29. https://doi.org/10.1147/rd.33.0210.\n\n\nVaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2023. “Attention Is All You Need.” August 1, 2023. http://arxiv.org/abs/1706.03762."
   },
   {
+    "objectID": "talks/230301-lungsurv-manchester/index.html#section-105",
+    "href": "talks/230301-lungsurv-manchester/index.html#section-105",
+    "title": "Individual treatment effect estimation in the presence of unobserved confounding using proxies",
+    "section": "",
+    "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Why (I) use X?",
+    "text": "Why (I) use X?\n\n\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nconnect\nadvertise work"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
+    "href": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Why not use X?",
+    "text": "Why not use X?\n\ntwitter is dead, and X is dying\ndistractions\npolitics"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
+    "href": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "X compared to",
+    "text": "X compared to\n\nlinkedin: fake interactions\ntwitter: too real interactions\nmastodon: too hacky / nerdy?\nthreads: twitter clone by meta (facebook)\nbluesky: way to go?"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
+    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Twitter history and status",
+    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following (this determines your timeline)\n15-minutes a day but waning"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first tweet that got a like",
+    "text": "first tweet that got a like"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first ad for own paper on causal ML",
+    "text": "first ad for own paper on causal ML"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first joke (kind-of success)",
+    "text": "first joke (kind-of success)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first tweet that went ‘viral’: recommending a paper",
+    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nrespected researcher in field asked if I’m interested in doing a post-doc"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
+    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "first paper run-through tweet",
+    "text": "first paper run-through tweet\n\n\n\n\n\n35 retweets\n86 likes\n18k views\n0 new followers\nnow 20 citations (5 if not for twitter?)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to paper run-through tweet",
+    "text": "reactions to paper run-through tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to paper run-through tweet",
+    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-31170\").innerHTML = tweet[\"html\"];"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
+    "href": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "favorite tweet (meme)",
+    "text": "favorite tweet (meme)"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "reactions to meme-tweet",
+    "text": "reactions to meme-tweet\n\nhttps://x.com/JAASANTINHA/status/1417936729600823300?s=20"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
+    "href": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "biggest own tweet (thesis cover):",
+    "text": "biggest own tweet (thesis cover):\n\n\n\n\n\n\n93k impressions\n673 likes\n53 retweets\n6 new followers"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
+    "href": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "ask for help-tweet",
+    "text": "ask for help-tweet"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
+    "href": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "Use X for",
+    "text": "Use X for\n\nlearning\nconnecting\nadvertising:\n\nnew work\nvacancies"
+  },
+  {
+    "objectID": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
+    "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
+    "title": "Wouter’s twitter X-peri(ments/ences)",
+    "section": "I may leave X",
+    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#ai-may-have-many-uses-in-health-care",
+    "href": "talks/240530-weon-masterclass/index.html#ai-may-have-many-uses-in-health-care",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "AI may have many uses in health care",
+    "text": "AI may have many uses in health care\nUse AI to make health care\n\n\nmore efficient or easier\n\nadministration / documentation\ntranslation\n\n\nbetter: change decisions\n\ndiagnosis (e.g. skin cancer from imaging)\nprognosis (e.g. survival given medical image)\ntreatment effect (e.g. genetic biomarker)"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#section",
+    "href": "talks/240530-weon-masterclass/index.html#section",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "",
+    "text": "prognosis (e.g. survival given medical image)\ntreatment effect (e.g. genetic biomarker)\n\n\n\n\n\n\nTip\n\n\nWhereas treatment effect estimation is typically thought of as a causal task requiring causal approaches (e.g. randomized controllerd trials), prognosis models are often advertised for making treatment decisions."
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#the-in-between-using-prediction-models-for-medical-decision-making",
+    "href": "talks/240530-weon-masterclass/index.html#the-in-between-using-prediction-models-for-medical-decision-making",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "The in-between: using prediction models for (medical) decision making",
+    "text": "The in-between: using prediction models for (medical) decision making\n\n\nprognosis (e.g. survival given medical image)"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#using-prediction-models-for-decision-making-is-often-thought-of-as-a-good-idea",
+    "href": "talks/240530-weon-masterclass/index.html#using-prediction-models-for-decision-making-is-often-thought-of-as-a-good-idea",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Using prediction models for decision making is often thought of as a good idea",
+    "text": "Using prediction models for decision making is often thought of as a good idea\nFor example:\n\ngive chemotherapy to cancer patients with high predicted risk of recurrence\ngive statins to patients with a high risk of a heart attack\n\n\n\n\n\nTRIPOD+AI on prediction models (Collins et al. 2024)\n\n\n“Their primary use is to support clinical decision making, such as … initiate treatment or lifestyle changes.”"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
+    "href": "talks/240530-weon-masterclass/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Building models for decision support without regards for the historic treatment policy is a bad idea",
+    "text": "Building models for decision support without regards for the historic treatment policy is a bad idea"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models",
+    "href": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Treatment-naive prediction models",
+    "text": "Treatment-naive prediction models\n\n\n\n\n\\[\\begin{align}\n    E[Y|X] \\class{fragment}{= E[E_{t~\\sim \\pi_0(X)}[Y|X,t]]}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models-1",
+    "href": "talks/240530-weon-masterclass/index.html#treatment-naive-prediction-models-1",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Treatment-naive prediction models",
+    "text": "Treatment-naive prediction models\nResults from (vanamsterdamWhenAccuratePrediction2024a?)\n\ngood or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change\nmodels that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#prediction-modeling-is-very-popular-in-medical-research",
+    "href": "talks/240530-weon-masterclass/index.html#prediction-modeling-is-very-popular-in-medical-research",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Prediction modeling is very popular in medical research",
+    "text": "Prediction modeling is very popular in medical research"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
+    "href": "talks/240530-weon-masterclass/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Recommended validation practices and reporting guidelines do not protect against harm",
+    "text": "Recommended validation practices and reporting guidelines do not protect against harm\nbecause they do not evaluate the policy change"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
+    "href": "talks/240530-weon-masterclass/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Bigger data does not protect against harmful prediction models",
+    "text": "Bigger data does not protect against harmful prediction models"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
+    "href": "talks/240530-weon-masterclass/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "More flexible models do not protect against harmful prediction models",
+    "text": "More flexible models do not protect against harmful prediction models"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#gap-between-prediction-accuracy-and-value-for-decision-making",
+    "href": "talks/240530-weon-masterclass/index.html#gap-between-prediction-accuracy-and-value-for-decision-making",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Gap between prediction accuracy and value for decision making",
+    "text": "Gap between prediction accuracy and value for decision making"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#section-1",
+    "href": "talks/240530-weon-masterclass/index.html#section-1",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "",
+    "text": "What to do?"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#section-2",
+    "href": "talks/240530-weon-masterclass/index.html#section-2",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "",
+    "text": "What to do?\n\n\nEvaluate policy change (cluster randomized controlled trial)\nBuild models that are likely to have value for decision making"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#deploying-a-model-is-an-intervention-that-changes-the-way-treatment-decisions-are-made",
+    "href": "talks/240530-weon-masterclass/index.html#deploying-a-model-is-an-intervention-that-changes-the-way-treatment-decisions-are-made",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Deploying a model is an intervention that changes the way treatment decisions are made",
+    "text": "Deploying a model is an intervention that changes the way treatment decisions are made"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#how-do-we-learn-about-the-effect-of-an-intervention",
+    "href": "talks/240530-weon-masterclass/index.html#how-do-we-learn-about-the-effect-of-an-intervention",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "How do we learn about the effect of an intervention?",
+    "text": "How do we learn about the effect of an intervention?\nWith a randomized experiment\n\n\nfor using a decision support model, the unit of intervention is usually the doctor\nrandomly assign doctors to have access to the model or not\nmeasure differences in treatment decisions and patient outcomes\nthis called a cluster RCT\nif using model improves outcomes, use that one\n\n\n\n\n\nUsing cluster RCTs to evaluated models for decision making is not a new idea (Cooper et al. 1997)\n\n\n“As one possibility, suppose that a trial is performed in which clinicians are randomized either to have or not to have access to such a decision aid in making decisions about where to treat patients who present with pneumonia.”\n\n\n\n\n\n\n\n\n\n\n\nWhat we don’t learn\n\n\nwas the model predicting anything sensible?"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#so-build-treatment-naive-prediction-models-and-trial-them-for-decision-support",
+    "href": "talks/240530-weon-masterclass/index.html#so-build-treatment-naive-prediction-models-and-trial-them-for-decision-support",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "So build treatment-naive prediction models and trial them for decision support?",
+    "text": "So build treatment-naive prediction models and trial them for decision support?\nNot a good idea\n\nbaking a cake without a recipe\nhoping it turns into something nice\nnot pleasant to people that need to taste result of the experiment\n\n(i.e. patients may have side-effects / die)"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
+    "href": "talks/240530-weon-masterclass/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "We should build models that are likely to be valuable for decision making",
+    "text": "We should build models that are likely to be valuable for decision making\n\nBuild models that predict expected outcomes under hypothetical interventions (prediction-under-intervention models)\ndoctor / patient can pick the treatment with best expected outcomes, depending on patient’s values\nwhereas treatment-naive prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option\n\n\n\n\n\nHilden and Habbema on prognosis (Hilden and Habbema 1987)\n\n\n“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”\n\n\n\n\nprediction-under-intervention is not a new idea, but language and methods on causality have come a long way since (Hilden and Habbema 1987)."
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#estimand-for-prediction-under-intervention-models",
+    "href": "talks/240530-weon-masterclass/index.html#estimand-for-prediction-under-intervention-models",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Estimand for prediction-under-intervention models",
+    "text": "Estimand for prediction-under-intervention models\nWhat is the estimand?\n\nprediction: \\(E[Y|X]\\)\ntreatment effect: \\(E[Y|\\text{do}(T=1)] - E[Y|\\text{do}(T=0)]\\)\nprediction-under-intervention: \\(E[Y|\\text{do}(T=t),X]\\)"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#more-on-prediction-under-intervention-models",
+    "href": "talks/240530-weon-masterclass/index.html#more-on-prediction-under-intervention-models",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "More on prediction-under-intervention models",
+    "text": "More on prediction-under-intervention models\ndevelopment:\n\nideally estimated from RCTs, but these are often too small or don’t measure the right data\nalternatively can use observational data and causal inference methods\n\nthis approach relies on strong assumptions especially regarding confounding\n\nbut likely a better recipe than treatment-naive models\n\n\nevaluation:\n\nprediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding (e.g. Keogh and van Geloven 2024)\na new policy can be evaluated in historic RCTs (e.g. Karmali et al. 2018)\nultimate test is cluster RCT"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#take-aways",
+    "href": "talks/240530-weon-masterclass/index.html#take-aways",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "Take-aways",
+    "text": "Take-aways\n\nwhen developing or evaluating (AI) prediction models for medical decisions, think about\n\nwhat is the effect of using this model on medical decisions?\nwhat is the effect of this policy change on patient outcomes?\n\ndeploying models for decision support is an intervention and should be evaluated as such\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (amsterdamAlgorithmsActionImproving2024?)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (vanamsterdamWhenAccuratePrediction2024a?)"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#new-summerschool-introduction-to-causal-inference-and-causal-data-science",
+    "href": "talks/240530-weon-masterclass/index.html#new-summerschool-introduction-to-causal-inference-and-causal-data-science",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "New summerschool: Introduction to Causal Inference and Causal Data Science",
+    "text": "New summerschool: Introduction to Causal Inference and Causal Data Science\nLearn more about causal data science\n\n\n\n\nDates: 5 Aug. - 9 Aug. 2024\nLocation: Utrecht\nInstructors:\n\nOisin Ryan\nBas Penning-de Vries\nWouter van Amsterdam\n\nSign up still possible\n\n\n\n\nCourse website"
+  },
+  {
+    "objectID": "talks/240530-weon-masterclass/index.html#references",
+    "href": "talks/240530-weon-masterclass/index.html#references",
+    "title": "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies",
+    "section": "References",
+    "text": "References\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nKarmali, Kunal N., Donald M. Lloyd-Jones, Joep van der Leeuw, David C. Goff Jr, Salim Yusuf, Alberto Zanchetti, Paul Glasziou, et al. 2018. “Blood Pressure-Lowering Treatment Strategies Based on Cardiovascular Risk Versus Blood Pressure: A Meta-Analysis of Individual Participant Data.” PLOS Medicine 15 (3): e1002538. https://doi.org/10.1371/journal.pmed.1002538.\n\n\nKeogh, Ruth H., and Nan van Geloven. 2024. “Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.” January 10, 2024. https://doi.org/10.48550/arXiv.2304.10005."
+  },
+  {
+    "objectID": "talks/230624-chill-lightning-talk/index.html#section-31",
+    "href": "talks/230624-chill-lightning-talk/index.html#section-31",
+    "title": "My risk model is super accurate so it will be useful for treatment decision making, right? Wrong!",
+    "section": "",
+    "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging",
+    "href": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Use AI for medical imaging",
+    "text": "Use AI for medical imaging\nto make healthcare easier or more efficient\n\nAcquisition (\\(S \\to X\\))\n\n\n\nk-space to MRI image\nraw projection data to CT image\n\n\n\ndetection / segmentation (\\(X \\to X\\))\n\n\n\nsegmenting organs at risk in radiotherapy\n\n\n\ninference / diagnosis (\\(X \\to D\\), both at prediction time)\n\n\n\nmedical diagnosis\npsuedo CT from MRI"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging-1",
+    "href": "talks/240708-imaging-ailab/index.html#use-ai-for-medical-imaging-1",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Use AI for medical imaging",
+    "text": "Use AI for medical imaging\nto make healthcare better (improve decisions)\n\nprognosis (\\(X \\to Y\\), \\(Y\\) in the future)\n\n\n\nexpected survival time given CT-scan\n\n\n\ntreatment effect (\\(X\\) determines effect of a treatment \\(T\\) on outcome \\(Y\\) in the future)"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#ai-treatment-effect",
+    "href": "talks/240708-imaging-ailab/index.html#ai-treatment-effect",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Why would you estimate treatment effects based on images?",
+    "text": "Why would you estimate treatment effects based on images?\n\n\ntreatments have different effects on patients based on their (disease) characteristics\nfor example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive\nsome characteristics may be well captured in medical imaging:\n\nT-cell distributions around tumors related to effect of immunotherapy in cancer\nheterogeneity of tumor on CT may predict response to radiotherapy\nholistic view of ‘body composition’ on CT-scans determines whether patient can tolerate chemotherapy"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#how-to-estimate-treatment-effects-based-on-images",
+    "href": "talks/240708-imaging-ailab/index.html#how-to-estimate-treatment-effects-based-on-images",
+    "title": "Medical imaging and AI for decision support",
+    "section": "How to estimate treatment effects based on images?",
+    "text": "How to estimate treatment effects based on images?\n\nIn principle the same as estimating a subgroup treatment effect (e.g. male vs female)\n\nConduct a randomized controlled trial where the treatments of interest are randomly allocated\nCollect (imaging) data at randomization timepoint\nUse a statistical learning technique like TARnet (Shalit, Johansson, and Sontag 2017) to estimate outcomes conditional on image and treatment\nconditional treatment effect \\(= f(X,T=1) - f(X,T=0)\\)\n\n\n\n\n\nWhat if you cannot do a (big enough) RCT?\n\n\nEmulate / approximate the ideal trial in observational data you do have, using causal inference techniques\n(which rely on untestable assumptions)"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#improving-decisions-with-ai",
+    "href": "talks/240708-imaging-ailab/index.html#improving-decisions-with-ai",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Improving decisions with AI",
+    "text": "Improving decisions with AI\n\n\nprognosis (\\(X \\to Y\\), \\(Y\\) in the future)\ntreatment effect (\\(X\\) determines effect of a treatment \\(T\\) on outcome \\(Y\\) in the future)\n\n\n\nWhereas treatment effect estimation is typically thought of as a causal task requiring causal approaches (e.g. randomized controllerd trials)\nPrognosis models are often developed without any causal thinking (if it predicts it predicts)\nbut then advertised for making treatment decisions."
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#the-in-between-using-prediction-models-for-medical-decision-making",
+    "href": "talks/240708-imaging-ailab/index.html#the-in-between-using-prediction-models-for-medical-decision-making",
+    "title": "Medical imaging and AI for decision support",
+    "section": "The in-between: using prediction models for (medical) decision making",
+    "text": "The in-between: using prediction models for (medical) decision making\n\n\nprognosis (e.g. survival given medical image)"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#using-prediction-models-for-decision-making-is-often-thought-of-as-a-good-idea",
+    "href": "talks/240708-imaging-ailab/index.html#using-prediction-models-for-decision-making-is-often-thought-of-as-a-good-idea",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Using prediction models for decision making is often thought of as a good idea",
+    "text": "Using prediction models for decision making is often thought of as a good idea\nFor example:\n\ngive chemotherapy to cancer patients with high predicted risk of recurrence\ngive statins to patients with a high risk of a heart attack\n\n\n\n\n\nTRIPOD+AI on prediction models (Collins et al. 2024)\n\n\n“Their primary use is to support clinical decision making, such as … initiate treatment or lifestyle changes.”"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
+    "href": "talks/240708-imaging-ailab/index.html#building-models-for-decision-support-without-regards-for-the-historic-treatment-policy-is-a-bad-idea",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Building models for decision support without regards for the historic treatment policy is a bad idea",
+    "text": "Building models for decision support without regards for the historic treatment policy is a bad idea"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#treatment-naive-prediction-models",
+    "href": "talks/240708-imaging-ailab/index.html#treatment-naive-prediction-models",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Treatment-naive prediction models",
+    "text": "Treatment-naive prediction models\n\n\n\n\n\\[\\begin{align}\n    E[Y|X] \\class{fragment}{= E[E_{t~\\sim \\pi_0(X)}[Y|X,t]]}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#treatment-naive-prediction-models-1",
+    "href": "talks/240708-imaging-ailab/index.html#treatment-naive-prediction-models-1",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Treatment-naive prediction models",
+    "text": "Treatment-naive prediction models\n(Results from W. A. C. van Amsterdam, van Geloven, et al. 2024)\n\ngood or bad discrimination post deployment may be a sign of a harmful or a beneficial policy change\nmodels that are perfectly calibrated before and after deployment are certainly not useful for decision making because they didn’t change the distribution"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#prediction-modeling-is-very-popular-in-medical-research",
+    "href": "talks/240708-imaging-ailab/index.html#prediction-modeling-is-very-popular-in-medical-research",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Prediction modeling is very popular in medical research",
+    "text": "Prediction modeling is very popular in medical research"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
+    "href": "talks/240708-imaging-ailab/index.html#recommended-validation-practices-and-reporting-guidelines-do-not-protect-against-harm",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Recommended validation practices and reporting guidelines do not protect against harm",
+    "text": "Recommended validation practices and reporting guidelines do not protect against harm\nbecause they do not evaluate the policy change"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
+    "href": "talks/240708-imaging-ailab/index.html#bigger-data-does-not-protect-against-harmful-prediction-models",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Bigger data does not protect against harmful prediction models",
+    "text": "Bigger data does not protect against harmful prediction models"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
+    "href": "talks/240708-imaging-ailab/index.html#more-flexible-models-do-not-protect-against-harmful-prediction-models",
+    "title": "Medical imaging and AI for decision support",
+    "section": "More flexible models do not protect against harmful prediction models",
+    "text": "More flexible models do not protect against harmful prediction models"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#section",
+    "href": "talks/240708-imaging-ailab/index.html#section",
+    "title": "Medical imaging and AI for decision support",
+    "section": "",
+    "text": "What to do?"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#section-1",
+    "href": "talks/240708-imaging-ailab/index.html#section-1",
+    "title": "Medical imaging and AI for decision support",
+    "section": "",
+    "text": "What to do?\n\n\nEvaluate policy change (cluster randomized controlled trial)\nBuild models that are likely to have value for decision making"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#deploying-a-model-is-an-intervention-that-changes-the-way-treatment-decisions-are-made",
+    "href": "talks/240708-imaging-ailab/index.html#deploying-a-model-is-an-intervention-that-changes-the-way-treatment-decisions-are-made",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Deploying a model is an intervention that changes the way treatment decisions are made",
+    "text": "Deploying a model is an intervention that changes the way treatment decisions are made"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#how-do-we-learn-about-the-effect-of-an-intervention",
+    "href": "talks/240708-imaging-ailab/index.html#how-do-we-learn-about-the-effect-of-an-intervention",
+    "title": "Medical imaging and AI for decision support",
+    "section": "How do we learn about the effect of an intervention?",
+    "text": "How do we learn about the effect of an intervention?\nWith a randomized experiment\n\n\nfor using a decision support model, the unit of intervention is usually the doctor\nrandomly assign doctors to have access to the model or not\nmeasure differences in treatment decisions and patient outcomes\nthis called a cluster RCT\nif using model improves outcomes, use that one\n\n\n\n\n\nUsing cluster RCTs to evaluated models for decision making is not a new idea (Cooper et al. 1997)\n\n\n“As one possibility, suppose that a trial is performed in which clinicians are randomized either to have or not to have access to such a decision aid in making decisions about where to treat patients who present with pneumonia.”\n\n\n\n\n\n\n\n\n\n\n\nWhat we don’t learn\n\n\nwas the model predicting anything sensible?"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#so-build-treatment-naive-prediction-models-and-trial-them-for-decision-support",
+    "href": "talks/240708-imaging-ailab/index.html#so-build-treatment-naive-prediction-models-and-trial-them-for-decision-support",
+    "title": "Medical imaging and AI for decision support",
+    "section": "So build treatment-naive prediction models and trial them for decision support?",
+    "text": "So build treatment-naive prediction models and trial them for decision support?\nNot a good idea\n\nbaking a cake without a recipe\nhoping it turns into something nice\nnot pleasant to people that need to taste result of the experiment\n\n(i.e. patients may have side-effects / die)"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
+    "href": "talks/240708-imaging-ailab/index.html#we-should-build-models-that-are-likely-to-be-valuable-for-decision-making",
+    "title": "Medical imaging and AI for decision support",
+    "section": "We should build models that are likely to be valuable for decision making",
+    "text": "We should build models that are likely to be valuable for decision making\n\nBuild models that predict expected outcomes under hypothetical interventions (prediction-under-intervention models)\ndoctor / patient can pick the treatment with best expected outcomes, depending on patient’s values and preferences\nwhereas treatment-naive prediction models average out over the historic treatment policy, prediction-under-intervention allows the user to select a treatment option\n\n\n\n\n\nHilden and Habbema on prognosis (Hilden and Habbema 1987)\n\n\n“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”\n\n\n\n\nprediction-under-intervention is not a new idea, but language and methods on causality have come a long way since (Hilden and Habbema 1987)."
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#estimand-for-prediction-under-intervention-models",
+    "href": "talks/240708-imaging-ailab/index.html#estimand-for-prediction-under-intervention-models",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Estimand for prediction-under-intervention models",
+    "text": "Estimand for prediction-under-intervention models\nWhat is the estimand?\n\nprediction: \\(E[Y|X]\\)\naverage treatment effect: \\(E[Y|\\text{do}(T=1)] - E[Y|\\text{do}(T=0)]\\)\nconditional average treatment effect: \\(E[Y|\\text{do}(T=1),X] - E[Y|\\text{do}(T=0),X]\\)\nprediction-under-intervention: \\(E[Y|\\text{do}(T=t),X]\\)"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#more-on-prediction-under-intervention-models",
+    "href": "talks/240708-imaging-ailab/index.html#more-on-prediction-under-intervention-models",
+    "title": "Medical imaging and AI for decision support",
+    "section": "More on prediction-under-intervention models",
+    "text": "More on prediction-under-intervention models\ndevelopment:\n\nideally estimated from RCTs, but these are often too small or don’t measure the right data\nalternatively can use observational data and causal inference methods\nassumption of no unobserved confounding often hard to justify in observational data\nbut there’s more between heaven (RCT) and earth (confounder adjustment)\n\nproxy-variable methods (e.g. Miao, Geng, and Tchetgen Tchetgen 2018; Wouter A. C. van Amsterdam et al. 2022)\nconstant relative treatment effect assumption (e.g. Alaa et al. 2021; Wouter A. C. van Amsterdam and Ranganath 2023; Candido dos Reis et al. 2017)\ndiff-in-diff\ninstrumental variable analysis (Wald 1940; Puli and Ranganath 2021; Hartford et al. 2017)\nfront-door analysis\n\nmany of these have potential new applications with AI and medical imaging"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#evaluation-of-prediction-under-intervention-models",
+    "href": "talks/240708-imaging-ailab/index.html#evaluation-of-prediction-under-intervention-models",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Evaluation of prediction-under-intervention models",
+    "text": "Evaluation of prediction-under-intervention models\n\nprediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding (e.g. Keogh and van Geloven 2024)\nin confounded observational data, typical metrics (e.g. AUC or calibration) are not sufficient as we want to predict well in data from other distribution than observed data (i.e. other treatment decisions)\na new policy can be evaluated in historic RCTs (e.g. Karmali et al. 2018)\nultimate test is cluster RCT\nif not perfect, likely a better recipe than treatment-naive models"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#take-aways",
+    "href": "talks/240708-imaging-ailab/index.html#take-aways",
+    "title": "Medical imaging and AI for decision support",
+    "section": "Take-aways",
+    "text": "Take-aways\n\ndeploying models for decision support is an intervention and should be evaluated as such\nwhen developing or evaluating (AI) prediction models for medical decisions, think about\n\nwhat is the effect of using this model on medical decisions?\nwhat is the effect of this policy change on patient outcomes?\n\nprediction-under-intervention models have a foreseeable effect on patient oucomes when used for decision making\n\n\n\n\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (W. A. C. van Amsterdam, Jong, et al. 2024)\n\n\n\n\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (W. A. C. van Amsterdam, van Geloven, et al. 2024)"
+  },
+  {
+    "objectID": "talks/240708-imaging-ailab/index.html#references",
+    "href": "talks/240708-imaging-ailab/index.html#references",
+    "title": "Medical imaging and AI for decision support",
+    "section": "References",
+    "text": "References\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAlaa, Ahmed M., Deepti Gurdasani, Adrian L. Harris, Jem Rashbass, and Mihaela van der Schaar. 2021. “Machine Learning to Guide the Use of Adjuvant Therapies for Breast Cancer.” Nature Machine Intelligence, June, 1–11. https://doi.org/gk6bh7.\n\n\nAmsterdam, W.A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” February 8, 2024. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, W.A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nAmsterdam, Wouter A. C. van, and Rajesh Ranganath. 2023. “Conditional Average Treatment Effect Estimation with Marginally Constrained Models.” Journal of Causal Inference 11 (1): 20220027. https://doi.org/10.1515/jci-2022-0027.\n\n\nAmsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A. Bartholomeus, Aahlad Manas Puli, Pim A. de Jong, Tim Leiner, Anne S. R. van Lindert, Marinus J. C. Eijkemans, and Rajesh Ranganath. 2022. “Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage III Non-Small Cell Lung Cancer.” Scientific Reports 12 (1, 1): 5848. https://doi.org/10.1038/s41598-022-09775-9.\n\n\nCandido dos Reis, Francisco J., Gordon C. Wishart, Ed M. Dicks, David Greenberg, Jem Rashbass, Marjanka K. Schmidt, Alexandra J. van den Broek, et al. 2017. “An Updated PREDICT Breast Cancer Prognostication and Treatment Benefit Prediction Model with Independent Validation.” Breast Cancer Research 19 (1): 58. https://doi.org/gbhgpq.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHartford, Jason, Greg Lewis, Kevin Leyton-Brown, and Matt Taddy. 2017. “Deep IV: A Flexible Approach for Counterfactual Prediction.” In International Conference on Machine Learning, 1414–23. PMLR. https://proceedings.mlr.press/v70/hartford17a.html.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nKarmali, Kunal N., Donald M. Lloyd-Jones, Joep van der Leeuw, David C. Goff Jr, Salim Yusuf, Alberto Zanchetti, Paul Glasziou, et al. 2018. “Blood Pressure-Lowering Treatment Strategies Based on Cardiovascular Risk Versus Blood Pressure: A Meta-Analysis of Individual Participant Data.” PLOS Medicine 15 (3): e1002538. https://doi.org/10.1371/journal.pmed.1002538.\n\n\nKeogh, Ruth H., and Nan van Geloven. 2024. “Prediction Under Interventions: Evaluation of Counterfactual Performance Using Longitudinal Observational Data.” January 10, 2024. https://doi.org/10.48550/arXiv.2304.10005.\n\n\nMiao, Wang, Zhi Geng, and Eric J Tchetgen Tchetgen. 2018. “Identifying Causal Effects with Proxy Variables of an Unmeasured Confounder.” Biometrika 105 (4): 987–93. https://doi.org/10.1093/biomet/asy038.\n\n\nPuli, Aahlad Manas, and Rajesh Ranganath. 2021. “General Control Functions for Causal Effect Estimation from Instrumental Variables.” http://arxiv.org/abs/1907.03451.\n\n\nShalit, Uri, Fredrik D. Johansson, and David Sontag. 2017. “Estimating Individual Treatment Effect: Generalization Bounds and Algorithms.” http://arxiv.org/abs/1606.03976.\n\n\nWald, Abraham. 1940. “The Fitting of Straight Lines If Both Variables Are Subject to Error.” The Annals of Mathematical Statistics 11 (3): 284–300. https://doi.org/10.1214/aoms/1177731868."
+  },
+  {
     "objectID": "talks/240516-sig-causality-prediction/index.html#prediction",
     "href": "talks/240516-sig-causality-prediction/index.html#prediction",
     "title": "Causality and prediction: developing and validating models for decision making",
@@ -1232,9 +1204,9 @@
     "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, and Rajesh Ranganath. 2023. “Conditional Average Treatment Effect Estimation with Marginally Constrained Models.” Journal of Causal Inference 11 (1): 20220027. https://doi.org/10.1515/jci-2022-0027.\n\n\nAmsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A. Bartholomeus, Aahlad Manas Puli, Pim A. de Jong, Tim Leiner, Anne S. R. van Lindert, Marinus J. C. Eijkemans, and Rajesh Ranganath. 2022. “Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage III Non-Small Cell Lung Cancer.” Scientific Reports 12 (1, 1): 5848. https://doi.org/10.1038/s41598-022-09775-9.\n\n\nCandido dos Reis, Francisco J., Gordon C. Wishart, Ed M. Dicks, David Greenberg, Jem Rashbass, Marjanka K. Schmidt, Alexandra J. van den Broek, et al. 2017. “An Updated PREDICT Breast Cancer Prognostication and Treatment Benefit Prediction Model with Independent Validation.” Breast Cancer Research 19 (1): 58. https://doi.org/gbhgpq.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nXu, Zhe, Matthew Arnold, David Stevens, Stephen Kaptoge, Lisa Pennells, Michael J Sweeting, Jessica Barrett, Emanuele Di Angelantonio, and Angela M Wood. 2021. “Prediction of Cardiovascular Disease Risk Accounting for Future Initiation of Statin Treatment.” American Journal of Epidemiology 190 (10): 2000–2014. https://doi.org/10.1093/aje/kwab031."
   },
   {
-    "objectID": "talks/230301-lungsurv-manchester/index.html#section-105",
-    "href": "talks/230301-lungsurv-manchester/index.html#section-105",
-    "title": "Individual treatment effect estimation in the presence of unobserved confounding using proxies",
+    "objectID": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
+    "href": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
+    "title": "The value of observational causal inference for medical decision making",
     "section": "",
     "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
   },
@@ -1512,164 +1484,192 @@
     "text": "thank you\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024. “From Algorithms to Action: Improving Patient Care Requires Causality.” arXiv. https://doi.org/10.48550/arXiv.2209.07397.\n\n\nChristodoulou, Evangelia, Jie Ma, Gary S. Collins, Ewout W. Steyerberg, Jan Y. Verbakel, and Ben Van Calster. 2019. “A Systematic Review Shows No Performance Benefit of Machine Learning over Logistic Regression for Clinical Prediction Models.” Journal of Clinical Epidemiology 110 (June): 12–22. https://doi.org/10.1016/j.jclinepi.2019.02.004.\n\n\nCooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. “An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.” Artificial Intelligence in Medicine 9 (2): 107–38. https://doi.org/10.1016/S0933-3657(96)00367-3.\n\n\nDhiman, Paula, Jie Ma, Constanza L. Andaur Navarro, Benjamin Speich, Garrett Bullock, Johanna A. A. Damen, Lotty Hooft, et al. 2022. “Methodological Conduct of Prognostic Prediction Models Developed Using Machine Learning in Oncology: A Systematic Review.” BMC Medical Research Methodology 22 (1): 101. https://doi.org/10.1186/s12874-022-01577-x."
   },
   {
-    "objectID": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
-    "href": "talks/230810-mlhc-causality-decision-making/index.html#section-63",
-    "title": "The value of observational causal inference for medical decision making",
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "Outline",
+    "text": "Outline\n\ndifferent uses of AI in medical imaging\nusing AI for treatment effect estimation\nwarning: harmful self-fulfilling prophecies"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#uses-of-ai-in-medical-imaging",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#uses-of-ai-in-medical-imaging",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "Uses of AI in medical imaging",
+    "text": "Uses of AI in medical imaging\n\nAcquisition (\\(S \\to X\\)) \ndetection / segmentation (\\(X \\to X\\)) \ninference / diagnosis (\\(X \\to D\\), both at prediction time) \nprognosis (\\(X \\to Y\\), \\(Y\\) in the future) \ntreatment effect (\\(X\\) determines effect of a treatment)"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#ai-treatment-effect",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#ai-treatment-effect",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "Why would you estimate treatment effects based on images?",
+    "text": "Why would you estimate treatment effects based on images?\n\ntreatments have different effects on patients based on their (disease) characteristics\nfor example, whether tamoxifen increases survival for breast cancer patients depends on whether their tumor is hormone sensitive\nsome characteristics may be well captured in medical imaging:\n\nT-cell distributions around tumors related to effect of immunotherapy in cancer"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#how-to-estimate-treatment-effects-based-on-images",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#how-to-estimate-treatment-effects-based-on-images",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "How to estimate treatment effects based on images?",
+    "text": "How to estimate treatment effects based on images?\nIn principle the same as estimating a subgroup treatment effect (e.g. male vs female)\n\nConduct a randomized controlled trial where the treatments of interest are randomly allocated\nCollect (imaging) data at randomization timepoint\nUse a statistical learning technique like TARnet (Shalit, Johansson, and Sontag 2017) to estimate outcomes conditional on image and treatment\nconditional treatment effect \\(= f(X,T=1) - f(X,T=0)\\)\n\n\n\n\n\nWhat if you cannot do a (big enough) RCT?\n\n\nEmulate / approximate the ideal trial in observational data you do have, using causal inference techniques\n(which rely on untestable assumptions)"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#the-in-between-predicting-prognosis-and-using-the-predictions-for-decision-support",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#the-in-between-predicting-prognosis-and-using-the-predictions-for-decision-support",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "The in-between: predicting prognosis and using the predictions for decision support",
+    "text": "The in-between: predicting prognosis and using the predictions for decision support\nFor example:\n\ngive chemotherapy to cancer patients with high predicted risk of recurrence\ngive statins to patients with a high risk of a heart attack\n\n\n\n\n\nTRIPOD+AI on prediction models (Collins et al. 2024)\n\n\n“Their primary use is to support clinical decision making, such as … initiate treatment or lifestyle changes.”"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#when-building-a-prediction-model-always-discuss",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#when-building-a-prediction-model-always-discuss",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "When building a prediction model, always discuss",
+    "text": "When building a prediction model, always discuss\n\nwhat treatments are assumed in the predicted risk?\nwhat is the effect of using the model on the treatment policy?\nwhat is the effect on patient outcomes?\n\n\n\n\n\nFrom algorithms to action: improving patient care requires causality (W. A. C. van Amsterdam et al. 2024b)\n\n\nWhen accurate prediction models yield harmful sel-fulfilling prophecies (W. A. C. van Amsterdam et al. 2024a)"
+  },
+  {
+    "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#references",
+    "href": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#references",
+    "title": "Decision support based on AI in medical imaging",
+    "section": "References",
+    "text": "References\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks\n\n\n\n\nAmsterdam, Wouter A. C. van, Nan van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Ciná. 2024a. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” arXiv. https://doi.org/10.48550/arXiv.2312.01210.\n\n\nAmsterdam, Wouter A. C. van, Pim A. de Jong, Joost J. C. Verhoeff, Tim Leiner, and Rajesh Ranganath. 2024b. “From Algorithms to Action: Improving Patient Care Requires Causality.” BMC Medical Informatics and Decision Making 24 (1). https://doi.org/10.1186/s12911-024-02513-3.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nShalit, Uri, Fredrik D. Johansson, and David Sontag. 2017. “Estimating Individual Treatment Effect: Generalization Bounds and Algorithms.” arXiv:1606.03976 [Cs, Stat], May. http://arxiv.org/abs/1606.03976."
+  },
+  {
+    "objectID": "talks/240922-causalai-4cities/index.html#causal-inference-groups",
+    "href": "talks/240922-causalai-4cities/index.html#causal-inference-groups",
+    "title": "Causal Inference for AI meetup",
+    "section": "Causal Inference groups",
+    "text": "Causal Inference groups\n\n\n\n\n\n\n\n\n\nCausal Inference in AI mailing-list\n\n\n\n\n\n\n\nUtrecht - Special Interest Group Causal Data Science"
+  },
+  {
+    "objectID": "talks/240922-causalai-4cities/index.html#program",
+    "href": "talks/240922-causalai-4cities/index.html#program",
+    "title": "Causal Inference for AI meetup",
+    "section": "Program",
+    "text": "Program\n\n30 minutes + 10 minutes Q&A\nborrel afterwards\n\n\n\n\n\n\n\n\n\n\nCausal Inference in AI mailing-list\n\n\n\n\n\n\n\nUtrecht - Special Interest Group Causal Data Science\n\n\n\n\n\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
+  },
+  {
+    "objectID": "unlisted.html",
+    "href": "unlisted.html",
+    "title": "Unlisted pages",
     "section": "",
-    "text": "©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nSep 23, 2022\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#why-i-use-x-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Why (I) use X?",
-    "text": "Why (I) use X?\n\n\n\nlearn\n\npapers\nevents (AAAI 2019)\ndiscussions of (/ with?) famous researchers\n\nconnect\nadvertise work"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "",
+    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \nLearning from Historical data to make better decisions in the future\nI work on the intersection of machine learning (for flexible data analysis) and causal inference (to learn to make better decisions).\nI am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care. I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare, advised by Rajesh Ranganath from NYU and Joost Verhoeff, Tim Leiner and Pim de Jong from the UMC Utrecht.\n\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf)"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
-    "href": "talks/240312-dsbiostats-twitter/index.html#why-not-use-x",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Why not use X?",
-    "text": "Why not use X?\n\ntwitter is dead, and X is dying\ndistractions\npolitics"
+    "objectID": "index.html#news",
+    "href": "index.html#news",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "News",
+    "text": "News\nTogether with Maarten van Smede, I’m recruiting a PhD student. For more information and to apply, see the UMC Utrecht website\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
-    "href": "talks/240312-dsbiostats-twitter/index.html#x-compared-to",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "X compared to",
-    "text": "X compared to\n\nlinkedin: fake interactions\ntwitter: too real interactions\nmastodon: too hacky / nerdy?\nthreads: twitter clone by meta (facebook)\nbluesky: way to go?"
+    "objectID": "index.html#selected-papers",
+    "href": "index.html#selected-papers",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Selected papers",
+    "text": "Selected papers\nA causal viewpoint on prediction model performance under changes in case-mix: Discrimination and calibration respond differently for prognosis and diagnosis predictions.\nvan Amsterdam, W. A. C. (2024). arXiv preprint\nurl pdf\nCausal Inference in Oncology: Why, What, How and When.\nvan Amsterdam, W. A. C., Elias, S., & Ranganath, R. (2024). Clinical Oncology.\nurl pdf\nPrognostic models for decision support need to report their targeted treatments and the expected changes in treatment decisions.\nvan Amsterdam, W. A. C. and Cinà, Giovanni and Didelez, Vanessa and Keogh, Ruth H. and Peek, Niels and Sperrin, Matthew and Vickers, Andrew J. and van Geloven, Nan and Shalit, Uri (2024). BMJ Rapid-response\nurl\nFrom algorithms to action: improving patient care requires causality.\nvan Amsterdam, W. A. C., de Jong, P. A., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2024). BMC Medical Informatics and Decision Making\nurl pdf\nWhen accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\nvan Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track\nurl pdf\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.  van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports\nurl pdf\nConditional average treatment effect estimation with marginally constrained models.\nvan Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference\nurl pdf\nEliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\nvan Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine\nurl pdf\nMore papers on google scholar"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
-    "href": "talks/240312-dsbiostats-twitter/index.html#twitter-history-and-status",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Twitter history and status",
-    "text": "Twitter history and status\n\njoined: Jan 2014   \n500-ish followers (Maarten has approx. 41400)\n500-ish following (this determines your timeline)\n15-minutes a day but waning"
+    "objectID": "index.html#talks",
+    "href": "index.html#talks",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Talks",
+    "text": "Talks\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nSubtitle\n\n\n\n\n\n\nSep 26, 2024\n\n\nAn introduction to AI for biostatisticians\n\n\nBMS-Aned seminar\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-got-a-like",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first tweet that got a like",
-    "text": "first tweet that got a like"
+    "objectID": "index.html#teaching",
+    "href": "index.html#teaching",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Teaching",
+    "text": "Teaching\n\n2024 Introduction to Causal Inference and Causal Data Science summer school\n2023 Big Data summer school"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-ad-for-own-paper-on-causal-ml",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first ad for own paper on causal ML",
-    "text": "first ad for own paper on causal ML"
+    "objectID": "index.html#posts",
+    "href": "index.html#posts",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Posts",
+    "text": "Posts\n\n\n\n\n\n\n\n\nIs the JAMA opening up their language for causal effects?\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJun 7, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nMar 8, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-joke-kind-of-success",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first joke (kind-of success)",
-    "text": "first joke (kind-of success)"
+    "objectID": "index.html#students",
+    "href": "index.html#students",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Students",
+    "text": "Students\n\nSu Li (Methodology and Statistics) - MSc. student\nFlorian Metwaly (Methodology and Statistics) - MSc. student\n\n\nFormer\n\nSamil Kilinc (Applied Data Science, 2024)\nKiara Peek (Applied Data Science, 2024)\nMyra van Laar (Biomedical Sciences)\nGijs Bartholomeus (Medicine)\nNetanja Harlianto (Medicine)"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-tweet-that-went-viral-recommending-a-paper",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first tweet that went ‘viral’: recommending a paper",
-    "text": "first tweet that went ‘viral’: recommending a paper\n\n\n\n\n\n\n259 retweets\n697 likes\n126k views\n8 new followers\nrespected researcher in field asked if I’m interested in doing a post-doc"
+    "objectID": "index.html#activities",
+    "href": "index.html#activities",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Activities",
+    "text": "Activities\n\nboard member BMS-ANed (Dutch biometrics society)\ncoordinator of UMC Utrecht AI methods lab\nambassador for Applied Data Science of Utrecht University\nco-coordinator of Causal Data Science Special Interest Group of Utrecht University"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Contact",
+    "text": "Contact\nwamster3 at umcutrecht dot nl"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "posts/240322-mice-partial-residual-plot.html",
+    "href": "posts/240322-mice-partial-residual-plot.html",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "",
+    "text": "In an earlier blog post I show how to plot the dependence of a response variable on covariate, both conditional on other covariates with a partial residual plot In this post I investigate how to do this when there are missing values using package mice.\nThis post will rely in Hanne Oberman’s vignette on ggmice, a plotting package for mice::mids objects."
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-2",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
+    "href": "posts/240322-mice-partial-residual-plot.html#data-and-imputation",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Data and imputation",
+    "text": "Data and imputation\nIn this post we’ll use the boys dataset which is provided in the mice package. The mice package implements multiple imputation through chained equations1.\n\nlibrary(mice)\nlibrary(ggplot2); theme_set(theme_bw())\n\ndf &lt;- boys\n\nnimps &lt;- 5\nimp &lt;- mice(df, m = nimps, method = \"pmm\")"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-3",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
+    "href": "posts/240322-mice-partial-residual-plot.html#partial-residual-plot-with-complete-data",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Partial residual plot with complete data",
+    "text": "Partial residual plot with complete data\nWe’ll assume we’re interested in how weight (wgt) depends on height (hgt), corrected for all other variables. Both have missing values in the dataset.\nWe can use one of the imputed datasets to show how partial residual plots are made with complete data. With complete data, partial residual plots can be created like so:\n\ndf1 &lt;- complete(imp, 1)\n\nget_partial_resid &lt;- function(data) {\n  fit &lt;- lm(wgt~., data=data)\n  yresid &lt;- resid(fit)\n  return(yresid + coef(fit)['hgt'] * data$hgt)\n}\n\nplotdata1 &lt;- data.frame(hgt=df1$hgt, y=get_partial_resid(df1))\n\nggplot(plotdata1, aes(x=hgt, y=y)) + geom_point()\n\n\n\n\n\n\n\nFigure 1: Partial residual plot on complete data\n\n\n\n\n\nNote how this differs from the marginal association between hgt and wgt. The difference between the plots is explained by other covariates that are correlated both with hgt and wgt.\n\nggplot(df1, aes(x=hgt, y=wgt)) + geom_point()\n\n\n\n\n\n\n\nFigure 2: marginal association between age and height"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-4",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet"
+    "objectID": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
+    "href": "posts/240322-mice-partial-residual-plot.html#putting-them-together",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Putting them together",
+    "text": "Putting them together\nThe issue with the partial residual plot Figure 1 is that the residuals depend on the imputed values for all variables. How to go about this? We can treat the residuals as we would ‘coefficients’ in imputation and use Rubin’s rules on them. Let’s see how to do this with mice.\n\nimpdfs &lt;- complete(imp, \"all\")\nimpdfs &lt;- lapply(impdfs, function(data) data.frame(data, partial_resid=get_partial_resid(data)))\nimpdfs &lt;- lapply(1:nimps, function(i) data.frame(impdfs[[i]], impidx=i))\nimpdf_long &lt;- do.call(rbind, impdfs)\n\nNote that we cannot directly pool the residuals because they may be correlated with the imputed values for hgt. Pooling imputed values for hgt and the partial residual removes this correlation. Instead we could just plot all the values.\n\nggplot(impdf_long, aes(x=hgt, y=partial_resid)) + geom_point(aes(shape=factor(impidx)), alpha=0.5)\n\n\n\n\n\n\n\nFigure 3: partial residual plot with imputed datasets\n\n\n\n\n\nIn the future I’d like to learn how to make good bivariate estimates of these points (e.g. fitting a bivariate normal distribution). This should for example also come up in calculating sensitivity and specificity on multiply imputed datasets, as these are clearly correlated. Fully bayesian imputation is another possibility obviously."
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
-    "href": "talks/240312-dsbiostats-twitter/index.html#first-paper-run-through-tweet-5",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "first paper run-through tweet",
-    "text": "first paper run-through tweet\n\n\n\n\n\n35 retweets\n86 likes\n18k views\n0 new followers\nnow 20 citations (5 if not for twitter?)"
+    "objectID": "posts/240322-mice-partial-residual-plot.html#footnotes",
+    "href": "posts/240322-mice-partial-residual-plot.html#footnotes",
+    "title": "Partial residual plots with multiply imputed data",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nmultiple imputation with chained equations sequentially imputes values for all variables with missing values by building prediction models for each variable based on other variables. This imputation is done multiple times with multiple random seeds and thus results in a number of different imputed datasets. A typical analysis workflow is to do these imputations and on each imputed dataset fit a model of interest. The coefficients of these models can then be pooled using Rubin’s rules.↩︎"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet"
+    "objectID": "posts/210720-good_predictions_bad_decisions.html",
+    "href": "posts/210720-good_predictions_bad_decisions.html",
+    "title": "When good predictions lead to bad decisions",
+    "section": "",
+    "text": "A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of introducing a new prediction rule leads to better decisions and thus better outcomes, is generally not substantiated with sufficient causal arguments. We now present an example where naively introducing a validated new prediction rule can lead to worse clinical decisions.\nFor a certain cancer type there are two treatment options: treatment A and treatment B. From randomized trials, it is known that treatment A is more effective in treating the tumor than treatment B. There is no known variation of treatment effect among subgroups defined by clinical patient characteristics. However, not all patients respond well to treatment. Treatment A is a longer and more intensive treatment regimen than treatment B and leads to more side-effects. The consensus is that it is unethical to give treatment A to patients with a lower than 10% chance of surviving one year, due to the higher risk of side-effects and the lengthy treatment regimen associated with treatment A. In current clinical practice, the probability of 1-year survival is estimated using clinical characteristics. A new research group tries to improve the 1-year survival predictions using a new biomarker. The research endeavor is a success as it turns out that predicting survival with the clinical characteristics and the new biomarker is significantly more accurate than using only the clinical characteristics. A high value for the biomarker is associated with worse overall survival. Having conducted a predictive study, it is not discovered that the treatment effect of treatment A versus B is actually more in favor of treatment A for patients with higher levels of the biomarker. If the new prediction rule would be implemented naively with the same 10% cut-off for 1-year overall survival, this would lead to worse treatment decisions than without using the new prediction model. Some patients with high biomarker values will fall under the 10% cut-off based on the new biomarker, while without the biomarker they would have had a higher than 10% survival probability. This erroneously leads to not recommending treatment A, even though these patients have a high benefit of treatment A.\nNote that this is not an unreasonable example for cancer, as aggressive / fast-growing cancers tend to respond better to treatments like chemotherapy and radiotherapy. One example is non-seminoma versus seminoma testicular cancer."
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-16909\").innerHTML = tweet[\"html\"];"
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#defining-the-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Defining the policies",
+    "text": "Defining the policies\nThe current clinical policy is:\n\\[\\pi_0(x) = \\mathbf{I}_{E[y|x] &gt; 0}\\]\nSo we should give treatment \\(t=1\\) whenever the expected outcome exceeds the reference cut-off. Let the true data generating mechanism be as following:\n\\[y = \\beta z t + x - z\\]\nAs \\(y\\) is a deterministic function of \\(t,x,z\\), we drop the expectation symbol in the following discussion. Let \\(x,z \\sim \\mathbf{U}(-1,1)\\) be independent variables following a uniform distribution between -1 and 1. We can new express the baseline policy as \\[\\pi_0(x) = \\mathbf{I}_{y|x &gt; 0} = \\mathbf{I}_{E_{z}[y|x,z]&gt;0} \\iff \\mathbf{I}_{x &gt; 0}\\]\nA naive implementation of the new prediction rule incorporating \\(z\\) would lead to the policy \\(\\pi_z(x,z) = \\mathbf{I}_{y|x,z &gt; 0}\\). Plugging in the data generating mechanism we can identify\n\\[\\begin{aligned}\n  y|x,z &= E_{t \\sim \\pi_0(x)}[y|t,x,z] \\\\\n    &= E_{t \\sim \\pi_0(x)}[\\beta z t + x - z] \\\\\n    &= \\beta z E_{t \\sim \\pi_0(x)} [t] + x - z \\\\\n    &= \\beta z E_x [\\mathbf{I}_{x &gt; 0}] + x - z \\\\\n    &= 0.5 \\beta z  + x - z \\\\\n    &= x - (1 - 0.5 \\beta)z\\end{aligned}\\]\nThus \\(\\pi_z(x,z) = \\mathbf{I}_{x + (0.5 \\beta - 1)z &gt; 0}\\).\nFrom the data generating mechanism it is clear that the conditional average treatment effect reduces to\n\\[\\begin{aligned}\n  \\text{CATE(x,z)} &= E[y|\\text{do}(t=1),x,z] - E[y|\\text{do}(t=0),x,z] \\\\\n                   &= \\beta z - 0\\end{aligned}\\]\nThe policy that maximizes the outcome \\(y\\) is \\(\\pi_{\\text{max}(y)}(z) = \\mathbf{I}_{z &gt; 0}\\) as \\(\\text{do}(t=1)\\) leads to better outcomes if and only if \\(z&gt;0\\). To conform with the ethical consensus that the intensive treatment is justified when \\(y|\\text{do}(t),x,z&gt;0\\), we set\n\\[\\begin{aligned}\n    \\pi^*(x,z) &= \\mathbf{I}_{y|\\text{do}(t=1),x,z &gt; 0} \\\\\n           &= \\mathbf{I}_{\\beta z * 1 + x - z &gt; 0} \\\\\n           &= \\mathbf{I}_{x + (\\beta - 1) z &gt; 0}\\end{aligned}\\]"
   },
   {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
-    "href": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "favorite tweet (meme)",
-    "text": "favorite tweet (meme)"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-meme-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "reactions to meme-tweet",
-    "text": "reactions to meme-tweet\n\nhttps://x.com/JAASANTINHA/status/1417936729600823300?s=20"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
-    "href": "talks/240312-dsbiostats-twitter/index.html#biggest-own-tweet-thesis-cover",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "biggest own tweet (thesis cover):",
-    "text": "biggest own tweet (thesis cover):\n\n\n\n\n\n\n93k impressions\n673 likes\n53 retweets\n6 new followers"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
-    "href": "talks/240312-dsbiostats-twitter/index.html#ask-for-help-tweet",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "ask for help-tweet",
-    "text": "ask for help-tweet"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
-    "href": "talks/240312-dsbiostats-twitter/index.html#use-x-for",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "Use X for",
-    "text": "Use X for\n\nlearning\nconnecting\nadvertising:\n\nnew work\nvacancies"
-  },
-  {
-    "objectID": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
-    "href": "talks/240312-dsbiostats-twitter/index.html#i-may-leave-x",
-    "title": "Wouter’s twitter X-peri(ments/ences)",
-    "section": "I may leave X",
-    "text": "I may leave X\nnot sure where to go\n\n\n\n©Wouter van Amsterdam —  WvanAmsterdam —  vanamsterdam.github.io/talks"
+    "objectID": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "href": "posts/210720-good_predictions_bad_decisions.html#expected-utility-of-different-policies",
+    "title": "When good predictions lead to bad decisions",
+    "section": "Expected utility of different policies",
+    "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
   }
 ]

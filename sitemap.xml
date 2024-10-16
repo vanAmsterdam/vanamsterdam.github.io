@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://vanamsterdam.github.io/talks/240530-weon-masterclass/index.html</loc>
-    <lastmod>2024-10-03T09:47:45.198Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/230624-chill-lightning-talk/index.html</loc>
-    <lastmod>2024-10-03T09:47:44.873Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240922-causalai-4cities/index.html</loc>
-    <lastmod>2024-10-03T09:47:45.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240515-aibia-ai-medical-imaging-decision-support/index.html</loc>
-    <lastmod>2024-10-03T09:47:45.108Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240507-estro-causalinference-tutorial/index.html</loc>
-    <lastmod>2024-10-03T09:47:45.043Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240708-imaging-ailab/index.html</loc>
-    <lastmod>2024-10-03T09:47:45.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts.html</loc>
-    <lastmod>2024-10-03T09:47:44.836Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/unlisted.html</loc>
-    <lastmod>2024-10-03T09:47:45.288Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/210720-good_predictions_bad_decisions.html</loc>
-    <lastmod>2024-10-03T09:47:44.836Z</lastmod>
+    <loc>https://vanamsterdam.github.io/posts/210725-counterfactualvsinterventional.html</loc>
+    <lastmod>2024-10-16T10:06:25.200Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/240607-jama-causal-language/index.html</loc>
-    <lastmod>2024-10-03T09:47:44.838Z</lastmod>
+    <lastmod>2024-10-16T10:06:25.200Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/index.html</loc>
-    <lastmod>2024-10-03T09:47:44.837Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/index.html</loc>
-    <lastmod>2024-10-03T09:47:44.809Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html</loc>
-    <lastmod>2024-10-03T09:47:44.837Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/210725-counterfactualvsinterventional.html</loc>
-    <lastmod>2024-10-03T09:47:44.836Z</lastmod>
+    <lastmod>2024-10-16T10:06:25.200Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/190816-lm-functional-form.html</loc>
-    <lastmod>2024-10-03T09:47:44.836Z</lastmod>
+    <lastmod>2024-10-16T10:06:25.200Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts.html</loc>
+    <lastmod>2024-10-16T10:06:25.200Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks.html</loc>
-    <lastmod>2024-10-03T09:47:44.845Z</lastmod>
+    <lastmod>2024-10-16T10:06:25.208Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240507-estro-causalinference-tutorial/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.424Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/240926-bmsaned-ai-in-health/index.html</loc>
-    <lastmod>2024-10-03T09:47:45.282Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240516-sig-causality-prediction/index.html</loc>
-    <lastmod>2024-10-03T09:47:45.146Z</lastmod>
+    <lastmod>2024-10-16T10:06:25.688Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/230301-lungsurv-manchester/index.html</loc>
-    <lastmod>2024-10-03T09:47:44.845Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240418-ii-spring-meeting/index.html</loc>
-    <lastmod>2024-10-03T09:47:45.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/230810-mlhc-causality-decision-making/index.html</loc>
-    <lastmod>2024-10-03T09:47:44.899Z</lastmod>
+    <lastmod>2024-10-16T10:06:25.208Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/240312-dsbiostats-twitter/index.html</loc>
-    <lastmod>2024-10-03T09:47:44.932Z</lastmod>
+    <lastmod>2024-10-16T10:06:25.300Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240530-weon-masterclass/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.596Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/230624-chill-lightning-talk/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.240Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240708-imaging-ailab/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240516-sig-causality-prediction/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.536Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/230810-mlhc-causality-decision-making/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240418-ii-spring-meeting/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.420Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240515-aibia-ai-medical-imaging-decision-support/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.492Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240922-causalai-4cities/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.648Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/unlisted.html</loc>
+    <lastmod>2024-10-16T10:06:25.696Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/index.html</loc>
+    <lastmod>2024-10-16T10:06:25.168Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html</loc>
+    <lastmod>2024-10-16T10:06:25.200Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/210720-good_predictions_bad_decisions.html</loc>
+    <lastmod>2024-10-16T10:06:25.200Z</lastmod>
   </url>
 </urlset>

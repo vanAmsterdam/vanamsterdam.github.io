@@ -10,6 +10,7 @@ website:
   description: "Wouter van Amsterdam's academic home page"
   site-url: https://vanamsterdam.github.io
   open-graph: true
+  favicon: wva.png
   twitter-card:
     site: "@wvanamsterdam"
   navbar:

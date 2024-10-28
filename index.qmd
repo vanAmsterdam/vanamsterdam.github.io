@@ -1,6 +1,7 @@
 ---
 title: "Wouter van Amsterdam, MD, PhD"
 image: wvanamsterdam_square.jpg
+keywords: ["Wouter van Amsterdam", "data science", "biostatistics", "R", "python", "causal inference", "machine learning", "academic porfolio", "CV"]
 about:
   id: hero-heading
   template: trestles

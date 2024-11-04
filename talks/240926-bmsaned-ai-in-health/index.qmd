@@ -1,8 +1,6 @@
 ---
 title: An introduction to AI for biostatisticians
 subtitle: BMS-Aned seminar
-aliases: 
-    - /talks/latest.html
 date: 2024-09-26
 bibliography: ../../library.bib
 format:

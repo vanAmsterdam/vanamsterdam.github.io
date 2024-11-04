@@ -1,0 +1,78 @@
+---
+title: "Pearl Causal Hierarchy"
+subtitle: "Causal Inference at Julius reading group"
+author: "Wouter van Amsterdam"
+aliases: 
+    - /talks/latest.html
+bibliography: ../../library.bib
+format:
+    revealjs:
+        incremental: true
+        theme: ../custom.scss
+---
+
+## Today's readings:
+
+- Bareinboim's paper / book chapter: @bareinboimPearlsHierarchyFoundations2022
+- Book of why chapter 1: @pearlBookWhyNew2018
+- Pearl's note on hierarchy: @pearlThreeLayerCausal
+
+## The ladder
+
+### The ladder is a hierarchy of questions
+
+![](figs/bareinboim-table1.png)
+
+## Notation
+
+- $T$: treatment (binary, 0,1)
+- $Y$: outcome (continuous / binary)
+- $X$: covariate (age, sex)
+- $p(Y|X)$: conditional distribution of $Y$ given $X$ (e.g. regression, 'prediction')
+- $p(Y_t)$: the causal effect of $T$ on $Y$, e.g.:
+  - $p(Y_{T=2}=1)$: the probability that $Y$ would take value 1 when we would set $T$ to 2 *by intervention*
+  - $P(Y_1) - P(Y_0) = \text{ATE}$ (average treatment effect)
+
+## Layer 1: association
+
+- What is the relationship between two variables?
+- required:
+  - data (observational / non-experimental)
+  - $p(X,Y,W)$
+- questions:
+  - what is the expected survival for men, and for women? $p(Y|X=1)$, $p(Y|X=0)$
+
+## Layer 2: intervention
+
+- What happens if we intervene on a variable?
+
+## Layer 3: counterfactuals
+
+- What would have happened if we had done something else?
+
+:::{.callout-tip}
+## What are counterfactuals good for?
+
+Indeed, explanations have practical ramifications for credit assignment, the  determination of blame and responsibility, the analysis of biases and unfairness in decisionmaking, and, more broadly, the systematic understanding of the world around us.
+:::
+
+- questions:
+  - given that the ICU patient got vancomycin and developed acute kidney injury, would she have developed AKI if she had not received vancomycin?
+- counterfactuals have an element of:
+  - something occured in the world (a *fact*)
+  - what if we went back to the world and changed a thing, what would have occured then? (a *counterfact*)
+
+# Unpacking an example
+
+## example 7
+
+- $f = Y \leftarrow U_2$
+  - 'survival is determined by a coin flip'
+- $f' = Y \leftarrow X U_2 + (1-X)(1-U_2)$
+  - 'the effect of treatment is determined by the coinflip'
+
+## Quotes
+
+
+## References
+

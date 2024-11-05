@@ -9,6 +9,10 @@ format:
     revealjs:
         incremental: true
         theme: ../custom.scss
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
 ---
 
 ## Today's readings:
@@ -17,20 +21,20 @@ format:
 - Book of why chapter 1: @pearlBookWhyNew2018
 - Pearl's note on hierarchy: @pearlThreeLayerCausal
 
-## The ladder
+# The ladder of questions
 
 ### The ladder is a hierarchy of questions
 
-![](figs/bareinboim-table1.png)
+![table 1](figs/bareinboim-table1.png)
 
 ## Notation
 
-- $T$: treatment (binary, 0,1)
+- $X$: treatment (binary, 0,1)
 - $Y$: outcome (continuous / binary)
-- $X$: covariate (age, sex)
-- $p(Y|X)$: conditional distribution of $Y$ given $X$ (e.g. regression, 'prediction')
-- $p(Y_t)$: the causal effect of $T$ on $Y$, e.g.:
-  - $p(Y_{T=2}=1)$: the probability that $Y$ would take value 1 when we would set $T$ to 2 *by intervention*
+- $Z$: covariate (age, sex)
+- $p(Y|Z)$: conditional distribution of $Y$ given $Z$ (e.g. regression, 'prediction')
+- $p(Y_x)$: the causal effect of $X$ on $Y$, e.g.:
+  - $p(Y_{X=1}=1)$: the probability that $Y$ would take value 1 when we would set $X$ to 1 *by intervention*
   - $P(Y_1) - P(Y_0) = \text{ATE}$ (average treatment effect)
 
 ## Layer 1: association
@@ -38,17 +42,33 @@ format:
 - What is the relationship between two variables?
 - required:
   - data (observational / non-experimental)
-  - $p(X,Y,W)$
+  - $p(X,Y,Z)$
 - questions:
-  - what is the expected survival for men, and for women? $p(Y|X=1)$, $p(Y|X=0)$
+  - what is the expected survival for men, and for women? $p(Y|Z=1)$, $p(Y|Z=0)$
 
 ## Layer 2: intervention
 
 - What happens if we intervene on a variable?
+- by how much would survival change if we would treat every patient with a certain drug?
+  - this can be made subgroup specific (the *conditional* average treatment effect: CATE), e.g. covariate $Z$: $p(Y_{X=1}|Z) - p(Y_{X=0}|Z)$
+  - when covariate $Z$ is continuous, every patient has a different CATE, but conceptually this is still the CATE (average over population with same / similar value of $Z$), not *individual* treatment effect
+- required:
+  1. data where $X$ is controlled by experimentation (randomized controlled trial)
+  2. observational data + sufficient assumptions, typically:
+    - the directed acyclic graph (DAG) with variables and no unobserved confounders
 
 ## Layer 3: counterfactuals
 
 - What would have happened if we had done something else?
+- questions:
+  - given that the ICU patient got vancomycin and developed acute kidney injury, would she have developed AKI if she had not received vancomycin?
+- counterfactuals have an element of:
+  - something occured in the world (a *fact*)
+  - what if we went back to the world and changed a thing, what would have occured then? (a *counterfact*)
+- required:
+  - knowledge of *functional relationships*
+
+. . . 
 
 :::{.callout-tip}
 ## What are counterfactuals good for?
@@ -56,20 +76,58 @@ format:
 Indeed, explanations have practical ramifications for credit assignment, the  determination of blame and responsibility, the analysis of biases and unfairness in decisionmaking, and, more broadly, the systematic understanding of the world around us.
 :::
 
-- questions:
-  - given that the ICU patient got vancomycin and developed acute kidney injury, would she have developed AKI if she had not received vancomycin?
-- counterfactuals have an element of:
-  - something occured in the world (a *fact*)
-  - what if we went back to the world and changed a thing, what would have occured then? (a *counterfact*)
+## The hierarchy, what are the worlds?
+
+1. association: the world as it is
+2. intervention: the world as we could be under an intervention (as it would be / is in an experiment)
+3. counterfactuals: the world as it was, **and** how it might have been if something had been different
+
+## The hierarchy, what are the worlds?
+
+1. one real world
+2. one hypothetical world (or real in experiment)
+3. one real world **and** a hypothetical world
+
+# The building blocks: structural causal models
+
+## What is a SCM?
+
+![definition of SCM](figs/bareinboim-definition1.png)
+
+- $U$ is a set of background variables, also called exogenous variables, that are determined by factors outside the model;
+- $V$ is a set $\{V_1,V_2,...,V_n\}$ of variables, called endogenous, that are determined by other variables in the model - that is, variables in $U\cup V$;
+- $F$ is a set of functions $\{ f_1, f_2,..., f_n\}$ such that each fiis a mapping from (the respective domains of) $U_i \cup Pa_i \to V_i$, where $U_i \subset U$, $Pa_i \subset V - Vi$, and the entire set $F$ forms a mapping from $U$ to $V$. That is, for $i = 1,...,n$, each $f_i \in F$ is such that
+
+. . .
+
+$$v_i \leftarrow f_i(pa_i, u_i)$$
+
+- i.e., it assigns a value to $V_i$ that depends on (the values of) a select set of variables in $U \cup V$; and
+- $P(U)$ is a probability function defined over the domain of $U$.
+
+
+## Theorem 1
+
+![Theorem 1](figs/bareinboim-theorem1.png)
 
 # Unpacking an example
 
 ## example 7
 
-- $f = Y \leftarrow U_2$
-  - 'survival is determined by a coin flip'
-- $f' = Y \leftarrow X U_2 + (1-X)(1-U_2)$
-  - 'the effect of treatment is determined by the coinflip'
+$$
+F = \begin{cases}
+      X \leftarrow U_1 \\
+      Y \leftarrow U_2
+\end{cases}
+$$
+- 'survival is determined by a coin flip'
+$$
+F' = \begin{cases}
+      X \leftarrow U_1 \\
+      Y \leftarrow X U_2 + (1-X)(1-U_2)
+\end{cases}
+$$
+- 'the effect of treatment is determined by the coinflip'
 
 ## Quotes
 

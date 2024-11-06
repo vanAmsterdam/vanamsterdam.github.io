@@ -13,6 +13,7 @@
   {
     "listing": "/talks.html",
     "items": [
+      "/talks/241104-pearl-causal-hierarchy/index.html",
       "/talks/240926-bmsaned-ai-in-health/index.html",
       "/talks/240708-imaging-ailab/index.html",
       "/talks/240530-weon-masterclass/index.html",
@@ -41,6 +42,7 @@
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/210720-good_predictions_bad_decisions.html",
       "/posts/190816-lm-functional-form.html",
+      "/talks/241104-pearl-causal-hierarchy/index.html",
       "/talks/240926-bmsaned-ai-in-health/index.html",
       "/talks/240708-imaging-ailab/index.html",
       "/talks/240530-weon-masterclass/index.html",

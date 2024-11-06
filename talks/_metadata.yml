@@ -11,7 +11,7 @@ page-layout: article
 citation: true
 bibliography: ../library.bib
 
-footer: "&copy;Wouter van Amsterdam --- {{< bi twitter-x >}} WvanAmsterdam --- {{< bi file-slides >}} vanamsterdam.github.io/talks"
+footer: "&copy;Wouter van Amsterdam --- {{< bi twitter-x >}} WvanAmsterdam --- {{< bi file-slides >}} wvanamsterdam.com/talks"
 
 format:
   revealjs:

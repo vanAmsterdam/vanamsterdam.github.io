@@ -1,0 +1,168 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows, shapes, positioning}
+%\tikzstyle{nodeobserved} = [circle, minimum size = 10mm, thick, draw =black!80]
+\usetikzlibrary{external}
+\tikzexternalize
+
+\begin{document}
+
+\begin{figure}
+    \centering
+
+    \tikzsetnextfilename{dag1}
+        \begin{tikzpicture}
+          % Nodes
+          \node (z) at (0, 1) {$Z$};
+          \node (x) at (-1, 0) {$X$};
+          \node (y) at (1, 0) {$Y$};
+
+          % Edges
+          \draw[->] (z) -- (x);
+          \draw[->] (z) -- (y);
+          \draw[->] (x) -- (y);
+
+        \end{tikzpicture}
+
+\end{figure}
+
+
+\begin{figure}
+    \centering
+
+    \tikzsetnextfilename{scmdag}
+        \begin{tikzpicture}
+          % Nodes
+          \node (z) at (0, 1) {$Z$};
+          \node (x) at (-1, 0) {$X$};
+          \node (y) at (1, 0) {$Y$};
+
+          \node (uz) at (-1, 1) {$U_Z$};
+          \node (ux) at (-2, 0) {$U_X$};
+          \node (uy) at (1, 1) {$U_Y$};
+
+
+          % Edges
+          \draw[->] (z) -- (x);
+          \draw[->] (z) -- (y);
+          \draw[->] (x) -- (y);
+
+          \draw[->] (uz) -- (z);
+          \draw[->] (ux) -- (x);
+          \draw[->] (uy) -- (y);
+
+        \end{tikzpicture}
+
+\end{figure}
+
+\begin{figure}
+    \centering
+
+    \tikzsetnextfilename{scmdag1}
+        \begin{tikzpicture}
+          % Nodes
+          \node (z) at (0, 1) {$Z$};
+          \node[opacity=0] (x) at (-1, 0) {$X$};
+          \node[opacity=0] (y) at (1, 0) {$Y$};
+
+          \node (uz) at (-1, 1) {$U_Z$};
+          \node[opacity=0] (ux) at (-2, 0) {$U_X$};
+          \node[opacity=0] (uy) at (1, 1) {$U_Y$};
+
+
+          % Edges
+          \draw[->, opacity=0] (z) -- (x);
+          \draw[->, opacity=0] (z) -- (y);
+          \draw[->, opacity=0] (x) -- (y);
+
+          \draw[->] (uz) -- (z);
+          \draw[->, opacity=0] (ux) -- (x);
+          \draw[->, opacity=0] (uy) -- (y);
+
+        \end{tikzpicture}
+
+\end{figure}
+
+\begin{figure}
+    \centering
+
+    \tikzsetnextfilename{scmdag2}
+        \begin{tikzpicture}
+          % Nodes
+          \node (z) at (0, 1) {$Z$};
+          \node (x) at (-1, 0) {$X$};
+          \node[opacity=0] (y) at (1, 0) {$Y$};
+
+          \node (uz) at (-1, 1) {$U_Z$};
+          \node (ux) at (-2, 0) {$U_X$};
+          \node[opacity=0] (uy) at (1, 1) {$U_Y$};
+
+
+          % Edges
+          \draw[->] (z) -- (x);
+          \draw[->, opacity=0] (z) -- (y);
+          \draw[->, opacity=0] (x) -- (y);
+
+          \draw[->] (uz) -- (z);
+          \draw[->] (ux) -- (x);
+          \draw[->, opacity=0] (uy) -- (y);
+
+        \end{tikzpicture}
+
+\end{figure}
+
+\begin{figure}
+    \centering
+
+    \tikzsetnextfilename{scmdag3}
+        \begin{tikzpicture}
+          % Nodes
+          \node (z) at (0, 1) {$Z$};
+          \node (x) at (-1, 0) {$X$};
+          \node (y) at (1, 0) {$Y$};
+
+          \node (uz) at (-1, 1) {$U_Z$};
+          \node (ux) at (-2, 0) {$U_X$};
+          \node (uy) at (1, 1) {$U_Y$};
+
+
+          % Edges
+          \draw[->] (z) -- (x);
+          \draw[->] (z) -- (y);
+          \draw[->] (x) -- (y);
+
+          \draw[->] (uz) -- (z);
+          \draw[->] (ux) -- (x);
+          \draw[->] (uy) -- (y);
+
+        \end{tikzpicture}
+
+\end{figure}
+
+\begin{figure}
+    \centering
+
+    \tikzsetnextfilename{scmdag-submodel}
+        \begin{tikzpicture}
+          % Nodes
+          \node (z) at (0, 1) {$Z$};
+          \node (x) at (-1, 0) {$X$};
+          \node (y) at (1, 0) {$Y$};
+
+          \node (uz) at (-1, 1) {$U_Z$};
+          \node (ux) at (-2, 0) {$U_X$};
+          \node (uy) at (1, 1) {$U_Y$};
+
+
+          % Edges
+          \draw[->] (z) -- (y);
+          \draw[->] (x) -- (y);
+
+          \draw[->] (uz) -- (z);
+          \draw[->] (uy) -- (y);
+
+        \end{tikzpicture}
+
+\end{figure}
+
+\end{document}

@@ -15,6 +15,7 @@ format:
         height: 900
 ---
 
+
 ## Today's readings:
 
 - Bareinboim's paper / book chapter: @bareinboimPearlsHierarchyFoundations2022
@@ -51,16 +52,27 @@ format:
 - by how much would survival change if we would treat every patient with a certain drug?
   - this can be made subgroup specific (the *conditional* average treatment effect: CATE), e.g. covariate $Z$: $p(Y_{X=1}|Z) - p(Y_{X=0}|Z)$
   - when covariate $Z$ is continuous, every patient has a different CATE, but conceptually this is still the CATE (average over population with same / similar value of $Z$), not *individual* treatment effect
-- required:
-  1. data where $X$ is controlled by experimentation (randomized controlled trial)
-  2. observational data + sufficient assumptions, typically:
-    - the directed acyclic graph (DAG) for the variables and no unobserved confounders
+- $p(Y_{X=1}=1|Z=z)$: the conditional probability that $Y$ would take value 1 when we would set $X$ to 1 *by intervention*, given that $Z=z$
+    - aka 'prediction under (hypothertical) intervention'
+    - aka 'potential outcome prediction'
+    - aka 'counterfactual prediction'
+
+## Layer 2: intervention, what is required?
+
+1. data where $X$ is controlled by experimentation (randomized controlled trial)
+2. observational data + sufficient assumptions, typically:
+  - the directed acyclic graph (DAG) for the variables and no unobserved confounders
+
+. . . 
+
+![DAG 1](tikzs/dag1.png)
 
 ## Layer 3: counterfactuals
 
 - What would have happened if we had done something else?
 - questions:
   - given that the ICU patient got vancomycin and developed acute kidney injury, would she have developed AKI if she had not received vancomycin?
+  - $P(Y_{X=0}=1|Y=1,X=1)$
 - counterfactuals have an element of:
   - something occured in the world (a *fact*)
   - what if we went back to the world and changed a thing, what would have occured then? (a *counterfact*)
@@ -76,6 +88,9 @@ format:
 <!-- ::: -->
 
 ## The hierarchy, what are the worlds?
+
+## Layer 2: directed acyclic graph (DAG)
+
 
 1. association: the world as it is
 2. intervention: the world as we could be under an intervention (as it would be / is in an experiment)
@@ -112,6 +127,106 @@ $$v_i \leftarrow f_i(pa_i, u_i)$$
 
 - i.e., it assigns a value to $V_i$ that depends on (the values of) a select set of variables in $U \cup V$; and
 - $P(U)$ is a probability function defined over the domain of $U$.
+
+
+## How are SCMs and DAGs related?
+
+A recursive SCM implies a DAG, by following the order of arguments in the set of functions $F$. E.G.:
+
+:::{layout-ncol=2}
+
+::::{.column}
+$$
+F = \begin{cases}
+      Z \leftarrow f(U_Z)
+\end{cases}
+$$
+::::
+
+::::{.column}
+![](tikzs/scmdag1.png)
+::::
+
+:::
+
+## How are SCMs and DAGs related?
+
+A recursive SCM implies a DAG, by following the order of arguments in the set of functions $F$. E.G.:
+
+:::{layout-ncol=2}
+
+::::{.column}
+$$
+F = \begin{cases}
+      Z \leftarrow f(U_Z) \\
+      X \leftarrow f(Z, U_X)
+\end{cases}
+$$
+::::
+
+::::{.column}
+![](tikzs/scmdag2.png)
+::::
+
+:::
+
+## How are SCMs and DAGs related?
+
+A recursive SCM implies a DAG, by following the order of arguments in the set of functions $F$. E.G.:
+
+:::{layout-ncol=2}
+
+::::{.column}
+$$
+F = \begin{cases}
+      Z \leftarrow f(U_Z) \\
+      X \leftarrow f(Z, U_X) \\
+      Y \leftarrow f(X, Z, U_Y)
+\end{cases}
+$$
+::::
+
+::::{.column}
+![](tikzs/scmdag3.png)
+::::
+
+:::
+
+## How are SCMs and DAGs related?
+
+- A (recursive) SCM *implies* a DAG,
+- but has strictly more information as not only the functional *arguments* are known,
+- but also the *functions* themselves
+
+## Intervening in a SCM: a submodel
+
+A recursive SCM implies a DAG, by following the order of arguments in the set of functions $F$. E.G.:
+
+:::{layout-ncol=2}
+
+::::{.column}
+$$
+F = \begin{cases}
+      Z \leftarrow f(U_Z) \\
+      X \leftarrow X' \\
+      Y \leftarrow f(X, Z, U_Y)
+\end{cases}
+$$
+::::
+
+::::{.column}
+![](tikzs/scmdag-submodel.png)
+::::
+
+:::
+
+We can compute the *effect of an action* by replacing one $f$ with a constant, e.g. $X \leftarrow X'$, keep everything else the same, and evaluate the outcomes
+
+## Intermezzo: critique on the hierarchy
+
+- The Pearl Causal Hierarchy is a hiearchy of **questions**
+- Some (rightly) argue that the 'higher' we go, the more *prior assumptions* are needed, and the less we rely on experiments
+- In a sense of *empirical* science, the hierarchy is upside down
 
 
 ## Theorem 1
@@ -195,24 +310,33 @@ $$
 
 # How are these counterfactuals different from the Potential Outcome framework counterfactuals?
 
-## Potential outcomes:
+## Potential outcomes framwork:
 
-Image two possible futures
+Image two possible futures for a patient
 
 :::{.r-stack}
 
-![](figs/ite1.png){.fragment}
+![](figs/ite1.png){.fragment .fade-in-then-out}
 
-![](figs/ite2.png){.fragment}
+![](figs/ite2.png){.fragment .fade-in-then-out}
 
-![](figs/ite3.png){.fragment}
+![](figs/ite-f.png){.fragment .fade-in-then-out}
 
-![](figs/ite.png){.fragment}
+![](figs/ite-cf.png){.fragment .fade-in-then-out}
 
 :::
 
-## Quotes
+## Potential outcomes vs SCMs
 
+- why I like the term *potential outcomes*: it has a clear sense of futures
+- counterfactual in the PO framework: has a clear definition and interpretation
+- what I don't like: using the term *counterfactual outcomes* when the *potential outcomes* are meant, and neither has occured yet
+  - e.g. *counterfactual prediction*
+- in the SCM frawmwork, *counterfactuals* are closer to the word:
+  - a **fact** has been observed (the real world)
+  - a **counter** fact has been asked
+  - this actually conditions on the observed factual data (often not the case in PO framework)
+    - "given that the ICU patient got vancomycin and developed acute kidney injury, would she have developed AKI if she had not received vancomycin?"
 
 ## References
 

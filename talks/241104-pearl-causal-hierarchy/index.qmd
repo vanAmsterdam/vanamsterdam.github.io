@@ -23,14 +23,14 @@ format:
 
 # The ladder of questions
 
-### The ladder is a hierarchy of questions
+## The ladder is a hierarchy of questions
 
 ![table 1](figs/bareinboim-table1.png)
 
 ## Notation
 
 - $X$: treatment (binary, 0,1)
-- $Y$: outcome (continuous / binary)
+- $Y$: outcome (binary)
 - $Z$: covariate (age, sex)
 - $p(Y|Z)$: conditional distribution of $Y$ given $Z$ (e.g. regression, 'prediction')
 - $p(Y_x)$: the causal effect of $X$ on $Y$, e.g.:
@@ -39,10 +39,9 @@ format:
 
 ## Layer 1: association
 
-- What is the relationship between two variables?
+- What is the relationship between two or more variables?
 - required:
-  - data (observational / non-experimental)
-  - $p(X,Y,Z)$
+  - data (observational / non-experimental): $p(X,Y,Z)$
 - questions:
   - what is the expected survival for men, and for women? $p(Y|Z=1)$, $p(Y|Z=0)$
 
@@ -55,7 +54,7 @@ format:
 - required:
   1. data where $X$ is controlled by experimentation (randomized controlled trial)
   2. observational data + sufficient assumptions, typically:
-    - the directed acyclic graph (DAG) with variables and no unobserved confounders
+    - the directed acyclic graph (DAG) for the variables and no unobserved confounders
 
 ## Layer 3: counterfactuals
 
@@ -68,13 +67,13 @@ format:
 - required:
   - knowledge of *functional relationships*
 
-. . . 
-
-:::{.callout-tip}
-## What are counterfactuals good for?
-
-Indeed, explanations have practical ramifications for credit assignment, the  determination of blame and responsibility, the analysis of biases and unfairness in decisionmaking, and, more broadly, the systematic understanding of the world around us.
-:::
+<!-- . . .  -->
+<!---->
+<!-- :::{.callout-tip} -->
+<!-- ## What are counterfactuals good for? -->
+<!---->
+<!-- Indeed, explanations have practical ramifications for credit assignment, the  determination of blame and responsibility, the analysis of biases and unfairness in decisionmaking, and, more broadly, the systematic understanding of the world around us. -->
+<!-- ::: -->
 
 ## The hierarchy, what are the worlds?
 
@@ -87,6 +86,15 @@ Indeed, explanations have practical ramifications for credit assignment, the  de
 1. one real world
 2. one hypothetical world (or real in experiment)
 3. one real world **and** a hypothetical world
+
+## What are the layers useful for?
+
+1. association: description, prediction (know what to expect when observing the world with hands on our backs)
+2. intervention: policy making, decision making (know what to expect when we change the world)
+3. counterfactuals: explanation, understanding:
+  - drug side effects
+  - *digital twins*: a digital representation of a physical object or system: typically assumes counterfactual level knowledge, e.g. @selBuildingDigitalTwins2024
+  - questions of fairness
 
 # The building blocks: structural causal models
 
@@ -112,7 +120,9 @@ $$v_i \leftarrow f_i(pa_i, u_i)$$
 
 # Unpacking an example
 
-## example 7
+## example 7a {auto-animate=true}
+
+$X$: treatment, $Y$: outcome, $U_1, U_2$: exogenous noise variables; $p(U_1=1)=p(U_2=1)=0.5$
 
 $$
 F = \begin{cases}
@@ -120,14 +130,86 @@ F = \begin{cases}
       Y \leftarrow U_2
 \end{cases}
 $$
-- 'survival is determined by a coin flip'
+
+- treatment: coin flip
+- survival: coin flip (not affected by $X$)
+
+. . .
+
+$$
+F' = \begin{cases}
+      X \leftarrow 1_{U_1=U_2} \\
+      Y \leftarrow U_1 + 1_{X=1,U+1=0,U_2=1}
+\end{cases}
+$$
+
+- survival: affected by $X$
+
+## example 7a {auto-animate=true}
+
+$$
+F = \begin{cases}
+      X \leftarrow U_1 \\
+      Y \leftarrow U_2
+\end{cases}
+$$
+
+$$
+F' = \begin{cases}
+      X \leftarrow 1_{U_1=U_2} \\
+      Y \leftarrow U_1 + 1_{X=1,U+1=0,U_2=1}
+\end{cases}
+$$
+
+- both models: same level 1 (observational) distribution $p(X,Y)$
+- different level 2: $Y_{X}$
+- cannot tell models apart from observatoinal data alone (i.e. causal effect not *identified*)
+
+## example 7b {auto-animate=true}
+
+$X$: treatment, $Y$: outcome, $U_1, U_2$: exogenous noise variables; $p(U_1=1)=p(U_2=1)=0.5$
+
+$$
+F = \begin{cases}
+      X \leftarrow U_1 \\
+      Y \leftarrow U_2
+\end{cases}
+$$
+
+. . .
+
 $$
 F' = \begin{cases}
       X \leftarrow U_1 \\
       Y \leftarrow X U_2 + (1-X)(1-U_2)
 \end{cases}
 $$
+
 - 'the effect of treatment is determined by the coinflip'
+
+. . .
+
+- both models: same level 2 (interventional) distributions
+- different level 3: $Y_{X=0}=1|X=1,Y=0)$
+- cannot tell models apart from level 2 data alone
+
+# How are these counterfactuals different from the Potential Outcome framework counterfactuals?
+
+## Potential outcomes:
+
+Image two possible futures
+
+:::{.r-stack}
+
+![](figs/ite1.png){.fragment}
+
+![](figs/ite2.png){.fragment}
+
+![](figs/ite3.png){.fragment}
+
+![](figs/ite.png){.fragment}
+
+:::
 
 ## Quotes
 

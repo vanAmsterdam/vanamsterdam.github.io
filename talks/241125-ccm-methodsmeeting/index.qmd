@@ -1,0 +1,146 @@
+---
+title: "A causal viewpoint on prediction model performance under changes in case-mix"
+subtitle: "Methods meeting at the Julius Center, UMC Utrecht"
+date: 2024-11-25
+author: "Wouter van Amsterdam, MD PhD"
+aliases: 
+    - /talks/latest.html
+bibliography: ../../library.bib
+format:
+    revealjs:
+        incremental: true
+        theme: ../custom.scss
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+---
+
+
+--- 
+
+![](figs/ccm-arxiv-screenshot.png)
+
+## Motivation
+
+<!-- TODO: add figs for examples-->
+
+- clinicians use prediction models for medical decisions, e.g.
+  - making a diagnosis
+  - estimating a patients prognosis
+  - triaging
+  - treatment decisions
+- these prediction models need *reliable* performance
+- **issue**: potential substantive difference between *last evaluation* and *current use*
+
+---
+
+:::{layout-ncol=2}
+
+::::{.column}
+
+![model trained / evaluated in tertiary care hospital](figs/university-hospital.png)
+
+::::
+
+::::{.column}
+
+![model trained used in GP setting](figs/gp.png){.fragment}
+
+::::
+
+:::
+
+## Questions:
+
+- What can we expect from the model's performance (if anything) in the new setting?
+
+## This paper / talk
+
+- recap performance:
+  - discrimination: a function of *features given outcome*
+  - calibration: a function of *outcome given outcome*
+- look at the *causal direction* of the predictoin:
+  - are we predicting an *effect* based on its causes (e.g. heart attack, based on cholesterol and age)
+  - are we predicting a *cause* based on its effects (infer presence of CVA based on neurological symptoms)
+- define shift in *case-mix* as a change in the marginal distribution of the cause variable
+- conclude that in theory:
+  - for *prognosis models*: expect stable *calibration*, not *discrimination*
+  - for *diagnosis models*: expect stable *discrimination*, not *calibration*
+- illustrate with simulation
+- evaluate on 1300+ prediction model evaluations
+
+## Discrimination: sensitivity, specificity, AUC
+
+- prediction model $f: X \to [0,1]$ (i.e. predicted probability)
+- take a threshold $\tau$, such that $f(x) > \tau$ is a positive prediction
+- tabulate predictions vs outcomes
+
+
+## Discrimination: sensitivity, specificity, AUC
+
+| |    | outcome  |    |
+|-|----|-------------|-------------|
+| |    | 1        |  0 |
+| **prediction** | 1 | true positives | false positives |
+|            | 0 | false negatives | true negatives |
+|            |  |  [sensitivity: TP / (TP+FN)]{.fragment} | [specificity: TN / (TN+FP)]{.fragment} |
+
+- sensitivity: $P(X=1 | Y=1)$, specificity: $P(X=0 | Y=0)$
+
+- if we vary the threshold $\tau$, we get a ROC curve, and the AUC is the area under this curve
+
+- **note**: sensitivity only requires data from the column of postive cases (i.e. $Y=1$), and specificity on negatives
+
+- event-rate: fraction of $Y=1$ of total cases
+
+- *in theory* discrimination is *event-rate independent* [@hondCodeClinicTheory2023]
+
+## Calibration
+"A  model is said to be well calibrated if for every 100 patients given a risk of x%, close to x have the event." [@vancalsterCalibrationRiskPrediction2015]
+
+:::{layout-ncol=3}
+
+::::{.fragment}
+
+![population](figs/calibration-population.png)
+
+::::
+
+::::{.fragment}
+
+![subgroup where $f(x)=10%$](figs/calibration-subgroup)
+
+::::
+
+::::{.fragment}
+
+![event rate in said subgroup is 10%](figs/calibration-outcomes.png)
+
+::::
+
+:::
+
+## Calibration plot
+
+:::{.columns}
+
+::::{.column}
+
+![calibration](figs/calibrated-instrument.png)
+
+::::
+
+::::{.column}
+
+
+::::
+
+:::
+
+
+
+## References
+
+
+

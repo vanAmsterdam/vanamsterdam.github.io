@@ -3,12 +3,10 @@ title: "Pearl Causal Hierarchy"
 subtitle: "Causal Inference at Julius reading group"
 date: 2024-11-06
 author: "Wouter van Amsterdam"
-aliases: 
-    - /talks/latest.html
 bibliography: ../../library.bib
 format:
     revealjs:
-        incremental: true
+        incremental: false
         theme: ../custom.scss
         center: true
         fig-align: center

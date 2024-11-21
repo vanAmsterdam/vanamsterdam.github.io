@@ -9,13 +9,445 @@ bibliography: ../../library.bib
 format:
     revealjs:
         incremental: true
-        theme: ../custom.scss
+        theme: [../custom.scss,deck.scss]
         center: true
         fig-align: center
         width: 1600
         height: 900
 ---
 
+<!--
+%\paragraph{Prediction models are used for medical decisions and need dependable predictive performance}
+Clinicians use prediction models for medical decisions, for example when making a diagnosis, estimating a patient's prognosis, or when making triaging or treatment decisions. % TODO refs
+When basing a medical decision on a prediction model it is important to know how reliable the model's predictions are, i.e. what is the model's \emph{predictive performance}, typically measured with \textit{discrimination} and \textit{calibration} in the case of binary outcomes.
+%\paragraph{Predictive performance is measured with discrimination and calibration}
+Discrimination measures how well a prediction model separates \emph{positive} cases from \emph{negative} cases, whereas \emph{calibration} measures how well predicted probabilities align with observed event rates. % TODO refs
+
+%\paragraph{Predictive performance changes under changes in distribution, such as changes in case-mix}
+An issue with predictive performance is that there may be important changes between when a model's predictive performance was last evaluated, and when and where it is used, meaning that the underlying \emph{data distribution} may have changed.
+No model can have good predictive performance under all arbitrary changes in the data distribution,
+but we may consider one important class of changes in distribution described with the term `case-mix'.
+For instance, when comparing the general practitioner (GP) setting with a tertiary hospital setting, the frequency of certain comorbidities and risk factors will be different across settings.
+Typically the tertiary center will encounter more high risk patients, so their `case-mix' is different than in the GP setting.
+%Another change in case-mix is the frequency of new sexually transmittable diseases in the general population versus in patients visiting a HIV-clinic.
+Another change in case-mix is the frequency of myocardial infarction in patients presenting with chest pain at either the GP or in those referred to acute cardiac care centers.
+
+%\paragraph{Main idea: discrimination and calibration respond differently to changes in marginal distribution}
+Changes in the data distribution necessarily lead to changes in predictive performance.
+However, we introduce a new framework that shows that when the prediction task is in the \emph{causal} direction, which is often the case in prognosis predictions, versus in the \emph{anti-causal} direction, often the case when predicting a diagnosis, a change in case-mix has a different interpretation.
+Importantly, depending on the prediction direction, either calibration \emph{or} discrimination is preserved under shifts in case-mix, but never both.
+We achieve this by looking at diagnosis and prognosis through a causal lens.
+Inferring a diagnosis is typically prediction in the \emph{anti-causal} direction, meaning predicting the cause (=underlying diagnosis) based on its effects (=symptoms), and here a change in case-mix is a change in distribution of the prediction target (the diagnosis).
+In contrast, prognosis is typically prediction in the \emph{causal} direction, meaning a future outcome predicted from current patient characteristics, and here a shift in case-mix is a change in the distribution of patient characteristics.
+The crucial insight of our framework is that a prediction model's \emph{discrimination} depends on the distribution of the features given the outcome ($X$ given $Y$) and is thereby invariant to changes in the marginal distribution of the outcome.
+Conversely, \emph{calibration} depends on the distribution of the outcome given the features ($Y$ given $X$) and is thereby invariant to changes in the marginal distribution of the features.
+See Figure \ref{fig:main} for a schematic overview.
+%\todo{Q: what if prognostic factors do not cause the outcome?}
+
+%\paragraph{This framework gives guidance to model developers and regulators}
+Our new perspective sheds light on changes in predictive performance under shifts in case-mix.
+Our result shows that the causal direction of the prediction has important implications for the evaluation and deployment of prediction models.
+For example, when evaluating a model used for prognosis across different settings, changes in discrimination are expected under shifts in case-mix, but changes in calibration are not, and vice-versa for diagnostic models.
+When re-evaluating a prognostic model in a different setting, a change in discrimination is expected and thus no cause for concern.
+However, a marked change in calibration may warrant further research.
+This perspective helps developers and guideline makers judge where and when a prediction model has dependable predictive performance.
+Also, depending on the task and whether discrimination or calibration is more important, prediction model developers may improve the robustness of their model to changes in case-mix by only including variables in the prediction model that are either all causal or all anti-causal but not mixed when possible.
+%\todo{have concrete example on hand}
+
+ \begin{figure}[htpb]
+	\begin{subfigure}[b]{0.4\textwidth}
+     \centering
+	     \begin{tikzpicture}
+	     % nodes %
+		 \node[draw, text centered] (x) {$X$: patient characteristics};
+		 \node[draw, right of = x, node distance=4.5cm, text centered] (y) {$Y$: future outcome};
+		 %\node[above of = y, node distance=1.5cm, text centered] (x) {$X$};
+		 %\node[right of = y, above of=y, node distance=.75cm, text centered] (u) {$U$};
+		 \node[draw, rectangle, above of = x, node distance=1.5cm, text centered] (e) {environment};
+		 
+		 % edges %
+		 \draw[->, line width = 1] (x) --  (y) node[midway,above=.25cm] {causal direction};
+         \draw[->, line width = 1] (e) -- (x);
+		 \draw[->, line width = 1, dashed] (x) to[bend right] node[below] {prediction direction}  (y);
+		 %\draw[->, line width = 1, start angle=30, end angle=330] (x) arc (y);
+		 %\draw (x) arc[->, start angle=30, end angle=30, line width=2] (y);
+   %\node [shape=rectangle,fill=gray!15, align=center](table1) at (2.0,-2.5) {
+            %between environments: \\
+            %\begin{tabular}{cc} \toprule
+		%discrimination & \textcolor{red}{changed} \\
+		%calibration & \textcolor{OliveGreen}{preserved} \\
+                %\bottomrule
+            %\end{tabular}
+        %};
+	     \end{tikzpicture}
+         \caption{DAG for prediction models predicting in the \emph{causal} direction, as in many \emph{prognosis} settings (e.g. predict future heart attacks based on current age and cholesterol levels)}
+    \label{fig:dag-causal}
+     \end{subfigure}
+\hfill
+\hfill
+	\begin{subfigure}[b]{0.4\textwidth}
+     \centering
+	     \begin{tikzpicture}
+	     % nodes %
+		 \node[draw, text centered] (x) {$X$: symptoms};
+		 \node[draw, right of = x, node distance=4.5cm, text centered] (y) {$Y$: diagnosis};
+		 %\node[above of = y, node distance=1.5cm, text centered] (x) {$X$};
+		 %\node[right of = y, above of=y, node distance=.75cm, text centered] (u) {$U$};
+		 \node[draw, rectangle, above of = y, node distance=1.5cm, text centered] (e) {environment};
+		 
+		 % edges %
+		 \draw[->, line width = 1] (y) -- (x) node[midway,above=.25cm] {causal direction};
+		 \draw[->, line width = 1] (e) -- (y);
+		 \draw[->, line width = 1, dashed] (x) to[bend right] node[below] {prediction direction}  (y);
+   %\node [shape=rectangle,fill=gray!15, align=center](table1) at (2.0,-2.5) {
+            %between environments: \\
+            %\begin{tabular}{cc} \toprule
+                %%Name & Color  \\ \midrule
+		%discrimination & \textcolor{OliveGreen}{preserved} \\
+		%calibration & \textcolor{red}{changed} \\
+                %\bottomrule
+            %\end{tabular}
+        %};
+	     \end{tikzpicture}
+         \caption{
+        DAG for prediction models predicting in the \emph{anti-causal} direction as in many \emph{diagnosis} settings (e.g. predict presence of a current heart attack based on the presence of chest pain and electrocardiography abnormalities).
+}
+    \label{fig:dag-anticausal}
+     \end{subfigure}
+%\hfill
+\vfill
+\hfill
+\hfill
+\begin{subfigure}[c]{0.4\textwidth}
+\centering
+    \includegraphics[width=\textwidth]{fig1-prognosis.pdf}
+    \caption{Between the training data and testing data, the \emph{calibration} remains the same (upper facet), but the \emph{discrimination} changes (lower facet)}
+\label{fig:1causal}
+\end{subfigure}
+\hfill
+\hfill
+\hfill
+\begin{subfigure}[c]{0.4\textwidth}
+\centering
+    \includegraphics[width=\textwidth]{fig1-diagnosis.pdf}
+    \caption{Between the training data and testing data, the \emph{calibration} changes (upper facet), but the \emph{discrimination} remains the same (lower facet)}
+\label{fig:1anticausal}
+\end{subfigure}
+\caption{Overview of main results.
+    Depending on the causal direction of the prediction, a shift in `case-mix' may be defined as either a shift in the marginal distribution of the \emph{features} $X$ for \emph{causal} prediction (\ref{fig:dag-causal}) or a shift in the marginal distribution of the \emph{outcome} $Y$ for \emph{anti-causal} prediction (\ref{fig:dag-anticausal}).
+    With these definitions, for models predicting in the \emph{causal direction}, the \emph{calibration} will remain constant under case-mix shifts between the training data and the testing data but not the \emph{discrimination} (\ref{fig:1causal}). For models predicting in the \emph{anti-causal direction} the reverse is true (\ref{fig:1anticausal}).
+    The calibration facets are calibration curves with on the horizontal axis the predicted probability and on the vertical axis the actual probability.
+    The discrimination facets are receiver-operating-curves with on the horizontal axis 1 minus specificity and on the vertical axis sensitivity.
+DAG: directed acyclic graph
+}
+\label{fig:main}
+\end{figure}
+
+%\paragraph{Paper outline}
+To introduce the framework, we first review the concepts of discrimination and calibration and then we define changes in case-mix from a causal viewpoint.
+Next put the two pieces together in a new framework and answer: when to expect what changes in predictive performance?
+We illustrate the result with a simulation study and test the framework empirically in a systematic review of 1382 prediction models, where we find that prognostic models indeed have more variance in discrimination when tested in external validation studies.
+Finally we discuss how this theory can be applied in practice.
+%\todo{write implication section}
+
+\pagebreak
+
+\section{Notation and Recap of predictive performance: discrimination and calibration}
+
+We consider prediction models of a binary \emph{outcome} $Y$ using \emph{features} $X$ with a prediction model $f: \mathcal{X} \to [0,1]$.
+The features can come from an arbitrary (multi-)dimensional distribution but we assume the model's predictions $f(X)$ can reasonably be considered as continuous.
+We will denote environments with an environment variable $E$ where for example $E=0$ may be a GP setting and $E=1$ a community hospital, $E=2$ a university medical center and so on\cite{bareinboimCausalInferenceDatafusion2016}.
+With $P(.)$ we will denote (conditional) distributions or densities over random variables, for example $P(Y|X)$ denotes the distribution of outcome $Y$ given features $X$.
+
+\subsection{Discrimination: sensitivity, specificity and AUC}
+Typical metrics of discrimination are sensitivity (sometimes called recall), specificity and AUC.
+Sensitivity is the ratio of true positives over the total number of positive cases.
+Specificity is the ratio of true negatives over the total number of negative cases.
+To calculate sensitivity and specificity, we need to choose a threshold $0<\tau<1$ for the output of $f(X)$ and label all $f(X) > \tau$ as \emph{positive} predicted cases and $f(X) \leq \tau$ as \emph{negative} predicted cases.
+This results in a 2 by 2 table with predicted versus actual outcomes (sometimes called the `confusion table'), see Table \ref{tab:confusion}.
+By varying $\tau$ between 0 and 1 we get a range of values for specificity and specificity.
+Plotting these in the receiver-operating-curve and calculating the area under this curve we get the popular AUC metric or c-statistic.
+Note that for calculating sensitivity we only need the \emph{positive} cases ($Y=1$), and for specificity we only need the \emph{negative} cases ($Y=0$).
+\emph{Measures of discrimination depend on the distribution of the prediction (and thus the features) given the outcome.}
+This immediately implies that if we were to only change the ratio of positive and negative cases through some hypothetical intervention, the sensitivity and specificity will remain unchanged, and thus the resulting AUC.
+Therefore it is sometimes said that sensitivity and specificity are prevalence independent.
+
+\begin{table}[]
+	\centering
+\begin{tabular}{llll}
+                                                 &                        & \multicolumn{2}{c}{outcome ($Y$)}                                               \\ \cline{3-4} 
+                                                 & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{1}              & \multicolumn{1}{l|}{0}              \\ \cline{2-4} 
+\multicolumn{1}{c|}{\multirow{2}{*}{prediction ($f(X) > \tau$)}} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{true positive}  & \multicolumn{1}{l|}{false positive} \\ \cline{2-4} 
+\multicolumn{1}{c|}{}                            & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{false negative} & \multicolumn{1}{l|}{true negative}  \\ \cline{2-4} 
+                                                 &                        & sensitivity: $P(f(X)>\tau|Y=1)$  & specificity: $P(f(X) \le \tau | Y=0)$                        
+\end{tabular}
+\caption{Confusion table. By specifying a threshold $0<\tau<1$ for a prediction model $f: \mathcal{X} \to [0,1]$ and tabulating the results against the ground truth outcome $Y \in \{0,1\}$, one gets the confusion table and can calculate metrics of discrimination such a sensitivity and specificity. }
+\label{tab:confusion}
+\end{table}
+
+
+\subsection{Calibration}
+
+Calibration measures how well predicted probabilities align with actual event rates.
+In words, assume we take a particular value for the predicted probability of the outcome, say $\alpha=10\%$.
+Then if we gather all cases for which $f(X) = \alpha$, then the model is calibrated for that value of $\alpha$ when the fraction of positive outcomes in this subset is exactly $\alpha$.
+A prediction model is perfectly calibrated when this holds for all unique values that $f(X)$ attains.
+For a formal definition, see Definition \ref{def:calibration} in the Appendix \ref{app:defs}.
+Unfortunately, measuring discrimination with a single metric is much harder then measuring discrimination for practical \cite{vancalsterCalibrationAchillesHeel2019,vancalsterCalibrationHierarchyRisk2016} and theoretical reasons \cite{blasiokUnifyingTheoryDistance2023}, a problem we will ignore.
+However, fundamentally, calibration measures the alignment between $f(X)$ and the probability of the outcome given $X$.
+\emph{Measures of calibration are thus measures of the distribution of the outcome given the features ($Y$ given $X$).}
+
+\pagebreak
+
+\section{A causal framework for predictive performance under changes in case-mix}
+
+%We now describe our causal framework on shifts in case-mix and its consequences for prediction model performance under changes in case mix.
+Since discrimination depends on the distribution of the features given the outcome ($X$ given $Y$) but calibration on the distribution of the outcome given the features ($Y$ given $X$), we may expect metrics of discrimination and calibration to respond differently when changes occur in the marginal distribution of $X$ or $Y$.
+In this section we first formalize the notion of a shift in \emph{case-mix} and how this depends on whether a prediction is in the \emph{causal} direction (future outcome given features) or the \emph{anti-causal} direction (disease given symptoms).
+Then we will draw the connection between the two insights leading to our main result.
+
+\subsection{A shift in case-mix is a change in the marginal distribution of the cause variable}
+We define a shift in \emph{case-mix} between different environments (e.g. GP versus hospital setting) as a change in the marginal distribution of the \emph{cause} variable.
+When the prediction is in the \emph{causal} direction, a shift in case-mix is a change in the marginal distribution of the features $X$, whereas when the prediction is in the \emph{anti-causal} direction it is a shift in the marginal distribution of the outcome $Y$.
+Finally, the prediction problem could be neither causal or anti-causal, but \emph{confounded} by another variable $Z$, in that case the shift is in the distribution of the confounder $Z$.
+See Figure \ref{fig:dags} for directed acyclic graphs (DAGs) depicting these situations and Table \ref{tab:settings} for an overview with examples.
+We give a formal definition in the Appendix \ref{def:casemix}.
+
+
+\begin{table}[htpb]
+	\centering
+	\caption{different prediction settings}
+	\label{tab:settings}
+
+	%\begin{tabular}{c|c|c|c|c}
+		%setting	& shifted distribution & typical setting & example & Figure \\ \hline
+		%anti-causal & $Y$ & diagnosis & predict diagnosis given symptoms & \ref{fig:anticausal} \\
+		%causal	& $X$ & prognosis & predict survival given age & \ref{fig:causal} \\
+		%confounded & $Z$ & prognosis & yellow fingers predict future lung cancer & \ref{fig:fork}
+	%\end{tabular}
+	\begin{tabular}{l|c|c|c}
+		& anti-causal & causal & confounded \\ \hline
+		shifted distribution & $Y$ & $X$ & $Z$  \\
+		typical setting	& diagnosis & prognosis & prognosis  \\
+        %example outcome & predict diagnosis given symptoms & predict survival given age & yellow fingers predict future lung cancer \\
+        example outcome & pneumonia & survival & lung cancer diagnosis \\
+		example features & temperature & age & yellow fingers \\
+        Figure & \ref{fig:causal} & \ref{fig:anticausal} & \ref{fig:fork}
+	\end{tabular}
+\end{table}
+
+
+ \begin{figure}[ht!]
+	\begin{subfigure}[b]{0.3\textwidth}
+     \centering
+	     \begin{tikzpicture}
+	     % nodes %
+		 \node[text centered] (x) {$X$};
+		 \node[right of = x, node distance=1.5cm, text centered] (y) {$Y$};
+		 %\node[above of = y, node distance=1.5cm, text centered] (x) {$X$};
+		 %\node[right of = y, above of=y, node distance=.75cm, text centered] (u) {$U$};
+		 \node[draw, rectangle, above of = x, node distance=1.5cm, text centered] (e) {$E$};
+		 
+		 % edges %
+		 \draw[->, line width = 1] (x) --  (y);
+		 \draw[->, line width = 1] (e) -- (x);
+	     \end{tikzpicture}
+	\caption{causal prediction}
+	\label{fig:causal}
+%\begin{align*}
+    %& p(X,Y|E) \\
+    %&= p(Y|X,E)p(X|E) \\
+    %&= p(Y|X)p(X|E)
+%\end{align*}
+     \end{subfigure}
+\hfill
+	\begin{subfigure}[b]{0.3\textwidth}
+     \centering
+	     \begin{tikzpicture}
+	     % nodes %
+		 \node[text centered] (x) {$X$};
+		 \node[right of = x, node distance=1.5cm, text centered] (y) {$Y$};
+		 %\node[above of = y, node distance=1.5cm, text centered] (x) {$X$};
+		 %\node[right of = y, above of=y, node distance=.75cm, text centered] (u) {$U$};
+		 \node[draw, rectangle, above of = x, node distance=1.5cm, text centered] (e) {$E$};
+		 
+		 % edges %
+		 \draw[->, line width = 1] (y) --  (x);
+		 \draw[->, line width = 1] (e) -- (y);
+	     \end{tikzpicture}
+	\caption{anti-causal prediction}
+	\label{fig:anticausal}
+%\begin{align*}
+    %& p(X,Y|E) \\
+    %&= p(X|Y,E)p(Y|E) \\
+    %&= p(X|Y)p(Y|E)
+%\end{align*}
+     \end{subfigure}
+\hfill
+	\begin{subfigure}[b]{0.3\textwidth}
+     \centering
+	     \begin{tikzpicture}
+	     % nodes %
+		 \node[text centered] (x) {$X$};
+		 \node[right of = x, node distance=1.5cm, text centered] (y) {$Y$};
+		 \node[above of = y, node distance=1.5cm, text centered] (z) {$Z$};
+		 %\node[right of = y, above of=y, node distance=.75cm, text centered] (u) {$U$};
+		 \node[draw, rectangle, above of = x, node distance=1.5cm, text centered] (e) {$E$};
+		 
+		 % edges %
+		 \draw[->, line width = 1] (z) --  (x);
+		 \draw[->, line width = 1] (z) --  (y);
+		 \draw[->, line width = 1] (e) -- (z);
+	     \end{tikzpicture}
+	\caption{confounded prediction}
+	\label{fig:fork}
+%\begin{align*}
+    %& p(X,Y|E) \\
+    %&= E_{Z|E} [p(X,Y|E,Z)] \\
+    %&= E_{Z|E} [p(X,Y|Z)]
+%\end{align*}
+     \end{subfigure}
+     \caption{directed acyclic graphs for 2-variable prediction problems with a shift in case-mix, meaning the environment variable only affects the marginal distribution of one variable but not a conditional distribution. The prediction is always made from $X$ to $Y$. $X$ denotes an arbitrary set of features with arbitrary feature types.}
+     \label{fig:dags}
+ \end{figure}
+
+Each of the DAGs in Figure \ref{fig:dags} encodes different conditional idependencies.
+Specifically the DAG in the causal direction (Figure \ref{fig:causal}) implies that $Y$ is independent of $E$ given $X$.
+This entails that the distribution $P(Y|X)$ is \emph{transportable} across environments, so for different environments $E=0,1,\ldots$, $P(Y|X,E=0) = P(Y|X,E=1) = P(Y|X)$, whereas in the anti-causal direction (Figure \ref{fig:anticausal}) the distribution $P(Y|X)$ is transportable, meaning $P(X|Y,E) = P(X|Y)$ \cite{bareinboimCausalInferenceDatafusion2016}.
+In the confounded DAG (Figure \ref{fig:fork}) neither $P(Y|X)$ or $P(X|Y)$ is transportable.
+
+In the DAGs in Figure \ref{fig:dags} the environment variable influences the cause variable ($X,Y$ or $Z$) but not the effect variable ($Y$ or $X$).
+Why exclude arrows from the environment to the effect variable in the definition of a shift in case-mix?
+If there is an arrow from environment to the effect variable, neither $P(Y|X)$ or $P(X|Y)$ are transportable across environments so nothing can be said regarding the calibration and discrimination of a prediction model on an unseen environment based on data from the observed environments only.
+Also, based on concrete clinical settings it may be reasonable based on patient selection mechanisms to assume that \emph{at least} the distribution of the cause variable differs between environments, but maybe not the effect given the cause.
+%\todo{make example references tight and sentence below}
+See the Appendix \ref{app:examples} for several concrete medical examples where these assumptions may hold and where they are violated.
+
+\subsection{Main result: discrimination and calibration respond differently to changes in case-mix depending on the causal direction of the prediction}
+
+With the DAGs describing the different possible shifts in case-mix under consideration and the definitions of discrimination and calibration we can now state our main result, of which the formal versions are presented in the Appendix \ref{app:theorems}.
+
+\emph{When predicting in the anti-causal direction (often with diagnosis predictions), a shift in case-mix across environments means a shift in the marginal distribution of the outcome, and discrimination remains stable but not calibration. Conversely, when predicting in the causal direction (often with prognosis predictions), a shift in case-mix across environments means a shift in marginal distribution of the features, and calibration remains stable, but not discrimination.}
+
+When $f$ is perfectly calibrated on an environment, it will remain perfectly calibrated under shifts of the marginal distribution of the features (see Theorem \ref{th:calib} in the Appendix).
+Note that when $f$ is not perfectly calibrated and this mis-calibration depends on $X$, in general the average calibration will also change when predicting in the causal direction.
+
+An important implication of this result is that \emph{discrimination or calibration may be preserved under changes in case-mix, but never both}
+
+As a remark, we note that perfectly calibrated models obviously cannot be better calibrated in other environments, so any change in calibration necessarily implies a worsening of calibration.
+For discrimination, this is not automatically the case. In fact, models can show better discrimination in other environments when the distribution of outcome probabilities is less concentrated around 50\%.
+
+\section{Simulation and empirical evaluation}
+
+\subsection{Illustrative simulation}
+
+Our main result has important implications when interpreting changes in predictive performance across environments.
+To illustrate our result we now present a simulation study.
+Consider two prediction models, one is a prognostic model predicting in the causal direction, the other a diagnostic model predicting in the anti-causal direction.
+Denoting $\sigma^{-1}(p)=\log \frac{p}{1-p}$ as the logit function and $\mathcal{N}$ the Gaussian distribution,
+the data-generating mechanisms are:
+
+\begin{align*}
+    \label{eq:dgm-prognosis}
+    \text{prognosis:} &                     & \text{diagnosis:} & \\
+    P_y &\sim \text{Beta}(\alpha_e,\beta_e) & y &\sim \text{Bernouli}(P_e) \\
+    x   &= \sigma^{-1}(P_y)                 & x &\sim \mathcal{N}(y, 1) \\
+    y   &\sim \text{Bernoulli}(P_y)         &   &
+\end{align*}
+
+We evaluate both models in three hypothetical environments: a screening environment (with low outcome prevalence), a GP setting (with intermediate prevalence) and a hospital setting (high prevalence).
+For the prognosis model, the marginal distribution of $X$ depends on the environment through $\alpha_e,\beta_e$, but not the distribution of $Y$ given $X$.
+For the diagnosis model, the marginal distribution of $Y$ depends on the environment through $P_e$, but not the distribution of $X$ given $Y$.
+The different values for these parameters are given in Table \ref{tab:simprms}
+
+\begin{table}[htp]
+    \centering
+\begin{tabular}{lllll}
+          &                                &           &     &          \\
+task      & \multicolumn{1}{l|}{parameter} & screening & GP  & hospital \\ \hline
+prognosis & \multicolumn{1}{l|}{$\alpha$}  & 2         & 5   & 10       \\
+          & \multicolumn{1}{l|}{$\beta$}   & 20        & 10  & 20       \\
+diagnosis & \multicolumn{1}{l|}{p}         & 0.2       & 1/3 & 0.5     
+\end{tabular}
+\caption{Values for different simulation parameters in three hypothetical environments. GP = general practitioner}
+\label{tab:simprms}
+\end{table}
+
+In Figure \ref{fig:overview} we show the results of training a prediction model in the screening environment and evaluating it either in the same environment (=internal validation) or in a different environment (=external validation).
+For the prognostic model the calibration remains the same across environments (though some values of $P(Y=1|X)$ become very rare because of the shift in distribution of $X$). The discrimination changes across environments.
+For the diagnostic model, the reverse is true.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{overview.pdf}
+    \caption{Overview figure of illustrative simulation experiment of a model trained on data from a screening environment, and evaluated on either the screening environment (=internal validation) or the GP environment or the hospital environment (=external validation), with increasing outcome probabilities. For models predicting in the \textit{anti-causal} direction (e.g. diagnostic models), a shift in case-mix entails an intervention on the distribution of the predicted outcome, so discrimination remains the same but calibration changes. For models predicting in the \textit{causal} direction (e.g. prognosis models), a shift in case-mix entails an intervention on the distribution of the features, so calibration remains the same but the discrimination changes.
+        The discrimination facets are receiver-operating-curves with on the horizontal axis 1 minus specificity and on the vertical axis sensitivity.
+        The calibration facets are calibration curves with on the horizontal axis the predicted probability and on the vertical axis the actual probability.
+    }
+    \label{fig:overview}
+\end{figure}
+
+By repeating this process for each of the three environments, each time training on one environment and evaluating on all environments for both the causal prediction model and the anti-causal model, we get in total six models, each evaluated three times.
+We measure discrimination with AUC for discrimination, and calibration error as the absolute difference between the predicted outcome probability and the actual outcome probability for each observation:  $\frac{1}{N} \sum_i^N \left| P(Y=1|X=x_i) - f(x_i)\right|$ (analogous to the Integrated Calibration Error defined in \cite{austinIntegratedCalibrationIndex2019}).
+Plotting these 18 points on 6 lines in 2 dimensions leads to an interesting pattern, where the models predicting in the causal direction are easily discernible from those predicting in the anti-causal direction (Figure \ref{fig:combined}).
+In the Appendix \ref{app:sims} we provide visualizations of $P(Y|X)$ and $P(X|Y)$ for the different environments and tasks.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig-combined.pdf}
+    \caption{Combined results of the simulation experiment. Each model is connected by a line.}
+    \label{fig:combined}
+\end{figure}
+
+\subsection{Empirical Study}
+
+As an empirical validation we re-used data from a published systematic review on prediction models in cardiovascular disease which included 2030 external validations of 1382 predictions models \cite{wesslerExternalValidationsCardiovascular2021} and whose data is publicly available at https://www.pacecpmregistry.org.
+The review investigated changes in model performance when comparing the original publication with later external validation studies.
+The authors classified the prediction models as either `diagnostic' or `prognostic' (indicated by a follow-up time of less than 3 months, 3-6 months or more than 6 months).
+Selecting only prediction models with one or more validations and information on AUC in both the original study and validation study, and with information on model type (diagnostic versus prognostic), 1170 validation studies remained of 342 prediction models, 16 of which were validation studies of 11 diagnostic models.
+Comparing the AUC in the original study ($\text{AUC}_0$) with external validation studies ($\text{AUC}_1$), we calculated the relative difference in AUC as suggested by the authors:
+
+\begin{equation*}
+    \delta:=\frac{(\text{AUC}_1 - 0.5) - (\text{AUC}_0 - 0.5)}{\text{AUC}_0 - 0.5}.
+\end{equation*}
+
+Our framework predicts that for diagnostic models that predict in the anti-causal direction, the AUC remains the same so $\text{AUC}_0=\text{AUC}_1$, thus $\text{VAR}(\delta)=0$, but not for prognosis models that predict in the causal direction.
+The studies in this systematic review are likely not perfectly \emph{causal} or \emph{anti-causal}, and because of varying finite sample sizes, variation in AUC will occur.
+Still we expect the variance of $\delta$ to be higher for prognosis models than for diagnosis models.
+In these data, using an F-test to compare the to variances this was indeed the case, with $\text{VAR}(\delta_{\text{diagnostic}})=0.019 \approx 0.122 * \text{VAR}(\delta_{\text{prognostic}})$, p-value$<0.001$.
+Unfortunately the review provided no quantitative measures of calibration so a similar comparison of the variance of changes in calibration could not be made.
+
+\section{Related work}
+
+Much work requires detailed assumptions on the causal relationships between variables \cite{subbaswamyUnifyingCausalFramework2022}, or access to data from multiple environments.
+
+\section{Discussion}
+
+We present a novel causal framework for understanding changes in prediction model performance under shifts in case-mix, by defining a shift in case-mix as a change in the marginal distribution of the cause variable.
+This leads to a new understanding of why in certain situations the discrimination of a model may be relatively stable when evaluated in a different setting, but not the calibration, and vice-versa.
+
+Prior work noted that prediction models that are calibrated in multiple environments are provably free from anti-causal predictors \cite{waldCalibrationOutofDomainGeneralization2021}. Our focus is in the reverse direction: when to expect stable calibration across environments.
+Bareinboim and Pearl describe the data fusion problem and discuss when a causal effect may be transportable across settings and with what data \cite{bareinboimCausalInferenceDatafusion2016}. Our work describes when certain specific functionals from the distributions are stable across settings, tailored to typical needs in the (medical) prediction model setting.
+
+Our framework also provides a new perspective on the results of the study by Fehr at al \cite{fehrAssessingTransportabilityClinical2023}.
+They experimented with prediction models that contained either causal factors of the outcome (related to our \textit{prognosis} models), anti-causal factors (related to our \textit{diagnosis} models), or a combination of both.
+The performance of different prediction models was evaluated under different shifts in variables that were at the same time a direct cause of the outcome and a cause of other variables.
+Fehr et al find that for models predicting only with cause variables, the calibration is stable under interventions on only cause variables, as directly explained by our framework.
+When predicting with anti-causal factors, they observed that under interventions on the cause variables, the calibration degrades for models that are well calibrated on the training data.
+This setting is the closest to our \textit{diagnostic} setting, though technically it is a mix of the anti-causal DAG \ref{fig:anticausal} and confounding \ref{fig:fork}.
+%They also found that AUC would sometimes improve and sometimes decrease in various settings.
+%None of their experiments aligns with a strict intervention on the marginal distribution of the outcome variable as in our anti-causal setting.
+
+Limitations are that the definition of a shift in case-mix is an abstraction and pure interventions on only either the features or the outcome may be unrealistic in practice.
+Many diagnostic prediction models may contain features that have a causal path to the diagnosis (e.g. age), or `risk factors' for the disease that are not caused by the presence or absence of the disease.
+Systematic reviews of diagnostic models indeed show variation in sensitivity and specificity with variation in disease prevalence, a phenomenon also referred to as the \textit{spectrum-effect} \cite{leeflangVariationTestSensitivity2013}.
+Still, when compared with prognostic models, diagnostic models had lower variability in discrimination in our empirical study.
+The current empirical validation was limited, and classifying diagnostic models as anti-causal and prognostic models as causal may be too crude. Also, no quantitative data on calibration were available to test whether calibration was more stable for prognostic models.
+Future empirical studies of externally evaluated prediction models will shed more light on how this theory pans out in practice.
+Mis-calibration may occur when variables not included in the model are also shifted between environments.
+
+Still, the framework is useful as it explains prior observations and provides guidance to evaluators of prediction models on what to expect and how to explain certain changes changes in prediction model performance.
+-->
 
 --- 
 
@@ -33,34 +465,30 @@ format:
 - these prediction models need *reliable* performance
 - **issue**: potential substantive difference between *last evaluation* and *current use*
 
----
+## Change in setting
+
+What can we expect from the model's performance (if anything) in the new setting?
 
 :::{layout-ncol=2}
 
 ::::{.column}
 
-![model trained / evaluated in tertiary care hospital](figs/university-hospital.png)
+![model trained / evaluated in tertiary care hospital](figs/university-hospital.png){width=80%}
 
 ::::
 
 ::::{.column}
 
-![model trained used in GP setting](figs/gp.png){.fragment}
+![model used in GP setting](figs/gp.png){.fragment width=80%}
 
 ::::
 
 :::
 
-## Questions:
-
-- What can we expect from the model's performance (if anything) in the new setting?
-
 ## This paper / talk
 
-- recap performance:
-  - discrimination: a function of *features given outcome*
-  - calibration: a function of *outcome given outcome*
-- look at the *causal direction* of the predictoin:
+- recap performance: discrimination, calibration
+- look at the *causal direction* of the prediction:
   - are we predicting an *effect* based on its causes (e.g. heart attack, based on cholesterol and age)
   - are we predicting a *cause* based on its effects (infer presence of CVA based on neurological symptoms)
 - define shift in *case-mix* as a change in the marginal distribution of the cause variable
@@ -70,31 +498,47 @@ format:
 - illustrate with simulation
 - evaluate on 1300+ prediction model evaluations
 
-## Discrimination: sensitivity, specificity, AUC
+# Recap of performance metrics: discrimination and calibration
 
-- prediction model $f: X \to [0,1]$ (i.e. predicted probability)
+## Discrimination: sensitivity, specificity, AUC {auto-animate=True}
+
+- prediction model $f: X \to [0,1]$ (i.e. predicted probability, e.g. logistic regression)
 - take a threshold $\tau$, such that $f(x) > \tau$ is a positive prediction
 - tabulate predictions vs outcomes
 
+:::{.fragment auto-animate-id=1}
+| |    | outcome  |    |
+|-|----|-------------|-------------|
+| |    | 1        |  0 |
+| **prediction** | 1 | true positives | false positives |
+|            | 0 | false negatives | true negatives |
+:::
 
-## Discrimination: sensitivity, specificity, AUC
 
+## Discrimination: sensitivity, specificity {auto-animate=True}
+
+:::{auto-animate-id=1}
 | |    | outcome  |    |
 |-|----|-------------|-------------|
 | |    | 1        |  0 |
 | **prediction** | 1 | true positives | false positives |
 |            | 0 | false negatives | true negatives |
 |            |  |  [sensitivity: TP / (TP+FN)]{.fragment} | [specificity: TN / (TN+FP)]{.fragment} |
+:::
 
 - sensitivity: $P(X=1 | Y=1)$, specificity: $P(X=0 | Y=0)$
-
-- if we vary the threshold $\tau$, we get a ROC curve, and the AUC is the area under this curve
 
 - **note**: sensitivity only requires data from the column of postive cases (i.e. $Y=1$), and specificity on negatives
 
 - event-rate: fraction of $Y=1$ of total cases
 
 - *in theory* discrimination is *event-rate independent* [@hondCodeClinicTheory2023]
+
+## Discrimination: ROC curve and AUC
+
+if we vary the threshold $0 \leq \tau \leq 1$, we get a ROC curve, and the AUC is the area under this curve
+
+![](figs/auc1.png)
 
 ## Calibration
 "A  model is said to be well calibrated if for every 100 patients given a risk of x%, close to x have the event." [@vancalsterCalibrationRiskPrediction2015]
@@ -109,13 +553,13 @@ format:
 
 ::::{.fragment}
 
-![subgroup where $f(x)=10%$](figs/calibration-subgroup)
+![subgroup where $f(x)=10$%](figs/calibration-subgroup)
 
 ::::
 
 ::::{.fragment}
 
-![event rate in said subgroup is 10%](figs/calibration-outcomes.png)
+![event rate in said subgroup is 10%: $p(Y=1|f(x)=10\%) = 10\%$](figs/calibration-outcomes.png)
 
 ::::
 
@@ -123,21 +567,148 @@ format:
 
 ## Calibration plot
 
-:::{.columns}
+:::{layout-ncol=2}
 
 ::::{.column}
 
-![calibration](figs/calibrated-instrument.png)
+$p(Y=1|X)$ versus $f(x)$
+
+![calibration](figs/calibrated-instrument.png){width=60%}
 
 ::::
 
+![calibration-plot](figs/cal1.png){width=80%}
+
+:::
+
+## Performance metrics summary
+
+- discrimination: function of $P(X|Y)$ (features given outcome)
+- calibration: function of $P(Y|X)$ (outcome given features
+
+# A causal description of shifts in case-mix
+
+## Where does the association come from? 
+
+In prediction, we have features $X$ and outcome $Y$ and model $Y|X$
+
+[1. $X$ *causes* $Y$: often in *prognosis* ($Y$: heart-attack, $X$: cholesterol and age)]{.fragment fragment-index=1}
+
+[2. $Y$ causes $X$: often in *diagnosis* (CVA, based on neurological symptoms)]{.fragment fragment-index=2}
+
+[3. $Z$ causes both $X$ and $Y$: confounding (yellow fingers predict lung cancer)]{.fragment fragment-index=3}
+
+:::{layout-ncol=3}
+
+![](tikzs/causal1.png){width=80% .fragment fragment-index=1}
+
+![](tikzs/anticausal1.png){width=80% .fragment fragment-index=2}
+
+![](tikzs/confounded1.png){width=80% .fragment fragment-index=3}
+
+:::
+
+## Defining a shift in case-mix
+
+Define a shift in case-mix a change in the marginal distribution of the *cause* variable, e.g.
+
+- filter on risk factors (pregancies with type 1 diabetes in hospital)
+- filter on outcome risk (send patients with neurological symptoms to CVA center)
+- denote *environment* as variable $E$:
+
+. . . 
+
+:::{layout-ncol=3}
+
+![](tikzs/causal.png){width=80%}
+
+![](tikzs/anticausal.png){width=80%}
+
+![](tikzs/confounded.png){width=80%}
+
+:::
+
+## What does this definition imply?
+
+:::{layout="[20, 80]"}
+
+![](tikzs/causal.png){width=80%}
+
 ::::{.column}
 
+- $P(Y|X,E) = P(Y|X)$
+  - in words: $P(Y|X)$ is *transportable* across environments
+  - because there is no arrow from $E$ to $Y$, $X$ *blocks* effect of $E$ on $Y$
+- $P(X|Y,E) \neq P(X|Y)$
+  - in words: $P(X|Y)$ is *not* transportable across environments
+- implication for *causal* (prognosis) prediction:
+  - calibration is functional of $P(Y|X)$, thus stable
+  - discrimination is functional of $P(X|Y)$, thus not stable
+- for anti-causal (diagnosis) prediction: the reverse
+- **main result**: discrimination or calibration may be preserved under changes in case-mix, but never both
 
 ::::
 
 :::
 
+## Why define a shift in case-mix this way?
+
+1. cause is temporally prior to effect, filtering **at least** on cause may be likely in many settings
+2. filtering on both: *anything goes*, cannot say anything about expected performance based on graphical information
+
+# Illustrative simulation
+
+## Simulation setup
+
+\begin{align*}
+    \label{eq:dgm-prognosis}
+    \text{prognosis:} &                     & \text{diagnosis:} & \\
+    P_y &\sim \text{Beta}(\alpha_e,\beta_e) & y &\sim \text{Bernouli}(P_e) \\
+    x   &= \text{logit}(P_y)                 & x &\sim N(y, 1) \\
+    y   &\sim \text{Bernoulli}(P_y)         &   &
+\end{align*}
+
+---
+
+![](figs/causal1.png){.absolute top=200 left=0 width="350" height="300"}
+
+---
+
+```{=html}
+<img src="figs/grid-causal1.png", id="grid-causal1">
+```
+
+---
+
+![](figs/grid-causal1.png){id="grid-causal1"}
+
+---
+
+:::{.r-stack}
+
+![](figs/grid-causal1.png){.fragment .fade-in-then-out height=400}
+
+![](figs/grid-causal2.png){.fragment .fade-in-then-out height=400}
+
+![](figs/grid-causal.png){.fragment height=400}
+
+:::
+
+
+## Recap
+
+- recap performance:
+  - discrimination: a function of *features given outcome*
+  - calibration: a function of *outcome given outcome*
+- look at the *causal direction* of the prediction:
+  - are we predicting an *effect* based on its causes (e.g. heart attack, based on cholesterol and age)
+  - are we predicting a *cause* based on its effects (infer presence of CVA based on neurological symptoms)
+- define shift in *case-mix* as a change in the marginal distribution of the cause variable
+- conclude that in theory:
+  - for *prognosis models*: expect stable *calibration*, not *discrimination*
+  - for *diagnosis models*: expect stable *discrimination*, not *calibration*
+- illustrate with simulation
+- evaluate on 1300+ prediction model evaluations
 
 
 ## References

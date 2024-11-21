@@ -1,0 +1,777 @@
+---
+title: illustrative simulation for causal generalization paper
+author: Wouter van Amsterdam
+date: 2024-04-12
+format:
+    html: default
+---
+
+We now illustrate our results with a two-part simlution study.
+First we consider a prognostic model predicting in the *causal* direction and then a diagnostic model predicting in the *anti-causal* direction.
+
+## Prognosis
+
+Consider developing a prediction model for cardiovascular outcomes such as a heart attack or stroke.
+This model can be applied in three distinct settings illustrated in Figure (TODO:REF): a screening setting in the general population, patients presenting at the GP, or patients with known risk factors (e.g. diabetes) seen by a vascular specialist in a university hospital setting.
+The prediction model $f$ uses features that are known causes of cardiovascular outcomes such as age, sex and whether the patient has diabetes.
+We assume the prediction model was developed in the screening setting and has good discrimination and perfect calibration (meaning $f(X=x) = E[Y|X=x]$).
+Each of the three settings under consideration has a different distribution of the features, such that the risk of cardiovascular outcomes is progressively higher when going from a screening setting to the GP setting to the university hospital.
+We simulate this by using different Beta distributions for the outcome risk in each screening setting as shown below.
+<!-- The distribution of the risks in the GP setting and in the hospital setting are created by truncating this distribution at progressively higher minimal risk thresholds, specifically 5% for the GP setting and 25% for the hospital setting. -->
+
+```{r}
+#| label: r-setup
+suppressMessages({
+    library(data.table)
+    library(purrr)
+    library(stringr)
+    #library(splines)
+    # library(CalibratR)
+    library(pROC)
+    library(ggplot2); theme_set(theme_bw())
+    #library(WeightedROC)
+    library(ggplot2)
+    library(dplyr)
+    library(manipulate)
+    library(colorspace)
+    library(ggh4x) # facet_grid extensions
+    # library(TruncatedNormal)
+})
+
+sigmoid <- function(x) 1/ (1+exp(-x))
+logit <- function(p) log(p / (1-p))
+
+theme_clean <- function() {
+  theme_bw() +
+    theme(panel.grid.minor = element_blank())
+}
+
+environments <- as.ordered(c("screening", "GP", "hospital"))
+environments <- ordered(environments, levels=environments)
+num_envs <- length(environments)
+pal_colors <- sequential_hcl(5, palette = "Viridis")[c(1,2,4)]
+names(pal_colors) <- environments
+
+# define helper functions
+mae <- function(x, y) mean(abs(x-y))
+
+# return data.table from roc object
+roc2df <- function(x) {
+  rocdf <- as.data.table(x[c('thresholds', 'sensitivities', 'specificities')])
+  colnames(rocdf) <- c('threshold', 'sensitivity', 'specificity')
+  return(rocdf)
+}
+# ece_binned <- function(y, yhat)
+
+# calibration data frame for plotting
+make_calibration_data <- function(phat, ptrue, n_bins=1000) {
+  pdf <- data.table(phat, ptrue)
+  # setorder(pdf, phat)
+  bins <- quantile(phat, seq(0, 1, length.out=n_bins))
+  bins[1] <- 0
+  bins[n_bins] <- 1
+  pdf[, bin:=cut(phat, bins, include.lowest = T)]
+  
+  outdf <- pdf[, list(phat=mean(phat), ptrue=mean(ptrue)), by='bin']
+  return(outdf)
+}
+
+make_calibration_data_equal <- function(phat, ptrue, n_bins=100) {
+  pdf <- data.table(phat, ptrue)
+  bins <- seq(0, 1, length.out=n_bins)
+  pdf[, bin:=cut(phat, bins, include.lowest = T)]
+  
+  outdf <- pdf[, list(phat=mean(phat), ptrue=mean(ptrue)), by='bin']
+  return(outdf)
+}
+
+make_histogram_data <- function(x, n_bins=45) {
+  y <- hist(x, breaks=n_bins, plot=F)
+  outdf <- as.data.table(y[c('mids', 'counts')])
+  names(outdf) <- c('midpoint', 'count')
+  outdf[, frac:=count / sum(count)]
+  return(outdf)
+}
+
+aucs <- list()
+eces <- list()
+
+
+```
+
+```{r}
+#| label: sim-prognosis
+
+n=1e5
+
+shape_prms <- list(
+  screening = c(shape1=2, shape2=20),
+  GP        = c(shape1=5, shape2=10),
+  hospital  = c(shape1=20, shape2=20)
+  # screening = c(shape1=2, shape2=40),
+  # GP        = c(shape1=3, shape2=20),
+  # hospital  = c(shape1=7, shape2=15)
+  # screening = c(shape1=3, shape2=12),
+  # GP        = c(shape1=7, shape2=7),
+  # hospital  = c(shape1=12, shape2=3)
+)
+
+x_densities <- map(shape_prms, function(prms) {function(x) dbeta(x, prms[1], prms[2])})
+x_qs <- map(shape_prms, function(prms) {function(x) qbeta(x, prms[1], prms[2])})
+x_ps <- map(shape_prms, function(prms) {function(x) pbeta(x, prms[1], prms[2])})
+x_rs <- map(shape_prms, function(prms) {function(x) rbeta(x, prms[1], prms[2])})
+
+
+
+ggplot() +
+  geom_function(fun = dbeta, args = shape_prms$screening,
+                aes(color = "screening"),
+                linewidth = 1) +
+  geom_function(fun = dbeta, args = shape_prms$GP,
+                aes(color = "GP"),
+                linewidth = 1) +
+  geom_function(fun = dbeta, args = shape_prms$hospital,
+                aes(color = "hospital"),
+                linewidth = 1) +
+  labs(x="P(Y=1)", y="density") + 
+  scale_color_manual(values=pal_colors) + 
+  theme_clean() +
+  theme(legend.position = "bottom")
+
+ggsave('fig-py-prognosis.pdf')
+
+df_prognosis <- map_dfr(shape_prms, function(prms) data.table(py=rbeta(n, prms[1], prms[2])), .id="trainsetting")
+setDT(df_prognosis)
+df_prognosis[, x:=logit(py)]
+
+## truncated normal alternative
+# shape_prms <- list(
+#   screening = c(mu=0, lb=-Inf),
+#   GP        = c(mu=0, lb=-1.5),
+#   hospital  = c(mu=0, lb=0)
+# )
+
+# df_prognosis <- map_dfr(shape_prms, function(prms) data.table(x=rtnorm(n, lb=prms[2], ub=Inf)), .id="trainsetting")
+# setDT(df_prognosis)
+# df_prognosis[, py:=sigmoid(x)]
+df_prognosis[, y:=rbinom(.N, 1, py)]
+
+# check analytic method
+
+
+# xs <- rnorm(n)
+# xseq <- c(-2,-1,0,1,2)
+# xbars <- map_dbl(xseq, function(x) mean(xs[xs>x]))
+# xints <- map_dbl(xseq, function(q) {
+#   integrate(function(x) x * dnorm(x), q, Inf)$value / (1-pnorm(q))
+# })
+
+
+# ps <- x_rs$screening(n)
+# ys <- rbinom(n, 1, ps)
+# mean(ys)
+
+# qseq <- seq(0.1, .9, by=0.1)
+
+# ybars <- map_dbl(qseq, function(x) mean(ys[ps>x]))
+# yints <- map_dbl(qseq, function(q) {
+  # integrate(function(x) x * x_densities$screening(x), q, 1)$value / (1 - x_ps$screening(q))
+# })
+
+# integrate(function(x) x * x_densities$screening(x), .1, 1)$value / (1 - x_ps$screening(.1))
+```
+
+```{r}
+#| label: progn2
+
+# set.seed(1234565432)
+# N = 1e5
+
+# mus <- 2*c(screening=-1, GP=0, hospital=1) - 0.5
+# mu_df <- data.table(trainsetting=names(mus), mu=mus)
+# py_min_df <- data.table(trainsetting=environments, py_min=c(0, 0.2, 0.4))
+# df <- data.table(x_eps=rnorm(3*n), trainsetting=rep(environments, each=N))
+# dfa <- data.table(x_eps=rnorm(30*n), trainsetting=rep(environments, each=N*10))
+# df[mu_df, mu:=i.mu, on="trainsetting"]
+# df[, x:=mu+x_eps]
+# dfa[, x:=copy(x_eps)]
+# dfa[, py:=sigmoid(x)]
+# dfa[, y:=rbinom(.N, 1, py)]
+# dfa[py_min_df, py_min:=i.py_min, on='trainsetting']
+# df <- dfa[py > py_min]
+
+# ggplot(df, aes(x=py, col=trainsetting)) + geom_density()
+
+# keep only N
+
+# df[, idx:=1:.N, by="trainsetting"]
+# df <- df[idx<=N]
+# df[, .N, by="trainsetting"]
+# stopifnot(uniqueN(df[, .N, by='trainsetting']$N) == 1)
+
+
+# print(df[, mean(y), by="trainsetting"])
+
+```
+
+```{r}
+#| label: fit-prognosis
+
+# train a model on each environment
+fits <- map(environments, ~glm(y~x, family='binomial', data=df_prognosis[trainsetting==.x]))
+names(fits) <- environments
+
+
+# prepare result data.frame
+results_prognosis <- CJ(train=environments, test=environments)
+results_prognosis[, combinationidx:=.I]
+
+# grab outcomes and predictions
+test_datas <- map(results_prognosis$test, ~df_prognosis[trainsetting==.x])
+ys <- map(test_datas, "y")
+pys <- map(test_datas, "py")
+yhats <- map2(results_prognosis$train, test_datas,
+  function(train_environment, test_data) {
+    predict(fits[[train_environment]], newdata=test_data, type='response')
+  })
+
+# get rocs and aucs
+rocs_prognosis <- map2(ys, yhats, roc, quiet=T)
+rocdf_prognosis <- map(rocs_prognosis, roc2df) |> rbindlist(idcol="combinationidx")
+rocdf_prognosis <- rocdf_prognosis[results_prognosis, on="combinationidx"]
+
+# get calibration results
+
+# calibdf_prognosis <- map2(yhats, pys, make_calibration_data) |> rbindlist(idcol="combinationidx")
+calibdf_prognosis <- map2(yhats, pys, make_calibration_data_equal) |> rbindlist(idcol="combinationidx")
+calibdf_prognosis <- calibdf_prognosis[results_prognosis, on="combinationidx"]
+
+histdf_prognosis <- map(yhats, make_histogram_data) |> rbindlist(idcol="combinationidx")
+histdf_prognosis <- histdf_prognosis[results_prognosis, on="combinationidx"]
+
+results_prognosis$auc <- map_dbl(rocs_prognosis, auc)
+results_prognosis$ece <- map2_dbl(yhats, pys, mae)
+# results_prognosis$ece <- map2_dbl(yhats, ys, CalibratR:::get_ECE_equal_width, bins=1000)
+
+results_prognosis
+
+```
+
+## Diagnosis
+
+```{r}
+#| label: sim-diagnosis
+# set the seed for the resampling intervention
+set.seed(123454321)
+# set hypers
+N = 1e5
+n_bins = min(sqrt(N), 1000)
+n_bins_viz = 20
+# define sampling weights (sampling based on y=1)
+alpha_df <- data.table(
+  trainsetting=environments,
+  # alpha=c(.025, .1, .35)
+  alpha=c(.2, 1/3, .5)
+)
+
+df_diagnosis <- data.table(idx=rep(1:N, 3), trainsetting=rep(environments, each=N))
+df_diagnosis[alpha_df, alpha:=i.alpha, on='trainsetting']
+df_diagnosis[, y:=rbinom(.N, 1, alpha)]
+df_diagnosis[, x:=rnorm(.N) + y]
+
+get_py <- function(alpha, x) {
+  # given p(y=1)=alpha and x, calculate p(y=1|x)
+  # assuming x~N(0,1) for y=0 and x~N(1,1) for y=1
+  (alpha * dnorm(x, 1, 1)) / (alpha * dnorm(x, 1, 1) + (1-alpha) * dnorm(x, 0, 1))
+}
+
+df_diagnosis[, py:=get_py(alpha, x)]
+
+```
+
+```{r}
+#| label: fit-diagnosis
+# fit the models
+fits <- map(environments, ~glm(y~x, family='binomial', data=df_diagnosis[trainsetting==.x]))
+names(fits) <- environments
+
+# prepare result data.frame
+results_diagnosis <- CJ(train=environments, test=environments)
+results_diagnosis[, combinationidx:=.I]
+
+# grab outcomes and predictions
+test_datas <- map(results_diagnosis$test, ~df_diagnosis[trainsetting==.x])
+ys <- map(test_datas, "y")
+pys <- map(test_datas, "py")
+yhats <- map2(results_diagnosis$train, test_datas,
+  function(train_environment, test_data) {
+    predict(fits[[train_environment]], newdata=test_data, type='response')
+  })
+
+# get rocs and aucs
+rocs_diagnosis <- map2(ys, yhats, roc, quiet=T)
+rocdf_diagnosis <- map(rocs_diagnosis, roc2df) |> rbindlist(idcol="combinationidx")
+rocdf_diagnosis <- rocdf_diagnosis[results_diagnosis, on="combinationidx"]
+
+
+# get calibration results
+# results_diagnosis$ece <- map2_dbl(yhats, ys, getECE)
+calibdf_diagnosis <- map2(yhats, pys, make_calibration_data) |> rbindlist(idcol="combinationidx")
+calibdf_diagnosis <- calibdf_diagnosis[results_diagnosis, on="combinationidx"]
+
+histdf_diagnosis <- map(yhats, make_histogram_data) |> rbindlist(idcol="combinationidx")
+histdf_diagnosis <- histdf_diagnosis[results_diagnosis, on="combinationidx"]
+
+results_diagnosis$auc <- map_dbl(rocs_diagnosis, auc)
+results_diagnosis$ece <- map2_dbl(yhats, pys, mae)
+
+
+results_diagnosis
+
+```
+
+
+```{r}
+#| label: fig-grid-hist
+histdf <- rbindlist(list(
+  diagnosis=histdf_diagnosis,
+  prognosis=histdf_prognosis
+), idcol='task')
+histdf[, evaluation:=ifelse(train==test, "internal", "external")]
+
+ggplot(histdf[train=='screening'], aes(x=midpoint, y=frac)) + 
+  geom_linerange(aes(xmin=midpoint,xmax=midpoint,ymin=0,ymax=frac)) +
+  facet_grid(task~test)
+
+```
+
+
+
+```{r}
+#| label: fig-grid-calibr
+
+calibdf <- rbindlist(list(
+  diagnosis=calibdf_diagnosis,
+  prognosis=calibdf_prognosis
+), idcol='task')
+calibdf[, evaluation:=ifelse(train==test, "internal", "external")]
+
+ggplot(calibdf[train=='screening'], aes(x=phat, y=ptrue)) + 
+  geom_line(aes(linetype=evaluation)) + 
+  facet_grid(task~test)
+```
+
+
+```{r}
+#| label: fig-grid1
+
+rocdf <- rbindlist(list(
+  diagnosis=rocdf_diagnosis,
+  prognosis=rocdf_prognosis),
+  idcol="task", use.names=T)
+
+# thin the data to max 1000 points
+maxpoints <- 1000
+setorder(rocdf, task, combinationidx, threshold)
+rocdf[, thresholdidx:=1:.N, by=c("task", "combinationidx")]
+rocdf[, should_keep:=thresholdidx%in%round(seq(1, max(thresholdidx), length.out=maxpoints)),
+      by=c("task", "combinationidx")]
+rocdf <- rocdf[should_keep==T]
+
+rocdf[, evaluation:=ifelse(train==test, "internal", "external")]
+
+# create a copy of the train ROC for each test setting
+rocdf_internal_copy <- copy(rocdf[evaluation=="internal"])
+rocdf_internal_copy[, test:=NULL]
+rocdf_internal2 <- rbindlist(list(
+  "screening" = rocdf_internal_copy,
+  "GP" = rocdf_internal_copy,
+  "hospital" = rocdf_internal_copy
+), idcol="test")
+rocdf <- rbindlist(list(rocdf, rocdf_internal2), use.names=T)
+
+rocdf[, x:=1-specificity]
+rocdf[, y:=copy(sensitivity)]
+
+calibdf[, x:=copy(phat)]
+calibdf[, y:=copy(ptrue)]
+
+histdf[, x:=copy(midpoint)]
+histdf[, y:=copy(frac)]
+histdf[, metric:='calibration']
+
+calibdf2 <- rbindlist(list(calibdf, histdf), fill=T)
+
+# clibdf <- rbindlist
+
+gdf <- rbindlist(list(
+  discrimination=rocdf,
+  calibration=calibdf
+), idcol='metric', fill=T)
+
+# ggplot(rocdf[train=="screening"], aes(x=specificity,y=sensitivity)) + 
+#   geom_line(aes(linetype=evaluation)) + 
+#   facet_grid(task~test) + 
+#   scale_x_reverse()
+
+gdf[, environment:=ifelse(evaluation=="internal", as.character(train), as.character(test))]
+histdf[, environment:=ifelse(evaluation=="internal", as.character(train), as.character(test))]
+
+gdf[, task_label:=factor(task, levels=c('prognosis', 'diagnosis'),
+                           labels=c('causal (prognosis)',
+                                    'anti-causal (diagnosis)'))]
+
+histdf[, task_label:=factor(task, levels=c('prognosis', 'diagnosis'),
+                           labels=c('causal (prognosis)',
+                                    'anti-causal (diagnosis)'))]
+
+ggplot(gdf[train=="screening"], aes(x=x,y=y)) +
+  geom_line(aes(linetype=evaluation, col=environment)) +
+  geom_abline(aes(intercept=0,slope=1), alpha=0.25) + 
+  geom_linerange(data=histdf[train=='screening'],
+                 aes(xmin=x,xmax=x,ymin=0,ymax=y),
+                 alpha=0.2) +
+  facet_nested(task_label+metric~test, switch="y") + 
+  theme(
+    panel.spacing.y = unit(c(1, 5, 1)/3, "lines"),
+    panel.spacing.x = unit(1/3, "cm"),
+    legend.position = "bottom"
+    ) +
+  guides(
+    x=guide_axis(),
+    y=guide_none(),
+    y.sec=guide_axis()
+  ) +
+  coord_fixed() + 
+  scale_color_manual(values=pal_colors) + 
+  labs(x="", y="")
+
+ggsave('grid1.pdf', height=10)
+```
+
+```{r}
+#| label: fig1-plot
+
+gdf1 <- gdf[train=="screening"&test%in%c("screening", "hospital")]
+histdf1 <- histdf[train=="screening"&test%in%c("screening", "hospital")]
+gdf1[, environment:=factor(evaluation, levels=c('internal', 'external'),
+                           labels=c('train', 'test'))]
+histdf1[, environment:=factor(evaluation, levels=c('internal', 'external'),
+                           labels=c('train', 'test'))]
+pal_colors2 <- qualitative_hcl(2, palette="Dark 2")
+# names(pal_colors2) <- c("internal", "external")
+names(pal_colors2) <- c("train", "test")
+
+ggplot(gdf1[task=="diagnosis"&metric=="discrimination"&environment=="train"],
+  aes(x=x,y=y,col=environment)) +
+  geom_line(aes(linetype=environment)) +
+  geom_abline(aes(intercept=0,slope=1), alpha=0.125) +
+  theme_clean() +
+  theme(
+  panel.spacing.y = unit(1/3, "lines"),
+  panel.spacing.x = unit(1/3, "cm"),
+  legend.position = "none"
+  ) +
+  guides(
+    x=guide_axis(),
+    y=guide_axis()
+  ) +
+  scale_color_manual(values=pal_colors2) + 
+  coord_fixed() +
+  labs(x="1 - specificity", y="sensitivity")
+
+ggsave("auc1.pdf", width=4, height=4)
+ggsave("auc1.png", width=4, height=4)
+
+ggplot(gdf1[task=="diagnosis"&metric=="calibration"&environment=="train"],
+  aes(x=x,y=y,col=environment)) +
+  geom_line(aes(linetype=environment)) +
+  geom_abline(aes(intercept=0,slope=1), alpha=0.125) +
+  theme_clean() +
+  theme(
+  panel.spacing.y = unit(1/3, "lines"),
+  panel.spacing.x = unit(1/3, "cm"),
+  legend.position = "none"
+  ) +
+  guides(
+    x=guide_axis(),
+    y=guide_axis()
+  ) +
+  scale_color_manual(values=pal_colors2) + 
+  coord_fixed() +
+  labs(x="predicted probability", y="observed event rate")
+
+ggsave("cal1.pdf", width=4, height=4)
+ggsave("cal1.png", width=4, height=4)
+
+ggplot(gdf1[task=="diagnosis"], aes(x=x,y=y,col=environment)) +
+  geom_line(aes(linetype=environment)) +
+  geom_abline(aes(intercept=0,slope=1), alpha=0.125) +
+  geom_linerange(data=histdf1[task=="diagnosis"],
+                 aes(xmin=x,xmax=x,ymin=0,ymax=y),
+                 alpha=0.5) +
+  facet_grid(metric~.) +
+  theme_clean() +
+  theme(
+  panel.spacing.y = unit(1/3, "lines"),
+  panel.spacing.x = unit(1/3, "cm"),
+  legend.position = "bottom"
+  ) +
+  guides(
+    x=guide_axis(),
+    y=guide_none(),
+    y.sec=guide_axis()
+  ) +
+  scale_color_manual(values=pal_colors2) + 
+  coord_fixed() +
+  labs(x="", y="")
+
+ggsave("fig1-diagnosis.pdf", width=4, height = 8)
+
+ggplot(gdf1[task=="prognosis"], aes(x=x,y=y,col=environment)) +
+  geom_line(aes(linetype=environment)) +
+  geom_abline(aes(intercept=0,slope=1), alpha=0.125) +
+  geom_linerange(data=histdf1[task=="prognosis"],
+                 aes(xmin=x,xmax=x,ymin=0,ymax=y),
+                 alpha=0.5) +
+  facet_grid(metric~.) +
+  theme_clean() +
+  theme(
+  panel.spacing.y = unit(1/3, "lines"),
+  panel.spacing.x = unit(1/3, "cm"),
+  legend.position = "bottom"
+  ) +
+  guides(
+    x=guide_axis(),
+    y=guide_none(),
+    y.sec=guide_axis()
+  ) +
+  scale_color_manual(values=pal_colors2) + 
+  coord_fixed() +
+  labs(x="", y="")
+
+ggsave("fig1-prognosis.pdf", width=4, height = 8)
+
+ggplot(gdf1, aes(x=x,y=y,col=environment)) +
+  geom_line(aes(linetype=environment)) +
+  geom_abline(aes(intercept=0,slope=1), alpha=0.125) +
+  geom_linerange(data=histdf1,
+                 aes(xmin=x,xmax=x,ymin=0,ymax=y),
+                 alpha=0.5) +
+  facet_grid(metric~task_label) +
+  theme_clean() +
+  theme(
+  panel.spacing.y = unit(1/3, "lines"),
+  panel.spacing.x = unit(1/3, "cm"),
+  legend.position = "bottom"
+  ) +
+  guides(
+    x=guide_axis(),
+    y=guide_none(),
+    y.sec=guide_axis()
+  ) +
+  scale_color_manual(values=pal_colors2) + 
+  coord_fixed() +
+  labs(x="", y="")
+
+ggsave("fig1plot.pdf")
+
+```
+
+
+```{r}
+#| label: fig-combined
+
+results <- rbindlist(list(
+  prognosis=results_prognosis,
+  diagnosis=results_diagnosis
+), idcol="task", use.names=T)
+results[, evaluation:=ifelse(train==test, "internal", "external")]
+results[, trainsetting:=copy(train)]
+results[, testsetting:=copy(test)]
+
+ggplot(results, aes(x=ece, y=auc)) + 
+  geom_line(aes(linetype=task, col=trainsetting)) +
+  geom_point(aes(shape=testsetting, col=testsetting)) + 
+  scale_color_manual(values=pal_colors) + 
+  labs(x="calibration error", y="AUC")
+  # geom_hline(aes(yintercept=0.5)) + 
+  # geom_hline(aes(yintercept=1.0)) + 
+  # geom_vline(aes(xintercept=0.0))
+
+ggsave('fig-combined.pdf')
+
+```
+
+```{r}
+#| label: fig-y-given-x
+
+df <- rbindlist(list(prognosis=df_prognosis, diagnosis=df_diagnosis), idcol='task', fill=T)
+
+ggplot(df, aes(x=x, y=py, col=trainsetting)) + 
+  geom_line() + 
+  facet_grid(~task, scales='free_x') +
+  scale_color_manual(values=pal_colors)
+
+ggsave("fig-y-given-x.pdf")
+
+```
+
+```{r}
+#| label: fig-x-given-y
+
+ggplot(df, aes(x=x, fill=trainsetting, col=trainsetting)) + 
+  geom_density(alpha=0.2) + 
+  facet_grid(y~task, scales='free_x') +
+  scale_color_manual(values=pal_colors)
+
+ggsave('fig-x-given-y.pdf')
+
+```
+
+# external validations
+# cross predict / validate
+df[, `:=`(
+  yhat1=predict(fits[[1]], type='response', newdata=.SD),
+  yhat2=predict(fits[[2]], type='response', newdata=.SD),
+  yhat3=predict(fits[[3]], type='response', newdata=.SD)
+)]
+
+aucs <- df[, list(
+  roc1=list(roc(y, yhat1, quiet=T)),
+  roc2=list(roc(y, yhat2, quiet=T)),
+  roc3=list(roc(y, yhat3, quiet=T))
+  ), by='setting']
+aucs[, `:=`(
+  auc1=map_dbl(roc1, ~as.numeric(auc(.x))),
+  auc2=map_dbl(roc2, ~as.numeric(auc(.x))),
+  auc3=map_dbl(roc3, ~as.numeric(auc(.x)))
+  )]
+aucs
+
+
+  
+# cal_plot_breaks(df[setting==1], truth=y, estimate=yhat1, num_breaks = n_bins_viz, include_rug=F, include_ribbon=F)
+# cal_plot_breaks(df[setting==1], truth=y, estimate=yhat2, num_breaks = n_bins_viz, include_rug=F, include_ribbon=F)
+# cal_plot_breaks(df[setting==1], truth=y, estimate=yhat3, num_breaks = n_bins_viz, include_rug=F, include_ribbon=F)
+cal_plot_breaks(df, truth=y, estimate=yhat1, num_breaks = n_bins_viz, include_rug=F, include_ribbon=F, .by=setting_fac)
+cal_plot_breaks(df, truth=y, estimate=yhat2, num_breaks = n_bins_viz, include_rug=F, include_ribbon=F, .by=setting_fac)
+cal_plot_breaks(df, truth=y, estimate=yhat3, num_breaks = n_bins_viz, include_rug=F, include_ribbon=F, .by=setting_fac)
+str(ys[[1]])
+str(yhats1[[1]])
+
+
+
+fac = glm(y~xe, family='binomial')
+
+# grab stats
+y_hat_c = predict(fc, type='response')
+y_hat_ac = predict(fac, type='response')
+
+brier_c = (1/length(y_hat_c)) * sum((y_hat_c - y)^2)
+brier_ac = (1/length(y_hat_ac)) * sum((y_hat_ac - y)^2)
+
+auc_c <- as.numeric(auc(roc(y, y_hat_c, quiet=T)))
+auc_ac <- as.numeric(auc(roc(y, y_hat_ac, quiet=T)))
+
+ece_c = getECE(y, y_hat_c, n_bins)
+ece_ac = getECE(y, y_hat_ac, n_bins)
+
+# do interventions to data
+## intervene on X
+xc_qs = quantile(xc, probs=c(0, .5))
+xe_qs = quantile(xe, probs=c(0, .5))
+# xc_qs = quantile(xc, probs=c(.25, .75))
+# xe_qs = quantile(xe, probs=c(.25, .75))
+mask_xc = xc > xc_qs[1] & xc < xc_qs[2]
+mask_xe = xe > xe_qs[1] & xe < xe_qs[2]
+# mask_xc = !mask_xc
+# mask_xe = !mask_xe
+
+xc_trim = xc[mask_xc]
+y_trim_c = y[mask_xc]
+y_hat_trim_c = y_hat_c[mask_xc]
+xe_trim = xe[mask_xe]
+y_trim_ac = y[mask_xe]
+y_hat_trim_ac = y_hat_ac[mask_xe]
+
+brier_c_trim = (1/length(y_hat_trim_c)) * sum((y_hat_trim_c - y_trim_c)^2)
+brier_ac_trim = (1/length(y_hat_trim_ac)) * sum((y_hat_trim_ac - y_trim_ac)^2)
+
+auc_c_trim <- as.numeric(auc(roc(y_trim_c, y_hat_trim_c, quiet=T)))
+auc_ac_trim <- as.numeric(auc(roc(y_trim_ac, y_hat_trim_ac, quiet=T)))
+
+ece_c_trim = getECE(y_trim_c, y_hat_trim_c, n_bins)
+ece_ac_trim = getECE(y_trim_ac, y_hat_trim_ac, n_bins)
+
+## intervene on Y
+## remove 50% of negative cases
+y0_idxs = which(!y)
+y0_idxs = sample(y0_idxs) # create random permutation
+n_y0s = length(y0_idxs)
+mask_c = rep(1, length(y))
+mask_c[y0_idxs[1:floor(n_y0s/2)]] = 0
+mask_c = as.logical(mask_c)
+
+xc_uw = xc[mask_c]
+y_uw = y[mask_c]
+y_hat_c_uw = y_hat_c[mask_c]
+xe_uw = xe[mask_c]
+y_hat_ac_uw = y_hat_ac[mask_c]
+
+brier_c_uw = (1/length(y_uw)) * sum((y_hat_c_uw - y_uw)^2)
+brier_ac_uw = (1/length(y_uw)) * sum((y_hat_ac_uw - y_uw)^2)
+
+auc_c_uw <- as.numeric(auc(roc(y_uw, y_hat_c_uw, quiet=T)))
+auc_ac_uw <- as.numeric(auc(roc(y_uw, y_hat_ac_uw, quiet=T)))
+
+ece_c_uw = getECE(y_uw, y_hat_c_uw, n_bins)
+ece_ac_uw = getECE(y_uw, y_hat_ac_uw, n_bins)
+
+# make plots
+df = data.table(x=c(xc, xe), y=c(y,y), setting=rep(c('causal', 'anti_causal'), each=N))
+df[setting=='causal', y_hat:=predict(fc, type='response', newdata=data.frame(x))]
+df[setting=='anti_causal', y_hat:=predict(fac, type='response', newdata=data.frame(x))]
+df[, `:=`(mask_x=c(mask_xc, mask_xe), mask_y=c(mask_c,mask_c))]
+df[, mask_none:=T]
+dfm <- melt(df, measure.vars=c('mask_x', 'mask_y', 'mask_none'), variable.name='mask_type', value.name='mask')
+
+library(probably)
+pdf(here::here('writing', 'figs', 'calib_train.pdf'))
+df[setting=='causal'] %>%
+  cal_plot_breaks(truth=y, estimate=y_hat, num_breaks = n_bins_viz, include_rug=F, include_ribbon=F)
+dev.off()
+
+pdf(here::here('writing', 'figs', 'calib_x.pdf'))
+df[setting=='causal'&mask_x==T] %>%
+  cal_plot_breaks(truth=y, estimate=y_hat, num_breaks = n_bins_viz, include_rug=F, include_ribbon=F)
+dev.off()
+
+pdf(here::here('writing', 'figs', 'calib_y.pdf'))
+df[setting=='causal'&mask_y==T] %>%
+  cal_plot_breaks(truth=y, estimate=y_hat, num_breaks = n_bins_viz, include_rug=F, include_ribbon=F)
+dev.off()
+
+library(yardstick)
+pdf(here::here('writing', 'figs', 'roc_train.pdf'))
+df[setting=='causal'] %>%
+  mutate(y=factor(y, levels=c(1,0))) %>%
+  roc_curve(y, y_hat) %>%
+  autoplot()
+dev.off()
+
+pdf(here::here('writing', 'figs', 'roc_x.pdf'))
+df[setting=='causal'&mask_x==T] %>%
+  mutate(y=factor(y, levels=c(1,0))) %>%
+  roc_curve(y, y_hat) %>%
+  autoplot()
+dev.off()
+
+pdf(here::here('writing', 'figs', 'roc_y.pdf'))
+df[setting=='causal'&mask_y==T] %>%
+  mutate(y=factor(y, levels=c(1,0))) %>%
+  roc_curve(y, y_hat) %>%
+  autoplot()
+dev.off()
+
+

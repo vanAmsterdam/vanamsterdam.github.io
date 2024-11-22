@@ -496,7 +496,7 @@ What can we expect from the model's performance (if anything) in the new setting
   - for *prognosis models*: expect stable *calibration*, not *discrimination*
   - for *diagnosis models*: expect stable *discrimination*, not *calibration*
 - illustrate with simulation
-- evaluate on 1300+ prediction model evaluations
+- evaluate on 2030+ prediction model evaluations
 
 # Recap of performance metrics: discrimination and calibration
 
@@ -584,7 +584,7 @@ $p(Y=1|X)$ versus $f(x)$
 ## Performance metrics summary
 
 - discrimination: function of $P(X|Y)$ (features given outcome)
-- calibration: function of $P(Y|X)$ (outcome given features
+- calibration: function of $P(Y|X)$ (outcome given features)
 
 # A causal description of shifts in case-mix
 
@@ -656,7 +656,7 @@ Define a shift in case-mix a change in the marginal distribution of the *cause* 
 1. cause is temporally prior to effect, filtering **at least** on cause may be likely in many settings
 2. filtering on both: *anything goes*, cannot say anything about expected performance based on graphical information
 
-# Illustrative simulation
+# Illustrative simulation and empirical validation
 
 ## Simulation setup
 
@@ -668,50 +668,99 @@ Define a shift in case-mix a change in the marginal distribution of the *cause* 
     y   &\sim \text{Bernoulli}(P_y)         &   &
 \end{align*}
 
----
-
-![](figs/causal1.png){.absolute top=200 left=0 width="350" height="300"}
-
+<!--
 ---
 
 ```{=html}
 <img src="figs/grid-causal1.png", id="grid-causal1">
 ```
 
----
-
-![](figs/grid-causal1.png){id="grid-causal1"}
+-->
 
 ---
 
 :::{.r-stack}
 
-![](figs/grid-causal1.png){.fragment .fade-in-then-out height=400}
+![](figs/grid-causal1.png){.fragment .fade-in-then-out height=850}
 
-![](figs/grid-causal2.png){.fragment .fade-in-then-out height=400}
+![](figs/grid-causal2.png){.fragment .fade-in-then-out height=850}
 
-![](figs/grid-causal.png){.fragment height=400}
+![](figs/grid-causal.png){.fragment height=850}
 
 :::
 
+---
 
-## Recap
+:::{.r-stack}
 
-- recap performance:
-  - discrimination: a function of *features given outcome*
-  - calibration: a function of *outcome given outcome*
-- look at the *causal direction* of the prediction:
-  - are we predicting an *effect* based on its causes (e.g. heart attack, based on cholesterol and age)
-  - are we predicting a *cause* based on its effects (infer presence of CVA based on neurological symptoms)
+![](figs/grid-anticausal1.png){.fragment .fade-in-then-out height=850}
+
+![](figs/grid-anticausal2.png){.fragment .fade-in-then-out height=850}
+
+![](figs/grid-anticausal.png){.fragment height=850}
+
+:::
+
+---
+
+![](figs/fig-combined.png)
+
+## Empirical validation
+
+- a study of 2030+ evaluations of 1300+ prediction models [@wesslerExternalValidationsCardiovascular2021]
+
+![](figs/cpm-screenshot.png){.fragment}
+
+- [registry](https://www.pacecpmregistry.org/registry/): all data available with **only 4000 clicks**
+- solution: scrape the website
+
+## Results
+
+- for each study, extract AUC on internal validation and for each external validation (no calibration data available)
+- calculate scaled deviation from internal AUC ($\delta$)
+- theory implies:
+  - for prognosis models: $\delta \neq 0$
+  - for diagnostic models: $\delta=0$
+- test: variance of $\delta$ between evaluations of diagnostic or prognostic models (F-test)
+- result: $\text{VAR}(\delta_{\text{diagnostic}})=0.019 \approx 0.122 * \text{VAR}(\delta_{\text{prognostic}})$, p-value$<0.001$
+
+## Conclusion
+
+- discrimination: a function of *features given outcome*
+- calibration: a function of *outcome given outcome*
+- are we predicting an *effect* based on its causes (e.g. heart attack, based on cholesterol and age)
+- are we predicting a *cause* based on its effects (infer presence of CVA based on neurological symptoms)
 - define shift in *case-mix* as a change in the marginal distribution of the cause variable
 - conclude that in theory:
   - for *prognosis models*: expect stable *calibration*, not *discrimination*
   - for *diagnosis models*: expect stable *discrimination*, not *calibration*
-- illustrate with simulation
-- evaluate on 1300+ prediction model evaluations
+- illustrated with simulation, evaluated on 2030+ prediction model evaluations, one direction of theory seems confirmed
+- future work: more empirical validations
+
+## Questions:
+
+- how does this align with what you observed?
+- where to publish this work?
+
+<!-- 
+## Talk abstract
+
+When using prediction models in medical practice it is important to know how reliable the model's predictions are, meaning what is the model's predictive performance?
+A caveat is that there may be important differences between when a model was last evaluated and where and when it is used, often referred to as a shift in case-mix.
+In a recent pre-print (https://arxiv.org/abs/2409.01444) I study this problem of model transportability in a new light using the language of causal inference.
+I first distinghuish models that predict in the causal direction (e.g. predicting a heart attack based on cholesterol and age) from those that predict in the anti-causal direction (e.g. predicting a CVA based on neurological symptoms).
+Then, I define a shift in case-mix as a change in the marginal distribution of the cause variable.
+Based on this, I show that for models that predict in the causal direction (e.g. prognosis models), the calibration is expected to be stable under shifts in case-mix, but not the discrimination.
+For diagnostic models the reverse holds; never are both discrimination and calibration preserved.
+I illustrate the theory with a simulation study and empirically test the theory on 2030+ prediction model evaluations.
+Though the presented theory is necessarily an abstraction of the real world, it provides important insights into what to expect when evaluating prediction models in new settings and how to explain observed changes in performance.
+-->
+
 
 
 ## References
+
+
 
 
 

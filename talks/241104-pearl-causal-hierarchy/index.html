@@ -382,19 +382,19 @@ Wouter van Amsterdam
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li class="fragment"><a href="#/the-ladder-of-questions" id="/toc-the-ladder-of-questions">The ladder of questions</a></li>
-<li class="fragment"><a href="#/the-building-blocks-structural-causal-models" id="/toc-the-building-blocks-structural-causal-models">The building blocks: structural causal models</a></li>
-<li class="fragment"><a href="#/unpacking-an-example" id="/toc-unpacking-an-example">Unpacking an example</a></li>
-<li class="fragment"><a href="#/how-are-these-counterfactuals-different-from-the-potential-outcome-framework-counterfactuals" id="/toc-how-are-these-counterfactuals-different-from-the-potential-outcome-framework-counterfactuals">How are these counterfactuals different from the Potential Outcome framework counterfactuals?</a></li>
+<li><a href="#/the-ladder-of-questions" id="/toc-the-ladder-of-questions">The ladder of questions</a></li>
+<li><a href="#/the-building-blocks-structural-causal-models" id="/toc-the-building-blocks-structural-causal-models">The building blocks: structural causal models</a></li>
+<li><a href="#/unpacking-an-example" id="/toc-unpacking-an-example">Unpacking an example</a></li>
+<li><a href="#/how-are-these-counterfactuals-different-from-the-potential-outcome-framework-counterfactuals" id="/toc-how-are-these-counterfactuals-different-from-the-potential-outcome-framework-counterfactuals">How are these counterfactuals different from the Potential Outcome framework counterfactuals?</a></li>
 </ul>
 </nav>
 </section>
 <section id="todays-readings" class="slide level2 center">
 <h2>Today’s readings:</h2>
 <ul>
-<li class="fragment">Bareinboim’s paper / book chapter: <span class="citation" data-cites="bareinboimPearlsHierarchyFoundations2022">Bareinboim et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></li>
-<li class="fragment">Book of why chapter 1: <span class="citation" data-cites="pearlBookWhyNew2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
-<li class="fragment">Pearl’s note on hierarchy: <span class="citation" data-cites="pearlThreeLayerCausal">Pearl (<a href="#/references" role="doc-biblioref" onclick="">n.d.</a>)</span></li>
+<li>Bareinboim’s paper / book chapter: <span class="citation" data-cites="bareinboimPearlsHierarchyFoundations2022">Bareinboim et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></li>
+<li>Book of why chapter 1: <span class="citation" data-cites="pearlBookWhyNew2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
+<li>Pearl’s note on hierarchy: <span class="citation" data-cites="pearlThreeLayerCausal">Pearl (<a href="#/references" role="doc-biblioref" onclick="">n.d.</a>)</span></li>
 </ul>
 </section>
 <section>
@@ -409,56 +409,56 @@ Wouter van Amsterdam
 <section id="notation" class="slide level2 center">
 <h2>Notation</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(X\)</span>: treatment (binary, 0,1)</li>
-<li class="fragment"><span class="math inline">\(Y\)</span>: outcome (binary)</li>
-<li class="fragment"><span class="math inline">\(Z\)</span>: covariate (age, sex)</li>
-<li class="fragment"><span class="math inline">\(p(Y|Z)\)</span>: conditional distribution of <span class="math inline">\(Y\)</span> given <span class="math inline">\(Z\)</span> (e.g.&nbsp;regression, ‘prediction’)</li>
-<li class="fragment"><span class="math inline">\(p(Y_x)\)</span>: the causal effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>, e.g.:
+<li><span class="math inline">\(X\)</span>: treatment (binary, 0,1)</li>
+<li><span class="math inline">\(Y\)</span>: outcome (binary)</li>
+<li><span class="math inline">\(Z\)</span>: covariate (age, sex)</li>
+<li><span class="math inline">\(p(Y|Z)\)</span>: conditional distribution of <span class="math inline">\(Y\)</span> given <span class="math inline">\(Z\)</span> (e.g.&nbsp;regression, ‘prediction’)</li>
+<li><span class="math inline">\(p(Y_x)\)</span>: the causal effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>, e.g.:
 <ul>
-<li class="fragment"><span class="math inline">\(p(Y_{X=1}=1)\)</span>: the probability that <span class="math inline">\(Y\)</span> would take value 1 when we would set <span class="math inline">\(X\)</span> to 1 <em>by intervention</em></li>
-<li class="fragment"><span class="math inline">\(P(Y_1) - P(Y_0) = \text{ATE}\)</span> (average treatment effect)</li>
+<li><span class="math inline">\(p(Y_{X=1}=1)\)</span>: the probability that <span class="math inline">\(Y\)</span> would take value 1 when we would set <span class="math inline">\(X\)</span> to 1 <em>by intervention</em></li>
+<li><span class="math inline">\(P(Y_1) - P(Y_0) = \text{ATE}\)</span> (average treatment effect)</li>
 </ul></li>
 </ul>
 </section>
 <section id="layer-1-association" class="slide level2 center">
 <h2>Layer 1: association</h2>
 <ul>
-<li class="fragment">What is the relationship between two or more variables?</li>
-<li class="fragment">required:
+<li>What is the relationship between two or more variables?</li>
+<li>required:
 <ul>
-<li class="fragment">data (observational / non-experimental): <span class="math inline">\(p(X,Y,Z)\)</span></li>
+<li>data (observational / non-experimental): <span class="math inline">\(p(X,Y,Z)\)</span></li>
 </ul></li>
-<li class="fragment">questions:
+<li>questions:
 <ul>
-<li class="fragment">what is the expected survival for men, and for women? <span class="math inline">\(p(Y|Z=1)\)</span>, <span class="math inline">\(p(Y|Z=0)\)</span></li>
+<li>what is the expected survival for men, and for women? <span class="math inline">\(p(Y|Z=1)\)</span>, <span class="math inline">\(p(Y|Z=0)\)</span></li>
 </ul></li>
 </ul>
 </section>
 <section id="layer-2-intervention" class="slide level2 center">
 <h2>Layer 2: intervention</h2>
 <ul>
-<li class="fragment">What happens if we intervene on a variable?</li>
-<li class="fragment">by how much would survival change if we would treat every patient with a certain drug?
+<li>What happens if we intervene on a variable?</li>
+<li>by how much would survival change if we would treat every patient with a certain drug?
 <ul>
-<li class="fragment">this can be made subgroup specific (the <em>conditional</em> average treatment effect: CATE), e.g.&nbsp;covariate <span class="math inline">\(Z\)</span>: <span class="math inline">\(p(Y_{X=1}|Z) - p(Y_{X=0}|Z)\)</span></li>
-<li class="fragment">when covariate <span class="math inline">\(Z\)</span> is continuous, every patient has a different CATE, but conceptually this is still the CATE (average over population with same / similar value of <span class="math inline">\(Z\)</span>), not <em>individual</em> treatment effect</li>
+<li>this can be made subgroup specific (the <em>conditional</em> average treatment effect: CATE), e.g.&nbsp;covariate <span class="math inline">\(Z\)</span>: <span class="math inline">\(p(Y_{X=1}|Z) - p(Y_{X=0}|Z)\)</span></li>
+<li>when covariate <span class="math inline">\(Z\)</span> is continuous, every patient has a different CATE, but conceptually this is still the CATE (average over population with same / similar value of <span class="math inline">\(Z\)</span>), not <em>individual</em> treatment effect</li>
 </ul></li>
-<li class="fragment"><span class="math inline">\(p(Y_{X=1}=1|Z=z)\)</span>: the conditional probability that <span class="math inline">\(Y\)</span> would take value 1 when we would set <span class="math inline">\(X\)</span> to 1 <em>by intervention</em>, given that <span class="math inline">\(Z=z\)</span>
+<li><span class="math inline">\(p(Y_{X=1}=1|Z=z)\)</span>: the conditional probability that <span class="math inline">\(Y\)</span> would take value 1 when we would set <span class="math inline">\(X\)</span> to 1 <em>by intervention</em>, given that <span class="math inline">\(Z=z\)</span>
 <ul>
-<li class="fragment">aka ‘prediction under (hypothertical) intervention’</li>
-<li class="fragment">aka ‘potential outcome prediction’</li>
-<li class="fragment">aka ‘counterfactual prediction’</li>
+<li>aka ‘prediction under (hypothertical) intervention’</li>
+<li>aka ‘potential outcome prediction’</li>
+<li>aka ‘counterfactual prediction’</li>
 </ul></li>
 </ul>
 </section>
 <section id="layer-2-intervention-what-is-required" class="slide level2 center">
 <h2>Layer 2: intervention, what is required?</h2>
 <ol type="1">
-<li class="fragment">data where <span class="math inline">\(X\)</span> is controlled by experimentation (randomized controlled trial)</li>
-<li class="fragment">observational data + sufficient assumptions, typically:</li>
+<li>data where <span class="math inline">\(X\)</span> is controlled by experimentation (randomized controlled trial)</li>
+<li>observational data + sufficient assumptions, typically:</li>
 </ol>
 <ul>
-<li class="fragment">the directed acyclic graph (DAG) for the variables and no unobserved confounders</li>
+<li>the directed acyclic graph (DAG) for the variables and no unobserved confounders</li>
 </ul>
 <div class="fragment">
 <div class="quarto-figure quarto-figure-center">
@@ -472,20 +472,20 @@ Wouter van Amsterdam
 <section id="layer-3-counterfactuals" class="slide level2 center">
 <h2>Layer 3: counterfactuals</h2>
 <ul>
-<li class="fragment">What would have happened if we had done something else?</li>
-<li class="fragment">questions:
+<li>What would have happened if we had done something else?</li>
+<li>questions:
 <ul>
-<li class="fragment">given that the ICU patient got vancomycin and developed acute kidney injury, would she have developed AKI if she had not received vancomycin?</li>
-<li class="fragment"><span class="math inline">\(P(Y_{X=0}=1|Y=1,X=1)\)</span></li>
+<li>given that the ICU patient got vancomycin and developed acute kidney injury, would she have developed AKI if she had not received vancomycin?</li>
+<li><span class="math inline">\(P(Y_{X=0}=1|Y=1,X=1)\)</span></li>
 </ul></li>
-<li class="fragment">counterfactuals have an element of:
+<li>counterfactuals have an element of:
 <ul>
-<li class="fragment">something occured in the world (a <em>fact</em>)</li>
-<li class="fragment">what if we went back to the world and changed a thing, what would have occured then? (a <em>counterfact</em>)</li>
+<li>something occured in the world (a <em>fact</em>)</li>
+<li>what if we went back to the world and changed a thing, what would have occured then? (a <em>counterfact</em>)</li>
 </ul></li>
-<li class="fragment">required:
+<li>required:
 <ul>
-<li class="fragment">knowledge of <em>functional relationships</em></li>
+<li>knowledge of <em>functional relationships</em></li>
 </ul></li>
 </ul>
 <!-- . . .  -->
@@ -502,30 +502,30 @@ Wouter van Amsterdam
 <section id="layer-2-directed-acyclic-graph-dag" class="slide level2 center">
 <h2>Layer 2: directed acyclic graph (DAG)</h2>
 <ol type="1">
-<li class="fragment">association: the world as it is</li>
-<li class="fragment">intervention: the world as we could be under an intervention (as it would be / is in an experiment)</li>
-<li class="fragment">counterfactuals: the world as it was, <strong>and</strong> how it might have been if something had been different</li>
+<li>association: the world as it is</li>
+<li>intervention: the world as we could be under an intervention (as it would be / is in an experiment)</li>
+<li>counterfactuals: the world as it was, <strong>and</strong> how it might have been if something had been different</li>
 </ol>
 </section>
 <section id="the-hierarchy-what-are-the-worlds-1" class="slide level2 center">
 <h2>The hierarchy, what are the worlds?</h2>
 <ol type="1">
-<li class="fragment">one real world</li>
-<li class="fragment">one hypothetical world (or real in experiment)</li>
-<li class="fragment">one real world <strong>and</strong> a hypothetical world</li>
+<li>one real world</li>
+<li>one hypothetical world (or real in experiment)</li>
+<li>one real world <strong>and</strong> a hypothetical world</li>
 </ol>
 </section>
 <section id="what-are-the-layers-useful-for" class="slide level2 center">
 <h2>What are the layers useful for?</h2>
 <ol type="1">
-<li class="fragment">association: description, prediction (know what to expect when observing the world with hands on our backs)</li>
-<li class="fragment">intervention: policy making, decision making (know what to expect when we change the world)</li>
-<li class="fragment">counterfactuals: explanation, understanding:</li>
+<li>association: description, prediction (know what to expect when observing the world with hands on our backs)</li>
+<li>intervention: policy making, decision making (know what to expect when we change the world)</li>
+<li>counterfactuals: explanation, understanding:</li>
 </ol>
 <ul>
-<li class="fragment">drug side effects</li>
-<li class="fragment"><em>digital twins</em>: a digital representation of a physical object or system: typically assumes counterfactual level knowledge, e.g. <span class="citation" data-cites="selBuildingDigitalTwins2024">Sel et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span></li>
-<li class="fragment">questions of fairness</li>
+<li>drug side effects</li>
+<li><em>digital twins</em>: a digital representation of a physical object or system: typically assumes counterfactual level knowledge, e.g. <span class="citation" data-cites="selBuildingDigitalTwins2024">Sel et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span></li>
+<li>questions of fairness</li>
 </ul>
 </section></section>
 <section>
@@ -537,15 +537,15 @@ Wouter van Amsterdam
 <h2>What is a SCM?</h2>
 
 <img data-src="figs/bareinboim-definition1.png" class="r-stretch quarto-figure-center"><p class="caption">definition of SCM</p><ul>
-<li class="fragment"><span class="math inline">\(U\)</span> is a set of background variables, also called exogenous variables, that are determined by factors outside the model;</li>
-<li class="fragment"><span class="math inline">\(V\)</span> is a set <span class="math inline">\(\{V_1,V_2,...,V_n\}\)</span> of variables, called endogenous, that are determined by other variables in the model - that is, variables in <span class="math inline">\(U\cup V\)</span>;</li>
-<li class="fragment"><span class="math inline">\(F\)</span> is a set of functions <span class="math inline">\(\{ f_1, f_2,..., f_n\}\)</span> such that each fiis a mapping from (the respective domains of) <span class="math inline">\(U_i \cup Pa_i \to V_i\)</span>, where <span class="math inline">\(U_i \subset U\)</span>, <span class="math inline">\(Pa_i \subset V - Vi\)</span>, and the entire set <span class="math inline">\(F\)</span> forms a mapping from <span class="math inline">\(U\)</span> to <span class="math inline">\(V\)</span>. That is, for <span class="math inline">\(i = 1,...,n\)</span>, each <span class="math inline">\(f_i \in F\)</span> is such that</li>
+<li><span class="math inline">\(U\)</span> is a set of background variables, also called exogenous variables, that are determined by factors outside the model;</li>
+<li><span class="math inline">\(V\)</span> is a set <span class="math inline">\(\{V_1,V_2,...,V_n\}\)</span> of variables, called endogenous, that are determined by other variables in the model - that is, variables in <span class="math inline">\(U\cup V\)</span>;</li>
+<li><span class="math inline">\(F\)</span> is a set of functions <span class="math inline">\(\{ f_1, f_2,..., f_n\}\)</span> such that each fiis a mapping from (the respective domains of) <span class="math inline">\(U_i \cup Pa_i \to V_i\)</span>, where <span class="math inline">\(U_i \subset U\)</span>, <span class="math inline">\(Pa_i \subset V - Vi\)</span>, and the entire set <span class="math inline">\(F\)</span> forms a mapping from <span class="math inline">\(U\)</span> to <span class="math inline">\(V\)</span>. That is, for <span class="math inline">\(i = 1,...,n\)</span>, each <span class="math inline">\(f_i \in F\)</span> is such that</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[v_i \leftarrow f_i(pa_i, u_i)\]</span></p>
 <ul>
-<li class="fragment">i.e., it assigns a value to <span class="math inline">\(V_i\)</span> that depends on (the values of) a select set of variables in <span class="math inline">\(U \cup V\)</span>; and</li>
-<li class="fragment"><span class="math inline">\(P(U)\)</span> is a probability function defined over the domain of <span class="math inline">\(U\)</span>.</li>
+<li>i.e., it assigns a value to <span class="math inline">\(V_i\)</span> that depends on (the values of) a select set of variables in <span class="math inline">\(U \cup V\)</span>; and</li>
+<li><span class="math inline">\(P(U)\)</span> is a probability function defined over the domain of <span class="math inline">\(U\)</span>.</li>
 </ul>
 </div>
 </section>
@@ -612,9 +612,9 @@ F = \begin{cases}
 <section id="how-are-scms-and-dags-related-3" class="slide level2 center">
 <h2>How are SCMs and DAGs related?</h2>
 <ul>
-<li class="fragment">A (recursive) SCM <em>implies</em> a DAG,</li>
-<li class="fragment">but has strictly more information as not only the functional <em>arguments</em> are known,</li>
-<li class="fragment">but also the <em>functions</em> themselves</li>
+<li>A (recursive) SCM <em>implies</em> a DAG,</li>
+<li>but has strictly more information as not only the functional <em>arguments</em> are known,</li>
+<li>but also the <em>functions</em> themselves</li>
 </ul>
 </section>
 <section id="intervening-in-a-scm-a-submodel" class="slide level2 center">
@@ -642,9 +642,9 @@ F = \begin{cases}
 <section id="intermezzo-critique-on-the-hierarchy" class="slide level2 center">
 <h2>Intermezzo: critique on the hierarchy</h2>
 <ul>
-<li class="fragment">The Pearl Causal Hierarchy is a hiearchy of <strong>questions</strong></li>
-<li class="fragment">Some (rightly) argue that the ‘higher’ we go, the more <em>prior assumptions</em> are needed, and the less we rely on experiments</li>
-<li class="fragment">In a sense of <em>empirical</em> science, the hierarchy is upside down</li>
+<li>The Pearl Causal Hierarchy is a hiearchy of <strong>questions</strong></li>
+<li>Some (rightly) argue that the ‘higher’ we go, the more <em>prior assumptions</em> are needed, and the less we rely on experiments</li>
+<li>In a sense of <em>empirical</em> science, the hierarchy is upside down</li>
 </ul>
 </section>
 <section id="theorem-1" class="slide level2 center">
@@ -666,8 +666,8 @@ F = \begin{cases}
 \end{cases}
 \]</span></p>
 <ul>
-<li class="fragment">treatment: coin flip</li>
-<li class="fragment">survival: coin flip (not affected by <span class="math inline">\(X\)</span>)</li>
+<li>treatment: coin flip</li>
+<li>survival: coin flip (not affected by <span class="math inline">\(X\)</span>)</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[
@@ -677,7 +677,7 @@ F' = \begin{cases}
 \end{cases}
 \]</span></p>
 <ul>
-<li class="fragment">survival: affected by <span class="math inline">\(X\)</span></li>
+<li>survival: affected by <span class="math inline">\(X\)</span></li>
 </ul>
 </div>
 </section>
@@ -696,9 +696,9 @@ F' = \begin{cases}
 \end{cases}
 \]</span></p>
 <ul>
-<li class="fragment">both models: same level 1 (observational) distribution <span class="math inline">\(p(X,Y)\)</span></li>
-<li class="fragment">different level 2: <span class="math inline">\(Y_{X}\)</span></li>
-<li class="fragment">cannot tell models apart from observatoinal data alone (i.e.&nbsp;causal effect not <em>identified</em>)</li>
+<li>both models: same level 1 (observational) distribution <span class="math inline">\(p(X,Y)\)</span></li>
+<li>different level 2: <span class="math inline">\(Y_{X}\)</span></li>
+<li>cannot tell models apart from observatoinal data alone (i.e.&nbsp;causal effect not <em>identified</em>)</li>
 </ul>
 </section>
 <section id="example-7b" class="slide level2 center" data-auto-animate="true">
@@ -718,14 +718,14 @@ F' = \begin{cases}
 \end{cases}
 \]</span></p>
 <ul>
-<li class="fragment">‘the effect of treatment is determined by the coinflip’</li>
+<li>‘the effect of treatment is determined by the coinflip’</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li class="fragment">both models: same level 2 (interventional) distributions</li>
-<li class="fragment">different level 3: <span class="math inline">\(Y_{X=0}=1|X=1,Y=0)\)</span></li>
-<li class="fragment">cannot tell models apart from level 2 data alone</li>
+<li>both models: same level 2 (interventional) distributions</li>
+<li>different level 3: <span class="math inline">\(Y_{X=0}=1|X=1,Y=0)\)</span></li>
+<li>cannot tell models apart from level 2 data alone</li>
 </ul>
 </div>
 </section></section>
@@ -747,19 +747,19 @@ F' = \begin{cases}
 <section id="potential-outcomes-vs-scms" class="slide level2 center">
 <h2>Potential outcomes vs SCMs</h2>
 <ul>
-<li class="fragment">why I like the term <em>potential outcomes</em>: it has a clear sense of futures</li>
-<li class="fragment">counterfactual in the PO framework: has a clear definition and interpretation</li>
-<li class="fragment">what I don’t like: using the term <em>counterfactual outcomes</em> when the <em>potential outcomes</em> are meant, and neither has occured yet
+<li>why I like the term <em>potential outcomes</em>: it has a clear sense of futures</li>
+<li>counterfactual in the PO framework: has a clear definition and interpretation</li>
+<li>what I don’t like: using the term <em>counterfactual outcomes</em> when the <em>potential outcomes</em> are meant, and neither has occured yet
 <ul>
-<li class="fragment">e.g.&nbsp;<em>counterfactual prediction</em></li>
+<li>e.g.&nbsp;<em>counterfactual prediction</em></li>
 </ul></li>
-<li class="fragment">in the SCM frawmwork, <em>counterfactuals</em> are closer to the word:
+<li>in the SCM frawmwork, <em>counterfactuals</em> are closer to the word:
 <ul>
-<li class="fragment">a <strong>fact</strong> has been observed (the real world)</li>
-<li class="fragment">a <strong>counter</strong> fact has been asked</li>
-<li class="fragment">this actually conditions on the observed factual data (often not the case in PO framework)
+<li>a <strong>fact</strong> has been observed (the real world)</li>
+<li>a <strong>counter</strong> fact has been asked</li>
+<li>this actually conditions on the observed factual data (often not the case in PO framework)
 <ul>
-<li class="fragment">“given that the ICU patient got vancomycin and developed acute kidney injury, would she have developed AKI if she had not received vancomycin?”</li>
+<li>“given that the ICU patient got vancomycin and developed acute kidney injury, would she have developed AKI if she had not received vancomycin?”</li>
 </ul></li>
 </ul></li>
 </ul>

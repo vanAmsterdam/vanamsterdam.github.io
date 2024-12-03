@@ -8,7 +8,7 @@ aliases:
 bibliography: ../../library.bib
 format:
     revealjs:
-        incremental: true
+        incremental: false
         theme: [../custom.scss,deck.scss]
         center: true
         fig-align: center

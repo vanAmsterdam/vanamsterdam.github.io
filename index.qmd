@@ -128,8 +128,10 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 ## Students
 
+- James Hesp (SciML4Medicine project) - PhD student
 - Su Li (Methodology and Statistics) - MSc. student
 - Florian Metwaly (Methodology and Statistics) - MSc. student
+- Rodrigue Ndabashinze (Epidemiology, University of Antwerp) - MSc. student
 
 ### Former 
 
@@ -141,6 +143,7 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 ## Activities
 
+- program chair Workshop, [MLHC 2025](https://www.mlforhc.org)
 - board member [BMS-ANed](https://www.vvsor.nl/biometrics/) (Dutch biometrics society)
 - coordinator of UMC Utrecht [AI methods lab](https://www.umcutrecht.nl/en/ai-lab-methodology)
 - ambassador for [Applied Data Science](https://www.uu.nl/en/research/applied-data-science) of Utrecht University

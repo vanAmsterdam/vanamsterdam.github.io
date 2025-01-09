@@ -1,13 +1,8 @@
 [
   {
-    "listing": "/posts.html",
+    "listing": "/unlisted.html",
     "items": [
-      "/posts/240607-jama-causal-language/index.html",
-      "/posts/240322-mice-partial-residual-plot.html",
-      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
-      "/posts/210725-counterfactualvsinterventional.html",
-      "/posts/210720-good_predictions_bad_decisions.html",
-      "/posts/190816-lm-functional-form.html"
+      "/talks/240922-causalai-4cities/index.html"
     ]
   },
   {
@@ -29,9 +24,14 @@
     ]
   },
   {
-    "listing": "/unlisted.html",
+    "listing": "/posts.html",
     "items": [
-      "/talks/240922-causalai-4cities/index.html"
+      "/posts/240607-jama-causal-language/index.html",
+      "/posts/240322-mice-partial-residual-plot.html",
+      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
+      "/posts/210725-counterfactualvsinterventional.html",
+      "/posts/210720-good_predictions_bad_decisions.html",
+      "/posts/190816-lm-functional-form.html"
     ]
   },
   {

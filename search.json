@@ -1271,7 +1271,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-56706\").innerHTML = tweet[\"html\"];"
+    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-95013\").innerHTML = tweet[\"html\"];"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
@@ -1943,7 +1943,7 @@
     "href": "index.html#students",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Students",
-    "text": "Students\n\nJames Hesp (SciML4Medicine project) - PhD student\nSu Li (Methodology and Statistics) - MSc. student\nFlorian Metwaly (Methodology and Statistics) - MSc. student\nRodrigue Ndabashinze (Epidemiology, University of Antwerp) - MSc. student\n\n\nFormer\n\nSamil Kilinc (Applied Data Science, 2024)\nKiara Peek (Applied Data Science, 2024)\nMyra van Laar (Biomedical Sciences)\nGijs Bartholomeus (Medicine)\nNetanja Harlianto (Medicine)"
+    "text": "Students\n\nJames Hesp (SciML4Medicine project) - PhD student\nBenedetta Dionisi Ferrera (INT Milan, remote) - PhD student\nSu Li (Methodology and Statistics) - MSc. student\nFlorian Metwaly (Methodology and Statistics) - MSc. student\nRodrigue Ndabashinze (Epidemiology, University of Antwerp) - MSc. student\n\n\nFormer\n\nSamil Kilinc (Applied Data Science, 2024)\nKiara Peek (Applied Data Science, 2024)\nMyra van Laar (Biomedical Sciences)\nGijs Bartholomeus (Medicine)\nNetanja Harlianto (Medicine)"
   },
   {
     "objectID": "index.html#activities",

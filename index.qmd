@@ -129,6 +129,7 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 ## Students
 
 - James Hesp (SciML4Medicine project) - PhD student
+- Benedetta Dionisi Ferrera (INT Milan, remote) - PhD student
 - Su Li (Methodology and Statistics) - MSc. student
 - Florian Metwaly (Methodology and Statistics) - MSc. student
 - Rodrigue Ndabashinze (Epidemiology, University of Antwerp) - MSc. student

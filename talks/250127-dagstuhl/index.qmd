@@ -5,8 +5,6 @@ date: 2025-01-27
 author: "Wouter van Amsterdam, MD PhD"
 aliases: 
     - /talks/latest.html
-categories:
-    - unlisted
 bibliography: ../../library.bib
 format:
     revealjs:

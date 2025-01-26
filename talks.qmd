@@ -8,7 +8,7 @@ listing:
   categories: false
   fields: [date, title, subtitle]
   exclude:
-      categories: ["meetups"]
+      categories: ["meetups", "unlisted"]
 ---
 
 Here is a selection of my talks.

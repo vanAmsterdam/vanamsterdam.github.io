@@ -1,10 +1,12 @@
 ---
-title: "The case for prediction-under-intervention"
+title: "my priorities for AI in health"
 subtitle: "Dagstuhl Seminar 2025"
 date: 2025-01-27
 author: "Wouter van Amsterdam, MD PhD"
 aliases: 
     - /talks/latest.html
+categories:
+    - unlisted
 bibliography: ../../library.bib
 format:
     revealjs:
@@ -14,6 +16,7 @@ format:
         fig-align: center
         width: 1600
         height: 900
+        callout-appearance: minimal
 ---
 
 # post-deployment monitoring and evidence
@@ -58,18 +61,54 @@ format:
 - ethics in randomization; who provides consent?
 - combine AI + causal inference + trial design + ethics
 
-# Prediction under intervention
+# prediction under intervention
 
 ## Prediction-under-intervention, why work on it?
 
-this is not the fast road from computer science experiment to impact,
-but may be the most rewarding
+Prediction under intervention is estimating expected outcomes under hypothetical interventions, conditional on patient characteristics
+
+. . .
 
 (aka *counterfactual prediction*)
 
+. . .
+
+$$E[Y|X,\text{do}(T)]$$
+
+. . .
+
+:::{.callout-warning}
+this is not the fast road from computer science experiment to impact, but may be the most rewarding
+:::
+
   - why work on it? *holy grail*: know what to do
 
-## What is prediction under intervention?
+## What is not prediction under intervention
+
+Using QRISK to decide on blood pressure medication (which it's not intended for)
+
+:::{.r-stack}
+
+![](figs/qrisk1.png)
+
+![](figs/qrisk2.png){.fragment}
+
+:::
+
+## Is QRISK bad?
+
+- is it inaccurate? no, it informs of the risk of an event *given that the patient has blood pressure medication* (post-decision model)
+- this is not the same as the risk *if we were to give blood pressure medication or not*
+- these are only the same when all factors going into the decision to given the blood pressure medication are accounted for (confounders, causal inference assumptions)
+
+## What is QRISK?
+
+- intended for deciding on statin treatment, excludes patients who have statins 'on baseline'
+- is trained on patients of whom some recieced statins, reducing their risk of cardiovascular events
+- predicts risk of cardiovascular events *under current standard of care*
+- 'a treatment-naive model'
+
+## Counseling with and without prediction under intervention
 
 Imagine this dialogue between a patient who has just been diagnosed with cancer and their oncologist
 First, we'll see a conversation informed by 
@@ -107,7 +146,7 @@ Patient: Is there a treatment you can give me to improve my prognosis?
 . . .
 
 :::{.callout-tip}
-Oncologist: We know from randomized trials that treatment A leads to several more months survival than treatment B on average, though some patients do not respond well to treatment A and there may be severe side effects.
+Oncologist (RCTs): treatment A leads to several more months survival than treatment B on average, though some patients have severe side effects
 :::
 
 . . .
@@ -171,8 +210,8 @@ Patient: Thank you for this information. I will discuss this with my family and 
 ## Prediction under intervention, why is it hard:
 
 - answer a causal question, often cannot do (big enough) experiment (RCT), need assumptions otherwise (confounding, positivity)
-- assumptions need trust
-- this holds for development and evaluations
+- assumptions undermine trust; is it *rigorous*?
+- this holds for development and evaluations, cannot simply evaluate on held-out data
 - as with any AI deployment: a trial is best level of evidence
 - other forms of *off policy evaluation* possible (especially attractive when you have RCTs that randomized the treatments) [@ueharaReviewOffPolicyEvaluation2022]
 
@@ -181,7 +220,7 @@ Patient: Thank you for this information. I will discuss this with my family and 
 - key pieces of puzzle for *personalized treatment*
 - boom in causal inference interest, applications can improve
 
-# Small-data AI
+<!-- # Small-data AI
 
 ## why work on it?
 
@@ -201,7 +240,7 @@ e.g. treatment decision making in lung cancer
 
 - non-patient-based outcomes (e.g. image segmentations)
 - multi-disease models / transportability
-- 'foundation' models
+- 'foundation' models -->
 
 
 <!-- ## engaging agenda around the following themes:

@@ -1,0 +1,265 @@
+---
+title: "The case for prediction-under-intervention"
+subtitle: "Dagstuhl Seminar 2025"
+date: 2025-01-27
+author: "Wouter van Amsterdam, MD PhD"
+aliases: 
+    - /talks/latest.html
+bibliography: ../../library.bib
+format:
+    revealjs:
+        incremental: true
+        theme: [../custom.scss]
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+---
+
+# post-deployment monitoring and evidence
+
+- want *safe and effective AI*
+- EU / FDA work on regulating post-deployment monitoring
+
+## AI deployment as an intervention
+
+:::{.r-stack}
+
+![](figs/data2decision1.png){width=1000}
+
+![](figs/data2decision2.png){width=1000 .fragment}
+
+![](figs/data2decision3a.png){width=1000 .fragment}
+
+![](figs/data2decision3b.png){width=1000 .fragment}
+
+![](figs/data2decision3c.png){width=1000 .fragment}
+
+:::
+
+## why is it hard:
+
+- AI deployment is an intervention, knowing whether this improved outcomes for patients is *causal inference* [@joshiAIInterventionImproving2025]
+<!-- - *causal inference* make inference with data you have about data you do not have (what if I made other choices? except in RCTs) -->
+- before-after comparison plagued by potential time-trends
+- optimal pre-deployment evidence: (cluster) RCT
+- after *deployment*: *changes* in the data
+  - by the deployment (that was what we wanted)
+  - and many other factors.
+- measures of prediction accuracy do not automatically translate in patient benefit [@vanamsterdamWhenAccuratePrediction2025]
+
+## opportunities
+
+- what to track after deployment?
+  - accuracy, outcomes
+- how to track after deployment?
+    - randomization on center level: need many centers (possible in large health systems in the US?);
+    - randomization on patient label: need consent
+- ethics in randomization; who provides consent?
+- combine AI + causal inference + trial design + ethics
+
+# Prediction under intervention
+
+## Prediction-under-intervention, why work on it?
+
+this is not the fast road from computer science experiment to impact,
+but may be the most rewarding
+
+(aka *counterfactual prediction*)
+
+  - why work on it? *holy grail*: know what to do
+
+## What is prediction under intervention?
+
+Imagine this dialogue between a patient who has just been diagnosed with cancer and their oncologist
+First, we'll see a conversation informed by 
+
+- RCT data
+  - average outcomes (or contrast) between treatment $A$ and $B$
+- *non-causal* prediction models:
+  - predict outcome given features $X$, ignoring effects of potential treatments (treatment-naive / average treatment policy)
+  - predict outcome given features $X$ and treatment $T$, ignoring confounding by $Z$ (post-decision models)
+
+---
+
+:::{.callout-tip}
+Oncologist: Your work-up is done, we now know your cancer type and stage
+:::
+
+. . .
+
+:::{.callout-note}
+Patient: What is my prognosis?
+:::
+
+. . .
+
+:::{.callout-tip}
+Oncologist (treatment-naive model): on average, other patients who share characteristics X with you live … more years.
+:::
+
+---
+
+:::{.callout-note}
+Patient: Is there a treatment you can give me to improve my prognosis?
+:::
+
+. . .
+
+:::{.callout-tip}
+Oncologist: We know from randomized trials that treatment A leads to several more months survival than treatment B on average, though some patients do not respond well to treatment A and there may be severe side effects.
+:::
+
+. . .
+
+:::{.callout-note}
+Patient: And how long do patients live with treatment A?
+:::
+
+. . .
+
+:::{.callout-tip}
+Oncologist: The average patient in the randomized trial who got treatment A lived … years, but those patients were younger and in better overall health than you so their results may not apply to your specific case.
+:::
+
+---
+
+:::{.callout-note}
+Patient: So how long do patients like me survive when they get treatment A?
+:::
+
+. . . 
+
+:::{.callout-tip}
+Oncologist (post-decision model): Looking back, patients who share characteristics X with you and got treatment A lived … years. However, these patients may differ with respect to characteristics Z from you.
+:::
+
+. . .
+
+:::{.callout-note}
+Patient: This is getting a bit confusing, should I or should I not get treatment A?
+:::
+
+. . . 
+
+:::{.callout-tip}
+Oncologist: I know this is a very tough decision, but ultimately, it’s yours to make.
+:::
+
+## Now a conversation with prediction-under-intervention models
+
+:::{.callout-tip}
+Oncologist: Your work-up is done, we now know your cancer type and stage
+:::
+
+:::{.callout-note}
+Patient: What is my prognosis?
+:::
+
+. . .
+
+:::{.callout-tip}
+Oncologist (prediction under intervention): That depends on the treatment we choose; patients like you would on average live … years on treatment A, versus … years on treatment B.
+:::
+
+. . .
+
+:::{.callout-note}
+Patient: Thank you for this information. I will discuss this with my family and friends to decide what we think is best for me.
+:::
+
+## Prediction under intervention, why is it hard:
+
+- answer a causal question, often cannot do (big enough) experiment (RCT), need assumptions otherwise (confounding, positivity)
+- assumptions need trust
+- this holds for development and evaluations
+- as with any AI deployment: a trial is best level of evidence
+- other forms of *off policy evaluation* possible (especially attractive when you have RCTs that randomized the treatments) [@ueharaReviewOffPolicyEvaluation2022]
+
+## opportunities:
+
+- key pieces of puzzle for *personalized treatment*
+- boom in causal inference interest, applications can improve
+
+# Small-data AI
+
+## why work on it?
+
+- many diseases are relatively *rare*
+- many nuances in health care (decisions); to improve on this, need data with right granularity
+
+## working with 'frequent' cancer type: lung cancer
+
+e.g. treatment decision making in lung cancer
+
+- 1000s of lung cancer patients
+- ~1000 with right disease stage
+- ~500 have hard (contra-) indictations for a certain treatment
+- ~250 have the data
+
+## opportunities
+
+- non-patient-based outcomes (e.g. image segmentations)
+- multi-disease models / transportability
+- 'foundation' models
+
+
+<!-- ## engaging agenda around the following themes:
+
+- research
+- translation
+- testing / evaluation / monitoring
+- deployment / operation / revision -->
+
+<!-- # Prior work / experience
+
+## Medical domain
+
+What is the medical domain that I'm currently working on, and what is / would be the application of such a data-driven decision support system here?
+
+- oncology:
+    - diagnosis
+    - measurements
+    - prognosis
+    - follow-up (tracking tumors on scans)
+    - treatment decision making
+- cardiovascular health:
+    - 'risk' management: who should get a statin? large population, small effect; hardly 'sexy'; practitioners don't care?
+    - screening / diagnosis with low cost measurements ((wearable) ECG) for e.g. structural disease, arrhythmias
+
+## Data types
+
+What data (types, signals, features, quality, quantity, population, etc.) am I currently working with? What other data sets are available to me? Could I possibly share some of these data sets with others for research purposes?
+
+- oncology: CT scans
+- cardiology: ECGs, cardiac ultrasounds (echos)
+
+## What domains are ready?
+
+Which medical domains, in my opinion/experience, are ready for adoption of data-driven decision support systems and in what capacity? Do I have experience in any of them?
+
+- radiotherapy (radiology): long tradition of computer science (computer graphics)
+- record taking and administration
+
+## What is solved?
+
+What has already been "solved" by data-driven decision support systems?
+
+- radiotherapy: segmentation of tumor and organs at risk
+
+## Pressing problems
+
+What are some of the most pressing open problems and challenges in medical practice from the perspective of data-driven decision support systems? What is missing and needed?
+
+## What relevant challenges would you like to address in your work?
+
+
+## What adopted locally?
+
+What data-driven decision support systems would you want to see adopted in your hospital? What systems would you expect in 1, 3, 5 and 10 years from now?
+
+- discharge letter drafting (now)
+- no-show prediction (now) -->
+
+## References
+

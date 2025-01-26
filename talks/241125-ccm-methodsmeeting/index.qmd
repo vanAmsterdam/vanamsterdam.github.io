@@ -3,8 +3,6 @@ title: "A causal viewpoint on prediction model performance under changes in case
 subtitle: "Methods meeting at the Julius Center, UMC Utrecht"
 date: 2024-11-25
 author: "Wouter van Amsterdam, MD PhD"
-aliases: 
-    - /talks/latest.html
 bibliography: ../../library.bib
 format:
     revealjs:

@@ -753,7 +753,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-24215\").innerHTML = tweet[\"html\"];"
+    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-81132\").innerHTML = tweet[\"html\"];"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
@@ -1272,6 +1272,13 @@
     "title": "my priorities for AI in health",
     "section": "AI deployment as an intervention",
     "text": "AI deployment as an intervention"
+  },
+  {
+    "objectID": "talks/250127-dagstuhl/index.html#when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies",
+    "href": "talks/250127-dagstuhl/index.html#when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies",
+    "title": "my priorities for AI in health",
+    "section": "When accurate prediction models yield harmful self-fulfilling prophecies",
+    "text": "When accurate prediction models yield harmful self-fulfilling prophecies\nHow this can go wrong if we misalign the AI evaluation metric and the patient oucome\nPatterns, 2025"
   },
   {
     "objectID": "talks/250127-dagstuhl/index.html#why-is-it-hard",

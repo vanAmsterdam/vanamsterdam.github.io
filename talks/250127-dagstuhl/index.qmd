@@ -38,6 +38,34 @@ format:
 
 :::
 
+
+## When accurate prediction models yield harmful self-fulfilling prophecies
+
+How this can go wrong if we misalign the AI evaluation metric and the patient oucome
+
+Patterns, 2025
+
+---
+
+:::{.r-stack}
+
+![](figs/rt_example1.png){.fragment height=24cm}
+
+![](figs/rt_example2.png){.fragment height=24cm}
+
+![](figs/rt_example3.png){.fragment height=24cm}
+
+![](figs/rt_example4.png){.fragment height=24cm}
+
+![](figs/rt_example5.png){.fragment height=24cm}
+
+![](figs/rt_example6.png){.fragment height=24cm}
+
+![](figs/rt_example.png){.fragment height=24cm}
+
+:::
+
+
 ## why is it hard:
 
 - AI deployment is an intervention, knowing whether this improved outcomes for patients is *causal inference* [@joshiAIInterventionImproving2025]

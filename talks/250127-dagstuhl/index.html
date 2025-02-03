@@ -183,8 +183,8 @@ Wouter van Amsterdam, MD PhD
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li class="fragment"><a href="#/post-deployment-monitoring-and-evidence" id="/toc-post-deployment-monitoring-and-evidence">post-deployment monitoring and evidence</a></li>
-<li class="fragment"><a href="#/prediction-under-intervention" id="/toc-prediction-under-intervention">prediction under intervention</a></li>
+<li><a href="#/post-deployment-monitoring-and-evidence" id="/toc-post-deployment-monitoring-and-evidence">post-deployment monitoring and evidence</a></li>
+<li><a href="#/prediction-under-intervention" id="/toc-prediction-under-intervention">prediction under intervention</a></li>
 </ul>
 </nav>
 </section>
@@ -192,8 +192,8 @@ Wouter van Amsterdam, MD PhD
 <section id="post-deployment-monitoring-and-evidence" class="title-slide slide level1 center">
 <h1>post-deployment monitoring and evidence</h1>
 <ul>
-<li class="fragment">want <em>safe and effective AI</em></li>
-<li class="fragment">EU / FDA work on regulating post-deployment monitoring</li>
+<li>want <em>safe and effective AI</em></li>
+<li>EU / FDA work on regulating post-deployment monitoring</li>
 </ul>
 </section>
 <section id="ai-deployment-as-an-intervention" class="slide level2 center">
@@ -226,31 +226,31 @@ Wouter van Amsterdam, MD PhD
 <section id="why-is-it-hard" class="slide level2 center">
 <h2>why is it hard:</h2>
 <ul>
-<li class="fragment">AI deployment is an intervention, knowing whether this improved outcomes for patients is <em>causal inference</em> <span class="citation" data-cites="joshiAIInterventionImproving2025">(<a href="#/references" role="doc-biblioref" onclick="">Joshi et al. 2025</a>)</span> <!-- - *causal inference* make inference with data you have about data you do not have (what if I made other choices? except in RCTs) --></li>
-<li class="fragment">before-after comparison plagued by potential time-trends</li>
-<li class="fragment">optimal pre-deployment evidence: (cluster) RCT</li>
-<li class="fragment">after <em>deployment</em>: <em>changes</em> in the data
+<li>AI deployment is an intervention, knowing whether this improved outcomes for patients is <em>causal inference</em> <span class="citation" data-cites="joshiAIInterventionImproving2025">(<a href="#/references" role="doc-biblioref" onclick="">Joshi et al. 2025</a>)</span> <!-- - *causal inference* make inference with data you have about data you do not have (what if I made other choices? except in RCTs) --></li>
+<li>before-after comparison plagued by potential time-trends</li>
+<li>optimal pre-deployment evidence: (cluster) RCT</li>
+<li>after <em>deployment</em>: <em>changes</em> in the data
 <ul>
-<li class="fragment">by the deployment (that was what we wanted)</li>
-<li class="fragment">and many other factors.</li>
+<li>by the deployment (that was what we wanted)</li>
+<li>and many other factors.</li>
 </ul></li>
-<li class="fragment">measures of prediction accuracy do not automatically translate in patient benefit <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2025">(<a href="#/references" role="doc-biblioref" onclick="">van Amsterdam et al. 2025</a>)</span></li>
+<li>measures of prediction accuracy do not automatically translate in patient benefit <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2025">(<a href="#/references" role="doc-biblioref" onclick="">van Amsterdam et al. 2025</a>)</span></li>
 </ul>
 </section>
 <section id="opportunities" class="slide level2 center">
 <h2>opportunities</h2>
 <ul>
-<li class="fragment">what to track after deployment?
+<li>what to track after deployment?
 <ul>
-<li class="fragment">accuracy, outcomes</li>
+<li>accuracy, outcomes</li>
 </ul></li>
-<li class="fragment">how to track after deployment?
+<li>how to track after deployment?
 <ul>
-<li class="fragment">randomization on center level: need many centers (possible in large health systems in the US?);</li>
-<li class="fragment">randomization on patient label: need consent</li>
+<li>randomization on center level: need many centers (possible in large health systems in the US?);</li>
+<li>randomization on patient label: need consent</li>
 </ul></li>
-<li class="fragment">ethics in randomization; who provides consent?</li>
-<li class="fragment">combine AI + causal inference + trial design + ethics</li>
+<li>ethics in randomization; who provides consent?</li>
+<li>combine AI + causal inference + trial design + ethics</li>
 </ul>
 </section></section>
 <section>
@@ -276,7 +276,7 @@ Wouter van Amsterdam, MD PhD
 </div>
 </div>
 <ul>
-<li class="fragment">why work on it? <em>holy grail</em>: know what to do</li>
+<li>why work on it? <em>holy grail</em>: know what to do</li>
 </ul>
 </div>
 </section>
@@ -291,32 +291,32 @@ Wouter van Amsterdam, MD PhD
 <section id="is-qrisk-bad" class="slide level2 center">
 <h2>Is QRISK bad?</h2>
 <ul>
-<li class="fragment">is it inaccurate? no, it informs of the risk of an event <em>given that the patient has blood pressure medication</em> (post-decision model)</li>
-<li class="fragment">this is not the same as the risk <em>if we were to give blood pressure medication or not</em></li>
-<li class="fragment">these are only the same when all factors going into the decision to given the blood pressure medication are accounted for (confounders, causal inference assumptions)</li>
+<li>is it inaccurate? no, it informs of the risk of an event <em>given that the patient has blood pressure medication</em> (post-decision model)</li>
+<li>this is not the same as the risk <em>if we were to give blood pressure medication or not</em></li>
+<li>these are only the same when all factors going into the decision to given the blood pressure medication are accounted for (confounders, causal inference assumptions)</li>
 </ul>
 </section>
 <section id="what-is-qrisk" class="slide level2 center">
 <h2>What is QRISK?</h2>
 <ul>
-<li class="fragment">intended for deciding on statin treatment, excludes patients who have statins ‘on baseline’</li>
-<li class="fragment">is trained on patients of whom some recieced statins, reducing their risk of cardiovascular events</li>
-<li class="fragment">predicts risk of cardiovascular events <em>under current standard of care</em></li>
-<li class="fragment">‘a treatment-naive model’</li>
+<li>intended for deciding on statin treatment, excludes patients who have statins ‘on baseline’</li>
+<li>is trained on patients of whom some recieced statins, reducing their risk of cardiovascular events</li>
+<li>predicts risk of cardiovascular events <em>under current standard of care</em></li>
+<li>‘a treatment-naive model’</li>
 </ul>
 </section>
 <section id="counseling-with-and-without-prediction-under-intervention" class="slide level2 center">
 <h2>Counseling with and without prediction under intervention</h2>
 <p>Imagine this dialogue between a patient who has just been diagnosed with cancer and their oncologist First, we’ll see a conversation informed by</p>
 <ul>
-<li class="fragment">RCT data
+<li>RCT data
 <ul>
-<li class="fragment">average outcomes (or contrast) between treatment <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></li>
+<li>average outcomes (or contrast) between treatment <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></li>
 </ul></li>
-<li class="fragment"><em>non-causal</em> prediction models:
+<li><em>non-causal</em> prediction models:
 <ul>
-<li class="fragment">predict outcome given features <span class="math inline">\(X\)</span>, ignoring effects of potential treatments (treatment-naive / average treatment policy)</li>
-<li class="fragment">predict outcome given features <span class="math inline">\(X\)</span> and treatment <span class="math inline">\(T\)</span>, ignoring confounding by <span class="math inline">\(Z\)</span> (post-decision models)</li>
+<li>predict outcome given features <span class="math inline">\(X\)</span>, ignoring effects of potential treatments (treatment-naive / average treatment policy)</li>
+<li>predict outcome given features <span class="math inline">\(X\)</span> and treatment <span class="math inline">\(T\)</span>, ignoring confounding by <span class="math inline">\(Z\)</span> (post-decision models)</li>
 </ul></li>
 </ul>
 </section>
@@ -460,18 +460,18 @@ Wouter van Amsterdam, MD PhD
 <section id="prediction-under-intervention-why-is-it-hard" class="slide level2 center">
 <h2>Prediction under intervention, why is it hard:</h2>
 <ul>
-<li class="fragment">answer a causal question, often cannot do (big enough) experiment (RCT), need assumptions otherwise (confounding, positivity)</li>
-<li class="fragment">assumptions undermine trust; is it <em>rigorous</em>?</li>
-<li class="fragment">this holds for development and evaluations, cannot simply evaluate on held-out data</li>
-<li class="fragment">as with any AI deployment: a trial is best level of evidence</li>
-<li class="fragment">other forms of <em>off policy evaluation</em> possible (especially attractive when you have RCTs that randomized the treatments) <span class="citation" data-cites="ueharaReviewOffPolicyEvaluation2022">(<a href="#/references" role="doc-biblioref" onclick="">Uehara, Shi, and Kallus 2022</a>)</span></li>
+<li>answer a causal question, often cannot do (big enough) experiment (RCT), need assumptions otherwise (confounding, positivity)</li>
+<li>assumptions undermine trust; is it <em>rigorous</em>?</li>
+<li>this holds for development and evaluations, cannot simply evaluate on held-out data</li>
+<li>as with any AI deployment: a trial is best level of evidence</li>
+<li>other forms of <em>off policy evaluation</em> possible (especially attractive when you have RCTs that randomized the treatments) <span class="citation" data-cites="ueharaReviewOffPolicyEvaluation2022">(<a href="#/references" role="doc-biblioref" onclick="">Uehara, Shi, and Kallus 2022</a>)</span></li>
 </ul>
 </section>
 <section id="opportunities-1" class="slide level2 center">
 <h2>opportunities:</h2>
 <ul>
-<li class="fragment">key pieces of puzzle for <em>personalized treatment</em></li>
-<li class="fragment">boom in causal inference interest, applications can improve</li>
+<li>key pieces of puzzle for <em>personalized treatment</em></li>
+<li>boom in causal inference interest, applications can improve</li>
 </ul>
 <!-- # Small-data AI
 

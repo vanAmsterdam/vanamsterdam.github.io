@@ -753,7 +753,7 @@
     "href": "talks/240312-dsbiostats-twitter/index.html#reactions-to-paper-run-through-tweet-1",
     "title": "Wouter’s twitter X-peri(ments/ences)",
     "section": "reactions to paper run-through tweet",
-    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-81132\").innerHTML = tweet[\"html\"];"
+    "text": "reactions to paper run-through tweet\n\n\n;document.getElementById(\"tweet-95619\").innerHTML = tweet[\"html\"];"
   },
   {
     "objectID": "talks/240312-dsbiostats-twitter/index.html#favorite-tweet-meme",
@@ -1922,14 +1922,14 @@
     "href": "index.html",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "",
-    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \nLearning from Historical data to make better decisions in the future\nI work on the intersection of machine learning (for flexible data analysis) and causal inference (to learn to make better decisions).\nI am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care. I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare, advised by Rajesh Ranganath from NYU and Joost Verhoeff, Tim Leiner and Pim de Jong from the UMC Utrecht.\n\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf)"
+    "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \nLearning from Historical data to make better decisions in the future\nI work on the intersection of machine learning (for flexible data analysis) and causal inference (to learn to make better decisions).\nI am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care. I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare, advised by Rajesh Ranganath from NYU and Joost Verhoeff, Tim Leiner and Pim de Jong from the UMC Utrecht.\n\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf, feb 2025)"
   },
   {
     "objectID": "index.html#news",
     "href": "index.html#news",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "News",
-    "text": "News\nTogether with Maarten van Smeden, I’m recruiting a PhD student. For more information and to apply, see the UMC Utrecht website\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
+    "text": "News\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
   },
   {
     "objectID": "index.html#selected-papers",

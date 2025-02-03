@@ -6,6 +6,8 @@ author: "Wouter van Amsterdam, MD PhD"
 aliases: 
     - /talks/latest.html
 bibliography: ../../library.bib
+categories:
+  - invited
 format:
     revealjs:
         incremental: false

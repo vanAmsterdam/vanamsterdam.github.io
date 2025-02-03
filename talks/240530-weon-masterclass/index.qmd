@@ -2,6 +2,8 @@
 title: "Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies"
 subtitle: "WEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation"
 date: 2024-05-30
+categories:
+  - invited
 format:
     revealjs:
         toc: true

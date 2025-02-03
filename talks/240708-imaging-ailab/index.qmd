@@ -2,6 +2,8 @@
 title: "Medical imaging and AI for decision support"
 subtitle: "Medical Imaging AI lab meeting"
 date: 2024-07-08
+categories:
+  - invited
 format:
     revealjs:
         toc: true

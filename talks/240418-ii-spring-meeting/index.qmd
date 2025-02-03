@@ -3,6 +3,8 @@ title: AI and its (mis)uses in medical research and practice
 subtitle: Infection and Immunity spring meeting
 date: 2024/04/18
 draft: false
+categories:
+  - invited
 format:
     revealjs:
         incremental: false

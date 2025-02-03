@@ -3,6 +3,8 @@ title: Decision support based on AI in medical imaging
 subtitle: AI in medical imaging (AIBIA) parallel session
 date: 2024-05-15
 bibliography: references.bib
+categories:
+  - invited
 format:
     revealjs:
         toc: false

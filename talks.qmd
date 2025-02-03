@@ -5,7 +5,7 @@ listing:
   contents: talks
   sort: "date desc"
   type: table
-  categories: false
+  categories: true
   fields: [date, title, subtitle]
   exclude:
       categories: ["meetups", "unlisted"]

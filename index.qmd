@@ -58,13 +58,11 @@ I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on 
 **UMC Utrecht**| Assistant Professor | 2023 - now\
 **Babylon Health** | Senior Research Scientist | 2021 - 2023
 
-[CV (pdf)](cv.pdf)
+[CV (pdf, feb 2025)](cv.pdf)
 
 :::
 
 ## News
-
-Together with Maarten van Smeden, I'm recruiting a PhD student. For more information and to apply, see the [UMC Utrecht website](https://www.careersatumcutrecht.com/vacancies/wetenschap-en-onderzoek/phd-student-sciml4medicine-2024-5200)
 
 I'm a guest editor for a [special issue](https://www.biomedcentral.com/collections/VTAI?utm_medium=email&utm_source=generic&utm_content=null&utm_term=null&utm_campaign=MLSR_41512_CON1_GL_PHSS_03HEP_VTAI) in *BMC diagnostic and prognostic research* titled "Validation and transparency for AI-based diagnosis and prognosis in healthcare", together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025.
 

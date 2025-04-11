@@ -2,102 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vanamsterdam.github.io/posts.html</loc>
-    <lastmod>2025-03-24T12:40:31.048Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.564Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/190816-lm-functional-form.html</loc>
-    <lastmod>2025-03-24T12:40:31.048Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.564Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/210720-good_predictions_bad_decisions.html</loc>
-    <lastmod>2025-03-24T12:40:31.048Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.564Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/210725-counterfactualvsinterventional.html</loc>
-    <lastmod>2025-03-24T12:40:31.048Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.564Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.013Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.530Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/241104-pearl-causal-hierarchy/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.495Z</lastmod>
+    <lastmod>2025-04-11T06:28:46.010Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/240530-weon-masterclass/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.397Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240507-estro-causalinference-tutorial/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.247Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240922-causalai-4cities/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.446Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/250127-dagstuhl/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.534Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240926-bmsaned-ai-in-health/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.483Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240515-aibia-ai-medical-imaging-decision-support/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.310Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/230810-mlhc-causality-decision-making/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.109Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240516-sig-causality-prediction/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.347Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240418-ii-spring-meeting/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.246Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/241125-ccm-methodsmeeting/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.517Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.917Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/230624-chill-lightning-talk/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.083Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.600Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/talks/240312-dsbiostats-twitter/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.140Z</lastmod>
+    <loc>https://vanamsterdam.github.io/talks/241125-ccm-methodsmeeting/index.html</loc>
+    <lastmod>2025-04-11T06:28:46.031Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240418-ii-spring-meeting/index.html</loc>
+    <lastmod>2025-04-11T06:28:45.765Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240516-sig-causality-prediction/index.html</loc>
+    <lastmod>2025-04-11T06:28:45.866Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/230810-mlhc-causality-decision-making/index.html</loc>
+    <lastmod>2025-04-11T06:28:45.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240515-aibia-ai-medical-imaging-decision-support/index.html</loc>
+    <lastmod>2025-04-11T06:28:45.829Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240926-bmsaned-ai-in-health/index.html</loc>
+    <lastmod>2025-04-11T06:28:45.997Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/250127-dagstuhl/index.html</loc>
+    <lastmod>2025-04-11T06:28:46.048Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240922-causalai-4cities/index.html</loc>
+    <lastmod>2025-04-11T06:28:45.961Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240507-estro-causalinference-tutorial/index.html</loc>
+    <lastmod>2025-04-11T06:28:45.767Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/230301-lungsurv-manchester/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.057Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.573Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/240708-imaging-ailab/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.445Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.960Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/unlisted.html</loc>
-    <lastmod>2025-03-24T12:40:31.534Z</lastmod>
+    <lastmod>2025-04-11T06:28:46.049Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/240607-jama-causal-language/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.050Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.566Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html</loc>
-    <lastmod>2025-03-24T12:40:31.049Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.565Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/index.html</loc>
-    <lastmod>2025-03-24T12:40:31.049Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.565Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks.html</loc>
-    <lastmod>2025-03-24T12:40:31.057Z</lastmod>
+    <lastmod>2025-04-11T06:28:45.573Z</lastmod>
   </url>
 </urlset>

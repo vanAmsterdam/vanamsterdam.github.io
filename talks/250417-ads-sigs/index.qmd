@@ -1,0 +1,90 @@
+---
+title: "Causal Data Science in Utrecht: causality for prediction model generalization"
+subtitle: "Applied Data Science event Utrecht University"
+date: 2025-04-17
+author: "Wouter van Amsterdam, MD PhD"
+bibliography: ../../library.bib
+format:
+    revealjs:
+        incremental: true
+        theme: [../custom.scss,deck.scss]
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+---
+
+# Causal Data Science in Utrecht
+
+![](sig-logo.png)
+
+## What is causality?
+
+::: {layout-ncol=2}
+
+::::{.column}
+![](prediction.png)
+
+Prediction:
+
+"What to expect when we passively observe the world"
+::::
+
+::::{.column}
+![](causation.png)
+
+Causality:
+
+"What to expect when we actively intervene"
+
+::::
+
+:::
+
+---
+
+![](slides/Slide2.png)
+
+---
+
+![](slides/Slide3.png)
+
+---
+
+![](slides/Slide4.png)
+
+---
+
+![](slides/Slide5.png)
+
+---
+
+![](slides/Slide6.png)
+
+---
+
+![](slides/Slide7.png)
+
+---
+
+![](slides/Slide8.png)
+
+---
+
+![](slides/Slide9.png)
+
+---
+
+![](slides/Slide10.png)
+
+---
+
+![](slides/Slide11.png)
+
+# Causality and prediction model generalization
+
+[link](../241125-ccm-methodsmeeting/index.html)
+
+
+
+

@@ -19,6 +19,7 @@
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/210720-good_predictions_bad_decisions.html",
       "/posts/190816-lm-functional-form.html",
+      "/talks/250417-ads-sigs/index.html",
       "/talks/250127-dagstuhl/index.html",
       "/talks/241125-ccm-methodsmeeting/index.html",
       "/talks/241104-pearl-causal-hierarchy/index.html",
@@ -44,6 +45,7 @@
   {
     "listing": "/talks.html",
     "items": [
+      "/talks/250417-ads-sigs/index.html",
       "/talks/250127-dagstuhl/index.html",
       "/talks/241125-ccm-methodsmeeting/index.html",
       "/talks/241104-pearl-causal-hierarchy/index.html",

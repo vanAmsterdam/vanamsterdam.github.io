@@ -62,9 +62,13 @@ I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on 
 
 :::
 
-## News
+## Prospective students / collaborators
 
-**Upcoming PhD position** on (preventing) *prediction paradox*: prediction models that when deployed affect the outcome they are tyring to predict through downstream medical decisions. Applicatans with a background in causal inference, machine learning and / or prediction research are welcome to reach out. The position is with Maarten van Smeden, Ewout Steyerberg, Oisin Ryan and myself.
+**There is an upcoming PhD position** on (preventing) *prediction paradox*: prediction models that when deployed affect the outcome they are tyring to predict through downstream medical decisions. Applicatans with a background in causal inference, machine learning and / or prediction research are welcome to reach out. The position is with Maarten van Smeden, Ewout Steyerberg, Oisin Ryan and myself.
+
+I have several open projects in the field of machine learning and causal inference. Students (MSc / PhD) with a background in statistics, data science or machine learning and good coding skills are welcome to contact me.
+
+## News
 
 I'm a guest editor for a [special issue](https://www.biomedcentral.com/collections/VTAI?utm_medium=email&utm_source=generic&utm_content=null&utm_term=null&utm_campaign=MLSR_41512_CON1_GL_PHSS_03HEP_VTAI) in *BMC diagnostic and prognostic research* titled "Validation and transparency for AI-based diagnosis and prognosis in healthcare", together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025.
 

@@ -98,11 +98,18 @@
     "text": "Twitter\n  \n  \n    \n     Linkedin\n  \n  \n    \n     ORCID\n  \n  \n    \n     github\n  \n  \n    \n     pubmed\n  \n  \n    \n     google-scholar\n  \n\n  \n  \nLearning from Historical data to make better decisions in the future\nI work on the intersection of machine learning (for flexible data analysis) and causal inference (to learn to make better decisions).\nI am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care. I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare, advised by Rajesh Ranganath from NYU and Joost Verhoeff, Tim Leiner and Pim de Jong from the UMC Utrecht.\n\n\n\n\nUMC Utrecht| Assistant Professor | 2023 - now\nBabylon Health | Senior Research Scientist | 2021 - 2023\nCV (pdf, feb 2025)"
   },
   {
+    "objectID": "index.html#prospective-students-collaborators",
+    "href": "index.html#prospective-students-collaborators",
+    "title": "Wouter van Amsterdam, MD, PhD",
+    "section": "Prospective students / collaborators",
+    "text": "Prospective students / collaborators\nThere is an upcoming PhD position on (preventing) prediction paradox: prediction models that when deployed affect the outcome they are tyring to predict through downstream medical decisions. Applicatans with a background in causal inference, machine learning and / or prediction research are welcome to reach out. The position is with Maarten van Smeden, Ewout Steyerberg, Oisin Ryan and myself.\nI have several open projects in the field of machine learning and causal inference. Students (MSc / PhD) with a background in statistics, data science or machine learning and good coding skills are welcome to contact me."
+  },
+  {
     "objectID": "index.html#news",
     "href": "index.html#news",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "News",
-    "text": "News\nUpcoming PhD position on (preventing) prediction paradox: prediction models that when deployed affect the outcome they are tyring to predict through downstream medical decisions. Applicatans with a background in causal inference, machine learning and / or prediction research are welcome to reach out. The position is with Maarten van Smeden, Ewout Steyerberg, Oisin Ryan and myself.\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
+    "text": "News\nI’m a guest editor for a special issue in BMC diagnostic and prognostic research titled “Validation and transparency for AI-based diagnosis and prognosis in healthcare”, together with Maarten van Smeden and Anne de Hond. Submission is open until Jan 31st 2025."
   },
   {
     "objectID": "index.html#selected-papers",

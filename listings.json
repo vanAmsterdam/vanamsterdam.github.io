@@ -1,18 +1,14 @@
 [
   {
-    "listing": "/posts.html",
+    "listing": "/unlisted.html",
     "items": [
-      "/posts/240607-jama-causal-language/index.html",
-      "/posts/240322-mice-partial-residual-plot.html",
-      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
-      "/posts/210725-counterfactualvsinterventional.html",
-      "/posts/210720-good_predictions_bad_decisions.html",
-      "/posts/190816-lm-functional-form.html"
+      "/talks/240922-causalai-4cities/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/posts/250425-robustness.html",
       "/posts/240607-jama-causal-language/index.html",
       "/posts/240322-mice-partial-residual-plot.html",
       "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
@@ -37,12 +33,6 @@
     ]
   },
   {
-    "listing": "/unlisted.html",
-    "items": [
-      "/talks/240922-causalai-4cities/index.html"
-    ]
-  },
-  {
     "listing": "/talks.html",
     "items": [
       "/talks/250417-ads-sigs/index.html",
@@ -59,6 +49,18 @@
       "/talks/230810-mlhc-causality-decision-making/index.html",
       "/talks/230624-chill-lightning-talk/index.html",
       "/talks/230301-lungsurv-manchester/index.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/250425-robustness.html",
+      "/posts/240607-jama-causal-language/index.html",
+      "/posts/240322-mice-partial-residual-plot.html",
+      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
+      "/posts/210725-counterfactualvsinterventional.html",
+      "/posts/210720-good_predictions_bad_decisions.html",
+      "/posts/190816-lm-functional-form.html"
     ]
   }
 ]

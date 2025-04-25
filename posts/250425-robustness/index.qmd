@@ -38,6 +38,8 @@ We'll answer this in three steps:
 
 ### Where do differences between environments come from?
 
+![](min-transport.png)
+
 To evaluate the question we'll first layout *how* exactly environments may be different. In probability statements, how the *joint distribution* of $X$ and $Y$ depends on the environment $E$.
 Without making any assumptions, we can decompose the joint distriution in two ways using the [chain rule](https://en.wikipedia.org/wiki/Chain_rule_(probability)) (or general product rule):
 

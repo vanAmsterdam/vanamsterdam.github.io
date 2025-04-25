@@ -139,6 +139,6 @@ In contrast, in setting B we have that discrimination is stable but calibration 
 
 Environments must differ with respect to *something*. If the distribution of features given outcome remains the same ($X|Y$), discrimination is preserved, if the distribution of outcome given features remains the same ($Y|X$), calibration is preserved. If both are the same, the environments were not meaningfully different to begin with.
 
-A question that remains is *how* these differences in environments may come about.
-On this, I wrote a paper titled **A causal viewpoint on prediction model performance under changes in case-mix: discrimination and calibration respond differently for prognosis and diagnosis predictions** which you can find on [ArXiv](https://arxiv.org/abs/2409.01444v3)
+A question that remains is *how* these differences in environments may come about, and what to with all this in practice.
+On this, I wrote a paper titled **A causal viewpoint on prediction model performance under changes in case-mix: discrimination and calibration respond differently for prognosis and diagnosis predictions** which you can find on [ArXiv](https://arxiv.org/abs/2409.01444)
 

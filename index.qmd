@@ -64,7 +64,8 @@ I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on 
 
 ## Prospective students / collaborators
 
-**There is an upcoming PhD position** on (preventing) *prediction paradox*: prediction models that when deployed affect the outcome they are tyring to predict through downstream medical decisions. Applicatans with a background in causal inference, machine learning and / or prediction research are welcome to reach out. The position is with Maarten van Smeden, Ewout Steyerberg, Oisin Ryan and myself.
+There are 3 open PhD positions at our data science methods department, see [LinkedIN](https://www.linkedin.com/posts/maartenvansmeden_hiring-we-offer-3-fully-funded-phd-positions-activity-7321419607016157187-JZ7K/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAATRCVMBLpmDHrCNBUHtp1wJvcz1SLL_8q0)
+One of these positions will be co-supervised by me: (preventing) *prediction paradox*: prediction models that when deployed affect the outcome they are tyring to predict through downstream medical decisions. Applicatans with a background in causal inference, machine learning and / or prediction research are welcome to reach out. The position is with Maarten van Smeden, Ewout Steyerberg, Oisin Ryan and myself.
 
 I have several open projects in the field of machine learning and causal inference. Students (MSc / PhD) with a background in statistics, data science or machine learning and good coding skills are welcome to contact me.
 
@@ -79,6 +80,11 @@ A causal viewpoint on prediction model performance under changes in case-mix: Di
 [url](https://doi.org/10.48550/arXiv.2409.01444)
 [pdf](papers/2024_causal_casemix.pdf)
 
+When accurate prediction models yield harmful self-fulfilling prophecies.\
+*van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. Patterns. 2025 Apr;6(4):101229.*
+[url](https://doi.org/10.1016/j.patter.2025.101229)
+[pdf](papers/2025_selffulfilling.pdf)
+
 Causal Inference in Oncology: Why, What, How and When.\
 *van Amsterdam, W. A. C., Elias, S., & Ranganath, R. (2024). Clinical Oncology.*\
 [url](https://doi.org/10.1016/j.clon.2024.07.002)
@@ -92,11 +98,6 @@ From algorithms to action: improving patient care requires causality.\
 *van Amsterdam, W. A. C., de Jong, P. A., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2024). BMC Medical Informatics and Decision Making*\
 [url](https://doi.org/10.1186/s12911-024-02513-3)
 [pdf](papers/2024_comment_bmc.pdf)
-
-When accurate prediction models yield harmful self-fulfilling prophecies (arXiv:2312.01210).\
-*van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. (2024). ML4H 2023 findings-track*\
-[url](https://arxiv.org/abs/2312.01210)
-[pdf](papers/2024_selffulfilling_ml4h.pdf)
 
 Individual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.\ 
 *van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports*\
@@ -147,6 +148,11 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 - Myra van Laar (Biomedical Sciences)
 - Gijs Bartholomeus (Medicine)
 - Netanja Harlianto (Medicine)
+
+## In the News
+
+- Our work on harmful-selfulfilling prophecies got covered in [The Independent](https://www.independent.co.uk/news/health/ai-healthcare-patients-nhs-b2732070.html), [Pharmophorum](https://pharmaphorum.com/news/why-relying-ai-outcome-models-may-not-be-good-idea), and 6 independent experts at an [SMC-roundup](https://www.sciencemediacentre.org/expert-reaction-to-study-suggesting-potential-patient-harms-associated-with-use-of-ai-medical-outcome-prediction-models/)
+- I gave an interview for BiotechNEWs on my vision for the future of AI in healthcare [pdf](resources/24_biotechnews_interview.pdf) 
 
 ## Activities
 

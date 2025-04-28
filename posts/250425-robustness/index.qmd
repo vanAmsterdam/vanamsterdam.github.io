@@ -23,6 +23,7 @@ In each environment, we measure predictive performance with:
 ## Which result would provide stronger evidence of robustness?
 
 A. observe stable discrimination and calibration across all environments
+
 B. observe stable discrimination but poor calibration in some environments
 
 
@@ -33,7 +34,7 @@ B. observe stable discrimination but poor calibration in some environments
 We'll answer this in three steps:
 
 1. where do differences between environments come from?
-2. how are discrminiation and calibration calculated?
+2. how are discrimination and calibration calculated?
 3. putting 1 and 2 together, answer the question
 
 ### Where do differences between environments come from?

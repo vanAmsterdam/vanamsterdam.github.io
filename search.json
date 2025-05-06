@@ -312,7 +312,7 @@
     "href": "talks/250507-effect-measure-stability-meeting/index.html#motivation-1",
     "title": "Effect Measure Stability",
     "section": "Motivation",
-    "text": "Motivation\n\nNeed to make assumptions to pick best measure\n\n\n\n\n\n\n\n\nPotential assumption:\n\n\nvariance in outcome risk in control arms depends more on the distribution of \\(X\\) (or on more \\(X\\)s), than the effect of the treatment (contrast between treated and control)\n\n\n\n\nYou showed that for treatments with monotonic effects (never hurting or never benefitting), the conditional risk ratio (/survival ratio) may be decoupled from baseline risk"
+    "text": "Motivation\n\nNeed to make assumptions to pick best measure for:\n\nlearning about our target population\ndecision making\n\nnote: decision making may depend on a different effect measure (e.g. risk differences) than what is chosen / best for meta-analysis\n\n\n\n\n\n\n\n\nPotential assumption:\n\n\nvariance in outcome risk in control arms depends more on the distribution of \\(X\\) (or on more \\(X\\)s), than the effect of the treatment (contrast between treated and control)\n\n\n\n\nYou showed that for treatments with monotonic effects (never hurting or never benefitting), the conditional risk ratio (/survival ratio) may be decoupled from baseline risk"
   },
   {
     "objectID": "talks/250507-effect-measure-stability-meeting/index.html#project-hypothesis",

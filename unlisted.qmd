@@ -8,8 +8,9 @@ listing:
   categories: false
   fields: [date, title, subtitle]
   include:
-      categories: ["meetups"]
+      categories: ["meetups", "wip"]
 ---
+
 
 ::: {#unlisted-listings}
 :::

@@ -1,0 +1,109 @@
+---
+title: "Effect Measure Stability"
+date: 2025-05-07
+format:
+    revealjs:
+        incremental: true
+categories:
+  - unlisted
+  - wip
+---
+
+# Motivation
+
+## History
+
+- April 2023, read paper "Risk Ratio, odds ratio, risk difference... Which causal  measure is easier to generalize?"
+- Reached out to Benedicte, had a conversation
+- Late 2023, thought of an empirical project to test an hypothesis inspired by the paper
+- Early 2024, Rodrigue Ndabashinze reached out to do his epidemiology MSc. thesis with me
+- Jan 2025, started on this project, together with Valentijn de Jong
+- Apr 2025, meet Julie at EurCIM, decide to present some early results from our project
+
+## Effects of interventions
+
+- In healthcare we need to make decisions regarding interventions ('treatments'), based on their 'effects'
+- Let $Y^0,Y^1$ be potential outcomes under treatment $0$ and $1$ respectively:
+
+. . . 
+
+$$ \Psi = f(E[Y^0], E[Y^1]) $$
+
+- If $Y$ is binary, $\Psi$ could be a risk difference, risk ratio ($\Psi_{rr}$), survival ratio ($\Psi_{sr}$), number needed to treat, odds ratio, etc.
+
+## Estimating effects
+
+- We get these estimates from RCTs, as these give us random samples from $P(Y^0),P(Y^1)$:
+
+. . .
+
+  $$D = \sum_{i}^{n_0} Y_i^0 = 1, \sum_{i}^{n_0} Y_i^0 = 0, \sum_i^{n_1} Y_i^1 = 1, \sum_i^{n_1} Y_i^1 = 0 $$
+
+- For a well-conducted RCT, many $\Psi$ are a *valid* measure of the treatment effect
+
+## Heterogeneity poses challenges for decision making
+
+- $\Psi$ is a functional of the underlying joint distribution of $Y^0$ and $Y^1$, which may depend on covariates $X$:
+
+. . .
+
+$$ \Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) $$
+
+- Need to make a decision on interventions for *a specific* subpopulation ('target') with a specific distribution of $X$: $P^*(X)$
+
+## Issues with trial evidence
+
+- Trials are typically conducted in specific subpopulations, which
+  a. may not *cover* $P^*(X)$ (e.g. elderly, pregnant women and children are often excluded)
+  b. may have a different disctribution of $X$
+
+## How to use the RCT evidence?
+
+- Typical highest standard of evidence: have a series of all $k$ published RCT results, $D_1, \ldots, D_k$.
+- Calculate *an* effect meausre $\Psi_i$ for each trial (with variance estimate $v_i$), and then combine them to get a single estimate with *meta-analysis*.
+
+. . .
+
+\begin{aligned}
+\Psi_i \mid \theta_i &\;\sim\; N \bigl(\theta_i,\;v_i\bigr), \quad i=1,\dots,k \\[6pt]
+\theta_i \mid \mu,\tau &\;\sim\; N\bigl(\mu,\;\tau^{2}\bigr)
+\end{aligned}
+
+- $\mu$ is *overall* effect measure, $\tau$ is *heterogeneity* of the effect measure (which could be 0)
+- note: this is a *random effects* model; for *fixed effects* models, $\tau=0$ is assumed
+
+---
+
+:::{r-stretch}
+Though many choices of $\Psi$ (risk ratio, survival ratio, risk difference, ...) are *valid* measures of treatment effect, not all of them are created equally when it comes to their dependence on the underlying joint distribution of $Y^0$ and $Y^1$, i.e. their *generalizability*.
+:::
+
+## Motivation
+
+- Need to make assumptions to pick best measure
+
+. . .
+
+:::{.callout-tip}
+## Potential assumption:
+
+variance in outcome risk in control arms depends more on the distribution of $X$ (or on more $X$s), than the *effect* of the treatment (contrast between treated and control)
+:::
+
+- You showed that for treatments with *monotonic* effects (never hurting or never benefitting), the conditional *risk ratio* (/*survival ratio*) may be decoupled from baseline risk
+
+## Project hypothesis
+
+- For meta-analyses of RCTs, assume presence of differences in distribution of covariates that influence the *baseline risk*, but not the *effect* of the treatment
+- Perform meta-analysis for both risk-ratio and survival-ratio
+- Depending on whether an outcome is a *benefit* or a *harm*, the underlying *variance* of the treatment effect ($\tau$) should differ
+
+## Project set-up
+
+1. Go to library of meta-analyses of RCTs (Cochrane)
+2. Do wide search for meta-analyses of RCTs of interventions
+3. Pull RCT-level aggregated data from Cochrane library
+4. Classify every outcome in every meta-analysis as *benefit* or *harm*
+5. re-perform meta-analysis for both risk-ratio and survival ratio
+6. check distributions of $\tau$
+

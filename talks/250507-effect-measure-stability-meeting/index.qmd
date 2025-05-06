@@ -80,7 +80,10 @@ Though many choices of $\Psi$ (risk ratio, survival ratio, risk difference, ...)
 
 ## Motivation
 
-- Need to make assumptions to pick best measure
+- Need to make assumptions to pick best measure for:
+  - learning about our target population
+  - decision making
+- note: decision making may depend on a different effect measure (e.g. risk differences) than what is chosen / best for meta-analysis
 
 . . .
 

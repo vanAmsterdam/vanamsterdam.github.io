@@ -39,6 +39,8 @@ listing:
     type: table
     fields: [date, title, subtitle]
     sort: "date desc"
+    exclude:
+        categories: ["meetups", "unlisted", "wip"]
 ---
 
 :::{#hero-heading}

@@ -15,7 +15,7 @@ categories:
 
 - April 2023, read paper "Risk Ratio, odds ratio, risk difference... Which causal  measure is easier to generalize?"
 - Reached out to Benedicte, had a conversation
-- Late 2023, thought of an empirical project to test an hypothesis inspired by the paper
+- Thought of an empirical project to test an hypothesis inspired by the paper
 - Early 2024, Rodrigue Ndabashinze reached out to do his epidemiology MSc. thesis with me
 - Jan 2025, started on this project, together with Valentijn de Jong
 - Apr 2025, meet Julie at EurCIM, decide to present some early results from our project
@@ -29,33 +29,22 @@ categories:
 
 $$ \Psi = f(E[Y^0], E[Y^1]) $$
 
-- If $Y$ is binary, $\Psi$ could be a risk difference, risk ratio ($\Psi_{rr}$), survival ratio ($\Psi_{sr}$), number needed to treat, odds ratio, etc.
+- If $Y$ is binary, $\Psi$ could be a risk difference ($\Psi_{rd}$), risk ratio ($\Psi_{rr}$), survival ratio ($\Psi_{sr}$), number needed to treat, odds ratio, etc.
 
 ## Estimating effects
 
-- We get these estimates from RCTs, as these give us random samples from $P(Y^0),P(Y^1)$:
+- We get estimates of treatment effects from RCTs, as these give us random samples from $P(Y^0),P(Y^1)$, $D=$
 
 . . .
 
-  $$D = \sum_{i}^{n_0} Y_i^0 = 1, \sum_{i}^{n_0} Y_i^0 = 0, \sum_i^{n_1} Y_i^1 = 1, \sum_i^{n_1} Y_i^1 = 0 $$
+|           | $Y=0$                      | $Y=1$                      |
+|-----------|----------------------------|----------------------------|
+| control   | $\sum_{i}^{n_0} Y_i^0 = 0$ | $\sum_{i}^{n_0} Y_i^0 = 1$ |
+| treatment | $\sum_i^{n_1} Y_i^1 = 0$   | $\sum_i^{n_1} Y_i^1 = 1$   |
 
-- For a well-conducted RCT, many $\Psi$ are a *valid* measure of the treatment effect
+  <!-- $$D = \{\sum_{i}^{n_0} Y_i^0 = 1, \sum_{i}^{n_0} Y_i^0 = 0, \sum_i^{n_1} Y_i^1 = 1, \sum_i^{n_1} Y_i^1 = 0 \}$$ -->
 
-## Heterogeneity poses challenges for decision making
-
-- $\Psi$ is a functional of the underlying joint distribution of $Y^0$ and $Y^1$, which may depend on covariates $X$:
-
-. . .
-
-$$ \Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) $$
-
-- Need to make a decision on interventions for *a specific* subpopulation ('target') with a specific distribution of $X$: $P^*(X)$
-
-## Issues with trial evidence
-
-- Trials are typically conducted in specific subpopulations, which
-  a. may not *cover* $P^*(X)$ (e.g. elderly, pregnant women and children are often excluded)
-  b. may have a different disctribution of $X$
+- For a well-conducted RCT, many choices $\Psi$ are a *valid* measure of the treatment effect
 
 ## How to use the RCT evidence?
 
@@ -65,12 +54,37 @@ $$ \Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) $$
 . . .
 
 \begin{aligned}
+\Psi_i &\;\sim\; N \bigl(\mu,\;v_i\bigr), \quad i=1,\dots,k
+\end{aligned}
+
+- $\mu$ is *overall* effect measure; $\Psi$ typically on log scale, or risk difference
+- this is a 'fixed effects' model with a single underlying treatment effect
+
+## Heterogeneity poses challenges for decision making
+
+- $\Psi$ is a functional of the underlying joint distribution of $Y^0$ and $Y^1$, which may depend on covariates $X$:
+
+. . .
+
+$$ \Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) $$
+
+- Need to make a decision on interventions for *a specific* subpopulation ('target') with a specific distribution: $P^*(Y^0,Y^1,X)$
+
+## Issues with trial evidence
+
+- Trials are typically conducted in specific subpopulations, which
+  a. may not *cover* $P^*(X)$ (e.g. elderly, pregnant women and children are often excluded)
+  b. may have a different disctribution of $X$
+
+## Meta-analysis with random effects
+
+\begin{aligned}
 \Psi_i \mid \theta_i &\;\sim\; N \bigl(\theta_i,\;v_i\bigr), \quad i=1,\dots,k \\[6pt]
 \theta_i \mid \mu,\tau &\;\sim\; N\bigl(\mu,\;\tau^{2}\bigr)
 \end{aligned}
 
 - $\mu$ is *overall* effect measure, $\tau$ is *heterogeneity* of the effect measure (which could be 0)
-- note: this is a *random effects* model; for *fixed effects* models, $\tau=0$ is assumed
+- this is a *random effects* model, setting $\tau=0$ retreives the 'fixed effects' model
 
 ---
 
@@ -90,10 +104,13 @@ Though many choices of $\Psi$ (risk ratio, survival ratio, risk difference, ...)
 :::{.callout-tip}
 ## Potential assumption:
 
-variance in outcome risk in control arms depends more on the distribution of $X$ (or on more $X$s), than the *effect* of the treatment (contrast between treated and control)
+The variance in outcome risk in control arms depends more on the distribution of $X$ (or on more $X$s), than the *effect* of the treatment (contrast between treated and control)
+
 :::
 
-- You showed that for treatments with *monotonic* effects (never hurting or never benefitting), the conditional *risk ratio* (/*survival ratio*) may be decoupled from baseline risk
+---
+
+You showed that for treatments with *monotonic* effects (never hurting or never benefitting), the conditional *risk ratio* (/*survival ratio*) may be decoupled from baseline risk
 
 ## Project hypothesis
 
@@ -109,4 +126,6 @@ variance in outcome risk in control arms depends more on the distribution of $X$
 4. Classify every outcome in every meta-analysis as *benefit* or *harm*
 5. re-perform meta-analysis for both risk-ratio and survival ratio
 6. check distributions of $\tau$
+
+# Project progress and early results (Rodrigue)
 

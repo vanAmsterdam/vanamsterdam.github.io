@@ -86,12 +86,6 @@ $$ \Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) $$
 - $\mu$ is *overall* effect measure, $\tau$ is *heterogeneity* of the effect measure (which could be 0)
 - this is a *random effects* model, setting $\tau=0$ retreives the 'fixed effects' model
 
----
-
-:::{r-stretch}
-Though many choices of $\Psi$ (risk ratio, survival ratio, risk difference, ...) are *valid* measures of treatment effect, not all of them are created equally when it comes to their dependence on the underlying joint distribution of $Y^0$ and $Y^1$, i.e. their *generalizability*.
-:::
-
 ## Motivation
 
 - Need to make assumptions to pick best measure for:
@@ -109,6 +103,12 @@ The variance in outcome risk in control arms depends more on the distribution of
 :::
 
 ---
+
+:::{r-stretch}
+Though many choices of $\Psi$ (risk ratio, survival ratio, risk difference, ...) are *valid* measures of treatment effect, not all of them are created equally when it comes to their dependence on the underlying joint distribution of $Y^0$ and $Y^1$, i.e. their *generalizability*.
+:::
+
+. . .
 
 You showed that for treatments with *monotonic* effects (never hurting or never benefitting), the conditional *risk ratio* (/*survival ratio*) may be decoupled from baseline risk
 

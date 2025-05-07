@@ -164,6 +164,7 @@
 <h2 id="toc-title">Table of contents</h2>
 <ul>
 <li class="fragment"><a href="#/motivation" id="/toc-motivation">Motivation</a></li>
+<li class="fragment"><a href="#/project-progress-and-early-results-rodrigue" id="/toc-project-progress-and-early-results-rodrigue">Project progress and early results (Rodrigue)</a></li>
 </ul>
 </nav>
 </section>
@@ -177,7 +178,7 @@
 <ul>
 <li class="fragment">April 2023, read paper “Risk Ratio, odds ratio, risk difference… Which causal measure is easier to generalize?”</li>
 <li class="fragment">Reached out to Benedicte, had a conversation</li>
-<li class="fragment">Late 2023, thought of an empirical project to test an hypothesis inspired by the paper</li>
+<li class="fragment">Thought of an empirical project to test an hypothesis inspired by the paper</li>
 <li class="fragment">Early 2024, Rodrigue Ndabashinze reached out to do his epidemiology MSc. thesis with me</li>
 <li class="fragment">Jan 2025, started on this project, together with Valentijn de Jong</li>
 <li class="fragment">Apr 2025, meet Julie at EurCIM, decide to present some early results from our project</li>
@@ -192,19 +193,56 @@
 <div class="fragment">
 <p><span class="math display">\[ \Psi = f(E[Y^0], E[Y^1]) \]</span></p>
 <ul>
-<li class="fragment">If <span class="math inline">\(Y\)</span> is binary, <span class="math inline">\(\Psi\)</span> could be a risk difference, risk ratio (<span class="math inline">\(\Psi_{rr}\)</span>), survival ratio (<span class="math inline">\(\Psi_{sr}\)</span>), number needed to treat, odds ratio, etc.</li>
+<li class="fragment">If <span class="math inline">\(Y\)</span> is binary, <span class="math inline">\(\Psi\)</span> could be a risk difference (<span class="math inline">\(\Psi_{rd}\)</span>), risk ratio (<span class="math inline">\(\Psi_{rr}\)</span>), survival ratio (<span class="math inline">\(\Psi_{sr}\)</span>), number needed to treat, odds ratio, etc.</li>
 </ul>
 </div>
 </section>
 <section id="estimating-effects" class="slide level2">
 <h2>Estimating effects</h2>
 <ul>
-<li class="fragment">We get these estimates from RCTs, as these give us random samples from <span class="math inline">\(P(Y^0),P(Y^1)\)</span>:</li>
+<li class="fragment">We get estimates of treatment effects from RCTs, as these give us random samples from <span class="math inline">\(P(Y^0),P(Y^1)\)</span>, <span class="math inline">\(D=\)</span></li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[D = \sum_{i}^{n_0} Y_i^0 = 1, \sum_{i}^{n_0} Y_i^0 = 0, \sum_i^{n_1} Y_i^1 = 1, \sum_i^{n_1} Y_i^1 = 0 \]</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(Y=0\)</span></th>
+<th><span class="math inline">\(Y=1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>control</td>
+<td><span class="math inline">\(\sum_{i}^{n_0} Y_i^0 = 0\)</span></td>
+<td><span class="math inline">\(\sum_{i}^{n_0} Y_i^0 = 1\)</span></td>
+</tr>
+<tr class="even">
+<td>treatment</td>
+<td><span class="math inline">\(\sum_i^{n_1} Y_i^1 = 0\)</span></td>
+<td><span class="math inline">\(\sum_i^{n_1} Y_i^1 = 1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><!-- $$D = \{\sum_{i}^{n_0} Y_i^0 = 1, \sum_{i}^{n_0} Y_i^0 = 0, \sum_i^{n_1} Y_i^1 = 1, \sum_i^{n_1} Y_i^1 = 0 \}$$ --></p>
 <ul>
-<li class="fragment">For a well-conducted RCT, many <span class="math inline">\(\Psi\)</span> are a <em>valid</em> measure of the treatment effect</li>
+<li class="fragment">For a well-conducted RCT, many choices <span class="math inline">\(\Psi\)</span> are a <em>valid</em> measure of the treatment effect</li>
+</ul>
+</div>
+</section>
+<section id="how-to-use-the-rct-evidence" class="slide level2">
+<h2>How to use the RCT evidence?</h2>
+<ul>
+<li class="fragment">Typical highest standard of evidence: have a series of all <span class="math inline">\(k\)</span> published RCT results, <span class="math inline">\(D_1, \ldots, D_k\)</span>.</li>
+<li class="fragment">Calculate <em>an</em> effect meausre <span class="math inline">\(\Psi_i\)</span> for each trial (with variance estimate <span class="math inline">\(v_i\)</span>), and then combine them to get a single estimate with <em>meta-analysis</em>.</li>
+</ul>
+<div class="fragment">
+<span class="math display">\[\begin{aligned}
+\Psi_i &amp;\;\sim\; N \bigl(\mu,\;v_i\bigr), \quad i=1,\dots,k
+\end{aligned}\]</span>
+<ul>
+<li class="fragment"><span class="math inline">\(\mu\)</span> is <em>overall</em> effect measure; <span class="math inline">\(\Psi\)</span> typically on log scale, or risk difference</li>
+<li class="fragment">this is a ‘fixed effects’ model with a single underlying treatment effect</li>
 </ul>
 </div>
 </section>
@@ -216,7 +254,7 @@
 <div class="fragment">
 <p><span class="math display">\[ \Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) \]</span></p>
 <ul>
-<li class="fragment">Need to make a decision on interventions for <em>a specific</em> subpopulation (‘target’) with a specific distribution of <span class="math inline">\(X\)</span>: <span class="math inline">\(P^*(X)\)</span></li>
+<li class="fragment">Need to make a decision on interventions for <em>a specific</em> subpopulation (‘target’) with a specific distribution: <span class="math inline">\(P^*(Y^0,Y^1,X)\)</span></li>
 </ul>
 </div>
 </section>
@@ -230,22 +268,16 @@
 </ol></li>
 </ul>
 </section>
-<section id="how-to-use-the-rct-evidence" class="slide level2">
-<h2>How to use the RCT evidence?</h2>
-<ul>
-<li class="fragment">Typical highest standard of evidence: have a series of all <span class="math inline">\(k\)</span> published RCT results, <span class="math inline">\(D_1, \ldots, D_k\)</span>.</li>
-<li class="fragment">Calculate <em>an</em> effect meausre <span class="math inline">\(\Psi_i\)</span> for each trial (with variance estimate <span class="math inline">\(v_i\)</span>), and then combine them to get a single estimate with <em>meta-analysis</em>.</li>
-</ul>
-<div class="fragment">
+<section id="meta-analysis-with-random-effects" class="slide level2">
+<h2>Meta-analysis with random effects</h2>
 <span class="math display">\[\begin{aligned}
 \Psi_i \mid \theta_i &amp;\;\sim\; N \bigl(\theta_i,\;v_i\bigr), \quad i=1,\dots,k \\[6pt]
 \theta_i \mid \mu,\tau &amp;\;\sim\; N\bigl(\mu,\;\tau^{2}\bigr)
 \end{aligned}\]</span>
 <ul>
 <li class="fragment"><span class="math inline">\(\mu\)</span> is <em>overall</em> effect measure, <span class="math inline">\(\tau\)</span> is <em>heterogeneity</em> of the effect measure (which could be 0)</li>
-<li class="fragment">note: this is a <em>random effects</em> model; for <em>fixed effects</em> models, <span class="math inline">\(\tau=0\)</span> is assumed</li>
+<li class="fragment">this is a <em>random effects</em> model, setting <span class="math inline">\(\tau=0\)</span> retreives the ‘fixed effects’ model</li>
 </ul>
-</div>
 </section>
 <section class="slide level2">
 
@@ -273,14 +305,15 @@
 <p><strong>Potential assumption:</strong></p>
 </div>
 <div class="callout-content">
-<p>variance in outcome risk in control arms depends more on the distribution of <span class="math inline">\(X\)</span> (or on more <span class="math inline">\(X\)</span>s), than the <em>effect</em> of the treatment (contrast between treated and control)</p>
+<p>The variance in outcome risk in control arms depends more on the distribution of <span class="math inline">\(X\)</span> (or on more <span class="math inline">\(X\)</span>s), than the <em>effect</em> of the treatment (contrast between treated and control)</p>
 </div>
 </div>
 </div>
-<ul>
-<li class="fragment">You showed that for treatments with <em>monotonic</em> effects (never hurting or never benefitting), the conditional <em>risk ratio</em> (/<em>survival ratio</em>) may be decoupled from baseline risk</li>
-</ul>
 </div>
+</section>
+<section class="slide level2">
+
+<p>You showed that for treatments with <em>monotonic</em> effects (never hurting or never benefitting), the conditional <em>risk ratio</em> (/<em>survival ratio</em>) may be decoupled from baseline risk</p>
 </section>
 <section id="project-hypothesis" class="slide level2">
 <h2>Project hypothesis</h2>
@@ -300,9 +333,12 @@
 <li class="fragment">re-perform meta-analysis for both risk-ratio and survival ratio</li>
 <li class="fragment">check distributions of <span class="math inline">\(\tau\)</span></li>
 </ol>
-
-
 </section></section>
+<section id="project-progress-and-early-results-rodrigue" class="title-slide slide level1 center">
+<h1>Project progress and early results (Rodrigue)</h1>
+
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

@@ -39,7 +39,7 @@
     "href": "index.html#talks",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Talks",
-    "text": "Talks\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nMay 7, 2025\n\n\nEffect Measure Stability\n\n\n \n\n\n\n\n\n\nApr 17, 2025\n\n\nCausal Data Science in Utrecht: causality for prediction model generalization\n\n\nApplied Data Science event Utrecht University\n\n\n\n\n\n\nJan 27, 2025\n\n\nmy priorities for AI in health\n\n\nDagstuhl Seminar 2025\n\n\n\n\n\n\nNov 25, 2024\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nMethods meeting at the Julius Center, UMC Utrecht\n\n\n\n\n\n\nNov 6, 2024\n\n\nPearl Causal Hierarchy\n\n\nCausal Inference at Julius reading group\n\n\n\n\n\n\nNo matching items"
+    "text": "Talks\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nApr 17, 2025\n\n\nCausal Data Science in Utrecht: causality for prediction model generalization\n\n\nApplied Data Science event Utrecht University\n\n\n\n\n\n\nJan 27, 2025\n\n\nmy priorities for AI in health\n\n\nDagstuhl Seminar 2025\n\n\n\n\n\n\nNov 25, 2024\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nMethods meeting at the Julius Center, UMC Utrecht\n\n\n\n\n\n\nNov 6, 2024\n\n\nPearl Causal Hierarchy\n\n\nCausal Inference at Julius reading group\n\n\n\n\n\n\nSep 26, 2024\n\n\nAn introduction to AI for biostatisticians\n\n\nBMS-Aned seminar\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#teaching",
@@ -270,28 +270,35 @@
     "href": "talks/250507-effect-measure-stability-meeting/index.html#history",
     "title": "Effect Measure Stability",
     "section": "History",
-    "text": "History\n\nApril 2023, read paper “Risk Ratio, odds ratio, risk difference… Which causal measure is easier to generalize?”\nReached out to Benedicte, had a conversation\nLate 2023, thought of an empirical project to test an hypothesis inspired by the paper\nEarly 2024, Rodrigue Ndabashinze reached out to do his epidemiology MSc. thesis with me\nJan 2025, started on this project, together with Valentijn de Jong\nApr 2025, meet Julie at EurCIM, decide to present some early results from our project"
+    "text": "History\n\nApril 2023, read paper “Risk Ratio, odds ratio, risk difference… Which causal measure is easier to generalize?”\nReached out to Benedicte, had a conversation\nThought of an empirical project to test an hypothesis inspired by the paper\nEarly 2024, Rodrigue Ndabashinze reached out to do his epidemiology MSc. thesis with me\nJan 2025, started on this project, together with Valentijn de Jong\nApr 2025, meet Julie at EurCIM, decide to present some early results from our project"
   },
   {
     "objectID": "talks/250507-effect-measure-stability-meeting/index.html#effects-of-interventions",
     "href": "talks/250507-effect-measure-stability-meeting/index.html#effects-of-interventions",
     "title": "Effect Measure Stability",
     "section": "Effects of interventions",
-    "text": "Effects of interventions\n\nIn healthcare we need to make decisions regarding interventions (‘treatments’), based on their ‘effects’\nLet \\(Y^0,Y^1\\) be potential outcomes under treatment \\(0\\) and \\(1\\) respectively:\n\n\n\\[ \\Psi = f(E[Y^0], E[Y^1]) \\]\n\nIf \\(Y\\) is binary, \\(\\Psi\\) could be a risk difference, risk ratio (\\(\\Psi_{rr}\\)), survival ratio (\\(\\Psi_{sr}\\)), number needed to treat, odds ratio, etc."
+    "text": "Effects of interventions\n\nIn healthcare we need to make decisions regarding interventions (‘treatments’), based on their ‘effects’\nLet \\(Y^0,Y^1\\) be potential outcomes under treatment \\(0\\) and \\(1\\) respectively:\n\n\n\\[ \\Psi = f(E[Y^0], E[Y^1]) \\]\n\nIf \\(Y\\) is binary, \\(\\Psi\\) could be a risk difference (\\(\\Psi_{rd}\\)), risk ratio (\\(\\Psi_{rr}\\)), survival ratio (\\(\\Psi_{sr}\\)), number needed to treat, odds ratio, etc."
   },
   {
     "objectID": "talks/250507-effect-measure-stability-meeting/index.html#estimating-effects",
     "href": "talks/250507-effect-measure-stability-meeting/index.html#estimating-effects",
     "title": "Effect Measure Stability",
     "section": "Estimating effects",
-    "text": "Estimating effects\n\nWe get these estimates from RCTs, as these give us random samples from \\(P(Y^0),P(Y^1)\\):\n\n\n\\[D = \\sum_{i}^{n_0} Y_i^0 = 1, \\sum_{i}^{n_0} Y_i^0 = 0, \\sum_i^{n_1} Y_i^1 = 1, \\sum_i^{n_1} Y_i^1 = 0 \\]\n\nFor a well-conducted RCT, many \\(\\Psi\\) are a valid measure of the treatment effect"
+    "text": "Estimating effects\n\nWe get estimates of treatment effects from RCTs, as these give us random samples from \\(P(Y^0),P(Y^1)\\), \\(D=\\)\n\n\n\n\n\n\n\\(Y=0\\)\n\\(Y=1\\)\n\n\n\n\ncontrol\n\\(\\sum_{i}^{n_0} Y_i^0 = 0\\)\n\\(\\sum_{i}^{n_0} Y_i^0 = 1\\)\n\n\ntreatment\n\\(\\sum_i^{n_1} Y_i^1 = 0\\)\n\\(\\sum_i^{n_1} Y_i^1 = 1\\)\n\n\n\n\n\nFor a well-conducted RCT, many choices \\(\\Psi\\) are a valid measure of the treatment effect"
+  },
+  {
+    "objectID": "talks/250507-effect-measure-stability-meeting/index.html#how-to-use-the-rct-evidence",
+    "href": "talks/250507-effect-measure-stability-meeting/index.html#how-to-use-the-rct-evidence",
+    "title": "Effect Measure Stability",
+    "section": "How to use the RCT evidence?",
+    "text": "How to use the RCT evidence?\n\nTypical highest standard of evidence: have a series of all \\(k\\) published RCT results, \\(D_1, \\ldots, D_k\\).\nCalculate an effect meausre \\(\\Psi_i\\) for each trial (with variance estimate \\(v_i\\)), and then combine them to get a single estimate with meta-analysis.\n\n\n\\[\\begin{aligned}\n\\Psi_i &\\;\\sim\\; N \\bigl(\\mu,\\;v_i\\bigr), \\quad i=1,\\dots,k\n\\end{aligned}\\]\n\n\\(\\mu\\) is overall effect measure; \\(\\Psi\\) typically on log scale, or risk difference\nthis is a ‘fixed effects’ model with a single underlying treatment effect"
   },
   {
     "objectID": "talks/250507-effect-measure-stability-meeting/index.html#heterogeneity-poses-challenges-for-decision-making",
     "href": "talks/250507-effect-measure-stability-meeting/index.html#heterogeneity-poses-challenges-for-decision-making",
     "title": "Effect Measure Stability",
     "section": "Heterogeneity poses challenges for decision making",
-    "text": "Heterogeneity poses challenges for decision making\n\n\\(\\Psi\\) is a functional of the underlying joint distribution of \\(Y^0\\) and \\(Y^1\\), which may depend on covariates \\(X\\):\n\n\n\\[ \\Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) \\]\n\nNeed to make a decision on interventions for a specific subpopulation (‘target’) with a specific distribution of \\(X\\): \\(P^*(X)\\)"
+    "text": "Heterogeneity poses challenges for decision making\n\n\\(\\Psi\\) is a functional of the underlying joint distribution of \\(Y^0\\) and \\(Y^1\\), which may depend on covariates \\(X\\):\n\n\n\\[ \\Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) \\]\n\nNeed to make a decision on interventions for a specific subpopulation (‘target’) with a specific distribution: \\(P^*(Y^0,Y^1,X)\\)"
   },
   {
     "objectID": "talks/250507-effect-measure-stability-meeting/index.html#issues-with-trial-evidence",
@@ -301,18 +308,18 @@
     "text": "Issues with trial evidence\n\nTrials are typically conducted in specific subpopulations, which\n\nmay not cover \\(P^*(X)\\) (e.g. elderly, pregnant women and children are often excluded)\nmay have a different disctribution of \\(X\\)"
   },
   {
-    "objectID": "talks/250507-effect-measure-stability-meeting/index.html#how-to-use-the-rct-evidence",
-    "href": "talks/250507-effect-measure-stability-meeting/index.html#how-to-use-the-rct-evidence",
+    "objectID": "talks/250507-effect-measure-stability-meeting/index.html#meta-analysis-with-random-effects",
+    "href": "talks/250507-effect-measure-stability-meeting/index.html#meta-analysis-with-random-effects",
     "title": "Effect Measure Stability",
-    "section": "How to use the RCT evidence?",
-    "text": "How to use the RCT evidence?\n\nTypical highest standard of evidence: have a series of all \\(k\\) published RCT results, \\(D_1, \\ldots, D_k\\).\nCalculate an effect meausre \\(\\Psi_i\\) for each trial (with variance estimate \\(v_i\\)), and then combine them to get a single estimate with meta-analysis.\n\n\n\\[\\begin{aligned}\n\\Psi_i \\mid \\theta_i &\\;\\sim\\; N \\bigl(\\theta_i,\\;v_i\\bigr), \\quad i=1,\\dots,k \\\\[6pt]\n\\theta_i \\mid \\mu,\\tau &\\;\\sim\\; N\\bigl(\\mu,\\;\\tau^{2}\\bigr)\n\\end{aligned}\\]\n\n\\(\\mu\\) is overall effect measure, \\(\\tau\\) is heterogeneity of the effect measure (which could be 0)\nnote: this is a random effects model; for fixed effects models, \\(\\tau=0\\) is assumed"
+    "section": "Meta-analysis with random effects",
+    "text": "Meta-analysis with random effects\n\\[\\begin{aligned}\n\\Psi_i \\mid \\theta_i &\\;\\sim\\; N \\bigl(\\theta_i,\\;v_i\\bigr), \\quad i=1,\\dots,k \\\\[6pt]\n\\theta_i \\mid \\mu,\\tau &\\;\\sim\\; N\\bigl(\\mu,\\;\\tau^{2}\\bigr)\n\\end{aligned}\\]\n\n\\(\\mu\\) is overall effect measure, \\(\\tau\\) is heterogeneity of the effect measure (which could be 0)\nthis is a random effects model, setting \\(\\tau=0\\) retreives the ‘fixed effects’ model"
   },
   {
     "objectID": "talks/250507-effect-measure-stability-meeting/index.html#motivation-1",
     "href": "talks/250507-effect-measure-stability-meeting/index.html#motivation-1",
     "title": "Effect Measure Stability",
     "section": "Motivation",
-    "text": "Motivation\n\nNeed to make assumptions to pick best measure for:\n\nlearning about our target population\ndecision making\n\nnote: decision making may depend on a different effect measure (e.g. risk differences) than what is chosen / best for meta-analysis\n\n\n\n\n\n\n\n\nPotential assumption:\n\n\nvariance in outcome risk in control arms depends more on the distribution of \\(X\\) (or on more \\(X\\)s), than the effect of the treatment (contrast between treated and control)\n\n\n\n\nYou showed that for treatments with monotonic effects (never hurting or never benefitting), the conditional risk ratio (/survival ratio) may be decoupled from baseline risk"
+    "text": "Motivation\n\nNeed to make assumptions to pick best measure for:\n\nlearning about our target population\ndecision making\n\nnote: decision making may depend on a different effect measure (e.g. risk differences) than what is chosen / best for meta-analysis\n\n\n\n\n\n\n\n\nPotential assumption:\n\n\nThe variance in outcome risk in control arms depends more on the distribution of \\(X\\) (or on more \\(X\\)s), than the effect of the treatment (contrast between treated and control)"
   },
   {
     "objectID": "talks/250507-effect-measure-stability-meeting/index.html#project-hypothesis",

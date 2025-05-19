@@ -1,9 +1,41 @@
 [
   {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/250425-robustness/index.html",
+      "/posts/240607-jama-causal-language/index.html",
+      "/posts/240322-mice-partial-residual-plot.html",
+      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
+      "/posts/210725-counterfactualvsinterventional.html",
+      "/posts/210720-good_predictions_bad_decisions.html",
+      "/posts/190816-lm-functional-form.html"
+    ]
+  },
+  {
     "listing": "/unlisted.html",
     "items": [
       "/talks/250507-effect-measure-stability-meeting/index.html",
       "/talks/240922-causalai-4cities/index.html"
+    ]
+  },
+  {
+    "listing": "/talks.html",
+    "items": [
+      "/talks/250522-hds-ccm/index.html",
+      "/talks/250417-ads-sigs/index.html",
+      "/talks/250127-dagstuhl/index.html",
+      "/talks/241125-ccm-methodsmeeting/index.html",
+      "/talks/241104-pearl-causal-hierarchy/index.html",
+      "/talks/240926-bmsaned-ai-in-health/index.html",
+      "/talks/240708-imaging-ailab/index.html",
+      "/talks/240530-weon-masterclass/index.html",
+      "/talks/240516-sig-causality-prediction/index.html",
+      "/talks/240515-aibia-ai-medical-imaging-decision-support/index.html",
+      "/talks/240507-estro-causalinference-tutorial/index.html",
+      "/talks/240418-ii-spring-meeting/index.html",
+      "/talks/230810-mlhc-causality-decision-making/index.html",
+      "/talks/230624-chill-lightning-talk/index.html",
+      "/talks/230301-lungsurv-manchester/index.html"
     ]
   },
   {
@@ -16,6 +48,7 @@
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/210720-good_predictions_bad_decisions.html",
       "/posts/190816-lm-functional-form.html",
+      "/talks/250522-hds-ccm/index.html",
       "/talks/250417-ads-sigs/index.html",
       "/talks/250127-dagstuhl/index.html",
       "/talks/241125-ccm-methodsmeeting/index.html",
@@ -30,37 +63,6 @@
       "/talks/230810-mlhc-causality-decision-making/index.html",
       "/talks/230624-chill-lightning-talk/index.html",
       "/talks/230301-lungsurv-manchester/index.html"
-    ]
-  },
-  {
-    "listing": "/talks.html",
-    "items": [
-      "/talks/250417-ads-sigs/index.html",
-      "/talks/250127-dagstuhl/index.html",
-      "/talks/241125-ccm-methodsmeeting/index.html",
-      "/talks/241104-pearl-causal-hierarchy/index.html",
-      "/talks/240926-bmsaned-ai-in-health/index.html",
-      "/talks/240708-imaging-ailab/index.html",
-      "/talks/240530-weon-masterclass/index.html",
-      "/talks/240516-sig-causality-prediction/index.html",
-      "/talks/240515-aibia-ai-medical-imaging-decision-support/index.html",
-      "/talks/240507-estro-causalinference-tutorial/index.html",
-      "/talks/240418-ii-spring-meeting/index.html",
-      "/talks/230810-mlhc-causality-decision-making/index.html",
-      "/talks/230624-chill-lightning-talk/index.html",
-      "/talks/230301-lungsurv-manchester/index.html"
-    ]
-  },
-  {
-    "listing": "/posts.html",
-    "items": [
-      "/posts/250425-robustness/index.html",
-      "/posts/240607-jama-causal-language/index.html",
-      "/posts/240322-mice-partial-residual-plot.html",
-      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
-      "/posts/210725-counterfactualvsinterventional.html",
-      "/posts/210720-good_predictions_bad_decisions.html",
-      "/posts/190816-lm-functional-form.html"
     ]
   }
 ]

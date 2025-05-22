@@ -156,7 +156,7 @@ $p(Y=1|X)$ versus $f(x)$
 
 ## Performance metrics summary
 
-- performance metrics for $f$ are ingeneral functionals of the joint distribution $P(X,Y)$
+- performance metrics for $m_f$ are in general functionals of the joint distribution $P(X,Y)$
 - discrimination: function of *conditional* $P(X|Y)$ (features given outcome)
 - calibration: function of *conditional* $P(Y|X)$ (outcome given features)
 
@@ -204,7 +204,7 @@ Denoting *environment* as variable $E$:
   2. pregnant women with type 1 diabetes are counselled by gynaecologists in hospital
   - this is filtering on patient characteristics (making distribution of $X$ different)
   
-- predict occurence of STD 
+- predict occurence of stroke
   1. general emergency center
   2. patients with clear neurological symptoms are sent to stroke center
   - filter on outcome risk (different distribution of $Y$)

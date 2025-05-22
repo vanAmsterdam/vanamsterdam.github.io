@@ -6,7 +6,7 @@ author: "Wouter van Amsterdam, MD PhD"
 bibliography: ../../library.bib
 format:
     revealjs:
-        incremental: true
+        incremental: false
         theme: [../custom.scss,deck.scss]
         center: true
         fig-align: center
@@ -16,7 +16,17 @@ categories:
   - invited
 ---
 
---- 
+
+::: {.callout-note .hidden}
+TODO: Add content to this section.
+
+- add motivation / implication
+- add that discrimination / calibration is 'canonical' based on e.g. TRIPOD+AI
+- update empirical results with density plot and MSE test
+
+:::
+
+---
 
 ![](figs/ccm-arxiv-screenshot.png)
 
@@ -59,7 +69,7 @@ What can we expect from the model's performance (if anything) in the new setting
 - recap performance: discrimination, calibration
 - look at the *causal direction* of the prediction:
   - are we predicting an *effect* based on its causes (e.g. heart attack, based on cholesterol and age) - typical in *prognosis*
-  - are we predicting a *cause* based on its effects (infer presence of CVA based on neurological symptoms) - typical in *diagnosis*
+  - are we predicting a *cause* based on its effects (infer presence of stroke based on neurological symptoms) - typical in *diagnosis*
 - define shift in *case-mix* as a change in the marginal distribution of the cause variable
 - conclude that in theory:
   - for *prognosis models*: expect stable *calibration*, not *discrimination*
@@ -168,7 +178,7 @@ In prediction, we have features $X$ and outcome $Y$ and model $Y|X$
 
 [1. $X$ *causes* $Y$: often in *prognosis* ($Y$: heart-attack, $X$: cholesterol and age)]{.fragment fragment-index=1}
 
-[2. $Y$ causes $X$: often in *diagnosis* (CVA, based on neurological symptoms)]{.fragment fragment-index=2}
+[2. $Y$ causes $X$: often in *diagnosis* (stroke, based on neurological symptoms)]{.fragment fragment-index=2}
 
 [3. $Z$ causes both $X$ and $Y$: confounding (yellow fingers predict lung cancer)]{.fragment fragment-index=3}
 
@@ -311,10 +321,10 @@ Denoting *environment* as variable $E$:
 
 ## Conclusion
 
-- discrimination: a function of *features given outcome*
-- calibration: a function of *outcome given outcome*
+- discrimination: a function of distribution of *features given outcome*
+- calibration: a function of distribution of *outcome given features*
 - are we predicting an *effect* based on its causes (e.g. heart attack, based on cholesterol and age)
-- are we predicting a *cause* based on its effects (infer presence of CVA based on neurological symptoms)
+- are we predicting a *cause* based on its effects (infer presence of stroke based on neurological symptoms)
 - define shift in *case-mix* as a change in the marginal distribution of the cause variable
 - conclude that in theory:
   - for *prognosis models*: expect stable *calibration*, not *discrimination*
@@ -328,7 +338,7 @@ Denoting *environment* as variable $E$:
 When using prediction models in medical practice it is important to know how reliable the model's predictions are, meaning what is the model's predictive performance?
 A caveat is that there may be important differences between when a model was last evaluated and where and when it is used, often referred to as a shift in case-mix.
 In a recent pre-print (https://arxiv.org/abs/2409.01444) I study this problem of model transportability in a new light using the language of causal inference.
-I first distinghuish models that predict in the causal direction (e.g. predicting a heart attack based on cholesterol and age) from those that predict in the anti-causal direction (e.g. predicting a CVA based on neurological symptoms).
+I first distinghuish models that predict in the causal direction (e.g. predicting a heart attack based on cholesterol and age) from those that predict in the anti-causal direction (e.g. predicting a stroke based on neurological symptoms).
 Then, I define a shift in case-mix as a change in the marginal distribution of the cause variable.
 Based on this, I show that for models that predict in the causal direction (e.g. prognosis models), the calibration is expected to be stable under shifts in case-mix, but not the discrimination.
 For diagnostic models the reverse holds; never are both discrimination and calibration preserved.

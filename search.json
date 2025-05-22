@@ -172,7 +172,7 @@
     "href": "talks/250522-hds-ccm/index.html#this-paper-talk",
     "title": "A causal viewpoint on prediction model performance under changes in case-mix",
     "section": "This paper / talk",
-    "text": "This paper / talk\n\nrecap performance: discrimination, calibration\nlook at the causal direction of the prediction:\n\nare we predicting an effect based on its causes (e.g. heart attack, based on cholesterol and age) - typical in prognosis\nare we predicting a cause based on its effects (infer presence of CVA based on neurological symptoms) - typical in diagnosis\n\ndefine shift in case-mix as a change in the marginal distribution of the cause variable\nconclude that in theory:\n\nfor prognosis models: expect stable calibration, not discrimination\nfor diagnosis models: expect stable discrimination, not calibration\n\nillustrate with simulation\nevaluate on 2030+ prediction model evaluations"
+    "text": "This paper / talk\n\nrecap performance: discrimination, calibration\nlook at the causal direction of the prediction:\n\nare we predicting an effect based on its causes (e.g. heart attack, based on cholesterol and age) - typical in prognosis\nare we predicting a cause based on its effects (infer presence of stroke based on neurological symptoms) - typical in diagnosis\n\ndefine shift in case-mix as a change in the marginal distribution of the cause variable\nconclude that in theory:\n\nfor prognosis models: expect stable calibration, not discrimination\nfor diagnosis models: expect stable discrimination, not calibration\n\nillustrate with simulation\nevaluate on 2030+ prediction model evaluations"
   },
   {
     "objectID": "talks/250522-hds-ccm/index.html#discrimination-sensitivity-specificity-auc",
@@ -214,21 +214,21 @@
     "href": "talks/250522-hds-ccm/index.html#performance-metrics-summary",
     "title": "A causal viewpoint on prediction model performance under changes in case-mix",
     "section": "Performance metrics summary",
-    "text": "Performance metrics summary\n\nperformance metrics for \\(f\\) are ingeneral functionals of the joint distribution \\(P(X,Y)\\)\ndiscrimination: function of conditional \\(P(X|Y)\\) (features given outcome)\ncalibration: function of conditional \\(P(Y|X)\\) (outcome given features)"
+    "text": "Performance metrics summary\n\nperformance metrics for \\(m_f\\) are in general functionals of the joint distribution \\(P(X,Y)\\)\ndiscrimination: function of conditional \\(P(X|Y)\\) (features given outcome)\ncalibration: function of conditional \\(P(Y|X)\\) (outcome given features)"
   },
   {
     "objectID": "talks/250522-hds-ccm/index.html#where-does-the-association-come-from",
     "href": "talks/250522-hds-ccm/index.html#where-does-the-association-come-from",
     "title": "A causal viewpoint on prediction model performance under changes in case-mix",
     "section": "Where does the association come from?",
-    "text": "Where does the association come from?\nIn prediction, we have features \\(X\\) and outcome \\(Y\\) and model \\(Y|X\\)\n1. \\(X\\) causes \\(Y\\): often in prognosis (\\(Y\\): heart-attack, \\(X\\): cholesterol and age)\n2. \\(Y\\) causes \\(X\\): often in diagnosis (CVA, based on neurological symptoms)\n3. \\(Z\\) causes both \\(X\\) and \\(Y\\): confounding (yellow fingers predict lung cancer)"
+    "text": "Where does the association come from?\nIn prediction, we have features \\(X\\) and outcome \\(Y\\) and model \\(Y|X\\)\n1. \\(X\\) causes \\(Y\\): often in prognosis (\\(Y\\): heart-attack, \\(X\\): cholesterol and age)\n2. \\(Y\\) causes \\(X\\): often in diagnosis (stroke, based on neurological symptoms)\n3. \\(Z\\) causes both \\(X\\) and \\(Y\\): confounding (yellow fingers predict lung cancer)"
   },
   {
     "objectID": "talks/250522-hds-ccm/index.html#defining-a-shift-in-case-mix",
     "href": "talks/250522-hds-ccm/index.html#defining-a-shift-in-case-mix",
     "title": "A causal viewpoint on prediction model performance under changes in case-mix",
     "section": "Defining a shift in case-mix",
-    "text": "Defining a shift in case-mix\nDefine a shift in case-mix a change in the marginal distribution of the cause variable. Denoting environment as variable \\(E\\):\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npregnancy outcome prediction\n\ngeneral ‘midwife’ population\npregnant women with type 1 diabetes are counselled by gynaecologists in hospital\n\n\nthis is filtering on patient characteristics (making distribution of \\(X\\) different)\n\npredict occurence of STD\n\ngeneral emergency center\npatients with clear neurological symptoms are sent to stroke center\n\n\nfilter on outcome risk (different distribution of \\(Y\\))"
+    "text": "Defining a shift in case-mix\nDefine a shift in case-mix a change in the marginal distribution of the cause variable. Denoting environment as variable \\(E\\):\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npregnancy outcome prediction\n\ngeneral ‘midwife’ population\npregnant women with type 1 diabetes are counselled by gynaecologists in hospital\n\n\nthis is filtering on patient characteristics (making distribution of \\(X\\) different)\n\npredict occurence of stroke\n\ngeneral emergency center\npatients with clear neurological symptoms are sent to stroke center\n\n\nfilter on outcome risk (different distribution of \\(Y\\))"
   },
   {
     "objectID": "talks/250522-hds-ccm/index.html#what-does-this-definition-imply",
@@ -270,7 +270,7 @@
     "href": "talks/250522-hds-ccm/index.html#conclusion",
     "title": "A causal viewpoint on prediction model performance under changes in case-mix",
     "section": "Conclusion",
-    "text": "Conclusion\n\ndiscrimination: a function of features given outcome\ncalibration: a function of outcome given outcome\nare we predicting an effect based on its causes (e.g. heart attack, based on cholesterol and age)\nare we predicting a cause based on its effects (infer presence of CVA based on neurological symptoms)\ndefine shift in case-mix as a change in the marginal distribution of the cause variable\nconclude that in theory:\n\nfor prognosis models: expect stable calibration, not discrimination\nfor diagnosis models: expect stable discrimination, not calibration\n\nillustrated with simulation, evaluated on 2030+ prediction model evaluations, one direction of theory seems confirmed\nfuture work: more empirical validations"
+    "text": "Conclusion\n\ndiscrimination: a function of distribution of features given outcome\ncalibration: a function of distribution of outcome given features\nare we predicting an effect based on its causes (e.g. heart attack, based on cholesterol and age)\nare we predicting a cause based on its effects (infer presence of stroke based on neurological symptoms)\ndefine shift in case-mix as a change in the marginal distribution of the cause variable\nconclude that in theory:\n\nfor prognosis models: expect stable calibration, not discrimination\nfor diagnosis models: expect stable discrimination, not calibration\n\nillustrated with simulation, evaluated on 2030+ prediction model evaluations, one direction of theory seems confirmed\nfuture work: more empirical validations"
   },
   {
     "objectID": "talks/250522-hds-ccm/index.html#references",

@@ -12,13 +12,6 @@
     ]
   },
   {
-    "listing": "/unlisted.html",
-    "items": [
-      "/talks/250507-effect-measure-stability-meeting/index.html",
-      "/talks/240922-causalai-4cities/index.html"
-    ]
-  },
-  {
     "listing": "/talks.html",
     "items": [
       "/talks/250522-hds-ccm/index.html",
@@ -36,6 +29,13 @@
       "/talks/230810-mlhc-causality-decision-making/index.html",
       "/talks/230624-chill-lightning-talk/index.html",
       "/talks/230301-lungsurv-manchester/index.html"
+    ]
+  },
+  {
+    "listing": "/unlisted.html",
+    "items": [
+      "/talks/250507-effect-measure-stability-meeting/index.html",
+      "/talks/240922-causalai-4cities/index.html"
     ]
   },
   {

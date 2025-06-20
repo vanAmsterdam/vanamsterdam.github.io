@@ -64,9 +64,9 @@ I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on 
 
 :::
 
-## Prospective students / collaborators
+<!-- ## Prospective students / collaborators -->
 
-I have several open projects in the field of machine learning and causal inference. Students (MSc / PhD) with a background in statistics, data science or machine learning and good coding skills are welcome to contact me.
+<!-- I have several open projects in the field of machine learning and causal inference. Students (MSc / PhD) with a background in statistics, data science or machine learning and good coding skills are welcome to contact me. -->
 
 ## News
 

@@ -79,6 +79,11 @@ A causal viewpoint on prediction model performance under changes in case-mix: Di
 [url](https://doi.org/10.48550/arXiv.2409.01444)
 [pdf](papers/2025_causal_casemix.pdf)
 
+AI as an intervention: improving clinical outcomes relies on a causal approach to AI development and validation\
+Shalmali Joshi, Inigo Urteaga, Wouter A. C. van Amsterdam et al. JAMIA 2025.\
+*van Amsterdam, W. A. C. (2024). arXiv preprint*\
+[url](https://academic.oup.com/jamia/article/32/3/589/7945189?login=false)
+
 When accurate prediction models yield harmful self-fulfilling prophecies.\
 *van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. Patterns. 2025 Apr;6(4):101229.*
 [url](https://doi.org/10.1016/j.patter.2025.101229)

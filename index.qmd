@@ -126,6 +126,7 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 ## Teaching
 
+- 2025 Introduction to Causal Inference and Causal Data Science summer school; [course description and registration](https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science); [course materials](https://wvanamsterdam.com/causal-data-science-summerschool/)
 - 2025 Causal Data Science summer school (see last years materials below)
 - 2025 European Medicines Agency course "Big Data", module: Target Trial Emulation
 - 2024 [Introduction to Causal Inference and Causal Data Science summer school](https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science)

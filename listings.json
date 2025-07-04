@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/250704-hr-sign-flip.html",
       "/posts/250425-robustness/index.html",
       "/posts/240607-jama-causal-language/index.html",
       "/posts/240322-mice-partial-residual-plot.html",
@@ -41,6 +42,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/250704-hr-sign-flip.html",
       "/posts/250425-robustness/index.html",
       "/posts/240607-jama-causal-language/index.html",
       "/posts/240322-mice-partial-residual-plot.html",

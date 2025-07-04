@@ -8,7 +8,7 @@ categories:
 - causal inference
 ---
 
-Hazard ratios are problematic summary measures for survival analysis [@dumasHowHazardRatios2025;@postBuiltinSelectionBias2024;@stensrudLimitationsHazardRatios2019]; even in well-conducted randomized trials, hazard ratios fail to capture a measure of causal effect, unless we make the (ludicrous) assumption that in the control group, every individual has the exact same hazard function.
+Hazard ratios are problematic summary measures for survival analysis [@dumasHowHazardRatios2025;@postBuiltinSelectionBias2024;@stensrudLimitationsHazardRatios2019;@aalenDoesCoxAnalysis2015]; even in well-conducted randomized trials, hazard ratios fail to capture a measure of causal effect, unless we make the (ludicrous) assumption that in the control group, every individual has the exact same hazard function.
 
 Dumas and Stensrud recently summarized three main problems with hazard ratios [@dumasHowHazardRatios2025]: built-in selection bias, non-collapsibility, and violations of the proportional hazards assumption. 
 

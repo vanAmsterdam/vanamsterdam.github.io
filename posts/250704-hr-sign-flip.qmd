@@ -1,0 +1,163 @@
+---
+title: Flipping the sign of hazard ratios
+eval: true
+date: 2025-07-04
+categories:
+- r
+- survival analysis
+- causal inference
+---
+
+Hazard ratios are problematic summary measures for survival analysis [@dumasHowHazardRatios2025;@postBuiltinSelectionBias2024;@stensrudLimitationsHazardRatios2019]; even in well-conducted randomized trials, hazard ratios fail to capture a measure of causal effect, unless we make the (ludicrous) assumption that in the control group, every individual has the exact same hazard function.
+
+Dumas and Stensrud recently summarized three main problems with hazard ratios [@dumasHowHazardRatios2025]: built-in selection bias, non-collapsibility, and violations of the proportional hazards assumption. 
+
+## Non-collapsibility
+
+Say we have two subgroups defined by a feature $X$, for example, men and women.
+Let's a assume that some measure of causal effect (e.g. a hazard-ratio, odds-ratio, risk-difference or risk-ratio) is $0.4$ in the first subgroup and $0.8$ in the second subgroup, what is then the measure of effect in the combined population?
+Intuitively, we would want this to be somewhere in between $0.4$ and $0.8$, meaning some (potentially weighted) average of the two subgroup effects.
+This is only true for measures of effect that are collapsible, such as risk-difference or risk-ratio.
+The hazard-ratio and odds-ratio are not collapsible, which means that the effect in the combined population can be below $0.4$ or above $0.8$.
+
+**An important question is: say the hazard-ratio is above (/below) 1 in both subgroups, can it every be below (/above) 1 in the combined population?**
+
+It turns out that, yes, it can, as shown below in a simulation adapted from Post [@postBuiltinSelectionBias2024].
+
+## Simulation
+
+We'll simulate 1000000 observations of a hypothetical two-arm randomized trial, with a feature $X$ that follows a compound Poisson-Gamma distribution, a baseline hazard function that is quadratic in time, and a treatment effect that is multiplicative on the baseline hazard.
+
+The treatment effect is constant and the same for all values of $X$, meaning that there is heterogeneity in the hazard of the control group depending on $X$, but the **causal hazard ratio** (as defined in Post [@postBuiltinSelectionBias2024]) is constant across all values of $X$.
+In practice, the hazard ratio estimated in trials is the Survivor Marginalized Causal Hazard Ratio, meaning that it is estimated from the patients who are still alive at a given time point, which is not the same as the causal hazard ratio.
+
+The example that Post provides shows that the (time-varying) Survivor Marginalized Causal Hazard Ratio can start above 1, but over time drop below 1 because of the depletion of susceptibles in one trial arm (i.e. the hazard-ratio's built-in selection bias).
+
+```{r}
+
+# simulate from compound poisson
+library(data.table)
+library(survival)
+
+n = 1e6
+
+simulate_cp_gamma <- function(rho, eta, nu, n = 1) {
+  # Simulate n independent draws from CPoi(rho, eta, nu)
+  replicate(n, {
+    N <- rpois(1, rho)
+    if (N == 0) {
+      return(0)
+    } else {
+      sum(rgamma(N, shape = eta, scale = nu))
+    }
+  })
+}
+
+set.seed(421)
+
+# Parameters
+theta0 = 2 # variance
+rho <- 3/theta0    # Poisson rate (theta0)
+eta <- .5     # Gamma shape
+nu  <- theta0 * 2 /3     # Gamma scale
+
+# Simulate 10000 values
+samples <- simulate_cp_gamma(rho, eta, nu, n = 10000)
+
+# Empirical mean and variance
+emp_mean <- mean(samples)
+emp_var  <- var(samples)
+
+# Theoretical mean and variance
+theo_mean <- rho * eta * nu
+theo_var  <- rho * eta * nu^2 * (1 + eta)
+
+# cat("Empirical mean:", emp_mean, "\n")
+# cat("Theoretical mean:", theo_mean, "\n")
+# cat("Empirical variance:", emp_var, "\n")
+# cat("Theoretical variance:", theo_var, "\n")
+
+# Histogram
+hist(samples, breaks = 50, col = "skyblue", main = "Compound Poisson-Gamma Samples", xlab = "X")
+```
+
+Complete the hazard functions
+
+```{r}
+
+# add baseline hazard
+l0_t <- function(t) (t^2) / 20
+# treatment effect 
+mu = 3
+# hazard function
+
+l0 = function(t, a) {
+  l0_t(t) * mu^a
+}
+
+# cumulative hazard function
+L0 = function(t, a, x) {
+  x * ((t^3) / 60) * mu^a
+}
+
+# inverse of cum hazard fn
+L0_inv <- function(u, a, x) {
+  # Solve for t in L0(t, a, x) = u
+  # u = x * ((t^3) / 60) * mu^a
+  # Rearranging gives t = (60 * u / (x * mu^a))^(1/3)
+  (60 * u / (x * mu^a))^(1/3)
+}
+
+# setup data table
+df <- data.table(x=samples, a=rep(c(0,1), each=n/2))
+# simulate u
+df[, u := runif(.N)]
+# find the survival time
+df[, time := L0_inv(-log(u), a, x)]
+# censor at maxtime
+maxtime <- 20
+df[, event:= time<= maxtime]
+df[time>maxtime, `:=`(time=maxtime, event=0)]
+# plot survfit per a with colors
+sf <- survfit(Surv(time,event)~a, data=df)
+plot(sf, col=1:2)
+legend("topright", legend=c("a=0", "a=1"), col=1:2, lty=1)
+
+# fit cox model
+cox_model <- coxph(Surv(time,event)~a, data=df)
+print(summary(cox_model))
+```
+
+### Sign-flip over time
+
+The marginal cox model estimate has the correct sign for the treatment effect, but we will see that over time the hazard ratio changes sign
+
+```{r}
+
+## check time-varying hazard
+zph <- cox.zph(cox_model)
+plot(zph, var = "a")  # Plots log(HR) over time with smoothing
+abline(h = 0, col = "red", lty = 2)  # Add a horizontal line at 0 for reference
+
+```
+
+### Marginal sign-flip with Delayed Entry
+
+Can this ever mean we estimate a marginal hazard ratio of the wrong sign in an RCT? It is possible in the context of delayed entry.
+Delayed entry means that some patients enter the study at a later time point.
+An example would be if we randomize patients to a certain treatment from $t=0$, but are only able to include their information after some (random) lead time. For example, if we randomize regions in a country to add a chloride to the drinking water at a fixed time point $t=0$ [like in @tofailEffectWaterQuality2018], but for logisitical reasons, we can only start collecting follow-up data on individuals in those regions in a staggered fashion, with some regions starting data collection at $t=0$, some at $t=1$, and so on.
+
+Because the hazard ratio changes sign over time, if we include patients who enter the study at a later time point, we can end up with a hazard ratio that is below 1, even though the causal hazard ratio is above 1 for all patients at all time points.
+
+```{r}
+# fit model with delayed entry
+df[, entry_time:=runif(.N, 0, maxtime)]
+cox_model_delayed <- coxph(Surv(entry_time, time, event) ~ a, data = df[time>entry_time])
+summary(cox_model_delayed)
+```
+
+## Conclusion
+
+Can the marginal hazard ratio estimated in a randomized controlled trial be of the wrong singl? Yes, it can, with a constant causal hazard ratio, if we allow for delayed entry. Is this likely to happen in practice? Probably not, but that does not mean we should keep using the hazard ratio as as summary effect, especially as better alternatives exist that can be derived from survival curves, such as absolute risk differences, risk ratios and differences in restrictred mean survival time.
+
+## References

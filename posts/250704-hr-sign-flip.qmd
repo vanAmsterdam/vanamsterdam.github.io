@@ -15,23 +15,23 @@ Dumas and Stensrud recently summarized three main problems with hazard ratios [@
 ## Non-collapsibility
 
 Say we have two subgroups defined by a feature $X$, for example, men and women.
-Let's a assume that some measure of causal effect (e.g. a hazard-ratio, odds-ratio, risk-difference or risk-ratio) is $0.4$ in the first subgroup and $0.8$ in the second subgroup, what is then the measure of effect in the combined population?
-Intuitively, we would want this to be somewhere in between $0.4$ and $0.8$, meaning some (potentially weighted) average of the two subgroup effects.
-This is only true for measures of effect that are collapsible, such as risk-difference or risk-ratio.
-The hazard-ratio and odds-ratio are not collapsible, which means that the effect in the combined population can be below $0.4$ or above $0.8$.
+Let's assume that some measure of causal effect (e.g. a hazard ratio, odds ratio, risk difference or risk ratio) is $1.4$ in the first subgroup and $1.8$ in the second subgroup, what is then the measure of effect in the combined population?
+Intuitively, we would want this to be somewhere in between $1.4$ and $1.8$, meaning some (potentially weighted) average of the two subgroup effects.
+This is only true for measures of effect that are collapsible, such as risk difference or risk ratio.
+The hazard ratio and odds ratio are not collapsible, which means that the effect in the combined population can be below $1.4$ or above $1.8$.
 
-**An important question is: say the hazard-ratio is above (/below) 1 in both subgroups, can it every be below (/above) 1 in the combined population?**
+**An important question is: say the hazard ratio is above (or below) 1 in both subgroups, can it ever be below (or above) 1 in the combined population?**
 
 It turns out that, yes, it can, as shown below in a simulation adapted from Post [@postBuiltinSelectionBias2024].
 
 ## Simulation
 
-We'll simulate 1000000 observations of a hypothetical two-arm randomized trial, with a feature $X$ that follows a compound Poisson-Gamma distribution, a baseline hazard function that is quadratic in time, and a treatment effect that is multiplicative on the baseline hazard.
+We'll simulate 1000000 observations of a hypothetical two-arm randomized trial, with a feature $X$ that follows a compound Poisson-Gamma distribution, a baseline hazard function quadratic in time, and a treatment effect that is multiplicative on the baseline hazard.
 
 The treatment effect is constant and the same for all values of $X$, meaning that there is heterogeneity in the hazard of the control group depending on $X$, but the **causal hazard ratio** (as defined in Post [@postBuiltinSelectionBias2024]) is constant across all values of $X$.
 In practice, the hazard ratio estimated in trials is the Survivor Marginalized Causal Hazard Ratio, meaning that it is estimated from the patients who are still alive at a given time point, which is not the same as the causal hazard ratio.
 
-The example that Post provides shows that the (time-varying) Survivor Marginalized Causal Hazard Ratio can start above 1, but over time drop below 1 because of the depletion of susceptibles in one trial arm (i.e. the hazard-ratio's built-in selection bias).
+The example that Post provides shows that the (time-varying) Survivor Marginalized Causal Hazard Ratio can start above 1, but over time drop below 1 because of the depletion of susceptibles in one trial arm (i.e. the hazard ratio's built-in selection bias).
 
 ```{r}
 
@@ -81,7 +81,7 @@ theo_var  <- rho * eta * nu^2 * (1 + eta)
 hist(samples, breaks = 50, col = "skyblue", main = "Compound Poisson-Gamma Samples", xlab = "X")
 ```
 
-Complete the hazard functions
+We now define the hazard and cumulative hazard functions used for the simulation.
 
 ```{r}
 
@@ -145,7 +145,7 @@ abline(h = 0, col = "red", lty = 2)  # Add a horizontal line at 0 for reference
 
 Can this ever mean we estimate a marginal hazard ratio of the wrong sign in an RCT? It is possible in the context of delayed entry.
 Delayed entry means that some patients enter the study at a later time point.
-An example would be if we randomize patients to a certain treatment from $t=0$, but are only able to include their information after some (random) lead time. For example, if we randomize regions in a country to add a chloride to the drinking water at a fixed time point $t=0$ [like in @tofailEffectWaterQuality2018], but for logisitical reasons, we can only start collecting follow-up data on individuals in those regions in a staggered fashion, with some regions starting data collection at $t=0$, some at $t=1$, and so on.
+An example would be if we randomize patients to a certain treatment from $t=0$, but are only able to include their information after some (random) lead time. For example, if we randomize regions in a country to add chloride to the drinking water at a fixed time point $t=0$ [like in @tofailEffectWaterQuality2018], but for logistical reasons, we can only start collecting follow-up data on individuals in those regions in a staggered fashion, with some regions starting data collection at $t=0$, some at $t=1$, and so on.
 
 Because the hazard ratio changes sign over time, if we include patients who enter the study at a later time point, we can end up with a hazard ratio that is below 1, even though the causal hazard ratio is above 1 for all patients at all time points.
 
@@ -158,6 +158,6 @@ summary(cox_model_delayed)
 
 ## Conclusion
 
-Can the marginal hazard ratio estimated in a randomized controlled trial be of the wrong singl? Yes, it can, with a constant causal hazard ratio, if we allow for delayed entry. Is this likely to happen in practice? Probably not, but that does not mean we should keep using the hazard ratio as as summary effect, especially as better alternatives exist that can be derived from survival curves, such as absolute risk differences, risk ratios and differences in restrictred mean survival time.
+Can the marginal hazard ratio estimated in a randomized controlled trial have the wrong sign? Yes, it can—even when the causal hazard ratio is constant—if we allow for delayed entry. Is this likely to happen in practice? Probably not. But that doesn’t mean we should continue using the hazard ratio as a default summary measure. Better alternatives exist that can be directly derived from survival curves, such as absolute risk differences, risk ratios, and differences in restricted mean survival time.
 
 ## References

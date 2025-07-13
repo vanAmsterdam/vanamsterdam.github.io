@@ -50,6 +50,7 @@
   {
     "listing": "/unlisted.html",
     "items": [
+      "/talks/250714-protect-update/index.html",
       "/talks/250507-effect-measure-stability-meeting/index.html",
       "/talks/240922-causalai-4cities/index.html"
     ]

@@ -2160,7 +2160,7 @@
     "href": "talks/250714-protect-update/index.html#new-solution-use-gauss-hermite-quadrature",
     "title": "PROTECT update",
     "section": "‘new’ solution: use Gauss-Hermite Quadrature",
-    "text": "‘new’ solution: use Gauss-Hermite Quadrature\n\n\n\n\nto integrate over a gaussian distribution, pick \\(K\\) carefully chosen points \\(X_k\\) with corresponding weights \\(W_k\\)\nimplemented in PROTECT library, consequences:\n\nwith much fewer points (\\(K=32\\)),\nmuch better approximation,\nincorporates prior over \\(f\\)\n\n\n\n\n\n\n\nBy Qwfp - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=10803823"
+    "text": "‘new’ solution: use Gauss-Hermite Quadrature\n\n\n\n\nto integrate over a gaussian distribution, pick \\(K\\) carefully chosen points \\(X_k\\) with corresponding weights \\(W_k\\)\nimplemented in PROTECT library, consequences:\n\nwith much fewer points (\\(K=32\\)),\nmuch better approximation,\nincorporates prior over \\(f\\)\n\nthe new approach is tested in cases with analytically knwon likelihoods (gaussian outcome and proxies)\n\n\n\n\n\n\nBy Qwfp - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=10803823"
   },
   {
     "objectID": "talks/250507-effect-measure-stability-meeting/index.html#history",

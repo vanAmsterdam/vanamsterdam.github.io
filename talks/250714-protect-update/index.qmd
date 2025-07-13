@@ -113,6 +113,7 @@ l(Y_i|X_i,W_i,T_i,\{\theta_s\}) &= \sum_s l(Y_i|X_i,W_i,T_i,\theta_s) \\
   - with much fewer points ($K=32$),
   - much better approximation,
   - incorporates prior over $f$
+- the new approach is tested in cases with analytically knwon likelihoods (gaussian outcome and proxies)
 
 ![By Qwfp - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=10803823](figs/gh.png){width="60%"}
 

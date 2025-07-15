@@ -22,6 +22,9 @@ categories:
 1. swap *conditional* hazard ratio with *marginal* hazard ratio
 2. calculations for model checks
 
+    a. correct marginalization incorporating prior likelihood of latent factor
+    b. compare against cross-validated baseline likelihoods (not full-batch)
+
 ## Conditional vs marginal hazard ratio
 
 - realization: PROTECT models a conditional hazard ratio for treatment (conditional on latent factor, ... some other variables)
@@ -45,7 +48,7 @@ PROTECT has 'local parameters' (local to every patient $i=1, ... N$): $F_i$
 
 ## PROTECT inference
 
-- by running MCMC on the 'trainig data', we get samples from the posterior distribution over PROTECT's parameters:
+- by running MCMC on the 'training data', we get samples from the posterior distribution over PROTECT's parameters:
 
 . . . 
 
@@ -119,4 +122,20 @@ l(Y_i|X_i,W_i,T_i,\{\theta_s\}) &= \sum_s l(Y_i|X_i,W_i,T_i,\theta_s) \\
 
 :::
 
+## New Utrecht results
+
+- rct: log(HR) -0.17
+- before:
+  - selected hyperparameters: s_bftx: 2.5, s_bfy: \{0.1, 1.0, 2.5\}
+  - b_txbinary_y_marginal 0.010 (sd: 0.223, 95 hdi: -0.409 - 0.450)
+- now:
+  - selected hyperparameters:
+    - sbftxs = np.array([0.1, 2.5, 10.0, 10.0, 100.0, 100.0])
+    - sbfys  = np.array([1.0, 1.0,  1.0,  2.5,   1.0,   2.5])
+  - b_tx_y_marginal: 0.067 (sd: 0.229, 95 hdi: -0.356 - 0.525)
+  - marginalized HR: 0.033 (sd: 0.20)
+
+## Utrecht overlap?
+
+![](figs/fhats_utrecht.png)
 

@@ -2104,7 +2104,7 @@
     "href": "talks/250714-protect-update/index.html#updates-in-protect-methods",
     "title": "PROTECT update",
     "section": "Updates in PROTECT methods",
-    "text": "Updates in PROTECT methods\n\nswap conditional hazard ratio with marginal hazard ratio\ncalculations for model checks"
+    "text": "Updates in PROTECT methods\n\nswap conditional hazard ratio with marginal hazard ratio\ncalculations for model checks\n\ncorrect marginalization incorporating prior likelihood of latent factor\ncompare against cross-validated baseline likelihoods (not full-batch)"
   },
   {
     "objectID": "talks/250714-protect-update/index.html#conditional-vs-marginal-hazard-ratio",
@@ -2125,7 +2125,7 @@
     "href": "talks/250714-protect-update/index.html#protect-inference",
     "title": "PROTECT update",
     "section": "PROTECT inference",
-    "text": "PROTECT inference\n\nby running MCMC on the ‘trainig data’, we get samples from the posterior distribution over PROTECT’s parameters:\n\n\n\\[\\begin{align*}\np(\\theta,F|T,Y,W,X) &\\propto p(Y,T,W|X,\\theta,F) p(F|X, \\theta) p(\\theta)\n\\end{align*}\\]\n\nin PROTECT, the joint likelihood is formulated as the product of the observation sites following the causal factorization:\n\n\n\n\\[\\begin{align*}\np(Y,T,W|X,\\theta,F) =  p(Y|T,X,\\theta,F) p(T|X,\\theta,F) p(W|X,\\theta,F)\n\\end{align*}\\]\n\nduring inference, the posterior for latent factor \\(F_i\\) of patient \\(i\\) is informed by their full observed data: \\(X_i, W_i, T_i, Y_i\\)"
+    "text": "PROTECT inference\n\nby running MCMC on the ‘training data’, we get samples from the posterior distribution over PROTECT’s parameters:\n\n\n\\[\\begin{align*}\np(\\theta,F|T,Y,W,X) &\\propto p(Y,T,W|X,\\theta,F) p(F|X, \\theta) p(\\theta)\n\\end{align*}\\]\n\nin PROTECT, the joint likelihood is formulated as the product of the observation sites following the causal factorization:\n\n\n\n\\[\\begin{align*}\np(Y,T,W|X,\\theta,F) =  p(Y|T,X,\\theta,F) p(T|X,\\theta,F) p(W|X,\\theta,F)\n\\end{align*}\\]\n\nduring inference, the posterior for latent factor \\(F_i\\) of patient \\(i\\) is informed by their full observed data: \\(X_i, W_i, T_i, Y_i\\)"
   },
   {
     "objectID": "talks/250714-protect-update/index.html#protect-model-checks",
@@ -2161,6 +2161,20 @@
     "title": "PROTECT update",
     "section": "‘new’ solution: use Gauss-Hermite Quadrature",
     "text": "‘new’ solution: use Gauss-Hermite Quadrature\n\n\n\n\nto integrate over a gaussian distribution, pick \\(K\\) carefully chosen points \\(X_k\\) with corresponding weights \\(W_k\\)\nimplemented in PROTECT library, consequences:\n\nwith much fewer points (\\(K=32\\)),\nmuch better approximation,\nincorporates prior over \\(f\\)\n\nthe new approach is tested in cases with analytically knwon likelihoods (gaussian outcome and proxies)\n\n\n\n\n\n\nBy Qwfp - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=10803823"
+  },
+  {
+    "objectID": "talks/250714-protect-update/index.html#new-utrecht-results",
+    "href": "talks/250714-protect-update/index.html#new-utrecht-results",
+    "title": "PROTECT update",
+    "section": "New Utrecht results",
+    "text": "New Utrecht results\n\nrct: log(HR) -0.17\nbefore:\n\nselected hyperparameters: s_bftx: 2.5, s_bfy: {0.1, 1.0, 2.5}\nb_txbinary_y_marginal 0.010 (sd: 0.223, 95 hdi: -0.409 - 0.450)\n\nnow:\n\nselected hyperparameters:\n\nsbftxs = np.array([0.1, 2.5, 10.0, 10.0, 100.0, 100.0])\nsbfys = np.array([1.0, 1.0, 1.0, 2.5, 1.0, 2.5])\n\nb_tx_y_marginal: 0.067 (sd: 0.229, 95 hdi: -0.356 - 0.525)\nmarginalized HR: 0.033 (sd: 0.20)"
+  },
+  {
+    "objectID": "talks/250714-protect-update/index.html#utrecht-overlap",
+    "href": "talks/250714-protect-update/index.html#utrecht-overlap",
+    "title": "PROTECT update",
+    "section": "Utrecht overlap?",
+    "text": "Utrecht overlap?"
   },
   {
     "objectID": "talks/250507-effect-measure-stability-meeting/index.html#history",

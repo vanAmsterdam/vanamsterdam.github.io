@@ -166,8 +166,12 @@
 <section id="updates-in-protect-methods" class="slide level2 center">
 <h2>Updates in PROTECT methods</h2>
 <ol type="1">
-<li class="fragment">swap <em>conditional</em> hazard ratio with <em>marginal</em> hazard ratio</li>
-<li class="fragment">calculations for model checks</li>
+<li class="fragment"><p>swap <em>conditional</em> hazard ratio with <em>marginal</em> hazard ratio</p></li>
+<li class="fragment"><p>calculations for model checks</p>
+<ol type="a">
+<li class="fragment">correct marginalization incorporating prior likelihood of latent factor</li>
+<li class="fragment">compare against cross-validated baseline likelihoods (not full-batch)</li>
+</ol></li>
 </ol>
 </section>
 <section id="conditional-vs-marginal-hazard-ratio" class="slide level2 center">
@@ -202,7 +206,7 @@
 <section id="protect-inference" class="slide level2 center">
 <h2>PROTECT inference</h2>
 <ul>
-<li class="fragment">by running MCMC on the ‘trainig data’, we get samples from the posterior distribution over PROTECT’s parameters:</li>
+<li class="fragment">by running MCMC on the ‘training data’, we get samples from the posterior distribution over PROTECT’s parameters:</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[\begin{align*}
@@ -293,9 +297,34 @@ l(Y_i|X_i,W_i,T_i,\{\theta_s\}) &amp;= \sum_s l(Y_i|X_i,W_i,T_i,\theta_s) \\
 </div>
 </div>
 </div>
-
-
 </section>
+<section id="new-utrecht-results" class="slide level2 center">
+<h2>New Utrecht results</h2>
+<ul>
+<li class="fragment">rct: log(HR) -0.17</li>
+<li class="fragment">before:
+<ul>
+<li class="fragment">selected hyperparameters: s_bftx: 2.5, s_bfy: {0.1, 1.0, 2.5}</li>
+<li class="fragment">b_txbinary_y_marginal 0.010 (sd: 0.223, 95 hdi: -0.409 - 0.450)</li>
+</ul></li>
+<li class="fragment">now:
+<ul>
+<li class="fragment">selected hyperparameters:
+<ul>
+<li class="fragment">sbftxs = np.array([0.1, 2.5, 10.0, 10.0, 100.0, 100.0])</li>
+<li class="fragment">sbfys = np.array([1.0, 1.0, 1.0, 2.5, 1.0, 2.5])</li>
+</ul></li>
+<li class="fragment">b_tx_y_marginal: 0.067 (sd: 0.229, 95 hdi: -0.356 - 0.525)</li>
+<li class="fragment">marginalized HR: 0.033 (sd: 0.20)</li>
+</ul></li>
+</ul>
+</section>
+<section id="utrecht-overlap" class="slide level2 center">
+<h2>Utrecht overlap?</h2>
+
+
+
+<img data-src="figs/fhats_utrecht.png" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

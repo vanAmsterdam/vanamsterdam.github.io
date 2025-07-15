@@ -1,7 +1,7 @@
 ---
 title: "From prediction to treatment decision: aligning development, evaluation and monitoring"
-subtitle: "ISCB 2025"
-date: 2025/08/26
+subtitle: "MLHC pre-conference workshop 2025"
+date: 2025/08/14
 bibliography: ../../library.bib
 format:
     revealjs:
@@ -14,14 +14,13 @@ format:
 categories:
   - prediction
   - causal inference
-  - invited
 ---
 
 # much of AI is 'predict predict predict'
 
 ---
 
-predict sepsis 
+predict sepsis
 
 ---
 
@@ -35,12 +34,27 @@ predict next token in a sequence ...
 
 these models take input data, model its statistical properties (e.g. what to expect for outcome $Y$ given observation $X$)
 
-evaluated on predictive *performance* (e.g. accuracy, AUC, calibration)
+## evaluated on predictive *performance* (e.g. accuracy, AUC, calibration)
 
-tend to break under data shifts
+:::{layout-ncol=2}
+
+![](figs/tripod_ai.png)
+
+![](figs/probast_ai.png)
+
+:::
+
+## tend to break under data shifts
 
 # deploying AI in healthcare is an intervention
 
+![[@joshiAIInterventionImproving2025]](figs/aiasintervention-paper.png)
+
+---
+
+the entire purpose of an AI is to *break* (improve) a system 
+
+see a potential issue here?
 
 
 # Setup

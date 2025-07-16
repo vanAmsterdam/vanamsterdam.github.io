@@ -16,6 +16,49 @@ categories:
   - causal inference
 ---
 
+# Today
+
+## Welcome!
+
+### Organizers - Workshop Chairs MLHC 2025
+
+:::{layout-ncol=2}
+
+::::{.column}
+![Uri Shalit](figs/uri.png){width=4in}
+
+Researcher, Google DeepMind, London, UK
+Assistant Professor, Tel Aviv University
+::::
+
+::::{.column}
+![Wouter van Amsterdam](figs/wouter.png){width=4in}
+
+Assistant Professor, University Medical Center Utrecht, Netherlands
+
+::::
+
+:::
+
+## Today's workshop
+
+9-12am: focus talks, 30 minutes each
+
+:::{.nonincremental}
+- Wouter van Amsterdam
+- David Kent
+- Mohammad Mamdani
+- Jean Feng - Addressing performance drift: Over time and space
+:::
+
+12-12.30: Plenary Discussion
+
+13:30: group work:work on questions, draft manuscripts
+
+16:00-16:45: groups present ideas 
+
+16:45-17:00: wrap-up
+
 # much of AI is 'predict predict predict'
 
 ---
@@ -36,15 +79,20 @@ these models take input data, model its statistical properties (e.g. what to exp
 
 ## evaluated on predictive *performance* (e.g. accuracy, AUC, calibration)
 
-:::{layout-ncol=2}
+:::{layout="[[1,1],[4,4]]"}
 
-![](figs/tripod_ai.png)
+![](figs/tripod_ai_short.png){height=2in}
 
-![](figs/probast_ai.png)
+![](figs/probast_ai_short.png){height=2in}
+
+![](figs/auc1.png){height=4in}
+
+![https://doi.org/10.1371/journal.pmed.1004566.g004](figs/pmed.1004566.g004.png){height=4in}
 
 :::
 
-## tend to break under data shifts
+
+## AI models tend to break under data shifts
 
 # deploying AI in healthcare is an intervention
 
@@ -52,9 +100,58 @@ these models take input data, model its statistical properties (e.g. what to exp
 
 ---
 
-the entire purpose of an AI is to *break* (improve) a system 
+the entire purpose of an AI is to *break* (improve) a system
 
 see a potential issue here?
+
+---
+
+- prevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack [@hippisley-coxDevelopmentValidationNew2024]
+- give chemotherapy to breast cancer patients with a high risk of recurrence [@alaaMachineLearningGuide2021]
+- scarce resource allocation: liver transplants based on MELD score
+- triage / early warning: patients at high risk of sepsis
+- early detection: structural heart disease from ECGs performed in primary care
+<!-- todo: add ref -->
+
+# Where causal inference may help
+
+## What is causal inference?
+
+- 'classical' prediction / statistics / AI: model **associations**; know what to expect for outcome $Y$ given observation $X$, **when we keep our hands behind our back and do not change the system**
+- causal inference: answers questions **what if ...** - we changed the system (i.e. intervened by giving a certain treatment $T$) - what would be the outcome $Y$?
+- association: representative (observational) data
+- causal inference: experimental data (randomized controlled trials), when not available, approximate with observational data using assumptions (unconfoundedness, positivity, consistency) 
+
+## What to measure
+
+### For 'non-causal' prediction models that don't factor in treatment decisions but predict post-treatment outcomes
+
+|               |                      | pre-deploy | deployment study | monitoring |
+|---------------|----------------------|------------|------------------|------------|
+|               | **metric**               |            |                  |            |
+| model         | discrimination (AUC) |            |       🔁           |     🔁       |
+|               | calibration          |            |   🔻          |  🔻      |
+| health system | interventions        |            |       🔁           |      🔁      |
+|               | patient outcomes     |            |       🔁           |      🔁      |
+
+**Legend**  
+➖ stable 🔁 changes ✅ stable 🔻 worsens
+
+
+## What to measure
+
+### Prediction under intervention preserves calibration under shifts in policy conditional on the model's features
+
+|               |                      | pre-deploy | deployment study | monitoring |
+|---------------|----------------------|------------|------------------|------------|
+|               | **metric**               |            |                  |            |
+| model         | discrimination (AUC) |            |       🔁           |     🔁       |
+|               | calibration          |            |   🔻      ✅    |  🔻    ✅  |
+| health system | interventions        |            |       🔁           |      🔁      |
+|               | patient outcomes     |            |       🔁           |      🔁      |
+
+**Legend**  
+➖ stable 🔁 changes ✅ stable 🔻 worsens
 
 
 # Setup
@@ -76,11 +173,6 @@ can improve decision process by using data
 
 ## Prediction models used for decision making: applications
 
-- prevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack [@hippisley-coxDevelopmentValidationNew2024]
-- scarce resource allocation: liver transplants based on MELD score
-- triage: patients at high risk of sepsis
-- early detection: structural heart disease from ECGs performed in primary care
-<!-- todo: add ref -->
 
 ## The elefant in the room
 

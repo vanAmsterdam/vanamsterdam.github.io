@@ -1,5 +1,5 @@
 ---
-title: "From prediction to treatment decision: aligning development, evaluation and monitoring"
+title: "Aligning development, deployment and monitoring for AI: a causal perspective"
 subtitle: "MLHC pre-conference workshop 2025"
 date: 2025/08/14
 bibliography: ../../library.bib
@@ -18,7 +18,7 @@ categories:
 
 # Today
 
-## Welcome!
+## Welcome to the workshop!
 
 ### Organizers - Workshop Chairs MLHC 2025
 
@@ -27,8 +27,9 @@ categories:
 ::::{.column}
 ![Uri Shalit](figs/uri.png){width=4in}
 
-Researcher, Google DeepMind, London, UK
-Assistant Professor, Tel Aviv University
+Visiting Researcher, Google DeepMind, London
+
+Associate Professor, Tel Aviv University
 ::::
 
 ::::{.column}
@@ -91,8 +92,20 @@ these models take input data, model its statistical properties (e.g. what to exp
 
 :::
 
+---
+
+:::{.r-stack}
+
+![](figs/hc1.png){.fragment}
+
+![](figs/hc2.png){.fragment}
+
+:::
+
 
 ## AI models tend to break under data shifts
+
+[@finlaysonClinicianDatasetShift2021]
 
 # deploying AI in healthcare is an intervention
 
@@ -100,18 +113,19 @@ these models take input data, model its statistical properties (e.g. what to exp
 
 ---
 
-the entire purpose of an AI is to *break* (improve) a system
+the entire purpose of an AI is to *break* (improve) a system, meaning to **cause** a data shift
 
 see a potential issue here?
 
----
+## Medical Interventions based on (AI) prediction models
 
 - prevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack [@hippisley-coxDevelopmentValidationNew2024]
 - give chemotherapy to breast cancer patients with a high risk of recurrence [@alaaMachineLearningGuide2021]
-- scarce resource allocation: liver transplants based on MELD score
-- triage / early warning: patients at high risk of sepsis
+- triage / early warning: patients at high risk of sepsis [@henryTargetedRealtimeEarly2015]
 - early detection: structural heart disease from ECGs performed in primary care
 <!-- todo: add ref -->
+
+# What can go wrong when AI development and deployment are misaligned?
 
 # Where causal inference may help
 
@@ -122,20 +136,93 @@ see a potential issue here?
 - association: representative (observational) data
 - causal inference: experimental data (randomized controlled trials), when not available, approximate with observational data using assumptions (unconfoundedness, positivity, consistency) 
 
+## Also causal inference: predicting outcomes under hypothetical interventions
+
+- expected outcome $Y$ if we give treatment $T$ to patient with features $X$
+
+. . . 
+
+::: {.callout-tip icon=false}
+## Hilden and Habbema on prognosis [@hildenPrognosisMedicineAnalysis1987]
+
+"Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.” 
+
+:::
+
+## What can go wrong if predictions have unclear relationship with treatment decisions?
+
+1. treatment-naive: simply ignore treatment in the predictions
+2. include treatment but there are important confounders that are not included in the model
+
+## Treatment-naive prediction models: predict outcomes based on features, ignoring treatments
+
+![](figs/txnaive1.png)
+
+## Treatment-naive prediction models: predict outcomes based on features, ignoring treatments
+
+### ... that are important to the outcomes
+
+![](figs/txnaive2.png)
+
+## When accurate prediction models yield harmful self-fulfilling prophecies
+
+How this can go wrong if we misalign the AI evaluation metric and the patient oucome [@vanamsterdamWhenAccuratePrediction2025]
+
+---
+
+:::{.r-stack}
+
+![](figs/rt_example1.png){.fragment height=24cm}
+
+![](figs/rt_example2.png){.fragment height=24cm}
+
+![](figs/rt_example3.png){.fragment height=24cm}
+
+![](figs/rt_example4.png){.fragment height=24cm}
+
+![](figs/rt_example5.png){.fragment height=24cm}
+
+![](figs/rt_example6.png){.fragment height=24cm}
+
+![](figs/rt_example.png){.fragment height=24cm}
+
+:::
+
+# Big hurdles in AI deployment from an intervention / policy perspective
+
+
+1. prediction model outputs do not automatically align with value for intervention decision making (except when clearly defined treatment strategy (i.e. 'prediction under intervention'))
+2. evaluting the effects of deploying a model **is** causal inference
+3. monitoring under shifts in treatment policy is hard
+
+## How are causal models special
+
+1. clear alignment between prediciton accuracy and value for treatment policy:
+
+. . . 
+
+:::{.callout-tip icon=false}
+
+## Pick the treatment that maximizes the expected outcome
+
+:::
+
+2. stable predictions under shifts in treatment policy, conditional on the model's features [@fengMonitoringMachineLearningbased2024]
+
 ## What to measure
 
 ### For 'non-causal' prediction models that don't factor in treatment decisions but predict post-treatment outcomes
 
 |               |                      | pre-deploy | deployment study | monitoring |
 |---------------|----------------------|------------|------------------|------------|
-|               | **metric**               |            |                  |            |
+|               | **metric**           |            |                  |            |
 | model         | discrimination (AUC) |            |       🔁           |     🔁       |
 |               | calibration          |            |   🔻          |  🔻      |
-| health system | interventions        |            |       🔁           |      🔁      |
+| health system | treatments / interventions    |            |       🔁           |      🔁      |
 |               | patient outcomes     |            |       🔁           |      🔁      |
 
 **Legend**  
-➖ stable 🔁 changes ✅ stable 🔻 worsens
+🔁 changes ✅ stable 🔻 worsens
 
 
 ## What to measure
@@ -151,7 +238,7 @@ see a potential issue here?
 |               | patient outcomes     |            |       🔁           |      🔁      |
 
 **Legend**  
-➖ stable 🔁 changes ✅ stable 🔻 worsens
+🔁 changes ✅ stable 🔻 worsens
 
 
 # Setup

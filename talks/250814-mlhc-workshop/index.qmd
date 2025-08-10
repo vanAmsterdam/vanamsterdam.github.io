@@ -41,24 +41,50 @@ Assistant Professor, University Medical Center Utrecht, Netherlands
 
 :::
 
-## Today's workshop
+## Who's here?
+
+(every person introduces themselves)
+
+## Why are we here?
+
+- AI is changing healthcare [@joshiAIInterventionImproving2025]]
+- pre deployment, need the right evidence to know AI will improve healthcare
+- post deployment, 'things will change', how do we know the AI is still performing (in terms of impact on healthcare) as expected?
+- FDA and EMA (and others) are developing regulations
+- not all questions resolved, maybe we can help
+
+## Morning schedule
 
 9-12am: focus talks, 30 minutes each
 
 :::{.nonincremental}
 - Wouter van Amsterdam
 - David Kent
+:::
+
+**10.30: coffee break**
+
+:::{.nonincremental}
 - Mohammad Mamdani
+- Anna Goldenberg - to Trial or not to Trial?
 - Jean Feng - Addressing performance drift: Over time and space
 :::
 
-12-12.30: Plenary Discussion
+12.00-12.30: Plenary Discussion
 
-13:30: group work:work on questions, draft manuscripts
+**12.30 - 13.30: Lunch**
 
-16:00-16:45: groups present ideas 
+## Afternoon schedule
 
-16:45-17:00: wrap-up
+- 13:30: group work; work on questions, draft manuscripts
+- 16:00-16:45: groups present ideas 
+- 16:45-17:00: wrap-up
+
+## Goal of workshop
+
+- have focus talks in the morning
+- identify pressing questions that we can answer / work on
+- afternoon: continue discussion in breakouts, potentially start drafting 
 
 # much of AI is 'predict predict predict'
 
@@ -102,6 +128,14 @@ these models take input data, model its statistical properties (e.g. what to exp
 
 :::
 
+## Medical Interventions based on (AI) prediction models
+
+- prevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack [@hippisley-coxDevelopmentValidationNew2024]
+- give chemotherapy to breast cancer patients with a high risk of recurrence [@alaaMachineLearningGuide2021]
+- triage / early warning: patients at high risk of sepsis [@henryTargetedRealtimeEarly2015]
+- early detection: structural heart disease from ECGs performed in primary care
+<!-- todo: add ref -->
+
 
 ## AI models tend to break under data shifts
 
@@ -117,14 +151,6 @@ the entire purpose of an AI is to *break* (improve) a system, meaning to **cause
 
 see a potential issue here?
 
-## Medical Interventions based on (AI) prediction models
-
-- prevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack [@hippisley-coxDevelopmentValidationNew2024]
-- give chemotherapy to breast cancer patients with a high risk of recurrence [@alaaMachineLearningGuide2021]
-- triage / early warning: patients at high risk of sepsis [@henryTargetedRealtimeEarly2015]
-- early detection: structural heart disease from ECGs performed in primary care
-<!-- todo: add ref -->
-
 # What can go wrong when AI development and deployment are misaligned?
 
 # Where causal inference may help
@@ -133,12 +159,21 @@ see a potential issue here?
 
 - 'classical' prediction / statistics / AI: model **associations**; know what to expect for outcome $Y$ given observation $X$, **when we keep our hands behind our back and do not change the system**
 - causal inference: answers questions **what if ...** - we changed the system (i.e. intervened by giving a certain treatment $T$) - what would be the outcome $Y$?
-- association: representative (observational) data
-- causal inference: experimental data (randomized controlled trials), when not available, approximate with observational data using assumptions (unconfoundedness, positivity, consistency) 
+
+. . .
+
+### How to?
+
+- association:
+  - representative (observational) data
+- causal inference:
+  - experimental data (randomized controlled trials)
+  - approximate with observational data using assumptions (unconfoundedness, positivity, consistency) 
 
 ## Also causal inference: predicting outcomes under hypothetical interventions
 
 - expected outcome $Y$ if we give treatment $T$ to patient with features $X$
+- how is this different from 'standard' prediction?
 
 . . . 
 
@@ -188,12 +223,18 @@ How this can go wrong if we misalign the AI evaluation metric and the patient ou
 
 :::
 
+## Which models could benefit from this?
+
+- cardiovascular risk prediction [@peekHariSeldonQRISK32017]
+
+
+
 # Big hurdles in AI deployment from an intervention / policy perspective
 
 
 1. prediction model outputs do not automatically align with value for intervention decision making (except when clearly defined treatment strategy (i.e. 'prediction under intervention'))
 2. evaluting the effects of deploying a model **is** causal inference
-3. monitoring under shifts in treatment policy is hard
+3. drawing conclusing from monitoring under shifts in treatment policy is hard
 
 ## How are causal models special
 
@@ -218,7 +259,7 @@ How this can go wrong if we misalign the AI evaluation metric and the patient ou
 |               | **metric**           |            |                  |            |
 | model         | discrimination (AUC) |            |       🔁           |     🔁       |
 |               | calibration          |            |   🔻          |  🔻      |
-| health system | treatments / interventions    |            |       🔁           |      🔁      |
+| health system | interventions    |            |       🔁           |      🔁      |
 |               | patient outcomes     |            |       🔁           |      🔁      |
 
 **Legend**  
@@ -228,6 +269,8 @@ How this can go wrong if we misalign the AI evaluation metric and the patient ou
 ## What to measure
 
 ### Prediction under intervention preserves calibration under shifts in policy conditional on the model's features
+
+e.g. [@fengMonitoringMachineLearningbased2024]
 
 |               |                      | pre-deploy | deployment study | monitoring |
 |---------------|----------------------|------------|------------------|------------|
@@ -240,11 +283,34 @@ How this can go wrong if we misalign the AI evaluation metric and the patient ou
 **Legend**  
 🔁 changes ✅ stable 🔻 worsens
 
-# Bigger picture
+## How do RCTs fit in?
 
-- want AI to imrpove healthcare
-- getting far with predicting / modeling statistical associations
+- RCTs that randomize treatment at individual patient level:
+  - typical study for evaluating the effect of a new treatment
+  - from these data, can develop *prediction under intervention* models (e.g. Path statement [@kentPredictiveApproachesTreatment2020])
+  - typically **too small** to build powerful model, or **did not measure** right features
+- RCTs that randomize deployment of AI:
+  - measure effect of *deployment* on interventions and patient outcomes
+  - take time; are they ethical post-deployment?
+
+## Takeaways
+
+- when predicting prognosis, need well defined relation between prediction and potential treatment decisions
+- in particular, *prediction under intervention* has the advantages of:
+  1. clear relationship between model performance and value for decision making
+  2. stable calibration under shifts in treatment policy, conditional on the model's features
+- these models need unconfoundedness, so either
+  - develop using RCT data
+  - use observational causal inference
+
+## Bigger picture
+
+- want AI to improve healthcare
+- we're good at predicting / modeling statistical associations
 - takes a jump to get to better decision making
-- models developed with causality in mind can navigate some of these jumps
+- models developed with causality in mind can better navigate some of these jumps
   - clear relationship between performance and value for decision making
   - stable calibration under shifts in policy (conditional on model's features)
+- assessing the impact of deployment on patient outcomes **is** causal inference
+
+## References

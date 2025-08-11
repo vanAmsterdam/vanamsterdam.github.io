@@ -57,14 +57,14 @@ Assistant Professor, University Medical Center Utrecht, Netherlands
 
 :::{.nonincremental}
 - Wouter van Amsterdam - [Aligning development, deployment and monitoring for AI: a causal perspective](causality.html)
-- David Kent
+- David Kent - Evaluating prediction models in practice
+- Anna Goldenberg - to Trial or not to Trial?
 :::
 
-**10.30: coffee break**
+**10.30-11.00: coffee break**
 
 :::{.nonincremental}
-- Mohammad Mamdani
-- Anna Goldenberg - to Trial or not to Trial?
+- Mohammad Mamdani - Application and Evaluation of AI in Healthcare
 - Jean Feng - Monitoring clinical AI: Where are we now and where do we want to be?
 :::
 

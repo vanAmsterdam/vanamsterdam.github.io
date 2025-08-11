@@ -1,0 +1,105 @@
+---
+title: "From prediction to treatment decision: aligning development, evaluation and monitoring"
+subtitle: "ISCB 2025"
+date: 2025/08/26
+bibliography: ../../library.bib
+format:
+    revealjs:
+        incremental: true
+        theme: [../custom.scss]
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+categories:
+  - prediction
+  - causal inference
+  - invited
+  - wip
+  - unlisted
+---
+
+# much of AI is 'predict predict predict'
+
+---
+
+predict sepsis 
+
+---
+
+predict diagnosis of structural heart disease from ECG
+
+---
+
+predict next token in a sequence ...
+
+---
+
+these models take input data, model its statistical properties (e.g. what to expect for outcome $Y$ given observation $X$)
+
+evaluated on predictive *performance* (e.g. accuracy, AUC, calibration)
+
+tend to break under data shifts
+
+# deploying AI in healthcare is an intervention
+
+
+
+# Setup
+
+## Healthcare as a system
+
+- takes inputs (clinical data)
+- makes decisions ('treatment')
+- produces outcomes (health status, costs)
+
+:::{.callout-tip}
+
+## Fundamental hypothesis:
+
+system is suboptimal in its use of prior data
+can improve decision process by using data
+
+:::
+
+## Prediction models used for decision making: applications
+
+- prevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack [@hippisley-coxDevelopmentValidationNew2024]
+- scarce resource allocation: liver transplants based on MELD score
+- triage: patients at high risk of sepsis
+- early detection: structural heart disease from ECGs performed in primary care
+<!-- todo: add ref -->
+
+## The elefant in the room
+
+- issue: deploying a prediction model is an intervention that changes treatment decisions and outcomes [@joshiAIInterventionImproving2025]; 
+- this was the very purpose of deploying the model
+- standard prediction model evaluation does not properly account for this
+
+## Prediction model evaluation
+
+- reporting: TRIPOD+AI [@collinsTRIPOD+AIStatementUpdated2024]
+  - measures: discrimination, calibration, clinical utility (net benefit)
+
+## Two (three) views on performance / utility
+
+- 0: prediction model accuracy on historic data [@vanamsterdamWhenAccuratePrediction2025]
+- 1a: accuracy of predicting under intervention
+- 1b: accuracy of estimating CATE 
+- 2: accuracy of estimating counterfactual outcomes (c-for benefit?)
+- 3: policy utility
+- 4: post-deployment monitoring
+
+## When all stars align
+
+- point treatment
+- prediction under intervention / CATE estimation
+- evaluation in unconfounded data (e.g. historical RCTs)
+- change in policy restriced to subset of features $X$
+- then:
+  - 'treat when tau > t' improves utility
+  - calibration stable under shift in policy (monitoring)
+
+# current status
+
+## not good enough

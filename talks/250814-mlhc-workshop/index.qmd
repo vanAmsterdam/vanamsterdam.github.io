@@ -1,0 +1,87 @@
+---
+title: "Building and evaluating AI for deployment: evidence before and after"
+subtitle: "MLHC pre-conference workshop 2025"
+date: 2025/08/14
+bibliography: ../../library.bib
+format:
+    revealjs:
+        incremental: true
+        theme: [../custom.scss]
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+categories:
+  - unlisted
+  - meetups
+---
+
+## Welcome to the workshop!
+
+### Organizers - Workshop Chairs MLHC 2025
+
+:::{layout-ncol=2}
+
+::::{.column}
+![Uri Shalit](figs/uri.png){width=4in}
+
+Visiting Researcher, Google DeepMind
+
+Associate Professor, Tel Aviv University
+::::
+
+::::{.column}
+![Wouter van Amsterdam](figs/wouter.png){width=4in}
+
+Assistant Professor, University Medical Center Utrecht, Netherlands
+
+::::
+
+:::
+
+## Who's here?
+
+(every person introduces themselves)
+
+## Why are we here?
+
+- AI is changing healthcare [@joshiAIInterventionImproving2025]]
+- pre deployment, need the right evidence to know AI will improve healthcare
+- post deployment, 'things will change', how do we know the AI is still performing (in terms of impact on healthcare) as expected?
+- FDA and EMA (and others) are developing regulations
+- not all questions resolved, maybe we can help
+
+## Morning schedule
+
+9-12am: focus talks, 30 minutes each
+
+:::{.nonincremental}
+- Wouter van Amsterdam - [Aligning development, deployment and monitoring for AI: a causal perspective](causality.html)
+- David Kent - Evaluating prediction models in practice
+- Anna Goldenberg - to Trial or not to Trial?
+:::
+
+**10.30-11.00: coffee break**
+
+:::{.nonincremental}
+- Mohammad Mamdani - Application and Evaluation of AI in Healthcare
+- Jean Feng - Monitoring clinical AI: Where are we now and where do we want to be?
+:::
+
+12.00-12.30: Plenary Discussion
+
+**12.30 - 13.30: Lunch**
+
+## Afternoon schedule
+
+- 13:30: group work; work on questions, draft manuscripts
+- 16:00-16:45: groups present ideas 
+- 16:45-17:00: wrap-up
+
+. . .
+
+### Goal of workshop:
+
+- identify pressing questions that we can answer / work on, potentially start drafting follow-up work
+
+## References

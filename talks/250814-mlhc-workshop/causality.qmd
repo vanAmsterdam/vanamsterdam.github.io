@@ -14,124 +14,66 @@ format:
 categories:
   - prediction
   - causal inference
+  - wip
+  - unlisted
 ---
 
-# much of AI is 'predict predict predict'
+# Much of AI is predict - predict - predict
 
----
+- using ECG, predict presence of structural heart disease, typically diagnosed with cardiac echo
+- predict 10-year heart attack risk using basic medical information
 
-predict sepsis
+# The goal is impact on healthcare
 
----
+## ECG to SHD [@yaoArtificialIntelligenceEnabled2021]
 
-predict diagnosis of structural heart disease from ECG
+- prediction: structural heart disease
+- intervention: refer patient for cardiac echo
+- outcome: diagnosis of structural heart disease
+- outcome (impact): reduce preventable early cardiac death
 
----
+## 10 year heart attack risk [@hippisley-coxDevelopmentValidationNew2024]
 
-predict next token in a sequence ...
+- prediction: heart attack in 10 years
+- intervention: prescribe cholesterol lowering medication
+- outcome: heart attack
+- outcome (impact): reduce heart attacks
 
----
+## Process
 
-these models take input data, model its statistical properties (e.g. what to expect for outcome $Y$ given observation $X$)
+- data scientists optimize for predictive accuracy, which entails modeling statistical associations in the 'healthcare system'
+- the hope is: better prediction $\implies$ better impact
+- unfortunately, this is not automatically the case
 
-## evaluated on predictive *performance* (e.g. accuracy, AUC, calibration)
+## predictive performance vs impact
 
-:::{layout="[[1,1],[4,4]]"}
+:::{.columns}
 
-![](figs/tripod_ai_short.png){height=2in}
+::::{.column width="50%"}
 
-![](figs/probast_ai_short.png){height=2in}
+**predictive performance**
 
-![](figs/auc1.png){height=4in}
+- sensitivity, specificity
+- AUC
+- accuracy
+- calibration
 
-![https://doi.org/10.1371/journal.pmed.1004566.g004](figs/pmed.1004566.g004.png){height=4in}
+![](figs/auc1.png)
+
+::::
+
+::::{.column width="50%"}
+
+**healthcare impact**
+
+- interventions (medical decisions)
+- patient outcomes
+
+::::
 
 :::
 
----
-
-:::{.r-stack}
-
-![](figs/hc1.png){.fragment}
-
-![](figs/hc2.png){.fragment}
-
-:::
-
-## Medical Interventions based on (AI) prediction models
-
-- prevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack [@hippisley-coxDevelopmentValidationNew2024]
-- give chemotherapy to breast cancer patients with a high risk of recurrence [@alaaMachineLearningGuide2021]
-- triage / early warning: patients at high risk of sepsis [@henryTargetedRealtimeEarly2015]
-- early detection: structural heart disease from ECGs performed in primary care
-<!-- todo: add ref -->
-
-
-## AI models tend to break under data shifts
-
-[@finlaysonClinicianDatasetShift2021]
-
-# deploying AI in healthcare is an intervention
-
-![[@joshiAIInterventionImproving2025]](figs/aiasintervention-paper.png)
-
----
-
-the entire purpose of an AI is to *break* (improve) a system, meaning to **cause** a data shift
-
-see a potential issue here?
-
-# What can go wrong when AI development and deployment are misaligned?
-
-# Where causal inference may help
-
-## What is causal inference?
-
-- 'classical' prediction / statistics / AI: model **associations**; know what to expect for outcome $Y$ given observation $X$, **when we keep our hands behind our back and do not change the system**
-- causal inference: answers questions **what if ...** - we changed the system (i.e. intervened by giving a certain treatment $T$) - what would be the outcome $Y$?
-
-. . .
-
-### How to?
-
-- association:
-  - representative (observational) data
-- causal inference:
-  - experimental data (randomized controlled trials)
-  - approximate with observational data using assumptions (unconfoundedness, positivity, consistency) 
-
-## Also causal inference: predicting outcomes under hypothetical interventions
-
-- expected outcome $Y$ if we give treatment $T$ to patient with features $X$
-- how is this different from 'standard' prediction?
-
-. . . 
-
-::: {.callout-tip icon=false}
-## Hilden and Habbema on prognosis [@hildenPrognosisMedicineAnalysis1987]
-
-"Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.” 
-
-:::
-
-## What can go wrong if predictions have unclear relationship with treatment decisions?
-
-1. treatment-naive: simply ignore treatment in the predictions
-2. include treatment but there are important confounders that are not included in the model
-
-## Treatment-naive prediction models: predict outcomes based on features, ignoring treatments
-
-![](figs/txnaive1.png)
-
-## Treatment-naive prediction models: predict outcomes based on features, ignoring treatments
-
-### ... that are important to the outcomes
-
-![](figs/txnaive2.png)
-
-## When accurate prediction models yield harmful self-fulfilling prophecies
-
-How this can go wrong if we misalign the AI evaluation metric and the patient oucome [@vanamsterdamWhenAccuratePrediction2025]
+# When accurate prediction models yield harmful self-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2025]
 
 ---
 
@@ -149,99 +91,44 @@ How this can go wrong if we misalign the AI evaluation metric and the patient ou
 
 ![](figs/rt_example6.png){.fragment height=24cm}
 
+:::
+
+## What happened here?
+
+- had a 'good' model, got a bad policy
+- model predicted outcome (survival) *under historic treatment policy* (always treat)
+- did not predict what outcomes would be under *alternative policy* (no radiation)
+- in this case, unmodeled *treatment effect heterogeneity* (aka treatment effect modification, interation, differing conditional average treatment effects)
+
+## Let's monitor the AI model for performance over time 
+
+:::{.r-stack}
+
+![](figs/rt_example6.png){height=24cm}
+
 ![](figs/rt_example.png){.fragment height=24cm}
 
 :::
 
-## Which models could benefit from this?
+## What happened in monitoring?
 
-- cardiovascular risk prediction [@peekHariSeldonQRISK32017]
+- took a measure of predictive performance (AUC)
+- mistook it for a measure of (good) impact
+- many potential examples (e.g. ICU stop treatment [@balcarcelFeedbackLoopsIntensive2025], others [@sciencemediacenterExpertReactionStudy])
 
+# The devision of predictive performance and policy
 
+## Prediction model: walking stick
 
-# Big hurdles in AI deployment from an intervention / policy perspective
+:::{.r-stack}
 
+![](figs/stick1.png){.fragment height=24cm}
 
-1. prediction model outputs do not automatically align with value for intervention decision making (except when clearly defined treatment strategy (i.e. 'prediction under intervention'))
-2. evaluting the effects of deploying a model **is** causal inference
-3. drawing conclusing from monitoring under shifts in treatment policy is hard
-
-## How are causal models special
-
-1. clear alignment between prediciton accuracy and value for treatment policy:
-
-. . . 
-
-:::{.callout-tip icon=false}
-
-## Pick the treatment that maximizes the expected outcome
+![](figs/stick2.png){.fragment height=24cm}
 
 :::
 
-2. stable predictions under shifts in treatment policy, conditional on the model's features [@fengMonitoringMachineLearningbased2024]
+## Health care provider: stick user
 
-## What to measure
-
-### For 'non-causal' prediction models that don't factor in treatment decisions but predict post-treatment outcomes
-
-|               |                      | pre-deploy | deployment study | monitoring |
-|---------------|----------------------|------------|------------------|------------|
-|               | **metric**           |            |                  |            |
-| model         | discrimination (AUC) |            |       🔁           |     🔁       |
-|               | calibration          |            |   🔻          |  🔻      |
-| health system | interventions    |            |       🔁           |      🔁      |
-|               | patient outcomes     |            |       🔁           |      🔁      |
-
-**Legend**  
-🔁 changes ✅ stable 🔻 worsens
-
-
-## What to measure
-
-### Prediction under intervention preserves calibration under shifts in policy conditional on the model's features
-
-e.g. [@fengMonitoringMachineLearningbased2024]
-
-|               |                      | pre-deploy | deployment study | monitoring |
-|---------------|----------------------|------------|------------------|------------|
-|               | **metric**               |            |                  |            |
-| model         | discrimination (AUC) |            |       🔁           |     🔁       |
-|               | calibration          |            |   🔻      ✅    |  🔻    ✅  |
-| health system | interventions        |            |       🔁           |      🔁      |
-|               | patient outcomes     |            |       🔁           |      🔁      |
-
-**Legend**  
-🔁 changes ✅ stable 🔻 worsens
-
-## How do RCTs fit in?
-
-- RCTs that randomize treatment at individual patient level:
-  - typical study for evaluating the effect of a new treatment
-  - from these data, can develop *prediction under intervention* models (e.g. Path statement [@kentPredictiveApproachesTreatment2020])
-  - typically **too small** to build powerful model, or **did not measure** right features
-- RCTs that randomize deployment of AI:
-  - measure effect of *deployment* on interventions and patient outcomes
-  - take time; are they ethical post-deployment?
-
-## Takeaways
-
-- when predicting prognosis, need well defined relation between prediction and potential treatment decisions
-- in particular, *prediction under intervention* has the advantages of:
-  1. clear relationship between model performance and value for decision making
-  2. stable calibration under shifts in treatment policy, conditional on the model's features
-- these models need unconfoundedness, so either
-  - develop using RCT data
-  - use observational causal inference
-- evaluate and monitor AI based on what we care about: impact on healthcare
-
-## Bigger picture
-
-- want AI to improve healthcare
-- we're good at predicting / modeling statistical associations
-- takes a jump to get to better decision making
-- models developed with causality in mind can better navigate some of these jumps
-  - clear relationship between performance and value for decision making
-  - stable calibration under shifts in policy (conditional on model's features)
-- assessing the impact of deployment on patient outcomes **is** causal inference
 
 ## References

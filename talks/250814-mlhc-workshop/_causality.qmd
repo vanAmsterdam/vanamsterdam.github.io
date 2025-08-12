@@ -182,7 +182,7 @@ How this can go wrong if we misalign the AI evaluation metric and the patient ou
 
 ## What to measure
 
-### For 'non-causal' prediction models that don't factor in treatment decisions but predict post-treatment outcomes
+### For 'non-causal' prediction models that don't factor in treatment decisions
 
 |               |                      | pre-deploy | deployment study | monitoring |
 |---------------|----------------------|------------|------------------|------------|

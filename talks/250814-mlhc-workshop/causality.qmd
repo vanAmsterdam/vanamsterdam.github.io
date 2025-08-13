@@ -11,6 +11,7 @@ format:
         fig-align: center
         width: 1600
         height: 900
+        toc: false
 categories:
   - prediction
   - causal inference
@@ -20,50 +21,44 @@ categories:
 
 # Much of AI is 'predict, predict, predict!'
 
-- using ECG, predict presence of structural heart disease, typically diagnosed with cardiac echo
-- predict 10-year heart attack risk using basic medical information
+- from an ECG, predict presence of heart failure (typically diagnosed with cardiac echo)
+- using medical information from EHR, predict 10-year heart attack risk
 
-## predictive performance measures
+## Predictive performance measures
 
 :::{.columns}
 
 ::::{.column width="50%"}
-
-**predictive performance**
 
 - sensitivity, specificity
 - AUC
 - accuracy
 - calibration
 
-![](figs/auc1.png)
-
 ::::
 
 ::::{.column width="50%"}
 
+![](figs/auc1.png){.fragment}
 
 ::::
 
 :::
 
-## Predictive model building entails modeling statistical associations in the 'healthcare system'
+<!-- ## Predictive model building entails modeling statistical associations in the 'healthcare system' -->
+<!---->
+<!-- ![](figs/hc2.png){height=600 fig-align="center"} -->
+<!---->
+<!-- ## The goal is to deploy these models and have impact on healthcare, becoming part of the system -->
+<!---->
+<!-- ![](figs/hc2.png){height=600 fig-align="center"} -->
 
-:::{.r-stack}
-
-![](figs/hc1.png)
-
-:::
-
-
-# The goal is impact on healthcare
-
-## ECG to SHD [@yaoArtificialIntelligenceEnabled2021]
+## Predict presence of heart failure from ECG [@yaoArtificialIntelligenceEnabled2021]
 
 - prediction: structural heart disease
 - intervention: refer patient for cardiac echo
-- outcome: diagnosis of structural heart disease
-- outcome (impact): reduce preventable early cardiac death
+- outcome: diagnosis of heart failure on echo
+- outcome (impact): reduce preventable early cardiac death / morbidity
 
 ## 10 year heart attack risk [@hippisley-coxDevelopmentValidationNew2024]
 
@@ -72,11 +67,11 @@ categories:
 - outcome: heart attack
 - outcome (impact): reduce heart attacks
 
-## predictive performance vs impact
+## Predictive performance vs impact
 
 :::{.columns}
 
-::::{.column width="50%"}
+::::{.column width="50%" .nonincremental}
 
 **predictive performance**
 
@@ -107,24 +102,24 @@ categories:
 
 :::{.r-stack}
 
-![](figs/rt_example1.png){.fragment height=24cm}
+![](figs/rt_example1.png){.fragment height=22cm}
 
-![](figs/rt_example2.png){.fragment height=24cm}
+![](figs/rt_example2.png){.fragment height=22cm}
 
-![](figs/rt_example3.png){.fragment height=24cm}
+![](figs/rt_example3.png){.fragment height=22cm}
 
-![](figs/rt_example4.png){.fragment height=24cm}
+![](figs/rt_example4.png){.fragment height=22cm}
 
-![](figs/rt_example5.png){.fragment height=24cm}
+![](figs/rt_example5.png){.fragment height=22cm}
 
-![](figs/rt_example6.png){.fragment height=24cm}
+![](figs/rt_example6.png){.fragment height=22cm}
 
 :::
 
-## What happened here?
+## What happened here?                    18
 
 - had a 'good' model, got a bad policy
-- model predicted outcome (survival) *under historic treatment policy* (always treat)
+- model predicted outcome (survival) *under historic treatment policy* (always radiation)
 - did not predict what outcomes would be under *alternative policy* (no radiation)
 - in this case, unmodeled *treatment effect heterogeneity* (aka treatment effect modification, interation, differing conditional average treatment effects)
 
@@ -132,14 +127,15 @@ categories:
 
 :::{.r-stack}
 
-![](figs/rt_example6.png){height=24cm}
+![](figs/rt_example6.png){height=22cm}
 
-![](figs/rt_example.png){.fragment height=24cm}
+![](figs/rt_example.png){.fragment height=22cm}
 
 :::
 
 ## What happened in monitoring?
 
+- the model re-inforced its own predictions (self-fulfilling prophecy)
 - took a measure of predictive performance (AUC)
 - mistook it for a measure of (good) impact
 - many potential examples (e.g. ICU stop treatment [@balcarcelFeedbackLoopsIntensive2025], others [@sciencemediacenterExpertReactionStudy])
@@ -154,41 +150,43 @@ categories:
 
 ## Prediction model: walking stick
 
+### Data Scientist are concerned with optimizing predictive performance
+
 :::{.r-stack}
 
-![](figs/stick1.png){.fragment height=24cm}
+![](figs/stick1.png){.fragment height=18cm}
 
-![](figs/stick2.png){.fragment height=24cm}
+![](figs/stick2.png){.fragment height=18cm}
 
 :::
 
 ## Health care provider: stick user
 
+### The healthcare provider uses the prediction model for decision making
+
 :::{.r-stack}
 
-![](figs/stickuser.png){height=24cm}
+![](figs/stickuser.png){height=18cm}
 
 :::
 
 ## Health care provider + stick = policy
 
+### This combination leads to a new policy, which may yield unexpected results
+
 :::{.r-stack}
 
-![](figs/stick-hitting.gif){height=24cm}
+![](figs/stick-hitting.gif){height=18cm}
 
-![](figs/stickground.png){.fragment height=24cm}
+![](figs/stickground.png){.fragment height=18cm}
 
 :::
 
 # Another way: prediction under intervention
 
-## Prediction under hypothetical intervention incorporates effects of treatment in its predictions
+## When predicting an outcome to support decisions regarding an intervention,
 
-- expected outcome $Y$ if we give treatment $T$ to patient with features $X$
-- a.k.a. 'counterfactual prediction'
-- predict outcomes under multiple treatments, where one treatment may be 'no (additional) treatment / standard treatment'
-
-. . . 
+### this prediction needs a clear relationship with the targeted intervention [@vanamsterdamPrognosticModelsDecision2024]
 
 ::: {.callout-tip icon=false}
 ## Hilden and Habbema on prognosis [@hildenPrognosisMedicineAnalysis1987]
@@ -197,9 +195,17 @@ categories:
 
 :::
 
-- if we're predicting an outcome to support decisions regarding an intervention, this prediction needs a clear relationship with the targeted intervention [@vanamsterdamPrognosticModelsDecision2024]
   - not: what's risk of heart attack given age and cholesterol,
   - but: what's risk of heart attack given age and cholesterol, **if we were not to give cholesterol lowering medication** [(vs. if we would)]{.fragment}
+- may sound like $1+1=2$ but often not done; e.g. in the development data of Qrisk3, many patients already underwent cholesterol lowering medication [@peekHariSeldonQRISK32017]
+
+## Prediction under hypothetical intervention incorporates effects of treatment in its predictions
+
+
+- estimates the expected outcome $Y$ 
+  - **if we were to give treatment $T$** to patient with features $X$
+- a.k.a. 'counterfactual prediction'
+- can  predict outcomes under multiple treatments, where one treatment may be 'no (additional) treatment / standard treatment'
 
 ## How to build prediction under intervention models?
 
@@ -232,7 +238,7 @@ categories:
 
 :::
 
-## Measuring pre- and post-deployment {auto-animate=true}
+## Measuring pre- and post-deployment
 
 |               |                      | pre-deploy | deployment study | 
 |---------------|----------------------|------------|------------------|
@@ -246,7 +252,7 @@ categories:
 🔁 changes ✅ stable 🔻 worsens
 
 
-## Measuring pre- and post-deployment {auto-animate=true}
+## Measuring pre- and post-deployment 
 
 |               |                      | pre-deploy | post-deploy |
 |---------------|----------------------|------------|-------------|
@@ -259,14 +265,14 @@ categories:
 **Legend**  
 🔁 changes ✅ stable 🔻 worsens
 
-- for 'non-causal' prediction models that don't factor in treatment decisions but predict post-treatment outcomes:
-  - AUC will change, calibration will go down (as distribution has changed)
+- for 'non-causal' prognosis prediction models that don't factor in treatment decisions:
+  - AUC will change, calibration will worsen as distribution changes
   - interventions and patient outcomes may change in unforeseen ways
 
 
-## Measuring pre- and post-deployment {auto-animate=true}
+## Measuring pre- and post-deployment 
 
-|               |                      | pre-deploy | 'non-causal' | 'PUI' |
+|               |                      | pre-deploy | 'non-causal' | 'causal' |
 |---------------|----------------------|------------|--------------|-------|
 |               | **metric**           |            |              |       |
 | model         | discrimination (AUC) |   ✅       |       🔁     |   🔁  |
@@ -276,12 +282,6 @@ categories:
 
 **Legend**  
 🔁 changes ✅ stable 🔻 worsens 📈 changes in expected way
-
-:::{.non-incremental}
-- for 'non-causal' prediction models that don't factor in treatment decisions but predict post-treatment outcomes:
-  - AUC will change, calibration will go down (as distribution has changed)
-  - interventions and patient outcomes may change in unforeseen ways
-:::
 
 - for prediction under intervention model
   - calibration preserved under shifts in policy conditional on the model's features

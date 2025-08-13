@@ -39,13 +39,76 @@ Assistant Professor, University Medical Center Utrecht, Netherlands
 
 :::
 
-## Who's here?
+---
 
-(every person introduces themselves)
+::: {.columns style="text-align:center;"}
+
+::: {.column width="100%"}
+<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;">
+
+:::{.fragment}
+![Anna Goldenberg <br> U of Toronto](figs/ppl/annagoldenberg.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Brett Beaulieu Jones <br> U of Chicago, Med. School](figs/ppl/bbj.jpg){height=150px}
+:::
+
+:::{.fragment}
+![David Kent<br>Tufts Medicine](figs/ppl/davidkent.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Jean Feng<br>UC-SF](figs/ppl/jeanfeng.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Jenna Wiens<br>U Michigan, Ann Harbor](figs/ppl/jennawiens.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Julia Vogt<br>ETH Zurich](figs/ppl/juliavogt.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Mark Sendak<br>Duke](figs/ppl/marksendak.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Michael Oberst<br>Johns Hopkins](figs/ppl/michaeloberst.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Muhammad Mamdani<br>U of Toronto](figs/ppl/muhammadmamdani.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Rajesh Ranganath<br>New York University](figs/ppl/rajeshranganath.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Shalmali Joshi<br>Columbia University](figs/ppl/shalmalijoshi.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Shengpu Tang<br>Emory University](figs/ppl/shengputang.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Vincent Jeanselme<br>Columbia University](figs/ppl/vincentjeanselme.jpg){height=150px}  
+:::
+
+:::{.fragment}
+![Xiaoxi Yao<br>Mayo Clinic](figs/ppl/xiaoxiyao.jpg){height=150px}  
+:::
+
+</div>
+:::
+:::
 
 ## Why are we here?
 
-- AI is changing healthcare [@joshiAIInterventionImproving2025]]
+- AI is changing healthcare
 - pre deployment, need the right evidence to know AI will improve healthcare
 - post deployment, 'things will change', how do we know the AI is still performing (in terms of impact on healthcare) as expected?
 - FDA and EMA (and others) are developing regulations

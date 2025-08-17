@@ -10,6 +10,7 @@
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/210720-good_predictions_bad_decisions.html",
       "/posts/190816-lm-functional-form.html",
+      "/talks/250825-iscb-causal-prediction/index.html",
       "/talks/250522-hds-ccm/index.html",
       "/talks/250417-ads-sigs/index.html",
       "/talks/250127-dagstuhl/index.html",
@@ -43,6 +44,7 @@
   {
     "listing": "/talks.html",
     "items": [
+      "/talks/250825-iscb-causal-prediction/index.html",
       "/talks/250522-hds-ccm/index.html",
       "/talks/250417-ads-sigs/index.html",
       "/talks/250127-dagstuhl/index.html",
@@ -63,7 +65,6 @@
   {
     "listing": "/unlisted.html",
     "items": [
-      "/talks/250825-iscb-causal-prediction/index.html",
       "/talks/250814-mlhc-workshop/causality.html",
       "/talks/250814-mlhc-workshop/index.html",
       "/talks/250714-protect-update/index.html",

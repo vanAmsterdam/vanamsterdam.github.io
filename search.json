@@ -25,7 +25,7 @@
     "href": "index.html#talks",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Talks",
-    "text": "Talks\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nMay 22, 2025\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nHuman Data Science ‘Content Meeting’\n\n\n\n\n\n\nApr 17, 2025\n\n\nCausal Data Science in Utrecht: causality for prediction model generalization\n\n\nApplied Data Science event Utrecht University\n\n\n\n\n\n\nJan 27, 2025\n\n\nmy priorities for AI in health\n\n\nDagstuhl Seminar 2025\n\n\n\n\n\n\nNov 25, 2024\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nMethods meeting at the Julius Center, UMC Utrecht\n\n\n\n\n\n\nNov 6, 2024\n\n\nPearl Causal Hierarchy\n\n\nCausal Inference at Julius reading group\n\n\n\n\n\n\nNo matching items"
+    "text": "Talks\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nAug 25, 2025\n\n\nFrom prediction to treatment decision: aligning development, evaluation and monitoring\n\n\nISCB session ‘Prediction modelling meets causal inference for clinical decision making’\n\n\n\n\n\n\nMay 22, 2025\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nHuman Data Science ‘Content Meeting’\n\n\n\n\n\n\nApr 17, 2025\n\n\nCausal Data Science in Utrecht: causality for prediction model generalization\n\n\nApplied Data Science event Utrecht University\n\n\n\n\n\n\nJan 27, 2025\n\n\nmy priorities for AI in health\n\n\nDagstuhl Seminar 2025\n\n\n\n\n\n\nNov 25, 2024\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nMethods meeting at the Julius Center, UMC Utrecht\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#teaching",
@@ -784,53 +784,151 @@
     "text": "References\n\n\n\n\nHond, A. A. H. de. 2023. “From Code to Clinic: Theory and Practice for Artificial Intelligence Prediction Algorithms.” Leiden University. https://hdl.handle.net/1887/3643729.\n\n\nVan Calster, Ben, and Andrew J. Vickers. 2015. “Calibration of Risk Prediction Models: Impact on Decision-Analytic Performance.” Medical Decision Making 35 (2): 162–69. https://doi.org/10.1177/0272989X14547233.\n\n\nWessler, Benjamin S., Jason Nelson, Jinny G. Park, Hannah McGinnes, Gaurav Gulati, Riley Brazil, Ben Van Calster, et al. 2021. “External Validations of Cardiovascular Clinical Prediction Models: A Large-Scale Review of the Literature.” Circulation: Cardiovascular Quality and Outcomes 14 (8): e007858. https://doi.org/10.1161/CIRCOUTCOMES.121.007858."
   },
   {
-    "objectID": "talks/250825-iscb-causal-prediction/index.html#healthcare-as-a-system",
-    "href": "talks/250825-iscb-causal-prediction/index.html#healthcare-as-a-system",
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#using-medical-information-predict-10-year-heart-attack-risk",
+    "href": "talks/250825-iscb-causal-prediction/index.html#using-medical-information-predict-10-year-heart-attack-risk",
     "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
-    "section": "Healthcare as a system",
-    "text": "Healthcare as a system\n\ntakes inputs (clinical data)\nmakes decisions (‘treatment’)\nproduces outcomes (health status, costs)\n\n\n\n\n\n\n\nFundamental hypothesis:\n\n\nsystem is suboptimal in its use of prior data can improve decision process by using data"
+    "section": "Using medical information, predict 10-year heart attack risk",
+    "text": "Using medical information, predict 10-year heart attack risk"
   },
   {
-    "objectID": "talks/250825-iscb-causal-prediction/index.html#prediction-models-used-for-decision-making-applications",
-    "href": "talks/250825-iscb-causal-prediction/index.html#prediction-models-used-for-decision-making-applications",
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#from-an-ecg-predict-presence-of-heart-failure-typically-diagnosed-with-cardiac-echo",
+    "href": "talks/250825-iscb-causal-prediction/index.html#from-an-ecg-predict-presence-of-heart-failure-typically-diagnosed-with-cardiac-echo",
     "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
-    "section": "Prediction models used for decision making: applications",
-    "text": "Prediction models used for decision making: applications\n\nprevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack (Hippisley-Cox et al. 2024)\nscarce resource allocation: liver transplants based on MELD score\ntriage: patients at high risk of sepsis\nearly detection: structural heart disease from ECGs performed in primary care"
+    "section": "from an ECG, predict presence of heart failure (typically diagnosed with cardiac echo)",
+    "text": "from an ECG, predict presence of heart failure (typically diagnosed with cardiac echo)"
   },
   {
-    "objectID": "talks/250825-iscb-causal-prediction/index.html#the-elefant-in-the-room",
-    "href": "talks/250825-iscb-causal-prediction/index.html#the-elefant-in-the-room",
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#predictive-performance-measures",
+    "href": "talks/250825-iscb-causal-prediction/index.html#predictive-performance-measures",
     "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
-    "section": "The elefant in the room",
-    "text": "The elefant in the room\n\nissue: deploying a prediction model is an intervention that changes treatment decisions and outcomes (Joshi et al. 2025);\nthis was the very purpose of deploying the model\nstandard prediction model evaluation does not properly account for this"
+    "section": "Predictive performance measures",
+    "text": "Predictive performance measures\n\n\n\nsensitivity, specificity\nAUC\naccuracy\ncalibration"
   },
   {
-    "objectID": "talks/250825-iscb-causal-prediction/index.html#prediction-model-evaluation",
-    "href": "talks/250825-iscb-causal-prediction/index.html#prediction-model-evaluation",
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#year-heart-attack-risk-hippisley-coxdevelopmentvalidationnew2024",
+    "href": "talks/250825-iscb-causal-prediction/index.html#year-heart-attack-risk-hippisley-coxdevelopmentvalidationnew2024",
     "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
-    "section": "Prediction model evaluation",
-    "text": "Prediction model evaluation\n\nreporting: TRIPOD+AI (Collins et al. 2024)\n\nmeasures: discrimination, calibration, clinical utility (net benefit)"
+    "section": "10 year heart attack risk (Hippisley-Cox et al. 2024)",
+    "text": "10 year heart attack risk (Hippisley-Cox et al. 2024)\n\nprediction: heart attack in 10 years\nintervention: prescribe cholesterol lowering medication\noutcome: heart attack\noutcome (impact): reduce heart attacks"
   },
   {
-    "objectID": "talks/250825-iscb-causal-prediction/index.html#two-three-views-on-performance-utility",
-    "href": "talks/250825-iscb-causal-prediction/index.html#two-three-views-on-performance-utility",
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#predict-presence-of-heart-failure-from-ecg-yaoartificialintelligenceenabled2021",
+    "href": "talks/250825-iscb-causal-prediction/index.html#predict-presence-of-heart-failure-from-ecg-yaoartificialintelligenceenabled2021",
     "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
-    "section": "Two (three) views on performance / utility",
-    "text": "Two (three) views on performance / utility\n\n0: prediction model accuracy on historic data (Van Amsterdam et al. 2025)\n1a: accuracy of predicting under intervention\n1b: accuracy of estimating CATE\n2: accuracy of estimating counterfactual outcomes (c-for benefit?)\n3: policy utility\n4: post-deployment monitoring"
+    "section": "Predict presence of heart failure from ECG (Yao et al. 2021)",
+    "text": "Predict presence of heart failure from ECG (Yao et al. 2021)\n\nprediction: heart failure\nintervention: refer patient for cardiac echo\noutcome: diagnosis of heart failure on echo\noutcome (impact): reduce preventable early cardiac death / morbidity"
   },
   {
-    "objectID": "talks/250825-iscb-causal-prediction/index.html#when-all-stars-align",
-    "href": "talks/250825-iscb-causal-prediction/index.html#when-all-stars-align",
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#predictive-performance-vs-impact",
+    "href": "talks/250825-iscb-causal-prediction/index.html#predictive-performance-vs-impact",
     "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
-    "section": "When all stars align",
-    "text": "When all stars align\n\npoint treatment\nprediction under intervention / CATE estimation\nevaluation in unconfounded data (e.g. historical RCTs)\nchange in policy restriced to subset of features \\(X\\)\nthen:\n\n‘treat when tau &gt; t’ improves utility\ncalibration stable under shift in policy (monitoring)"
+    "section": "Predictive performance vs impact",
+    "text": "Predictive performance vs impact\n\n\npredictive performance\n\nsensitivity, specificity\nAUC\naccuracy\ncalibration\n\n\nhealthcare impact\n\ninterventions (medical decisions)\npatient outcomes\n\n\n\nthe hope is: better predictive performance \\(\\implies\\) better impact\nunfortunately, this is not automatically the case"
   },
   {
-    "objectID": "talks/250825-iscb-causal-prediction/index.html#not-good-enough",
-    "href": "talks/250825-iscb-causal-prediction/index.html#not-good-enough",
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#what-happened-here",
+    "href": "talks/250825-iscb-causal-prediction/index.html#what-happened-here",
     "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
-    "section": "not good enough",
-    "text": "not good enough\n\n\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nHippisley-Cox, Julia, Carol A. C. Coupland, Mona Bafadhel, Richard E. K. Russell, Aziz Sheikh, Peter Brindle, and Keith M. Channon. 2024. “Development and Validation of a New Algorithm for Improved Cardiovascular Risk Prediction.” Nature Medicine, April. https://doi.org/10.1038/s41591-024-02905-y.\n\n\nJoshi, Shalmali, Iñigo Urteaga, Wouter A C van Amsterdam, George Hripcsak, Pierre Elias, Benjamin Recht, Noémie Elhadad, et al. 2025. “AI as an Intervention: Improving Clinical Outcomes Relies on a Causal Approach to AI Development and Validation.” Journal of the American Medical Informatics Association, January, ocae301. https://doi.org/10.1093/jamia/ocae301.\n\n\nVan Amsterdam, Wouter A. C., Nan Van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Cinà. 2025. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” Patterns 6 (4): 101229. https://doi.org/10.1016/j.patter.2025.101229."
+    "section": "What happened here?",
+    "text": "What happened here?\n\nhad a ‘good’ model, got a bad policy\nmodel predicted outcome (survival) under historic treatment policy (always radiation)\ndid not predict what outcomes would be under alternative policy (no radiation)\nin this case, unmodeled treatment effect heterogeneity (aka treatment effect modification, interation, differing conditional average treatment effects)"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#regulation-to-the-rescue-we-need-to-monitor-ai-models",
+    "href": "talks/250825-iscb-causal-prediction/index.html#regulation-to-the-rescue-we-need-to-monitor-ai-models",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Regulation to the rescue: we need to monitor (AI) models",
+    "text": "Regulation to the rescue: we need to monitor (AI) models"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#lets-monitor-the-model-performance-over-time",
+    "href": "talks/250825-iscb-causal-prediction/index.html#lets-monitor-the-model-performance-over-time",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Let’s monitor the model performance over time",
+    "text": "Let’s monitor the model performance over time"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#what-happened-in-monitoring",
+    "href": "talks/250825-iscb-causal-prediction/index.html#what-happened-in-monitoring",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "What happened in monitoring?",
+    "text": "What happened in monitoring?\n\nthe model re-inforced its own predictions (self-fulfilling prophecy)\ntook a measure of predictive performance (AUC)\nmistook it for a measure of (good) impact\nmany potential examples (e.g. ICU stop treatment (Balcarcel et al. 2025), others (Center n.d.))"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#when-predicting-an-outcome-to-support-decisions-regarding-an-intervention",
+    "href": "talks/250825-iscb-causal-prediction/index.html#when-predicting-an-outcome-to-support-decisions-regarding-an-intervention",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "When predicting an outcome to support decisions regarding an intervention,",
+    "text": "When predicting an outcome to support decisions regarding an intervention,\nthis prediction needs a clear relationship with the targeted intervention (van Amsterdam et al. 2024)\n\n\n\nHilden and Habbema on prognosis (Hilden and Habbema 1987)\n\n\n“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”\n\n\n\n\nnot: what’s risk of heart attack given age and cholesterol,\nbut: what’s risk of heart attack given age and cholesterol, if we were not to give cholesterol lowering medication (vs. if we would)\nmay sound like \\(1+1=2\\) but often not done; e.g. in the development data of Qrisk3, many patients already underwent cholesterol lowering medication (Peek, Sperrin, and van Staa 2017)"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#prediction-under-hypothetical-intervention-incorporates-effects-of-treatment-in-its-predictions",
+    "href": "talks/250825-iscb-causal-prediction/index.html#prediction-under-hypothetical-intervention-incorporates-effects-of-treatment-in-its-predictions",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Prediction under hypothetical intervention incorporates effects of treatment in its predictions",
+    "text": "Prediction under hypothetical intervention incorporates effects of treatment in its predictions\n\nestimates the expected outcome \\(Y\\)\n\nif we were to give treatment \\(T\\) to patient with features \\(X\\)\n\na.k.a. ‘counterfactual prediction’\ncan predict outcomes under multiple treatments, where one treatment may be ‘no (additional) treatment / standard treatment’"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#how-to-build-prediction-under-intervention-models",
+    "href": "talks/250825-iscb-causal-prediction/index.html#how-to-build-prediction-under-intervention-models",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "How to build prediction under intervention models?",
+    "text": "How to build prediction under intervention models?\n\nin its simplest form, can be just like fitting any other predictive model, as long as causal identifyability assumptions are fulfilled:\n\nunconfoundedness (no hidden variables causing both the intervention and the outcome)\npositivity, consistency\n\nthese hold by design in Randomized Controlled Trials (RCT)\nRCTs are in that sense ideal (e.g. Kent et al. 2020), but:\n\ntypically limited sample size\nmay not have measured right information (e.g. imaging markers, new biomarkers, full-EHR)\ntrial participants may not be representative of the target population of use (e.g. Lewis et al. 2003)\n\ncan emulate RCTs with non-experimental (observational) data using a causal inference framework, e.g. using target trial emulation"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#benefits-of-prediction-under-intervention",
+    "href": "talks/250825-iscb-causal-prediction/index.html#benefits-of-prediction-under-intervention",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Benefits of prediction under intervention",
+    "text": "Benefits of prediction under intervention\n\npolicy rule: if expected outcome under treatment \\(A\\) is better than under treatment \\(B\\) (potentially by a certain margin), give treatment \\(A\\), otherwise \\(B\\)\nas opposed to other prediction models, this policy has foreseable positive impact on health outcomes"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#benefits-of-prediction-under-intervention-1",
+    "href": "talks/250825-iscb-causal-prediction/index.html#benefits-of-prediction-under-intervention-1",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Benefits of prediction under intervention",
+    "text": "Benefits of prediction under intervention\n\npolicy rule: if expected outcome under treatment \\(A\\) is better than under treatment \\(B\\) (potentially by a certain margin), give treatment \\(A\\), otherwise \\(B\\)\nas opposed to other prediction models, this policy has foreseable positive impact on health outcomes\nas a ‘bonus’, these models have stable calibration under shifts in policy that depend on the models’ features (e.g. Feng et al. 2024)"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#measuring-pre--and-post-deployment",
+    "href": "talks/250825-iscb-causal-prediction/index.html#measuring-pre--and-post-deployment",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Measuring pre- and post-deployment",
+    "text": "Measuring pre- and post-deployment\n\n\n\n\n\npre-deploy\ndeployment study\n\n\n\n\n\nmetric\n\n\n\n\nmodel\ndiscrimination (AUC)\n✅\n\n\n\n\ncalibration\n✅\n\n\n\nhealth system\ninterventions\n✅\n\n\n\n\npatient outcomes\n✅\n\n\n\n\nLegend\n🔁 changes ✅ stable 🔻 worsens"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#measuring-pre--and-post-deployment-1",
+    "href": "talks/250825-iscb-causal-prediction/index.html#measuring-pre--and-post-deployment-1",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Measuring pre- and post-deployment",
+    "text": "Measuring pre- and post-deployment\n\n\n\n\n\npre-deploy\npost-deploy\n\n\n\n\n\nmetric\n\n\n\n\nmodel\ndiscrimination (AUC)\n✅\n🔁\n\n\n\ncalibration\n✅\n🔻\n\n\nhealth system\ninterventions\n✅\n🔁\n\n\n\npatient outcomes\n✅\n🔁\n\n\n\nLegend\n🔁 changes ✅ stable 🔻 worsens\n\nfor ‘non-causal’ prognosis prediction models that don’t factor in treatment decisions:\n\nAUC will change, calibration will worsen as distribution changes\ninterventions and patient outcomes may change in unforeseen ways"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#measuring-pre--and-post-deployment-2",
+    "href": "talks/250825-iscb-causal-prediction/index.html#measuring-pre--and-post-deployment-2",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Measuring pre- and post-deployment",
+    "text": "Measuring pre- and post-deployment\n\n\n\n\n\n\n\n\n\n\n\n\npre-deploy\n‘non-causal’\n‘causal’\n\n\n\n\n\nmetric\n\n\n\n\n\nmodel\ndiscrimination (AUC)\n✅\n🔁\n🔁\n\n\n\ncalibration\n✅\n🔻\n✅\n\n\nhealth system\ninterventions\n✅\n🔁\n📈\n\n\n\npatient outcomes\n✅\n🔁\n📈\n\n\n\nLegend\n🔁 changes ✅ stable 🔻 worsens 📈 changes in expected way\n\nfor prediction under intervention model\n\ncalibration preserved under shifts in policy conditional on the model’s features\ninterventions and outcomes change in foreseeable ways (under assumption on policy)"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#current-status",
+    "href": "talks/250825-iscb-causal-prediction/index.html#current-status",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Current status",
+    "text": "Current status\n\nreporting guidelines (e.g. TRIPOD+AI / PROBAST+AI (Collins et al. 2024; Moons et al. 2025)) do not require a clear enoough description of relation between prediction and treatment (“Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions” 2024)\nsome acceptance criteria lists (AJCC) even allow for harmful self-fulfilling prophecies (Kattan et al. 2016)\nEMA and FDA are developing monitoring guidelines, mostly emphasis on predictive performance, but good performance \\(\\neq\\) postive impact"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#takeaways",
+    "href": "talks/250825-iscb-causal-prediction/index.html#takeaways",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nwhen predicting prognosis, need well defined relation between prediction and potential treatment decisions\nin particular, prediction under intervention has the advantages of:\n\nclear relationship between model performance and value for decision making\nstable calibration under shifts in treatment policy, conditional on the model’s features\n\nthese models need unconfoundedness, so either\n\ndevelop using RCT data\nuse observational causal inference\n\nevaluate and monitor prediction models based on what we care about: impact on healthcare"
+  },
+  {
+    "objectID": "talks/250825-iscb-causal-prediction/index.html#references",
+    "href": "talks/250825-iscb-causal-prediction/index.html#references",
+    "title": "From prediction to treatment decision: aligning development, evaluation and monitoring",
+    "section": "References",
+    "text": "References\n\n\n\n\nAmsterdam, W.A. C. van, Giovanni Cinà, Vanessa Didelez, Ruth H. Keogh, Niels Peek, Matthew Sperrin, Andrew J. Vickers, Nan van Geloven, and Uri Shalit. 2024. “Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions [Rapid Response].” BMJ, May. https://doi.org/10.1136/bmj-2023-078378/rr-1.\n\n\nBalcarcel, Daniel R, Sanjiv D Mehta, Celeste G Dixon, Charlotte Z Woods-Hill, Ewan C Goligher, Wouter A C Van Amsterdam, and Nadir Yehya. 2025. “Feedback Loops in Intensive Care Unit Prognostic Models: An Under-Recognised Threat to Clinical Validity.” The Lancet Digital Health, July, 100880. https://doi.org/10.1016/j.landig.2025.100880.\n\n\nCenter, Science Media. n.d. “Expert Reaction to Study Suggesting Potential Patient Harms Associated with Use of AI Medical Outcome-Prediction Models | Science Media Centre.” Accessed August 12, 2025. https://www.sciencemediacentre.org/expert-reaction-to-study-suggesting-potential-patient-harms-associated-with-use-of-ai-medical-outcome-prediction-models/.\n\n\nCollins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. “TRIPOD+AI Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.” BMJ 385 (April): e078378. https://doi.org/10.1136/bmj-2023-078378.\n\n\nFeng, Jean, Alexej Gossmann, Gene A. Pennello, Nicholas Petrick, Berkman Sahiner, and Romain Pirracchio. 2024. “Monitoring Machine Learning-Based Risk Prediction Algorithms in the Presence of Performativity.” In Proceedings of The 27th International Conference on Artificial Intelligence and Statistics, 919–27. PMLR. https://proceedings.mlr.press/v238/feng24b.html.\n\n\nHilden, Jørgen, and J. Dik F. Habbema. 1987. “Prognosis in Medicine: An Analysis of Its Meaning and Rôles.” Theoretical Medicine 8 (3): 349–65. https://doi.org/10.1007/BF00489469.\n\n\nHippisley-Cox, Julia, Carol A. C. Coupland, Mona Bafadhel, Richard E. K. Russell, Aziz Sheikh, Peter Brindle, and Keith M. Channon. 2024. “Development and Validation of a New Algorithm for Improved Cardiovascular Risk Prediction.” Nature Medicine, April. https://doi.org/10.1038/s41591-024-02905-y.\n\n\nKattan, Michael W., Kenneth R. Hess, Mahul B. Amin, Ying Lu, Karl G. M. Moons, Jeffrey E. Gershenwald, Phyllis A. Gimotty, et al. 2016. “American Joint Committee on Cancer Acceptance Criteria for Inclusion of Risk Models for Individualized Prognosis in the Practice of Precision Medicine.” CA: A Cancer Journal for Clinicians 66 (5): 370–74. https://doi.org/10.3322/caac.21339.\n\n\nKent, David M., Jessica K. Paulus, David van Klaveren, Ralph D’Agostino, Steve Goodman, Rodney Hayward, John P. A. Ioannidis, et al. 2020. “The Predictive Approaches to Treatment Effect Heterogeneity (PATH) Statement.” Annals of Internal Medicine 172 (1): 35–45. https://doi.org/10.7326/M18-3667.\n\n\nLewis, Joy H., Meredith L. Kilgore, Dana P. Goldman, Edward L. Trimble, Richard Kaplan, Michael J. Montello, Michael G. Housman, and José J. Escarce. 2003. “Participation of Patients 65 Years of Age or Older in Cancer Clinical Trials.” Journal of Clinical Oncology 21 (7): 1383–89. https://doi.org/10.1200/JCO.2003.08.010.\n\n\nMoons, Karel G. M., Johanna A. A. Damen, Tabea Kaul, Lotty Hooft, Constanza Andaur Navarro, Paula Dhiman, Andrew L. Beam, et al. 2025. “PROBAST+AI: An Updated Quality, Risk of Bias, and Applicability Assessment Tool for Prediction Models Using Regression or Artificial Intelligence Methods.” BMJ 388 (March): e082505. https://doi.org/10.1136/bmj-2024-082505.\n\n\nPeek, Niels, Matthew Sperrin, and Tjeerd van Staa. 2017. “Hari Seldon, QRISK3, and the Prediction Paradox.” BMJ 2017;357:j2099, May. https://doi.org/10.1136/bmj.j2099.\n\n\n“Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions.” 2024, December. https://www.bmj.com/content/385/bmj-2023-078378/rr-1.\n\n\nVan Amsterdam, Wouter A. C., Nan Van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Cinà. 2025. “When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.” Patterns 6 (4): 101229. https://doi.org/10.1016/j.patter.2025.101229.\n\n\nYao, Xiaoxi, David R. Rushlow, Jonathan W. Inselman, Rozalina G. McCoy, Thomas D. Thacher, Emma M. Behnken, Matthew E. Bernard, et al. 2021. “Artificial Intelligence–Enabled Electrocardiograms for Identification of Patients with Low Ejection Fraction: A Pragmatic, Randomized Clinical Trial.” Nature Medicine 27 (5): 815–19. https://doi.org/10.1038/s41591-021-01335-4."
   },
   {
     "objectID": "talks/240516-sig-causality-prediction/index.html#prediction",
@@ -1124,7 +1222,7 @@
     "href": "talks.html",
     "title": "Talks",
     "section": "",
-    "text": "Here is a selection of my talks.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nMay 22, 2025\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nHuman Data Science ‘Content Meeting’\n\n\n\n\n\n\nApr 17, 2025\n\n\nCausal Data Science in Utrecht: causality for prediction model generalization\n\n\nApplied Data Science event Utrecht University\n\n\n\n\n\n\nJan 27, 2025\n\n\nmy priorities for AI in health\n\n\nDagstuhl Seminar 2025\n\n\n\n\n\n\nNov 25, 2024\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nMethods meeting at the Julius Center, UMC Utrecht\n\n\n\n\n\n\nNov 6, 2024\n\n\nPearl Causal Hierarchy\n\n\nCausal Inference at Julius reading group\n\n\n\n\n\n\nSep 26, 2024\n\n\nAn introduction to AI for biostatisticians\n\n\nBMS-Aned seminar\n\n\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\n\n\nApr 18, 2024\n\n\nAI and its (mis)uses in medical research and practice\n\n\nInfection and Immunity spring meeting\n\n\n\n\n\n\nAug 10, 2023\n\n\nThe value of observational causal inference for medical decision making\n\n\nMLHC causality pre-conference workshop\n\n\n\n\n\n\nJun 24, 2023\n\n\nMy risk model is super accurate so it will be useful for treatment decision making, right? Wrong!\n\n\nCHIL 2023 - lightning talk\n\n\n\n\n\n\nMar 1, 2023\n\n\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies\n\n\nSeminar at Manchester University\n\n\n\n\n\n\nNo matching items"
+    "text": "Here is a selection of my talks.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nAug 25, 2025\n\n\nFrom prediction to treatment decision: aligning development, evaluation and monitoring\n\n\nISCB session ‘Prediction modelling meets causal inference for clinical decision making’\n\n\n\n\n\n\nMay 22, 2025\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nHuman Data Science ‘Content Meeting’\n\n\n\n\n\n\nApr 17, 2025\n\n\nCausal Data Science in Utrecht: causality for prediction model generalization\n\n\nApplied Data Science event Utrecht University\n\n\n\n\n\n\nJan 27, 2025\n\n\nmy priorities for AI in health\n\n\nDagstuhl Seminar 2025\n\n\n\n\n\n\nNov 25, 2024\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nMethods meeting at the Julius Center, UMC Utrecht\n\n\n\n\n\n\nNov 6, 2024\n\n\nPearl Causal Hierarchy\n\n\nCausal Inference at Julius reading group\n\n\n\n\n\n\nSep 26, 2024\n\n\nAn introduction to AI for biostatisticians\n\n\nBMS-Aned seminar\n\n\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\n\n\nApr 18, 2024\n\n\nAI and its (mis)uses in medical research and practice\n\n\nInfection and Immunity spring meeting\n\n\n\n\n\n\nAug 10, 2023\n\n\nThe value of observational causal inference for medical decision making\n\n\nMLHC causality pre-conference workshop\n\n\n\n\n\n\nJun 24, 2023\n\n\nMy risk model is super accurate so it will be useful for treatment decision making, right? Wrong!\n\n\nCHIL 2023 - lightning talk\n\n\n\n\n\n\nMar 1, 2023\n\n\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies\n\n\nSeminar at Manchester University\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/210725-counterfactualvsinterventional.html",
@@ -2503,6 +2601,6 @@
     "href": "unlisted.html",
     "title": "Unlisted pages",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nAug 26, 2025\n\n\nFrom prediction to treatment decision: aligning development, evaluation and monitoring\n\n\nISCB 2025\n\n\n\n\n\n\nAug 14, 2025\n\n\nAligning development, deployment and monitoring for AI: a causal perspective\n\n\nMLHC pre-conference workshop 2025\n\n\n\n\n\n\nAug 14, 2025\n\n\nBuilding and evaluating AI for deployment: evidence before and after\n\n\nMLHC pre-conference workshop 2025\n\n\n\n\n\n\nJul 13, 2025\n\n\nPROTECT update\n\n\nManchester / Rajesh\n\n\n\n\n\n\nMay 7, 2025\n\n\nEffect Measure Stability\n\n\n \n\n\n\n\n\n\nSep 23, 2022\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nAug 14, 2025\n\n\nAligning development, deployment and monitoring for AI: a causal perspective\n\n\nMLHC pre-conference workshop 2025\n\n\n\n\n\n\nAug 14, 2025\n\n\nBuilding and evaluating AI for deployment: evidence before and after\n\n\nMLHC pre-conference workshop 2025\n\n\n\n\n\n\nJul 13, 2025\n\n\nPROTECT update\n\n\nManchester / Rajesh\n\n\n\n\n\n\nMay 7, 2025\n\n\nEffect Measure Stability\n\n\n \n\n\n\n\n\n\nSep 23, 2022\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\n\nNo matching items"
   }
 ]

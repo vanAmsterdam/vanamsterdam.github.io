@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Wouter van Amsterdam">
-  <meta name="dcterms.date" content="2025-08-26">
+  <meta name="dcterms.date" content="2025-08-25">
   <title>Wouter van Amsterdam – From prediction to treatment decision: aligning development, evaluation and monitoring</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -154,10 +154,10 @@
     }
   </style>
 <meta property="og:title" content="From prediction to treatment decision: aligning development, evaluation and monitoring – Wouter van Amsterdam">
-<meta property="og:description" content="ISCB 2025">
+<meta property="og:description" content="ISCB session ‘Prediction modelling meets causal inference for clinical decision making’">
 <meta property="og:site_name" content="Wouter van Amsterdam">
 <meta name="twitter:title" content="From prediction to treatment decision: aligning development, evaluation and monitoring – Wouter van Amsterdam">
-<meta name="twitter:description" content="ISCB 2025">
+<meta name="twitter:description" content="ISCB session ‘Prediction modelling meets causal inference for clinical decision making’">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
 </head>
@@ -168,7 +168,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">From prediction to treatment decision: aligning development, evaluation and monitoring</h1>
-  <p class="subtitle">ISCB 2025</p>
+  <p class="subtitle">ISCB session ‘Prediction modelling meets causal inference for clinical decision making’</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -181,144 +181,485 @@
     </div>
 </div>
 
-  <p class="date">2025-08-26</p>
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Table of contents</h2>
-<ul>
-<li class="fragment"><a href="#/much-of-ai-is-predict-predict-predict" id="/toc-much-of-ai-is-predict-predict-predict">much of AI is ‘predict predict predict’</a></li>
-<li class="fragment"><a href="#/deploying-ai-in-healthcare-is-an-intervention" id="/toc-deploying-ai-in-healthcare-is-an-intervention">deploying AI in healthcare is an intervention</a></li>
-<li class="fragment"><a href="#/setup" id="/toc-setup">Setup</a></li>
-<li class="fragment"><a href="#/current-status" id="/toc-current-status">current status</a></li>
-</ul>
-</nav>
+  <p class="date">2025-08-25</p>
 </section>
 <section>
-<section id="much-of-ai-is-predict-predict-predict" class="title-slide slide level1 center">
-<h1>much of AI is ‘predict predict predict’</h1>
+<section id="much-of-biostatistics-data-science-and-ai-is-predict-predict-predict" class="title-slide slide level1 center">
+<h1>Much of biostatistics, data-science and AI is ‘predict, predict, predict!’</h1>
 
 </section>
-<section class="slide level2 center">
+<section id="using-medical-information-predict-10-year-heart-attack-risk" class="slide level2 center">
+<h2>Using medical information, predict 10-year heart attack risk</h2>
 
-<p>predict sepsis</p>
+<img data-src="figs/qrisk1.png" class="r-stretch"></section>
+<section id="from-an-ecg-predict-presence-of-heart-failure-typically-diagnosed-with-cardiac-echo" class="slide level2 center">
+<h2>from an ECG, predict presence of heart failure (typically diagnosed with cardiac echo)</h2>
+
+<img data-src="figs/ecg.jpg" class="r-stretch"></section>
+<section id="predictive-performance-measures" class="slide level2 center">
+<h2>Predictive performance measures</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">sensitivity, specificity</li>
+<li class="fragment">AUC</li>
+<li class="fragment">accuracy</li>
+<li class="fragment">calibration</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figs/auc1.png" class="fragment"></p>
+</div></div>
+<!-- ## Predictive model building entails modeling statistical associations in the 'healthcare system' -->
+<!---->
+<!-- ![](figs/hc2.png){height=600 fig-align="center"} -->
+<!---->
+<!-- ## The goal is to deploy these models and have impact on healthcare, becoming part of the system -->
+<!---->
+<!-- ![](figs/hc2.png){height=600 fig-align="center"} -->
 </section>
-<section class="slide level2 center">
-
-<p>predict diagnosis of structural heart disease from ECG</p>
+<section id="year-heart-attack-risk-hippisley-coxdevelopmentvalidationnew2024" class="slide level2 center">
+<h2>10 year heart attack risk <span class="citation" data-cites="hippisley-coxDevelopmentValidationNew2024">(<a href="#/references" role="doc-biblioref" onclick="">Hippisley-Cox et al. 2024</a>)</span></h2>
+<ul>
+<li class="fragment">prediction: heart attack in 10 years</li>
+<li class="fragment">intervention: prescribe cholesterol lowering medication</li>
+<li class="fragment">outcome: heart attack</li>
+<li class="fragment">outcome (impact): reduce heart attacks</li>
+</ul>
 </section>
-<section class="slide level2 center">
-
-<p>predict next token in a sequence …</p>
+<section id="predict-presence-of-heart-failure-from-ecg-yaoartificialintelligenceenabled2021" class="slide level2 center">
+<h2>Predict presence of heart failure from ECG <span class="citation" data-cites="yaoArtificialIntelligenceEnabled2021">(<a href="#/references" role="doc-biblioref" onclick="">Yao et al. 2021</a>)</span></h2>
+<ul>
+<li class="fragment">prediction: heart failure</li>
+<li class="fragment">intervention: refer patient for cardiac echo</li>
+<li class="fragment">outcome: diagnosis of heart failure on echo</li>
+<li class="fragment">outcome (impact): reduce preventable early cardiac death / morbidity</li>
+</ul>
 </section>
-<section class="slide level2 center">
-
-<p>these models take input data, model its statistical properties (e.g.&nbsp;what to expect for outcome <span class="math inline">\(Y\)</span> given observation <span class="math inline">\(X\)</span>)</p>
-<p>evaluated on predictive <em>performance</em> (e.g.&nbsp;accuracy, AUC, calibration)</p>
-<p>tend to break under data shifts</p>
+<section id="predictive-performance-vs-impact" class="slide level2 center">
+<h2>Predictive performance vs impact</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>predictive performance</strong></p>
+<ul>
+<li>sensitivity, specificity</li>
+<li>AUC</li>
+<li>accuracy</li>
+<li>calibration</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>healthcare impact</strong></p>
+<ul>
+<li class="fragment">interventions (medical decisions)</li>
+<li class="fragment">patient outcomes</li>
+</ul>
+</div></div>
+<ul>
+<li class="fragment">the hope is: better predictive performance <span class="math inline">\(\implies\)</span> better impact</li>
+<li class="fragment">unfortunately, this is not automatically the case</li>
+</ul>
 </section></section>
-<section id="deploying-ai-in-healthcare-is-an-intervention" class="title-slide slide level1 center">
-<h1>deploying AI in healthcare is an intervention</h1>
-
-</section>
-
 <section>
-<section id="setup" class="title-slide slide level1 center">
-<h1>Setup</h1>
+<section id="when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies-vanamsterdamwhenaccurateprediction2025" class="title-slide slide level1 center">
+<h1>When accurate prediction models yield harmful self-fulfilling prophecies <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2025">(<a href="#/references" role="doc-biblioref" onclick="">Van Amsterdam et al. 2025</a>)</span></h1>
 
 </section>
-<section id="healthcare-as-a-system" class="slide level2 center">
-<h2>Healthcare as a system</h2>
+<section class="slide level2 center">
+
+<div class="r-stack">
+<p><img data-src="figs/rt_example1.png" class="fragment" style="height:22cm"></p>
+<p><img data-src="figs/rt_example2.png" class="fragment" style="height:22cm"></p>
+<p><img data-src="figs/rt_example3.png" class="fragment" style="height:22cm"></p>
+<p><img data-src="figs/rt_example4.png" class="fragment" style="height:22cm"></p>
+<p><img data-src="figs/rt_example5.png" class="fragment" style="height:22cm"></p>
+<p><img data-src="figs/rt_example6.png" class="fragment" style="height:22cm"></p>
+</div>
+</section>
+<section id="what-happened-here" class="slide level2 center">
+<h2>What happened here?</h2>
 <ul>
-<li class="fragment">takes inputs (clinical data)</li>
-<li class="fragment">makes decisions (‘treatment’)</li>
-<li class="fragment">produces outcomes (health status, costs)</li>
+<li class="fragment">had a ‘good’ model, got a bad policy</li>
+<li class="fragment">model predicted outcome (survival) <em>under historic treatment policy</em> (always radiation)</li>
+<li class="fragment">did not predict what outcomes would be under <em>alternative policy</em> (no radiation)</li>
+<li class="fragment">in this case, unmodeled <em>treatment effect heterogeneity</em> (aka treatment effect modification, interation, differing conditional average treatment effects)</li>
 </ul>
-<div class="callout callout-tip callout-titled callout-style-default">
+</section>
+<section id="regulation-to-the-rescue-we-need-to-monitor-ai-models" class="slide level2 center">
+<h2>Regulation to the rescue: we need to monitor (AI) models</h2>
+<div class="r-stack">
+<p><img data-src="figs/ema-monitor.png" class="fragment" height="700"></p>
+<p><img data-src="figs/fda-gp-monitor.png" class="fragment"></p>
+</div>
+</section>
+<section id="lets-monitor-the-model-performance-over-time" class="slide level2 center">
+<h2>Let’s monitor the model performance over time</h2>
+<div class="r-stack">
+<p><img data-src="figs/rt_example6.png" style="height:22cm"></p>
+<p><img data-src="figs/rt_example.png" class="fragment" style="height:22cm"></p>
+</div>
+</section>
+<section id="what-happened-in-monitoring" class="slide level2 center">
+<h2>What happened in monitoring?</h2>
+<ul>
+<li class="fragment">the model re-inforced its own predictions (self-fulfilling prophecy)</li>
+<li class="fragment">took a measure of predictive performance (AUC)</li>
+<li class="fragment">mistook it for a measure of (good) impact</li>
+<li class="fragment">many potential examples (e.g.&nbsp;ICU stop treatment <span class="citation" data-cites="balcarcelFeedbackLoopsIntensive2025">(<a href="#/references" role="doc-biblioref" onclick="">Balcarcel et al. 2025</a>)</span>, others <span class="citation" data-cites="sciencemediacenterExpertReactionStudy">(<a href="#/references" role="doc-biblioref" onclick="">Center n.d.</a>)</span>)</li>
+</ul>
+</section>
+<section class="slide level2 center">
+
+
+<!-- ## Prediction model: walking stick -->
+<!---->
+<!-- ### Data Scientist are concerned with optimizing predictive performance -->
+<!---->
+<!-- :::{.r-stack} -->
+<!---->
+<!-- ![](figs/stick1.png){.fragment height=18cm} -->
+<!---->
+<!-- ![](figs/stick2.png){.fragment height=18cm} -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ## Health care provider: stick user -->
+<!---->
+<!-- ### The healthcare provider uses the prediction model for decision making -->
+<!---->
+<!-- :::{.r-stack} -->
+<!---->
+<!-- ![](figs/stickuser.png){height=18cm} -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ## Health care provider + stick = policy -->
+<!---->
+<!-- ### This combination leads to a new policy, which may yield unexpected results -->
+<!---->
+<!-- :::{.r-stack} -->
+<!---->
+<!-- ![](figs/stick-hitting.gif){height=18cm} -->
+<!---->
+<!-- ![](figs/stickground.png){.fragment height=18cm} -->
+<!---->
+<!-- ::: -->
+<img data-src="figs/mindthegap.png" class="r-stretch"></section></section>
+<section>
+<section id="another-way-prediction-under-intervention" class="title-slide slide level1 center">
+<h1>Another way: prediction under intervention</h1>
+
+</section>
+<section id="when-predicting-an-outcome-to-support-decisions-regarding-an-intervention" class="slide level2 center">
+<h2>When predicting an outcome to support decisions regarding an intervention,</h2>
+<h3 id="this-prediction-needs-a-clear-relationship-with-the-targeted-intervention-vanamsterdamprognosticmodelsdecision2024">this prediction needs a clear relationship with the targeted intervention <span class="citation" data-cites="vanamsterdamPrognosticModelsDecision2024">(<a href="#/references" role="doc-biblioref" onclick="">van Amsterdam et al. 2024</a>)</span></h3>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Fundamental hypothesis:</strong></p>
+<p><strong>Hilden and Habbema on prognosis <span class="citation" data-cites="hildenPrognosisMedicineAnalysis1987">(<a href="#/references" role="doc-biblioref" onclick="">Hilden and Habbema 1987</a>)</span></strong></p>
 </div>
 <div class="callout-content">
-<p>system is suboptimal in its use of prior data can improve decision process by using data</p>
+<p>“Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.”</p>
 </div>
 </div>
 </div>
-</section>
-<section id="prediction-models-used-for-decision-making-applications" class="slide level2 center">
-<h2>Prediction models used for decision making: applications</h2>
 <ul>
-<li class="fragment">prevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack <span class="citation" data-cites="hippisley-coxDevelopmentValidationNew2024">(<a href="#/not-good-enough" role="doc-biblioref" onclick="">Hippisley-Cox et al. 2024</a>)</span></li>
-<li class="fragment">scarce resource allocation: liver transplants based on MELD score</li>
-<li class="fragment">triage: patients at high risk of sepsis</li>
-<li class="fragment">early detection: structural heart disease from ECGs performed in primary care <!-- todo: add ref --></li>
+<li class="fragment">not: what’s risk of heart attack given age and cholesterol,</li>
+<li class="fragment">but: what’s risk of heart attack given age and cholesterol, <strong>if we were not to give cholesterol lowering medication</strong> <span class="fragment">(vs.&nbsp;if we would)</span></li>
+<li class="fragment">may sound like <span class="math inline">\(1+1=2\)</span> but often not done; e.g.&nbsp;in the development data of Qrisk3, many patients already underwent cholesterol lowering medication <span class="citation" data-cites="peekHariSeldonQRISK32017">(<a href="#/references" role="doc-biblioref" onclick="">Peek, Sperrin, and van Staa 2017</a>)</span></li>
 </ul>
 </section>
-<section id="the-elefant-in-the-room" class="slide level2 center">
-<h2>The elefant in the room</h2>
+<section id="prediction-under-hypothetical-intervention-incorporates-effects-of-treatment-in-its-predictions" class="slide level2 center">
+<h2>Prediction under hypothetical intervention incorporates effects of treatment in its predictions</h2>
 <ul>
-<li class="fragment">issue: deploying a prediction model is an intervention that changes treatment decisions and outcomes <span class="citation" data-cites="joshiAIInterventionImproving2025">(<a href="#/not-good-enough" role="doc-biblioref" onclick="">Joshi et al. 2025</a>)</span>;</li>
-<li class="fragment">this was the very purpose of deploying the model</li>
-<li class="fragment">standard prediction model evaluation does not properly account for this</li>
-</ul>
-</section>
-<section id="prediction-model-evaluation" class="slide level2 center">
-<h2>Prediction model evaluation</h2>
+<li class="fragment">estimates the expected outcome <span class="math inline">\(Y\)</span>
 <ul>
-<li class="fragment">reporting: TRIPOD+AI <span class="citation" data-cites="collinsTRIPOD+AIStatementUpdated2024">(<a href="#/not-good-enough" role="doc-biblioref" onclick="">Collins et al. 2024</a>)</span>
-<ul>
-<li class="fragment">measures: discrimination, calibration, clinical utility (net benefit)</li>
+<li class="fragment"><strong>if we were to give treatment <span class="math inline">\(T\)</span></strong> to patient with features <span class="math inline">\(X\)</span></li>
 </ul></li>
+<li class="fragment">a.k.a. ‘counterfactual prediction’</li>
+<li class="fragment">can predict outcomes under multiple treatments, where one treatment may be ‘no (additional) treatment / standard treatment’</li>
 </ul>
 </section>
-<section id="two-three-views-on-performance-utility" class="slide level2 center">
-<h2>Two (three) views on performance / utility</h2>
+<section id="how-to-build-prediction-under-intervention-models" class="slide level2 center">
+<h2>How to build prediction under intervention models?</h2>
 <ul>
-<li class="fragment">0: prediction model accuracy on historic data <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2025">(<a href="#/not-good-enough" role="doc-biblioref" onclick="">Van Amsterdam et al. 2025</a>)</span></li>
-<li class="fragment">1a: accuracy of predicting under intervention</li>
-<li class="fragment">1b: accuracy of estimating CATE</li>
-<li class="fragment">2: accuracy of estimating counterfactual outcomes (c-for benefit?)</li>
-<li class="fragment">3: policy utility</li>
-<li class="fragment">4: post-deployment monitoring</li>
-</ul>
-</section>
-<section id="when-all-stars-align" class="slide level2 center">
-<h2>When all stars align</h2>
+<li class="fragment">in its simplest form, can be just like fitting any other predictive model, as long as <strong>causal identifyability assumptions</strong> are fulfilled:
 <ul>
-<li class="fragment">point treatment</li>
-<li class="fragment">prediction under intervention / CATE estimation</li>
-<li class="fragment">evaluation in unconfounded data (e.g.&nbsp;historical RCTs)</li>
-<li class="fragment">change in policy restriced to subset of features <span class="math inline">\(X\)</span></li>
-<li class="fragment">then:
-<ul>
-<li class="fragment">‘treat when tau &gt; t’ improves utility</li>
-<li class="fragment">calibration stable under shift in policy (monitoring)</li>
+<li class="fragment">unconfoundedness (no hidden variables causing both the intervention and the outcome)</li>
+<li class="fragment">positivity, consistency</li>
 </ul></li>
+<li class="fragment">these hold by design in Randomized Controlled Trials (RCT)</li>
+<li class="fragment">RCTs are in that sense ideal <span class="citation" data-cites="kentPredictiveApproachesTreatment2020">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Kent et al. 2020</a>)</span>, but:
+<ul>
+<li class="fragment">typically limited sample size</li>
+<li class="fragment">may not have measured right information (e.g.&nbsp;imaging markers, new biomarkers, full-EHR)</li>
+<li class="fragment">trial participants may not be representative of the target population of use <span class="citation" data-cites="lewisParticipationPatients652003">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Lewis et al. 2003</a>)</span></li>
+</ul></li>
+<li class="fragment">can <em>emulate</em> RCTs with non-experimental (<em>observational</em>) data using a causal inference framework, e.g.&nbsp;using target trial emulation</li>
 </ul>
-</section></section>
-<section>
-<section id="current-status" class="title-slide slide level1 center">
-<h1>current status</h1>
+</section>
+<section id="benefits-of-prediction-under-intervention" class="slide level2 center">
+<h2>Benefits of prediction under intervention</h2>
+<ul>
+<li class="fragment">policy rule: if expected outcome under treatment <span class="math inline">\(A\)</span> is better than under treatment <span class="math inline">\(B\)</span> (potentially by a certain margin), give treatment <span class="math inline">\(A\)</span>, otherwise <span class="math inline">\(B\)</span></li>
+<li class="fragment">as opposed to other prediction models, this policy has foreseable positive impact on health outcomes</li>
+</ul>
+</section>
+<section class="slide level2 center">
 
+
+<img data-src="figs/mindthegap.png" class="r-stretch"></section>
+<section id="benefits-of-prediction-under-intervention-1" class="slide level2 center">
+<h2>Benefits of prediction under intervention</h2>
+<ul>
+<li>policy rule: if expected outcome under treatment <span class="math inline">\(A\)</span> is better than under treatment <span class="math inline">\(B\)</span> (potentially by a certain margin), give treatment <span class="math inline">\(A\)</span>, otherwise <span class="math inline">\(B\)</span></li>
+<li>as opposed to other prediction models, this policy has foreseable positive impact on health outcomes</li>
+<li>as a ‘bonus’, these models have stable calibration under shifts in policy that depend on the models’ features <span class="citation" data-cites="fengMonitoringMachineLearningbased2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Feng et al. 2024</a>)</span></li>
+</ul>
 </section>
-<section id="not-good-enough" class="slide level2 smaller scrollable">
-<h2>not good enough</h2>
+<section id="measuring-pre--and-post-deployment" class="slide level2 center">
+<h2>Measuring pre- and post-deployment</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>pre-deploy</th>
+<th>deployment study</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>metric</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>model</td>
+<td>discrimination (AUC)</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>calibration</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>health system</td>
+<td>interventions</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>patient outcomes</td>
+<td>✅</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend</strong><br>
+🔁 changes ✅ stable 🔻 worsens</p>
+</section>
+<section id="measuring-pre--and-post-deployment-1" class="slide level2 center">
+<h2>Measuring pre- and post-deployment</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>pre-deploy</th>
+<th>post-deploy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>metric</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>model</td>
+<td>discrimination (AUC)</td>
+<td>✅</td>
+<td>🔁</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>calibration</td>
+<td>✅</td>
+<td>🔻</td>
+</tr>
+<tr class="even">
+<td>health system</td>
+<td>interventions</td>
+<td>✅</td>
+<td>🔁</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>patient outcomes</td>
+<td>✅</td>
+<td>🔁</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend</strong><br>
+🔁 changes ✅ stable 🔻 worsens</p>
+<ul>
+<li class="fragment">for ‘non-causal’ prognosis prediction models that don’t factor in treatment decisions:
+<ul>
+<li class="fragment">AUC will change, calibration will worsen as distribution changes</li>
+<li class="fragment">interventions and patient outcomes may change in unforeseen ways</li>
+</ul></li>
+</ul>
+</section>
+<section id="measuring-pre--and-post-deployment-2" class="slide level2 center">
+<h2>Measuring pre- and post-deployment</h2>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 31%">
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>pre-deploy</th>
+<th>‘non-causal’</th>
+<th>‘causal’</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><strong>metric</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>model</td>
+<td>discrimination (AUC)</td>
+<td>✅</td>
+<td>🔁</td>
+<td>🔁</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>calibration</td>
+<td>✅</td>
+<td>🔻</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>health system</td>
+<td>interventions</td>
+<td>✅</td>
+<td>🔁</td>
+<td>📈</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>patient outcomes</td>
+<td>✅</td>
+<td>🔁</td>
+<td>📈</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend</strong><br>
+🔁 changes ✅ stable 🔻 worsens 📈 changes in expected way</p>
+<ul>
+<li class="fragment">for prediction under intervention model
+<ul>
+<li class="fragment">calibration preserved under shifts in policy conditional on the model’s features</li>
+<li class="fragment">interventions and outcomes change in foreseeable ways (under assumption on policy)</li>
+</ul></li>
+</ul>
+</section>
+<section id="current-status" class="slide level2 center">
+<h2>Current status</h2>
+<ul>
+<li class="fragment">reporting guidelines (e.g.&nbsp;TRIPOD+AI / PROBAST+AI <span class="citation" data-cites="collinsTRIPOD+AIStatementUpdated2024 moonsPROBAST+AIUpdatedQuality2025">(<a href="#/references" role="doc-biblioref" onclick="">Collins et al. 2024</a>; <a href="#/references" role="doc-biblioref" onclick="">Moons et al. 2025</a>)</span>) do not require a clear enoough description of relation between prediction and treatment <span class="citation" data-cites="PrognosticModelsDecision2024">(<a href="#/references" role="doc-biblioref" onclick=""><span>“Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions”</span> 2024</a>)</span></li>
+<li class="fragment">some acceptance criteria lists (AJCC) even allow for harmful self-fulfilling prophecies <span class="citation" data-cites="kattanAmericanJointCommittee2016">(<a href="#/references" role="doc-biblioref" onclick="">Kattan et al. 2016</a>)</span></li>
+<li class="fragment">EMA and FDA are developing monitoring guidelines, mostly emphasis on <strong>predictive performance</strong>, but <strong>good performance</strong> <span class="math inline">\(\neq\)</span> <strong>postive impact</strong></li>
+</ul>
+</section>
+<section id="takeaways" class="slide level2 center">
+<h2>Takeaways</h2>
+<ul>
+<li class="fragment">when predicting prognosis, need well defined relation between prediction and potential treatment decisions</li>
+<li class="fragment">in particular, <em>prediction under intervention</em> has the advantages of:
+<ol type="1">
+<li class="fragment">clear relationship between model performance and value for decision making</li>
+<li class="fragment">stable calibration under shifts in treatment policy, conditional on the model’s features</li>
+</ol></li>
+<li class="fragment">these models need unconfoundedness, so either
+<ul>
+<li class="fragment">develop using RCT data</li>
+<li class="fragment">use observational causal inference</li>
+</ul></li>
+<li class="fragment">evaluate and monitor prediction models based on what we care about: impact on healthcare</li>
+</ul>
+<!-- ## Violation of unconfoundedness: -->
+<!---->
+<!-- - Qrisk3 for predicting cardiovascular risk; risk increases when selecting 'patient uses blood pressure medication' -->
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-vanamsterdamPrognosticModelsDecision2024" class="csl-entry" role="listitem">
+Amsterdam, W.A. C. van, Giovanni Cinà, Vanessa Didelez, Ruth H. Keogh, Niels Peek, Matthew Sperrin, Andrew J. Vickers, Nan van Geloven, and Uri Shalit. 2024. <span>“Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions [<span>Rapid Response</span>].”</span> <em>BMJ</em>, May. <a href="https://doi.org/10.1136/bmj-2023-078378/rr-1">https://doi.org/10.1136/bmj-2023-078378/rr-1</a>.
+</div>
+<div id="ref-balcarcelFeedbackLoopsIntensive2025" class="csl-entry" role="listitem">
+Balcarcel, Daniel R, Sanjiv D Mehta, Celeste G Dixon, Charlotte Z Woods-Hill, Ewan C Goligher, Wouter A C Van Amsterdam, and Nadir Yehya. 2025. <span>“Feedback Loops in Intensive Care Unit Prognostic Models: An Under-Recognised Threat to Clinical Validity.”</span> <em>The Lancet Digital Health</em>, July, 100880. <a href="https://doi.org/10.1016/j.landig.2025.100880">https://doi.org/10.1016/j.landig.2025.100880</a>.
+</div>
+<div id="ref-sciencemediacenterExpertReactionStudy" class="csl-entry" role="listitem">
+Center, Science Media. n.d. <span>“Expert Reaction to Study Suggesting Potential Patient Harms Associated with Use of <span>AI</span> Medical Outcome-Prediction Models | <span>Science Media Centre</span>.”</span> Accessed August 12, 2025. <a href="https://www.sciencemediacentre.org/expert-reaction-to-study-suggesting-potential-patient-harms-associated-with-use-of-ai-medical-outcome-prediction-models/">https://www.sciencemediacentre.org/expert-reaction-to-study-suggesting-potential-patient-harms-associated-with-use-of-ai-medical-outcome-prediction-models/</a>.
+</div>
 <div id="ref-collinsTRIPOD+AIStatementUpdated2024" class="csl-entry" role="listitem">
 Collins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. <span>“<span>TRIPOD</span>+<span>AI</span> Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.”</span> <em>BMJ</em> 385 (April): e078378. <a href="https://doi.org/10.1136/bmj-2023-078378">https://doi.org/10.1136/bmj-2023-078378</a>.
+</div>
+<div id="ref-fengMonitoringMachineLearningbased2024" class="csl-entry" role="listitem">
+Feng, Jean, Alexej Gossmann, Gene A. Pennello, Nicholas Petrick, Berkman Sahiner, and Romain Pirracchio. 2024. <span>“Monitoring Machine Learning-Based Risk Prediction Algorithms in the Presence of Performativity.”</span> In <em>Proceedings of <span>The</span> 27th <span>International Conference</span> on <span>Artificial Intelligence</span> and <span>Statistics</span></em>, 919–27. PMLR. <a href="https://proceedings.mlr.press/v238/feng24b.html">https://proceedings.mlr.press/v238/feng24b.html</a>.
+</div>
+<div id="ref-hildenPrognosisMedicineAnalysis1987" class="csl-entry" role="listitem">
+Hilden, Jørgen, and J. Dik F. Habbema. 1987. <span>“Prognosis in Medicine: <span>An</span> Analysis of Its Meaning and Rôles.”</span> <em>Theoretical Medicine</em> 8 (3): 349–65. <a href="https://doi.org/10.1007/BF00489469">https://doi.org/10.1007/BF00489469</a>.
 </div>
 <div id="ref-hippisley-coxDevelopmentValidationNew2024" class="csl-entry" role="listitem">
 Hippisley-Cox, Julia, Carol A. C. Coupland, Mona Bafadhel, Richard E. K. Russell, Aziz Sheikh, Peter Brindle, and Keith M. Channon. 2024. <span>“Development and Validation of a New Algorithm for Improved Cardiovascular Risk Prediction.”</span> <em>Nature Medicine</em>, April. <a href="https://doi.org/10.1038/s41591-024-02905-y">https://doi.org/10.1038/s41591-024-02905-y</a>.
 </div>
-<div id="ref-joshiAIInterventionImproving2025" class="csl-entry" role="listitem">
-Joshi, Shalmali, Iñigo Urteaga, Wouter A C van Amsterdam, George Hripcsak, Pierre Elias, Benjamin Recht, Noémie Elhadad, et al. 2025. <span>“<span>AI</span> as an Intervention: Improving Clinical Outcomes Relies on a Causal Approach to <span>AI</span> Development and Validation.”</span> <em>Journal of the American Medical Informatics Association</em>, January, ocae301. <a href="https://doi.org/10.1093/jamia/ocae301">https://doi.org/10.1093/jamia/ocae301</a>.
+<div id="ref-kattanAmericanJointCommittee2016" class="csl-entry" role="listitem">
+Kattan, Michael W., Kenneth R. Hess, Mahul B. Amin, Ying Lu, Karl G. M. Moons, Jeffrey E. Gershenwald, Phyllis A. Gimotty, et al. 2016. <span>“American <span>Joint Committee</span> on <span>Cancer</span> Acceptance Criteria for Inclusion of Risk Models for Individualized Prognosis in the Practice of Precision Medicine.”</span> <em>CA: A Cancer Journal for Clinicians</em> 66 (5): 370–74. <a href="https://doi.org/10.3322/caac.21339">https://doi.org/10.3322/caac.21339</a>.
+</div>
+<div id="ref-kentPredictiveApproachesTreatment2020" class="csl-entry" role="listitem">
+Kent, David M., Jessica K. Paulus, David van Klaveren, Ralph D’Agostino, Steve Goodman, Rodney Hayward, John P. A. Ioannidis, et al. 2020. <span>“The <span>Predictive Approaches</span> to <span>Treatment</span> Effect <span>Heterogeneity</span> (<span>PATH</span>) <span>Statement</span>.”</span> <em>Annals of Internal Medicine</em> 172 (1): 35–45. <a href="https://doi.org/10.7326/M18-3667">https://doi.org/10.7326/M18-3667</a>.
+</div>
+<div id="ref-lewisParticipationPatients652003" class="csl-entry" role="listitem">
+Lewis, Joy H., Meredith L. Kilgore, Dana P. Goldman, Edward L. Trimble, Richard Kaplan, Michael J. Montello, Michael G. Housman, and José J. Escarce. 2003. <span>“Participation of <span>Patients</span> 65 <span>Years</span> of <span>Age</span> or <span>Older</span> in <span>Cancer Clinical Trials</span>.”</span> <em>Journal of Clinical Oncology</em> 21 (7): 1383–89. <a href="https://doi.org/10.1200/JCO.2003.08.010">https://doi.org/10.1200/JCO.2003.08.010</a>.
+</div>
+<div id="ref-moonsPROBAST+AIUpdatedQuality2025" class="csl-entry" role="listitem">
+Moons, Karel G. M., Johanna A. A. Damen, Tabea Kaul, Lotty Hooft, Constanza Andaur Navarro, Paula Dhiman, Andrew L. Beam, et al. 2025. <span>“<span>PROBAST</span>+<span>AI</span>: An Updated Quality, Risk of Bias, and Applicability Assessment Tool for Prediction Models Using Regression or Artificial Intelligence Methods.”</span> <em>BMJ</em> 388 (March): e082505. <a href="https://doi.org/10.1136/bmj-2024-082505">https://doi.org/10.1136/bmj-2024-082505</a>.
+</div>
+<div id="ref-peekHariSeldonQRISK32017" class="csl-entry" role="listitem">
+Peek, Niels, Matthew Sperrin, and Tjeerd van Staa. 2017. <span>“Hari <span>Seldon</span>, <span>QRISK3</span>, and the <span>Prediction Paradox</span>.”</span> <em>BMJ 2017;357:j2099</em>, May. <a href="https://doi.org/10.1136/bmj.j2099">https://doi.org/10.1136/bmj.j2099</a>.
+</div>
+<div id="ref-PrognosticModelsDecision2024" class="csl-entry" role="listitem">
+<span>“Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions.”</span> 2024, December. <a href="https://www.bmj.com/content/385/bmj-2023-078378/rr-1">https://www.bmj.com/content/385/bmj-2023-078378/rr-1</a>.
 </div>
 <div id="ref-vanamsterdamWhenAccuratePrediction2025" class="csl-entry" role="listitem">
 Van Amsterdam, Wouter A. C., Nan Van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Cinà. 2025. <span>“When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.”</span> <em>Patterns</em> 6 (4): 101229. <a href="https://doi.org/10.1016/j.patter.2025.101229">https://doi.org/10.1016/j.patter.2025.101229</a>.
+</div>
+<div id="ref-yaoArtificialIntelligenceEnabled2021" class="csl-entry" role="listitem">
+Yao, Xiaoxi, David R. Rushlow, Jonathan W. Inselman, Rozalina G. McCoy, Thomas D. Thacher, Emma M. Behnken, Matthew E. Bernard, et al. 2021. <span>“Artificial Intelligence–Enabled Electrocardiograms for Identification of Patients with Low Ejection Fraction: A Pragmatic, Randomized Clinical Trial.”</span> <em>Nature Medicine</em> 27 (5): 815–19. <a href="https://doi.org/10.1038/s41591-021-01335-4">https://doi.org/10.1038/s41591-021-01335-4</a>.
 </div>
 </div>
 </section></section>

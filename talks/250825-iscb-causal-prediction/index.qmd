@@ -1,7 +1,7 @@
 ---
 title: "From prediction to treatment decision: aligning development, evaluation and monitoring"
-subtitle: "ISCB 2025"
-date: 2025/08/26
+subtitle: "ISCB session 'Prediction modelling meets causal inference for clinical decision making'"
+date: 2025/08/25
 bibliography: ../../library.bib
 format:
     revealjs:
@@ -11,95 +11,315 @@ format:
         fig-align: center
         width: 1600
         height: 900
+        toc: false
 categories:
   - prediction
   - causal inference
   - invited
-  - wip
-  - unlisted
 ---
 
-# much of AI is 'predict predict predict'
+# Much of biostatistics, data-science and AI is 'predict, predict, predict!'
 
----
+## Using medical information, predict 10-year heart attack risk
 
-predict sepsis 
+![](figs/qrisk1.png)
 
----
+## from an ECG, predict presence of heart failure (typically diagnosed with cardiac echo)
 
-predict diagnosis of structural heart disease from ECG
+![](figs/ecg.jpg)
 
----
+## Predictive performance measures
 
-predict next token in a sequence ...
+:::{.columns}
 
----
+::::{.column width="50%"}
 
-these models take input data, model its statistical properties (e.g. what to expect for outcome $Y$ given observation $X$)
+- sensitivity, specificity
+- AUC
+- accuracy
+- calibration
 
-evaluated on predictive *performance* (e.g. accuracy, AUC, calibration)
+::::
 
-tend to break under data shifts
+::::{.column width="50%"}
 
-# deploying AI in healthcare is an intervention
+![](figs/auc1.png){.fragment}
 
-
-
-# Setup
-
-## Healthcare as a system
-
-- takes inputs (clinical data)
-- makes decisions ('treatment')
-- produces outcomes (health status, costs)
-
-:::{.callout-tip}
-
-## Fundamental hypothesis:
-
-system is suboptimal in its use of prior data
-can improve decision process by using data
+::::
 
 :::
 
-## Prediction models used for decision making: applications
+<!-- ## Predictive model building entails modeling statistical associations in the 'healthcare system' -->
+<!---->
+<!-- ![](figs/hc2.png){height=600 fig-align="center"} -->
+<!---->
+<!-- ## The goal is to deploy these models and have impact on healthcare, becoming part of the system -->
+<!---->
+<!-- ![](figs/hc2.png){height=600 fig-align="center"} -->
 
-- prevention: reduce risk of heart attacks with cholesterol lowering medication, based on predicted risk of a heart attack [@hippisley-coxDevelopmentValidationNew2024]
-- scarce resource allocation: liver transplants based on MELD score
-- triage: patients at high risk of sepsis
-- early detection: structural heart disease from ECGs performed in primary care
-<!-- todo: add ref -->
+## 10 year heart attack risk [@hippisley-coxDevelopmentValidationNew2024]
 
-## The elefant in the room
+- prediction: heart attack in 10 years
+- intervention: prescribe cholesterol lowering medication
+- outcome: heart attack
+- outcome (impact): reduce heart attacks
 
-- issue: deploying a prediction model is an intervention that changes treatment decisions and outcomes [@joshiAIInterventionImproving2025]; 
-- this was the very purpose of deploying the model
-- standard prediction model evaluation does not properly account for this
+## Predict presence of heart failure from ECG [@yaoArtificialIntelligenceEnabled2021]
 
-## Prediction model evaluation
+- prediction: heart failure
+- intervention: refer patient for cardiac echo
+- outcome: diagnosis of heart failure on echo
+- outcome (impact): reduce preventable early cardiac death / morbidity
 
-- reporting: TRIPOD+AI [@collinsTRIPOD+AIStatementUpdated2024]
-  - measures: discrimination, calibration, clinical utility (net benefit)
+## Predictive performance vs impact
 
-## Two (three) views on performance / utility
+:::{.columns}
 
-- 0: prediction model accuracy on historic data [@vanamsterdamWhenAccuratePrediction2025]
-- 1a: accuracy of predicting under intervention
-- 1b: accuracy of estimating CATE 
-- 2: accuracy of estimating counterfactual outcomes (c-for benefit?)
-- 3: policy utility
-- 4: post-deployment monitoring
+::::{.column width="50%" .nonincremental}
 
-## When all stars align
+**predictive performance**
 
-- point treatment
-- prediction under intervention / CATE estimation
-- evaluation in unconfounded data (e.g. historical RCTs)
-- change in policy restriced to subset of features $X$
-- then:
-  - 'treat when tau > t' improves utility
-  - calibration stable under shift in policy (monitoring)
+- sensitivity, specificity
+- AUC
+- accuracy
+- calibration
 
-# current status
+::::
 
-## not good enough
+::::{.column width="50%"}
+
+**healthcare impact**
+
+- interventions (medical decisions)
+- patient outcomes
+
+::::
+
+:::
+
+- the hope is: better predictive performance $\implies$ better impact
+- unfortunately, this is not automatically the case
+
+# When accurate prediction models yield harmful self-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2025]
+
+---
+
+:::{.r-stack}
+
+![](figs/rt_example1.png){.fragment height=22cm}
+
+![](figs/rt_example2.png){.fragment height=22cm}
+
+![](figs/rt_example3.png){.fragment height=22cm}
+
+![](figs/rt_example4.png){.fragment height=22cm}
+
+![](figs/rt_example5.png){.fragment height=22cm}
+
+![](figs/rt_example6.png){.fragment height=22cm}
+
+:::
+
+## What happened here?
+
+- had a 'good' model, got a bad policy
+- model predicted outcome (survival) *under historic treatment policy* (always radiation)
+- did not predict what outcomes would be under *alternative policy* (no radiation)
+- in this case, unmodeled *treatment effect heterogeneity* (aka treatment effect modification, interation, differing conditional average treatment effects)
+
+## Regulation to the rescue: we need to monitor (AI) models
+
+:::{.r-stack}
+
+![](figs/ema-monitor.png){.fragment height=700px}
+
+![](figs/fda-gp-monitor.png){.fragment}
+
+:::
+
+## Let's monitor the model performance over time 
+
+:::{.r-stack}
+
+![](figs/rt_example6.png){height=22cm}
+
+![](figs/rt_example.png){.fragment height=22cm}
+
+:::
+
+## What happened in monitoring?
+
+- the model re-inforced its own predictions (self-fulfilling prophecy)
+- took a measure of predictive performance (AUC)
+- mistook it for a measure of (good) impact
+- many potential examples (e.g. ICU stop treatment [@balcarcelFeedbackLoopsIntensive2025], others [@sciencemediacenterExpertReactionStudy])
+
+---
+
+:::{.r-stretch}
+
+![](figs/mindthegap.png)
+
+:::
+
+<!-- ## Prediction model: walking stick -->
+<!---->
+<!-- ### Data Scientist are concerned with optimizing predictive performance -->
+<!---->
+<!-- :::{.r-stack} -->
+<!---->
+<!-- ![](figs/stick1.png){.fragment height=18cm} -->
+<!---->
+<!-- ![](figs/stick2.png){.fragment height=18cm} -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ## Health care provider: stick user -->
+<!---->
+<!-- ### The healthcare provider uses the prediction model for decision making -->
+<!---->
+<!-- :::{.r-stack} -->
+<!---->
+<!-- ![](figs/stickuser.png){height=18cm} -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ## Health care provider + stick = policy -->
+<!---->
+<!-- ### This combination leads to a new policy, which may yield unexpected results -->
+<!---->
+<!-- :::{.r-stack} -->
+<!---->
+<!-- ![](figs/stick-hitting.gif){height=18cm} -->
+<!---->
+<!-- ![](figs/stickground.png){.fragment height=18cm} -->
+<!---->
+<!-- ::: -->
+
+# Another way: prediction under intervention
+
+## When predicting an outcome to support decisions regarding an intervention,
+
+### this prediction needs a clear relationship with the targeted intervention [@vanamsterdamPrognosticModelsDecision2024]
+
+::: {.callout-tip icon=false}
+## Hilden and Habbema on prognosis [@hildenPrognosisMedicineAnalysis1987]
+
+"Prognosis cannot be divorced from contemplated medical action, nor from action to be taken by the patient in response to prognostication.” 
+
+:::
+
+  - not: what's risk of heart attack given age and cholesterol,
+  - but: what's risk of heart attack given age and cholesterol, **if we were not to give cholesterol lowering medication** [(vs. if we would)]{.fragment}
+- may sound like $1+1=2$ but often not done; e.g. in the development data of Qrisk3, many patients already underwent cholesterol lowering medication [@peekHariSeldonQRISK32017]
+
+## Prediction under hypothetical intervention incorporates effects of treatment in its predictions
+
+
+- estimates the expected outcome $Y$ 
+  - **if we were to give treatment $T$** to patient with features $X$
+- a.k.a. 'counterfactual prediction'
+- can  predict outcomes under multiple treatments, where one treatment may be 'no (additional) treatment / standard treatment'
+
+## How to build prediction under intervention models?
+
+- in its simplest form, can be just like fitting any other predictive model, as long as **causal identifyability assumptions** are fulfilled:
+  - unconfoundedness (no hidden variables causing both the intervention and the outcome)
+  - positivity, consistency
+- these hold by design in Randomized Controlled Trials (RCT)
+- RCTs are in that sense ideal [e.g. @kentPredictiveApproachesTreatment2020], but:
+  - typically limited sample size
+  - may not have measured right information (e.g. imaging markers, new biomarkers, full-EHR)
+  - trial participants may not be representative of the target population of use [e.g. @lewisParticipationPatients652003]
+- can *emulate* RCTs with non-experimental (*observational*) data using a causal inference framework, e.g. using target trial emulation
+
+## Benefits of prediction under intervention
+
+- policy rule: if expected outcome under treatment $A$ is better than under treatment $B$ (potentially by a certain margin), give treatment $A$, otherwise $B$
+- as opposed to other prediction models, this policy has foreseable positive impact on health outcomes
+
+---
+
+![](figs/mindthegap.png)
+
+## Benefits of prediction under intervention
+
+:::{.nonincremental}
+
+- policy rule: if expected outcome under treatment $A$ is better than under treatment $B$ (potentially by a certain margin), give treatment $A$, otherwise $B$
+- as opposed to other prediction models, this policy has foreseable positive impact on health outcomes
+- as a 'bonus', these models have stable calibration under shifts in policy that depend on the models' features [e.g. @fengMonitoringMachineLearningbased2024]
+
+:::
+
+## Measuring pre- and post-deployment
+
+|               |                      | pre-deploy | deployment study | 
+|---------------|----------------------|------------|------------------|
+|               | **metric**           |            |                  |
+| model         | discrimination (AUC) |   ✅       |                  |
+|               | calibration          |   ✅       |                  |
+| health system | interventions        |   ✅       |                  |
+|               | patient outcomes     |   ✅       |                  |
+
+**Legend**  
+🔁 changes ✅ stable 🔻 worsens
+
+
+## Measuring pre- and post-deployment 
+
+|               |                      | pre-deploy | post-deploy |
+|---------------|----------------------|------------|-------------|
+|               | **metric**           |            |             |
+| model         | discrimination (AUC) |   ✅       |       🔁    |
+|               | calibration          |   ✅       |       🔻    |
+| health system | interventions        |   ✅       |       🔁    |
+|               | patient outcomes     |   ✅       |       🔁    |
+
+**Legend**  
+🔁 changes ✅ stable 🔻 worsens
+
+- for 'non-causal' prognosis prediction models that don't factor in treatment decisions:
+  - AUC will change, calibration will worsen as distribution changes
+  - interventions and patient outcomes may change in unforeseen ways
+
+
+## Measuring pre- and post-deployment 
+
+|               |                      | pre-deploy | 'non-causal' | 'causal' |
+|---------------|----------------------|------------|--------------|-------|
+|               | **metric**           |            |              |       |
+| model         | discrimination (AUC) |   ✅       |       🔁     |   🔁  |
+|               | calibration          |   ✅       |       🔻     |   ✅  |
+| health system | interventions        |   ✅       |       🔁     |   📈  |
+|               | patient outcomes     |   ✅       |       🔁     |   📈  |
+
+**Legend**  
+🔁 changes ✅ stable 🔻 worsens 📈 changes in expected way
+
+- for prediction under intervention model
+  - calibration preserved under shifts in policy conditional on the model's features
+  - interventions and outcomes change in foreseeable ways (under assumption on policy)
+
+## Current status
+
+- reporting guidelines (e.g. TRIPOD+AI / PROBAST+AI [@collinsTRIPOD+AIStatementUpdated2024; @moonsPROBAST+AIUpdatedQuality2025]) do not require a clear enoough description of relation between prediction and treatment [@PrognosticModelsDecision2024]
+- some acceptance criteria lists (AJCC) even allow for harmful self-fulfilling prophecies [@kattanAmericanJointCommittee2016]
+- EMA and FDA are developing monitoring guidelines, mostly emphasis on **predictive performance**, but **good performance** $\neq$ **postive impact**
+
+## Takeaways
+
+- when predicting prognosis, need well defined relation between prediction and potential treatment decisions
+- in particular, *prediction under intervention* has the advantages of:
+  1. clear relationship between model performance and value for decision making
+  2. stable calibration under shifts in treatment policy, conditional on the model's features
+- these models need unconfoundedness, so either
+  - develop using RCT data
+  - use observational causal inference
+- evaluate and monitor prediction models based on what we care about: impact on healthcare
+
+<!-- ## Violation of unconfoundedness: -->
+<!---->
+<!-- - Qrisk3 for predicting cardiovascular risk; risk increases when selecting 'patient uses blood pressure medication' -->
+
+## References

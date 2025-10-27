@@ -1,0 +1,47 @@
+---
+title: Causal Inference for AI meetup
+subtitle: Rotterdam / Leiden / Delft / Utrecht
+date: 2025-10-27
+output:
+    revealjs:
+        incremental: false
+categories:
+    - unlisted
+    - meetups
+---
+
+---
+
+![](4c.png)
+
+## Today's program
+
+- 3 speakers
+- 17.00 'Borrel'
+
+---
+
+![](speaker1.png)
+
+- Maurice Korf (Erasmus MC): *“Decisional Analytical Models as Causal Models.”*
+
+---
+
+![](speaker2.png)
+
+- Francisco Simoes (Utrecht University): *“The minimal search space for conditional causal bandits”*
+
+---
+
+![](speaker3.png)
+
+- Jasper van Egeraat (Leiden UMC): *“CFeval: an R package for counterfactual evaluation of predictions”*
+
+## Next Meet-up
+
+### Prediction under Interventions seminar
+
+- Tuesday, December 2, 2025
+- Location: LUMC, Lecture Hall 1 
+- 12:15: Walk-in & Lunch
+- 13.15: Welcome & Talks

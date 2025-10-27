@@ -7,9 +7,9 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Wouter van Amsterdam">
   <meta name="dcterms.date" content="2024-09-26">
@@ -52,7 +52,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-3bdc94f54176ad5ba3a3dc4c4dfb0d66.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-eb4c398dc72a97c73f6b498dc09fc66a.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E4W5XMDCR7"></script>
 
   <script type="text/javascript">
@@ -1014,23 +1014,29 @@ s_j = p_{\theta}(s|l=l',w=w') &gt; 0.5
 <p><span class="fragment" data-fragment-index="2">- bigger data</span></p>
 <p><span class="fragment" data-fragment-index="3">- bigger models (enabled by data and compute)</span></p>
 <div class="r-stack">
+<div class="fragment">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="figs/kaplan2020_scaling1.png" class="fragment fade-in-then-out" style="width:100.0%" data-fragment-index="1"></p>
+<p><img data-src="figs/kaplan2020_scaling1.png" class="fade-in-then-out" style="width:100.0%" data-fragment-index="1"></p>
 <figcaption><span class="citation" data-cites="kaplanScalingLawsNeural2020">(<a href="#/references" role="doc-biblioref" onclick="">Kaplan et al. 2020</a>)</span></figcaption>
 </figure>
 </div>
+</div>
+<div class="fragment">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="figs/kaplan2020_scaling2.png" class="fragment fade-in-then-out" style="width:100.0%" data-fragment-index="2"></p>
+<p><img data-src="figs/kaplan2020_scaling2.png" class="fade-in-then-out" style="width:100.0%" data-fragment-index="2"></p>
 <figcaption><span class="citation" data-cites="kaplanScalingLawsNeural2020">(<a href="#/references" role="doc-biblioref" onclick="">Kaplan et al. 2020</a>)</span></figcaption>
 </figure>
 </div>
+</div>
+<div class="fragment">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="figs/kaplan2020_scaling3.png" class="fragment fade-in-then-out" style="width:100.0%" data-fragment-index="3"></p>
+<p><img data-src="figs/kaplan2020_scaling3.png" class="fade-in-then-out" style="width:100.0%" data-fragment-index="3"></p>
 <figcaption><span class="citation" data-cites="kaplanScalingLawsNeural2020">(<a href="#/references" role="doc-biblioref" onclick="">Kaplan et al. 2020</a>)</span></figcaption>
 </figure>
+</div>
 </div>
 </div>
 </section>
@@ -1352,7 +1358,7 @@ Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan 
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1426,13 +1432,14 @@ Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan 
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

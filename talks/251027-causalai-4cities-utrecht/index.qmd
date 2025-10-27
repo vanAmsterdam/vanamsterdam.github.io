@@ -41,7 +41,21 @@ categories:
 
 ### Prediction under Interventions seminar
 
+:::{.columns}
+
+::::{.column}
+
 - Tuesday, December 2, 2025
 - Location: LUMC, Lecture Hall 1 
 - 12:15: Walk-in & Lunch
 - 13.15: Welcome & Talks
+
+::::
+
+::::{.column}
+
+![](qr-leiden.png)
+
+::::
+:::
+

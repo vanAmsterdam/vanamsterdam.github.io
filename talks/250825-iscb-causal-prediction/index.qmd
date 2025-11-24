@@ -5,7 +5,7 @@ date: 2025/08/25
 bibliography: ../../library.bib
 format:
     revealjs:
-        incremental: true
+        incremental: false
         theme: [../custom.scss]
         center: true
         fig-align: center

@@ -1,0 +1,251 @@
+---
+title: Causality in Prediction Research & Target Trial Emulation
+subtitle: AI methods lab seminar
+author: Wouter van Amsterdam
+date: 2025-12-01
+bibliography: ../../library.bib
+format: 
+    revealjs:
+        incremental: true
+        theme: [../custom.scss]
+        center: true
+        fig-align: center
+        width: 1600
+        height: 900
+        toc: false
+execute:
+    warning: false
+    message: false
+categories:
+    - meetups
+---
+
+```{r}
+#| label: setup
+#| echo: false
+#| execute: true
+
+suppressMessages({
+  library(purrr)
+  library(data.table)
+  library(ggplot2); theme_set(theme_bw())
+  library(knitr)
+})
+```
+
+## Today's program
+
+- Wouter van Amsterdam: mini tutorial in confounding and causal inference
+
+## Predictions and associations
+
+### "What to expect when we passively observe the world"
+
+![](figs/prediction.png)
+
+## What are causal questions?
+
+[What will happen if we treat all patients with A (versus B)?]{.r-fit-text}
+
+## Example causal questions
+
+### Hospital deliveries versus home deliveries
+
+::: {.r-stack}
+
+![](figs/delivery1.png)
+
+![](figs/delivery2.png){.fragment}
+
+![](figs/delivery.png){.fragment}
+
+:::
+
+## Are hospital deliveries good for babies?
+
+- You're a data scientist in a children's hospital
+- Have data on
+  - delivery location (home or hospital)
+  - neonatal outcomes (good or bad)
+  - pregnancy risk (high or low)
+- Question: if we send all deliveries to the hospital, will neonatal outcomes improve?
+
+. . .
+
+```{r}
+#| label: simdeliveries
+
+# t=0: home, t=1: hospital
+# z=0: low risk, z=1: high risk
+# y=1: good outcome
+dnames = list(location=c('home', 'hospital'), risk=c('low', 'high'))
+pos_tz <- matrix(c(
+  c(0.9,  0.5), # y|t=0,z=0,1
+  c(0.95, 0.8)  # y|t=1,z=0,1
+), nrow=2, byrow=T,
+dimnames=dnames)
+
+ps_tz <- matrix(c(
+  c(0.72, 0.08), # p(t=0,z=0,1)
+  c(0.02, 0.18)  # p(t=1,z=0,1)
+), nrow=2, byrow=T, dimnames=dnames)
+
+# p(t,z) under do(t)
+ps_do0 <- matrix(c( 
+  c(0.8, 0.2), 
+  c(0.0, 0.0)  
+), nrow=2, byrow=T)
+
+ps_do1 <- matrix(c( 
+  c(0.0, 0.0), 
+  c(0.8, 0.2) 
+), nrow=2, byrow=T)
+
+
+eys  <- rowSums(pos_tz * ps_tz) / rowSums(ps_tz) # E y|t
+dots <- c(sum(pos_tz * ps_do0), sum(pos_tz*ps_do1))
+
+n = 1000
+
+ts  <- vector(mode="logical", length=0)
+zs  <- vector(mode="logical", length=0)
+py0s <- vector(mode="numeric", length=0)
+py1s <- vector(mode="numeric", length=0)
+ys  <- vector(mode="logical", length=0)
+
+ntots <- n * ps_tz
+
+for (t in c(0,1)) {
+  for (z in c(0,1)) {
+    ntz <- n *ps_tz[t+1,z+1]
+    ts  <- c(ts, rep(t, ntz))
+    zs  <- c(zs, rep(z, ntz))
+    py <- pos_tz[t+1,z+1]
+    y <- c(rep(0,
+               round(ntz * (1-py))), # <- round should not be needed here but found a bug
+           rep(1,
+               round(ntz*py))) 
+    ys <- c(ys, y)
+    py0s <- c(py0s, rep(pos_tz[1, z+1], ntz))
+    py1s <- c(py1s, rep(pos_tz[2, z+1], ntz))
+  }
+}
+# ys <- ifelse(ts, y1s, y0s)
+df <- data.table(
+  location=ts,
+  risk=zs,
+  outcome=ys,
+  py0=py0s,
+  py1=py1s)
+
+# head(df)
+
+# kable(eys, col.names="tips")
+#pander::pander(ftable(eys))
+
+# pander::pander(ftable(pos_tz), emphasize.strong.rows=c(1), emphasize.strong.cols=c(1))
+
+ntots <- n * ps_tz
+nys <- ntots * pos_tz
+
+strs <- paste0(nys, " / ", ntots, " = ", 100*pos_tz, "%")
+str_mat <- matrix(strs, ncol=2, dimnames=dnames)
+# kable(t(str_mat))
+# pander::pander(ftable(t(str_mat)), emphasize.strong.rows=c(1), emphasize.strong.cols=c(1))
+
+ntotsm <- rowSums(ntots)
+nysm <- rowSums(nys)
+strsm <- paste0(nysm, " / ", ntotsm, " = ", 100*eys, "%")
+
+tab_tots <- rbind(ntots, ntotsm)
+
+
+# tab <- df[, list(good=sum(outcome==1), bad=sum(outcome==0), frac_good=mean(outcome)), by=c("risk", "location")]
+
+
+```
+
+. . . 
+
+
+## Observed data
+
+|      |      | location |          |
+|------|------|---------:|---------:|
+|      |      | home     | hospital |
+| risk | low  | `r str_mat[1,1]` | `r str_mat[2,1]` |
+
+: percentage of good neonatal outcomes
+
+- better outcomes for babies with low risk when delivered in the hospital
+
+## Observed data
+
+|      |      | location |          |
+|------|------|---------:|---------:|
+|      |      | home     | hospital |
+| risk | low  | `r str_mat[1,1]` | `r str_mat[2,1]` |
+|      | high | `r str_mat[1,2]` | `r str_mat[2,2]` |
+
+: percentage of good neonatal outcomes
+
+- better outcomes for babies delivered in the hospital for *both risk groups*
+
+
+## Observed data
+
+|      |      | location |          |
+|------|------|---------:|---------:|
+|      |      | home     | hospital |
+| risk | low  | `r str_mat[1,1]` | `r str_mat[2,1]` |
+|      | high | `r str_mat[1,2]` | `r str_mat[2,2]` |
+|      |      |                  |                  |
+|      | *marginal* | `r strsm[1]` | `r strsm[2]` |
+
+- better outcomes for babies delivered in the hospital for *both risk groups*
+- but not better *marginal* ('overall')
+- how is this possible?
+- what is the correct way to estimate the effect of delivery location?
+
+## Causal Directed Acyclic Graphs
+
+### diagram that represents our assumptions on causal relations
+
+1. nodes are variables
+2. arrows (directed edges) point from cause to effect
+
+## Making a DAG for our example:
+
+![](figs/dag-delivery.png){height=20%}
+
+- assumptions:
+    - women with high risk of bad neonatal outcomes (`pregnancy risk`) are referred to the hospital for delivery
+    - hospital deliveries lead to better outcomes for babies as more emergency treatments possible
+    - both `pregnancy risk` and `hospital delivery` cause `neonatal outcome`
+- the *other variable* `pregnancy risk` is a common cause of the treatment (`hospital delivery`) and the outcome (this is called a confounder)
+
+
+## Intervention as graph surgery
+
+- Our question: what if we send all deliveries to the hospital?
+- In this *hypothetical world*, all deliveries (low risk and high risk) go to hospital
+- the arrow from `pregnancy risk` to `hospital delivery` should be removed
+
+![](figs/dag-delivery-int.png){.fragment height="40%"}
+
+## Using DAGs to identify causal effects
+
+- in our example, we can calculate the causal effect of `hospital delivery` on `neonatal outcome` by looking at the effect within levels of `pregnancy risk`
+- this is an example of a broader theme:
+- we have non-experimental (observational) data
+- would like to answer a question about an intervention, as we would observe in a randomized trial
+- causal inference toolbox: express assumptions on our data
+- derive how to estimate the causal effect from observational data (covariate adjustment, inverse probability weighting, etc)
+
+## Today's program
+
+- Wouter van Amsterdam: mini tutorial in confounding and causal inference
+- Oisín Ryan: Target Trial Emulation for vaccine safety studies
+- Steven Hageman: Prediction models for Cardiovascular Risk management
+- Lotta Meijerink: Prediction models for treatment decisions in Radiotherapy
+

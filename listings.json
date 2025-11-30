@@ -15,6 +15,7 @@
   {
     "listing": "/talks.html",
     "items": [
+      "/talks/251202-pui-seminar-sfp/index.html",
       "/talks/250825-iscb-causal-prediction/index.html",
       "/talks/250522-hds-ccm/index.html",
       "/talks/250417-ads-sigs/index.html",
@@ -44,6 +45,7 @@
       "/posts/210725-counterfactualvsinterventional.html",
       "/posts/210720-good_predictions_bad_decisions.html",
       "/posts/190816-lm-functional-form.html",
+      "/talks/251202-pui-seminar-sfp/index.html",
       "/talks/250825-iscb-causal-prediction/index.html",
       "/talks/250522-hds-ccm/index.html",
       "/talks/250417-ads-sigs/index.html",
@@ -65,6 +67,7 @@
   {
     "listing": "/unlisted.html",
     "items": [
+      "/talks/251201-aimethodslab-causality/index.html",
       "/talks/251027-causalai-4cities-utrecht/index.html",
       "/talks/250814-mlhc-workshop/index.html",
       "/talks/250814-mlhc-workshop/causality.html",

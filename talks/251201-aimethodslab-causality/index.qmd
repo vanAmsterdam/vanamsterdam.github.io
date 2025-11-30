@@ -33,9 +33,16 @@ suppressMessages({
 })
 ```
 
+---
+
+![](figs/aimethodslab-liggend.png){fig-align="center" width="100%"}
+
 ## Today's program
 
 - Wouter van Amsterdam: mini tutorial in confounding and causal inference
+- Oisín Ryan: Target Trial Emulation for vaccine safety studies
+- Steven Hageman: Prediction models for Cardiovascular Risk management
+- Lotta Meijerink: Prediction models for treatment decisions in Radiotherapy
 
 ## Predictions and associations
 
@@ -45,11 +52,13 @@ suppressMessages({
 
 ## What are causal questions?
 
+Questions with an element of 'what if'
+
+. . . 
+
 [What will happen if we treat all patients with A (versus B)?]{.r-fit-text}
 
-## Example causal questions
-
-### Hospital deliveries versus home deliveries
+## What if we send all babies to the hospital for delivery?
 
 ::: {.r-stack}
 
@@ -61,7 +70,7 @@ suppressMessages({
 
 :::
 
-## Are hospital deliveries good for babies?
+## Home delivery versus hospital delivery
 
 - You're a data scientist in a children's hospital
 - Have data on
@@ -190,6 +199,7 @@ tab_tots <- rbind(ntots, ntotsm)
 : percentage of good neonatal outcomes
 
 - better outcomes for babies delivered in the hospital for *both risk groups*
+- between 5% and 30% better
 
 
 ## Observed data
@@ -216,7 +226,7 @@ tab_tots <- rbind(ntots, ntotsm)
 
 ## Making a DAG for our example:
 
-![](figs/dag-delivery.png){height=20%}
+![](figs/dag-delivery.png){height=20% fig-align="center"}
 
 - assumptions:
     - women with high risk of bad neonatal outcomes (`pregnancy risk`) are referred to the hospital for delivery
@@ -228,19 +238,20 @@ tab_tots <- rbind(ntots, ntotsm)
 ## Intervention as graph surgery
 
 - Our question: what if we send all deliveries to the hospital?
-- In this *hypothetical world*, all deliveries (low risk and high risk) go to hospital
-- the arrow from `pregnancy risk` to `hospital delivery` should be removed
+- In this *hypothetical world*, all deliveries (low risk and high risk) go to hospital (or home)
+- Can be observed in a Randomized Controlled Trial (RCT)
+- In the DAG: the arrow from `pregnancy risk` to `hospital delivery` should be removed
 
-![](figs/dag-delivery-int.png){.fragment height="40%"}
+![](figs/dag-delivery-int.png){.fragment height="40%" fig-align="center"}
 
 ## Using DAGs to identify causal effects
 
 - in our example, we can calculate the causal effect of `hospital delivery` on `neonatal outcome` by looking at the effect within levels of `pregnancy risk`
 - this is an example of a broader theme:
-- we have non-experimental (observational) data
-- would like to answer a question about an intervention, as we would observe in a randomized trial
-- causal inference toolbox: express assumptions on our data
-- derive how to estimate the causal effect from observational data (covariate adjustment, inverse probability weighting, etc)
+  - we have non-experimental (observational) data
+  - would like to answer a question about an intervention, as we would observe in a randomized trial
+  - causal inference toolbox: express assumptions on our data
+  - derive how to estimate the causal effect from observational data (covariate adjustment, inverse probability weighting, etc)
 
 ## Today's program
 

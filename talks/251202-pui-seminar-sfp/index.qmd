@@ -1,5 +1,5 @@
 ---
-title: "When accurate prediction models yield harmful self-fulfilling prophecies"
+title: "Self-fulfilling prophecies: But is the prophet heard?"
 subtitle: "Seminar on Prediction Under Intervention(s), Leiden"
 date: 2025/12/02
 bibliography: ../../library.bib
@@ -16,23 +16,29 @@ categories:
   - prediction
   - causal inference
   - invited
+nocite: |
+  @vanamsterdamWhenAccuratePrediction2025
 ---
 
-## Model building and evaluation versus healthcare impact
+## Prediction model performance versus healthcare impact
 
-- many prediction models exist that predict risk of a certain outcome $Y$ given features $X$
-- e.g. predict 10-year risk of a heart attack, given age, cholesterol, sex
+- many prediction models: given feature $X$, estimate probability outcome $Y$
+  - e.g. given age, cholesterol and sex, predict 10-year risk of a heart attack
 - evaluated on *predictive performance*: calibration and discrimination (AUC)
-- then used for decision support, e.g.: give statins if risk > 10%
+- then used for decision support
+  - e.g. give statins if predicted risk of heart attack > 10%
+- aim: improve healthcare outcomes, without over-treating
+- sold as 'personalized healthcare', from 'one-size-fits-all' to 'right treatment for the right patient'
 - the hope is: better predictive performance $\implies$ better impact
 
 #
 
 [what could possibly go wrong?]{.r-fit-text}
 
-# When accurate prediction models yield harmful self-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2025]
+# When accurate prediction models yield harmful self-fulfilling prophecies
 
-van Amsterdam, van Geloven, Krijthe, Ranganath, Cina
+van Amsterdam, Nan van Geloven, Jesse Krijthe, Rajesh Ranganath, Giovanni Cina;
+Patterns, 2025.
 
 ---
 
@@ -55,9 +61,6 @@ van Amsterdam, van Geloven, Krijthe, Ranganath, Cina
 ## What happened here?
 
 - had a 'good' model, got a bad policy
-- model predicted outcome (survival) *under historic treatment policy* (always radiation)
-- did not predict what outcomes would be under *alternative policy* (no radiation)
-- in this case, unmodeled *treatment effect heterogeneity* (aka treatment effect modification, interation, differing conditional average treatment effects)
 
 ## Regulation to the rescue: we need to monitor (AI) models
 
@@ -84,15 +87,14 @@ van Amsterdam, van Geloven, Krijthe, Ranganath, Cina
 - the model re-inforced its own predictions (self-fulfilling prophecy)
 - took a measure of predictive performance (AUC)
 - mistook it for a measure of (good) impact
-- many potential examples (e.g. ICU stop treatment [@balcarcelFeedbackLoopsIntensive2025], others [@sciencemediacenterExpertReactionStudy])
 
----
-
-:::{.r-stretch}
-
-![](figs/mindthegap.png)
-
-:::
+<!-- --- -->
+<!---->
+<!-- :::{.r-stretch} -->
+<!---->
+<!-- ![](figs/mindthegap.png) -->
+<!---->
+<!-- ::: -->
 
 ## Our paper
 
@@ -102,28 +104,39 @@ We formalized the simplest general case
 - new binary feature $X$
 - outcome prediction model: $\mu(x) = P(Y=1|X=x)$
 - *new policy* based on OPM: treat when $\mu(x) > \lambda$ (assume non-constant policy)
+
+. . .
+
+Define:
+
+- harmful: *new policy* leads to worse outcomes (for $X=x$)
+- self-fulfilling: after deployment, re-evaluating the model yields better AUC
+
+## When can harmful self-fulfilling prophecies occur?
+
 - for a grid of values of:
+  - baseline outcome rates
   - treatment effect for $X=0$
-  - treatment effect interaction (different effect when $X=1$)
+  - treatment effect for $X=1$ (treatment interaction)
   - prevalence of $X$
   - historic policy and interpretation of $Y$
-- exected values of outcomes
-- pre- and post-deployment AUC
+- calculate:
+  - expected values of outcomes (harmful?)
+  - pre- and post-deployment AUC (self-fulfilling?)
+- question: Can harmful self-fulfilling prophecies occur in realistic scenarios?
 
 
-## Harmful self-fulfilling prophecies occur in without extreme treatment (interaction) effects
+## Harmful self-fulfilling prophecies occur in cases without extreme treatment (interaction) effects
 
 ![](figs/figure1.png)
-
-## Deterministic evaluation of usefulness of policy
-
-![](figs/table1.png)
 
 ## Calibration result
 
 ![](figs/definition-calibration.png){width=100%}
 
 ![](figs/thm-calibration.png){.fragment width=100%}
+
+- ergo deployment of model was useless
 
 # Reception
 
@@ -149,6 +162,10 @@ We formalized the simplest general case
 
 ## Science Media Center Roundup (7 experts)
 
+![](figs/smc.png)
+
+## Science Media Center Roundup (7 experts)
+
 - **Withholding lifesaving treatments:** When AI predicts low survival for certain patients, clinicians may deny treatment, causing worse outcomes that falsely validate the model.
 
 - **Rehabilitation triage bias:** AI tools predicting poor recovery after surgery can lead hospitals to allocate fewer rehab resources to those patients, directly causing the poor outcomes the model anticipated.
@@ -159,16 +176,28 @@ We formalized the simplest general case
 
 - **Generalisation beyond healthcare:** Predictive models used in policing can label historically over-policed demographics as “high risk,” triggering intensified surveillance that produces the very outcomes used to justify the predictions.
 
-## Current status
+## How about guidlines and regulation?
 
 - reporting guidelines (e.g. TRIPOD+AI / PROBAST+AI [@collinsTRIPOD+AIStatementUpdated2024; @moonsPROBAST+AIUpdatedQuality2025]) do not provide enough evidence for safe deployment [@PrognosticModelsDecision2024]
 - some acceptance criteria lists (AJCC) even allow for harmful self-fulfilling prophecies [@kattanAmericanJointCommittee2016]
 - EMA and FDA are developing monitoring guidelines, mostly emphasis on **predictive performance**, but **good performance** $\neq$ **postive impact**
 
-## Takeaways
+# Was the prophet heard?
 
-- when predicting prognosis, need well defined relation between prediction and potential treatment decisions (e.g. prediction under intervention)
-- evaluate and monitor prediction models based on what we care about: impact on healthcare
-- guidelines require updates
+## Reflection
 
-## References
+- got good attention from both scientific community and press
+- us: one (of many) warnings, not guide for best practices
+- need good guidance on model development, evaluation and monitoring with a view of impact
+
+
+## References {.unnumbered}
+
+::: {#refs}
+:::
+
+---
+
+## Deterministic evaluation of usefulness of policy
+
+![](figs/table1.png)

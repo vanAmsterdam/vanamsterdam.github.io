@@ -1,5 +1,5 @@
 ---
-title: "Self-fulfilling prophecies: A cry in the AI wilderness?"
+title: "Self-fulfilling prophecies: But is the prophet heard?"
 subtitle: "Seminar on Prediction Under Intervention(s), Leiden"
 date: 2025/12/02
 bibliography: ../../library.bib
@@ -28,6 +28,7 @@ nocite: |
 - then used for decision support
   - e.g. give statins if predicted risk of heart attack > 10%
 - aim: improve healthcare outcomes, without over-treating
+- sold as 'personalized healthcare', from 'one-size-fits-all' to 'right treatment for the right patient'
 - the hope is: better predictive performance $\implies$ better impact
 
 #
@@ -103,28 +104,39 @@ We formalized the simplest general case
 - new binary feature $X$
 - outcome prediction model: $\mu(x) = P(Y=1|X=x)$
 - *new policy* based on OPM: treat when $\mu(x) > \lambda$ (assume non-constant policy)
+
+. . .
+
+Define:
+
+- harmful: *new policy* leads to worse outcomes (for $X=x$)
+- self-fulfilling: after deployment, re-evaluating the model yields better AUC
+
+## When can harmful self-fulfilling prophecies occur?
+
 - for a grid of values of:
+  - baseline outcome rates
   - treatment effect for $X=0$
-  - treatment effect for $X=1$ (interaction)
+  - treatment effect for $X=1$ (treatment interaction)
   - prevalence of $X$
   - historic policy and interpretation of $Y$
-- expected values of outcomes
-- pre- and post-deployment AUC
+- calculate:
+  - expected values of outcomes (harmful?)
+  - pre- and post-deployment AUC (self-fulfilling?)
+- question: Can harmful self-fulfilling prophecies occur in realistic scenarios?
 
 
 ## Harmful self-fulfilling prophecies occur in cases without extreme treatment (interaction) effects
 
 ![](figs/figure1.png)
 
-## Deterministic evaluation of usefulness of policy
-
-![](figs/table1.png)
-
 ## Calibration result
 
 ![](figs/definition-calibration.png){width=100%}
 
 ![](figs/thm-calibration.png){.fragment width=100%}
+
+- ergo deployment of model was useless
 
 # Reception
 
@@ -164,16 +176,28 @@ We formalized the simplest general case
 
 - **Generalisation beyond healthcare:** Predictive models used in policing can label historically over-policed demographics as “high risk,” triggering intensified surveillance that produces the very outcomes used to justify the predictions.
 
-## Current status
+## How about guidlines and regulation?
 
 - reporting guidelines (e.g. TRIPOD+AI / PROBAST+AI [@collinsTRIPOD+AIStatementUpdated2024; @moonsPROBAST+AIUpdatedQuality2025]) do not provide enough evidence for safe deployment [@PrognosticModelsDecision2024]
 - some acceptance criteria lists (AJCC) even allow for harmful self-fulfilling prophecies [@kattanAmericanJointCommittee2016]
 - EMA and FDA are developing monitoring guidelines, mostly emphasis on **predictive performance**, but **good performance** $\neq$ **postive impact**
 
-## Takeaways
+# Was the prophet heard?
 
-- when predicting prognosis, need well defined relation between prediction and potential treatment decisions (e.g. prediction under intervention)
-- evaluate and monitor prediction models based on what we care about: impact on healthcare
-- guidelines require updates
+## Reflection
 
-## References
+- got good attention from both scientific community and press
+- us: one (of many) warnings, not guide for best practices
+- need good guidance on model development, evaluation and monitoring with a view of impact
+
+
+## References {.unnumbered}
+
+::: {#refs}
+:::
+
+---
+
+## Deterministic evaluation of usefulness of policy
+
+![](figs/table1.png)

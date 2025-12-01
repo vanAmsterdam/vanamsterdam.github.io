@@ -13,7 +13,7 @@
 
   <meta name="author" content="Wouter van Amsterdam">
   <meta name="dcterms.date" content="2025-12-02">
-  <title>Wouter van Amsterdam – When accurate prediction models yield harmful self-fulfilling prophecies</title>
+  <title>Wouter van Amsterdam – Self-fulfilling prophecies: But is the prophet heard?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -153,10 +153,10 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="When accurate prediction models yield harmful self-fulfilling prophecies – Wouter van Amsterdam">
+<meta property="og:title" content="Self-fulfilling prophecies: But is the prophet heard? – Wouter van Amsterdam">
 <meta property="og:description" content="Seminar on Prediction Under Intervention(s), Leiden">
 <meta property="og:site_name" content="Wouter van Amsterdam">
-<meta name="twitter:title" content="When accurate prediction models yield harmful self-fulfilling prophecies – Wouter van Amsterdam">
+<meta name="twitter:title" content="Self-fulfilling prophecies: But is the prophet heard? – Wouter van Amsterdam">
 <meta name="twitter:description" content="Seminar on Prediction Under Intervention(s), Leiden">
 <meta name="twitter:site" content="@wvanamsterdam">
 <meta name="twitter:card" content="summary">
@@ -167,7 +167,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">When accurate prediction models yield harmful self-fulfilling prophecies</h1>
+  <h1 class="title">Self-fulfilling prophecies: But is the prophet heard?</h1>
   <p class="subtitle">Seminar on Prediction Under Intervention(s), Leiden</p>
 
 <div class="quarto-title-authors">
@@ -183,13 +183,20 @@
 
   <p class="date">2025-12-02</p>
 </section>
-<section id="model-building-and-evaluation-versus-healthcare-impact" class="slide level2 center">
-<h2>Model building and evaluation versus healthcare impact</h2>
+<section id="prediction-model-performance-versus-healthcare-impact" class="slide level2 center">
+<h2>Prediction model performance versus healthcare impact</h2>
 <ul>
-<li class="fragment">many prediction models exist that predict risk of a certain outcome <span class="math inline">\(Y\)</span> given features <span class="math inline">\(X\)</span></li>
-<li class="fragment">e.g.&nbsp;predict 10-year risk of a heart attack, given age, cholesterol, sex</li>
+<li class="fragment">many prediction models: given feature <span class="math inline">\(X\)</span>, estimate probability outcome <span class="math inline">\(Y\)</span>
+<ul>
+<li class="fragment">e.g.&nbsp;given age, cholesterol and sex, predict 10-year risk of a heart attack</li>
+</ul></li>
 <li class="fragment">evaluated on <em>predictive performance</em>: calibration and discrimination (AUC)</li>
-<li class="fragment">then used for decision support, e.g.: give statins if risk &gt; 10%</li>
+<li class="fragment">then used for decision support
+<ul>
+<li class="fragment">e.g.&nbsp;give statins if predicted risk of heart attack &gt; 10%</li>
+</ul></li>
+<li class="fragment">aim: improve healthcare outcomes, without over-treating</li>
+<li class="fragment">sold as ‘personalized healthcare’, from ‘one-size-fits-all’ to ‘right treatment for the right patient’</li>
 <li class="fragment">the hope is: better predictive performance <span class="math inline">\(\implies\)</span> better impact</li>
 </ul>
 </section>
@@ -199,9 +206,9 @@
 </section>
 
 <section>
-<section id="when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies-vanamsterdamwhenaccurateprediction2025" class="title-slide slide level1 center">
-<h1>When accurate prediction models yield harmful self-fulfilling prophecies <span class="citation" data-cites="vanamsterdamWhenAccuratePrediction2025">(<a href="#/references" role="doc-biblioref" onclick="">Van Amsterdam et al. 2025</a>)</span></h1>
-<p>van Amsterdam, van Geloven, Krijthe, Ranganath, Cina</p>
+<section id="when-accurate-prediction-models-yield-harmful-self-fulfilling-prophecies" class="title-slide slide level1 center">
+<h1>When accurate prediction models yield harmful self-fulfilling prophecies</h1>
+<p>van Amsterdam, Nan van Geloven, Jesse Krijthe, Rajesh Ranganath, Giovanni Cina; Patterns, 2025.</p>
 </section>
 <section class="slide level2 center">
 
@@ -218,9 +225,6 @@
 <h2>What happened here?</h2>
 <ul>
 <li class="fragment">had a ‘good’ model, got a bad policy</li>
-<li class="fragment">model predicted outcome (survival) <em>under historic treatment policy</em> (always radiation)</li>
-<li class="fragment">did not predict what outcomes would be under <em>alternative policy</em> (no radiation)</li>
-<li class="fragment">in this case, unmodeled <em>treatment effect heterogeneity</em> (aka treatment effect modification, interation, differing conditional average treatment effects)</li>
 </ul>
 </section>
 <section id="regulation-to-the-rescue-we-need-to-monitor-ai-models" class="slide level2 center">
@@ -243,13 +247,15 @@
 <li class="fragment">the model re-inforced its own predictions (self-fulfilling prophecy)</li>
 <li class="fragment">took a measure of predictive performance (AUC)</li>
 <li class="fragment">mistook it for a measure of (good) impact</li>
-<li class="fragment">many potential examples (e.g.&nbsp;ICU stop treatment <span class="citation" data-cites="balcarcelFeedbackLoopsIntensive2025">(<a href="#/references" role="doc-biblioref" onclick="">Balcarcel et al. 2025</a>)</span>, others <span class="citation" data-cites="sciencemediacenterExpertReactionStudy">(<a href="#/references" role="doc-biblioref" onclick="">Center n.d.</a>)</span>)</li>
 </ul>
+<!-- --- -->
+<!---->
+<!-- :::{.r-stretch} -->
+<!---->
+<!-- ![](figs/mindthegap.png) -->
+<!---->
+<!-- ::: -->
 </section>
-<section class="slide level2 center">
-
-
-<img data-src="figs/mindthegap.png" class="r-stretch"></section>
 <section id="our-paper" class="slide level2 center">
 <h2>Our paper</h2>
 <p>We formalized the simplest general case</p>
@@ -258,29 +264,45 @@
 <li class="fragment">new binary feature <span class="math inline">\(X\)</span></li>
 <li class="fragment">outcome prediction model: <span class="math inline">\(\mu(x) = P(Y=1|X=x)\)</span></li>
 <li class="fragment"><em>new policy</em> based on OPM: treat when <span class="math inline">\(\mu(x) &gt; \lambda\)</span> (assume non-constant policy)</li>
+</ul>
+<div class="fragment">
+<p>Define:</p>
+<ul>
+<li class="fragment">harmful: <em>new policy</em> leads to worse outcomes (for <span class="math inline">\(X=x\)</span>)</li>
+<li class="fragment">self-fulfilling: after deployment, re-evaluating the model yields better AUC</li>
+</ul>
+</div>
+</section>
+<section id="when-can-harmful-self-fulfilling-prophecies-occur" class="slide level2 center">
+<h2>When can harmful self-fulfilling prophecies occur?</h2>
+<ul>
 <li class="fragment">for a grid of values of:
 <ul>
+<li class="fragment">baseline outcome rates</li>
 <li class="fragment">treatment effect for <span class="math inline">\(X=0\)</span></li>
-<li class="fragment">treatment effect interaction (different effect when <span class="math inline">\(X=1\)</span>)</li>
+<li class="fragment">treatment effect for <span class="math inline">\(X=1\)</span> (treatment interaction)</li>
 <li class="fragment">prevalence of <span class="math inline">\(X\)</span></li>
 <li class="fragment">historic policy and interpretation of <span class="math inline">\(Y\)</span></li>
 </ul></li>
-<li class="fragment">exected values of outcomes</li>
-<li class="fragment">pre- and post-deployment AUC</li>
+<li class="fragment">calculate:
+<ul>
+<li class="fragment">expected values of outcomes (harmful?)</li>
+<li class="fragment">pre- and post-deployment AUC (self-fulfilling?)</li>
+</ul></li>
+<li class="fragment">question: Can harmful self-fulfilling prophecies occur in realistic scenarios?</li>
 </ul>
 </section>
-<section id="harmful-self-fulfilling-prophecies-occur-in-without-extreme-treatment-interaction-effects" class="slide level2 center">
-<h2>Harmful self-fulfilling prophecies occur in without extreme treatment (interaction) effects</h2>
+<section id="harmful-self-fulfilling-prophecies-occur-in-cases-without-extreme-treatment-interaction-effects" class="slide level2 center">
+<h2>Harmful self-fulfilling prophecies occur in cases without extreme treatment (interaction) effects</h2>
 
 <img data-src="figs/figure1.png" class="r-stretch"></section>
-<section id="deterministic-evaluation-of-usefulness-of-policy" class="slide level2 center">
-<h2>Deterministic evaluation of usefulness of policy</h2>
-
-<img data-src="figs/table1.png" class="r-stretch"></section>
 <section id="calibration-result" class="slide level2 center">
 <h2>Calibration result</h2>
 <p><img data-src="figs/definition-calibration.png" style="width:100.0%"></p>
 <p><img data-src="figs/thm-calibration.png" class="fragment" style="width:100.0%"></p>
+<ul>
+<li class="fragment">ergo deployment of model was useless</li>
+</ul>
 </section></section>
 <section>
 <section id="reception" class="title-slide slide level1 center">
@@ -309,6 +331,10 @@
 <img data-src="figs/pharmaphorum.png" class="r-stretch"></section>
 <section id="science-media-center-roundup-7-experts" class="slide level2 center">
 <h2>Science Media Center Roundup (7 experts)</h2>
+
+<img data-src="figs/smc.png" class="r-stretch"></section>
+<section id="science-media-center-roundup-7-experts-1" class="slide level2 center">
+<h2>Science Media Center Roundup (7 experts)</h2>
 <ul>
 <li class="fragment"><p><strong>Withholding lifesaving treatments:</strong> When AI predicts low survival for certain patients, clinicians may deny treatment, causing worse outcomes that falsely validate the model.</p></li>
 <li class="fragment"><p><strong>Rehabilitation triage bias:</strong> AI tools predicting poor recovery after surgery can lead hospitals to allocate fewer rehab resources to those patients, directly causing the poor outcomes the model anticipated.</p></li>
@@ -317,33 +343,30 @@
 <li class="fragment"><p><strong>Generalisation beyond healthcare:</strong> Predictive models used in policing can label historically over-policed demographics as “high risk,” triggering intensified surveillance that produces the very outcomes used to justify the predictions.</p></li>
 </ul>
 </section>
-<section id="current-status" class="slide level2 center">
-<h2>Current status</h2>
+<section id="how-about-guidlines-and-regulation" class="slide level2 center">
+<h2>How about guidlines and regulation?</h2>
 <ul>
 <li class="fragment">reporting guidelines (e.g.&nbsp;TRIPOD+AI / PROBAST+AI <span class="citation" data-cites="collinsTRIPOD+AIStatementUpdated2024 moonsPROBAST+AIUpdatedQuality2025">(<a href="#/references" role="doc-biblioref" onclick="">Collins et al. 2024</a>; <a href="#/references" role="doc-biblioref" onclick="">Moons et al. 2025</a>)</span>) do not provide enough evidence for safe deployment <span class="citation" data-cites="PrognosticModelsDecision2024">(<a href="#/references" role="doc-biblioref" onclick=""><span>“Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions”</span> 2024</a>)</span></li>
 <li class="fragment">some acceptance criteria lists (AJCC) even allow for harmful self-fulfilling prophecies <span class="citation" data-cites="kattanAmericanJointCommittee2016">(<a href="#/references" role="doc-biblioref" onclick="">Kattan et al. 2016</a>)</span></li>
 <li class="fragment">EMA and FDA are developing monitoring guidelines, mostly emphasis on <strong>predictive performance</strong>, but <strong>good performance</strong> <span class="math inline">\(\neq\)</span> <strong>postive impact</strong></li>
 </ul>
+</section></section>
+<section>
+<section id="was-the-prophet-heard" class="title-slide slide level1 center">
+<h1>Was the prophet heard?</h1>
+
 </section>
-<section id="takeaways" class="slide level2 center">
-<h2>Takeaways</h2>
+<section id="reflection" class="slide level2 center">
+<h2>Reflection</h2>
 <ul>
-<li class="fragment">when predicting prognosis, need well defined relation between prediction and potential treatment decisions (e.g.&nbsp;prediction under intervention)</li>
-<li class="fragment">evaluate and monitor prediction models based on what we care about: impact on healthcare</li>
-<li class="fragment">guidelines require updates</li>
+<li class="fragment">got good attention from both scientific community and press</li>
+<li class="fragment">us: one (of many) warnings, not guide for best practices</li>
+<li class="fragment">need good guidance on model development, evaluation and monitoring with a view of impact</li>
 </ul>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
+<section id="references" class="slide level2 unnumbered smaller scrollable">
 <h2>References</h2>
-
-
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-balcarcelFeedbackLoopsIntensive2025" class="csl-entry" role="listitem">
-Balcarcel, Daniel R, Sanjiv D Mehta, Celeste G Dixon, Charlotte Z Woods-Hill, Ewan C Goligher, Wouter A C Van Amsterdam, and Nadir Yehya. 2025. <span>“Feedback Loops in Intensive Care Unit Prognostic Models: An Under-Recognised Threat to Clinical Validity.”</span> <em>The Lancet Digital Health</em>, July, 100880. <a href="https://doi.org/10.1016/j.landig.2025.100880">https://doi.org/10.1016/j.landig.2025.100880</a>.
-</div>
-<div id="ref-sciencemediacenterExpertReactionStudy" class="csl-entry" role="listitem">
-Center, Science Media. n.d. <span>“Expert Reaction to Study Suggesting Potential Patient Harms Associated with Use of <span>AI</span> Medical Outcome-Prediction Models | <span>Science Media Centre</span>.”</span> Accessed August 12, 2025. <a href="https://www.sciencemediacentre.org/expert-reaction-to-study-suggesting-potential-patient-harms-associated-with-use-of-ai-medical-outcome-prediction-models/">https://www.sciencemediacentre.org/expert-reaction-to-study-suggesting-potential-patient-harms-associated-with-use-of-ai-medical-outcome-prediction-models/</a>.
-</div>
 <div id="ref-collinsTRIPOD+AIStatementUpdated2024" class="csl-entry" role="listitem">
 Collins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. <span>“<span>TRIPOD</span>+<span>AI</span> Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.”</span> <em>BMJ</em> 385 (April): e078378. <a href="https://doi.org/10.1136/bmj-2023-078378">https://doi.org/10.1136/bmj-2023-078378</a>.
 </div>
@@ -360,7 +383,13 @@ Moons, Karel G. M., Johanna A. A. Damen, Tabea Kaul, Lotty Hooft, Constanza Anda
 Van Amsterdam, Wouter A. C., Nan Van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Cinà. 2025. <span>“When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.”</span> <em>Patterns</em> 6 (4): 101229. <a href="https://doi.org/10.1016/j.patter.2025.101229">https://doi.org/10.1016/j.patter.2025.101229</a>.
 </div>
 </div>
-</section></section>
+</section>
+<section id="deterministic-evaluation-of-usefulness-of-policy" class="slide level2 center">
+<h2>Deterministic evaluation of usefulness of policy</h2>
+
+
+
+<img data-src="figs/table1.png" class="r-stretch"></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

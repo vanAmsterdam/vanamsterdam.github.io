@@ -1,5 +1,5 @@
 ---
-title: "When accurate prediction models yield harmful self-fulfilling prophecies"
+title: "Self-fulfilling prophecies: A cry in the AI wilderness?"
 subtitle: "Seminar on Prediction Under Intervention(s), Leiden"
 date: 2025/12/02
 bibliography: ../../library.bib
@@ -16,23 +16,28 @@ categories:
   - prediction
   - causal inference
   - invited
+nocite: |
+  @vanamsterdamWhenAccuratePrediction2025
 ---
 
-## Model building and evaluation versus healthcare impact
+## Prediction model performance versus healthcare impact
 
-- many prediction models exist that predict risk of a certain outcome $Y$ given features $X$
-- e.g. predict 10-year risk of a heart attack, given age, cholesterol, sex
+- many prediction models: given feature $X$, estimate probability outcome $Y$
+  - e.g. given age, cholesterol and sex, predict 10-year risk of a heart attack
 - evaluated on *predictive performance*: calibration and discrimination (AUC)
-- then used for decision support, e.g.: give statins if risk > 10%
+- then used for decision support
+  - e.g. give statins if predicted risk of heart attack > 10%
+- aim: improve healthcare outcomes, without over-treating
 - the hope is: better predictive performance $\implies$ better impact
 
 #
 
 [what could possibly go wrong?]{.r-fit-text}
 
-# When accurate prediction models yield harmful self-fulfilling prophecies [@vanamsterdamWhenAccuratePrediction2025]
+# When accurate prediction models yield harmful self-fulfilling prophecies
 
-van Amsterdam, van Geloven, Krijthe, Ranganath, Cina
+van Amsterdam, Nan van Geloven, Jesse Krijthe, Rajesh Ranganath, Giovanni Cina;
+Patterns, 2025.
 
 ---
 
@@ -55,9 +60,6 @@ van Amsterdam, van Geloven, Krijthe, Ranganath, Cina
 ## What happened here?
 
 - had a 'good' model, got a bad policy
-- model predicted outcome (survival) *under historic treatment policy* (always radiation)
-- did not predict what outcomes would be under *alternative policy* (no radiation)
-- in this case, unmodeled *treatment effect heterogeneity* (aka treatment effect modification, interation, differing conditional average treatment effects)
 
 ## Regulation to the rescue: we need to monitor (AI) models
 
@@ -84,15 +86,14 @@ van Amsterdam, van Geloven, Krijthe, Ranganath, Cina
 - the model re-inforced its own predictions (self-fulfilling prophecy)
 - took a measure of predictive performance (AUC)
 - mistook it for a measure of (good) impact
-- many potential examples (e.g. ICU stop treatment [@balcarcelFeedbackLoopsIntensive2025], others [@sciencemediacenterExpertReactionStudy])
 
----
-
-:::{.r-stretch}
-
-![](figs/mindthegap.png)
-
-:::
+<!-- --- -->
+<!---->
+<!-- :::{.r-stretch} -->
+<!---->
+<!-- ![](figs/mindthegap.png) -->
+<!---->
+<!-- ::: -->
 
 ## Our paper
 
@@ -104,14 +105,14 @@ We formalized the simplest general case
 - *new policy* based on OPM: treat when $\mu(x) > \lambda$ (assume non-constant policy)
 - for a grid of values of:
   - treatment effect for $X=0$
-  - treatment effect interaction (different effect when $X=1$)
+  - treatment effect for $X=1$ (interaction)
   - prevalence of $X$
   - historic policy and interpretation of $Y$
-- exected values of outcomes
+- expected values of outcomes
 - pre- and post-deployment AUC
 
 
-## Harmful self-fulfilling prophecies occur in without extreme treatment (interaction) effects
+## Harmful self-fulfilling prophecies occur in cases without extreme treatment (interaction) effects
 
 ![](figs/figure1.png)
 
@@ -146,6 +147,10 @@ We formalized the simplest general case
 ## Press coverage
 
 ![](figs/pharmaphorum.png)
+
+## Science Media Center Roundup (7 experts)
+
+![](figs/smc.png)
 
 ## Science Media Center Roundup (7 experts)
 

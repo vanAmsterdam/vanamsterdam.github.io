@@ -12,6 +12,7 @@ format:
         width: 1600
         height: 900
         toc: false
+        pdf-separate-fragments: true
 categories:
   - prediction
   - causal inference
@@ -25,6 +26,17 @@ nocite: |
 - many prediction models: given feature $X$, estimate probability outcome $Y$
   - e.g. given age, cholesterol and sex, predict 10-year risk of a heart attack
 - evaluated on *predictive performance*: calibration and discrimination (AUC)
+
+:::{layout-ncol=2}
+
+![](figs/auc1.png){.fragment width=20%}
+
+![](figs/pmed.1004566.g004.png){.fragment width=20%}
+
+:::
+
+## Prediction model performance versus healthcare impact
+
 - then used for decision support
   - e.g. give statins if predicted risk of heart attack > 10%
 - aim: improve healthcare outcomes, without over-treating
@@ -37,7 +49,7 @@ nocite: |
 
 # When accurate prediction models yield harmful self-fulfilling prophecies
 
-van Amsterdam, Nan van Geloven, Jesse Krijthe, Rajesh Ranganath, Giovanni Cina;
+Wouter van Amsterdam, Nan van Geloven, Jesse Krijthe, Rajesh Ranganath, Giovanni Cina;
 Patterns, 2025.
 
 ---

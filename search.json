@@ -2552,7 +2552,14 @@
     "href": "talks/251202-pui-seminar-sfp/index.html#prediction-model-performance-versus-healthcare-impact",
     "title": "Self-fulfilling prophecies: But is the prophet heard?",
     "section": "Prediction model performance versus healthcare impact",
-    "text": "Prediction model performance versus healthcare impact\n\nmany prediction models: given feature \\(X\\), estimate probability outcome \\(Y\\)\n\ne.g. given age, cholesterol and sex, predict 10-year risk of a heart attack\n\nevaluated on predictive performance: calibration and discrimination (AUC)\nthen used for decision support\n\ne.g. give statins if predicted risk of heart attack &gt; 10%\n\naim: improve healthcare outcomes, without over-treating\nsold as ‘personalized healthcare’, from ‘one-size-fits-all’ to ‘right treatment for the right patient’\nthe hope is: better predictive performance \\(\\implies\\) better impact"
+    "text": "Prediction model performance versus healthcare impact\n\nmany prediction models: given feature \\(X\\), estimate probability outcome \\(Y\\)\n\ne.g. given age, cholesterol and sex, predict 10-year risk of a heart attack\n\nevaluated on predictive performance: calibration and discrimination (AUC)"
+  },
+  {
+    "objectID": "talks/251202-pui-seminar-sfp/index.html#prediction-model-performance-versus-healthcare-impact-1",
+    "href": "talks/251202-pui-seminar-sfp/index.html#prediction-model-performance-versus-healthcare-impact-1",
+    "title": "Self-fulfilling prophecies: But is the prophet heard?",
+    "section": "Prediction model performance versus healthcare impact",
+    "text": "Prediction model performance versus healthcare impact\n\nthen used for decision support\n\ne.g. give statins if predicted risk of heart attack &gt; 10%\n\naim: improve healthcare outcomes, without over-treating\nsold as ‘personalized healthcare’, from ‘one-size-fits-all’ to ‘right treatment for the right patient’\nthe hope is: better predictive performance \\(\\implies\\) better impact"
   },
   {
     "objectID": "talks/251202-pui-seminar-sfp/index.html#what-happened-here",

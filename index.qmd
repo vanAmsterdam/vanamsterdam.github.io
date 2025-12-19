@@ -74,6 +74,14 @@ I'm a guest editor for a [special issue](https://www.biomedcentral.com/collectio
 
 ## Selected papers
 
+ECG classification with convolutional neural networks demonstrates resilience to sex-imbalances in data.\
+*Schipaanboord DJ, Van Der Zalm F, Van Es R, Vessies M, Van De Leur RR, Siegersma KR, ... van Amsterdam WAC. MedArXiv preprint*\
+[url](https://doi.org/10.1101/2025.08.31.25334560)
+
+The Risks of Risk Assessment: Causal Blind Spots When Using Prediction Models for Treatment Decisions.\
+*Van Geloven N, Keogh RH, van Amsterdam W.A.C., Cinà G, Krijthe JH, Peek N, et al. Ann Intern Med. 2025 Sept;178(9):1326–33.*
+[url](https://doi.org/10.7326/ANNALS-24-00279)
+
 A causal viewpoint on prediction model performance under changes in case-mix: Discrimination and calibration respond differently for prognosis and diagnosis predictions.\
 *van Amsterdam, W. A. C. (2024). arXiv preprint*\
 [url](https://doi.org/10.48550/arXiv.2409.01444)
@@ -141,12 +149,13 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 - James Hesp (SciML4Medicine project) - PhD student
 - Benedetta Dionisi Ferrera (INT Milan, remote) - PhD student
-- Su Li (Methodology and Statistics) - MSc. student
-- Florian Metwaly (Methodology and Statistics) - MSc. student
 - Rodrigue Ndabashinze (Epidemiology, University of Antwerp) - MSc. student
+- Koen Gorgels - MBA student
 
 ### Former 
 
+- Su Li (Methodology and Statistics) - MSc. student
+- Florian Metwaly (Methodology and Statistics) - MSc. student
 - [Samil Kilinc](https://www.linkedin.com/in/samil-tugkan-kilinc-1770dk) (Applied Data Science, 2024)
 - [Kiara Peek](www.linkedin.com/in/kiara-peek-9974b41b3) (Applied Data Science, 2024)
 - Myra van Laar (Biomedical Sciences)

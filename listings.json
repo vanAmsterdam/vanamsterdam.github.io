@@ -13,8 +13,18 @@
     ]
   },
   {
-    "listing": "/talks.html",
+    "listing": "/index.html",
     "items": [
+      "/posts/250704-hr-sign-flip.html",
+      "/posts/250425-robustness/index.html",
+      "/posts/240607-jama-causal-language/index.html",
+      "/posts/240322-mice-partial-residual-plot.html",
+      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
+      "/posts/210725-counterfactualvsinterventional.html",
+      "/posts/210720-good_predictions_bad_decisions.html",
+      "/posts/190816-lm-functional-form.html",
+      "/talks/260227-munchen-causalai-workshop/abstract.html",
+      "/talks/260227-munchen-causalai-workshop/index.html",
       "/talks/251202-pui-seminar-sfp/index.html",
       "/talks/250825-iscb-causal-prediction/index.html",
       "/talks/250522-hds-ccm/index.html",
@@ -35,16 +45,10 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/talks.html",
     "items": [
-      "/posts/250704-hr-sign-flip.html",
-      "/posts/250425-robustness/index.html",
-      "/posts/240607-jama-causal-language/index.html",
-      "/posts/240322-mice-partial-residual-plot.html",
-      "/posts/240308-jaxopt-vs-r-vs-julia/index.html",
-      "/posts/210725-counterfactualvsinterventional.html",
-      "/posts/210720-good_predictions_bad_decisions.html",
-      "/posts/190816-lm-functional-form.html",
+      "/talks/260227-munchen-causalai-workshop/abstract.html",
+      "/talks/260227-munchen-causalai-workshop/index.html",
       "/talks/251202-pui-seminar-sfp/index.html",
       "/talks/250825-iscb-causal-prediction/index.html",
       "/talks/250522-hds-ccm/index.html",

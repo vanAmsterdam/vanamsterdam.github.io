@@ -24,7 +24,7 @@ categories:
 
 ![](figs/qrisk1.png)
 
-## from an ECG, predict presence of heart failure (typically diagnosed with cardiac echo)
+## from ECG, predict presence of heart failure (typically diagnosed with cardiac echo)
 
 ![](figs/ecg.jpg)
 
@@ -202,6 +202,24 @@ Patterns, 2025.
 <!-- ![](figs/stickground.png){.fragment height=18cm} -->
 <!---->
 <!-- ::: -->
+
+# Second pitfall: confounding
+
+---
+
+![](figs/qrisk1.png)
+
+---
+
+![](figs/qrisk2.png)
+
+## When selecting 'blood pressure medication', risk increases
+
+- how is this possible?
+- patients get blodo pressure medication because they are at higher risk of heart attack
+- these reasons are not properly accounted for in the model, so the model learns that 'blood pressure medication' increases risk of a heart attack
+- aka 'confounding by indication'
+- should we stop prescribing blood pressure medications?
 
 # Another way: prediction under intervention
 

@@ -877,6 +877,18 @@ Subject\_term\_id: cancer-microenvironment;metabolic-diseases;signs-and-symptoms
   keywords = {Computer science,Radiography,Statistics}
 }
 
+@article{baharoonEvaluatingGeneralPurpose2023,
+  title = {Evaluating {{General Purpose Vision Foundation Models}} for {{Medical Image Analysis}}: {{An Experimental Study}} of {{DINOv2}} on {{Radiology Benchmarks}}},
+  author = {Baharoon, Mohammed and Qureshi, Waseem and Ouyang, Jiahong and Xu, Yanwu and Aljouie, Abdulrhman and Peng, Wei},
+  date = {2023-12-04},
+  journaltitle = {arXiv},
+  shortjournal = {arXiv},
+  doi = {10.48550/arXiv.2312.02366},
+  url = {https://arxiv.org/abs/2312.02366},
+  abstract = {Large evaluation study of DINOv2 as a general-purpose vision foundation model across radiology benchmarks, including CT tasks and settings (linear probe, few-shot, finetuning).},
+  keywords = {CT,DINOv2,evaluation,radiology}
+}
+
 @online{balazadehCausalPFNAmortizedCausal2025,
   title = {{{CausalPFN}}: {{Amortized Causal Effect Estimation}} via {{In-Context Learning}}},
   shorttitle = {{{CausalPFN}}},
@@ -1223,6 +1235,25 @@ Subject\_term\_id: cancer-microenvironment;metabolic-diseases;signs-and-symptoms
   abstract = {166Ho-microspheres have recently been approved for clinical use for hepatic radioembolization in the European Union. The aim of this study was to investigate the absorbed dose–response relationship and its association with overall survival for 166Ho radioembolization in patients with liver metastases. Methods: Patients treated in the HEPAR I and II studies who underwent an 18F-FDG PET/CT scan at baseline, a posttreatment 166Ho SPECT/CT scan, and another 18F-FDG PET/CT scan at the 3-mo follow-up were included for analysis. The posttreatment 166Ho-microsphere activity distributions were estimated with quantitative SPECT/CT reconstructions using a quantitative Monte Carlo–based method. The response of each tumor was based on the change in total lesion glycolysis (TLG) between baseline and follow-up and was placed into 1 of 4 categories, according to the PERCIST criteria, ranging from complete response to progressive disease. Patient-level response was grouped according to the average change in TLG per patient. The absorbed dose–response relationship was assessed using a linear mixed model to account for correlation of tumors within patients. Median overall survival was compared between patients with and without a metabolic liver response, using a log-rank test. Results: Thirty-six patients with a total of 98 tumors were included. The relation between tumor-absorbed dose and both tumor-level and patient-level response was explored. At a tumor level, a significant difference in geometric mean absorbed dose was found between complete response (232 Gy; 95\% confidence interval [CI], 178–303 Gy; n = 32) and stable disease (147 Gy; 95\% CI, 113–191 Gy; n = 28) (P = 0.01) and between complete response and progressive disease (117 Gy; 95\% CI, 87–159 Gy; n = 21) (P = 0.0008). This constitutes a robust absorbed dose–response relationship. At a patient level, a significant difference was found between patients with complete or partial response (210 Gy; 95\% CI, 161–274 Gy; n = 13) and patients with progressive disease (116 Gy; 95\% CI, 81–165 Gy; n = 9) (P = 0.01). Patients were subsequently grouped according to their average change in TLG. Patients with an objective response (complete or partial) exhibited a significantly higher overall survival than nonresponding patients (stable or progressive disease) (median, 19 mo vs. 7.5 mo; log-rank, P = 0.01). Conclusion: These results confirm a significant absorbed dose–response relationship in 166Ho radioembolization. Treatment response is associated with a higher overall survival.},
   langid = {english},
   keywords = {dose personalization,dose–response,dosimetry,holmium,radioembolization}
+}
+
+@article{batesCrossvalidationWhatDoes2024,
+  title = {Cross-Validation: What Does It Estimate and How Well Does It Do It?},
+  shorttitle = {Cross-Validation},
+  author = {Bates, Stephen and Hastie, Trevor and Tibshirani, Robert},
+  date = {2024},
+  journaltitle = {Journal of the American Statistical Association},
+  shortjournal = {J Am Stat Assoc},
+  volume = {119},
+  number = {546},
+  eprint = {39308484},
+  eprinttype = {pubmed},
+  pages = {1434--1445},
+  issn = {0162-1459},
+  doi = {10.1080/01621459.2023.2197686},
+  abstract = {Cross-validation is a widely-used technique to estimate prediction error, but its behavior is complex and not fully understood. Ideally, one would like to think that cross-validation estimates the prediction error for the model at hand, fit to the training data. We prove that this is not the case for the linear model fit by ordinary least squares; rather it estimates the average prediction error of models fit on other unseen training sets drawn from the same population. We further show that this phenomenon occurs for most popular estimates of prediction error, including data splitting, bootstrapping, and Mallow's  C p   . Next, the standard confidence intervals for prediction error derived from cross-validation may have coverage far below the desired level. Because each data point is used for both training and testing, there are correlations among the measured accuracies for each fold, and so the usual estimate of variance is too small. We introduce a nested cross-validation scheme to estimate this variance more accurately, and show empirically that this modification leads to intervals with approximately correct coverage in many examples where traditional cross-validation intervals fail. Lastly, our analysis also shows that when producing confidence intervals for prediction accuracy with simple data splitting, one should not re-fit the model on the combined data, since this invalidates the confidence intervals.},
+  langid = {english},
+  pmcid = {PMC11412612}
 }
 
 @article{batesCTDerivedBodyComposition2022,
@@ -1586,6 +1617,18 @@ Subject\_term\_id: cancer;cancer-imaging;tumour-biomarkers;tumour-immunology}
   abstract = {Computed tomography (CT) is routinely used in clinical practice to evaluate a wide variety of medical conditions. While CT scans provide diagnoses, they also offer the ability to extract quantitative body composition metrics to analyze tissue volume and quality. Extracting quantitative body composition measures manually from CT scans is a cumbersome and time-consuming task. Proprietary software has been developed recently to automate this process, but the closed-source nature impedes widespread use. There is a growing need for fully automated body composition software that is more accessible and easier to use, especially for clinicians and researchers who are not experts in medical image processing. To this end, we have built Comp2Comp, an open-source Python package for rapid and automated body composition analysis of CT scans. This package offers models, post-processing heuristics, body composition metrics, automated batching, and polychromatic visualizations. Comp2Comp currently computes body composition measures for bone, skeletal muscle, visceral adipose tissue, and subcutaneous adipose tissue on CT scans of the abdomen. We have created two pipelines for this purpose. The first pipeline computes vertebral measures, as well as muscle and adipose tissue measures, at the T12 - L5 vertebral levels from abdominal CT scans. The second pipeline computes muscle and adipose tissue measures on user-specified 2D axial slices. In this guide, we discuss the architecture of the Comp2Comp pipelines, provide usage instructions, and report internal and external validation results to measure the quality of segmentations and body composition measures. Comp2Comp can be found at https://github.com/StanfordMIMI/Comp2Comp.},
   pubstate = {prepublished},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition}
+}
+
+@article{blankemeierMerlinVisionLanguage2024,
+  title = {Merlin: {{A Vision Language Foundation Model}} for {{3D Computed Tomography}}},
+  author = {Blankemeier, Louis and Cohen, Joseph Paul and Kumar, Ashwin and Van Veen, Dave and Gardezi, Syed Jamal Safdar and Paschali, Magdalini and Chen, Zhihong and Delbrouck, Jean-Benoit and Reis, Eduardo and Truyts, Cesar and Bluethgen, Christian and Jensen, Malte Engmann Kjeldskov and Ostmeier, Sophie and Varma, Maya and Valanarasu, Jeya Maria Jose and Fang, Zhongnan and Huo, Zepeng and Nabulsi, Zaid and Ardila, Diego and Weng, Wei-Hung and Amaro Junior, Edson and Ahuja, Neera and Fries, Jason and Shah, Nigam H. and Johnston, Andrew and Boutin, Robert D. and Wentland, Andrew and Langlotz, Curtis P. and Hom, Jason and Gatidis, Sergios and Chaudhari, Akshay S.},
+  date = {2024-06-10},
+  journaltitle = {arXiv},
+  shortjournal = {arXiv},
+  doi = {10.48550/arXiv.2406.06512},
+  url = {https://arxiv.org/abs/2406.06512},
+  abstract = {3D vision-language model trained with paired CT, radiology reports, and EHR-derived supervision; evaluated across multiple task types including report generation.},
+  keywords = {CT,EHR,foundation model,vision-language}
 }
 
 @article{blankestijnRenalDenervationPotential2011,
@@ -2305,6 +2348,22 @@ Subject\_term\_id: cancer;cancer-imaging;tumour-biomarkers;tumour-immunology}
   langid = {english}
 }
 
+@online{bynumBlackBoxCausal2025,
+  title = {Black {{Box Causal Inference}}: {{Effect Estimation}} via {{Meta Prediction}}},
+  shorttitle = {Black {{Box Causal Inference}}},
+  author = {Bynum, Lucius E. J. and Puli, Aahlad Manas and Herrero-Quevedo, Diego and Nguyen, Nhi and Fernandez-Granda, Carlos and Cho, Kyunghyun and Ranganath, Rajesh},
+  date = {2025-03-07},
+  eprint = {2503.05985},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2503.05985},
+  url = {http://arxiv.org/abs/2503.05985},
+  urldate = {2026-01-14},
+  abstract = {Causal inference and the estimation of causal effects plays a central role in decision-making across many areas, including healthcare and economics. Estimating causal effects typically requires an estimator that is tailored to each problem of interest. But developing estimators can take significant effort for even a single causal inference setting. For example, algorithms for regression-based estimators, propensity score methods, and doubly robust methods were designed across several decades to handle causal estimation with observed confounders. Similarly, several estimators have been developed to exploit instrumental variables (IVs), including two-stage least-squares (TSLS), control functions, and the method-of-moments. In this work, we instead frame causal inference as a dataset-level prediction problem, offloading algorithm design to the learning process. The approach we introduce, called black box causal inference (BBCI), builds estimators in a black-box manner by learning to predict causal effects from sampled dataset-effect pairs. We demonstrate accurate estimation of average treatment effects (ATEs) and conditional average treatment effects (CATEs) with BBCI across several causal inference problems with known identification, including problems with less developed estimators.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Computation,Statistics - Machine Learning,Statistics - Methodology}
+}
+
 @book{cadenePretrainedmodelspytorch2019,
   title = {Pretrained-Models.Pytorch},
   author = {{Cadene}},
@@ -2552,6 +2611,23 @@ Subject\_term\_id: cancer;cancer-imaging;tumour-biomarkers;tumour-immunology}
   langid = {english}
 }
 
+@article{cashinTransparentReportingObservational2025,
+  title = {Transparent {{Reporting}} of {{Observational Studies Emulating}} a {{Target Trial}}—{{The TARGET Statement}}},
+  author = {Cashin, Aidan G. and Hansford, Harrison J. and Hernán, Miguel A. and Swanson, Sonja A. and Lee, Hopin and Jones, Matthew D. and Dahabreh, Issa J. and Dickerman, Barbra A. and Egger, Matthias and Garcia-Albeniz, Xabier and Golub, Robert M. and Islam, Nazrul and Lodi, Sara and Moreno-Betancur, Margarita and Pearson, Sallie-Anne and Schneeweiss, Sebastian and Sharp, Melissa K. and Sterne, Jonathan A. C. and Stuart, Elizabeth A. and McAuley, James H.},
+  date = {2025-09-23},
+  journaltitle = {JAMA},
+  shortjournal = {JAMA},
+  volume = {334},
+  number = {12},
+  pages = {1084},
+  issn = {0098-7484},
+  doi = {10.1001/jama.2025.13350},
+  url = {https://jamanetwork.com/journals/jama/fullarticle/2837724},
+  urldate = {2026-01-21},
+  abstract = {Importance               When randomized trials are unavailable or not feasible, observational studies can be used to answer causal questions about the comparative effects of interventions by attempting to emulate a hypothetical pragmatic randomized trial (target trial). Published guidance to aid reporting of these studies is not available.                                         Objective               To develop consensus-based guidance for reporting observational studies performed to estimate causal effects by explicitly emulating a target trial.                                         Design, Setting, and Participants               The Transparent Reporting of Observational Studies Emulating a Target Trial (TARGET) guideline was developed using the Enhancing the Quality and Transparency of Health Research (EQUATOR) framework. The development included (1) a systematic review of reporting practices in published studies that had explicitly aimed to emulate a target trial; (2) a 2-round online survey (August 2023 to March 2024; 18 expert participants from 6 countries) to assess the importance of candidate items selected from previous research and to identify additional items; (3) a 3-day expert consensus meeting (June 2024; 18 panelists) to refine the scope of the guideline and draft the checklist; and (4) pilot of the draft checklist with stakeholders (n\,=\,108; September 2024 to February 2025). The checklist was further refined based on feedback on successive drafts.                                         Findings               The 21-item TARGET checklist is organized into 6 sections (abstract, introduction, methods, results, discussion, other information). TARGET provides guidance for reporting observational studies of interventions explicitly emulating a parallel group, individually randomized target trial, with adjustment for baseline confounders. Key recommendations are to (1) identify the study as an observational emulation of a target trial; (2) summarize the causal question and reason for emulating a target trial, (3) clearly specify the target trial protocol (ie, the causal estimand, identifying assumptions, data analysis plan) and how it was mapped to the observational data, and (4) report the estimate obtained for each causal estimand, its precision, and findings from additional analyses to assess the sensitivity of the estimates to assumptions, and design and analysis choices.                                         Conclusions and Relevance               Application of the TARGET guideline recommendations aims to improve reporting transparency and peer review and help researchers, clinicians, and other readers interpret and apply the results.},
+  langid = {english}
+}
+
 @article{casiraghiPneumonectomyStageIIIAN22019,
   title = {Pneumonectomy in {{Stage IIIA-N2 NSCLC}}: {{Should It Be Considered After Neoadjuvant Chemotherapy}}?},
   author = {Casiraghi, Monica and Guarize, Juliana and Sandri, Alberto and Maisonneuve, Patrick and Brambilla, Daniela and Romano, Rosalia and Galetta, Domenico and Petrella, Francesco and Gasparri, Roberto and Gridelli, Cesare and De Marinis, Filippo and Spaggiari, Lorenzo},
@@ -2778,6 +2854,15 @@ Subject\_term\_id: cancer;cancer-imaging;tumour-biomarkers;tumour-immunology}
   langid = {english},
   keywords = {image-guided surgery,orthopedic surgery,pediatric surgery,surgical education},
   annotation = {00000}
+}
+
+@online{Chapter4Study,
+  title = {Chapter 4: {{Study}} Design - {{European Network}} of {{Centres}} for {{Pharmacoepidemiology}} and {{Pharmacovigilance}}},
+  shorttitle = {Chapter 4},
+  url = {https://encepp.europa.eu/encepp-toolkit/methodological-guide/chapter-4-study-design_en},
+  urldate = {2026-01-14},
+  abstract = {An epidemiological study measures a parameter of occurrence (generally incidence, prevalence or risk or rate ratio) of a health phenomenon (e.g., a disease) in a specified population and with a specified time reference (time point or time period).},
+  langid = {english}
 }
 
 @article{chaudharyDeepLearningBased2018,
@@ -3047,6 +3132,18 @@ Subject\_term\_id: cancer;cancer-imaging;tumour-biomarkers;tumour-immunology}
   author = {Claeskens, Gerda and Hjort, Nils Lid},
   abstract = {A variety of model selection criteria have been developed, of general and specific types. Most of these aim at selecting a single model with good overall properties, e.g. formulated via average prediction quality or shortest estimated overall distance to the in some sense true model. The Akaike, the Bayesian and the deviance information criteria AIC, BIC, DIC, along with many suitable variations, are eminent examples of such methods, and are in frequent use. These methods are however not concerned with the actual use of the selected model, which varies with context and application.},
   langid = {english}
+}
+
+@article{claessensScalingSelfSupervisedCrossModal2025,
+  title = {Scaling {{Self-Supervised}} and {{Cross-Modal Pretraining}} for {{Volumetric CT Transformers}}},
+  author = {Claessens, Cris and Viviers, Christiaan and D'Amicantonio, Giacomo and Bondarev, Egor and family=Sommen, given=Fons, prefix=van der, useprefix=true},
+  date = {2025-11-21},
+  journaltitle = {arXiv},
+  shortjournal = {arXiv},
+  doi = {10.48550/arXiv.2511.17209},
+  url = {https://arxiv.org/abs/2511.17209},
+  abstract = {SPECTRE: fully transformer-based CT foundation model combining DINO-style self-distillation and SigLIP-based vision-language alignment on open CT datasets.},
+  keywords = {cross-modal,CT foundation model,self-supervised,transformer}
 }
 
 @article{claytonRenalDenervationModulates2011,
@@ -5510,6 +5607,22 @@ R package version 1.2.1}
   abstract = {This letter outlines how to identify, and potentially mitigate, common sources of “dataset shift” in machine-learning systems. This occurs when the model “training data” differ from the data used by the model to provide diagnostic, prognostic, or treatment advice.}
 }
 
+@online{finziEntropyEpiplexityRethinking2026,
+  title = {From {{Entropy}} to {{Epiplexity}}: {{Rethinking Information}} for {{Computationally Bounded Intelligence}}},
+  shorttitle = {From {{Entropy}} to {{Epiplexity}}},
+  author = {Finzi, Marc and Qiu, Shikai and Jiang, Yiding and Izmailov, Pavel and Kolter, J. Zico and Wilson, Andrew Gordon},
+  date = {2026-01-06},
+  eprint = {2601.03220},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2601.03220},
+  url = {http://arxiv.org/abs/2601.03220},
+  urldate = {2026-01-10},
+  abstract = {Can we learn more from data than existed in the generating process itself? Can new and useful information be constructed from merely applying deterministic transformations to existing data? Can the learnable content in data be evaluated without considering a downstream task? On these questions, Shannon information and Kolmogorov complexity come up nearly empty-handed, in part because they assume observers with unlimited computational capacity and fail to target the useful information content. In this work, we identify and exemplify three seeming paradoxes in information theory: (1) information cannot be increased by deterministic transformations; (2) information is independent of the order of data; (3) likelihood modeling is merely distribution matching. To shed light on the tension between these results and modern practice, and to quantify the value of data, we introduce epiplexity, a formalization of information capturing what computationally bounded observers can learn from data. Epiplexity captures the structural content in data while excluding time-bounded entropy, the random unpredictable content exemplified by pseudorandom number generators and chaotic dynamical systems. With these concepts, we demonstrate how information can be created with computation, how it depends on the ordering of the data, and how likelihood modeling can produce more complex programs than present in the data generating process itself. We also present practical procedures to estimate epiplexity which we show capture differences across data sources, track with downstream performance, and highlight dataset interventions that improve out-of-distribution generalization. In contrast to principles of model selection, epiplexity provides a theoretical foundation for data selection, guiding how to select, generate, or transform data for learning systems.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning}
+}
+
 @article{firatComorbidityKarnofksyPerformance2002,
   title = {Comorbidity and {{Karnofksy}} Performance Score Are Independent Prognostic Factors in Stage {{III}} Non-Small-Cell Lung Cancer: An Institutional Analysis of Patients Treated  on Four {{RTOG}} Studies. {{Radiation Therapy Oncology Group}}.},
   author = {Firat, Selim and Byhardt, Roger W. and Gore, Elizabeth},
@@ -6570,6 +6683,18 @@ R package version 1.2.1}
   issue = {5 Pt 2}
 }
 
+@article{hamamciDevelopingGeneralistFoundation2024,
+  title = {Developing {{Generalist Foundation Models}} from a {{Multimodal Dataset}} for {{3D Computed Tomography}}},
+  author = {Hamamci, Ibrahim Ethem and Er, Sezgin and Wang, Chenyu and Almas, Furkan and Simsek, Ayse Gulnihan and Esirgun, Sevval Nil and Dogan, Irem and Durugol, Omer Faruk and Hou, Benjamin and Shit, Suprosanna and Dai, Weicheng and Xu, Murong and Reynaud, Hadrien and Dasdelen, Muhammed Furkan and Wittmann, Bastian and Amiranashvili, Tamaz and Simsar, Enis and Simsar, Mehmet and Erdemir, Emine Bensu and Alanbay, Abdullah and Sekuboyina, Anjany and Lafci, Berkan and Kaplan, Ahmet and Lu, Zhiyong and Polacin, Malgorzata and Kainz, Bernhard and Bluethgen, Christian and Batmanghelich, Kayhan and Ozdemir, Mehmet Kemal and Menze, Bjoern},
+  date = {2024-03-26},
+  journaltitle = {arXiv},
+  shortjournal = {arXiv},
+  doi = {10.48550/arXiv.2403.17834},
+  url = {https://arxiv.org/abs/2403.17834},
+  abstract = {Introduces CT-RATE (paired 3D CT + reports), CT-CLIP, and CT-CHAT for 3D chest CT foundation modeling and interaction.},
+  keywords = {chest CT,dataset,foundation model,vision-language}
+}
+
 @article{hanleyMeaningUseArea1982,
   title = {The Meaning and Use of the Area under a Receiver Operating Characteristic ({{ROC}}) Curve},
   author = {Hanley, J. A. and McNeil, B. J.},
@@ -6956,6 +7081,24 @@ R package version 1.2.1}
   pmcid = {PMC5888052}
 }
 
+@article{hernanSpecifyingTargetTrial2016,
+  title = {Specifying a Target Trial Prevents Immortal Time Bias and Other Self-Inflicted Injuries in Observational Analyses},
+  author = {Hernán, Miguel A. and Sauer, Brian C. and Hernández-Díaz, Sonia and Platt, Robert and Shrier, Ian},
+  date = {2016-11},
+  journaltitle = {Journal of Clinical Epidemiology},
+  shortjournal = {J Clin Epidemiol},
+  volume = {79},
+  eprint = {27237061},
+  eprinttype = {pubmed},
+  pages = {70--75},
+  issn = {1878-5921},
+  doi = {10.1016/j.jclinepi.2016.04.014},
+  abstract = {Many analyses of observational data are attempts to emulate a target trial. The emulation of the target trial may fail when researchers deviate from simple principles that guide the design and analysis of randomized experiments. We review a framework to describe and prevent biases, including immortal time bias, that result from a failure to align start of follow-up, specification of eligibility, and treatment assignment. We review some analytic approaches to avoid these problems in comparative effectiveness or safety research.},
+  langid = {english},
+  pmcid = {PMC5124536},
+  keywords = {Bias,Comparative effectiveness research,Comparative Effectiveness Research,Epidemiologic Research Design,Humans,Immortal time bias,Observational,Observational Studies as Topic,Selection bias,Selection Bias,studies,Target trial,Time Factors,Time zero}
+}
+
 @inbook{hernanTargetTrial2020,
   title = {The Target Trial},
   booktitle = {Causal {{Inference}}: {{What If}}},
@@ -6965,6 +7108,14 @@ R package version 1.2.1}
   bookauthor = {Hernán, Miguel A and Robins, James M},
   langid = {english},
   keywords = {⛔ No DOI found}
+}
+
+@incollection{hernanTargetTrial2020a,
+  title = {The {{Target Trial}}},
+  booktitle = {Causal {{Inference}}: {{What If}}},
+  author = {Hernan, Miguel A and Robins, James M},
+  date = {2020},
+  langid = {english}
 }
 
 @article{hernanUsingBigData2016,
@@ -7322,6 +7473,22 @@ R package version 1.2.1}
   annotation = {00004}
 }
 
+@online{hollmannTabPFNTransformerThat2023,
+  title = {{{TabPFN}}: {{A Transformer That Solves Small Tabular Classification Problems}} in a {{Second}}},
+  shorttitle = {{{TabPFN}}},
+  author = {Hollmann, Noah and Müller, Samuel and Eggensperger, Katharina and Hutter, Frank},
+  date = {2023-09-16},
+  eprint = {2207.01848},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2207.01848},
+  url = {http://arxiv.org/abs/2207.01848},
+  urldate = {2026-01-26},
+  abstract = {We present TabPFN, a trained Transformer that can do supervised classification for small tabular datasets in less than a second, needs no hyperparameter tuning and is competitive with state-of-the-art classification methods. TabPFN performs in-context learning (ICL), it learns to make predictions using sequences of labeled examples (x, f(x)) given in the input, without requiring further parameter updates. TabPFN is fully entailed in the weights of our network, which accepts training and test samples as a set-valued input and yields predictions for the entire test set in a single forward pass. TabPFN is a Prior-Data Fitted Network (PFN) and is trained offline once, to approximate Bayesian inference on synthetic datasets drawn from our prior. This prior incorporates ideas from causal reasoning: It entails a large space of structural causal models with a preference for simple structures. On the 18 datasets in the OpenML-CC18 suite that contain up to 1 000 training data points, up to 100 purely numerical features without missing values, and up to 10 classes, we show that our method clearly outperforms boosted trees and performs on par with complex state-of-the-art AutoML systems with up to 230\$\textbackslash times\$ speedup. This increases to a 5 700\$\textbackslash times\$ speedup when using a GPU. We also validate these results on an additional 67 small numerical datasets from OpenML. We provide all our code, the trained TabPFN, an interactive browser demo and a Colab notebook at https://github.com/automl/TabPFN.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning}
+}
+
 @thesis{hondCodeClinicTheory2023,
   title = {From Code to Clinic: Theory and Practice for Artificial Intelligence Prediction Algorithms},
   shorttitle = {From Code to Clinic},
@@ -7351,6 +7518,23 @@ R package version 1.2.1}
   url = {https://onlinelibrary.wiley.com/doi/10.1002/sim.10186},
   urldate = {2025-06-20},
   abstract = {In recent years, there has been a growing interest in the prediction of individualized treatment effects. While there is a rapidly growing literature on the development of such models, there is little literature on the evaluation of their performance. In this paper, we aim to facilitate the validation of prediction models for individualized treatment effects. The estimands of interest are defined based on the potential outcomes framework, which facilitates a comparison of existing and novel measures. In particular, we examine existing measures of discrimination for benefit (variations of the c‐for‐benefit), and propose model‐based extensions to the treatment effect setting for discrimination and calibration metrics that have a strong basis in outcome risk prediction. The main focus is on randomized trial data with binary endpoints and on models that provide individualized treatment effect predictions and potential outcome predictions. We use simulated data to provide insight into the characteristics of the examined discrimination and calibration statistics under consideration, and further illustrate all methods in a trial of acute ischemic stroke treatment. The results show that the proposed model‐based statistics had the best characteristics in terms of bias and accuracy. While resampling methods adjusted for the optimism of performance estimates in the development data, they had a high variance across replications that limited their accuracy. Therefore, individualized treatment effect models are best validated in independent data. To aid implementation, a software implementation of the proposed methods was made available in               R               .},
+  langid = {english}
+}
+
+@article{hooglandHandlingMissingPredictor2020,
+  title = {Handling Missing Predictor Values When Validating and Applying a Prediction Model to New Patients},
+  author = {Hoogland, Jeroen and Van Barreveld, Marit and Debray, Thomas P. A. and Reitsma, Johannes B. and Verstraelen, Tom E. and Dijkgraaf, Marcel G. W. and Zwinderman, Aeilko H.},
+  date = {2020-11-10},
+  journaltitle = {Statistics in Medicine},
+  shortjournal = {Statistics in Medicine},
+  volume = {39},
+  number = {25},
+  pages = {3591--3607},
+  issn = {0277-6715, 1097-0258},
+  doi = {10.1002/sim.8682},
+  url = {https://onlinelibrary.wiley.com/doi/10.1002/sim.8682},
+  urldate = {2026-01-05},
+  abstract = {Abstract             Missing data present challenges for development and real‐world application of clinical prediction models. While these challenges have received considerable attention in the development setting, there is only sparse research on the handling of missing data in applied settings. The main unique feature of handling missing data in these settings is that missing data methods have to be performed for a single new individual, precluding direct application of mainstay methods used during model development. Correspondingly, we propose that it is desirable to perform model validation using missing data methods that transfer to practice in single new patients. This article compares existing and new methods to account for missing data for a new individual in the context of prediction. These methods are based on (i) submodels based on observed data only, (ii) marginalization over the missing variables, or (iii) imputation based on fully conditional specification (also known as chained equations). They were compared in an internal validation setting to highlight the use of missing data methods that transfer to practice while validating a model. As a reference, they were compared to the use of multiple imputation by chained equations in a set of test patients, because this has been used in validation studies in the past. The methods were evaluated in a simulation study where performance was measured by means of optimism corrected C‐statistic and mean squared prediction error. Furthermore, they were applied in data from a large Dutch cohort of prophylactic implantable cardioverter defibrillator patients.},
   langid = {english}
 }
 
@@ -8092,6 +8276,22 @@ R package version 1.2.1}
   urldate = {2024-02-29},
   abstract = {Objective:~           We aimed to develop a deep learning-based signature to predict prognosis and benefit from adjuvant chemotherapy using preoperative computed tomography (CT) images.           Background:~           Current staging methods do not accurately predict the risk of disease relapse for patients with gastric cancer.           Methods:~           We proposed a novel deep neural network (S-net) to construct a CT signature for predicting disease-free survival (DFS) and overall survival in a training cohort of 457 patients, and independently tested it in an external validation cohort of 1158 patients. An integrated nomogram was constructed to demonstrate the added value of the imaging signature to established clinicopathologic factors for individualized survival prediction. Prediction performance was assessed with respect to discrimination, calibration, and clinical usefulness.           Results:~           The DeLIS was associated with DFS and overall survival in the overall validation cohort and among subgroups defined by clinicopathologic variables, and remained an independent prognostic factor in multivariable analysis (P{$<$} 0.001). Integrating the imaging signature and clinicopathologic factors improved prediction performance, with C-indices: 0.792–0.802 versus 0.719–0.724, and net reclassification improvement 10.1\%–28.3\%. Adjuvant chemotherapy was associated with improved DFS in stage II patients with high-DeLIS [hazard ratio = 0.362 (95\% confidence interval 0.149–0.882)] and stage III patients with high- and intermediate-DeLIS [hazard ratio = 0.611 (0.442–0.843); 0.633 (0.433–0.925)]. On the other hand, adjuvant chemotherapy did not affect survival for patients with low-DeLIS, suggesting a predictive effect (Pinteraction = 0.048, 0.016 for DFS in stage II and III disease).           Conclusions:~           The proposed imaging signature improved prognostic prediction and could help identify patients most likely to benefit from adjuvant chemotherapy in gastric cancer.},
   langid = {american}
+}
+
+@online{jinCLadderAssessingCausal2024,
+  title = {{{CLadder}}: {{Assessing Causal Reasoning}} in {{Language Models}}},
+  shorttitle = {{{CLadder}}},
+  author = {Jin, Zhijing and Chen, Yuen and Leeb, Felix and Gresele, Luigi and Kamal, Ojasv and Lyu, Zhiheng and Blin, Kevin and Adauto, Fernando Gonzalez and Kleiman-Weiner, Max and Sachan, Mrinmaya and Schölkopf, Bernhard},
+  date = {2024-01-17},
+  eprint = {2312.04350},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2312.04350},
+  url = {http://arxiv.org/abs/2312.04350},
+  urldate = {2026-01-14},
+  abstract = {The ability to perform causal reasoning is widely considered a core feature of intelligence. In this work, we investigate whether large language models (LLMs) can coherently reason about causality. Much of the existing work in natural language processing (NLP) focuses on evaluating commonsense causal reasoning in LLMs, thus failing to assess whether a model can perform causal inference in accordance with a set of well-defined formal rules. To address this, we propose a new NLP task, causal inference in natural language, inspired by the "causal inference engine" postulated by Judea Pearl et al. We compose a large dataset, CLadder, with 10K samples: based on a collection of causal graphs and queries (associational, interventional, and counterfactual), we obtain symbolic questions and ground-truth answers, through an oracle causal inference engine. These are then translated into natural language. We evaluate multiple LLMs on our dataset, and we introduce and evaluate a bespoke chain-of-thought prompting strategy, CausalCoT. We show that our task is highly challenging for LLMs, and we conduct an in-depth analysis to gain deeper insights into the causal reasoning abilities of LLMs. Our data is open-sourced at https://huggingface.co/datasets/causalNLP/cladder, and our code can be found at https://github.com/causalNLP/cladder.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning}
 }
 
 @article{jinksDiscriminationbasedSampleSize2015,
@@ -8898,6 +9098,16 @@ R package version 1.2.1}
   abstract = {PURPOSE: We analyzed positron emission tomography-computed tomography (PET-CT) in patients with stage III non-small-cell lung cancer (NSCLC) undergoing concurrent  chemoradiotherapy (CRT) to examine the prognostic value of PET-CT parameters  according to histologic subtypes (squamous cell carcinoma [SqCC] and adenocarcinoma  [ADC]). METHODS: A total of 130 patients with stage III NSCLC who underwent  definitive CRT were identified. We obtained PET-CT parameters such as maximum  (SUV(max)) and mean (SUV(mean)) standardized uptake value, total lesion glycolysis  (TLG), metabolic tumor volume (MTV), and coefficient of variation (CV). Each  parameter was bifurcated based on the optimal cutoff, and propensity score matching  was performed between the SqCC and ADC groups. RESULTS: There were 108 patients with  SqCC or ADC, and 44 patients each were allocated to the SqCC and ADC groups via  propensity score matching. SUV(max), SUV(mean), TLG, and MTV values were  significantly higher in SqCC than in ADC (P~= .004, P~= .006, P~= .003, and P~= .03,  respectively). In the SqCC group, PET-CT parameters were not associated with  survival outcomes. However, in the ADC group, SUV(max) and SUV(mean) were related to  locoregional progression-free survival (P~= .008 and P~= .017, respectively), and  TLG and MTV were related to overall survival (P~=~.044 and P~{$<$} .001, respectively).  In addition, patients with ADC showed more frequent distant metastasis (P~=~.011)  and worse distant metastasis-free survival compared with patients with SqCC (P~=  .009). CONCLUSIONS: PET-CT provided different prognostic implications between SqCC  and ADC in patients with locally advanced NSCLC receiving radical CRT. This suggests  that it is necessary to consider the histologic subtype and PET-CT parameters  concurrently when predicting survival outcomes.},
   langid = {english},
   keywords = {*Chemoradiation,*Chemoradiotherapy,*Histology,*Lung cancer,*PET-CT,*Prognostic factor,Adult,Aged,Aged 80 and over,Carcinoma Non-Small-Cell Lung/*diagnosis/mortality/therapy,Female,Fluorodeoxyglucose F18,Humans,Lung Neoplasms/*diagnosis/mortality/therapy,Lung/diagnostic imaging/*pathology,Male,Middle Aged,Neoplasm Metastasis,Neoplasm Staging,Positron-Emission Tomography/*methods,Retrospective Studies,Survival Analysis,Treatment Outcome,Tumor Burden}
+}
+
+@online{kiralyTakingMedicalImaging2024,
+  title = {Taking Medical Imaging Embeddings {{3D}}},
+  author = {Kiraly, Atilla and Traverse, Madeleine},
+  date = {2024-10-21},
+  url = {https://research.google/blog/taking-medical-imaging-embeddings-3d/},
+  abstract = {Announcement and technical overview of CT Foundation: an embedding API for 3D CT volumes trained with paired CT slices and radiology reports (VideoCoCa/CoCa lineage).},
+  organization = {Google Research Blog},
+  keywords = {CT embeddings,foundation model,Google}
 }
 
 @article{kishimotoImmobilizationinducedStressActivates1996,
@@ -9917,6 +10127,22 @@ Nerve terminals containing neuronal nitric oxide synthase (nNOS) are localized i
   annotation = {4 citations (Crossref) [2021-09-23]}
 }
 
+@article{linAddressingMissingnessPredictive2025,
+  title = {Addressing {{Missingness}} in {{Predictive Models That Use Electronic Health Record Data}}},
+  author = {Lin, Shanshan and Groenwold, Rolf H.H. and Mehta, Hemalkumar B. and Kim, Ji Soo and Segal, Jodi B.},
+  date = {2025-10},
+  journaltitle = {Annals of Internal Medicine},
+  shortjournal = {Ann Intern Med},
+  volume = {178},
+  number = {10},
+  pages = {1451--1463},
+  issn = {0003-4819, 1539-3704},
+  doi = {10.7326/ANNALS-24-01516},
+  url = {https://www.acpjournals.org/doi/10.7326/ANNALS-24-01516},
+  urldate = {2026-01-04},
+  langid = {english}
+}
+
 @article{linAnalysisPredictionUnplanned2019,
   title = {Analysis and Prediction of Unplanned Intensive Care Unit Readmission Using Recurrent Neural Networks with Long Short-Term Memory},
   author = {Lin, Yu-Wei and Zhou, Yuqian and Faghri, Faraz and Shaw, Michael J. and Campbell, Roy H.},
@@ -10759,6 +10985,24 @@ Nerve terminals containing neuronal nitric oxide synthase (nNOS) are localized i
   doi = {10.1186/1471-2288-10-112}
 }
 
+@article{marshallProspectivePredictionPresence2002,
+  title = {Prospective Prediction in the Presence of Missing Data},
+  author = {Marshall, Guillermo and Warner, Bradley and MaWhinney, Samantha and Hammermeister, Karl},
+  date = {2002-02-28},
+  journaltitle = {Statistics in Medicine},
+  shortjournal = {Stat Med},
+  volume = {21},
+  number = {4},
+  eprint = {11836736},
+  eprinttype = {pubmed},
+  pages = {561--570},
+  issn = {0277-6715},
+  doi = {10.1002/sim.966},
+  abstract = {A variety of methods and algorithms are available for estimating parameters in the class of a generalized linear model in the presence of missing values. However, there is little information on how this already built model can be used for prediction in new observations with missing data in the covariates. Dropping the observations with missing values is a widespread practice with serious statistical and non-statistical implications. One solution is to fit separate regression models, or submodels, to each pattern of missing covariates. In practice, for any iterative regression method, this approach is computationally intensive. We propose a simple methodology to predict outcomes for individuals with incomplete information based on the estimated coefficients and covariance from the already built model. This method does not require revisiting the original data set used to build the original model and works by generating a first-order approximation of any submodel coefficient estimates. This is achieved by using the SWEEP operator on an augmented covariance matrix obtained from the original model. We refer to this approach as the one-step sweep (OSS) method. The methodology is demonstrated using data from the Department of Veterans Affairs Continuous Improvement in Cardiac Surgery Program (CICSP). These data contain 30 day mortality, the outcome of interest, and risk information for over 14,000 patients who underwent coronary artery bypass grafting (CABG) surgery over a four-year period. Using complete data from the first 3.5 years of this study period, a logistic regression model was built. This model was then used to predict mortality for patients undergoing CABG in the most recent 6-months. In order to evaluate the performance of the OSS method we randomly generated observations with missing covariates in the 6-month prediction database. We use this simulation to demonstrate that the computationally efficient OSS substantially reduces the error in risk-adjusted mortality created when cases with incomplete information are eliminated. Lastly, we derive the relationship between the OSS method and data imputation.},
+  langid = {english},
+  keywords = {Computer Simulation,Coronary Artery Bypass,Humans,Linear Models,Male,Models Biological,Numerical Analysis Computer-Assisted,Prognosis,United States,United States Department of Veterans Affairs}
+}
+
 @article{martinCancerCachexiaAge2013,
   title = {Cancer Cachexia in the Age of Obesity: Skeletal Muscle Depletion Is a Powerful Prognostic Factor, Independent of Body Mass Index},
   shorttitle = {Cancer Cachexia in the Age of Obesity},
@@ -10812,6 +11056,21 @@ Nerve terminals containing neuronal nitric oxide synthase (nNOS) are localized i
   abstract = {OBJECTIVES: Sarcopenia is associated with poor outcome in cancer-patients. However, the methods to define sarcopenia are not entirely standardized. We compared several  morphometric measurements of sarcopenia and their prognostic value in  short-term-outcome prediction after pneumonectomy. MATERIAL AND METHODS: Consecutive  lung-cancer patients undergoing pneumonectomy from January 2007 to December 2015 and  having a pre-operative computed tomography (CT) scan were retrospectively included.  Sarcopenia was assessed by the following CT-based parameters measured at the level  of the third lumbar vertebra: cross-sectional Total Psoas Area (TPA),  cross-sectional Total Muscle Area (TMA), and Total Parietal Muscle Area (TPMA),  defined as TMA without TPA. Measures were obtained for entire muscle surface, as  well as by excluding fatty infiltration based on CT attenuation. Findings were  stratified for gender, and a threshold of 33rd percentile was set to define  sarcopenia. Acute Respiratory Failure (ARF), Acute Respiratory Distress Syndrome  (ARDS), and 30-day mortality were assessed as parameters of short-term-outcome.  RESULTS: Two hundred thirty-four patients with pneumonectomy (right, n\,=\,107; left,  n\,=\,127) were analysed. Postoperative mortality rate was 9.0 \% (21/234), 17.1 \% of  patients (40/234) experienced ARF requiring re-intubation, and 10.3 \% (24/234) had  ARDS. All parameters describing sarcopenia gave significant results; the best  discriminating parameter was TMA after excluding fat (p\,{$<$}\,0.001). While right sided  pneumonectomy and sarcopenia were independently associated to the three short-term  outcome parameters, Charlson Comorbidity Index only independently predicted ARF.  CONCLUSIONS: Sarcopenia defined as the sex-related 33rd percentile of fat-excluded  TMA at the level of the third lumbar vertebra is the most discriminating parameter  to assess short-term-outcome in patients undergoing pneumonectomy.},
   langid = {english},
   keywords = {*Lung neoplasms,*Lung Neoplasms,*Pneumonectomy,*Respiratory Distress Syndrome/diagnosis/epidemiology/etiology,*Respiratory Insufficiency,*Sarcopenia,*Sarcopenia/diagnosis/epidemiology/etiology,*Survival,Cross-Sectional Studies,Humans,Retrospective Studies,Risk Factors}
+}
+
+@article{maSegmentAnythingMedical2024,
+  title = {Segment Anything in Medical Images},
+  author = {Ma, Jun and He, Yuting and Li, Feifei and Han, Lin and You, Chenyu and Wang, Bo},
+  date = {2024-01-22},
+  journaltitle = {Nature Communications},
+  shortjournal = {Nature Communications},
+  volume = {15.0},
+  number = {1.0},
+  pages = {654},
+  doi = {10.1038/s41467-024-44824-z},
+  url = {https://www.nature.com/articles/s41467-024-44824-z},
+  abstract = {MedSAM: promptable segmentation foundation model fine-tuned on {$>$}1M medical image-mask pairs across modalities (including CT).},
+  keywords = {CT,foundation model,SAM,segmentation}
 }
 
 @article{matkowskyjQuantitativeImmunohistochemistryMeasuring2000,
@@ -10884,6 +11143,23 @@ Nerve terminals containing neuronal nitric oxide synthase (nNOS) are localized i
   doi = {10.1016/j.jclinepi.2013.08.015},
   url = {http://dx.doi.org/10.1016/j.jclinepi.2013.08.015},
   abstract = {This study aims to (1) elucidate whether the Hawthorne effect exists, (2) explore under what conditions, and (3) estimate the size of any such effect.}
+}
+
+@article{mccrackenPredictivePerformanceCardiovascular2024,
+  title = {Predictive {{Performance}} of {{Cardiovascular Risk Scores}} in {{Cancer Survivors From}} the {{UK Biobank}}},
+  author = {McCracken, Celeste and Condurache, Dorina-Gabriela and Szabo, Liliana and Elghazaly, Hussein and Walter, Fiona M. and Mead, Adam J. and Chakraverty, Ronjon and Harvey, Nicholas C. and Manisty, Charlotte H. and Petersen, Steffen E. and Neubauer, Stefan and Raisi-Estabragh, Zahra},
+  date = {2024-08},
+  journaltitle = {JACC: CardioOncology},
+  shortjournal = {JACC: CardioOncology},
+  volume = {6},
+  number = {4},
+  pages = {575--588},
+  issn = {26660873},
+  doi = {10.1016/j.jaccao.2024.05.015},
+  url = {https://linkinghub.elsevier.com/retrieve/pii/S2666087324002151},
+  urldate = {2026-01-19},
+  abstract = {BACKGROUND Cardiovascular preventive strategies are guided by risk scores with unknown validity in cancer cohorts. OBJECTIVES This study aimed to evaluate the predictive performance of 7 established cardiovascular risk scores in cancer survivors from the UK Biobank. METHODS The predictive performance of QRISK3, Systematic Coronary Risk Evaluation 2 (SCORE2)/Systematic Coronary Risk Evaluation for Older Persons (SCORE-OP), Framingham Risk Score, Pooled Cohort equations to Prevent Heart Failure (PCP-HF), CHARGE-AF, QStroke, and CHA2DS2-VASc was calculated in participants with and without a history of cancer. Participants were propensity matched on age, sex, deprivation, health behaviors, family history, and metabolic conditions. Analyses were stratified into any cancer, breast, lung, prostate, brain/central nervous system, hematologic malignancies, Hodgkin lymphoma, and non-Hodgkin lymphoma. Incident cardiovascular events were tracked through health record linkage over 10 years of follow-up. The area under the receiver operating curve, balanced accuracy, and sensitivity were reported. RESULTS The analysis included 31,534 cancer survivors and 126,136 covariate-matched controls. Risk score distributions were near identical in cases and controls. Participants with any cancer had a significantly higher incidence of all cardiovascular outcomes than matched controls. Performance metrics were significantly worse for all risk scores in cancer cases than in matched controls. The most notable differences were among participants with a history of hematologic malignancies who had significantly higher outcome rates and poorer risk score performance than their matched controls. The performance of risk scores for predicting stroke in participants with brain/central nervous system cancer was very poor, with predictive accuracy more than 30\% lower than noncancer controls. CONCLUSIONS Existing cardiovascular risk scores have significantly worse predictive accuracy in cancer survivors compared with noncancer comparators, leading to an underestimation of risk in this cohort. (JACC CardioOncol 2024;6:575–588) © 2024 The Authors. Published by Elsevier on behalf of the American College of Cardiology Foundation. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).},
+  langid = {english}
 }
 
 @article{mccraddenCanAccurateModel2025,
@@ -12045,6 +12321,21 @@ Subject\_term\_id: predictive-markers;prognostic-markers}
   langid = {english}
 }
 
+@article{niuMedicalMultimodalMultitask2025,
+  title = {Medical Multimodal Multitask Foundation Model for Lung Cancer Screening},
+  author = {Niu, Chuang and Lyu, Qing and Carothers, Christopher D. and Kaviani, Parisa and Tan, Josh and Yan, Pingkun and Kalra, Mannudeep K. and Whitlow, Christopher T. and Wang, Ge},
+  date = {2025-02-11},
+  journaltitle = {Nature Communications},
+  shortjournal = {Nature Communications},
+  volume = {16.0},
+  number = {1.0},
+  pages = {1523},
+  doi = {10.1038/s41467-025-56822-w},
+  url = {https://www.nature.com/articles/s41467-025-56822-w},
+  abstract = {M3FM: multimodal, multitask foundation model for 3D low-dose chest CT lung cancer screening workflows, integrating diverse clinical data types and tasks.},
+  keywords = {chest CT,foundation model,lung cancer screening,multimodal}
+}
+
 @online{NKRCijfers,
   title = {{{NKR Cijfers}}},
   url = {https://iknl.nl/nkr-cijfers},
@@ -12345,6 +12636,25 @@ Subject\_term\_id: cancer-immunotherapy;clinical-trials;melanoma}
   keywords = {heart failure,Nervous system Autonomic,Parasympathetic Nervous System,pathophysiology}
 }
 
+@article{omarLargeLanguageModels2024,
+  title = {Large Language Models in Medicine: {{A}} Review of Current Clinical Trials across Healthcare Applications},
+  shorttitle = {Large Language Models in Medicine},
+  author = {Omar, Mahmud and Nadkarni, Girish N. and Klang, Eyal and Glicksberg, Benjamin S.},
+  editor = {Silva, Jennifer N Avari},
+  date = {2024-11-19},
+  journaltitle = {PLOS Digital Health},
+  shortjournal = {PLOS Digit Health},
+  volume = {3},
+  number = {11},
+  pages = {e0000662},
+  issn = {2767-3170},
+  doi = {10.1371/journal.pdig.0000662},
+  url = {https://dx.plos.org/10.1371/journal.pdig.0000662},
+  urldate = {2026-01-26},
+  abstract = {This review analyzes current clinical trials investigating large language models’ (LLMs) applications in healthcare. We identified 27 trials (5 published and 22 ongoing) across 4 main clinical applications: patient care, data handling, decision support, and research assistance. Our analysis reveals diverse LLM uses, from clinical documentation to medical decision-making. Published trials show promise but highlight accuracy concerns. Ongoing studies explore novel applications like patient education and informed consent. Most trials occur in the United States of America and China. We discuss the challenges of evaluating rapidly evolving LLMs through clinical trials and identify gaps in current research. This review aims to inform future studies and guide the integration of LLMs into clinical practice.},
+  langid = {english}
+}
+
 @online{Oncoline,
   title = {Oncoline},
   url = {http://www.oncoline.nl/niet-kleincellig-longcarcinoom},
@@ -12480,6 +12790,21 @@ Subject\_term\_id: cancer-immunotherapy;clinical-trials;melanoma}
   annotation = {02183}
 }
 
+@article{paiFoundationModelCancer2024,
+  title = {Foundation Model for Cancer Imaging Biomarkers},
+  author = {Pai, Suraj and Bontempi, Dennis and Hadzic, Ibrahim and Prudente, Vasco and Sokač, Mateo and Chaunzwa, Tafadzwa L. and Bernatz, Simon and Hosny, Ahmed and Mak, Raymond H. and Birkbak, Nicolai J. and Aerts, Hugo J. W. L.},
+  date = {2024-03-15},
+  journaltitle = {Nature Machine Intelligence},
+  shortjournal = {Nature Machine Intelligence},
+  volume = {6.0},
+  number = {3.0},
+  pages = {354--367},
+  doi = {10.1038/s42256-024-00807-9},
+  url = {https://www.nature.com/articles/s42256-024-00807-9},
+  abstract = {Foundation model for cancer imaging biomarker discovery via self-supervised pretraining; evaluated on clinically relevant imaging biomarker applications.},
+  keywords = {biomarkers,foundation model,oncology imaging}
+}
+
 @article{paikMultigeneAssayPredict2004,
   title = {A Multigene Assay to Predict Recurrence of Tamoxifen-Treated, Node-Negative Breast Cancer},
   author = {Paik, Soonmyung and Shak, Steven and Tang, Gong and Kim, Chungyeul and Baker, Joffre and Cronin, Maureen and Baehner, Frederick L. and Walker, Michael G. and Watson, Drew and Park, Taesung and Hiller, William and Fisher, Edwin R. and Wickerham, D. Lawrence and Bryant, John and Wolmark, Norman},
@@ -12496,6 +12821,18 @@ Subject\_term\_id: cancer-immunotherapy;clinical-trials;melanoma}
   abstract = {BACKGROUND: The likelihood of distant recurrence in patients with breast cancer who have no involved lymph nodes and estrogen-receptor-positive tumors is poorly defined by clinical and histopathological measures. METHODS: We tested whether the results of a reverse-transcriptase-polymerase-chain-reaction (RT-PCR) assay of 21 prospectively selected genes in paraffin-embedded tumor tissue would correlate with the likelihood of distant recurrence in patients with node-negative, tamoxifen-treated breast cancer who were enrolled in the National Surgical Adjuvant Breast and Bowel Project clinical trial B-14. The levels of expression of 16 cancer-related genes and 5 reference genes were used in a prospectively defined algorithm to calculate a recurrence score and to determine a risk group (low, intermediate, or high) for each patient. RESULTS: Adequate RT-PCR profiles were obtained in 668 of 675 tumor blocks. The proportions of patients categorized as having a low, intermediate, or high risk by the RT-PCR assay were 51, 22, and 27 percent, respectively. The Kaplan-Meier estimates of the rates of distant recurrence at 10 years in the low-risk, intermediate-risk, and high-risk groups were 6.8 percent (95 percent confidence interval, 4.0 to 9.6), 14.3 percent (95 percent confidence interval, 8.3 to 20.3), and 30.5 percent (95 percent confidence interval, 23.6 to 37.4). The rate in the low-risk group was significantly lower than that in the high-risk group (P{$<$}0.001). In a multivariate Cox model, the recurrence score provided significant predictive power that was independent of age and tumor size (P{$<$}0.001). The recurrence score was also predictive of overall survival (P{$<$}0.001) and could be used as a continuous function to predict distant recurrence in individual patients. CONCLUSIONS: The recurrence score has been validated as quantifying the likelihood of distant recurrence in tamoxifen-treated patients with node-negative, estrogen-receptor-positive breast cancer.},
   langid = {english},
   keywords = {Algorithms,Antineoplastic Agents Hormonal,Biomarkers Tumor,Breast Neoplasms,DNA Neoplasm,Estrogen Antagonists,Female,Follow-Up Studies,Gene Expression,Genes erbB-2,Humans,Lymphatic Metastasis,Middle Aged,Multivariate Analysis,Neoplasm Metastasis,Prognosis,Proportional Hazards Models,Receptors Estrogen,Receptors Progesterone,Recurrence,Reverse Transcriptase Polymerase Chain Reaction,Risk,Survival Analysis,Tamoxifen}
+}
+
+@article{paiVisionFoundationModels2025,
+  title = {Vision {{Foundation Models}} for {{Computed Tomography}}},
+  author = {Pai, Suraj and Hadzic, Ibrahim and Bontempi, Dennis and Bressem, Keno and Kann, Benjamin H. and Fedorov, Andriy and Mak, Raymond H. and Aerts, Hugo J. W. L.},
+  date = {2025-01-15},
+  journaltitle = {arXiv},
+  shortjournal = {arXiv},
+  doi = {10.48550/arXiv.2501.09001},
+  url = {https://arxiv.org/abs/2501.09001},
+  abstract = {CT-FM: large-scale 3D CT encoder pretrained on \textasciitilde 148k scans; evaluated on segmentation, head CT triage, retrieval, and semantic understanding.},
+  keywords = {3D encoder,contrastive learning,CT foundation model}
 }
 
 @article{paltansingExtendedSpectrumVLactamaseproducingEnterobacteriaceae2013,
@@ -12947,6 +13284,18 @@ Subject\_term\_id: cancer-immunotherapy;clinical-trials;melanoma}
   abstract = {When predictions support decisions they may influence the outcome they aim to predict. We call such predictions performative; the prediction influences the target. Performativity is a well-studied phenomenon in policy-making that has so far been neglected in supervised learning. When ignored, performativity surfaces as undesirable distribution shift, routinely addressed with retraining. We develop a risk minimization framework for performative prediction bringing together concepts from statistics, game theory, and causality. A conceptual novelty is an equilibrium notion we call performative stability. Performative stability implies that the predictions are calibrated not against past outcomes, but against the future outcomes that manifest from acting on the prediction. Our main results are necessary and sufficient conditions for the convergence of retraining to a performatively stable point of nearly minimal loss. In full generality, performative prediction strictly subsumes the setting known as strategic classification. We thus also give the first sufficient conditions for retraining to overcome strategic feedback effects.},
   eventtitle = {International {{Conference}} on {{Machine Learning}}},
   langid = {english}
+}
+
+@article{perez-garciaExploringScalableMedical2024,
+  title = {Exploring Scalable Medical Image Encoders beyond Text Supervision},
+  author = {Pérez-García, Fernando and Sharma, Harshita and Bond-Taylor, Sam and Bouzid, Kenza and Salvatelli, Valentina and Ilse, Maximilian and Bannur, Shruthi and Castro, Daniel C. and Schwaighofer, Anton and Lungren, Matthew P. and Wetscherek, Maria Teodora and Codella, Noel and Hyland, Stephanie L. and Alvarez-Valle, Javier and Oktay, Ozan},
+  date = {2024-01-19},
+  journaltitle = {arXiv},
+  shortjournal = {arXiv},
+  doi = {10.48550/arXiv.2401.10815},
+  url = {https://arxiv.org/abs/2401.10815},
+  abstract = {RAD-DINO: scalable biomedical image encoder trained without language supervision; evaluated on classification/segmentation and a vision-language alignment task.},
+  keywords = {foundation encoder,medical imaging,self-supervised}
 }
 
 @article{perezCarbapenemresistantEnterobacteriaceaeMenace2013,
@@ -13615,6 +13964,21 @@ Subject\_term\_id: cancer;chemotherapy;prognosis}
   langid = {english}
 }
 
+@inproceedings{raspantiGrammarConstrainedDecodingMakes2025,
+  title = {Grammar-{{Constrained Decoding Makes Large Language Models Better Logical Parsers}}},
+  booktitle = {Proceedings of the 63rd {{Annual Meeting}} of the {{Association}} for {{Computational Linguistics}} ({{Volume}} 6: {{Industry Track}})},
+  author = {Raspanti, Federico and Ozcelebi, Tanir and Holenderski, Mike},
+  date = {2025},
+  pages = {485--499},
+  publisher = {Association for Computational Linguistics},
+  location = {Vienna, Austria},
+  doi = {10.18653/v1/2025.acl-industry.34},
+  url = {https://aclanthology.org/2025.acl-industry.34},
+  urldate = {2026-01-26},
+  eventtitle = {Proceedings of the 63rd {{Annual Meeting}} of the {{Association}} for {{Computational Linguistics}} ({{Volume}} 6: {{Industry Track}})},
+  langid = {english}
+}
+
 @article{ravdinComputerProgramAssist2001,
   title = {Computer Program to Assist in Making Decisions about Adjuvant Therapy for Women with Early Breast Cancer},
   author = {Ravdin, P. M. and Siminoff, L. A. and Davis, G. J. and Mercer, M. B. and Hewlett, J. and Gerson, N. and Parker, H. L.},
@@ -13689,11 +14053,6 @@ Subject\_term\_id: cancer;chemotherapy;prognosis}
   urldate = {2014-03-24},
   langid = {english},
   annotation = {00000}
-}
-
-@article{ReflectionPaperUse,
-  title = {Reflection Paper on Use of Real-World Data in Non-Interventional Studies to Generate Real-World Evidence for Regulatory Purposes},
-  langid = {english}
 }
 
 @article{regenbogenseSurgeryDiverticulitis21st2014,
@@ -15099,6 +15458,22 @@ Subject\_term\_id: immunotherapy;phase-i-trials;prognostic-markers}
   langid = {english}
 }
 
+@article{singhalExpertlevelMedicalQuestion2025,
+  title = {Toward Expert-Level Medical Question Answering with Large Language Models},
+  author = {Singhal, Karan and Tu, Tao and Gottweis, Juraj and Sayres, Rory and Wulczyn, Ellery and Amin, Mohamed and Hou, Le and Clark, Kevin and Pfohl, Stephen R. and Cole-Lewis, Heather and Neal, Darlene and Rashid, Qazi Mamunur and Schaekermann, Mike and Wang, Amy and Dash, Dev and Chen, Jonathan H. and Shah, Nigam H. and Lachgar, Sami and Mansfield, Philip Andrew and Prakash, Sushant and Green, Bradley and Dominowska, Ewa and Agüera Y Arcas, Blaise and Tomašev, Nenad and Liu, Yun and Wong, Renee and Semturs, Christopher and Mahdavi, S. Sara and Barral, Joelle K. and Webster, Dale R. and Corrado, Greg S. and Matias, Yossi and Azizi, Shekoofeh and Karthikesalingam, Alan and Natarajan, Vivek},
+  date = {2025-03},
+  journaltitle = {Nature Medicine},
+  shortjournal = {Nat Med},
+  volume = {31},
+  number = {3},
+  pages = {943--950},
+  issn = {1078-8956, 1546-170X},
+  doi = {10.1038/s41591-024-03423-7},
+  url = {https://www.nature.com/articles/s41591-024-03423-7},
+  urldate = {2026-01-26},
+  langid = {english}
+}
+
 @article{singhNonpharmacologicalModulationAutonomic2014,
   title = {Non-Pharmacological Modulation of the Autonomic Tone to Treat Heart Failure.},
   author = {Singh, Jagmeet and Kandala, Jagdesh and Camm, A},
@@ -15762,6 +16137,22 @@ Subject\_term\_id: immunotherapy;phase-i-trials;prognostic-markers}
   urldate = {2020-04-15},
   abstract = {Many methods which find invariant predictive distributions have been developed to learn models that can generalize to new environments without using samples from the target distribution. However, these methods consider differing types of shifts in environment and have been developed under disparate frameworks, making their comparison difficult. In this paper, we provide a unifying graphical representation of the data generating process that can represent all such shifts. We show there is a universal hierarchy of shift-stable distributions which correspond to operators on a graph that disable edges. This provides the ability to compare current methods and derive new algorithms that find optimal invariant distributions, all of which can be mapped to the hierarchy. We theoretically and empirically show that the degree to which stability is desirable depends on how concerned we are about large shifts: there is a tradeoff between stability and average performance.},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning}
+}
+
+@article{suissaImmortalTimeBias2008,
+  title = {Immortal {{Time Bias}} in {{Pharmacoepidemiology}}},
+  author = {Suissa, S.},
+  date = {2008-01-07},
+  journaltitle = {American Journal of Epidemiology},
+  shortjournal = {American Journal of Epidemiology},
+  volume = {167},
+  number = {4},
+  pages = {492--499},
+  issn = {0002-9262, 1476-6256},
+  doi = {10.1093/aje/kwm324},
+  url = {https://academic.oup.com/aje/article-lookup/doi/10.1093/aje/kwm324},
+  urldate = {2026-01-26},
+  langid = {english}
 }
 
 @book{sundnesComputingElectricalActivity2006,
@@ -17133,6 +17524,20 @@ Subject\_term\_id: cancer-imaging;non-small-cell-lung-cancer}
   langid = {english}
 }
 
+@article{vancalsterEnemiesReliableUseful2025,
+  title = {The {{Enemies}} of {{Reliable}} and {{Useful Clinical Prediction Models}}: {{A Review}} of {{Statistical}} and {{Scientific Challenges}}},
+  shorttitle = {The {{Enemies}} of {{Reliable}} and {{Useful Clinical Prediction Models}}},
+  author = {Van Calster, Ben and Van Smeden, Maarten and Van Amsterdam, Wouter and Coemans, Maarten and Wynants, Laure and Steyerberg, Ewout W.},
+  date = {2025-08-28},
+  journaltitle = {Annual Review of Statistics and Its Application},
+  issn = {2326-8298, 2326-831X},
+  doi = {10.1146/annurev-statistics-042324-123749},
+  url = {https://www.annualreviews.org/content/journals/10.1146/annurev-statistics-042324-123749},
+  urldate = {2025-12-19},
+  abstract = {The current status of applied clinical prediction modeling is poor. Many models are developed with suboptimal methods and are not evaluated, and hence have little impact on clinical care. We review 12 challenges—provocatively labeled enemies—that jeopardize the creation of prediction models that make it to clinical practice to improve treatment decisions and clinical outcomes for individual patients. The challenges cover four areas: context, data, design and analysis, and scientific culture. We provide negative examples and recommendations for improvement, but also highlight positive examples and developments. Greater awareness of the complexities surrounding clinical prediction modeling is needed among researchers, funding agencies, health professionals as end users, and all of us as potential patients. To improve the utility of prediction models for healthcare and society, we need fewer but better models as well as more resources for model validation, impact assessment, and implementation.},
+  langid = {english}
+}
+
 @article{vandeleurImprovingExplainabilityDeep2022,
   title = {Improving Explainability of Deep Neural Network-Based Electrocardiogram Interpretation Using Variational Auto-Encoders},
   author = {family=Leur, given=Rutger R., prefix=van de, useprefix=true and Bos, Max N. and Taha, Karim and Sammani, Arjan and Yeung, Ming Wai and family=Duijvenboden, given=Stefan, prefix=van, useprefix=true and Lambiase, Pier D. and Hassink, Rutger J. and family=Harst, given=Pim, prefix=van der, useprefix=true and Doevendans, Pieter A. and Gupta, Deepak K. and family=Es, given=René, prefix=van, useprefix=true},
@@ -17622,6 +18027,18 @@ Primary\_atype: Research}
   annotation = {00000}
 }
 
+@article{veenboerTAPCT3DTaskAgnostic2025,
+  title = {{{TAP-CT}}: {{3D Task-Agnostic Pretraining}} of {{Computed Tomography Foundation Models}}},
+  author = {Veenboer, Tim and Yiasemis, George and Marcus, Eric and Van Veldhuizen, Vivien and Snoek, Cees G. M. and Teuwen, Jonas and Groot Lipman, Kevin B. W.},
+  date = {2025-11-30},
+  journaltitle = {arXiv},
+  shortjournal = {arXiv},
+  doi = {10.48550/arXiv.2512.00872},
+  url = {https://arxiv.org/abs/2512.00872},
+  abstract = {Task-agnostic self-supervised pretraining for 3D CT volumes via ViT/DINOv2 adaptations; focuses on strong frozen representations with minimal fine-tuning.},
+  keywords = {CT foundation model,DINO,self-supervised,ViT}
+}
+
 @article{veenejClassifyingSurgicalComplications2005,
   title = {Classifying Surgical Complications: {{A}} Critical Appraisal},
   shorttitle = {Classifying Surgical Complications},
@@ -17735,6 +18152,13 @@ Primary\_atype: Research}
   url = {http://dx.doi.org/10.1097/HJH.0b013e328362152e},
   abstract = {Percutaneous renal denervation (pRDN) is a new and promising therapy for resistant hypertension. Among patients suspected of having resistant hypertension, the actual presence of this condition needs to be well established; pseudoresistant hypertension and significant white-coat effect (WCE) should be excluded. This analysis presents the results of a standardized screening programme for patients referred for pRDN.},
   annotation = {00000}
+}
+
+@article{vermaCausalAIScientist2025,
+  title = {Causal {{AI Scientist}}: {{Facilitating Causal Data Science}} with {{Large Language Models}}},
+  author = {Verma, Vishal and Acharya, Sawal and Simko, Samuel and Bhardwaj, Devansh and Haghighat, Anahita and Sachan, Mrinmaya and Janzing, Dominik and Schölkopf, Bernhard and Jin, Zhijing},
+  date = {2025-09-23},
+  langid = {english}
 }
 
 @article{veronikiMethodsEstimateBetweenstudy2016,
@@ -18175,6 +18599,42 @@ Primary\_atype: Research}
   keywords = {Causal inference,Machine learning,Probabilistic models,Unconfoundedness,Unobserved confounding}
 }
 
+@article{wangEmulationRandomizedClinical2023,
+  title = {Emulation of {{Randomized Clinical Trials With Nonrandomized Database Analyses}}: {{Results}} of 32 {{Clinical Trials}}},
+  shorttitle = {Emulation of {{Randomized Clinical Trials With Nonrandomized Database Analyses}}},
+  author = {Wang, Shirley V. and Schneeweiss, Sebastian and {RCT-DUPLICATE Initiative} and Franklin, Jessica M. and Desai, Rishi J. and Feldman, William and Garry, Elizabeth M. and Glynn, Robert J. and Lin, Kueiyu Joshua and Paik, Julie and Patorno, Elisabetta and Suissa, Samy and D'Andrea, Elvira and Jawaid, Dureshahwar and Lee, Hemin and Pawar, Ajinkya and Sreedhara, Sushama Kattinakere and Tesfaye, Helen and Bessette, Lily G. and Zabotka, Luke and Lee, Su Been and Gautam, Nileesa and York, Cassie and Zakoul, Heidi and Concato, John and Martin, David and Paraoan, Dianne and Quinto, Kenneth},
+  date = {2023-04-25},
+  journaltitle = {JAMA},
+  shortjournal = {JAMA},
+  volume = {329},
+  number = {16},
+  eprint = {37097356},
+  eprinttype = {pubmed},
+  pages = {1376--1385},
+  issn = {1538-3598},
+  doi = {10.1001/jama.2023.4221},
+  abstract = {IMPORTANCE: Nonrandomized studies using insurance claims databases can be analyzed to produce real-world evidence on the effectiveness of medical products. Given the lack of baseline randomization and measurement issues, concerns exist about whether such studies produce unbiased treatment effect estimates. OBJECTIVE: To emulate the design of 30 completed and 2 ongoing randomized clinical trials (RCTs) of medications with database studies using observational analogues of the RCT design parameters (population, intervention, comparator, outcome, time [PICOT]) and to quantify agreement in RCT-database study pairs. DESIGN, SETTING, AND PARTICIPANTS: New-user cohort studies with propensity score matching using 3 US claims databases (Optum Clinformatics, MarketScan, and Medicare). Inclusion-exclusion criteria for each database study were prespecified to emulate the corresponding RCT. RCTs were explicitly selected based on feasibility, including power, key confounders, and end points more likely to be emulated with real-world data. All 32 protocols were registered on ClinicalTrials.gov before conducting analyses. Emulations were conducted from 2017 through 2022. EXPOSURES: Therapies for multiple clinical conditions were included. MAIN OUTCOMES AND MEASURES: Database study emulations focused on the primary outcome of the corresponding RCT. Findings of database studies were compared with RCTs using predefined metrics, including Pearson correlation coefficients and binary metrics based on statistical significance agreement, estimate agreement, and standardized difference. RESULTS: In these highly selected RCTs, the overall observed agreement between the RCT and the database emulation results was a Pearson correlation of 0.82 (95\% CI, 0.64-0.91), with 75\% meeting statistical significance, 66\% estimate agreement, and 75\% standardized difference agreement. In a post hoc analysis limited to 16 RCTs with closer emulation of trial design and measurements, concordance was higher (Pearson r, 0.93; 95\% CI, 0.79-0.97; 94\% meeting statistical significance, 88\% estimate agreement, 88\% standardized difference agreement). Weaker concordance occurred among 16 RCTs for which close emulation of certain design elements that define the research question (PICOT) with data from insurance claims was not possible (Pearson r, 0.53; 95\% CI, 0.00-0.83; 56\% meeting statistical significance, 50\% estimate agreement, 69\% standardized difference agreement). CONCLUSIONS AND RELEVANCE: Real-world evidence studies can reach similar conclusions as RCTs when design and measurements can be closely emulated, but this may be difficult to achieve. Concordance in results varied depending on the agreement metric. Emulation differences, chance, and residual confounding can contribute to divergence in results and are difficult to disentangle.},
+  langid = {english},
+  pmcid = {PMC10130954},
+  keywords = {Humans,Observational Studies as Topic,Randomized Controlled Trials as Topic,Research Design}
+}
+
+@online{wangGraphFoundationModels2025,
+  title = {Graph {{Foundation Models}}: {{A Comprehensive Survey}}},
+  shorttitle = {Graph {{Foundation Models}}},
+  author = {Wang, Zehong and Liu, Zheyuan and Ma, Tianyi and Li, Jiazheng and Zhang, Zheyuan and Fu, Xingbo and Li, Yiyang and Yuan, Zhengqing and Song, Wei and Ma, Yijun and Zeng, Qingkai and Chen, Xiusi and Zhao, Jianan and Li, Jundong and Jiang, Meng and Lio, Pietro and Chawla, Nitesh and Zhang, Chuxu and Ye, Yanfang},
+  date = {2025-05-21},
+  eprint = {2505.15116},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2505.15116},
+  url = {http://arxiv.org/abs/2505.15116},
+  urldate = {2026-01-09},
+  abstract = {Graph-structured data pervades domains such as social networks, biological systems, knowledge graphs, and recommender systems. While foundation models have transformed natural language processing, vision, and multimodal learning through large-scale pretraining and generalization, extending these capabilities to graphs -- characterized by non-Euclidean structures and complex relational semantics -- poses unique challenges and opens new opportunities. To this end, Graph Foundation Models (GFMs) aim to bring scalable, general-purpose intelligence to structured data, enabling broad transfer across graph-centric tasks and domains. This survey provides a comprehensive overview of GFMs, unifying diverse efforts under a modular framework comprising three key components: backbone architectures, pretraining strategies, and adaptation mechanisms. We categorize GFMs by their generalization scope -- universal, task-specific, and domain-specific -- and review representative methods, key innovations, and theoretical insights within each category. Beyond methodology, we examine theoretical foundations including transferability and emergent capabilities, and highlight key challenges such as structural alignment, heterogeneity, scalability, and evaluation. Positioned at the intersection of graph learning and general-purpose AI, GFMs are poised to become foundational infrastructure for open-ended reasoning over structured data. This survey consolidates current progress and outlines future directions to guide research in this rapidly evolving field. Resources are available at https://github.com/Zehong-Wang/Awesome-Foundation-Models-on-Graphs.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Social and Information Networks}
+}
+
 @article{wangGrayMatterAge2019,
   title = {Gray {{Matter Age Prediction}} as a {{Biomarker}} for {{Risk}} of {{Dementia}}},
   author = {Wang, Johnny and Knol, Maria J and Tiulpin, Aleksei and Dubost, Florian and family=Bruijne, given=Marleen, prefix=de, useprefix=true and Vernooij, Meike W and Adams, Hieab H H and Ikram, M Arfan and Niessen, Wiro J and Roshchupkin, Gennady V},
@@ -18235,6 +18695,21 @@ Primary\_atype: Research}
   url = {https://dl.acm.org/doi/10.1145/3636509},
   urldate = {2024-08-14},
   abstract = {We formalize predictive optimization, a category of decision-making algorithms that use machine learning (ML) to predict future outcomes of interest about individuals. For example, pre-trial risk prediction algorithms such as COMPAS use ML to predict whether an individual will re-offend in the future. Our thesis is that predictive optimization raises a distinctive and serious set of normative concerns that cause it to fail on its own terms. To test this, we review 387 reports, articles, and web pages from academia, industry, non-profits, governments, and data science contests, and we find many real-world examples of predictive optimization. We select eight particularly consequential examples as case studies. Simultaneously, we develop a set of normative and technical critiques that challenge the claims made by the developers of these applications—in particular, claims of increased accuracy, efficiency, and fairness. Our key finding is that these critiques apply to each of the applications, are not easily evaded by redesigning the systems, and thus challenge whether these applications should be deployed. We argue that the burden of evidence for justifying why the deployment of predictive optimization is not harmful should rest with the developers of the tools. Based on our analysis, we provide a rubric of critical questions that can be used to deliberate or contest specific predictive optimization applications.1}
+}
+
+@article{wangSAMMed3DVisionFoundation2025,
+  title = {{{SAM-Med3D}}: {{A Vision Foundation Model}} for {{General-Purpose Segmentation}} on {{Volumetric Medical Images}}},
+  author = {Wang, Haoyu and Guo, Sizheng and Ye, Jin and Deng, Zhongying and Cheng, Junlong and Li, Tianbin and Chen, Jianpin and Su, Yanzhou and Huang, Ziyan and Shen, Yiqing and Fu, Bin and Zhang, Shaoting and He, Junjun},
+  date = {2025-10-01},
+  journaltitle = {IEEE Transactions on Neural Networks and Learning Systems},
+  shortjournal = {IEEE Transactions on Neural Networks and Learning Systems},
+  volume = {36.0},
+  number = {10.0},
+  pages = {17599--17612},
+  doi = {10.1109/TNNLS.2025.3586694},
+  url = {https://pubmed.ncbi.nlm.nih.gov/40742874/},
+  abstract = {SAM-Med3D: promptable 3D segmentation foundation model trained on a large-scale volumetric dataset; supports few-point prompts for diverse targets.},
+  keywords = {3D segmentation,CT,foundation model}
 }
 
 @article{warnerFactorsAssociatedEarly2016,
@@ -18321,6 +18796,21 @@ Primary\_atype: Research}
 @article{weberClinicalApplicationInterventional,
   title = {Clinical Application of Interventional Renal Sympathetic Denervation: Recommendations of the {{Austrian Society}} of {{Hypertension}} 2012.},
   author = {Weber, Thomas and Zweiker, Robert and Watschinger, Bruno and Gr\{"}
+}
+
+@article{wecksteinScalableConfoundingAdjustment2025,
+  title = {Scalable Confounding Adjustment in Real-World Evidence: Benchmarking Data-Adaptive and Investigator-Specified Strategies in a Large-Scale Trial Emulation Study},
+  shorttitle = {Scalable Confounding Adjustment in Real-World Evidence},
+  author = {Weckstein, Andrew R and Wang, Shirley V and Wyss, Richard and Schneeweiss, Sebastian},
+  date = {2025-12-03},
+  journaltitle = {Journal of the American Medical Informatics Association},
+  pages = {ocaf204},
+  issn = {1067-5027, 1527-974X},
+  doi = {10.1093/jamia/ocaf204},
+  url = {https://academic.oup.com/jamia/advance-article/doi/10.1093/jamia/ocaf204/8363956},
+  urldate = {2026-01-13},
+  abstract = {Objectives: Real-world evidence (RWE) increasingly informs clinical decisions, yet manual adjustment for confounding limits scalability. Dataadaptive (DA) algorithms for high-dimensional proxy adjustment show promise but have not been systematically compared to investigatorspecified (IS) approaches across diverse treatment scenarios. We evaluated whether DA strategies perform comparably to manually curated IS models using claims-based emulations of 15 randomized trials from the RCT-DUPLICATE initiative. Materials and Methods: We identified new-user cohorts for 15 trial emulations in Optum’s de-identified Clinformatics Data Mart Database (2004-2023). Treatment effects were estimated using 3 adjustment strategies: (1) IS models with manually tailored covariates; (2) full-DA strategies using empirical features from semiautomated pipelines; and (3) hybrid-DA models incorporating both empirical and investigator-defined covariates. Agreement with RCT benchmarks was assessed via binary metrics and difference-in-differences. Results: Outcome-adaptive LASSO achieved better RWE-RCT agreement than IS adjustment in 73\% of full-DA and 87\% of hybrid-DA emulations. Other DA methods considering feature associations with both treatment and outcome performed similarly well, while models tuned solely for treatment prediction performed poorly. Performance of IS vs DA strategies differed across emulated trials. Discussion: Top DA algorithms matched manual IS models on average, but impact varied by emulation. Case studies illustrate the continued importance of subject-matter knowledge, particularly for complex treatment strategies. Conclusion: Data-adaptive algorithms show promise for scalable confounding adjustment in large-scale evidence systems and as augmentation tools for investigator-specified designs. Hybrid strategies combining algorithmic methods with investigator expertise offer the most reliable approach for individual causal questions.},
+  langid = {english}
 }
 
 @article{weghuberOnceWeeklySemaglutideAdolescents2022,
@@ -18806,6 +19296,21 @@ Primary\_atype: Research}
   annotation = {00000}
 }
 
+@article{wuGeneralistFoundationModel2025,
+  title = {Towards Generalist Foundation Model for Radiology by Leveraging Web-Scale {{2D}}\&{{3D}} Medical Data},
+  author = {Wu, Chaoyi and Zhang, Xiaoman and Zhang, Ya and Hui, Hui and Wang, Yanfeng and Xie, Weidi},
+  date = {2025-08-23},
+  journaltitle = {Nature Communications},
+  shortjournal = {Nature Communications},
+  volume = {16.0},
+  number = {1.0},
+  pages = {7866},
+  doi = {10.1038/s41467-025-62385-7},
+  url = {https://www.nature.com/articles/s41467-025-62385-7},
+  abstract = {RadFM: radiology foundation model trained on web-scale 2D and 3D medical data; evaluated on tasks including diagnosis, VQA, and report generation with a dedicated benchmark.},
+  keywords = {2D+3D,foundation model,radiology,vision-language}
+}
+
 @article{wulczynDeepLearningbasedSurvival2020,
   title = {Deep Learning-Based Survival Prediction for Multiple Cancer Types Using Histopathology Images},
   author = {Wulczyn, Ellery and Steiner, David F. and Xu, Zhaoyang and Sadhwani, Apaar and Wang, Hongwu and Flament, Isabelle and Mermel, Craig H. and Chen, Po-Hsuan Cameron and Liu, Yun and Stumpe, Martin C.},
@@ -18869,6 +19374,18 @@ Primary\_atype: Research}
   abstract = {Lung cancer ranks second in new cancer cases and first in cancer-related deaths worldwide. Precision medicine is working on altering~treatment approaches and improving outcomes in this patient population. Radiological images are a powerful non-invasive tool in the screening and~diagnosis of early-stage lung cancer, treatment strategy support, prognosis assessment, and follow-up for advanced-stage lung cancer. Recently, radiological~features have evolved from solely semantic to include (handcrafted and deep) radiomic features. Radiomics entails the extraction and analysis of~quantitative features from medical images using mathematical and machine learning methods to explore possible ties with biology and clinical outcomes.},
   langid = {english},
   keywords = {Artificial intelligence,Lung cancer,Medical imaging,Radiomics}
+}
+
+@article{wuVoCoSimpleyetEffectiveVolume2024,
+  title = {{{VoCo}}: {{A Simple-yet-Effective Volume Contrastive Learning Framework}} for {{3D Medical Image Analysis}}},
+  author = {Wu, Linshan and Zhuang, Jiaxin and Chen, Hao},
+  date = {2024-02-27},
+  journaltitle = {arXiv},
+  shortjournal = {arXiv},
+  doi = {10.48550/arXiv.2402.17300},
+  url = {https://arxiv.org/abs/2402.17300},
+  abstract = {VoCo: self-supervised 3D pretraining leveraging contextual position priors via volume-contrastive objectives; accepted at CVPR 2024.},
+  keywords = {3D,pretraining,self-supervised}
 }
 
 @article{wynantsPredictionModelsDiagnosis2020,
@@ -19082,6 +19599,21 @@ Primary\_atype: Research}
   abstract = {Causal reasoning and discovery, two fundamental tasks of causal analysis, often face challenges in applications due to the complexity, noisiness, and high-dimensionality of real-world data. Despite recent progress in identifying latent causal structures using causal representation learning (CRL), what makes learned representations useful for causal downstream tasks and how to evaluate them are still not well understood. In this paper, we reinterpret CRL using a measurement model framework, where the learned representations are viewed as proxy measurements of the latent causal variables. Our approach clarifies the conditions under which learned representations support downstream causal reasoning and provides a principled basis for quantitatively assessing the quality of representations using a new Test-based Measurement EXclusivity (T-MEX) score. We validate T-MEX across diverse causal inference scenarios, including numerical simulations and real-world ecological video analysis, demonstrating that the proposed framework and corresponding score effectively assess the identification of learned representations and their usefulness for causal downstream tasks.},
   pubstate = {prepublished},
   keywords = {Computer Science - Machine Learning}
+}
+
+@online{yaoUnifyingCausalRepresentation2025,
+  title = {Unifying {{Causal Representation Learning}} with the {{Invariance Principle}}},
+  author = {Yao, Dingling and Rancati, Dario and Cadei, Riccardo and Fumero, Marco and Locatello, Francesco},
+  date = {2025-03-05},
+  eprint = {2409.02772},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2409.02772},
+  url = {http://arxiv.org/abs/2409.02772},
+  urldate = {2025-12-23},
+  abstract = {Causal representation learning (CRL) aims at recovering latent causal variables from high-dimensional observations to solve causal downstream tasks, such as predicting the effect of new interventions or more robust classification. A plethora of methods have been developed, each tackling carefully crafted problem settings that lead to different types of identifiability. These different settings are widely assumed to be important because they are often linked to different rungs of Pearl's causal hierarchy, even though this correspondence is not always exact. This work shows that instead of strictly conforming to this hierarchical mapping, many causal representation learning approaches methodologically align their representations with inherent data symmetries. Identification of causal variables is guided by invariance principles that are not necessarily causal. This result allows us to unify many existing approaches in a single method that can mix and match different assumptions, including non-causal ones, based on the invariance relevant to the problem at hand. It also significantly benefits applicability, which we demonstrate by improving treatment effect estimation on real-world high-dimensional ecological data. Overall, this paper clarifies the role of causal assumptions in the discovery of causal variables and shifts the focus to preserving data symmetries.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning}
 }
 
 @article{yazdaniCausalInferenceAge2015,
@@ -19518,6 +20050,18 @@ Subject\_term\_id: data-processing;image-processing;non-small-cell-lung-cancer;p
   abstract = {Unpaired image-to-image translation is a class of vision problems whose goal is to find the mapping between different image domains using unpaired training data. Cycle-consistency loss is a widely used constraint for such problems. However, due to the strict pixel-level constraint, it cannot perform geometric changes, remove large objects, or ignore irrelevant texture. In this paper, we propose a novel adversarial-consistency loss for image-to-image translation. This loss does not require the translated image to be translated back to be a specific source image but can encourage the translated images to retain important features of the source images and overcome the drawbacks of cycle-consistency loss noted above. Our method achieves state-of-the-art results on three challenging tasks: glasses removal, male-to-female translation, and selfie-to-anime translation.},
   pubstate = {prepublished},
   keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+
+@article{zhengDemographicPredictability3D2024,
+  title = {Demographic {{Predictability}} in {{3D CT Foundation Embeddings}}},
+  author = {Zheng, Guangyao and Jacobs, Michael A. and Parekh, Vishwa S.},
+  date = {2024-11-28},
+  journaltitle = {arXiv},
+  shortjournal = {arXiv},
+  doi = {10.48550/arXiv.2412.00110},
+  url = {https://arxiv.org/abs/2412.00110},
+  abstract = {Analysis of demographic signal (age/sex/race) in 3D CT foundation embeddings using NLST; highlights fairness/privacy considerations.},
+  keywords = {CT embeddings,demographics,fairness}
 }
 
 @article{zhengPreoperativeCTbasedDeep2022,

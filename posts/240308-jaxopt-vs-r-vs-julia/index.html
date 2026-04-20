@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>The need for speed, performing simulation studies in R, JAX and Julia – Wouter van Amsterdam</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -61,7 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -90,19 +92,18 @@ div.csl-indent {
 <link href="../../wva.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f8cf637e94b2ab44909397e1de4fc553.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-482a7b96333fc100181d205ad89d19de.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-f8cf637e94b2ab44909397e1de4fc553.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e6f18997c2ed83bb5868f101c45a6025.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-286516ddab1118ef64969f803332ea00.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e6f18997c2ed83bb5868f101c45a6025.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -143,7 +144,7 @@ gtag('config', 'G-E4W5XMDCR7', { 'anonymize_ip': true});
 <link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -485,7 +486,7 @@ window.Quarto = {
 <li>attain lower variance by having more repeated experiments</li>
 <li>test new ideas faster</li>
 </ul>
-<p>The R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed. <!--, especially when it comes to leveraging GPUs for calculations that are amenable to vectorization (such as performing simulation studies across a large grid).--> In recent years, <a href="https://jax.readthedocs.io/en/latest/notebooks/quickstart.html">JAX</a> (developed by Google) and <a href="https://julialang.org">Julia</a> have arisen as general scientific computation frameworks. JAX and Julia have grown in popularity both in the neural network community as in other scientific communities <span class="citation" data-cites="DifferentiableUniverseInitiativeJax_cosmo2024 SciMLOpenSource">(e.g. <a href="#ref-DifferentiableUniverseInitiativeJax_cosmo2024" role="doc-biblioref"><span>“<span>DifferentiableUniverseInitiative</span>/Jax_cosmo”</span> 2024</a>; <a href="#ref-SciMLOpenSource" role="doc-biblioref"><span>“<span>SciML</span>: <span>Open</span> <span>Source</span> <span>Software</span> for <span>Scientific</span> <span>Machine</span> <span>Learning</span>”</span> n.d.</a>)</span>. In this blog post I’ll compare R with JAX and Julia for a simple simulation study setup with logistic regression.</p>
+<p>The R language has been a popular language among many biostatisticians for a long time, but it is not generally considered the top performing language in terms of speed. <!--, especially when it comes to leveraging GPUs for calculations that are amenable to vectorization (such as performing simulation studies across a large grid).--> In recent years, <a href="https://jax.readthedocs.io/en/latest/notebooks/quickstart.html">JAX</a> (developed by Google) and <a href="https://julialang.org">Julia</a> have arisen as general scientific computation frameworks. JAX and Julia have grown in popularity both in the neural network community as in other scientific communities <span class="citation" data-cites="DifferentiableUniverseInitiativeJax_cosmo2024 SciMLOpenSource">(e.g. <a href="#ref-DifferentiableUniverseInitiativeJax_cosmo2024" role="doc-biblioref"><em><span>DifferentiableUniverseInitiative</span>/Jax_cosmo</em> 2024</a>; <a href="#ref-SciMLOpenSource" role="doc-biblioref"><em><span>SciML</span></em>, n.d.</a>)</span>. In this blog post I’ll compare R with JAX and Julia for a simple simulation study setup with logistic regression.</p>
 <p>We’ll look at the following comparisons:</p>
 <ol type="1">
 <li>R single thread</li>
@@ -996,7 +997,7 @@ Table&nbsp;1: Best speeds per language and machine
 </figcaption>
 <div aria-describedby="tbl-best-per-language-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 11%">
 <col style="width: 8%">
@@ -1099,7 +1100,7 @@ Table&nbsp;2: top 10 speeds overall
 </figcaption>
 <div aria-describedby="tbl-topspeeds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 11%">
 <col style="width: 8%">
@@ -1478,7 +1479,7 @@ print(means[0])</code></pre>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-vanamsterdamAssociationMuscleQuantity2022" class="csl-entry" role="listitem">
 Amsterdam, Wouter A. C. van, Netanja I. Harlianto, Joost J. C. Verhoeff, Pim Moeskops, Pim A. de Jong, and Tim Leiner. 2022. <span>“The <span>Association</span> Between <span>Muscle</span> <span>Quantity</span> and <span>Overall</span> <span>Survival</span> <span>Depends</span> on <span>Muscle</span> <span>Radiodensity</span>: <span>A</span> <span>Cohort</span> <span>Study</span> in <span>Non</span>-<span>Small</span>-<span>Cell</span> <span>Lung</span> <span>Cancer</span> <span>Patients</span>.”</span> <em>Journal of Personalized Medicine</em> 12 (7): 1191. <a href="https://doi.org/10.3390/jpm12071191">https://doi.org/10.3390/jpm12071191</a>.
 </div>
@@ -1486,13 +1487,13 @@ Amsterdam, Wouter A. C. van, Netanja I. Harlianto, Joost J. C. Verhoeff, Pim Moe
 Amsterdam, Wouter A. C. van, and Rajesh Ranganath. 2023. <span>“Conditional Average Treatment Effect Estimation with Marginally Constrained Models.”</span> <em>Journal of Causal Inference</em> 11 (1): 20220027. <a href="https://doi.org/10.1515/jci-2022-0027">https://doi.org/10.1515/jci-2022-0027</a>.
 </div>
 <div id="ref-vanamsterdamIndividualTreatmentEffect2022" class="csl-entry" role="listitem">
-Amsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A. Bartholomeus, Aahlad Manas Puli, Pim A. de Jong, Tim Leiner, Anne S. R. van Lindert, Marinus J. C. Eijkemans, and Rajesh Ranganath. 2022. <span>“Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage <span>III</span> Non-Small Cell Lung Cancer.”</span> <em>Scientific Reports</em> 12 (1): 5848. <a href="https://doi.org/10.1038/s41598-022-09775-9">https://doi.org/10.1038/s41598-022-09775-9</a>.
+Amsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, et al. 2022. <span>“Individual Treatment Effect Estimation in the Presence of Unobserved Confounding Using Proxies: A Cohort Study in Stage <span>III</span> Non-Small Cell Lung Cancer.”</span> <em>Scientific Reports</em> 12 (1): 5848. <a href="https://doi.org/10.1038/s41598-022-09775-9">https://doi.org/10.1038/s41598-022-09775-9</a>.
 </div>
 <div id="ref-DifferentiableUniverseInitiativeJax_cosmo2024" class="csl-entry" role="listitem">
-<span>“<span>DifferentiableUniverseInitiative</span>/Jax_cosmo.”</span> 2024. Differentiable Universe Initiative. <a href="https://github.com/DifferentiableUniverseInitiative/jax_cosmo">https://github.com/DifferentiableUniverseInitiative/jax_cosmo</a>.
+<em><span>DifferentiableUniverseInitiative</span>/Jax_cosmo</em>. 2024. Differentiable Universe Initiative. <a href="https://github.com/DifferentiableUniverseInitiative/jax_cosmo">https://github.com/DifferentiableUniverseInitiative/jax_cosmo</a>.
 </div>
 <div id="ref-SciMLOpenSource" class="csl-entry" role="listitem">
-<span>“<span>SciML</span>: <span>Open</span> <span>Source</span> <span>Software</span> for <span>Scientific</span> <span>Machine</span> <span>Learning</span>.”</span> n.d. Accessed March 14, 2024. <a href="https://sciml.ai">https://sciml.ai</a>.
+<em><span>SciML</span>: <span>Open</span> <span>Source</span> <span>Software</span> for <span>Scientific</span> <span>Machine</span> <span>Learning</span></em>. n.d. Accessed March 14, 2024. <a href="https://sciml.ai">https://sciml.ai</a>.
 </div>
 </div>
 
@@ -1515,7 +1516,7 @@ Amsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, Gijs A.
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van_amsterdam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Amsterdam, Wouter van. 2024. <span>“The Need for Speed, Performing
-Simulation Studies in R, JAX and Julia.”</span> March 8, 2024. <a href="https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/">https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/</a>.
+Simulation Studies in R, JAX and Julia.”</span> March 8. <a href="https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/">https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

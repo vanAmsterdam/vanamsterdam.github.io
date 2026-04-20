@@ -1,159 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://vanamsterdam.github.io/posts.html</loc>
-    <lastmod>2026-03-02T12:22:50.231Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/outline.html</loc>
-    <lastmod>2026-03-02T12:22:50.194Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240507-estro-causalinference-tutorial/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.432Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/230624-chill-lightning-talk/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.269Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240515-aibia-ai-medical-imaging-decision-support/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.495Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/250507-effect-measure-stability-meeting/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.750Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240926-bmsaned-ai-in-health/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.664Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240530-weon-masterclass/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.583Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/230301-lungsurv-manchester/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.242Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/260227-munchen-causalai-workshop/index.html</loc>
-    <lastmod>2026-03-02T12:22:51.061Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/251027-causalai-4cities-utrecht/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.926Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/250814-mlhc-workshop/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.847Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/240418-ii-spring-meeting/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.431Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/250825-iscb-causal-prediction/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.908Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/250714-protect-update/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.769Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.233Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html</loc>
-    <lastmod>2026-03-02T12:22:50.233Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/190816-lm-functional-form.html</loc>
-    <lastmod>2026-03-02T12:22:50.231Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/250704-hr-sign-flip.html</loc>
-    <lastmod>2026-03-02T12:22:50.241Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/210725-counterfactualvsinterventional.html</loc>
-    <lastmod>2026-03-02T12:22:50.232Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.183Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/posts/210720-good_predictions_bad_decisions.html</loc>
-    <lastmod>2026-03-02T12:22:50.232Z</lastmod>
+    <loc>https://vanamsterdam.github.io/talks.html</loc>
+    <lastmod>2026-04-20T17:19:00.278Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/posts/250425-robustness/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.240Z</lastmod>
+    <lastmod>2026-04-20T17:19:00.275Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/posts/240607-jama-causal-language/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.234Z</lastmod>
+    <loc>https://vanamsterdam.github.io/posts/210720-good_predictions_bad_decisions.html</loc>
+    <lastmod>2026-04-20T17:19:00.268Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/talks.html</loc>
-    <lastmod>2026-03-02T12:22:50.241Z</lastmod>
+    <loc>https://vanamsterdam.github.io/posts/210725-counterfactualvsinterventional.html</loc>
+    <lastmod>2026-04-20T17:19:00.268Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/talks/240708-imaging-ailab/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.628Z</lastmod>
+    <loc>https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.269Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/260421-montpellier-sfp/index.html</loc>
+    <lastmod>2026-04-20T17:19:01.188Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240515-aibia-ai-medical-imaging-decision-support/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.539Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240507-estro-causalinference-tutorial/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.476Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/251027-causalai-4cities-utrecht/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.971Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/240516-sig-causality-prediction/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.532Z</lastmod>
+    <lastmod>2026-04-20T17:19:00.576Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/talks/241125-ccm-methodsmeeting/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.698Z</lastmod>
+    <loc>https://vanamsterdam.github.io/talks/240926-bmsaned-ai-in-health/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.708Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/talks/250814-mlhc-workshop/causality.html</loc>
-    <lastmod>2026-03-02T12:22:50.769Z</lastmod>
+    <loc>https://vanamsterdam.github.io/talks/240708-imaging-ailab/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.670Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/talks/251202-pui-seminar-sfp/index.html</loc>
-    <lastmod>2026-03-02T12:22:51.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/260227-munchen-causalai-workshop/abstract.html</loc>
-    <lastmod>2026-03-02T12:22:51.039Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/250417-ads-sigs/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.719Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/230810-mlhc-causality-decision-making/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.295Z</lastmod>
+    <loc>https://vanamsterdam.github.io/talks/250825-iscb-causal-prediction/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.952Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/250127-dagstuhl/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.715Z</lastmod>
+    <lastmod>2026-04-20T17:19:00.760Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/260227-munchen-causalai-workshop/abstract.html</loc>
+    <lastmod>2026-04-20T17:19:01.087Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/230810-mlhc-causality-decision-making/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.332Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/250814-mlhc-workshop/causality.html</loc>
+    <lastmod>2026-04-20T17:19:00.816Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/talks/241104-pearl-causal-hierarchy/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.677Z</lastmod>
+    <lastmod>2026-04-20T17:19:00.721Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/talks/251201-aimethodslab-causality/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.955Z</lastmod>
+    <loc>https://vanamsterdam.github.io/talks/230301-lungsurv-manchester/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.279Z</lastmod>
   </url>
   <url>
-    <loc>https://vanamsterdam.github.io/talks/240922-causalai-4cities/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.629Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vanamsterdam.github.io/talks/250522-hds-ccm/index.html</loc>
-    <lastmod>2026-03-02T12:22:50.766Z</lastmod>
+    <loc>https://vanamsterdam.github.io/posts.html</loc>
+    <lastmod>2026-04-20T17:19:00.267Z</lastmod>
   </url>
   <url>
     <loc>https://vanamsterdam.github.io/unlisted.html</loc>
-    <lastmod>2026-03-02T12:22:51.062Z</lastmod>
+    <lastmod>2026-04-20T17:19:01.207Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240922-causalai-4cities/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.672Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/230624-chill-lightning-talk/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.306Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/250814-mlhc-workshop/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.889Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240418-ii-spring-meeting/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.474Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/260227-munchen-causalai-workshop/index.html</loc>
+    <lastmod>2026-04-20T17:19:01.109Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/241125-ccm-methodsmeeting/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.743Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/251201-aimethodslab-causality/index.html</loc>
+    <lastmod>2026-04-20T17:19:01.001Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/240530-weon-masterclass/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.627Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/250417-ads-sigs/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.764Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/250507-effect-measure-stability-meeting/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.796Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/251202-pui-seminar-sfp/index.html</loc>
+    <lastmod>2026-04-20T17:19:01.068Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/250714-protect-update/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.815Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/talks/250522-hds-ccm/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.812Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/outline.html</loc>
+    <lastmod>2026-04-20T17:19:00.233Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/240607-jama-causal-language/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.270Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/240322-mice-partial-residual-plot.html</loc>
+    <lastmod>2026-04-20T17:19:00.269Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/190816-lm-functional-form.html</loc>
+    <lastmod>2026-04-20T17:19:00.267Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/posts/250704-hr-sign-flip.html</loc>
+    <lastmod>2026-04-20T17:19:00.276Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vanamsterdam.github.io/index.html</loc>
+    <lastmod>2026-04-20T17:19:00.223Z</lastmod>
   </url>
 </urlset>

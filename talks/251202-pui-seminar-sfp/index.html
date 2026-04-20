@@ -7,11 +7,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.9.37">
 
-  <meta name="author" content="Wouter van Amsterdam">
+  <meta name="author" content="Wouter van Amsterdam, MD, PhD">
   <meta name="dcterms.date" content="2025-12-02">
   <title>Wouter van Amsterdam – Self-fulfilling prophecies: But is the prophet heard?</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -35,7 +38,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -52,7 +54,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-eb4c398dc72a97c73f6b498dc09fc66a.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-fcc6fdbf5271e8f695f5f11620dd7f61.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E4W5XMDCR7"></script>
 
   <script type="text/javascript">
@@ -173,7 +175,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="https://vanamsterdam.github.io">Wouter van Amsterdam</a> 
+<a href="https://vanamsterdam.github.io">Wouter van Amsterdam, MD, PhD</a> 
 </div>
         <p class="quarto-title-affiliation">
             Department of Data Science Methods, Julius Center, University Medical Center Utrecht
@@ -361,8 +363,8 @@
 <section id="how-about-guidlines-and-regulation" class="slide level2 center">
 <h2>How about guidlines and regulation?</h2>
 <ul>
-<li class="fragment">reporting guidelines (e.g.&nbsp;TRIPOD+AI / PROBAST+AI <span class="citation" data-cites="collinsTRIPOD+AIStatementUpdated2024 moonsPROBAST+AIUpdatedQuality2025">(<a href="#/references" role="doc-biblioref" onclick="">Collins et al. 2024</a>; <a href="#/references" role="doc-biblioref" onclick="">Moons et al. 2025</a>)</span>) do not provide enough evidence for safe deployment <span class="citation" data-cites="PrognosticModelsDecision2024">(<a href="#/references" role="doc-biblioref" onclick=""><span>“Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions”</span> 2024</a>)</span></li>
-<li class="fragment">some acceptance criteria lists (AJCC) even allow for harmful self-fulfilling prophecies <span class="citation" data-cites="kattanAmericanJointCommittee2016">(<a href="#/references" role="doc-biblioref" onclick="">Kattan et al. 2016</a>)</span></li>
+<li class="fragment">reporting guidelines (e.g.&nbsp;TRIPOD+AI / PROBAST+AI <span class="citation" data-cites="collinsTRIPOD+AIStatementUpdated2024 moonsPROBAST+AIUpdatedQuality2025">(<a href="#/references" role="doc-biblioref" onclick="">Collins et al. 2024</a>; <a href="#/references" role="doc-biblioref" onclick="">Moons et al. 2025</a>)</span>) do not provide enough evidence for safe deployment <span class="citation" data-cites="PrognosticModelsDecision2024">(<a href="#/references" role="doc-biblioref" onclick=""><em>Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions</em> 2024</a>)</span></li>
+<li class="fragment">some acceptance criteria lists (AJCC) even allow for harmful self-fulfilling prophecies <span class="citation" data-cites="kattanAmericanJointCommittee2016">(<a href="#/references" role="doc-biblioref" onclick=""><span class="nocase">Kattan et al.</span> 2016</a>)</span></li>
 <li class="fragment">EMA and FDA are developing monitoring guidelines, mostly emphasis on <strong>predictive performance</strong>, but <strong>good performance</strong> <span class="math inline">\(\neq\)</span> <strong>postive impact</strong></li>
 </ul>
 </section></section>
@@ -381,18 +383,18 @@
 </section>
 <section id="references" class="slide level2 unnumbered smaller scrollable">
 <h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-collinsTRIPOD+AIStatementUpdated2024" class="csl-entry" role="listitem">
-Collins, Gary S., Karel G. M. Moons, Paula Dhiman, Richard D. Riley, Andrew L. Beam, Ben Van Calster, Marzyeh Ghassemi, et al. 2024. <span>“<span>TRIPOD</span>+<span>AI</span> Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.”</span> <em>BMJ</em> 385 (April): e078378. <a href="https://doi.org/10.1136/bmj-2023-078378">https://doi.org/10.1136/bmj-2023-078378</a>.
+Collins, Gary S., Karel G. M. Moons, Paula Dhiman, et al. 2024. <span>“<span>TRIPOD</span>+<span>AI</span> Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods.”</span> <em>BMJ</em> 385 (April): e078378. <a href="https://doi.org/10.1136/bmj-2023-078378">https://doi.org/10.1136/bmj-2023-078378</a>.
 </div>
 <div id="ref-kattanAmericanJointCommittee2016" class="csl-entry" role="listitem">
-Kattan, Michael W., Kenneth R. Hess, Mahul B. Amin, Ying Lu, Karl G. M. Moons, Jeffrey E. Gershenwald, Phyllis A. Gimotty, et al. 2016. <span>“American <span>Joint Committee</span> on <span>Cancer</span> Acceptance Criteria for Inclusion of Risk Models for Individualized Prognosis in the Practice of Precision Medicine.”</span> <em>CA: A Cancer Journal for Clinicians</em> 66 (5): 370–74. <a href="https://doi.org/10.3322/caac.21339">https://doi.org/10.3322/caac.21339</a>.
+<span class="nocase">Kattan, Michael W., Kenneth R. Hess, Mahul B. Amin, et al.</span> 2016. <span>“American <span>Joint Committee</span> on <span>Cancer</span> Acceptance Criteria for Inclusion of Risk Models for Individualized Prognosis in the Practice of Precision Medicine.”</span> <em>CA: A Cancer Journal for Clinicians</em> 66 (5): 370–74. <a href="https://doi.org/10.3322/caac.21339">https://doi.org/10.3322/caac.21339</a>.
 </div>
 <div id="ref-moonsPROBAST+AIUpdatedQuality2025" class="csl-entry" role="listitem">
-Moons, Karel G. M., Johanna A. A. Damen, Tabea Kaul, Lotty Hooft, Constanza Andaur Navarro, Paula Dhiman, Andrew L. Beam, et al. 2025. <span>“<span>PROBAST</span>+<span>AI</span>: An Updated Quality, Risk of Bias, and Applicability Assessment Tool for Prediction Models Using Regression or Artificial Intelligence Methods.”</span> <em>BMJ</em> 388 (March): e082505. <a href="https://doi.org/10.1136/bmj-2024-082505">https://doi.org/10.1136/bmj-2024-082505</a>.
+Moons, Karel G. M., Johanna A. A. Damen, Tabea Kaul, et al. 2025. <span>“<span>PROBAST</span>+<span>AI</span>: An Updated Quality, Risk of Bias, and Applicability Assessment Tool for Prediction Models Using Regression or Artificial Intelligence Methods.”</span> <em>BMJ</em> 388 (March): e082505. <a href="https://doi.org/10.1136/bmj-2024-082505">https://doi.org/10.1136/bmj-2024-082505</a>.
 </div>
 <div id="ref-PrognosticModelsDecision2024" class="csl-entry" role="listitem">
-<span>“Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions.”</span> 2024, December. <a href="https://www.bmj.com/content/385/bmj-2023-078378/rr-1">https://www.bmj.com/content/385/bmj-2023-078378/rr-1</a>.
+<em>Prognostic Models for Decision Support Need to Report Their Targeted Treatments and the Expected Changes in Treatment Decisions</em>. 2024. December 6. <a href="https://www.bmj.com/content/385/bmj-2023-078378/rr-1">https://www.bmj.com/content/385/bmj-2023-078378/rr-1</a>.
 </div>
 <div id="ref-vanamsterdamWhenAccuratePrediction2025" class="csl-entry" role="listitem">
 Van Amsterdam, Wouter A. C., Nan Van Geloven, Jesse H. Krijthe, Rajesh Ranganath, and Giovanni Cinà. 2025. <span>“When Accurate Prediction Models Yield Harmful Self-Fulfilling Prophecies.”</span> <em>Patterns</em> 6 (4): 101229. <a href="https://doi.org/10.1016/j.patter.2025.101229">https://doi.org/10.1016/j.patter.2025.101229</a>.

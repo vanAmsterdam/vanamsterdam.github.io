@@ -7,11 +7,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+  <meta name="generator" content="quarto-1.9.37">
 
-  <meta name="author" content="Wouter van Amsterdam">
+  <meta name="author" content="Wouter van Amsterdam, MD, PhD">
   <meta name="dcterms.date" content="2024-05-30">
   <title>Wouter van Amsterdam – Uses and pitfalls with AI for decision support - harmful self-fulfilling prophecies</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -35,7 +38,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -52,7 +54,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2c21925b685ad92ad46ab6d9084d50e2.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-b2f46c95abe7a562720a132562b688cb.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E4W5XMDCR7"></script>
 
   <script type="text/javascript">
@@ -173,7 +175,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="https://vanamsterdam.github.io">Wouter van Amsterdam</a> 
+<a href="https://vanamsterdam.github.io">Wouter van Amsterdam, MD, PhD</a> 
 </div>
         <p class="quarto-title-affiliation">
             Department of Data Science Methods, Julius Center, University Medical Center Utrecht
@@ -514,7 +516,7 @@
 <p>evaluation:</p>
 <ul>
 <li>prediction accuracy can be tested in RCTs, or in observational data with specialized methods accounting for confounding <span class="citation" data-cites="keoghPredictionInterventionsEvaluation2024">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Keogh and Van Geloven 2024</a>)</span></li>
-<li>a new <em>policy</em> can be evaluated in historic RCTs <span class="citation" data-cites="karmaliBloodPressureloweringTreatment2018">(e.g. <a href="#/references" role="doc-biblioref" onclick="">Karmali et al. 2018</a>)</span></li>
+<li>a new <em>policy</em> can be evaluated in historic RCTs <span class="citation" data-cites="karmaliBloodPressureloweringTreatment2018">(e.g. <a href="#/references" role="doc-biblioref" onclick=""><span class="nocase">Karmali et al.</span> 2018</a>)</span></li>
 <li>ultimate test is cluster RCT</li>
 </ul>
 </div>
@@ -574,15 +576,15 @@
 <h2>References</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-cooperEvaluationMachinelearningMethods1997" class="csl-entry" role="listitem">
-Cooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, John Aronis, Bruce G. Buchanan, Richard Caruana, Michael J. Fine, et al. 1997. <span>“An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.”</span> <em>Artificial Intelligence in Medicine</em> 9 (2): 107–38. <a href="https://doi.org/10.1016/S0933-3657(96)00367-3">https://doi.org/10.1016/S0933-3657(96)00367-3</a>.
+Cooper, Gregory F., Constantin F. Aliferis, Richard Ambrosino, et al. 1997. <span>“An Evaluation of Machine-Learning Methods for Predicting Pneumonia Mortality.”</span> <em>Artificial Intelligence in Medicine</em> 9 (2): 107–38. <a href="https://doi.org/10.1016/S0933-3657(96)00367-3">https://doi.org/10.1016/S0933-3657(96)00367-3</a>.
 </div>
 <div id="ref-hildenPrognosisMedicineAnalysis1987" class="csl-entry" role="listitem">
 Hilden, Jørgen, and J. Dik F. Habbema. 1987. <span>“Prognosis in Medicine: <span>An</span> Analysis of Its Meaning and Rôles.”</span> <em>Theoretical Medicine</em> 8 (3): 349–65. <a href="https://doi.org/10.1007/BF00489469">https://doi.org/10.1007/BF00489469</a>.
 </div>
 <div id="ref-karmaliBloodPressureloweringTreatment2018" class="csl-entry" role="listitem">
-Karmali, Kunal N., Donald M. Lloyd-Jones, Joep van der Leeuw, David C. Goff Jr, Salim Yusuf, Alberto Zanchetti, Paul Glasziou, et al. 2018. <span>“Blood Pressure-Lowering Treatment Strategies Based on Cardiovascular Risk Versus Blood Pressure: <span>A</span> Meta-Analysis of Individual Participant Data.”</span> <em>PLOS Medicine</em> 15 (3): e1002538. <a href="https://doi.org/10.1371/journal.pmed.1002538">https://doi.org/10.1371/journal.pmed.1002538</a>.
+<span class="nocase">Karmali, Kunal N., Donald M. Lloyd-Jones, Joep van der Leeuw, et al.</span> 2018. <span>“Blood Pressure-Lowering Treatment Strategies Based on Cardiovascular Risk Versus Blood Pressure: <span>A</span> Meta-Analysis of Individual Participant Data.”</span> <em>PLOS Medicine</em> 15 (3): e1002538. <a href="https://doi.org/10.1371/journal.pmed.1002538">https://doi.org/10.1371/journal.pmed.1002538</a>.
 </div>
 <div id="ref-keoghPredictionInterventionsEvaluation2024" class="csl-entry" role="listitem">
 Keogh, Ruth H., and Nan Van Geloven. 2024. <span>“Prediction <span>Under Interventions</span>: <span>Evaluation</span> of <span>Counterfactual Performance Using Longitudinal Observational Data</span>.”</span> <em>Epidemiology (Cambridge, Mass.)</em> 35 (3): 329–39. <a href="https://doi.org/10.1097/EDE.0000000000001713">https://doi.org/10.1097/EDE.0000000000001713</a>.

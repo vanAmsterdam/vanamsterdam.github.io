@@ -230,8 +230,6 @@ Define:
 - some acceptance criteria lists (AJCC) even allow for harmful self-fulfilling prophecies [@kattanAmericanJointCommittee2016]
 - EMA and FDA are developing monitoring guidelines, mostly emphasis on **predictive performance**, but **good performance** $\neq$ **postive impact**
 
-# Was the prophet heard?
-
 ## Reflection
 
 - got good attention from both scientific community and press

@@ -1,0 +1,84 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="#fdf8f0"/>
+
+  <!-- Ground (higher than SVG1 = more buried) -->
+  <rect x="0" y="295" width="800" height="155" fill="#4a2e1e"/>
+  <path d="M0,295 C80,286 180,302 280,294 S440,288 540,299 S660,306 800,295 L800,305 C660,314 540,309 440,306 S280,304 180,310 S80,297 0,305Z" fill="#6b4030"/>
+  <ellipse cx="108" cy="303" rx="20" ry="7" fill="#5a3525" opacity="0.65"/>
+  <ellipse cx="235" cy="299" rx="14" ry="5" fill="#3d2010" opacity="0.5"/>
+  <ellipse cx="268" cy="308" rx="9" ry="3" fill="#5a3525" opacity="0.4"/>
+
+  <!-- Coffin group: same base position, ground is higher so more is buried -->
+  <g transform="translate(165,120) rotate(1,0,140)">
+
+    <!-- Drop shadow -->
+    <path d="M-41,0 L41,0 L64,52 L64,225 L45,278 L-45,278 L-64,225 L-64,52Z"
+          fill="#1a0800" opacity="0.18" transform="translate(8,8)"/>
+
+    <!-- Coffin body -->
+    <path d="M-41,0 L41,0 L64,52 L64,225 L45,278 L-45,278 L-64,225 L-64,52Z"
+          fill="#6b4226" stroke="#3d2010" stroke-width="2.5"/>
+
+    <!-- Wood grain -->
+    <line x1="-18" y1="2" x2="-41" y2="222" stroke="#5a3520" stroke-width="1.2" opacity="0.35"/>
+    <line x1="0" y1="2" x2="0" y2="276" stroke="#5a3520" stroke-width="1.2" opacity="0.35"/>
+    <line x1="18" y1="2" x2="41" y2="222" stroke="#5a3520" stroke-width="1.2" opacity="0.35"/>
+    <path d="M-41,0 L-64,52 L-64,225 L-45,278 L-42,278 L-61,224 L-61,53 L-38,2Z" fill="#7a5030" opacity="0.5"/>
+
+    <!-- Lid (CLOSED and flat — no glow, no eyes) -->
+    <path d="M-41,0 L41,0 L64,52 L41,61 L-41,61 L-64,52Z"
+          fill="#7a4a2a" stroke="#3d2010" stroke-width="2.5"/>
+    <line x1="-40" y1="1.5" x2="40" y2="1.5" stroke="#9a6040" stroke-width="2" opacity="0.7"/>
+    <line x1="-18" y1="1" x2="-20" y2="58" stroke="#5a3520" stroke-width="1" opacity="0.25"/>
+    <line x1="18" y1="1" x2="20" y2="58" stroke="#5a3520" stroke-width="1" opacity="0.25"/>
+
+    <!-- Old nail heads from previous stakes -->
+    <circle cx="-26" cy="24" r="5.5" fill="#777" stroke="#444" stroke-width="1"/>
+    <circle cx="-26" cy="24" r="2" fill="#555"/>
+    <circle cx="28" cy="21" r="5.5" fill="#777" stroke="#444" stroke-width="1"/>
+    <circle cx="28" cy="21" r="2" fill="#555"/>
+
+    <!-- Old stakes (mostly hammered in — only stubs showing) -->
+    <g transform="translate(-26,0)">
+      <rect x="-4" y="-14" width="8" height="15" fill="#b8943a" stroke="#8b6914" stroke-width="1" rx="1"/>
+      <polygon points="-4,-14 4,-14 0,-24" fill="#8b4513"/>
+    </g>
+    <g transform="translate(28,0)">
+      <rect x="-4" y="-12" width="8" height="13" fill="#b8943a" stroke="#8b6914" stroke-width="1" rx="1"/>
+      <polygon points="-4,-12 4,-12 0,-22" fill="#8b4513"/>
+    </g>
+
+    <!-- NEW PROMINENT STAKE (center) -->
+    <g transform="translate(0,0)">
+      <!-- Shaft -->
+      <rect x="-7" y="-84" width="14" height="90" fill="#e8c060" stroke="#7a5800" stroke-width="2" rx="2"/>
+      <!-- Point -->
+      <polygon points="-7,-84 7,-84 0,-106" fill="#6b3010"/>
+      <!-- Two nail bands -->
+      <rect x="-9" y="-55" width="18" height="8" fill="#c8a020" stroke="#8b6914" stroke-width="1.5" rx="2"/>
+      <rect x="-9" y="-26" width="18" height="8" fill="#c8a020" stroke="#8b6914" stroke-width="1.5" rx="2"/>
+      <!-- Label scroll -->
+      <rect x="-58" y="-118" width="116" height="14" fill="#e8e0d0" stroke="#999" stroke-width="1" rx="2"/>
+      <rect x="-58" y="-104" width="116" height="18" fill="#fdf8f0" stroke="#999" stroke-width="1" rx="0"/>
+      <rect x="-58" y="-86" width="116" height="4" fill="#e8e0d0" stroke="#999" stroke-width="1" rx="2"/>
+      <text x="0" y="-91" text-anchor="middle" font-size="10" font-family="Arial,sans-serif" fill="#222" font-weight="bold">van Amsterdam et al. 2025</text>
+    </g>
+
+    <!-- Gold nameplate -->
+    <rect x="-50" y="128" width="100" height="44" fill="#c8a44a" stroke="#8b6914" stroke-width="2" rx="3"/>
+    <line x1="-48" y1="142" x2="48" y2="142" stroke="#8b6914" stroke-width="1" opacity="0.5"/>
+    <text x="0" y="140" text-anchor="middle" font-size="12" font-family="Arial,sans-serif" fill="#3d2010" font-weight="bold">good AUC</text>
+    <text x="0" y="165" text-anchor="middle" font-size="11" font-family="Arial,sans-serif" fill="#3d2010">→ good outcomes</text>
+
+  </g>
+
+  <!-- Right side text -->
+  <text x="510" y="118" text-anchor="middle" font-size="36" font-family="Georgia,serif" fill="#2c1a0e" font-style="italic">...and another</text>
+  <text x="510" y="162" text-anchor="middle" font-size="36" font-family="Georgia,serif" fill="#2c1a0e" font-style="italic">nail in the</text>
+  <text x="510" y="206" text-anchor="middle" font-size="36" font-family="Georgia,serif" fill="#2c1a0e" font-style="italic">coffin</text>
+  <line x1="355" y1="228" x2="665" y2="228" stroke="#c8a44a" stroke-width="1.5"/>
+  <text x="510" y="256" text-anchor="middle" font-size="14" font-family="Arial,sans-serif" fill="#aaa" font-style="italic">van Amsterdam et al., Patterns 2025</text>
+
+</svg>

@@ -1,12 +1,12 @@
 ---
-title: "Self-fulfilling prophecies: But is the prophet heard?"
-subtitle: "Seminar on Prediction Under Intervention(s), Leiden"
-date: 2025/12/02
+title: "When accurate prediction models yield harmful self-fulfilling prophecies"
+subtitle: "Premedical Team, Inria, Montpellier, France"
+date: 2026/04/21
 bibliography: ../../library.bib
 format:
     revealjs:
         incremental: true
-        theme: [../custom.scss]
+        theme: [../custom.scss, custom_local.scss]
         center: true
         fig-align: center
         width: 1600
@@ -21,17 +21,24 @@ nocite: |
   @vanamsterdamWhenAccuratePrediction2025
 ---
 
-## Prediction model performance versus healthcare impact
+## Prediction model performance versus healthcare impact{#slide-metrics}
 
 - many prediction models: given feature $X$, estimate probability outcome $Y$
   - e.g. given age, cholesterol and sex, predict 10-year risk of a heart attack
-- evaluated on *predictive performance*: calibration and discrimination (AUC)
+  ![](figs/qrisk1.png){.fragment .fade-out .current-visible style="height: 500px; width: auto;"}
+  - given ECG, predict presence of heart failure
+  ![](figs/ecg.jpg){.fragment .fade-out .current-visible style="height: 500px; width: auto;"}
+- evaluated on *predictive performance*: discrimination (AUC) and calibration
 
-:::{layout-ncol=2}
+:::{.columns .fragment}
 
-![](figs/auc1.png){.fragment width=20%}
+:::{.column width="50%"}
+![](figs/auc1.png){style="height: 400px; width: auto;"}
+:::
 
-![](figs/pmed.1004566.g004.png){.fragment width=20%}
+:::{.column width="50%"}
+![](figs/pmed.1004566.g004.png){style="height: 400px; width: auto;"}
+:::
 
 :::
 
@@ -46,6 +53,10 @@ nocite: |
 #
 
 [what could possibly go wrong?]{.r-fit-text}
+
+---
+
+![](figs/vampire-alive.png)
 
 # When accurate prediction models yield harmful self-fulfilling prophecies
 
@@ -84,7 +95,7 @@ Patterns, 2025.
 
 :::
 
-## Let's monitor the model performance over time 
+---
 
 :::{.r-stack}
 
@@ -110,19 +121,25 @@ Patterns, 2025.
 
 ## Our paper
 
-We formalized the simplest general case
+We formalize the simplest general case of introducing an 'outcome prediction model' for decision support
 
-- before: everyone treated (or untreated)
+- before: everyone treated ($T=1$)(or untreated ($T=0$))
 - new binary feature $X$
 - outcome prediction model: $\mu(x) = P(Y=1|X=x)$
 - *new policy* based on OPM: treat when $\mu(x) > \lambda$ (assume non-constant policy)
 
-. . .
+. . . 
+
+:::{.center}
+![](figs/policy_pi_f.png){width=60% .center}
+:::
+
+## Our paper
 
 Define:
 
-- harmful: *new policy* leads to worse outcomes (for $X=x$)
-- self-fulfilling: after deployment, re-evaluating the model yields better AUC
+- harmful: *new policy* leads to worse outcomes (for $X=x$, or marginally)
+- self-fulfilling: after deployment, re-evaluating the model yields same or better AUC
 
 ## When can harmful self-fulfilling prophecies occur?
 
@@ -131,16 +148,24 @@ Define:
   - treatment effect for $X=0$
   - treatment effect for $X=1$ (treatment interaction)
   - prevalence of $X$
-  - historic policy and interpretation of $Y$
-- calculate:
+  - historic policy (always treat or never treat) and interpretation of $Y$ (1 = good, 1 = bad)
+- calculate and compare with pre-deployment:
   - expected values of outcomes (harmful?)
-  - pre- and post-deployment AUC (self-fulfilling?)
+    $$E_{\pi_f}[Y \mid X=x] = \pi_f(x)\, E[Y_1 \mid X=x] + (1-\pi_f(x))\, E[Y_0 \mid X=x]$$
+  - AUC (self-fulfilling?) calculated based on sensitivity and specificity
 - question: Can harmful self-fulfilling prophecies occur in realistic scenarios?
-
 
 ## Harmful self-fulfilling prophecies occur in cases without extreme treatment (interaction) effects
 
-![](figs/figure1.png)
+![](figs/fig-all.png){.center}
+
+## Also when removing settings where the average treatment effect is harmful
+
+![](figs/figure1.png){.center}
+
+## Deterministic evaluation of usefulness of policy
+
+![](figs/table1.png)
 
 ## Calibration result
 
@@ -149,6 +174,17 @@ Define:
 ![](figs/thm-calibration.png){.fragment width=100%}
 
 - ergo deployment of model was useless
+
+## What would have been the correct thing to do?
+
+- data provides only outcomes under *one* treatment policy (e.g. everyone treated)
+- cannot learn about counterfactual outcomes (e.g. what would have happened if we hadn't treated)
+- post-deployment evaluation should have incorporated monitoring of outcomes per covariate pattern and treatment group
+- can be compared against pre-deployment data to detect harmful self-fulfilling prophecies (under assumption of no concurrent changes)
+
+## Did we slay the vampire?
+
+![](figs/vampire-dead.png)
 
 # Reception
 
@@ -209,7 +245,3 @@ Define:
 :::
 
 ---
-
-## Deterministic evaluation of usefulness of policy
-
-![](figs/table1.png)

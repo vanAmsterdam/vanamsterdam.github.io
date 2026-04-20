@@ -1,0 +1,93 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff8c00" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ff6600" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="#fdf8f0"/>
+
+  <!-- Ground -->
+  <rect x="0" y="315" width="800" height="135" fill="#4a2e1e"/>
+  <path d="M0,315 C100,305 200,322 300,313 S480,307 580,318 S700,323 800,315 L800,324 C700,331 580,326 460,322 S300,323 200,330 S80,318 0,324Z" fill="#6b4030"/>
+  <ellipse cx="110" cy="323" rx="18" ry="6" fill="#5a3525" opacity="0.6"/>
+  <ellipse cx="290" cy="319" rx="12" ry="4" fill="#3d2010" opacity="0.5"/>
+
+  <!-- Coffin group: center ~x=165, top at y=120 -->
+  <g transform="translate(165,120) rotate(2,0,140)">
+
+    <!-- Drop shadow -->
+    <path d="M-41,0 L41,0 L64,52 L64,225 L45,278 L-45,278 L-64,225 L-64,52Z"
+          fill="#1a0800" opacity="0.18" transform="translate(9,9)"/>
+
+    <!-- Coffin body -->
+    <path d="M-41,0 L41,0 L64,52 L64,225 L45,278 L-45,278 L-64,225 L-64,52Z"
+          fill="#6b4226" stroke="#3d2010" stroke-width="2.5"/>
+
+    <!-- Wood grain -->
+    <line x1="-18" y1="2" x2="-41" y2="222" stroke="#5a3520" stroke-width="1.2" opacity="0.35"/>
+    <line x1="0" y1="2" x2="0" y2="276" stroke="#5a3520" stroke-width="1.2" opacity="0.35"/>
+    <line x1="18" y1="2" x2="41" y2="222" stroke="#5a3520" stroke-width="1.2" opacity="0.35"/>
+    <!-- Left highlight edge -->
+    <path d="M-41,0 L-64,52 L-64,225 L-45,278 L-42,278 L-61,224 L-61,53 L-38,2Z" fill="#7a5030" opacity="0.5"/>
+
+    <!-- Orange glow leaking from cracked lid -->
+    <ellipse cx="0" cy="5" rx="40" ry="15" fill="url(#glow)"/>
+    <ellipse cx="0" cy="3" rx="25" ry="9" fill="#ff8c00" opacity="0.3"/>
+
+    <!-- Lid (cracked open: shifted up 9px, rotated slightly) -->
+    <g transform="translate(0,-9) rotate(-1.5,0,26)">
+      <path d="M-41,0 L41,0 L65,52 L42,61 L-42,61 L-65,52Z"
+            fill="#7a4a2a" stroke="#3d2010" stroke-width="2"/>
+      <line x1="-40" y1="1.5" x2="40" y2="1.5" stroke="#9a6040" stroke-width="2" opacity="0.7"/>
+      <line x1="-18" y1="1" x2="-20" y2="58" stroke="#5a3520" stroke-width="1" opacity="0.25"/>
+      <line x1="18" y1="1" x2="20" y2="58" stroke="#5a3520" stroke-width="1" opacity="0.25"/>
+    </g>
+
+    <!-- Eyes in the gap -->
+    <ellipse cx="-19" cy="2" rx="12" ry="8" fill="#ffdd00"/>
+    <ellipse cx="-19" cy="2" rx="6" ry="7" fill="#cc1100"/>
+    <ellipse cx="-19.5" cy="1" rx="2.5" ry="3.5" fill="#1a0000"/>
+    <ellipse cx="-20.5" cy="0" rx="1" ry="1.5" fill="white" opacity="0.85"/>
+    <ellipse cx="19" cy="2" rx="12" ry="8" fill="#ffdd00"/>
+    <ellipse cx="19" cy="2" rx="6" ry="7" fill="#cc1100"/>
+    <ellipse cx="19.5" cy="1" rx="2.5" ry="3.5" fill="#1a0000"/>
+    <ellipse cx="20.5" cy="0" rx="1" ry="1.5" fill="white" opacity="0.85"/>
+
+    <!-- Stake 1 (left) -->
+    <g transform="translate(-26,0)">
+      <rect x="-5" y="-62" width="10" height="67" fill="#d4a845" stroke="#8b6914" stroke-width="1.5" rx="2"/>
+      <polygon points="-5,-62 5,-62 0,-80" fill="#8b4513"/>
+      <rect x="-7" y="-34" width="14" height="7" fill="#8b6914" stroke="#5c4200" stroke-width="1" rx="1.5"/>
+      <!-- label tag -->
+      <rect x="-32" y="-98" width="64" height="18" fill="#fdf8f0" stroke="#bbb" stroke-width="1" rx="3"/>
+      <text x="0" y="-86" text-anchor="middle" font-size="8.5" font-family="Arial,sans-serif" fill="#444">Steyerberg 2010</text>
+    </g>
+
+    <!-- Stake 2 (right) -->
+    <g transform="translate(28,0)">
+      <rect x="-5" y="-56" width="10" height="61" fill="#d4a845" stroke="#8b6914" stroke-width="1.5" rx="2"/>
+      <polygon points="-5,-56 5,-56 0,-74" fill="#8b4513"/>
+      <rect x="-7" y="-28" width="14" height="7" fill="#8b6914" stroke="#5c4200" stroke-width="1" rx="1.5"/>
+      <rect x="-26" y="-92" width="52" height="18" fill="#fdf8f0" stroke="#bbb" stroke-width="1" rx="3"/>
+      <text x="0" y="-80" text-anchor="middle" font-size="8.5" font-family="Arial,sans-serif" fill="#444">Riley 2019</text>
+    </g>
+
+    <!-- Gold nameplate -->
+    <rect x="-50" y="128" width="100" height="44" fill="#c8a44a" stroke="#8b6914" stroke-width="2" rx="3"/>
+    <line x1="-48" y1="142" x2="48" y2="142" stroke="#8b6914" stroke-width="1" opacity="0.5"/>
+    <text x="0" y="140" text-anchor="middle" font-size="12" font-family="Arial,sans-serif" fill="#3d2010" font-weight="bold">good AUC</text>
+    <text x="0" y="165" text-anchor="middle" font-size="11" font-family="Arial,sans-serif" fill="#3d2010">→ good outcomes</text>
+
+  </g>
+
+  <!-- Right side text -->
+  <text x="510" y="118" text-anchor="middle" font-size="36" font-family="Georgia,serif" fill="#2c1a0e" font-style="italic">This fallacy</text>
+  <text x="510" y="162" text-anchor="middle" font-size="36" font-family="Georgia,serif" fill="#2c1a0e" font-style="italic">keeps rising</text>
+  <text x="510" y="206" text-anchor="middle" font-size="36" font-family="Georgia,serif" fill="#2c1a0e" font-style="italic">from the dead</text>
+  <line x1="355" y1="228" x2="665" y2="228" stroke="#c8a44a" stroke-width="1.5"/>
+  <text x="510" y="256" text-anchor="middle" font-size="14" font-family="Arial,sans-serif" fill="#aaa" font-style="italic">despite repeated attempts at burial</text>
+
+</svg>

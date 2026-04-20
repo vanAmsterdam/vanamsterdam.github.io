@@ -1,0 +1,9 @@
+format:
+  revealjs:
+    include-in-header:
+      text: |
+        <style>
+        .reveal .slides {
+          outline: 3px solid red !important;
+        }
+        </style>

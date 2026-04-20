@@ -20,3 +20,17 @@
 section.level2 {
     top: 0px !important;
 }
+
+.column {
+    text-align: center;
+}
+
+/* Hide all figure captions in presentations (they're usually not needed in slides) */
+// figcaption {
+//     display: none !important;
+// }
+
+img.center {
+  display: block;
+  margin: auto;
+}

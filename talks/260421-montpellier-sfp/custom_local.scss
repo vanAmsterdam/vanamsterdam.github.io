@@ -1,0 +1,30 @@
+/*-- scss:rules --*/
+
+/* make image big but not overflow */
+.img-large {
+  max-height: 75vh;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* two-column alignment fix */
+.img-right {
+  float: right;
+  width: 45%;
+  margin-left: 2rem;
+}
+
+/* vertically center content */
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* full-slide figure */
+.full-figure img {
+  width: 100%;
+  height: 80vh;
+  object-fit: contain;
+}

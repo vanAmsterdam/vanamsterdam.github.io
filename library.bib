@@ -737,6 +737,25 @@ Subject\_term\_id: cancer-microenvironment;metabolic-diseases;signs-and-symptoms
   langid = {english}
 }
 
+@article{austinGraphicalCalibrationCurves2020,
+  title = {Graphical Calibration Curves and the Integrated Calibration Index ({{ICI}}) for Survival Models},
+  author = {Austin, Peter C. and Harrell, Frank E. and family=Klaveren, given=David, prefix=van, useprefix=true},
+  date = {2020-09-20},
+  journaltitle = {Statistics in Medicine},
+  shortjournal = {Stat Med},
+  volume = {39},
+  number = {21},
+  eprint = {32548928},
+  eprinttype = {pubmed},
+  pages = {2714--2742},
+  issn = {1097-0258},
+  doi = {10.1002/sim.8570},
+  abstract = {In the context of survival analysis, calibration refers to the agreement between predicted probabilities and observed event rates or frequencies of the outcome within a given duration of time. We aimed to describe and evaluate methods for graphically assessing the calibration of survival models. We focus on hazard regression models and restricted cubic splines in conjunction with a Cox proportional hazards model. We also describe modifications of the Integrated Calibration Index, of E50 and of E90. In this context, this is the average (respectively, median or 90th percentile) absolute difference between predicted survival probabilities and smoothed survival frequencies. We conducted a series of Monte Carlo simulations to evaluate the performance of these calibration measures when the underlying model has been correctly specified and under different types of model mis-specification. We illustrate the utility of calibration curves and the three calibration metrics by using them to compare the calibration of a Cox proportional hazards regression model with that of a random survival forest for predicting mortality in patients hospitalized with heart failure. Under a correctly specified regression model, differences between the two methods for constructing calibration curves were minimal, although the performance of the method based on restricted cubic splines tended to be slightly better. In contrast, under a mis-specified model, the smoothed calibration curved constructed using hazard regression tended to be closer to the true calibration curve. The use of calibration curves and of these numeric calibration metrics permits for a comprehensive comparison of the calibration of competing survival models.},
+  langid = {english},
+  pmcid = {PMC7497089},
+  keywords = {calibration,Calibration,Humans,model validation,Monte Carlo Method,Probability,Proportional Hazards Models,random forests,survival analysis,Survival Analysis,time-to-event model}
+}
+
 @article{austinIntegratedCalibrationIndex2019,
   title = {The {{Integrated Calibration Index}} ({{ICI}}) and Related Metrics for Quantifying the Calibration of Logistic Regression Models},
   author = {Austin, Peter C. and Steyerberg, Ewout W.},
@@ -1774,6 +1793,21 @@ Subject\_term\_id: cancer;cancer-imaging;tumour-biomarkers;tumour-immunology}
   annotation = {00000}
 }
 
+@online{boekenConditionalForecastsProper2025,
+  title = {Conditional {{Forecasts}} and {{Proper Scoring Rules}} for {{Reliable}} and {{Accurate Performative Predictions}}},
+  author = {Boeken, Philip and Zoeter, Onno and Mooij, Joris M.},
+  date = {2025-10-24},
+  eprint = {2510.21335},
+  eprinttype = {arXiv},
+  eprintclass = {math.ST},
+  doi = {10.48550/arXiv.2510.21335},
+  url = {http://arxiv.org/abs/2510.21335},
+  urldate = {2026-05-28},
+  abstract = {Performative predictions are forecasts which influence the outcomes they aim to predict, undermining the existence of correct forecasts and standard methods of elicitation and estimation. We show that conditioning forecasts on covariates that separate them from the outcome renders the target distribution forecast-invariant, guaranteeing well-posedness of the forecasting problem. However, even under this condition, classical proper scoring rules fail to elicit correct forecasts. We prove a general impossibility result and identify two solutions: (i) in decision-theoretic settings, elicitation of correct and incentive-compatible forecasts is possible if forecasts are separating; (ii) scoring with unbiased estimates of the divergence between the forecast and the induced distribution of the target variable yields correct forecasts. Applying these insights to parameter estimation, conditional forecasts and proper scoring rules enable performatively stable estimation of performatively correct parameters, resolving the issues raised by Perdomo et al. (2020). Our results expose fundamental limits of classical forecast evaluation and offer new tools for reliable and accurate forecasting in performative settings.},
+  pubstate = {prepublished},
+  keywords = {Mathematics - Statistics Theory,Statistics - Machine Learning}
+}
+
 @inproceedings{boekenEvaluatingCorrectingPerformative2024,
   title = {Evaluating and {{Correcting Performative Effects}} of {{Decision Support Systems}} via {{Causal Domain Shift}}},
   booktitle = {Proceedings of the {{Third Conference}} on {{Causal Learning}} and {{Reasoning}}},
@@ -2517,6 +2551,17 @@ Subject\_term\_id: cancer;cancer-imaging;tumour-biomarkers;tumour-immunology}
   title = {Decision-{{Driven Calibration}} for {{Cost-Sensitive Uncertainty Quantification}}},
   author = {Canal, Gregory and Leung, Vladimir and Guerrerio, John J and Sage, Philip and Wang, I-Jeng},
   abstract = {In recent years, the ability of artificial intelligence (AI) systems to quantity their uncertainty has become paramount in building trustworthy AI. In standard uncertainty quantification (UQ), AI uncertainty is calibrated such that the confidence of its predictions matches the statistics of the underlying data distribution. However, this method of calibration does not take into consideration the direct influence of UQ on the subsequent actions taken by downstream decision-makers. Here we demonstrate an alternate, decision-driven method of UQ calibration that explicitly minimizes the incurred costs of downstream decisions. After formulating decision-driven calibration as an optimization problem with respect to a known decision-maker, we show in a simulated search-and-rescue scenario how decision-driven temperature scaling can lead to lower incurred decision costs.},
+  langid = {english}
+}
+
+@inproceedings{canalDecisionDrivenCalibrationCostSensitive2024,
+  title = {Decision-{{Driven Calibration}} for {{Cost-Sensitive Uncertainty Quantification}}},
+  author = {Canal, Gregory and Leung, Vladimir and Guerrerio, John J. and Sage, Philip and Wang, I.-Jeng},
+  date = {2024-10-10},
+  url = {https://openreview.net/forum?id=RBlQKY10KY},
+  urldate = {2026-05-20},
+  abstract = {In recent years, the ability of artificial intelligence (AI) systems to quantity their uncertainty has become paramount in building trustworthy AI. In standard uncertainty quantification (UQ), AI uncertainty is calibrated such that the confidence of its predictions matches the statistics of the underlying data distribution. However, this method of calibration does not take into consideration the direct influence of UQ on the subsequent actions taken by downstream decision-makers. Here we demonstrate an alternate, decision-driven method of UQ calibration that explicitly minimizes the incurred costs of downstream decisions. After formulating decision-driven calibration as an optimization problem with respect to a known decision-maker, we show in a simulated search-and-rescue scenario how decision-driven temperature scaling can lead to lower incurred decision costs.},
+  eventtitle = {{{NeurIPS}} 2024 {{Workshop}} on {{Bayesian Decision-making}} and {{Uncertainty}}},
   langid = {english}
 }
 
@@ -6125,6 +6170,33 @@ R package version 1.2.1}
   annotation = {00004}
 }
 
+@article{gabrielElucidatingCommonBiases2025,
+  title = {Elucidating Some Common Biases in Randomized Controlled Trials Using Directed Acyclic Graphs},
+  author = {Gabriel, Erin E. and Ocampo, Alex and Sjölander, Arvid},
+  date = {2025-09-11},
+  journaltitle = {European Journal of Epidemiology},
+  shortjournal = {European Journal of Epidemiology},
+  issn = {1573-7284},
+  doi = {10.1007/s10654-025-01298-7},
+  url = {https://doi.org/10.1007/s10654-025-01298-7},
+  abstract = {Although the ideal randomized clinical trial is the gold standard for causal inference, real randomized trials often suffer from imperfections that may hamper causal effect estimation. Stating the estimand of interest can help reduce confusion about what is being estimated, but it is often difficult to determine what is and is not identifiable given a trial’s specific imperfections. We demonstrate how directed acyclic graphs can be used to elucidate the consequences of common imperfections, such as noncompliance, unblinding, and drop-out, for the identification of the intention-to-treat effect, the total treatment effect and the physiological treatment effect. We assert that the physiological treatment effect is not identifiable outside a trial with perfect compliance and no dropout, where blinding is perfectly maintained.}
+}
+
+@online{gabrielPropensityWeightingAdjustment2025,
+  title = {Propensity Weighting plus Adjustment in Proportional Hazards Model Is Not Doubly Robust},
+  author = {Gabriel, Erin E. and Sachs, Michael C. and Waernbaum, Ingeborg and Goetghebeur, Els and Blanche, Paul F. and Vansteelandt, Stijn and Sjölander, Arvid and Scheike, Thomas},
+  date = {2025-05-30},
+  eprint = {2310.16207},
+  eprinttype = {arXiv},
+  eprintclass = {stat},
+  doi = {10.48550/arXiv.2310.16207},
+  url = {http://arxiv.org/abs/2310.16207},
+  urldate = {2026-05-12},
+  abstract = {Recently, it has become common for applied works to combine commonly used survival analysis modeling methods, such as the multivariable Cox model and propensity score weighting, with the intention of forming a doubly robust estimator of an exposure effect hazard ratio that is unbiased in large samples when either the Cox model or the propensity score model is correctly specified. This combination does not, in general, produce a doubly robust estimator, even after regression standardization, when there is truly a causal effect. We demonstrate via simulation this lack of double robustness for the semiparametric Cox model, the Weibull proportional hazards model, and a simple proportional hazards flexible parametric model, with both the latter models fit via maximum likelihood. We provide a novel proof that the combination of propensity score weighting and a proportional hazards survival model, fit either via full or partial likelihood, is consistent under the null of no causal effect of the exposure on the outcome under particular censoring mechanisms if either the propensity score or the outcome model is correctly specified and contains all confounders. Given our results suggesting that double robustness only exists under the null, we outline two simple alternative estimators that are doubly robust for the survival difference at a given time point (in the above sense), provided the censoring mechanism can be correctly modeled, and one doubly robust method of estimation for the full survival curve. We provide R code to use these estimators for estimation and inference in the supporting information.},
+  pubstate = {prepublished},
+  keywords = {Statistics - Methodology}
+}
+
 @article{gailBiasedEstimatesTreatment1984,
   title = {Biased Estimates of Treatment Effect in Randomized Experiments with Nonlinear Regressions and Omitted Covariates},
   author = {GAIL, M. H. and WIEAND, S. and PIANTADOSI, S.},
@@ -6335,6 +6407,22 @@ R package version 1.2.1}
   abstract = {Mechanistic cardiac electrophysiology models allow for personalized simulations of the electrical activity in the heart and the ensuing electrocardiogram (ECG) on the body surface. As such, synthetic signals possess known ground truth labels of the underlying disease and can be employed for validation of machine learning ECG analysis tools in addition to clinical signals. Recently, synthetic ECGs were used to enrich sparse clinical data or even replace them completely during training leading to improved performance on real-world clinical test data. We thus generated a novel synthetic database comprising a total of 16,900 12 lead ECGs based on electrophysiological simulations equally distributed into healthy control and 7 pathology classes. The pathological case of myocardial infraction had 6 sub-classes. A comparison of extracted features between the virtual cohort and a publicly available clinical ECG database demonstrated that the synthetic signals represent clinical ECGs for healthy and pathological subpopulations with high fidelity. The ECG database is split into training, validation, and test folds for development and objective assessment of novel machine learning algorithms.},
   langid = {english},
   keywords = {Cardiovascular diseases,Computational biophysics,Mathematics and computing}
+}
+
+@article{goldenbergAIActuallyImproving2026,
+  title = {Is {{AI}} Actually Improving Healthcare?},
+  author = {Goldenberg, Anna and Wiens, Jenna},
+  date = {2026-04},
+  journaltitle = {Nature Medicine},
+  shortjournal = {Nat Med},
+  volume = {32},
+  number = {4},
+  pages = {1182--1183},
+  issn = {1078-8956, 1546-170X},
+  doi = {10.1038/s41591-026-04329-2},
+  url = {https://www.nature.com/articles/s41591-026-04329-2},
+  urldate = {2026-05-07},
+  langid = {english}
 }
 
 @article{goncalvesImagingSkeletalMuscle2018,
@@ -11289,6 +11377,21 @@ Nerve terminals containing neuronal nitric oxide synthase (nNOS) are localized i
   langid = {english}
 }
 
+@online{mcgowanRoleCongenialityMultiple2025,
+  title = {The {{Role}} of {{Congeniality}} in {{Multiple Imputation}} for {{Doubly Robust Causal Estimation}}},
+  author = {McGowan, Lucy D'Agostino},
+  date = {2025-12-18},
+  eprint = {2510.11633},
+  eprinttype = {arXiv},
+  eprintclass = {stat},
+  doi = {10.48550/arXiv.2510.11633},
+  url = {http://arxiv.org/abs/2510.11633},
+  urldate = {2026-05-07},
+  abstract = {This paper provides clear and practical guidance on the specification of imputation models when multiple imputation is used in conjunction with doubly robust estimation methods for causal inference. Through theoretical arguments and targeted simulations, we demonstrate that if a confounder has missing data, the corresponding imputation model must include all variables appearing in either the propensity score model or the outcome model, in addition to both the exposure and the outcome, and that these variables must enter the imputation model in the same functional form as in the final analysis. Violating these conditions can lead to biased treatment effect estimates, even when both components of the doubly robust estimator are correctly specified. We present a mathematical framework for doubly robust estimation combined with multiple imputation, establish the theoretical requirements for proper imputation in this setting, and demonstrate the consequences of misspecification through simulation. Based on these findings, we offer concrete recommendations to ensure valid inference when using multiple imputation with doubly robust methods in applied causal analyses.},
+  pubstate = {prepublished},
+  keywords = {Statistics - Applications,Statistics - Methodology}
+}
+
 @online{mckennaCalibratingWhereIt2024,
   title = {Calibrating {{Where It Matters}}: {{Constrained Temperature Scaling}}},
   shorttitle = {Calibrating {{Where It Matters}}},
@@ -13753,6 +13856,25 @@ Subject\_term\_id: cancer-immunotherapy;clinical-trials;melanoma}
   langid = {english}
 }
 
+@article{postBuiltinSelectionBias2024a,
+  title = {The Built-in Selection Bias of Hazard Ratios Formalized Using Structural Causal Models},
+  author = {Post, Richard A. J. and family=Heuvel, given=Edwin R., prefix=van den, useprefix=true and Putter, Hein},
+  date = {2024-04},
+  journaltitle = {Lifetime Data Analysis},
+  shortjournal = {Lifetime Data Anal},
+  volume = {30},
+  number = {2},
+  eprint = {38358572},
+  eprinttype = {pubmed},
+  pages = {404--438},
+  issn = {1572-9249},
+  doi = {10.1007/s10985-024-09617-y},
+  abstract = {It is known that the hazard ratio lacks a useful causal interpretation. Even for data from a randomized controlled trial, the hazard ratio suffers from so-called built-in selection bias as, over time, the individuals at risk among the exposed and unexposed are no longer exchangeable. In this paper, we formalize how the expectation of the observed hazard ratio evolves and deviates from the causal effect of interest in the presence of heterogeneity of the hazard rate of unexposed individuals (frailty) and heterogeneity in effect (individual modification). For the case of effect heterogeneity, we define the causal hazard ratio. We show that the expected observed hazard ratio equals the ratio of expectations of the latent variables (frailty and modifier) conditionally on survival in the world with and without exposure, respectively. Examples with gamma, inverse Gaussian and compound Poisson distributed frailty and categorical (harming, beneficial or neutral) distributed effect modifiers are presented for illustration. This set of examples shows that an observed hazard ratio with a particular value can arise for all values of the causal hazard ratio. Therefore, the hazard ratio cannot be used as a measure of the causal effect without making untestable assumptions, stressing the importance of using more appropriate estimands, such as contrasts of the survival probabilities.},
+  langid = {english},
+  pmcid = {PMC11300553},
+  keywords = {Bias,Causal hazard ratio,Causal inference,Clinical Trials as Topic,Frailty,Heterogeneity of treatment effects,Humans,Individual effect modification,Probability,Proportional Hazards Models,Selection bias,Selection Bias}
+}
+
 @article{postmusEarlyLocallyAdvanced2017,
   title = {Early and Locally Advanced Non-Small-Cell Lung Cancer ({{NSCLC}}): {{ESMO Clinical Practice Guidelines}} for Diagnosis, Treatment and Follow-Up†},
   shorttitle = {Early and Locally Advanced Non-Small-Cell Lung Cancer ({{NSCLC}})},
@@ -15399,6 +15521,21 @@ Subject\_term\_id: immunotherapy;phase-i-trials;prognostic-markers}
   keywords = {⛔ No DOI found,Computer Science - Machine Learning,Statistics - Machine Learning,Statistics - Methodology}
 }
 
+@online{shiCausallyinterpretableMetaanalysisUsing2026,
+  title = {Causally-Interpretable Meta-Analysis Using Aggregate Data},
+  author = {Shi, Qingyang and family=Amsterdam, given=Wouter, prefix=van, useprefix=false and Gemert, Sacha la Bastide-van and Feenstra, Talitha and Dahabreh, Issa J.},
+  date = {2026-05-26},
+  eprint = {2605.27272},
+  eprinttype = {arXiv},
+  eprintclass = {stat.ME},
+  doi = {10.48550/arXiv.2605.27272},
+  url = {http://arxiv.org/abs/2605.27272},
+  urldate = {2026-06-03},
+  abstract = {Evidence syntheses and meta-analyses are used to inform clinical practice guidelines and health economic evaluations. However, heterogeneity of treatment effects poses a significant challenge. Conventional meta-analysis addresses heterogeneity through random-effect assumptions, which are not supported by design and lead to estimates that may not apply to any real-world population. Causally-interpretable meta-analysis (CIMA) offers a rigorous framework for specification, identification, and estimation of causal effects when combining information from multiple randomized trials. Initial development of CIMA focused on using individual data from randomized trials, but such data are often unavailable in practice. Here, we propose a new version of CIMA that only requires aggregate data from trials, addressing the limitations of traditional meta-analysis methods while relying only on aggregate data. The method leverages the trials' reported estimates of marginal and one-at-a-time subgroup treatment effects and descriptive statistics for baseline covariates to build moment equations for identifying and estimating a parametric conditional average treatment effect (CATE) function. The average treatment effect in a new target population is obtained by marginalizing the CATE function over the individual covariate data that defines the target population. The method can also be used to obtain causally-interpretable indirect treatment comparisons in the target population. We establish the asymptotic properties of the method, assess its finite-sample performance in simulation studies, and illustrate the application of the method by re-analyzing a published meta-analysis for SGLT2 inhibitors in patients with heart failure.},
+  pubstate = {prepublished},
+  keywords = {Statistics - Methodology}
+}
+
 @article{shinoharaImpactSarcopeniaSurgical2020,
   title = {Impact of {{Sarcopenia}} on {{Surgical Outcomes}} in {{Non-small Cell Lung Cancer}}.},
   author = {Shinohara, Shuichi and Otsuki, Ryo and Kobayashi, Kenichi and Sugaya, Masakazu and Matsuo, Masaki and Nakagawa, Makoto},
@@ -15462,6 +15599,21 @@ Subject\_term\_id: immunotherapy;phase-i-trials;prognostic-markers}
   url = {https://www.scopus.com/inward/record.uri?eid=2-s2.0-85038129602&doi=10.21873%2fanticanres.12168&partnerID=40&md5=376b8063f85c8d8dc67d435e19caa7de},
   abstract = {Background: Although the skeletal muscle in the region of the third lumbar vertebra (L3) is generally assessed in order to judge sarcopenia, not every patient with non-small cell lung cancer (NSCLC) undergoes computed tomography including the L3 region. We hypothesized that immuno-nutritional parameters could predict the existence of sarcopenia in patients with NSCLC. Aim: The aim of this study was to retrospectively investigate the correlation between preoperative sarcopenia and immuno-nutritional parameters in patients with early-stage NSCLC. Patients and Methods: We selected 147 of patients with pathological stage I NSCLC who underwent preoperative measurement of immuno-nutritional parameters and CT including the L3 region. Results: Preoperative sarcopenia was significantly associated with female gender (p=0.0003) and poor prognosis (p=0.0322). In Kaplan-Meier analysis of overall survival (OS) by preoperative sarcopenia status, the sarcopenic group had significantly shorter OS than the non-sarcopenic group (5-year OS: 87.27\% vs. 77.37\%, p=0.0131, log-rank test). In multivariate analysis, the preoperative sarcopenia status (hazard ratio=5.138; 95\% confidence interval=2.305-11.676; p{$<$}0.0001) was an independent prognostic factor. Preoperative sarcopenia status was significantly related to controlling nutritional status score (p=0.0071) and Geriatric Nutritional Risk Index (GNRI) (p{$<$}0.0001). Spearman's correlation test showed good significant correlation between preoperative sarcopenia status and GNRI (r=0.348, p{$<$}0.0001). Conclusion: The preoperative GNRI is a simple and useful predictor for existence of preoperative sarcopenia which was associated with poor outcome in patients with early-stage NSCLC. © 2017 International Institute of Anticancer Research. All rights reserved.},
   keywords = {Geriatric Nutritional Risk Index,Immuno-nutritional parameters,Lung,Lung Neoplasms,Non-small cell lung cancer,Predictor,Preoperative sarcopenia,Small Cell Lung Carcinoma}
+}
+
+@article{ShowUsEvidence2026,
+  title = {Show Us the Evidence for the Value of Medical {{AI}}},
+  date = {2026-04},
+  journaltitle = {Nature Medicine},
+  shortjournal = {Nat Med},
+  volume = {32},
+  number = {4},
+  pages = {1163--1163},
+  issn = {1078-8956, 1546-170X},
+  doi = {10.1038/s41591-026-04389-4},
+  url = {https://www.nature.com/articles/s41591-026-04389-4},
+  urldate = {2026-05-07},
+  langid = {english}
 }
 
 @article{shumwayPathologicResponseRates2011,
@@ -17436,6 +17588,19 @@ Subject\_term\_id: cancer-imaging;non-small-cell-lung-cancer}
   keywords = {Computer Science - Machine Learning,Statistics - Methodology}
 }
 
+@article{vanamsterdamClinicalTrialsContinuously2026,
+  title = {Clinical Trials for Continuously Monitored and Updated {{AI}} Systems},
+  author = {Van Amsterdam, Wouter A. C. and Oberst, Michael and Feng, Jean and Wiens, Jenna and Tang, Shengpu and Joshi, Shalmali and Ranganath, Rajesh and Sendak, Mark and Shalit, Uri and Vogt, Julia E. and Beaulieu-Jones, Brett and Mamdani, Muhammad and Kent, David and Heagerty, Patrick J. and Fleming, Thomas R. and Goldenberg, Anna},
+  date = {2026-04-28},
+  journaltitle = {Nature Medicine},
+  shortjournal = {Nat Med},
+  issn = {1078-8956, 1546-170X},
+  doi = {10.1038/s41591-026-04368-9},
+  url = {https://www.nature.com/articles/s41591-026-04368-9},
+  urldate = {2026-04-28},
+  langid = {english}
+}
+
 @article{vanamsterdamConditionalAverageTreatment2023,
   title = {Conditional Average Treatment Effect Estimation with Marginally Constrained Models},
   author = {family=Amsterdam, given=Wouter A. C., prefix=van, useprefix=true and Ranganath, Rajesh},
@@ -18533,6 +18698,22 @@ Primary\_atype: Research}
   abstract = {Renal sympathetic denervation (RDN) is a novel treatment option in patients with treatment-resistant arterial hypertension. A subset of recently published randomized and non-randomized trials indicates that RDN leads to sustained lowering of blood pressure (BP) under controlled study conditions. However, registry data that allow evaluation of safety and efficacy in a real-world setting are largely missing.}
 }
 
+@online{voinotTreatmentEffectEstimation2026,
+  title = {Treatment {{Effect Estimation}} in {{Causal Survival Analysis}}: {{Practical Recommendations}}},
+  shorttitle = {Treatment {{Effect Estimation}} in {{Causal Survival Analysis}}},
+  author = {Voinot, Charlotte and Berenfeld, Clément and Mayer, Imke and Sebastien, Bernard and Josse, Julie},
+  date = {2026-02-26},
+  eprint = {2501.05836},
+  eprinttype = {arXiv},
+  eprintclass = {stat.ME},
+  doi = {10.48550/arXiv.2501.05836},
+  url = {http://arxiv.org/abs/2501.05836},
+  urldate = {2026-05-29},
+  abstract = {The restricted mean survival time (RMST) difference offers an interpretable causal contrast to estimate the treatment effect for time-to-event outcomes, yet a wide range of available estimators leaves limited guidance for practice. We provide a unified review of RMST estimators for randomized trials and observational studies, establish identification and asymptotic properties, and supply new derivations where needed. Our extensive simulation study compares simple nonparametric methods (such as unweighted Kaplan-Meier estimators) alongside parametric and nonparametric implementations of the G-formula, weighting approaches, Buckley-James transformations, and augmented estimators under diverse censoring mechanisms and model specifications. Across scenarios, classical Kaplan-Meier estimators (weighted when required by the censoring process) and G-formula methods perform well in randomized settings, while in observational data G-formula estimators remain competitive; however, augmented estimators such as AIPTW-AIPCW generally offer robustness to model misspecification and a favorable bias-variance trade-off. Parametric estimators perform best under correct specification, whereas nonparametric methods avoid functional assumptions but require large sample sizes to achieve reliable performance. We offer practical recommendations for estimator choice and provide open-source R code to support reproducibility and application.},
+  pubstate = {prepublished},
+  keywords = {Statistics - Methodology}
+}
+
 @article{vonelmStrengtheningReportingObservational2007,
   title = {The {{Strengthening}} the {{Reporting}} of {{Observational Studies}} in {{Epidemiology}} ({{STROBE}}) Statement: Guidelines for Reporting Observational Studies},
   shorttitle = {The {{Strengthening}} the {{Reporting}} of {{Observational Studies}} in {{Epidemiology}} ({{STROBE}}) Statement},
@@ -18713,6 +18894,20 @@ Primary\_atype: Research}
   abstract = {INTRODUCTION: Kilovoltge cone beam computed tomography (kV-CBCT) allows for tumor localization and response assessment during definitive chemoradiotherapy for locally  advanced NSCLC. We hypothesize that significant tumor volume loss occurs early  during radiotherapy and that the extent of volume loss correlates with clinical  outcomes. METHODS: A total of 52 patients with locally advanced NSCLC treated with  definitive chemoradiotherapy were reviewed. kV-CBCT images were used to contour  primary gross tumor volumes at four time points during treatment. Patients were  dichotomized according to absolute and relative volume changes at each time point.  Statistical analyses were performed to evaluate correlations between volume changes  and clinical outcomes. RESULTS: The median gross tumor volumes were 77.1, 48.3,  42.5, and 29.9 cm(3) for fractions 1, 11, 21, and final, respectively. Greater  relative volume loss between fractions 1 and 21 correlated with improved distant  control (hazard ratio [HR]~= 0.35, 95\% confidence interval [CI]: 0.13-0.94, p~=  0.038) and overall survival (HR~= 0.40, 95\% CI: 0.16-0.98, p~= 0.046). Greater  relative volume loss between fractions 11 and 21 correlated with improved  progression-free survival (HR~= 0.39, 95\% CI: 0.17-0.88, p~= 0.02) and trended  toward improved overall survival (HR~= 0.43, 95\% CI: 0.17-1.06, p~= 0.07). On  multivariate analysis, greater relative volume loss between fractions 11 and 21  correlated with improved progression-free survival (HR~= 0.39, 95\% CI: 0.16-0.97,  p~= 0.041) and overall survival (HR~= 0.31, 95\% CI: 0.11-0.88, p~= 0.027).  CONCLUSIONS: Significant primary tumor volume loss occurs early during radiotherapy  for locally advanced NSCLC. Greater relative tumor volume loss during treatment  correlates with improved disease control and overall survival. Thus, kV-CBCT has  potential to be used as a practical prognostic imaging marker.},
   langid = {english},
   keywords = {*adaptive planning,*CBCT,*Imaging marker,*NSCLC,Adult,Aged,Aged 80 and over,Carcinoma Non-Small-Cell Lung/pathology/*radiotherapy,Chemoradiotherapy/*methods,Cone-Beam Computed Tomography/*methods,Female,Humans,Lung Neoplasms/pathology/*radiotherapy,Male,Middle Aged,Neoplasm Staging,Prognosis,Treatment Outcome}
+}
+
+@online{waldTimeTimeDeepQ2025,
+  title = {Time {{After Time}}: {{Deep-Q Effect Estimation}} for {{Interventions}} on {{When}} and {{What}} to Do},
+  shorttitle = {Time {{After Time}}},
+  author = {Wald, Yoav and Goldstein, Mark and Efroni, Yonathan and family=Amsterdam, given=Wouter A. C., prefix=van, useprefix=true and Ranganath, Rajesh},
+  date = {2025},
+  doi = {10.48550/ARXIV.2503.15890},
+  url = {https://arxiv.org/abs/2503.15890},
+  urldate = {2026-04-22},
+  abstract = {Problems in fields such as healthcare, robotics, and finance requires reasoning about the value both of what decision or action to take and when to take it. The prevailing hope is that artificial intelligence will support such decisions by estimating the causal effect of policies such as how to treat patients or how to allocate resources over time. However, existing methods for estimating the effect of a policy struggle with \textbackslash emph\{irregular time\}. They either discretize time, or disregard the effect of timing policies. We present a new deep-Q algorithm that estimates the effect of both when and what to do called Earliest Disagreement Q-Evaluation (EDQ). EDQ makes use of recursion for the Q-function that is compatible with flexible sequence models, such as transformers. EDQ provides accurate estimates under standard assumptions. We validate the approach through experiments on survival time and tumor growth tasks.},
+  pubstate = {prepublished},
+  version = {1},
+  keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,Machine Learning (cs.LG)}
 }
 
 @article{walkowskaEffectsRenalNerve2005,

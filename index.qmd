@@ -178,5 +178,5 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 - co-coordinator of [Causal Data Science Special Interest Group](https://www.uu.nl/en/research/applied-data-science/sig-causal-data-science) of Utrecht University
 
 ## Contact
-wamster3 at umcutrecht dot nl
+w.a.c.vanamsterdam-3 at umcutrecht dot nl
 

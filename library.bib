@@ -1345,6 +1345,24 @@ Subject\_term\_id: cancer-microenvironment;metabolic-diseases;signs-and-symptoms
   keywords = {Aged,Carcinoma Non-Small-Cell Lung,Combined Modality Therapy,Disease-Free Survival,Female,Hematologic Diseases,Humans,Lung Neoplasms,Male,Middle Aged,Survival Analysis,Treatment Outcome}
 }
 
+@article{benitez-auriolesContinuousNetBenefit2026,
+  title = {The Continuous Net Benefit: Assessing the Clinical Utility of Prediction Models When Informing a Continuum of Decisions},
+  shorttitle = {The Continuous Net Benefit},
+  author = {Benitez-Aurioles, Jose and Wynants, Laure and Peek, Niels and Goodley, Patrick and Crosbie, Philip and Sperrin, Matthew},
+  date = {2026-02-17},
+  journaltitle = {Diagnostic and Prognostic Research},
+  shortjournal = {Diagn Progn Res},
+  volume = {10},
+  number = {1},
+  pages = {8},
+  issn = {2397-7523},
+  doi = {10.1186/s41512-026-00224-z},
+  url = {https://link.springer.com/10.1186/s41512-026-00224-z},
+  urldate = {2026-06-17},
+  abstract = {Abstract                            Background               The net benefit and decision curve analysis are increasingly being used to assess the clinical utility of prognostic models. This metric assesses the value added by a model’s predictions when individuals are treated differently according to whether they are over or under a chosen threshold. Although such ‘treat or not’ decisions are common, prognostic models are also often used to tailor and personalise the care of patients, which implicitly involves the consideration of multiple interventions at different risk thresholds. We aim to extend decision curve analysis to estimate the net benefit of a model over multiple thresholds.                                         Methods               We take a weighted area under a rescaled version of the net benefit curve, deriving the continuous net benefit. In addition to the consideration of a continuum of interventions, we also show how the continuous net benefit can be used to evaluate single treatments in populations with a range of optimal thresholds, due to individual variations in expected treatment benefit or harm, highlighting limitations of current proposed methods that calculate the area under the decision curve. We propose this not as a substitute for decision curves, but as a complementary evaluation metric, in lieu of single-threshold point estimates.                                         Results               We showcase this metric through two examples of model validation in cardiovascular preventive care. The continuous net benefit brought additional insight over point estimates when comparing models over a range of decisions.                                         Conclusions               The continuous net benefit informs those looking to validate clinical prediction models of their clinical utility, and helps decision makers understand their usefulness, improving their viability towards implementation.},
+  langid = {english}
+}
+
 @article{benkeserDoublyRobustNonparametric2017,
   title = {Doubly Robust Nonparametric Inference on the Average Treatment Effect},
   author = {Benkeser, D and Carone, M and Laan, M J Van Der and Gilbert, P B},
@@ -1791,6 +1809,13 @@ Subject\_term\_id: cancer;cancer-imaging;tumour-biomarkers;tumour-immunology}
   langid = {english},
   keywords = {Amidines,Amino Acid Oxidoreductases,Animals,Choline O-Acetyltransferase,Female,Glial Fibrillary Acidic Protein,Histocytochemistry,Immunohistochemistry,Neural Pathways,Neurons,Nitric Oxide Synthase,Parasympathetic Nervous System,Rats,Rats Inbred Strains,Spinal Cord,Staining and Labeling,sympathetic nervous system},
   annotation = {00000}
+}
+
+@article{boekenConditionalForecastsProper,
+  title = {Conditional {{Forecasts}} and {{Proper Scoring Rules}} for {{Reliable}} and {{Accurate Performative Predictions}}},
+  author = {Boeken, Philip and Zoeter, Onno and Mooij, Joris M},
+  abstract = {Performative predictions are forecasts which influence the outcomes they aim to predict, undermining the existence of correct forecasts and standard methods of elicitation and estimation. We show that conditioning forecasts on covariates that separate them from the outcome renders the target distribution forecast-invariant, guaranteeing well-posedness of the forecasting problem. However, even under this condition, classical proper scoring rules fail to elicit correct forecasts. We prove a general impossibility result and identify two solutions: (i) in decision-theoretic settings, elicitation of correct and incentive-compatible forecasts is possible if forecasts are separating; (ii) scoring with unbiased estimates of the divergence between the forecast and the induced distribution of the target variable yields correct forecasts. Applying these insights to parameter estimation, conditional forecasts and proper scoring rules enable performatively stable estimation of performatively correct parameters, resolving the issues raised by Perdomo et al. (2020). Our results expose fundamental limits of classical forecast evaluation and offer new tools for reliable and accurate forecasting in performative settings.},
+  langid = {english}
 }
 
 @online{boekenConditionalForecastsProper2025,
@@ -3053,6 +3078,20 @@ Subject\_term\_id: cancer;cancer-imaging;tumour-biomarkers;tumour-immunology}
   abstract = {Machine learning (ML) models are increasingly used as decision-support tools in high-risk domains. Evaluating the causal impact of deploying such models can be done with a randomized controlled trial (RCT) that randomizes users to ML vs. control groups and assesses the effect on relevant outcomes. However, ML models are inevitably updated over time, and we often lack evidence for the causal impact of these updates. While the causal effect could be repeatedly validated with ongoing RCTs, such experiments are expensive and time-consuming to run. In this work, we present an alternative solution: using only data from a prior RCT, we give conditions under which the causal impact of a new ML model can be precisely bounded or estimated, even if it was not included in the RCT. Our assumptions incorporate two realistic constraints: ML predictions are often deterministic, and their impacts depend on user trust in the model. Based on our analysis, we give recommendations for trial designs that maximize our ability to assess future versions of an ML model. Our hope is that our trial design recommendations will save practitioners time and resources while allowing for quicker deployments of updates to ML models.},
   pubstate = {prepublished},
   keywords = {Statistics - Methodology}
+}
+
+@article{chenMachineLearningMethods2026,
+  title = {Machine Learning Methods for Estimating Personalized Treatment Effects—Insights on Validity from Two Large Trials},
+  author = {Chen, Hongruyu and Aebersold, Helena and Puhan, Milo Alan and Serra-Burriel, Miquel},
+  date = {2026-03-20},
+  journaltitle = {American Journal of Epidemiology},
+  pages = {kwag065},
+  issn = {0002-9262, 1476-6256},
+  doi = {10.1093/aje/kwag065},
+  url = {https://academic.oup.com/aje/advance-article/doi/10.1093/aje/kwag065/8529712},
+  urldate = {2026-06-19},
+  abstract = {Abstract             Machine learning (ML) methods have the potential to improve precision medicine by estimating personalized treatment effects. However, formal validation of these methods remains limited, leaving their reliability in empirical settings largely uncertain. In this study, we evaluated the internal and external validity of 17 causal heterogeneity ML methods—including metalearners, tree-based methods, and deep learning methods—using data from two large randomized controlled trials: the International Stroke Trial (n~=~19\,435) and the Chinese Acute Stroke Trial (n~=~21\,106). We assessed performance using three visual-based metrics and three quantitative metrics. Our analysis found that none of the ML methods consistently demonstrated reliable performance, neither internal nor external. Heterogeneous treatment effects estimated from training data failed to generalize to the test data, even in the absence of distribution shifts. These results raise concerns about the current applicability of ML models in precision medicine and highlight the need for more robust validation techniques to ensure generalizability.},
+  langid = {english}
 }
 
 @article{chenUseInstrumentalVariable2011,
@@ -5152,25 +5191,6 @@ R package version 1.2.1}
 }
 
 @article{engelsHeterogeneityStatisticalSignificance2000,
-  title = {Heterogeneity and Statistical Significance in Meta-Analysis: An Empirical Study of 125 Meta-Analyses},
-  shorttitle = {Heterogeneity and Statistical Significance in Meta-Analysis},
-  author = {Engels, E. A. and Schmid, C. H. and Terrin, N. and Olkin, I. and Lau, J.},
-  date = {2000-07-15},
-  journaltitle = {Statistics in Medicine},
-  shortjournal = {Stat Med},
-  volume = {19},
-  number = {13},
-  eprint = {10861773},
-  eprinttype = {pubmed},
-  pages = {1707--1728},
-  issn = {0277-6715},
-  doi = {10.1002/1097-0258(20000715)19:13<1707::aid-sim491>3.0.co;2-p},
-  abstract = {For meta-analysis, substantial uncertainty remains about the most appropriate statistical methods for combining the results of separate trials. An important issue for meta-analysis is how to incorporate heterogeneity, defined as variation among the results of individual trials beyond that expected from chance, into summary estimates of treatment effect. Another consideration is which 'metric' to use to measure treatment effect; for trials with binary outcomes, there are several possible metrics, including the odds ratio (a relative measure) and risk difference (an absolute measure). To examine empirically how assessment of treatment effect and heterogeneity may differ when different methods are utilized, we studied 125 meta-analyses representative of those performed by clinical investigators. There was no meta-analysis in which the summary risk difference and odds ratio were discrepant to the extent that one indicated significant benefit while the other indicated significant harm. Further, for most meta-analyses, summary odds ratios and risk differences agreed in statistical significance, leading to similar conclusions about whether treatments affected outcome. Heterogeneity was common regardless of whether treatment effects were measured by odds ratios or risk differences. However, risk differences usually displayed more heterogeneity than odds ratios. Random effects estimates, which incorporate heterogeneity, tended to be less precisely estimated than fixed effects estimates. We present two exceptions to these observations, which derive from the weights assigned to individual trial estimates. We discuss the implications of these findings for selection of a metric for meta-analysis and incorporation of heterogeneity into summary estimates. Published in 2000 by John Wiley \& Sons, Ltd.},
-  langid = {english},
-  keywords = {Bias,Data Interpretation Statistical,Effect Modifier Epidemiologic,Humans,Meta-Analysis as Topic,Odds Ratio,Randomized Controlled Trials as Topic,Reproducibility of Results,Risk}
-}
-
-@article{engelsHeterogeneityStatisticalSignificance2000a,
   title = {Heterogeneity and Statistical Significance in Meta-Analysis: An Empirical Study of 125 Meta-Analyses},
   shorttitle = {Heterogeneity and Statistical Significance in Meta-Analysis},
   author = {Engels, E. A. and Schmid, C. H. and Terrin, N. and Olkin, I. and Lau, J.},
@@ -11117,6 +11137,22 @@ Nerve terminals containing neuronal nitric oxide synthase (nNOS) are localized i
   annotation = {00000}
 }
 
+@article{mandiDecisionFocusedLearningFoundations2024,
+  title = {Decision-{{Focused Learning}}: {{Foundations}}, {{State}} of the {{Art}}, {{Benchmark}} and {{Future Opportunities}}},
+  shorttitle = {Decision-{{Focused Learning}}},
+  author = {Mandi, Jayanta and Kotary, James and Berden, Senne and Mulamba, Maxime and Bucarey, Victor and Guns, Tias and Fioretto, Ferdinando},
+  date = {2024-08-31},
+  journaltitle = {Journal of Artificial Intelligence Research},
+  shortjournal = {jair},
+  volume = {80},
+  pages = {1623--1701},
+  issn = {1076-9757},
+  doi = {10.1613/jair.1.15320},
+  url = {https://www.jair.org/index.php/jair/article/view/15320},
+  urldate = {2026-06-18},
+  abstract = {Decision-focused learning (DFL) is an emerging paradigm that integrates machine learning (ML) and constrained optimization to enhance decision quality by training ML models in an end-to-end system. This approach shows significant potential to revolutionize combinatorial decision-making in real-world applications that operate under uncertainty, where estimating unknown parameters within decision models is a major challenge. This paper presents a comprehensive review of DFL, providing an in-depth analysis of both gradient-based and gradient-free techniques used to combine ML and constrained optimization. It evaluates the strengths and limitations of these techniques and includes an extensive empirical evaluation of eleven methods across seven problems. The survey also offers insights into recent advancements and future research directions in DFL.}
+}
+
 @article{mandiDecisionFocusedLearningLens,
   title = {Decision-{{Focused Learning}}: {{Through}} the {{Lens}} of {{Learning}} to {{Rank}}},
   author = {Mandi, Jayanta and Bucarey, Vıctor and Mulamba, Maxime},
@@ -14145,6 +14181,23 @@ Subject\_term\_id: cancer;chemotherapy;prognosis}
   urldate = {2026-02-26},
   abstract = {An overview of recent efforts in the machine learning community to deal with dataset and covariate shift, which occurs when test and training inputs and outputs have different distributions.             Dataset shift is a common problem in predictive modeling that occurs when the joint distribution of inputs and outputs differs between training and test stages. Covariate shift, a particular case of dataset shift, occurs when only the input distribution changes. Dataset shift is present in most practical applications, for reasons ranging from the bias introduced by experimental design to the irreproducibility of the testing conditions at training time. (An example is -email spam filtering, which may fail to recognize spam that differs in form from the spam the automatic filter has been built on.) Despite this, and despite the attention given to the apparently similar problems of semi-supervised learning and active learning, dataset shift has received relatively little attention in the machine learning community until recently. This volume offers an overview of current efforts to deal with dataset and covariate shift. The chapters offer a mathematical and philosophical introduction to the problem, place dataset shift in relationship to transfer learning, transduction, local learning, active learning, and semi-supervised learning, provide theoretical views of dataset and covariate shift (including decision theoretic and Bayesian perspectives), and present algorithms for covariate shift.             Contributors             Shai Ben-David, Steffen Bickel, Karsten Borgwardt, Michael Brückner, David Corfield, Amir Globerson, Arthur Gretton, Lars Kai Hansen, Matthias Hein, Jiayuan Huang, Choon Hui Teo, Takafumi Kanamori, Klaus-Robert Müller, Sam Roweis, Neil Rubens, Tobias Scheffer, Marcel Schmittfull, Bernhard Schölkopf Hidetoshi Shimodaira, Alex Smola, Amos Storkey, Masashi Sugiyama},
   isbn = {978-0-262-25510-3},
+  langid = {english}
+}
+
+@article{rahimiPharmacologicalBloodPressure2021,
+  title = {Pharmacological Blood Pressure Lowering for Primary and Secondary Prevention of Cardiovascular Disease across Different Levels of Blood Pressure: An Individual Participant-Level Data Meta-Analysis},
+  shorttitle = {Pharmacological Blood Pressure Lowering for Primary and Secondary Prevention of Cardiovascular Disease across Different Levels of Blood Pressure},
+  author = {Rahimi, Kazem and Bidel, Zeinab and Nazarzadeh, Milad and Copland, Emma and Canoy, Dexter and Ramakrishnan, Rema and Pinho-Gomes, Ana-Catarina and Woodward, Mark and Adler, Amanda and Agodoa, Larry and Algra, Ale and Asselbergs, Folkert W and Beckett, Nigel S and Berge, Eivind and Black, Henry and Brouwers, Frank P J and Brown, Morris and Bulpitt, Christopher J and Byington, Robert P and Cushman, William C and Cutler, Jeffrey and Devereaux, Richard B and Dwyer, Jamie and Estacio, Ray and Fagard, Robert and Fox, Kim and Fukui, Tsuguya and Gupta, Ajay K and Holman, Rury R and Imai, Yutaka and Ishii, Masao and Julius, Stevo and Kanno, Yoshihiko and Kjeldsen, Sverre E and Kostis, John and Kuramoto, Kizuku and Lanke, Jan and Lewis, Edmund and Lewis, Julia B and Lievre, Michel and Lindholm, Lars H and Lueders, Stephan and MacMahon, Stephen and Mancia, Giuseppe and Matsuzaki, Masunori and Mehlum, Maria H and Nissen, Steven and Ogawa, Hiroshi and Ogihara, Toshio and Ohkubo, Takayoshi and Palmer, Christopher R and Patel, Anushka and Pfeffer, Marc Allan and Pitt, Bertram and Poulter, Neil R and Rakugi, Hiromi and Reboldi, Gianpaolo and Reid, Christopher and Remuzzi, Giuseppe and Ruggenenti, Piero and Saruta, Takao and Schrader, Joachim and Schrier, Robert and Sever, Peter and Sleight, Peter and Staessen, Jan A and Suzuki, Hiromichi and Thijs, Lutgarde and Ueshima, Kenji and Umemoto, Seiji and Van Gilst, Wiek H and Verdecchia, Paolo and Wachtell, Kristian and Whelton, Paul and Wing, Lindon and Yui, Yoshiki and Yusuf, Salim and Zanchetti, Alberto and Zhang, Zhen-Yu and Anderson, Craig and Baigent, Colin and Brenner, Barry Morton and Collins, Rory and De Zeeuw, Dick and Lubsen, Jacobus and Malacco, Ettore and Neal, Bruce and Perkovic, Vlado and Rodgers, Anthony and Rothwell, Peter and Salimi-Khorshidi, Gholamreza and Sundström, Johan and Turnbull, Fiona and Viberti, Giancarlo and Wang, Jiguang and Chalmers, John and Teo, Koon K and Pepine, Carl J and Davis, Barry R},
+  date = {2021-05},
+  journaltitle = {The Lancet},
+  shortjournal = {The Lancet},
+  volume = {397},
+  number = {10285},
+  pages = {1625--1636},
+  issn = {01406736},
+  doi = {10.1016/S0140-6736(21)00590-0},
+  url = {https://linkinghub.elsevier.com/retrieve/pii/S0140673621005900},
+  urldate = {2026-06-22},
   langid = {english}
 }
 

@@ -226,17 +226,8 @@ $$
 M_n(\theta)-\hat\gamma_{RCT}=0.
 $$
 
-## Theorem 1
-
-$$
-\max_{\theta} \; \ell_{obs}(\theta)
-\quad \text{subject to} \quad
-M_n(\theta)-\hat\gamma_{RCT}=0.
-$$
-
 - We call such models **marginally constrained models** (MCM)
-- When the model family assumes a constant relative treatment effect (here: $\text{logit}^{-1}(P(Y=1|T,X)) = \beta_0 + \beta_x + \beta_t t$), **constant relative MCM** *MCM-CR)
-- (informal) under consistency, positivity and unconfoundedness and correct model specification, this is a consistent estimator of $P(Y_t=1|X)$ and thus $\tau(x)$
+- When the model family assumes a constant relative treatment effect (here: $\text{logit}^{-1}(P(Y=1|T,X)) = \beta_0 + \beta_x + \beta_t t$), **constant relative MCM** (CR-MCM)
 
 ## Intuition
 
@@ -249,6 +240,21 @@ But it is only allowed to do so if the implied randomized experiment in the curr
 . . . 
 
 Why constrain the odds-ratio? Need a measure that is likely to be *transportable* between settings
+
+---
+
+![](figs/MCM-parameter-space.png)
+
+## Results
+
+$$
+\max_{\theta} \; \ell_{obs}(\theta)
+\quad \text{subject to} \quad
+M_n(\theta)-\hat\gamma_{RCT}=0.
+$$
+
+- **Theorem 1** (informal) under consistency, positivity and unconfoundedness and correct model specification, this is a consistent estimator of $P(Y_t=1|X)$ and thus $\tau(x)$
+- Efficiency: when compared to MCM, its unconstrained counterpart requires $\approx$ 70-100% more observations to reach same width of confidence interval
 
 ## How the constraint was implemented in the paper
 
@@ -305,7 +311,7 @@ $$\text{PEHE}(\text{ATE}) = \text{Var}(\text{CATE})$$
 - $T \sim p(T|U)$
 - $Y \sim p(Y|T,X,U) = \text{logit}^{-1}(\alpha_0 + \alpha_x x + \alpha_t t + \alpha_u u)$
 - 12 dimensions, $\geq 16*10^6$ experiments
-- compare *offset*, *MCM*, *MCM-CR*
+- compare *offset*, *MCM*, *CR-MCM*
 
 ## What's the baseline?
 
@@ -362,6 +368,7 @@ $$
 - are there better measures of effect to assume are constant? (e.g. risk ratio or survival ratio [@colnetRiskRatioOdds2023])
 - extend to Hazard Ratios (calculating constraint requires an optimization)
 - what happens with higher dimensional $X$?
+- investigate MCMs in applications
 
 ## Take-home
 

@@ -2433,14 +2433,7 @@
     "href": "talks/260623-cai-marginally-constrained-models-offset/index.html#marginally-constrained-objective",
     "title": "Marginally Constrained Models and Treatment Offset Models",
     "section": "Marginally constrained objective",
-    "text": "Marginally constrained objective\nFit the observational outcome model subject to:\n\\[\nM_n(\\theta) = \\hat\\gamma_{RCT},\n\\]\nwhere \\(\\hat\\gamma_{RCT}\\) is the marginal log odds ratio reported by the trial.\n\nEquivalently:\n\\[\n\\max_{\\theta} \\; \\ell_{obs}(\\theta)\n\\quad \\text{subject to} \\quad\nM_n(\\theta)-\\hat\\gamma_{RCT}=0.\n\\]"
-  },
-  {
-    "objectID": "talks/260623-cai-marginally-constrained-models-offset/index.html#theorem-1",
-    "href": "talks/260623-cai-marginally-constrained-models-offset/index.html#theorem-1",
-    "title": "Marginally Constrained Models and Treatment Offset Models",
-    "section": "Theorem 1",
-    "text": "Theorem 1\n\\[\n\\max_{\\theta} \\; \\ell_{obs}(\\theta)\n\\quad \\text{subject to} \\quad\nM_n(\\theta)-\\hat\\gamma_{RCT}=0.\n\\]\n\nWe call such models marginally constrained models (MCM)\nWhen the model family assumes a constant relative treatment effect (here: \\(\\text{logit}^{-1}(P(Y=1|T,X)) = \\beta_0 + \\beta_x + \\beta_t t\\)), constant relative MCM *MCM-CR)\n(informal) under consistency, positivity and unconfoundedness and correct model specification, this is a consistent estimator of \\(P(Y_t=1|X)\\) and thus \\(\\tau(x)\\)"
+    "text": "Marginally constrained objective\nFit the observational outcome model subject to:\n\\[\nM_n(\\theta) = \\hat\\gamma_{RCT},\n\\]\nwhere \\(\\hat\\gamma_{RCT}\\) is the marginal log odds ratio reported by the trial.\n\nEquivalently:\n\\[\n\\max_{\\theta} \\; \\ell_{obs}(\\theta)\n\\quad \\text{subject to} \\quad\nM_n(\\theta)-\\hat\\gamma_{RCT}=0.\n\\]\n\nWe call such models marginally constrained models (MCM)\nWhen the model family assumes a constant relative treatment effect (here: \\(\\text{logit}^{-1}(P(Y=1|T,X)) = \\beta_0 + \\beta_x + \\beta_t t\\)), constant relative MCM (CR-MCM)"
   },
   {
     "objectID": "talks/260623-cai-marginally-constrained-models-offset/index.html#intuition",
@@ -2448,6 +2441,13 @@
     "title": "Marginally Constrained Models and Treatment Offset Models",
     "section": "Intuition",
     "text": "Intuition\nThe model can learn the conditional treatment coefficient that best explains the observational outcomes.\n\nBut it is only allowed to do so if the implied randomized experiment in the current population agrees with the trial evidence.\n\n\nWhy constrain the odds-ratio? Need a measure that is likely to be transportable between settings"
+  },
+  {
+    "objectID": "talks/260623-cai-marginally-constrained-models-offset/index.html#results",
+    "href": "talks/260623-cai-marginally-constrained-models-offset/index.html#results",
+    "title": "Marginally Constrained Models and Treatment Offset Models",
+    "section": "Results",
+    "text": "Results\n\\[\n\\max_{\\theta} \\; \\ell_{obs}(\\theta)\n\\quad \\text{subject to} \\quad\nM_n(\\theta)-\\hat\\gamma_{RCT}=0.\n\\]\n\nTheorem 1 (informal) under consistency, positivity and unconfoundedness and correct model specification, this is a consistent estimator of \\(P(Y_t=1|X)\\) and thus \\(\\tau(x)\\)\nEfficiency: when compared to MCM, its unconstrained counterpart requires \\(\\approx\\) 70-100% more observations to reach same width of confidence interval"
   },
   {
     "objectID": "talks/260623-cai-marginally-constrained-models-offset/index.html#how-the-constraint-was-implemented-in-the-paper",
@@ -2482,7 +2482,7 @@
     "href": "talks/260623-cai-marginally-constrained-models-offset/index.html#bigger-experiment",
     "title": "Marginally Constrained Models and Treatment Offset Models",
     "section": "Bigger experiment",
-    "text": "Bigger experiment\n\n\\(X,T,U,Y\\) binary\n\\(T \\sim p(T|U)\\)\n\\(Y \\sim p(Y|T,X,U) = \\text{logit}^{-1}(\\alpha_0 + \\alpha_x x + \\alpha_t t + \\alpha_u u)\\)\n12 dimensions, \\(\\geq 16*10^6\\) experiments\ncompare offset, MCM, MCM-CR"
+    "text": "Bigger experiment\n\n\\(X,T,U,Y\\) binary\n\\(T \\sim p(T|U)\\)\n\\(Y \\sim p(Y|T,X,U) = \\text{logit}^{-1}(\\alpha_0 + \\alpha_x x + \\alpha_t t + \\alpha_u u)\\)\n12 dimensions, \\(\\geq 16*10^6\\) experiments\ncompare offset, MCM, CR-MCM"
   },
   {
     "objectID": "talks/260623-cai-marginally-constrained-models-offset/index.html#whats-the-baseline",
@@ -2517,7 +2517,7 @@
     "href": "talks/260623-cai-marginally-constrained-models-offset/index.html#extensions",
     "title": "Marginally Constrained Models and Treatment Offset Models",
     "section": "Extensions",
-    "text": "Extensions\n\nare there better measures of effect to assume are constant? (e.g. risk ratio or survival ratio (Colnet et al. 2023))\nextend to Hazard Ratios (calculating constraint requires an optimization)\nwhat happens with higher dimensional \\(X\\)?"
+    "text": "Extensions\n\nare there better measures of effect to assume are constant? (e.g. risk ratio or survival ratio (Colnet et al. 2023))\nextend to Hazard Ratios (calculating constraint requires an optimization)\nwhat happens with higher dimensional \\(X\\)?\ninvestigate MCMs in applications"
   },
   {
     "objectID": "talks/260623-cai-marginally-constrained-models-offset/index.html#take-home",

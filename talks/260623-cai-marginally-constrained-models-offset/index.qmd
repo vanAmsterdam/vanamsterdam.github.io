@@ -5,7 +5,7 @@ date: 2026-06-23
 bibliography: ../../library.bib
 format:
     revealjs:
-        incremental: true
+        incremental: false
         theme: [../custom.scss, custom_local.scss]
         center: true
         fig-align: center
@@ -18,6 +18,28 @@ categories:
   - treatment effects
   - prediction
 ---
+
+---
+
+:::{.columns}
+
+:::{.column width=25%}
+
+![](figs/offset_qr.png)
+
+:::
+
+:::{.column width=75%}
+
+Conditional average treatment effect estimation with marginally constrained models
+
+Wouter A. C. van Amsterdam and Rajesh Ranganath
+
+Journal of Causal Inference: August 29, 2023
+
+:::
+
+:::
 
 ## Treatment decisions need individualized effects
 
@@ -45,6 +67,10 @@ $$\text{ATE} = E[\tau(x)]$$
 So the question is:
 
 > Can we combine observational outcome models with treatment effects known from randomized trials?
+
+. . .
+
+We'll assume access to observational data and access to aggregate results from an RCT
 
 ## Effect measures matter
 

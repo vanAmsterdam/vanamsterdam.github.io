@@ -2349,7 +2349,7 @@
     "href": "talks/260623-cai-marginally-constrained-models-offset/index.html#why-cate-estimation-is-hard",
     "title": "Marginally Constrained Models and Treatment Offset Models",
     "section": "Why CATE estimation is hard",
-    "text": "Why CATE estimation is hard\n\nRandomized controlled trials estimate average treatment effects.\n\n\n\\[\\text{ATE} = E[\\tau(x)]\\]\n\nEstimating highly conditional effects in trials is expensive and often underpowered.\nObservational data are large and rich, but treatment assignment is confounded.\n\n\n\nSo the question is:\n\nCan we combine observational outcome models with treatment effects known from randomized trials?"
+    "text": "Why CATE estimation is hard\n\nRandomized controlled trials estimate average treatment effects.\n\n\n\\[\\text{ATE} = E[\\tau(x)]\\]\n\nEstimating highly conditional effects in trials is expensive and often underpowered.\nObservational data are large and rich, but treatment assignment is confounded.\n\n\n\nSo the question is:\n\nCan we combine observational outcome models with treatment effects known from randomized trials?\n\n\n\nWe’ll assume access to observational data and access to aggregate results from an RCT"
   },
   {
     "objectID": "talks/260623-cai-marginally-constrained-models-offset/index.html#effect-measures-matter",

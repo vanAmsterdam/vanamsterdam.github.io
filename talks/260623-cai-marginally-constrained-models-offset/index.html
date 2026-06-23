@@ -185,25 +185,36 @@
 
   <p class="date">2026-06-23</p>
 </section>
+<section class="slide level2 center">
+
+<div class="columns">
+<div class="column" style="width:25%;">
+<p><img data-src="figs/offset_qr.png"></p>
+</div><div class="column" style="width:75%;">
+<p>Conditional average treatment effect estimation with marginally constrained models</p>
+<p>Wouter A. C. van Amsterdam and Rajesh Ranganath</p>
+<p>Journal of Causal Inference: August 29, 2023</p>
+</div></div>
+</section>
 <section id="treatment-decisions-need-individualized-effects" class="slide level2 center">
 <h2>Treatment decisions need individualized effects</h2>
 <ul>
-<li class="fragment"><p>Treatment decisions compare two potential outcomes: <span class="math display">\[Y_1 \quad \text{versus} \quad Y_0\]</span></p></li>
-<li class="fragment"><p>The clinically useful quantity is often the conditional average treatment effect: <span class="math display">\[\tau(x) = E(Y_1 - Y_0 \mid X=x)\]</span></p></li>
-<li class="fragment"><p>Patients and care-givers prefer this to be on an absolute (probability) scale <span class="citation" data-cites="murrayPatientsInvestigatorsPrefer2018">(<a href="#/references" role="doc-biblioref" onclick="">Murray et al. 2018</a>)</span></p></li>
-<li class="fragment"><p>Example: cardiovascular risk with or without cholesterol-lowering medication, given a patient’s history.</p></li>
+<li><p>Treatment decisions compare two potential outcomes: <span class="math display">\[Y_1 \quad \text{versus} \quad Y_0\]</span></p></li>
+<li><p>The clinically useful quantity is often the conditional average treatment effect: <span class="math display">\[\tau(x) = E(Y_1 - Y_0 \mid X=x)\]</span></p></li>
+<li><p>Patients and care-givers prefer this to be on an absolute (probability) scale <span class="citation" data-cites="murrayPatientsInvestigatorsPrefer2018">(<a href="#/references" role="doc-biblioref" onclick="">Murray et al. 2018</a>)</span></p></li>
+<li><p>Example: cardiovascular risk with or without cholesterol-lowering medication, given a patient’s history.</p></li>
 </ul>
 </section>
 <section id="why-cate-estimation-is-hard" class="slide level2 center">
 <h2>Why CATE estimation is hard</h2>
 <ul>
-<li class="fragment">Randomized controlled trials estimate average treatment effects.</li>
+<li>Randomized controlled trials estimate average treatment effects.</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[\text{ATE} = E[\tau(x)]\]</span></p>
 <ul>
-<li class="fragment">Estimating highly conditional effects in trials is expensive and often underpowered.</li>
-<li class="fragment">Observational data are large and rich, but treatment assignment is confounded.</li>
+<li>Estimating highly conditional effects in trials is expensive and often underpowered.</li>
+<li>Observational data are large and rich, but treatment assignment is confounded.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -211,6 +222,9 @@
 <blockquote>
 <p>Can we combine observational outcome models with treatment effects known from randomized trials?</p>
 </blockquote>
+</div>
+<div class="fragment">
+<p>We’ll assume access to observational data and access to aggregate results from an RCT</p>
 </div>
 </section>
 <section id="effect-measures-matter" class="slide level2 center">
@@ -231,9 +245,9 @@
 <section id="relative-treatment-effects-tend-to-be-more-stable" class="slide level2 center">
 <h2>Relative treatment effects tend to be more stable</h2>
 <ul>
-<li class="fragment">Empirical observation: meta-analyses group together different trials with often (slightly) different underlying populations, from different centers etcetera</li>
-<li class="fragment">Meta-analyses report a weighted average aggregated treatment effect, alongside an estimate of <em>residual heterogeneity</em> of treatment effects across studies (in random effects meta-analysis)</li>
-<li class="fragment">When averaging effects, (odds and risk)-ratios tend to show lower heterogeneity <span class="math inline">\(\rightarrow\)</span> more stability across settings, are better <strong>transportable</strong> <span class="citation" data-cites="engelsHeterogeneityStatisticalSignificance2000">(<a href="#/references" role="doc-biblioref" onclick="">Engels et al. 2000</a>)</span></li>
+<li>Empirical observation: meta-analyses group together different trials with often (slightly) different underlying populations, from different centers etcetera</li>
+<li>Meta-analyses report a weighted average aggregated treatment effect, alongside an estimate of <em>residual heterogeneity</em> of treatment effects across studies (in random effects meta-analysis)</li>
+<li>When averaging effects, (odds and risk)-ratios tend to show lower heterogeneity <span class="math inline">\(\rightarrow\)</span> more stability across settings, are better <strong>transportable</strong> <span class="citation" data-cites="engelsHeterogeneityStatisticalSignificance2000">(<a href="#/references" role="doc-biblioref" onclick="">Engels et al. 2000</a>)</span></li>
 </ul>
 <div class="fragment">
 <blockquote>
@@ -247,8 +261,8 @@ The choice is not cosmetic: it changes what "constant effect" means and which co
 <section id="constant-relative-effects-still-variable-absolute-effects" class="slide level2 center">
 <h2>Constant relative effects still variable absolute effects</h2>
 <ul>
-<li class="fragment">If we assume a constant odds ratio for treatment</li>
-<li class="fragment">If <span class="math inline">\(\mathrm{OR}_T\)</span> is constant, the absolute risk reduction (<span class="math inline">\(\tau\)</span>) depends on <em>baseline</em> (untreated) risk.</li>
+<li>If we assume a constant odds ratio for treatment</li>
+<li>If <span class="math inline">\(\mathrm{OR}_T\)</span> is constant, the absolute risk reduction (<span class="math inline">\(\tau\)</span>) depends on <em>baseline</em> (untreated) risk.</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[
@@ -257,8 +271,8 @@ E(Y_0\mid X=x) \quad \Longrightarrow \quad
 \]</span></p>
 </div>
 <ul>
-<li class="fragment">If we can estimate the untreated baseline risk conditional on <span class="math inline">\(X\)</span> from observational data, then we can derive the treated risk and the CATE.</li>
-<li class="fragment">Unfortunately, estimating <span class="math inline">\(E[Y_0|X]\)</span> in general requires causal assumptions (unconfoundedness, positivity, consistency)</li>
+<li>If we can estimate the untreated baseline risk conditional on <span class="math inline">\(X\)</span> from observational data, then we can derive the treated risk and the CATE.</li>
+<li>Unfortunately, estimating <span class="math inline">\(E[Y_0|X]\)</span> in general requires causal assumptions (unconfoundedness, positivity, consistency)</li>
 </ul>
 </section>
 <section id="offset-models" class="slide level2 center">
@@ -276,10 +290,10 @@ E(Y_0\mid X=x) \quad \Longrightarrow \quad
 <section id="what-the-offset-promises" class="slide level2 center">
 <h2>What the offset promises</h2>
 <ul>
-<li class="fragment">Use the rich covariates and large sample size of observational data.</li>
-<li class="fragment">Avoid estimating the treatment effect from confounded treatment assignment.</li>
-<li class="fragment">Produce baseline risk and treated risk from a single fitted model.</li>
-<li class="fragment">Then derive CATEs under a constant relative treatment effect assumption.</li>
+<li>Use the rich covariates and large sample size of observational data.</li>
+<li>Avoid estimating the treatment effect from confounded treatment assignment.</li>
+<li>Produce baseline risk and treated risk from a single fitted model.</li>
+<li>Then derive CATEs under a constant relative treatment effect assumption.</li>
 </ul>
 <div class="fragment">
 <p>This is already close to what some clinical prediction tools do in practice <span class="citation" data-cites="candidodosreisUpdatedPREDICTBreast2017">Alaa et al. (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span>, some of which are recommended for use by clinical guidelines <span class="citation" data-cites="cardosoEarlyBreastCancer2019">(<a href="#/references" role="doc-biblioref" onclick="">Cardoso et al. 2019</a>)</span></p>
@@ -288,12 +302,12 @@ E(Y_0\mid X=x) \quad \Longrightarrow \quad
 <section id="unanswered-question" class="slide level2 center">
 <h2>Unanswered question</h2>
 <ul>
-<li class="fragment"><p>assume a model exists, such that <span class="math display">\[
+<li><p>assume a model exists, such that <span class="math display">\[
 \mathrm{logit}\{P(Y=1\mid X=x,T=t)\}
 = \beta_0 + \beta_x^\top x + \beta_t t.
 \]</span></p></li>
-<li class="fragment"><p>and that <span class="math inline">\(\beta_t\)</span> is known from trials</p></li>
-<li class="fragment"><p>would we recover the correct <span class="math inline">\((\beta_0, \beta_x)\)</span> by fitting an <em>offset model</em> on observational data?</p></li>
+<li><p>and that <span class="math inline">\(\beta_t\)</span> is known from trials</p></li>
+<li><p>would we recover the correct <span class="math inline">\((\beta_0, \beta_x)\)</span> by fitting an <em>offset model</em> on observational data?</p></li>
 </ul>
 </section>
 <section id="without-covariates-estimate-beta_t-beta_0-but-unobserved-confounding-exists" class="slide level2 center">
@@ -309,8 +323,8 @@ E(Y_0\mid X=x) \quad \Longrightarrow \quad
 <h2>But CATEs require covariates</h2>
 <p>Once <span class="math inline">\(X\)</span> enters the model, two issues appear at the same time:</p>
 <ul>
-<li class="fragment">confounding affects the observational likelihood;</li>
-<li class="fragment">odds ratios are non-collapsible.</li>
+<li>confounding affects the observational likelihood;</li>
+<li>odds ratios are non-collapsible.</li>
 </ul>
 <div class="fragment">
 <p>The second issue matters even without confounding.</p>
@@ -328,17 +342,17 @@ E(Y_0\mid X=x) \quad \Longrightarrow \quad
 <section id="non-collapsibility-creates-a-mismatch" class="slide level2 center">
 <h2>Non-collapsibility creates a mismatch</h2>
 <ul>
-<li class="fragment">The odds ratio for treatment depends on whether we condition on <span class="math inline">\(X\)</span>.</li>
-<li class="fragment">This comes from the non-linearity of logistic regression.</li>
-<li class="fragment">It also applies to hazard ratios.</li>
-<li class="fragment">It gets stronger when <span class="math inline">\(X\)</span> is a stronger outcome predictor.</li>
+<li>The odds ratio for treatment depends on whether we condition on <span class="math inline">\(X\)</span>.</li>
+<li>This comes from the non-linearity of logistic regression.</li>
+<li>It also applies to hazard ratios.</li>
+<li>It gets stronger when <span class="math inline">\(X\)</span> is a stronger outcome predictor.</li>
 </ul>
 <div class="fragment">
 <p>Conundrum:</p>
 <ul>
-<li class="fragment"><p>RCTs usually provide a marginal (log) odds ratio: <span class="math inline">\(\log \gamma = \log \frac{\text{odds}(E[Y_1])}{\text{odds}(E[Y_0])}\)</span></p></li>
-<li class="fragment"><p>The offset model needs a conditional odds ratio.</p></li>
-<li class="fragment"><p>The mismatch grows exactly when CATE variation becomes more useful.</p></li>
+<li><p>RCTs usually provide a marginal (log) odds ratio: <span class="math inline">\(\log \gamma = \log \frac{\text{odds}(E[Y_1])}{\text{odds}(E[Y_0])}\)</span></p></li>
+<li><p>The offset model needs a conditional odds ratio.</p></li>
+<li><p>The mismatch grows exactly when CATE variation becomes more useful.</p></li>
 </ul>
 </div>
 </section>
@@ -347,8 +361,8 @@ E(Y_0\mid X=x) \quad \Longrightarrow \quad
 <p>Estimate all model parameters, including <span class="math inline">\(\beta_t\)</span>, but force the fitted model to reproduce the randomized marginal treatment effect in the target population.</p>
 <div class="fragment">
 <ul>
-<li class="fragment">From trial: <span class="math inline">\(\gamma^* = \text{logit}(E[Y_1]) - \text{logit}(E[Y_0])\)</span></li>
-<li class="fragment">For candidate model with parameters <span class="math inline">\(\theta\)</span>, compute:</li>
+<li>From trial: <span class="math inline">\(\gamma^* = \text{logit}(E[Y_1]) - \text{logit}(E[Y_0])\)</span></li>
+<li>For candidate model with parameters <span class="math inline">\(\theta\)</span>, compute:</li>
 </ul>
 </div>
 <div class="fragment">
@@ -378,8 +392,8 @@ M_n(\theta) = \hat\gamma_{RCT},
 M_n(\theta)-\hat\gamma_{RCT}=0.
 \]</span></p>
 <ul>
-<li class="fragment">We call such models <strong>marginally constrained models</strong> (MCM)</li>
-<li class="fragment">When the model family assumes a constant relative treatment effect (here: <span class="math inline">\(\text{logit}^{-1}(P(Y=1|T,X)) = \beta_0 + \beta_x + \beta_t t\)</span>), <strong>constant relative MCM</strong> (CR-MCM)</li>
+<li>We call such models <strong>marginally constrained models</strong> (MCM)</li>
+<li>When the model family assumes a constant relative treatment effect (here: <span class="math inline">\(\text{logit}^{-1}(P(Y=1|T,X)) = \beta_0 + \beta_x + \beta_t t\)</span>), <strong>constant relative MCM</strong> (CR-MCM)</li>
 </ul>
 </div>
 </section>
@@ -405,8 +419,8 @@ M_n(\theta)-\hat\gamma_{RCT}=0.
 M_n(\theta)-\hat\gamma_{RCT}=0.
 \]</span></p>
 <ul>
-<li class="fragment"><strong>Theorem 1</strong> (informal) under consistency, positivity and unconfoundedness and correct model specification, this is a consistent estimator of <span class="math inline">\(P(Y_t=1|X)\)</span> and thus <span class="math inline">\(\tau(x)\)</span></li>
-<li class="fragment">Efficiency: when compared to MCM, its unconstrained counterpart requires <span class="math inline">\(\approx\)</span> 70-100% more observations to reach same width of confidence interval</li>
+<li><strong>Theorem 1</strong> (informal) under consistency, positivity and unconfoundedness and correct model specification, this is a consistent estimator of <span class="math inline">\(P(Y_t=1|X)\)</span> and thus <span class="math inline">\(\tau(x)\)</span></li>
+<li>Efficiency: when compared to MCM, its unconstrained counterpart requires <span class="math inline">\(\approx\)</span> 70-100% more observations to reach same width of confidence interval</li>
 </ul>
 </section>
 <section id="how-the-constraint-was-implemented-in-the-paper" class="slide level2 center">
@@ -419,10 +433,10 @@ M_n(\theta)-\hat\gamma_{RCT}=0.
 <div class="fragment">
 <p>Algorithm:</p>
 <ul>
-<li class="fragment">start with a small <span class="math inline">\(\lambda = 0.01\)</span>;</li>
-<li class="fragment">optimize the unconstrained penalized objective with L-BFGS;</li>
-<li class="fragment">check whether the constraint error is below <span class="math inline">\(10^{-4}\)</span>;</li>
-<li class="fragment">multiply <span class="math inline">\(\lambda\)</span> by 10 and repeat until satisfied.</li>
+<li>start with a small <span class="math inline">\(\lambda = 0.01\)</span>;</li>
+<li>optimize the unconstrained penalized objective with L-BFGS;</li>
+<li>check whether the constraint error is below <span class="math inline">\(10^{-4}\)</span>;</li>
+<li>multiply <span class="math inline">\(\lambda\)</span> by 10 and repeat until satisfied.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -432,21 +446,21 @@ M_n(\theta)-\hat\gamma_{RCT}=0.
 <section id="how-much-would-all-this-matter-in-practice" class="slide level2 center">
 <h2>How much would all this matter in practice?</h2>
 <ul>
-<li class="fragment">aim was to estimate <span class="math inline">\(\tau(x)\)</span></li>
-<li class="fragment">metric is mean squared error of <span class="math inline">\(\tau(x)\)</span> (precision of estimated heterogeneous treatment effect):</li>
+<li>aim was to estimate <span class="math inline">\(\tau(x)\)</span></li>
+<li>metric is mean squared error of <span class="math inline">\(\tau(x)\)</span> (precision of estimated heterogeneous treatment effect):</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[\text{PEHE}(\hat{\tau}) = E_x [(\tau(x) - \hat{\tau(x)})^2]\]</span></p>
 <ul>
-<li class="fragment">Remember we started with saying <span class="math inline">\(\text{ATE} = E[\tau(x)]\)</span> can be a bad estimator of CATE.</li>
-<li class="fragment">Easy to see that:</li>
+<li>Remember we started with saying <span class="math inline">\(\text{ATE} = E[\tau(x)]\)</span> can be a bad estimator of CATE.</li>
+<li>Easy to see that:</li>
 </ul>
 </div>
 <div class="fragment">
 <p><span class="math display">\[\text{PEHE}(\text{ATE}) = \text{Var}(\text{CATE})\]</span></p>
 <ul>
-<li class="fragment">If no variance in CATE, ATE is the optimal estimator</li>
-<li class="fragment">Mabye offset models are not ‘correct’, are they better than ATE?</li>
+<li>If no variance in CATE, ATE is the optimal estimator</li>
+<li>Mabye offset models are not ‘correct’, are they better than ATE?</li>
 </ul>
 </div>
 </section>
@@ -461,23 +475,23 @@ M_n(\theta)-\hat\gamma_{RCT}=0.
 <section id="bigger-experiment" class="slide level2 center">
 <h2>Bigger experiment</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(X,T,U,Y\)</span> binary</li>
-<li class="fragment"><span class="math inline">\(T \sim p(T|U)\)</span></li>
-<li class="fragment"><span class="math inline">\(Y \sim p(Y|T,X,U) = \text{logit}^{-1}(\alpha_0 + \alpha_x x + \alpha_t t + \alpha_u u)\)</span></li>
-<li class="fragment">12 dimensions, <span class="math inline">\(\geq 16*10^6\)</span> experiments</li>
-<li class="fragment">compare <em>offset</em>, <em>MCM</em>, <em>CR-MCM</em></li>
+<li><span class="math inline">\(X,T,U,Y\)</span> binary</li>
+<li><span class="math inline">\(T \sim p(T|U)\)</span></li>
+<li><span class="math inline">\(Y \sim p(Y|T,X,U) = \text{logit}^{-1}(\alpha_0 + \alpha_x x + \alpha_t t + \alpha_u u)\)</span></li>
+<li>12 dimensions, <span class="math inline">\(\geq 16*10^6\)</span> experiments</li>
+<li>compare <em>offset</em>, <em>MCM</em>, <em>CR-MCM</em></li>
 </ul>
 </section>
 <section id="whats-the-baseline" class="slide level2 center">
 <h2>What’s the baseline?</h2>
 <ul>
-<li class="fragment">when <span class="math inline">\(\text{Var}(\text{CATE}) = 0, \text{PEHE}(\text{ATE}) = 0\)</span></li>
-<li class="fragment">Consider as measure of how much PEHE can be gained:</li>
+<li>when <span class="math inline">\(\text{Var}(\text{CATE}) = 0, \text{PEHE}(\text{ATE}) = 0\)</span></li>
+<li>Consider as measure of how much PEHE can be gained:</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[\delta := | \text{CATE}(X=1) - \text{CATE}(X=0) | \]</span></p>
 <ul>
-<li class="fragment">then when <span class="math inline">\(P(X=1) = 0.5\)</span>:</li>
+<li>then when <span class="math inline">\(P(X=1) = 0.5\)</span>:</li>
 </ul>
 </div>
 <div class="fragment">
@@ -488,29 +502,29 @@ M_n(\theta)-\hat\gamma_{RCT}=0.
 <h2>Table 1: number of times method improves upon ATE in terms of PEHE</h2>
 
 <img data-src="figs/table1_no_cap.png" class="r-stretch"><ul>
-<li class="fragment">when more variance in CATE, all methods perform better</li>
-<li class="fragment">MCM performs best</li>
-<li class="fragment">when offest (constant-relative) assumption holds, those methods work better</li>
-<li class="fragment">standard offset often better under non-zero variance in CATE</li>
+<li>when more variance in CATE, all methods perform better</li>
+<li>MCM performs best</li>
+<li>when offest (constant-relative) assumption holds, those methods work better</li>
+<li>standard offset often better under non-zero variance in CATE</li>
 </ul>
 </section>
 <section id="caveats" class="slide level2 center">
 <h2>Caveats</h2>
 <ul>
-<li class="fragment">compare on single metric across huge range of settings</li>
-<li class="fragment">average performance, no gaurantee on single setting</li>
+<li>compare on single metric across huge range of settings</li>
+<li>average performance, no gaurantee on single setting</li>
 </ul>
 </section>
 <section id="limitations-and-future-work" class="slide level2 center">
 <h2>Limitations and future work</h2>
 <ul>
-<li class="fragment">assumed direct transportability of marginal odds ratio</li>
-<li class="fragment">in calculation of implied marginal odds-ratio, used unweighted sample average, could replace with importance weights based on <span class="math inline">\(X\)</span> if known between trial and observational data if they have different covariate distributions</li>
-<li class="fragment">we (silently) assumed knowing the marginal odds-ratio with infinete precision and no bias
+<li>assumed direct transportability of marginal odds ratio</li>
+<li>in calculation of implied marginal odds-ratio, used unweighted sample average, could replace with importance weights based on <span class="math inline">\(X\)</span> if known between trial and observational data if they have different covariate distributions</li>
+<li>we (silently) assumed knowing the marginal odds-ratio with infinete precision and no bias
 <ul>
-<li class="fragment">unpublished experiments show MCM rapidly worse than ‘fully observational’ when variance of RCT estimate (wrong constraint)</li>
+<li>unpublished experiments show MCM rapidly worse than ‘fully observational’ when variance of RCT estimate (wrong constraint)</li>
 </ul></li>
-<li class="fragment">better would be to consider uncertainty, e.g.&nbsp;as ‘Bayesian prior’:</li>
+<li>better would be to consider uncertainty, e.g.&nbsp;as ‘Bayesian prior’:</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[
@@ -527,19 +541,19 @@ M_n(\theta)-\hat\gamma_{RCT}=0.
 <section id="extensions" class="slide level2 center">
 <h2>Extensions</h2>
 <ul>
-<li class="fragment">are there better measures of effect to assume are constant? (e.g.&nbsp;risk ratio or survival ratio <span class="citation" data-cites="colnetRiskRatioOdds2023">(<a href="#/references" role="doc-biblioref" onclick="">Colnet et al. 2023</a>)</span>)</li>
-<li class="fragment">extend to Hazard Ratios (calculating constraint requires an optimization)</li>
-<li class="fragment">what happens with higher dimensional <span class="math inline">\(X\)</span>?</li>
-<li class="fragment">investigate MCMs in applications</li>
+<li>are there better measures of effect to assume are constant? (e.g.&nbsp;risk ratio or survival ratio <span class="citation" data-cites="colnetRiskRatioOdds2023">(<a href="#/references" role="doc-biblioref" onclick="">Colnet et al. 2023</a>)</span>)</li>
+<li>extend to Hazard Ratios (calculating constraint requires an optimization)</li>
+<li>what happens with higher dimensional <span class="math inline">\(X\)</span>?</li>
+<li>investigate MCMs in applications</li>
 </ul>
 </section>
 <section id="take-home" class="slide level2 center">
 <h2>Take-home</h2>
 <ul>
-<li class="fragment">Offset models ask a reasonable clinical question: can trial relative effects turn prediction models into CATE models?</li>
-<li class="fragment">The naive offset has two problems: confounding and marginal-versus-conditional effect mismatch.</li>
-<li class="fragment">MCM uses the trial result as a marginal constraint, which is the scale on which trials often report evidence.</li>
-<li class="fragment">The next estimator should treat the trial estimate as uncertain evidence, not an exact equality.</li>
+<li>Offset models ask a reasonable clinical question: can trial relative effects turn prediction models into CATE models?</li>
+<li>The naive offset has two problems: confounding and marginal-versus-conditional effect mismatch.</li>
+<li>MCM uses the trial result as a marginal constraint, which is the scale on which trials often report evidence.</li>
+<li>The next estimator should treat the trial estimate as uncertain evidence, not an exact equality.</li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">

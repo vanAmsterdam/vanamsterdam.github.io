@@ -5,8 +5,8 @@ date: 2026-06-25
 bibliography: ../../library.bib
 format:
     revealjs:
-        incremental: true
-        theme: [../custom.scss, ../custom_dev.scss, custom_local.scss]
+        incremental: false
+        theme: [../custom.scss, custom_local.scss]
         center: true
         fig-align: center
         width: 1600

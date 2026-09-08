@@ -1,6 +1,6 @@
 ---
 title: "General Chair’s notes on Machine Learning for Healthcare 2026"
-author: "Wouter van Amsterdam & Rahul Krishnan"
+author: "Wouter van Amsterdam & Rahul G. Krishnan"
 date: 2026-09-08
 image: ./rahul_wouter.png
 image-alt: "Machine Learning for Healthcare 2026 at Johns Hopkins University"

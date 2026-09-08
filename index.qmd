@@ -1,10 +1,10 @@
 ---
 title: "Wouter van Amsterdam, MD, PhD"
 image: wvanamsterdam_square.jpg
-keywords: ["Wouter van Amsterdam", "data science", "biostatistics", "R", "python", "causal inference", "machine learning", "academic porfolio", "CV"]
+# keywords: ["Wouter van Amsterdam", "data science", "biostatistics", "R", "python", "causal inference", "machine learning", "academic porfolio", "CV"]
 about:
   id: hero-heading
-  template: trestles
+  template: jolla
   image-shape: round
   links:
     - icon: twitter
@@ -45,26 +45,24 @@ listing:
 
 :::{#hero-heading}
 
-I am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.
+:::
 
-I have degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare, advised by [Rajesh Ranganath](https://cims.nyu.edu/~rajeshr/) from NYU and Joost Verhoeff, Tim Leiner and Pim de Jong from the UMC Utrecht.
+I am an assistant professor at the University Medical Center Utrecht, working on methods and applications of machine learning and causal inference for health care.
+I hold degrees in Physics (BSc), Medicine (MD), epidemiology (MSc) and a PhD on machine learning for healthcare, advised by [Rajesh Ranganath](https://cims.nyu.edu/~rajeshr/) from NYU and Joost Verhoeff, Tim Leiner and Pim de Jong from the UMC Utrecht.
 
 <!--Master students with a background in statistics or machine learning who want to work with me are welcome to contact me.-->
 <!--Students enrolled at Utrecht University or UMC Utrecht can find open master projects on [konjoin](https://uu.konjoin.nl/profile/wouter-van-amsterdam)-->
 
-#### Prospective students / collaborators
+### Prospective students / collaborators
 
 I have some open projects in the field of machine learning and causal inference. Students (MSc / PhD) with a background in statistics, data science or machine learning and strong math and coding skills are welcome to contact me.
 
-#### Positions
-
-**UMC Utrecht**| Assistant Professor | 2023 - now\
-**Babylon Health** | Senior Research Scientist | 2021 - 2023
+<!-- #### Positions -->
+<!---->
+<!-- **UMC Utrecht**| Assistant Professor | 2023 - now\ -->
+<!-- **Babylon Health** | Senior Research Scientist | 2021 - 2023 -->
 
 [CV (pdf, dec 2025)](cv.pdf)
-
-
-:::
 
 ## Selected papers
 
@@ -76,58 +74,63 @@ Clinical trials for continuously monitored and updated AI systems.\
 *Wouter AC van Amsterdam, Michael Oberst, Jean Feng, et al. Nat Med. 2026 Apr 28. doi:10.1038/s41591-026-04368-9*\
 [url](https://rdcu.be/ffPlI)
 
-ECG classification with convolutional neural networks demonstrates resilience to sex-imbalances in data.\
-*Schipaanboord DJ, Van Der Zalm F, Van Es R, Vessies M, Van De Leur RR, Siegersma KR, ... van Amsterdam WAC. MedArXiv preprint*\
-[url](https://doi.org/10.1101/2025.08.31.25334560)
-
-The Risks of Risk Assessment: Causal Blind Spots When Using Prediction Models for Treatment Decisions.\
-*Van Geloven N, Keogh RH, van Amsterdam W.A.C., Cinà G, Krijthe JH, Peek N, et al. Ann Intern Med. 2025 Sept;178(9):1326–33.*
-[url](https://doi.org/10.7326/ANNALS-24-00279)
-
-A causal viewpoint on prediction model performance under changes in case-mix: Discrimination and calibration respond differently for prognosis and diagnosis predictions.\
-*van Amsterdam, W. A. C. (2024). arXiv preprint*\
-[url](https://doi.org/10.48550/arXiv.2409.01444)
-[pdf](papers/2025_causal_casemix.pdf)
-
-AI as an intervention: improving clinical outcomes relies on a causal approach to AI development and validation\
-*Shalmali Joshi, Inigo Urteaga, Wouter A. C. van Amsterdam et al. JAMIA 2025.*\
-[url](https://academic.oup.com/jamia/article/32/3/589/7945189?login=false)
+<!-- ECG classification with convolutional neural networks demonstrates resilience to sex-imbalances in data.\ -->
+<!-- *Schipaanboord DJ, Van Der Zalm F, Van Es R, Vessies M, Van De Leur RR, Siegersma KR, ... van Amsterdam WAC. MedArXiv preprint*\ -->
+<!-- [url](https://doi.org/10.1101/2025.08.31.25334560) -->
+<!---->
+<!-- The Risks of Risk Assessment: Causal Blind Spots When Using Prediction Models for Treatment Decisions.\ -->
+<!-- *Van Geloven N, Keogh RH, van Amsterdam W.A.C., Cinà G, Krijthe JH, Peek N, et al. Ann Intern Med. 2025 Sept;178(9):1326–33.* -->
+<!-- [url](https://doi.org/10.7326/ANNALS-24-00279) -->
+<!---->
+<!-- A causal viewpoint on prediction model performance under changes in case-mix: Discrimination and calibration respond differently for prognosis and diagnosis predictions.\ -->
+<!-- *van Amsterdam, W. A. C. (2024). arXiv preprint*\ -->
+<!-- [url](https://doi.org/10.48550/arXiv.2409.01444) -->
+<!-- [pdf](papers/2025_causal_casemix.pdf) -->
+<!---->
+<!-- AI as an intervention: improving clinical outcomes relies on a causal approach to AI development and validation\ -->
+<!-- *Shalmali Joshi, Inigo Urteaga, Wouter A. C. van Amsterdam et al. JAMIA 2025.*\ -->
+<!-- [url](https://academic.oup.com/jamia/article/32/3/589/7945189?login=false) -->
 
 When accurate prediction models yield harmful self-fulfilling prophecies.\
 *van Amsterdam, W. A. C., van Geloven, N., Krijthe, J. H., Ranganath, R., & Ciná, G. Patterns. 2025 Apr;6(4):101229.*
 [url](https://doi.org/10.1016/j.patter.2025.101229)
 [pdf](papers/2025_selffulfilling.pdf)
 
-Causal Inference in Oncology: Why, What, How and When.\
-*van Amsterdam, W. A. C., Elias, S., & Ranganath, R. (2024). Clinical Oncology.*\
-[url](https://doi.org/10.1016/j.clon.2024.07.002)
-[pdf](papers/2024_ci_tutorial.pdf)
-
-Prognostic models for decision support need to report their targeted treatments and the expected changes in treatment decisions.\
-*van Amsterdam, W. A. C. and Cinà, Giovanni and Didelez, Vanessa and Keogh, Ruth H. and Peek, Niels and Sperrin, Matthew and Vickers, Andrew J. and van Geloven, Nan and Shalit, Uri (2024). BMJ Rapid-response*\
-[url](https://www.bmj.com/content/385/bmj-2023-078378/rr-1)
+<!-- Causal Inference in Oncology: Why, What, How and When.\ -->
+<!-- *van Amsterdam, W. A. C., Elias, S., & Ranganath, R. (2024). Clinical Oncology.*\ -->
+<!-- [url](https://doi.org/10.1016/j.clon.2024.07.002) -->
+<!-- [pdf](papers/2024_ci_tutorial.pdf) -->
+<!---->
+<!-- Prognostic models for decision support need to report their targeted treatments and the expected changes in treatment decisions.\ -->
+<!-- *van Amsterdam, W. A. C. and Cinà, Giovanni and Didelez, Vanessa and Keogh, Ruth H. and Peek, Niels and Sperrin, Matthew and Vickers, Andrew J. and van Geloven, Nan and Shalit, Uri (2024). BMJ Rapid-response*\ -->
+<!-- [url](https://www.bmj.com/content/385/bmj-2023-078378/rr-1) -->
 
 From algorithms to action: improving patient care requires causality.\
 *van Amsterdam, W. A. C., de Jong, P. A., Verhoeff, J. J. C., Leiner, T., & Ranganath, R. (2024). BMC Medical Informatics and Decision Making*\
 [url](https://doi.org/10.1186/s12911-024-02513-3)
 [pdf](papers/2024_comment_bmc.pdf)
 
-Individual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.\ 
-*van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports*\
-[url](https://doi.org/10.1038/s41598-022-09775-9)
-[pdf](https://www.nature.com/articles/s41598-022-09775-9.pdf)
-
-Conditional average treatment effect estimation with marginally constrained models.\
-*van Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference*\
-[url](https://doi.org/10.1515/jci-2022-0027)
-[pdf](papers/2023_offset_jci.pdf)
-
-Eliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\
-*van Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine*\
-[url](https://doi.org/10.1038/s41746-019-0194-x)
-[pdf](https://www.nature.com/articles/s41746-019-0194-x.pdf)
+<!-- Individual treatment effect estimation in the presence of unobserved confounding using proxies: A cohort study in stage III non-small cell lung cancer.\  -->
+<!-- *van Amsterdam, W. A. C., Verhoeff, J. J. C., Harlianto, N. I., Bartholomeus, G. A., Puli, A. M., de Jong, P. A., Leiner, T., van Lindert, A. S. R., Eijkemans, M. J. C., & Ranganath, R. (2022). Scientific Reports*\ -->
+<!-- [url](https://doi.org/10.1038/s41598-022-09775-9) -->
+<!-- [pdf](https://www.nature.com/articles/s41598-022-09775-9.pdf) -->
+<!---->
+<!-- Conditional average treatment effect estimation with marginally constrained models.\ -->
+<!-- *van Amsterdam, W. A. C., & Ranganath, R. (2023). Journal of Causal Inference*\ -->
+<!-- [url](https://doi.org/10.1515/jci-2022-0027) -->
+<!-- [pdf](papers/2023_offset_jci.pdf) -->
+<!---->
+<!-- Eliminating biasing signals in lung cancer images for prognosis predictions with deep learning.\ -->
+<!-- *van Amsterdam, W. A. C., Verhoeff, J. J. C., de Jong, P. A., Leiner, T., & Eijkemans, M. J. C. (2019). Npj Digital Medicine*\ -->
+<!-- [url](https://doi.org/10.1038/s41746-019-0194-x) -->
+<!-- [pdf](https://www.nature.com/articles/s41746-019-0194-x.pdf) -->
 
 More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6UkAAAAJ&hl=nl&oi=sra)
+
+## [Posts](posts.qmd)
+
+::: {#post-listing}
+:::
 
 ## [Talks](talks.qmd)
 
@@ -141,11 +144,6 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 - 2025 European Medicines Agency course "Big Data", module: Target Trial Emulation
 - 2024 [Introduction to Causal Inference and Causal Data Science summer school](https://utrechtsummerschool.nl/courses/healthcare/introduction-to-causal-inference-and-causal-data-science)
 - 2023 Big Data summer school
-
-## [Posts](posts.qmd)
-
-::: {#post-listing}
-:::
 
 ## Students
 

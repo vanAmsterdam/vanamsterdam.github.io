@@ -62,7 +62,7 @@ I have some open projects in the field of machine learning and causal inference.
 <!-- **UMC Utrecht**| Assistant Professor | 2023 - now\ -->
 <!-- **Babylon Health** | Senior Research Scientist | 2021 - 2023 -->
 
-[CV (pdf, dec 2025)](cv.pdf)
+[CV (pdf, Sep 2026)](cv.pdf)
 
 ## Selected papers
 
@@ -169,6 +169,7 @@ More papers on [google scholar](https://scholar.google.nl/citations?user=6PfM6Uk
 
 ## Activities
 
+- general program chair, [MLHC 2026 & 2027](https://www.mlforhc.org)
 - program chair Workshop, [MLHC 2025](https://www.mlforhc.org)
 - board member [BMS-ANed](https://www.vvsor.nl/biometrics/) (Dutch biometrics society)
 - coordinator of UMC Utrecht [AI methods lab](https://www.umcutrecht.nl/en/ai-lab-methodology)

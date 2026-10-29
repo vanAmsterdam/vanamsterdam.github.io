@@ -18,7 +18,7 @@
     "href": "index.html#posts",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Posts",
-    "text": "Posts\n\n\n\n\n\n\n\n\n\n\nGeneral Chair’s notes on Machine Learning for Healthcare 2026\n\n\n\n\n\n\nWouter van Amsterdam, Rahul G. Krishnan\n\n\nSep 8, 2026\n\n\n\n\n\n\n\n\n\n\n\nFlipping the sign of hazard ratios\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 4, 2025\n\n\n\n\n\n\n\n\n\n\n\nWhat is stronger evidence of prediction model robustness?\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nApr 25, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Posts\n\n\n\n\n\n\n\n\n\n\nThe circle of survival\n\n\nStarting with the survival curve, a trip around the five main functions of survival analysis—and back again.\n\n\n\nWouter van Amsterdam\n\n\nOct 29, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nGeneral Chair’s notes on Machine Learning for Healthcare 2026\n\n\n\n\n\n\nWouter van Amsterdam, Rahul G. Krishnan\n\n\nSep 8, 2026\n\n\n\n\n\n\n\n\n\n\n\nFlipping the sign of hazard ratios\n\n\n\n\n\n\nWouter van Amsterdam\n\n\nJul 4, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#talks",
@@ -1645,6 +1645,62 @@
     "text": "Expected utility of different policies\nWe can now calculate the expected utility of the different policies \\(\\pi \\in \\{\\pi_0,\\pi_z,\\pi_{\\text{max}(y)},\\pi^*\\}\\) as the expected outcome, \\(U(\\pi) = E_{x,z}E_{t\\sim \\pi(x,z)}y|t,x,z = E_{x,z}\\beta z \\pi(x,z) + x - z\\). The calculation of these expected utilities depends on the treatment effect, which will we assume to be \\(\\beta = 1.5\\). We will use the marginal indepence of \\(x\\) and \\(z\\) to equate \\(E_{x,z}[.] = E_z E_x [.]\\).\n\\[\\begin{aligned}\n    U(\\pi_0) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x&gt;0} \\\\\n         &= \\beta E_z z 0.5 \\\\\n         &= 0\\end{aligned}\\]\nWe have \\(\\pi_z(x,z) = \\mathbf{I}_{x - (1 - 0.5 \\beta)z &gt; 0} = \\mathbf{I}_{x &gt; 0.25z}\\)\n\\[\\begin{aligned}\n    U(\\pi_z) &= E_z E_x [\\beta z \\mathbf{I}_{x &gt; 0.25z} + x - z] \\\\\n         &= \\beta E_z z E_x \\mathbf{I}_{x &gt; 0.25z} \\\\\n         &= \\beta E_z z \\text{Pr}(x &gt; 0.25z) \\\\\n         &=^1 \\frac{\\beta}{2} \\int_{-1}^{1} z \\text{Pr}(x &gt; 0.25z) dz\\\\\n         &=^2 \\frac{\\beta}{2} \\int_{-1}^{1} z (1 - \\frac{0.25z+1}{2}) dz\\\\\n         &= \\frac{\\beta}{4} \\int_{-1}^{1} z (1 - 0.25z)dz \\\\\n         &= \\frac{\\beta}{4} \\left[ \\frac{1}{2} z^2 - \\frac{0.25}{3}z^3 + C \\right]_{-1}^1 \\\\\n         &= \\frac{\\beta}{4} \\left( ( \\frac{1}{2} - \\frac{0.25}{3}) - ( \\frac{1}{2} + \\frac{0.25}{3}) \\right) \\\\\n         &= - \\frac{\\beta}{2} \\frac{0.25}{3} \\\\\n         &= - 0.075\\end{aligned}\\]\nWhere in \\(^1\\) we used the \\(U(-1,1)\\) distribution of \\(z\\) and in \\(^2\\) we used the probability density function of \\(x\\) and the fact that \\(-1 &lt; 0.25z &lt; 1\\). This demonstrates that the policy following the (accurate!) prediction model \\(y|x,z\\) leads to worse clinical outcomes than the previous situation that relied on \\(x\\) only.\nThe reader may verify that \\[\\begin{aligned}\n    U(\\pi_{\\text{max}(y)}) &= 0.375 \\\\\n    U(\\pi^*) &= 0.125\\end{aligned}\\]"
   },
   {
+    "objectID": "posts/261029-survival-circle/static.html",
+    "href": "posts/261029-survival-circle/static.html",
+    "title": "The circle of survival (static version)",
+    "section": "",
+    "text": "Survival analysis comes with quite a collection of functions: survival, cumulative incidence, density, hazard, and cumulative hazard. When you first encounter them, it can feel as though each needs its own definition to memorize. Yet they all describe the same distribution of event times. Once you know one, you can work out the others.\nI’ve been thinking about a way to introduce these functions that makes their connections easier to remember. Start with the survival curve, follow a few simple operations, and you end up back where you started. I call it the circle of survival.\nLet’s walk around the circle, using the survival of Dutch men as an example."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/static.html#start-with-survival-who-is-still-alive",
+    "href": "posts/261029-survival-circle/static.html#start-with-survival-who-is-still-alive",
+    "title": "The circle of survival (static version)",
+    "section": "Start with survival: who is still alive?",
+    "text": "Start with survival: who is still alive?\nSurvival analysis studies the time until an event: death, disease recurrence, or the failure of a car part. Let \\(T\\) be the time until the event. The survival function is\n\\[\nS(t) = P(T &gt; t).\n\\]\nIt answers a straightforward question: what fraction of the population survives beyond time \\(t\\)?\nFor our example, we start at age 18, so \\(t = \\text{age} - 18\\). Everyone in our starting population is alive at that age: \\(S(0)=1\\). As time passes, survival can only stay the same or decrease. For a proper survival distribution, in which the event eventually occurs for everyone, \\(S(t)\\) approaches zero.\nThe figure below uses the CBS 2025 period life table for Dutch men, conditional on reaching age 18. A period life table describes survival under the age-specific mortality rates of that period; it is not a forecast of how today’s 18-year-olds will actually survive. The horizontal axes show age, rather than years since age 18.\n\n\n\n\n\n\nFigure 2: The same life-table distribution viewed through all five functions. Follow the arrows clockwise from survival at the top centre. Data: CBS StatLine, table 37360ned, 2025, men (CC BY 4.0).\n\n\n\nIn this life table, about 94% of men who reach age 18 survive to age 60: in our notation, \\(S(42) \\approx 0.94\\). Beyond that age, the survival curve drops more steeply. Each of the other panels tells us something about that same decline."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/static.html#from-s-to-f-who-has-already-died",
+    "href": "posts/261029-survival-circle/static.html#from-s-to-f-who-has-already-died",
+    "title": "The circle of survival (static version)",
+    "section": "From S to F: who has already died?",
+    "text": "From S to F: who has already died?\nAt any given time, someone has either survived or experienced the event. So the fraction who have died by time \\(t\\) is simply\n\\[\nF(t) = P(T \\leq t) = 1-S(t).\n\\]\nThis is the cumulative distribution function, also called the cumulative incidence in this single-event setting. It starts at zero and increases towards one. If survival to age 60 is about 94%, the probability of dying between ages 18 and 60 is about 6%.\nMoving from \\(S\\) to \\(F\\) changes the question, but adds no information: we are looking at the same population from the other side."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/static.html#from-f-to-f-when-do-most-deaths-occur",
+    "href": "posts/261029-survival-circle/static.html#from-f-to-f-when-do-most-deaths-occur",
+    "title": "The circle of survival (static version)",
+    "section": "From F to f: when do most deaths occur?",
+    "text": "From F to f: when do most deaths occur?\nThe cumulative incidence tells us how many events have accumulated. To see when they occur, look at how quickly it increases. For a continuous event-time distribution with a density,\n\\[\nf(t) = \\frac{d}{dt}F(t) = -\\frac{d}{dt}S(t).\n\\]\nThe density is high where the survival curve falls steeply. In the Dutch life table, deaths are concentrated at older ages, with a peak around age 88. Beyond that, the density falls. Does that mean surviving another year becomes easier after 88?"
+  },
+  {
+    "objectID": "posts/261029-survival-circle/static.html#from-f-to-h-what-about-those-still-alive",
+    "href": "posts/261029-survival-circle/static.html#from-f-to-h-what-about-those-still-alive",
+    "title": "The circle of survival (static version)",
+    "section": "From f to h: what about those still alive?",
+    "text": "From f to h: what about those still alive?\nThe density counts deaths relative to the population we started with at age 18. By very old ages, few of those men remain alive. There can therefore be fewer deaths even when the death rate among the survivors continues to rise.\nTo express that rate, divide the density by the fraction still alive:\n\\[\nh(t) = \\frac{f(t)}{S(t)}, \\qquad S(t)&gt;0.\n\\]\nThis is the hazard, sometimes called the force of mortality. It describes the instantaneous event rate among those who have survived to time \\(t\\); if time is measured in years, the hazard has units of events per year.\nWhereas the density eventually falls because the starting population has largely died out; the hazard continues to rise because mortality among the remaining survivors increases."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/static.html#from-h-to-h-accumulate-the-hazard",
+    "href": "posts/261029-survival-circle/static.html#from-h-to-h-accumulate-the-hazard",
+    "title": "The circle of survival (static version)",
+    "section": "From h to H: accumulate the hazard",
+    "text": "From h to H: accumulate the hazard\nThe next step is to add up the hazard over time:\n\\[\nH(t) = \\int_0^t h(u)\\,du.\n\\]\nThe cumulative hazard starts at zero and never decreases; it measures accumulated hazard.\nIts interpretation may feel less immediate than that of survival or cumulative incidence. The final step of the circle gives it a useful meaning: cumulative hazard is survival expressed on a negative log scale."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/static.html#from-h-back-to-s-close-the-circle",
+    "href": "posts/261029-survival-circle/static.html#from-h-back-to-s-close-the-circle",
+    "title": "The circle of survival (static version)",
+    "section": "From H back to S: close the circle",
+    "text": "From H back to S: close the circle\nSince \\(f(t)=-S'(t)\\), we can write\n\\[\nh(t)=-\\frac{S'(t)}{S(t)}=-\\frac{d}{dt}\\log S(t).\n\\]\nIntegrating from zero to \\(t\\), and using \\(S(0)=1\\), gives\n\\[\nH(t)=-\\bigl[\\log S(u)\\bigr]_0^t=-\\log S(t).\n\\]\nRearrange this and we are back at the survival curve:\n\\[\n\\boxed{S(t)=e^{-H(t)}}.\n\\]"
+  },
+  {
+    "objectID": "posts/261029-survival-circle/static.html#one-distribution-five-questions",
+    "href": "posts/261029-survival-circle/static.html#one-distribution-five-questions",
+    "title": "The circle of survival (static version)",
+    "section": "One distribution, five questions",
+    "text": "One distribution, five questions\nEach stop on the circle emphasizes a different aspect of the same event-time distribution:\n\n\n\n\n\n\n\nFunction\nQuestion\n\n\n\n\nSurvival \\(S(t)\\)\nWhat fraction survives beyond \\(t\\)?\n\n\nCumulative incidence \\(F(t)\\)\nWhat fraction has experienced the event by \\(t\\)?\n\n\nDensity \\(f(t)\\)\nWhere in time are events concentrated?\n\n\nHazard \\(h(t)\\)\nAt what rate do events occur among those still event-free?\n\n\nCumulative hazard \\(H(t)\\)\nHow much hazard has accumulated by \\(t\\)?\n\n\n\nI like starting with \\(S\\) because “who is still alive?” is an intuitive question. But the circle has no necessary starting point. Many survival analysis models specify a hazard first, integrate it to obtain \\(H\\), and then calculate \\(S=e^{-H}\\). Other models might specify the survival curve directly.\nNor does the circle require a particular parametric family. The derivative and integral relationships used here assume an absolutely continuous event-time distribution; discrete event times and step-function estimates require corresponding adjustments. Within that setting, the circle is a way to reconstruct the relationships from a few operations, instead of remembering five separate definitions.\n\n\n\n\n\n\nNoteAbout the life-table figure\n\n\n\n\n\nThe figure uses the data and graphics from my slides, based on CBS StatLine table 37360ned, period 2025, men. CBS data are credited under CC BY 4.0.\nThe life table gives survival at whole ages. The plotted density values are annual differences \\(S(t)-S(t+1)\\); the plotted hazard values are \\(-\\log\\{S(t+1)/S(t)\\}\\) per year. These summarize one-year intervals and are plotted at their midpoints, rather than being instantaneous derivatives. The latter equal the constant hazards that would reproduce survival over each interval. The displayed ages stop at the table’s open-ended 99-and-over group."
+  },
+  {
     "objectID": "posts/190816-lm-functional-form.html",
     "href": "posts/190816-lm-functional-form.html",
     "title": "Finding the functional form for multiple linear regression",
@@ -1951,6 +2007,62 @@
     "title": "Flipping the sign of hazard ratios",
     "section": "Conclusion",
     "text": "Conclusion\nCan the marginal hazard ratio estimated in a randomized controlled trial have the wrong sign? Yes, it can—even when the causal hazard ratio is constant—if we allow for delayed entry. Is this likely to happen in practice? Probably not. But that doesn’t mean we should continue using the hazard ratio as a default summary measure. Better alternatives exist that can be directly derived from survival curves, such as absolute risk differences, risk ratios, and differences in restricted mean survival time."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/index.html",
+    "href": "posts/261029-survival-circle/index.html",
+    "title": "The circle of survival",
+    "section": "",
+    "text": "Survival analysis comes with quite a collection of functions: survival, cumulative incidence, density, hazard, and cumulative hazard. When you first encounter them, it can feel as though each needs its own definition to memorize. Yet they all describe the same distribution of event times. Once you know one, you can work out the others.\nI’ve been thinking about a way to introduce these functions that makes their connections easier to remember. Start with the survival curve, follow a few simple operations, and you end up back where you started. I call it the circle of survival.\nAs you scroll, the circle builds alongside the explanation. Each new connection appears in red. The original, static version is here too.\nLet’s walk around the circle, using the survival of Dutch men as an example."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/index.html#start-with-survival-who-is-still-alive",
+    "href": "posts/261029-survival-circle/index.html#start-with-survival-who-is-still-alive",
+    "title": "The circle of survival",
+    "section": "Start with survival: who is still alive?",
+    "text": "Start with survival: who is still alive?\nSurvival analysis studies the time until an event: death, disease recurrence, or the failure of a car part. Let \\(T\\) be the time until the event. The survival function is\n\\[\nS(t) = P(T &gt; t).\n\\]\nIt answers a straightforward question: what fraction of the population survives beyond time \\(t\\)?\n\n\n\n\n\n\nFigure 1: Among Dutch men alive at 18, survival stays high until about age 60, then falls more steeply.\n\n\n\nFor our example, we start at age 18, so \\(t = \\text{age} - 18\\). Everyone in our starting population is alive at that age: \\(S(0)=1\\). As time passes, survival can only stay the same or decrease. For a proper survival distribution, in which the event eventually occurs for everyone, \\(S(t)\\) approaches zero.\nThe curves in this post use the CBS 2025 period life table for Dutch men, conditional on reaching age 18. A period life table describes survival under the age-specific mortality rates of that period; it is not a forecast of how today’s 18-year-olds will actually survive. The horizontal axes show age, rather than years since age 18.\nIn this life table, about 94% of men who reach age 18 survive to age 60: in our notation, \\(S(42) \\approx 0.94\\). Beyond that age, the survival curve drops more steeply. The curves at the next stops will show us different aspects of that same decline."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/index.html#from-s-to-f-who-has-already-died",
+    "href": "posts/261029-survival-circle/index.html#from-s-to-f-who-has-already-died",
+    "title": "The circle of survival",
+    "section": "From S to F: who has already died?",
+    "text": "From S to F: who has already died?\nAt any given time, someone has either survived or experienced the event. So the fraction who have died by time \\(t\\) is simply\n\\[\nF(t) = P(T \\leq t) = 1-S(t).\n\\]\nThis is the cumulative distribution function, also called the cumulative incidence in this single-event setting. It starts at zero and increases towards one. If survival to age 60 is about 94%, the probability of dying between ages 18 and 60 is about 6%.\nMoving from \\(S\\) to \\(F\\) changes the question, but adds no information: we are looking at the same population from the other side.\n\n\n\n\n\n\nFigure 2: The same decline viewed as cumulative incidence: about 6% have died by age 60."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/index.html#from-f-to-f-when-do-most-deaths-occur",
+    "href": "posts/261029-survival-circle/index.html#from-f-to-f-when-do-most-deaths-occur",
+    "title": "The circle of survival",
+    "section": "From F to f: when do most deaths occur?",
+    "text": "From F to f: when do most deaths occur?\nThe cumulative incidence tells us how many events have accumulated. To see when they occur, look at how quickly it increases (i.e. its derivative with respect to time). For a continuous event-time distribution with a density,\n\\[\nf(t) = \\frac{d}{dt}F(t) = -\\frac{d}{dt}S(t).\n\\]\n\n\n\n\n\n\nFigure 3: Deaths per year of age peak around age 88, then decline as fewer men remain alive. Points summarize one-year intervals.\n\n\n\nThe density is high where the survival curve falls steeply. In the Dutch life table, deaths are concentrated at older ages, with a peak around age 88. Beyond that, the density falls. Does that mean surviving another year becomes easier after 88?"
+  },
+  {
+    "objectID": "posts/261029-survival-circle/index.html#from-f-to-h-what-about-those-still-alive",
+    "href": "posts/261029-survival-circle/index.html#from-f-to-h-what-about-those-still-alive",
+    "title": "The circle of survival",
+    "section": "From f to h: what about those still alive?",
+    "text": "From f to h: what about those still alive?\nThe density counts deaths relative to the population we started with at age 18. By very old ages, few of those men remain alive. There can therefore be fewer deaths even when the death rate among the survivors continues to rise.\nTo express that rate, divide the density by the fraction still alive:\n\\[\nh(t) = \\frac{f(t)}{S(t)}, \\qquad S(t)&gt;0.\n\\]\nThis is the hazard, sometimes called the force of mortality. It describes the instantaneous event rate among those who have survived to time \\(t\\); if time is measured in years, the hazard has units of events per year.\nWhereas the density eventually falls because the starting population has largely died out; the hazard continues to rise because mortality among the remaining survivors increases.\n\n\n\n\n\n\nFigure 4: Unlike the density, the hazard keeps rising at older ages. Points are interval hazards per year among survivors."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/index.html#from-h-to-h-accumulate-the-hazard",
+    "href": "posts/261029-survival-circle/index.html#from-h-to-h-accumulate-the-hazard",
+    "title": "The circle of survival",
+    "section": "From h to H: accumulate the hazard",
+    "text": "From h to H: accumulate the hazard\nThe next step is to add up the hazard over time:\n\\[\nH(t) = \\int_0^t h(u)\\,du.\n\\]\nThe cumulative hazard starts at zero and never decreases; it measures accumulated hazard.\n\n\n\n\n\n\nFigure 5: Cumulative hazard rises slowly at first, then climbs as the annual hazard increases.\n\n\n\nIts interpretation may feel less immediate than that of survival or cumulative incidence. The final step of the circle gives it a useful meaning: cumulative hazard is survival expressed on a negative log scale."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/index.html#from-h-back-to-s-close-the-circle",
+    "href": "posts/261029-survival-circle/index.html#from-h-back-to-s-close-the-circle",
+    "title": "The circle of survival",
+    "section": "From H back to S: close the circle",
+    "text": "From H back to S: close the circle\nSince \\(f(t)=-S'(t)\\), we can write\n\\[\nh(t)=-\\frac{S'(t)}{S(t)}=-\\frac{d}{dt}\\log S(t).\n\\]\nIntegrating from zero to \\(t\\), and using \\(S(0)=1\\), gives\n\\[\nH(t)=-\\bigl[\\log S(u)\\bigr]_0^t=-\\log S(t).\n\\]\nRearrange this and we are back at the survival curve:\n\\[\n\\boxed{S(t)=e^{-H(t)}}.\n\\]\n\n\n\n\n\n\nFigure 6: Back to survival: transforming the cumulative hazard with exp(−H) recovers the same curve we started with."
+  },
+  {
+    "objectID": "posts/261029-survival-circle/index.html#one-distribution-five-questions",
+    "href": "posts/261029-survival-circle/index.html#one-distribution-five-questions",
+    "title": "The circle of survival",
+    "section": "One distribution, five questions",
+    "text": "One distribution, five questions\nThe completed circle also gives us a way to arrange the five life-table curves. Each panel shows the same distribution from a different angle.\n\n\n\n\n\n\nFigure 7: The same life-table distribution viewed through all five functions. Follow the arrows clockwise from survival at the top centre. Data: CBS StatLine, table 37360ned, 2025, men (CC BY 4.0).\n\n\n\nEach stop on the circle emphasizes a different aspect of the same event-time distribution:\n\n\n\n\n\n\n\nFunction\nQuestion\n\n\n\n\nSurvival \\(S(t)\\)\nWhat fraction survives beyond \\(t\\)?\n\n\nCumulative incidence \\(F(t)\\)\nWhat fraction has experienced the event by \\(t\\)?\n\n\nDensity \\(f(t)\\)\nWhere in time are events concentrated?\n\n\nHazard \\(h(t)\\)\nAt what rate do events occur among those still event-free?\n\n\nCumulative hazard \\(H(t)\\)\nHow much hazard has accumulated by \\(t\\)?\n\n\n\nI like starting with \\(S\\) because “who is still alive?” is an intuitive question. But the circle has no necessary starting point. Many survival analysis models specify a hazard first, integrate it to obtain \\(H\\), and then calculate \\(S=e^{-H}\\). Other models might specify the survival curve directly.\nNor does the circle require a particular parametric family. The derivative and integral relationships used here assume an absolutely continuous event-time distribution; discrete event times and step-function estimates require corresponding adjustments. Within that setting, the circle is a way to reconstruct the relationships from a few operations, instead of remembering five separate definitions.\n\n\n\n\n\n\nNoteAbout the life-table figure\n\n\n\n\n\nThe figures use the data from my slides, based on CBS StatLine table 37360ned, period 2025, men. CBS data are credited under CC BY 4.0.\nThe life table gives survival at whole ages. The plotted density values are annual differences \\(S(t)-S(t+1)\\); the plotted hazard values are \\(-\\log\\{S(t+1)/S(t)\\}\\) per year. These summarize one-year intervals and are plotted at their midpoints, rather than being instantaneous derivatives. The latter equal the constant hazards that would reproduce survival over each interval. The displayed ages stop at the table’s open-ended 99-and-over group."
   },
   {
     "objectID": "talks/260623-cai-marginally-constrained-models-offset/index.html#treatment-decisions-need-individualized-effects",
@@ -3602,6 +3714,6 @@
     "href": "posts.html",
     "title": "Posts",
     "section": "",
-    "text": "General Chair’s notes on Machine Learning for Healthcare 2026\n\n\n\nmachine learning\n\nhealthcare\n\nMLHC\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nWouter van Amsterdam, Rahul G. Krishnan\n\n\n\n\n\n\n\n\n\n\n\n\nFlipping the sign of hazard ratios\n\n\n\nr\n\nsurvival analysis\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJul 4, 2025\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is stronger evidence of prediction model robustness?\n\n\n\nstatistics\n\nprediction\n\ncausal inference\n\n\n\n\n\n\n\n\n\nApr 25, 2025\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nIs the JAMA opening up their language for causal effects?\n\n\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJun 7, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\nr\n\nlinear regression\n\ndata visualization\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\nr\n\njulia\n\njax\n\npython\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\ncausal inference\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\ncausal inference\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\nstatistics\n\nsimulations\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\nNo matching items"
+    "text": "The circle of survival\n\n\n\nsurvival analysis\n\nteaching\n\n\n\nStarting with the survival curve, a trip around the five main functions of survival analysis—and back again.\n\n\n\n\n\nOct 29, 2026\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nGeneral Chair’s notes on Machine Learning for Healthcare 2026\n\n\n\nmachine learning\n\nhealthcare\n\nMLHC\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nWouter van Amsterdam, Rahul G. Krishnan\n\n\n\n\n\n\n\n\n\n\n\n\nFlipping the sign of hazard ratios\n\n\n\nr\n\nsurvival analysis\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJul 4, 2025\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is stronger evidence of prediction model robustness?\n\n\n\nstatistics\n\nprediction\n\ncausal inference\n\n\n\n\n\n\n\n\n\nApr 25, 2025\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nIs the JAMA opening up their language for causal effects?\n\n\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJun 7, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\nr\n\nlinear regression\n\ndata visualization\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\nr\n\njulia\n\njax\n\npython\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\ncausal inference\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\ncausal inference\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\nstatistics\n\nsimulations\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -1,0 +1,48 @@
+```{=html}
+<figure class="circle-panel" aria-labelledby="circle-caption">
+  <div class="circle-card">
+    <p class="circle-eyebrow">The circle of survival</p>
+    <svg class="circle-map" viewBox="0 0 520 310" role="img" aria-labelledby="circle-title circle-description">
+      <title id="circle-title">Five functions, one event-time distribution</title>
+      <desc id="circle-description">Start at survival S at the top. Clockwise: subtract from one to get F, differentiate to get f, divide by S to get h, integrate to get H, then take the negative exponential to return to S.</desc>
+      <defs>
+        <marker id="circle-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--bs-body-color, #343a40)"/></marker>
+        <marker id="circle-arrow-active" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--circle-accent)"/></marker>
+      </defs>
+      <g data-reveal="1" class="circle-node"><text x="260" y="65">S(t)</text></g>
+      <g data-reveal="2">
+        <path class="circle-edge" d="M 302 57 H 396"/>
+        <text class="circle-operation" x="350" y="90">1 − ·</text>
+        <text class="circle-node" x="440" y="65">F(t)</text>
+      </g>
+      <g data-reveal="3">
+        <path class="circle-edge" d="M 440 82 V 227"/>
+        <text class="circle-operation" x="475" y="165">d/dt</text>
+        <text class="circle-node" x="440" y="268">f(t)</text>
+      </g>
+      <g data-reveal="4">
+        <path class="circle-edge" d="M 404 258 H 282"/>
+        <path class="circle-edge" d="M 260 82 V 234"/>
+        <path class="circle-edge" d="M 239 258 H 121"/>
+        <text class="circle-operation" x="302" y="168">(·)<tspan baseline-shift="super" font-size="16">−1</tspan></text>
+        <circle class="circle-junction" cx="260" cy="258" r="17"/>
+        <text class="circle-operation" x="260" y="266">×</text>
+        <text class="circle-node" x="80" y="268">h(t)</text>
+      </g>
+      <g data-reveal="5">
+        <path class="circle-edge" d="M 80 230 V 86"/>
+        <text class="circle-operation" x="41" y="165">∫<tspan baseline-shift="sub" font-size="14">0</tspan><tspan baseline-shift="super" font-size="14">t</tspan></text>
+        <text class="circle-node" x="80" y="65">H(t)</text>
+      </g>
+      <g data-reveal="6">
+        <path class="circle-edge" d="M 123 57 H 217"/>
+        <text class="circle-operation" x="170" y="90">e<tspan baseline-shift="super" font-size="16">−·</tspan></text>
+      </g>
+    </svg>
+    <figcaption id="circle-caption">
+      <span class="circle-progress" aria-hidden="true"></span>
+      <span class="circle-stage-label">One distribution, five connected functions.</span>
+    </figcaption>
+  </div>
+</figure>
+```

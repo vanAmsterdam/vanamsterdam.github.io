@@ -1,0 +1,92 @@
+/* Keep the prose at reading width; the circle occupies its own persistent rail. */
+main.content { max-width: 1140px; margin-inline: auto; }
+main.content > p,
+main.content > section { max-width: 760px; margin-inline: auto; }
+.circle-tour {
+  --circle-accent: #a52b35;
+  --circle-top: 5.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+  margin-block: 3rem;
+}
+.circle-panel {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: var(--circle-top);
+  margin: 0;
+}
+.circle-narrative { grid-column: 1; grid-row: 1; min-width: 0; }
+.circle-card {
+  background: var(--bs-body-bg, white);
+  border: 1px solid var(--bs-border-color, #dce1e4);
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+}
+.circle-eyebrow {
+  margin: 0 0 .5rem;
+  font-size: .75rem;
+  font-weight: 650;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  opacity: .7;
+}
+.circle-map { display: block; width: 100%; height: auto; overflow: visible; }
+.circle-map text { fill: currentColor; text-anchor: middle; font-family: Georgia, serif; }
+.circle-map .circle-node { font-size: 29px; font-style: italic; }
+.circle-operation { font-size: 24px; }
+.circle-edge { fill: none; stroke: currentColor; stroke-width: 1.8; marker-end: url(#circle-arrow); }
+.circle-junction { fill: none; stroke: currentColor; stroke-width: 1.8; }
+.circle-map [data-reveal] { transition: opacity 220ms ease, color 220ms ease; }
+.circle-enhanced [data-reveal].is-future { opacity: 0; visibility: hidden; }
+.circle-enhanced [data-reveal].is-current { color: var(--circle-accent); }
+.circle-enhanced .is-current .circle-edge { marker-end: url(#circle-arrow-active); }
+.circle-panel figcaption { font-size: .82rem; line-height: 1.5; margin-top: .75rem; min-height: 3em; }
+.circle-progress { display: block; font-size: .7rem; opacity: .65; letter-spacing: .05em; }
+.circle-step { padding-block: .5rem 4rem; scroll-margin-top: 7rem; }
+.circle-step h2 { margin-top: 0; font-size: 1.55rem; }
+.circle-step:last-child { padding-bottom: 2rem; }
+/* Reserve room for later plot/equation/constraint panels without pinning them yet. */
+.circle-step .survival-diagram { width: 100%; }
+.circle-step .step-curve {
+  width: 100%;
+  background: white;
+  border-radius: 6px;
+}
+.circle-step div.step-curve { margin-block: 1.5rem; padding: .5rem; }
+.circle-step .step-curve figcaption {
+  color: #48515b;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+[data-bs-theme="dark"] .circle-tour { --circle-accent: #ff9399; }
+body.quarto-dark .circle-tour { --circle-accent: #ff9399; }
+
+@media (max-width: 767px) {
+  .circle-tour { display: flex; flex-direction: column; gap: 1.5rem; --circle-top: 4rem; }
+  .circle-panel { width: 100%; z-index: 10; background: var(--bs-body-bg, white); }
+  .circle-card { padding: .5rem .75rem; border-radius: 8px; }
+  .circle-eyebrow { display: none; }
+  .circle-map { height: clamp(120px, 22vh, 180px); width: 100%; }
+  .circle-panel figcaption { margin-top: 0; min-height: 0; font-size: .75rem; }
+  .circle-progress { display: inline; margin-right: .5rem; }
+  /* Quarto already reserves the navbar via the document's scroll padding. */
+  .circle-step { padding-bottom: 2rem; scroll-margin-top: calc(var(--circle-panel-height, 230px) + 16px); }
+}
+/* On very short screens, leave the complete diagram in the document flow. */
+@media (max-height: 500px) {
+  .circle-panel { position: static; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .circle-map [data-reveal] { transition: none; }
+}
+@media print {
+  .circle-tour { display: block; }
+  .circle-panel { position: static; max-width: 450px; margin: 1rem auto 2rem; }
+  .circle-enhanced [data-reveal].is-future { opacity: 1; visibility: visible; }
+  .circle-enhanced [data-reveal].is-current { color: inherit; }
+  .circle-progress, .circle-stage-label { display: none; }
+  .circle-step { padding-bottom: 1rem; }
+}

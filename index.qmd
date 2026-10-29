@@ -28,6 +28,8 @@ about:
 listing:
   - id: post-listing
     contents: posts
+    exclude:
+      categories: ["unlisted"]
     max-items: 3
     categories: false
     type: grid

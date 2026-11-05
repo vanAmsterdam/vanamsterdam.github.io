@@ -13,6 +13,7 @@
       "/posts/210720-good_predictions_bad_decisions.html",
       "/posts/190816-lm-functional-form.html",
       "/talks/260227-munchen-causalai-workshop/abstract.html",
+      "/talks/261106-effect-measure-stability-unstuck/analysis-draft.html",
       "/talks/260625-kik-marginally-constrained-models-offset/index.html",
       "/talks/260623-cai-marginally-constrained-models-offset/index.html",
       "/talks/260421-montpellier-sfp/index.html",
@@ -40,6 +41,7 @@
     "listing": "/talks.html",
     "items": [
       "/talks/260227-munchen-causalai-workshop/abstract.html",
+      "/talks/261106-effect-measure-stability-unstuck/analysis-draft.html",
       "/talks/260625-kik-marginally-constrained-models-offset/index.html",
       "/talks/260623-cai-marginally-constrained-models-offset/index.html",
       "/talks/260421-montpellier-sfp/index.html",
@@ -66,6 +68,7 @@
   {
     "listing": "/unlisted.html",
     "items": [
+      "/talks/261106-effect-measure-stability-unstuck/index.html",
       "/talks/261005-causalai-4cities-utrecht/index.html",
       "/talks/251201-aimethodslab-causality/index.html",
       "/talks/251027-causalai-4cities-utrecht/index.html",

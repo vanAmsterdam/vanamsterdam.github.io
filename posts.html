@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,18 +41,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-025a952382e6fc8bfaf98513420a17f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-4059b541965342df941e38669b17b3ad.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-025a952382e6fc8bfaf98513420a17f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-412eaa6a28217d49f7f152aa8abab70e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5379c2382e31c7ab0f042fe97c8b4984.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-412eaa6a28217d49f7f152aa8abab70e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,12 +103,6 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
   </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E4W5XMDCR7"></script>
 
@@ -159,7 +154,7 @@ window.Quarto = {
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -182,6 +177,7 @@ window.Quarto = {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -211,13 +207,19 @@ window.Quarto = {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -311,6 +313,7 @@ window.Quarto = {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -325,14 +328,14 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Wouter van Amsterdam</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -352,7 +355,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -365,7 +368,7 @@ window.Quarto = {
         
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="Y2F1c2FsJTIwaW5mZXJlbmNl">causal inference <span class="quarto-category-count">(5)</span></div><div class="category" data-category="ZGF0YSUyMHZpc3VhbGl6YXRpb24=">data visualization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGVhbHRoY2FyZQ==">healthcare <span class="quarto-category-count">(1)</span></div><div class="category" data-category="amF4">jax <span class="quarto-category-count">(1)</span></div><div class="category" data-category="anVsaWE=">julia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGluZWFyJTIwcmVncmVzc2lvbg==">linear regression <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWFjaGluZSUyMGxlYXJuaW5n">machine learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TUxIQw==">MLHC <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJlZGljdGlvbg==">prediction <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJlZGljdGlvbnM=">predictions <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cg==">r <span class="quarto-category-count">(3)</span></div><div class="category" data-category="c2ltdWxhdGlvbiUyMHN0dWRpZXM=">simulation studies <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2ltdWxhdGlvbnM=">simulations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdGlzdGljcw==">statistics <span class="quarto-category-count">(3)</span></div><div class="category" data-category="c3Vydml2YWwlMjBhbmFseXNpcw==">survival analysis <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dGVhY2hpbmc=">teaching <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -393,15 +396,15 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="c3Vydml2YWwlMjBhbmFseXNpcyUyQ3RlYWNoaW5n" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1793267735819" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1174">
-<div class="thumbnail"><a href="./posts/261029-survival-circle/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="0" data-categories="c3Vydml2YWwlMjBhbmFseXNpcyUyQ3RlYWNoaW5n" data-listing-date-sort="1793232000000" data-listing-file-modified-sort="1793916174961" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1174">
+<div class="thumbnail"><a href="./posts/261029-survival-circle/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/261029-survival-circle/images/circle.svg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/261029-survival-circle/index.html" class="no-external">The circle of survival</a>
+<a href="./posts/261029-survival-circle/index.html" class="no-external-icon">The circle of survival</a>
 </h3>
 <div class="listing-categories">
 
@@ -410,12 +413,14 @@ window.Quarto = {
 <div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/261029-survival-circle/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/261029-survival-circle/index.html" class="no-external-icon">
 <p>Starting with the survival curve, a trip around the five main functions of survival analysis—and back again.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/261029-survival-circle/index.html" class="no-external">
+<a href="./posts/261029-survival-circle/index.html" class="no-external-icon">
 <div class="listing-date">
 Oct 29, 2026
 </div>
@@ -425,15 +430,15 @@ Wouter van Amsterdam
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaGVhbHRoY2FyZSUyQ01MSEM=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1793267735771" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="972">
-<div class="thumbnail"><a href="./posts/260908-mlhc-2026-wrapup/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="1" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaGVhbHRoY2FyZSUyQ01MSEM=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1793916174906" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="972">
+<div class="thumbnail"><a href="./posts/260908-mlhc-2026-wrapup/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/260908-mlhc-2026-wrapup/rahul_wouter.png" class="thumbnail-image" alt="Machine Learning for Healthcare 2026 at Johns Hopkins University">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/260908-mlhc-2026-wrapup/index.html" class="no-external">General Chair’s notes on Machine Learning for Healthcare 2026</a>
+<a href="./posts/260908-mlhc-2026-wrapup/index.html" class="no-external-icon">General Chair’s notes on Machine Learning for Healthcare 2026</a>
 </h3>
 <div class="listing-categories">
 
@@ -444,12 +449,14 @@ Wouter van Amsterdam
 <div class="listing-category" onclick="window.quartoListingCategory('TUxIQw=='); return false;">MLHC</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/260908-mlhc-2026-wrapup/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/260908-mlhc-2026-wrapup/index.html" class="no-external-icon">
 The eleventh Machine Learning for Healthcare Conference (MLHC 2026) brought over 250 attendees to Johns Hopkins University for another year of work at the intersection of…
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/260908-mlhc-2026-wrapup/index.html" class="no-external">
+<a href="./posts/260908-mlhc-2026-wrapup/index.html" class="no-external-icon">
 <div class="listing-date">
 Sep 8, 2026
 </div>
@@ -459,15 +466,15 @@ Wouter van Amsterdam, Rahul G. Krishnan
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="ciUyQ3N1cnZpdmFsJTIwYW5hbHlzaXMlMkNjYXVzYWwlMjBpbmZlcmVuY2U=" data-listing-date-sort="1751587200000" data-listing-file-modified-sort="1793267735766" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1060">
-<div class="thumbnail"><a href="./posts/250704-hr-sign-flip.html" class="no-external">
+<div class="quarto-post image-right" data-index="2" data-categories="ciUyQ3N1cnZpdmFsJTIwYW5hbHlzaXMlMkNjYXVzYWwlMjBpbmZlcmVuY2U=" data-listing-date-sort="1751587200000" data-listing-file-modified-sort="1793916174902" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1060">
+<div class="thumbnail"><a href="./posts/250704-hr-sign-flip.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/250704-hr-sign-flip_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/250704-hr-sign-flip.html" class="no-external">Flipping the sign of hazard ratios</a>
+<a href="./posts/250704-hr-sign-flip.html" class="no-external-icon">Flipping the sign of hazard ratios</a>
 </h3>
 <div class="listing-categories">
 
@@ -478,12 +485,14 @@ Wouter van Amsterdam, Rahul G. Krishnan
 <div class="listing-category" onclick="window.quartoListingCategory('Y2F1c2FsJTIwaW5mZXJlbmNl'); return false;">causal inference</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/250704-hr-sign-flip.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/250704-hr-sign-flip.html" class="no-external-icon">
 Hazard ratios are problematic summary measures for survival analysis <span class="citation" data-cites="dumasHowHazardRatios2025 postBuiltinSelectionBias2024 stensrudLimitationsHazardRatios2019 aalenDoesCoxAnalysis2015">(Dumas and Stensrud 2025; Post et al. 2024; Stensrud et al. 2019; Aalen et al. 2015)</span>; even in…
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/250704-hr-sign-flip.html" class="no-external">
+<a href="./posts/250704-hr-sign-flip.html" class="no-external-icon">
 <div class="listing-date">
 Jul 4, 2025
 </div>
@@ -493,15 +502,15 @@ Wouter van Amsterdam
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="c3RhdGlzdGljcyUyQ3ByZWRpY3Rpb24lMkNjYXVzYWwlMjBpbmZlcmVuY2U=" data-listing-date-sort="1745539200000" data-listing-file-modified-sort="1793267735765" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1119">
-<div class="thumbnail"><a href="./posts/250425-robustness/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="3" data-categories="c3RhdGlzdGljcyUyQ3ByZWRpY3Rpb24lMkNjYXVzYWwlMjBpbmZlcmVuY2U=" data-listing-date-sort="1745539200000" data-listing-file-modified-sort="1793916174900" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1119">
+<div class="thumbnail"><a href="./posts/250425-robustness/index.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/250425-robustness/min-transport.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/250425-robustness/index.html" class="no-external">What is stronger evidence of prediction model robustness?</a>
+<a href="./posts/250425-robustness/index.html" class="no-external-icon">What is stronger evidence of prediction model robustness?</a>
 </h3>
 <div class="listing-categories">
 
@@ -512,12 +521,14 @@ Wouter van Amsterdam
 <div class="listing-category" onclick="window.quartoListingCategory('Y2F1c2FsJTIwaW5mZXJlbmNl'); return false;">causal inference</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/250425-robustness/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/250425-robustness/index.html" class="no-external-icon">
 We’re evaluating a prediction model <span class="math inline">\(f\)</span> that takes features <span class="math inline">\(X\)</span> to predict binary outcome <span class="math inline">\(Y\)</span>. We’d like the model to be <em>robust</em>, meaning that it’s predictive…<em></em>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/250425-robustness/index.html" class="no-external">
+<a href="./posts/250425-robustness/index.html" class="no-external-icon">
 <div class="listing-date">
 Apr 25, 2025
 </div>
@@ -527,27 +538,29 @@ Wouter van Amsterdam
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="Y2F1c2FsJTIwaW5mZXJlbmNl" data-listing-date-sort="1717718400000" data-listing-file-modified-sort="1793267735759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="414">
-<div class="thumbnail"><a href="./posts/240607-jama-causal-language/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="4" data-categories="Y2F1c2FsJTIwaW5mZXJlbmNl" data-listing-date-sort="1717718400000" data-listing-file-modified-sort="1793916174892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="414">
+<div class="thumbnail"><a href="./posts/240607-jama-causal-language/index.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/240607-jama-causal-language/8tdpee.jpg"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/240607-jama-causal-language/index.html" class="no-external">Is the JAMA opening up their language for causal effects?</a>
+<a href="./posts/240607-jama-causal-language/index.html" class="no-external-icon">Is the JAMA opening up their language for causal effects?</a>
 </h3>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('Y2F1c2FsJTIwaW5mZXJlbmNl'); return false;">causal inference</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/240607-jama-causal-language/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/240607-jama-causal-language/index.html" class="no-external-icon">
 Randomized controlled trials (RCTs) measure the <em>causal effect</em> of interventions, but results from observational studies should be interpreted as mere <em>associations</em>, right? In…
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/240607-jama-causal-language/index.html" class="no-external">
+<a href="./posts/240607-jama-causal-language/index.html" class="no-external-icon">
 <div class="listing-date">
 Jun 7, 2024
 </div>
@@ -557,15 +570,15 @@ Wouter van Amsterdam
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="ciUyQ2xpbmVhciUyMHJlZ3Jlc3Npb24lMkNkYXRhJTIwdmlzdWFsaXphdGlvbg==" data-listing-date-sort="1711065600000" data-listing-file-modified-sort="1793267735758" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526">
-<div class="thumbnail"><a href="./posts/240322-mice-partial-residual-plot.html" class="no-external">
+<div class="quarto-post image-right" data-index="5" data-categories="ciUyQ2xpbmVhciUyMHJlZ3Jlc3Npb24lMkNkYXRhJTIwdmlzdWFsaXphdGlvbg==" data-listing-date-sort="1711065600000" data-listing-file-modified-sort="1793916174892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526">
+<div class="thumbnail"><a href="./posts/240322-mice-partial-residual-plot.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/240322-mice-partial-residual-plot_files/figure-html/fig-partialresidualplot-1.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/240322-mice-partial-residual-plot.html" class="no-external">Partial residual plots with multiply imputed data</a>
+<a href="./posts/240322-mice-partial-residual-plot.html" class="no-external-icon">Partial residual plots with multiply imputed data</a>
 </h3>
 <div class="listing-categories">
 
@@ -576,12 +589,14 @@ Wouter van Amsterdam
 <div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHZpc3VhbGl6YXRpb24='); return false;">data visualization</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/240322-mice-partial-residual-plot.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/240322-mice-partial-residual-plot.html" class="no-external-icon">
 In an earlier blog post I show how to plot the dependence of a response variable on covariate, both conditional on other covariates with a partial residual plot In this post…<code></code>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/240322-mice-partial-residual-plot.html" class="no-external">
+<a href="./posts/240322-mice-partial-residual-plot.html" class="no-external-icon">
 <div class="listing-date">
 Mar 22, 2024
 </div>
@@ -591,15 +606,15 @@ Wouter van Amsterdam
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="ciUyQ2p1bGlhJTJDamF4JTJDcHl0aG9uJTJDc2ltdWxhdGlvbiUyMHN0dWRpZXM=" data-listing-date-sort="1709856000000" data-listing-file-modified-sort="1793267735758" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2624">
-<div class="thumbnail"><a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="6" data-categories="ciUyQ2p1bGlhJTJDamF4JTJDcHl0aG9uJTJDc2ltdWxhdGlvbiUyMHN0dWRpZXM=" data-listing-date-sort="1709856000000" data-listing-file-modified-sort="1793916174892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2624">
+<div class="thumbnail"><a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/240308-jaxopt-vs-r-vs-julia/index_files/figure-html/fig-times-1.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external">The need for speed, performing simulation studies in R, JAX and Julia</a>
+<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external-icon">The need for speed, performing simulation studies in R, JAX and Julia</a>
 </h3>
 <div class="listing-categories">
 
@@ -614,12 +629,14 @@ Wouter van Amsterdam
 <div class="listing-category" onclick="window.quartoListingCategory('c2ltdWxhdGlvbiUyMHN0dWRpZXM='); return false;">simulation studies</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external-icon">
 Simulation experiments are important when evaluating methods but also for applied work in for example power analyses <span class="citation" data-cites="vanamsterdamAssociationMuscleQuantity2022">(e.g. Amsterdam, Harlianto, et al. 2022)</span> or sensitivity…<span class="citation" data-cites="vanamsterdamIndividualTreatmentEffect2022"></span>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external">
+<a href="./posts/240308-jaxopt-vs-r-vs-julia/index.html" class="no-external-icon">
 <div class="listing-date">
 Mar 8, 2024
 </div>
@@ -629,15 +646,15 @@ Wouter van Amsterdam
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="Y2F1c2FsJTIwaW5mZXJlbmNlJTJDc3RhdGlzdGljcw==" data-listing-date-sort="1627171200000" data-listing-file-modified-sort="1793267735757" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687">
-<div class="thumbnail"><a href="./posts/210725-counterfactualvsinterventional.html" class="no-external">
+<div class="quarto-post image-right" data-index="7" data-categories="Y2F1c2FsJTIwaW5mZXJlbmNlJTJDc3RhdGlzdGljcw==" data-listing-date-sort="1627171200000" data-listing-file-modified-sort="1793916174892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687">
+<div class="thumbnail"><a href="./posts/210725-counterfactualvsinterventional.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/210725-counterfactualvsinterventional.html" class="no-external">The difference between intervention and counterfactuals</a>
+<a href="./posts/210725-counterfactualvsinterventional.html" class="no-external-icon">The difference between intervention and counterfactuals</a>
 </h3>
 <div class="listing-categories">
 
@@ -646,12 +663,14 @@ Wouter van Amsterdam
 <div class="listing-category" onclick="window.quartoListingCategory('c3RhdGlzdGljcw=='); return false;">statistics</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/210725-counterfactualvsinterventional.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/210725-counterfactualvsinterventional.html" class="no-external-icon">
 Sometimes there is confusion about the difference between counterfactual predictions and interventional predictions. According to the ladder of causation introduced by Pearl…<span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/210725-counterfactualvsinterventional.html" class="no-external">
+<a href="./posts/210725-counterfactualvsinterventional.html" class="no-external-icon">
 <div class="listing-date">
 Jul 25, 2021
 </div>
@@ -661,15 +680,15 @@ Wouter van Amsterdam
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="Y2F1c2FsJTIwaW5mZXJlbmNlJTJDcHJlZGljdGlvbnM=" data-listing-date-sort="1626739200000" data-listing-file-modified-sort="1793267735757" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1226">
-<div class="thumbnail"><a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external">
+<div class="quarto-post image-right" data-index="8" data-categories="Y2F1c2FsJTIwaW5mZXJlbmNlJTJDcHJlZGljdGlvbnM=" data-listing-date-sort="1626739200000" data-listing-file-modified-sort="1793916174892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1226">
+<div class="thumbnail"><a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external-icon" aria-hidden="true" tabindex="-1">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external">When good predictions lead to bad decisions</a>
+<a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external-icon">When good predictions lead to bad decisions</a>
 </h3>
 <div class="listing-categories">
 
@@ -678,12 +697,14 @@ Wouter van Amsterdam
 <div class="listing-category" onclick="window.quartoListingCategory('cHJlZGljdGlvbnM='); return false;">predictions</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external-icon">
 A common premise in prediction research for clinical outcomes is that better predictions lead to better (informed) decisions. This causal statement, that the intervention of…
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external">
+<a href="./posts/210720-good_predictions_bad_decisions.html" class="no-external-icon">
 <div class="listing-date">
 Jul 20, 2021
 </div>
@@ -693,15 +714,15 @@ Wouter van Amsterdam
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="c3RhdGlzdGljcyUyQ3NpbXVsYXRpb25zJTJDbGluZWFyJTIwcmVncmVzc2lvbg==" data-listing-date-sort="1565913600000" data-listing-file-modified-sort="1793267735757" data-listing-date-modified-sort="1711065600000" data-listing-reading-time-sort="2" data-listing-word-count-sort="357">
-<div class="thumbnail"><a href="./posts/190816-lm-functional-form.html" class="no-external">
+<div class="quarto-post image-right" data-index="9" data-categories="c3RhdGlzdGljcyUyQ3NpbXVsYXRpb25zJTJDbGluZWFyJTIwcmVncmVzc2lvbg==" data-listing-date-sort="1565913600000" data-listing-file-modified-sort="1793916174890" data-listing-date-modified-sort="1711065600000" data-listing-reading-time-sort="2" data-listing-word-count-sort="357">
+<div class="thumbnail"><a href="./posts/190816-lm-functional-form.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/190816-lm-functional-form_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/190816-lm-functional-form.html" class="no-external">Finding the functional form for multiple linear regression</a>
+<a href="./posts/190816-lm-functional-form.html" class="no-external-icon">Finding the functional form for multiple linear regression</a>
 </h3>
 <div class="listing-categories">
 
@@ -712,12 +733,14 @@ Wouter van Amsterdam
 <div class="listing-category" onclick="window.quartoListingCategory('bGluZWFyJTIwcmVncmVzc2lvbg=='); return false;">linear regression</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/190816-lm-functional-form.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/190816-lm-functional-form.html" class="no-external-icon">
 A frequent question that comes up when modeling continuous outcomes with multiple linear regression is what the correct functional form for the relationship between the…
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/190816-lm-functional-form.html" class="no-external">
+<a href="./posts/190816-lm-functional-form.html" class="no-external-icon">
 <div class="listing-date">
 Aug 16, 2019
 </div>
@@ -734,15 +757,50 @@ Wouter van Amsterdam
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -821,7 +879,8 @@ Wouter van Amsterdam
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -830,8 +889,69 @@ Wouter van Amsterdam
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -845,6 +965,7 @@ Wouter van Amsterdam
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1007,44 +1128,54 @@ Wouter van Amsterdam
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1142,6 +1273,9 @@ Wouter van Amsterdam
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 <footer class="footer">

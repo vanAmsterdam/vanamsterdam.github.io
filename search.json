@@ -25,7 +25,7 @@
     "href": "index.html#talks",
     "title": "Wouter van Amsterdam, MD, PhD",
     "section": "Talks",
-    "text": "Talks\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n\n\nJun 25, 2026\n\n\nMarginally Constrained Models and Treatment Offset Models\n\n\nCATE estimation from observational data plus randomized evidence\n\n\n\n\n\n\nJun 23, 2026\n\n\nMarginally Constrained Models and Treatment Offset Models\n\n\nCATE estimation from observational data plus randomized evidence\n\n\n\n\n\n\nApr 21, 2026\n\n\nWhen accurate prediction models yield harmful self-fulfilling prophecies\n\n\nPremedical Team, Inria, Montpellier, France\n\n\n\n\n\n\nFeb 27, 2026\n\n\nFrom prediction to treatment decision: aligning development, evaluation and monitoring\n\n\nCausal ML in Medicine Workshop, Munich, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Talks\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n\n\n \n\n\nEffect measure stability: analysis draft\n\n\n \n\n\n\n\n\n\nJun 25, 2026\n\n\nMarginally Constrained Models and Treatment Offset Models\n\n\nCATE estimation from observational data plus randomized evidence\n\n\n\n\n\n\nJun 23, 2026\n\n\nMarginally Constrained Models and Treatment Offset Models\n\n\nCATE estimation from observational data plus randomized evidence\n\n\n\n\n\n\nApr 21, 2026\n\n\nWhen accurate prediction models yield harmful self-fulfilling prophecies\n\n\nPremedical Team, Inria, Montpellier, France\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#teaching",
@@ -67,7 +67,119 @@
     "href": "talks.html",
     "title": "Talks",
     "section": "",
-    "text": "Here is a selection of my talks.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n\n\nJun 25, 2026\n\n\nMarginally Constrained Models and Treatment Offset Models\n\n\nCATE estimation from observational data plus randomized evidence\n\n\n\n\n\n\nJun 23, 2026\n\n\nMarginally Constrained Models and Treatment Offset Models\n\n\nCATE estimation from observational data plus randomized evidence\n\n\n\n\n\n\nApr 21, 2026\n\n\nWhen accurate prediction models yield harmful self-fulfilling prophecies\n\n\nPremedical Team, Inria, Montpellier, France\n\n\n\n\n\n\nFeb 27, 2026\n\n\nFrom prediction to treatment decision: aligning development, evaluation and monitoring\n\n\nCausal ML in Medicine Workshop, Munich, 2026\n\n\n\n\n\n\nDec 2, 2025\n\n\nSelf-fulfilling prophecies: But is the prophet heard?\n\n\nSeminar on Prediction Under Intervention(s), Leiden\n\n\n\n\n\n\nAug 25, 2025\n\n\nFrom prediction to treatment decision: aligning development, evaluation and monitoring\n\n\nISCB session ‘Prediction modelling meets causal inference for clinical decision making’\n\n\n\n\n\n\nMay 22, 2025\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nHuman Data Science ‘Content Meeting’\n\n\n\n\n\n\nApr 17, 2025\n\n\nCausal Data Science in Utrecht: causality for prediction model generalization\n\n\nApplied Data Science event Utrecht University\n\n\n\n\n\n\nJan 27, 2025\n\n\nmy priorities for AI in health\n\n\nDagstuhl Seminar 2025\n\n\n\n\n\n\nNov 25, 2024\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nMethods meeting at the Julius Center, UMC Utrecht\n\n\n\n\n\n\nNov 6, 2024\n\n\nPearl Causal Hierarchy\n\n\nCausal Inference at Julius reading group\n\n\n\n\n\n\nSep 26, 2024\n\n\nAn introduction to AI for biostatisticians\n\n\nBMS-Aned seminar\n\n\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\n\n\nApr 18, 2024\n\n\nAI and its (mis)uses in medical research and practice\n\n\nInfection and Immunity spring meeting\n\n\n\n\n\n\nAug 10, 2023\n\n\nThe value of observational causal inference for medical decision making\n\n\nMLHC causality pre-conference workshop\n\n\n\n\n\n\nJun 24, 2023\n\n\nMy risk model is super accurate so it will be useful for treatment decision making, right? Wrong!\n\n\nCHIL 2023 - lightning talk\n\n\n\n\n\n\nMar 1, 2023\n\n\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies\n\n\nSeminar at Manchester University\n\n\n\n\n\n\nNo matching items"
+    "text": "Here is a selection of my talks.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\n \n\n\n \n\n\n \n\n\n\n\n\n\n \n\n\nEffect measure stability: analysis draft\n\n\n \n\n\n\n\n\n\nJun 25, 2026\n\n\nMarginally Constrained Models and Treatment Offset Models\n\n\nCATE estimation from observational data plus randomized evidence\n\n\n\n\n\n\nJun 23, 2026\n\n\nMarginally Constrained Models and Treatment Offset Models\n\n\nCATE estimation from observational data plus randomized evidence\n\n\n\n\n\n\nApr 21, 2026\n\n\nWhen accurate prediction models yield harmful self-fulfilling prophecies\n\n\nPremedical Team, Inria, Montpellier, France\n\n\n\n\n\n\nFeb 27, 2026\n\n\nFrom prediction to treatment decision: aligning development, evaluation and monitoring\n\n\nCausal ML in Medicine Workshop, Munich, 2026\n\n\n\n\n\n\nDec 2, 2025\n\n\nSelf-fulfilling prophecies: But is the prophet heard?\n\n\nSeminar on Prediction Under Intervention(s), Leiden\n\n\n\n\n\n\nAug 25, 2025\n\n\nFrom prediction to treatment decision: aligning development, evaluation and monitoring\n\n\nISCB session ‘Prediction modelling meets causal inference for clinical decision making’\n\n\n\n\n\n\nMay 22, 2025\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nHuman Data Science ‘Content Meeting’\n\n\n\n\n\n\nApr 17, 2025\n\n\nCausal Data Science in Utrecht: causality for prediction model generalization\n\n\nApplied Data Science event Utrecht University\n\n\n\n\n\n\nJan 27, 2025\n\n\nmy priorities for AI in health\n\n\nDagstuhl Seminar 2025\n\n\n\n\n\n\nNov 25, 2024\n\n\nA causal viewpoint on prediction model performance under changes in case-mix\n\n\nMethods meeting at the Julius Center, UMC Utrecht\n\n\n\n\n\n\nNov 6, 2024\n\n\nPearl Causal Hierarchy\n\n\nCausal Inference at Julius reading group\n\n\n\n\n\n\nSep 26, 2024\n\n\nAn introduction to AI for biostatisticians\n\n\nBMS-Aned seminar\n\n\n\n\n\n\nJul 8, 2024\n\n\nMedical imaging and AI for decision support\n\n\nMedical Imaging AI lab meeting\n\n\n\n\n\n\nMay 30, 2024\n\n\nUses and pitfalls with AI for decision support - harmful self-fulfilling prophecies\n\n\nWEON masterclass 2024 - AI-based prediction models in healthcare: from development to implementation\n\n\n\n\n\n\nMay 16, 2024\n\n\nCausality and prediction: developing and validating models for decision making\n\n\nCausal Data Science Special Interest Group - Utrecht\n\n\n\n\n\n\nMay 15, 2024\n\n\nDecision support based on AI in medical imaging\n\n\nAI in medical imaging (AIBIA) parallel session\n\n\n\n\n\n\nMay 7, 2024\n\n\nAn intro to causal inference and its uses in radiotherapy\n\n\nESTRO - Understanding dose-effects: Can we go beyond association - symposium\n\n\n\n\n\n\nApr 18, 2024\n\n\nAI and its (mis)uses in medical research and practice\n\n\nInfection and Immunity spring meeting\n\n\n\n\n\n\nAug 10, 2023\n\n\nThe value of observational causal inference for medical decision making\n\n\nMLHC causality pre-conference workshop\n\n\n\n\n\n\nJun 24, 2023\n\n\nMy risk model is super accurate so it will be useful for treatment decision making, right? Wrong!\n\n\nCHIL 2023 - lightning talk\n\n\n\n\n\n\nMar 1, 2023\n\n\nIndividual treatment effect estimation in the presence of unobserved confounding using proxies\n\n\nSeminar at Manchester University\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#why-this-discussion",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#why-this-discussion",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Why this discussion?",
+    "text": "Why this discussion?\n\nWe are stuck: several analyses, mixed findings, and a potentially negative empirical result.\nSome difficulties concern the estimators; others may concern the scientific assumptions or the available data.\nWe want to turn this work into a coherent paper, with a clear question and an honest account of what we learned.\n\nToday: which findings belong in that paper, and what still needs resolving?\n\nThis is a methodological discussion, not a finished positive-results presentation. A negative result is a possible outcome, not a conclusion established in advance. The aim is to identify a defensible contribution rather than to include every implementation simply because work went into it."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#three-questions",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#three-questions",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Three empirical questions",
+    "text": "Three empirical questions\nUnder monotonicity and constant mechanism strength, the direction-matched scale is stable across baseline risks.\n\n\n\n\n\n\n\nQuestion\nEmpirical target\n\n\n\n\nHeterogeneity\nIs between-trial variation smaller on the matched scale?\n\n\nCoupling\nIs the matched effect less associated with baseline risk?\n\n\nPrediction\nDoes matching improve prediction of another trial?\n\n\n\nMatched = RR for an expected decrease in \\(P(Y=1)\\); SR for an expected increase.\n\nThese are different estimands, not interchangeable tests of individual-level monotonicity. Constancy requires an additional assumption about mechanism strength; monotonicity alone is insufficient. Predictive comparisons depend on estimation, target information and loss as well as the data-generating relationship."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#heterogeneity-analysis",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#heterogeneity-analysis",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Heterogeneity: analysis",
+    "text": "Heterogeneity: analysis\nObserved data\n\nFit each MA on both RR and SR scales; compare between-trial heterogeneity.\nClassical analyses: paired comparisons and a second-stage mixed model with MA and review random intercepts.\nBayesian extensions: per-MA fits followed by an across-MA model, or a joint single-stage hierarchy.\n\n\\[\n\\theta_m=\\log(\\tau_{m,\\mathrm{matched}})\n          -\\log(\\tau_{m,\\mathrm{mismatched}}).\n\\]\nNegative values favor the matched scale.\nImplementation and dependence\n\nThe displayed log-SD contrast expresses the Bayesian heterogeneity target. The classical paired implementation uses log(tau2_matched + 1e-6) minus log(tau2_mismatched + 1e-6), not this exact formula. Sources: analysis/01_primary.R, analysis/03_hierarchical.R, and analysis/bayesian_heterogeneity_{two,single}_stage.ipynb in effect-measure-stability. The classical paired sample has 104 MAs and requires at least 3 studies, not the later 5-trial threshold. The Bayesian hierarchy does not itself encode shared-review/shared-trial clustering."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#heterogeneity-what-we-learned",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#heterogeneity-what-we-learned",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Heterogeneity: what we learned",
+    "text": "Heterogeneity: what we learned\nObserved data · paired comparison\n\nMany estimates are tied at zero; the answer is sensitive to the estimator.\nThe early simulation assessed the paired test under a stylized design—not the entire analysis pipeline.\n\nSource: output/tables/primary_results.csv. Matched lower/tied/higher proportions are computed from saved paired contrasts. One-sided paired Wilcoxon p values: GLMM 0.941; metabin REML 0.652. These do not establish equivalence. Mixed-model results and Bayesian analyses are separate; this figure does not summarize all of them. simulation/simulation_calibration.R evaluates the paired heterogeneity test and explicitly skips the hierarchical model. It uses 500 MAs, 5–20 trials and 200 people per arm, not the empirical sparse-event design. The draft paper reports calibration results; a separate saved replicate-level result was not located."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#coupling-analysis",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#coupling-analysis",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Baseline coupling: a more direct target",
+    "text": "Baseline coupling: a more direct target\nLet \\(\\alpha=\\operatorname{logit}(p_C)\\) and \\(\\beta=\\log(\\mathrm{RR})\\) or \\(\\log(\\mathrm{SR})\\).\n\\[\n\\kappa_m=\\frac{\\operatorname{Cov}_m(\\alpha,\\beta)}\n                   {\\operatorname{Var}_m(\\alpha)}.\n\\]\n\n\n\nExpected direction\nRR slope\nSR slope\n\n\n\n\nDecrease\n\\(0\\)\npositive\n\n\nIncrease\nnegative\n\\(0\\)\n\n\n\nClassical regression uses observed control rates; Bayesian approaches estimate latent probabilities and their coupling.\nDifficulty: control data enter both the baseline estimate and the effect estimate.\n\nThe displayed slope is the equal-study finite-MA projection used in the later coupling analyses, assuming baseline variation is nonzero. It is not a claim that both relationships are linear. Classical meta-regression uses observed probability rather than logit baseline; its primary comparison is absolute z-statistics, with slope magnitude as sensitivity. Shared estimation error can induce association; baseline measurement error is not simply independent classical error here. Sources: analysis/02_secondary.R; docs/independent_binomial_coupling_methods.md; docs/baseline_coupling_revision_design.md. Strict signs require positive mechanism strength and variation in baseline risk; under no effect both slopes are zero."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#coupling-can-we-recover-the-known-truth",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#coupling-can-we-recover-the-known-truth",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Coupling: can we recover the known truth?",
+    "text": "Coupling: can we recover the known truth?\nSimulation · independent-binomial estimator\n\nFor the matched decrease/RR slope: truth 0, mean estimate −0.291, nominal 95% interval coverage 0/200.\n\nSource: output/independent_binomial_coupling_direction_v2/report/evaluation/recovery.csv. Selection: mechanism_010_0.8__perfect, prior 2, four cell means. Each point is a mean across 200 replicates; no uncertainty bars are implied. 35-MA/361-trial design, original arm sizes, baseline-logit SD 0.8, constant mechanism strength 0.10, correct expected-direction labels. This demonstrates failure of this estimator under these settings. It does not show that the scientific prediction is false or that every estimator must fail."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#coupling-what-additional-information-changes",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#coupling-what-additional-information-changes",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Coupling: what additional information changes",
+    "text": "Coupling: what additional information changes\nSimulation · independent-binomial estimator\n\n\n\n\n\n\n\n\nNumber of MAs\nBias of matched decrease/RR slope\nMean 95% interval width\n\n\n\n\n35\n−0.285\n0.209\n\n\n140\n−0.291\n0.107\n\n\n350\n−0.288\n0.067\n\n\n\nMore similar MAs narrowed intervals without removing within-MA bias.\nLarger arms improved recovery in broad-baseline settings. Alternative estimators still faced weak information, bias or computational problems.\nEstimator revisions and simulations\n\nSource: docs/more_meta_analyses_results.md. Constant mechanism 0.10, baseline-logit SD 0.80, original participants/trial and trials/MA, 50 replicates per setting. Coverage for this cell was 0/50 at each MA count. The separate information study varied participants by factors 10 and 100 and trials per MA by factor 4; substantial improvement at 100-times participants does not establish feasibility at the actual design. Alternative studies evaluated corrected moments, Fieller sets, independent Beta priors and within-MA pooling. Do not conflate their diagnostics with this no-pooling estimator."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#prediction-analysis",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#prediction-analysis",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Prediction: does scale choice help?",
+    "text": "Prediction: does scale choice help?\nSource trials in an MA → fit RR, SR or OR model\nHeld-out control data → estimate the target baseline\nPredict held-out treated outcome → score after prediction\n\\[\n\\Delta L=L_{\\mathrm{comparator}}-L_{\\mathrm{matched}}.\n\\]\n\nPositive values favor matching, on a common treated-probability scale.\nAverage held-out losses within MA, then weight MAs equally.\nSeparate random-effects prediction from the later constant-effect curve analysis.\n\n\nThe held-out treated count is excluded from fitting and prediction, but the held-out control count is available. This is not prediction with no target information. Matched is defined by the supplied direction label, not observed prediction performance. Sources: docs/real_rct_prediction_protocol_v1.md and docs/monotonicity_validation_protocol_v3.md. Simulation can score latent treated probabilities; actual data score observed treated proportions. Paired expected loss differences agree under the held-out binomial task, but observed losses retain sampling uncertainty."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#random-effects-prediction-simulation",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#random-effects-prediction-simulation",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Random-effects prediction: simulation",
+    "text": "Random-effects prediction: simulation\nSimulation · exact-binomial RR/SR/OR models\n\n\nSource: output/new_rct_prediction/v1/results/performance_contrasts.csv. Base prior, no target baseline shift, target controls available, latent MSE contrast, opposite-scale comparator. Four selected generators C2/V1/V4/O1, 400 evaluation collections each. Each panel has its own y-axis range. The broader study completed 9,600 collection jobs across reference/evaluation and prior streams; these are not 9,600 independent replications of one contrast. Each MA contributes two held-out targets per simulation collection. Target uncertainty includes a new random effect; RR/SR distributions respect probability constraints. Mean-performance intervals undercovered in some scenarios; Monte Carlo intervals in this plot quantify simulation precision, not uncertainty for one observed-data sample."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#random-effects-prediction-observed-data",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#random-effects-prediction-observed-data",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Random-effects prediction: observed data",
+    "text": "Random-effects prediction: observed data\nObserved data · 35 MAs, 361 held-out trials\n\n\n\nComparator\nMean MSE improvement from matching\n\n\n\n\nOpposite scale\n+14.95\n\n\nOR\n+2.29\n\n\n\nUnits: squared percentage points; positive favors matching.\n\nDescriptive mean errors favor matching, but the comparison depends on direction and loss function.\nAverage-performance intervals were not adequately calibrated across simulation settings.\nThese results do not establish predictive superiority or identify a causal mechanism.\n\nPrediction methods and calibration\n\nSource: output/real_rct_prediction/v1/results.md; 24 decrease and 11 increase MAs. Full leave-one-trial-out evaluation, equal-MA overall aggregation. Against OR, direction-specific squared-error improvements are +5.28 for decrease and −4.24 for increase. Overall log-score improvement against OR is −0.031, illustrating dependence on loss. The source model uses exact binomial random effects; later constant-curve prediction uses a different estimator and sample. Selection: likely/certain, known direction, at least five distinct trials, one MA per review, no shared corrected trial identities. Zero/all-event arms retained."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#constant-effect-curves-fit-and-prediction",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#constant-effect-curves-fit-and-prediction",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Constant-effect curves: fit and prediction",
+    "text": "Constant-effect curves: fit and prediction\nObserved data · later profile-likelihood analysis\n\nNo demonstrated average advantage over OR; the predictive interval failed its sample-size-specific calibration gate.\nStrict constant-directional fit flagged 10/31 likely/certain and 16/60 unlikely MAs after nominal BH correction.\n\nSources: output/monotonicity_validation/v3/real_ma_results.csv and docs/monotonicity_validation_results.md. 31 likely/certain MAs (314 trials), 60 unlikely MAs (644 trials). A different selected sample from the October 35-MA random-effects analysis. Profile likelihood fits constant RR/SR/OR; target baseline averaged under a support-conditioned Jeffreys posterior. Separate bootstrap test constrains the matched log ratio to be nonpositive. 480,000 independent simulated MA datasets plus 1,200 bootstrap-calibration MAs. Nominal 95% predictive coverage at 31 MAs ranged 87.5–95.0%; approximate bootstrap rejection calibration ranged 4–8.5% under nominal 5%. The observed mean advantage is −0.000197 squared probability (about −1.97 squared percentage points). The unvalidated interval is not shown as a calibrated confidence interval. Fit rejections concern constant effect plus expected direction, not individual-level monotonicity alone. Failure to reject does not establish either assumption."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#paper-discussion",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#paper-discussion",
+    "title": "Effect measure stability: analysis draft",
+    "section": "What would make a coherent paper?",
+    "text": "What would make a coherent paper?\nCandidate question: does expected treatment direction help choose an effect scale for evidence synthesis?\n\nEmpirical assessment: heterogeneity and prediction results are mixed; selection and uncertainty matter.\nMethodological finding: intuitive coupling diagnostics can fail even when the generating assumptions hold.\nPossible contribution: explain when scale matching helps, when estimation obscures it, and what these data cannot establish.\n\nDiscussion: which endpoint should lead—and what minimum additional work would make the conclusion defensible?\n\nPotential paper structure: theoretical motivation; empirical sample and external labels; one main endpoint; simulations tied to that endpoint; empirical evaluation; limitations and implications. Ask specifically about shared-control estimation error, uncertainty for equal-MA predictive comparisons, and robustness to direction/monotonicity labels. Do not turn every implementation into a co-primary analysis. Label exploratory revisions and historical versions transparently. A potential negative empirical result can be publishable without claiming the underlying theory is disproved."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#analysis-details",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#analysis-details",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Implementation and dependence",
+    "text": "Implementation and dependence\n\n\n\n\n\n\n\nAnalysis\nDependence handling\n\n\n\n\nClassical paired tests\nRR/SR paired within MA\n\n\nSecond-stage heterogeneity mixed model\nMA and review random intercepts\n\n\nBayesian heterogeneity notebooks\nAcross-MA hierarchy; no explicit review/shared-trial effect\n\n\nLater coupling/prediction samples\nOne MA per review; exclude repeated corrected trial IDs\n\n\n\nReview effects do not encode the exact covariance from shared trials across reviews.\nBack to heterogeneity"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#coupling-variants",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#coupling-variants",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Coupling variants and their status",
+    "text": "Coupling variants and their status\n\n\n\n\n\n\n\n\nApproach\nWhat was done\nMain limitation\n\n\n\n\nShared-binomial v2\n91-MA empirical fit; development simulations\nStrict diagnostic failure; incomplete recovery checks\n\n\nIndependent arms\nLarge simulation panels; label/information variations\nBiased slopes and poor coverage\n\n\nCorrected moments / Fieller\nSmall development panels\nUndefined points or unbounded intervals\n\n\nWithin-MA pooling\n60 collections each at 35 and 350 MAs\nOnly 14/60 and 3/60 passed original diagnostics\n\n\n\nBack to coupling\n\nSources: docs/coupling_revision_v2_report_20260917.md; docs/independent_binomial_coupling_report.md; docs/coupling_interval_bayesian_development_20260923.md; docs/coupling_shared_binomial_v1_feasibility_20260923.md; docs/coupling_shared_binomial_ma350_review_20260928.md. The 350-MA result uses the original strict diagnostic screen; 23/60 passed a post hoc relaxed screen. Completed computation is not successful calibration."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#prediction-details",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#prediction-details",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Prediction methods and calibration",
+    "text": "Prediction methods and calibration\n\n\n\n\n\n\n\nMethod\nTarget and uncertainty\n\n\n\n\nEarly feasibility benchmark\nTransport mean log effect to known target baseline; no new-trial random effect\n\n\nOctober random-effects models\nNew target effect plus baseline uncertainty; RR/SR/OR\n\n\nNovember constant-effect curves\nCommon-effect point fit; baseline uncertainty; separate bootstrap fit test\n\n\n\nThe later simulations evaluate different procedures; they do not validate the earlier ones retrospectively.\nBack to prediction"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#analysis-populations",
+    "href": "talks/261106-effect-measure-stability-unstuck/analysis-draft.html#analysis-populations",
+    "title": "Effect measure stability: analysis draft",
+    "section": "Analysis populations",
+    "text": "Analysis populations\n\n\n\nDataset / analysis\nMA count\n\n\n\n\nDescriptive canonical export\n1,291\n\n\nAt least five distinct RCTs\n389\n\n\nCertain/likely monotonic, at least five RCTs\n65\n\n\nSame, known direction\n54\n\n\nOctober prediction: selected independent MAs\n35\n\n\nNovember curves: selected likely/certain MAs\n31\n\n\n\nDifferent versions use different selection rules and samples; these are not interchangeable denominators.\nBack to discussion\n\nThe 35- versus 31-MA sets come from separate frozen selection workflows; this table is not a single sequential attrition flow. The November analysis additionally includes 60 unlikely MAs. The earlier paired heterogeneity result uses 104 MAs under its own &gt;=3-study criterion. Sources: figs/exploratory/provenance.json; docs/real_rct_prediction_protocol_v1.md; docs/monotonicity_validation_results.md."
   },
   {
     "objectID": "talks/240515-aibia-ai-medical-imaging-decision-support/index.html#outline",
@@ -3703,17 +3815,304 @@
     "text": "Utrecht overlap?"
   },
   {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#why-this-discussion",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#why-this-discussion",
+    "title": "Effect Measure Stability",
+    "section": "Why this discussion?",
+    "text": "Why this discussion?\n\nWe are stuck: several analyses, mixed findings, and a potentially negative empirical result.\nSome difficulties concern the estimators; others may concern the scientific assumptions or the available data.\nWe want to turn this work into a coherent paper, with a clear question and an honest account of what we learned.\n\n\nToday: which findings belong in that paper, and what still needs resolving?\n\nThis is a methodological discussion, not a finished positive-results presentation. A negative result is a possible outcome, not a conclusion established in advance. The aim is to identify a defensible contribution rather than to include every implementation simply because work went into it."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#history",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#history",
+    "title": "Effect Measure Stability",
+    "section": "History",
+    "text": "History\n\nApril 2023, read paper “Risk Ratio, odds ratio, risk difference… Which causal measure is easier to generalize?”, Colnet et al\nReached out to Benedicte Colnet, had a conversation\nThought of an empirical project to test an hypothesis inspired by the paper\nEarly 2024, Rodrigue Ndabashinze reached out to do his epidemiology MSc. thesis with me\nJan 2025, started on this project, together with Valentijn de Jong\nMay 2025, presented progress to Julie Josse and colleagues (remotely)\n… - now, statistical analysis"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#effects-of-interventions",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#effects-of-interventions",
+    "title": "Effect Measure Stability",
+    "section": "Effects of interventions",
+    "text": "Effects of interventions\n\nIn healthcare we need to make decisions regarding interventions (‘treatments’), based on their ‘effects’\nLet \\(Y^0,Y^1\\) be potential outcomes under treatment \\(0\\) and \\(1\\) respectively:\n\n\n\\[ \\Psi = f(E[Y^0], E[Y^1]) \\]\n\nIf \\(Y\\) is binary, \\(\\Psi\\) could be a risk difference (\\(\\Psi_{rd}\\)), risk ratio (\\(\\Psi_{rr}\\)), survival ratio (\\(\\Psi_{sr}\\)), number needed to treat, odds ratio, etc."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#estimating-effects",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#estimating-effects",
+    "title": "Effect Measure Stability",
+    "section": "Estimating effects",
+    "text": "Estimating effects\n\nWe get estimates of treatment effects from RCTs, as these give us random samples from \\(P(Y^0),P(Y^1)\\), \\(D=\\)\n\n\n\n\n\n\n\\(Y=0\\)\n\\(Y=1\\)\n\n\n\n\ncontrol\n\\(\\sum_{i}^{n_0} Y_i^0 = 0\\)\n\\(\\sum_{i}^{n_0} Y_i^0 = 1\\)\n\n\ntreatment\n\\(\\sum_i^{n_1} Y_i^1 = 0\\)\n\\(\\sum_i^{n_1} Y_i^1 = 1\\)\n\n\n\n\n\nFor a well-conducted RCT, many choices \\(\\Psi\\) are a valid measure of the treatment effect"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#how-to-use-the-rct-evidence",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#how-to-use-the-rct-evidence",
+    "title": "Effect Measure Stability",
+    "section": "How to use the RCT evidence?",
+    "text": "How to use the RCT evidence?\n\nTypical highest standard of evidence: have a series of all \\(k\\) published RCT results, \\(D_1, \\ldots, D_k\\).\nCalculate an effect meausre \\(\\Psi_i\\) for each trial (with variance estimate \\(v_i\\)), and then combine them to get a single estimate with meta-analysis.\n\n\n\\[\\begin{aligned}\n\\Psi_i &\\;\\sim\\; N \\bigl(\\mu,\\;v_i\\bigr), \\quad i=1,\\dots,k\n\\end{aligned}\\]\n\n\\(\\mu\\) is overall effect measure; \\(\\Psi\\) typically on log scale, or risk difference\nthis is a ‘fixed effects’ model with a single underlying treatment effect"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#heterogeneity-poses-challenges-for-decision-making",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#heterogeneity-poses-challenges-for-decision-making",
+    "title": "Effect Measure Stability",
+    "section": "Heterogeneity poses challenges for decision making",
+    "text": "Heterogeneity poses challenges for decision making\n\n\\(\\Psi\\) is a functional of the underlying joint distribution of \\(Y^0\\) and \\(Y^1\\), which may depend on covariates \\(X\\) among other factors:\n\n\n\\[ \\Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) \\]\n\nNeed to make a decision on interventions for a specific subpopulation (‘target’) with a specific distribution: \\(P^*(Y^0,Y^1,X)\\)"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#issues-with-trial-evidence",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#issues-with-trial-evidence",
+    "title": "Effect Measure Stability",
+    "section": "Issues with trial evidence",
+    "text": "Issues with trial evidence\n\nTrials are typically conducted in specific subpopulations, which\n\nmay not cover \\(P^*(X)\\) (e.g. elderly, pregnant women and children are often excluded)\nmay have a different disctribution of \\(X\\)\n\n(when) are the trial results generalizable to the target population?"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#meta-analysis-with-random-effects",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#meta-analysis-with-random-effects",
+    "title": "Effect Measure Stability",
+    "section": "Meta-analysis with random effects",
+    "text": "Meta-analysis with random effects\n\\[\\begin{aligned}\n\\Psi_i \\mid \\theta_i &\\;\\sim\\; N \\bigl(\\theta_i,\\;v_i\\bigr), \\quad i=1,\\dots,k \\\\[6pt]\n\\theta_i \\mid \\mu,\\tau &\\;\\sim\\; N\\bigl(\\mu,\\;\\tau^{2}\\bigr)\n\\end{aligned}\\]\n\n\\(\\mu\\) is overall effect measure, \\(\\tau\\) is heterogeneity of the effect measure (which could be 0)\nthis is a random effects model, setting \\(\\tau=0\\) retreives the ‘fixed effects’ model"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#motivation-1",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#motivation-1",
+    "title": "Effect Measure Stability",
+    "section": "Motivation",
+    "text": "Motivation\n\nNeed to make assumptions to pick best measure for:\n\nlearning about our target population\ndecision making\n\nThough many choices of \\(\\Psi\\) (risk ratio, survival ratio, risk difference, …) are causally valid measures of treatment effect, not all of them are created equally when it comes to their dependence on the underlying joint distribution of \\(Y^0\\) and \\(Y^1\\), i.e. their generalizability.\nColnet showed that for treatments with monotonic effects (never hurting or never benefitting), the conditional risk ratio (/survival ratio) may be decoupled from baseline risk"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#russian-roulette",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#russian-roulette",
+    "title": "Effect Measure Stability",
+    "section": "Russian roulette",
+    "text": "Russian roulette\nWhen playing Russion roulette, the risk of dying is 1/6 if you play, and 0 if you don’t.  Say we want to measure the effect of forcing people to undergo Russion roulette with a randomized trial.\n\noutcome: death in 30 days\nintervention: forcing people to play Russion roulette, or ‘care as usual’\n\n\nIn the control arm, for patients with covariates \\(X=x\\), there is a risk \\(0 \\leq b(x) \\leq 0\\) of dying in 30 days due to other causes. Writing \\(a=1\\) for roulette and \\(a=0\\) for control assignment, we have\n\\[\nP\\bigl(Y^{a=0} = 1 \\mid X = x\\bigr)\n=\nb(x)\n\\]"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#russian-roulette-ctd.",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#russian-roulette-ctd.",
+    "title": "Effect Measure Stability",
+    "section": "Russian roulette ctd.",
+    "text": "Russian roulette ctd.\nA person can either die from Russion roulette or from other causes (or not at all), so the total risk of death is:\n\\[\nP\\bigl(Y^a = 1 \\mid X = x\\bigr)\n=\nb(x) + a\\,\\underbrace{(1-b(x))\\frac{1}{6}}_{\\text{additional risk}}.\n\\]\nWe’ll calculate a few different effect measures, averaged over the covariate distribution in population \\(P\\)"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#roulette-risk-difference",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#roulette-risk-difference",
+    "title": "Effect Measure Stability",
+    "section": "Roulette: risk difference",
+    "text": "Roulette: risk difference\nAverage over the covariate distribution in population \\(P\\):\n\\[\n\\begin{aligned}\n\\psi_{\\mathrm{RD}}^P\n&:= P(Y^1=1) - P(Y^0=1) \\\\\n&= \\mathbb{E}_P\\!\\left[b(X)+\\frac{1-b(X)}{6}\\right]\n- \\mathbb{E}_P[b(X)] \\\\\n&= \\frac{1}{6}\\bigl(1-\\mathbb{E}_P[b(X)]\\bigr).\n\\end{aligned}\n\\]\nThe risk difference depends on baseline risk:\n\\[\n\\lim_{\\mathbb{E}_P[b(X)]\\to 1}\\psi_{\\mathrm{RD}}^P=0.\n\\]"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#roulette-risk-ratio",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#roulette-risk-ratio",
+    "title": "Effect Measure Stability",
+    "section": "Roulette: risk ratio",
+    "text": "Roulette: risk ratio\nFor \\(\\mathbb{E}_P[b(X)]&gt;0\\),\n\\[\n\\begin{aligned}\n\\psi_{\\mathrm{RR}}^P\n&:= \\frac{P(Y^1=1)}{P(Y^0=1)} \\\\\n&= \\frac{\\mathbb{E}_P[b(X)]+\\frac{1}{6}\\bigl(1-\\mathbb{E}_P[b(X)]\\bigr)}\n        {\\mathbb{E}_P[b(X)]} \\\\\n&= 1+\\frac{1-\\mathbb{E}_P[b(X)]}{6\\,\\mathbb{E}_P[b(X)]}.\n\\end{aligned}\n\\]\nThe risk ratio also depends on baseline risk:\n\\[\n\\lim_{\\mathbb{E}_P[b(X)]\\to 0^+}\\psi_{\\mathrm{RR}}^P=\\infty,\n\\qquad\n\\lim_{\\mathbb{E}_P[b(X)]\\to 1}\\psi_{\\mathrm{RR}}^P=1.\n\\]"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#roulette-survival-ratio",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#roulette-survival-ratio",
+    "title": "Effect Measure Stability",
+    "section": "Roulette: survival ratio",
+    "text": "Roulette: survival ratio\nFor \\(\\mathbb{E}_P[b(X)]&lt;1\\),\n\\[\n\\begin{aligned}\n\\psi_{\\mathrm{SR}}^P\n&:= \\frac{P(Y^1=0)}{P(Y^0=0)} \\\\\n&= \\frac{1-\\mathbb{E}_P\\!\\left[b(X)+\\frac{1-b(X)}{6}\\right]}\n        {1-\\mathbb{E}_P[b(X)]} \\\\\n&= \\frac{\\frac{5}{6}\\bigl(1-\\mathbb{E}_P[b(X)]\\bigr)}\n        {1-\\mathbb{E}_P[b(X)]} \\\\\n&= \\frac{5}{6}.\n\\end{aligned}\n\\]\nThe survival ratio is constant across populations with different baseline risks."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#lemma-6-model",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#lemma-6-model",
+    "title": "Effect Measure Stability",
+    "section": "Lemma 6",
+    "text": "Lemma 6\nLemma 6 (Entanglement Model). For a binary outcome \\(Y\\), assume \\(0 &lt; p_a(x) &lt; 1\\) for all \\(x \\in \\mathcal{X}\\) and \\(a \\in \\{0,1\\}\\), where\n\\[\n  p_a(x) := P\\bigl(Y^a = 1 \\mid X = x\\bigr).\n  \\]\nDefine\n\\[\n  \\begin{aligned}\n  m_{\\text{decrease}}(x) &:= P\\bigl(Y^1 = 0 \\mid Y^0 = 1, X = x\\bigr), \\\\\n  m_{\\text{increase}}(x) &:= P\\bigl(Y^1 = 1 \\mid Y^0 = 0, X = x\\bigr).\n  \\end{aligned}\n  \\]\nThen, writing \\(b(x) := p_0(x)\\),\n\\[\n  P\\bigl(Y^a = 1 \\mid X = x\\bigr)\n  =\n  b(x) + a\\bigl[(1-b(x))m_i(x) - b(x)m_d(x)\\bigr].\n  \\]\n\nFor Russian roulette, \\(m_d(x)=0\\), \\(m_i(x)=1/6\\), recovering the previous result.\nOptional: connection to principal stratification"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#project-hypotheses",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#project-hypotheses",
+    "title": "Effect Measure Stability",
+    "section": "Project hypotheses",
+    "text": "Project hypotheses\n\nFor meta-analyses of RCTs, if we assume:\n\ntreatment is monotonic (never harms or never benefits)\n\\[m_d(x)=0\\quad\\text{or}\\quad m_i(x)=0,\\]\nRCTs differ in baseline risk, but not treatment effect (on appropriate scale)\n\\[\\psi(x)=\\psi\\quad\\text{for all }x,\\]\n\nPerforming meta-analyses for risk-ratio and survival-ratio and yield very different answers.\n\n‘Incorrect’ scale: \\(\\psi\\) depends linearly on odds of baseline risk\nHigher variance"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#monotonic-decrease-in-the-outcome",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#monotonic-decrease-in-the-outcome",
+    "title": "Effect Measure Stability",
+    "section": "Monotonic decrease in the outcome",
+    "text": "Monotonic decrease in the outcome\n\n\n\\(b=P(Y^0=1)\\); \\(0&lt;b&lt;1\\).\nAssumptions: \\(Y^1\\leq Y^0\\), \\(m_i=0\\), and \\(m_d(x)=m_d\\) across populations.\n\\[p_1=b(1-m_d).\\]\n\\[\\mathrm{RR}(b)=1-m_d\\]\n\\[\\mathrm{SR}(b)=1+m_d\\frac{b}{1-b}\\]\nRR is constant; SR increases with baseline risk."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#monotonic-increase-in-the-outcome",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#monotonic-increase-in-the-outcome",
+    "title": "Effect Measure Stability",
+    "section": "Monotonic increase in the outcome",
+    "text": "Monotonic increase in the outcome\n\n\n\\(b=P(Y^0=1)\\); \\(0&lt;b&lt;1\\).\nAssumptions: \\(Y^1\\geq Y^0\\), \\(m_d=0\\), and \\(m_i(x)=m_i\\) across populations.\n\\[p_1=b+(1-b)m_i.\\]\n\\[\\mathrm{RR}(b)=1+m_i\\frac{1-b}{b}\\]\n\\[\\mathrm{SR}(b)=1-m_i\\]\nSR is constant; RR approaches 1 as baseline risk increases."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#consequences-for-meta-analysis",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#consequences-for-meta-analysis",
+    "title": "Effect Measure Stability",
+    "section": "Consequences for meta-analysis",
+    "text": "Consequences for meta-analysis\n\nmeta-analyses with varying baseline risks should see a coupling between baseline risk and either RR or SR (visible in ‘meta-regression’)\nas a consequence, one or the other scale may see different heterogeneity (\\(\\tau\\)) estimates\na meta-analysis on the ‘appropriate’ scale estimates a treatment effect that is both directly relevant to other populations and has lower uncertainty (all else equal)"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#study-main-steps",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#study-main-steps",
+    "title": "Effect Measure Stability",
+    "section": "Study main steps",
+    "text": "Study main steps\n\nGo to library of meta-analyses of RCTs (Cochrane)\nDo wide search for meta-analyses of RCTs of interventions\nPull RCT-level aggregated data from Cochrane library of random sample of 1000 RCTs\nClassify every outcome in every meta-analysis as increase or decrease\nAssess whether the treatment effect is likely monotonic (based on subject-matter knowledge)\nLook for statistical evidence about the predictions from the theory"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#exploratory-analysis-rcts-per-meta-analysis",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#exploratory-analysis-rcts-per-meta-analysis",
+    "title": "Effect Measure Stability",
+    "section": "Exploratory analysis: RCTs per meta-analysis",
+    "text": "Exploratory analysis: RCTs per meta-analysis\n\nMA = review × comparison × outcome × subgroup; RCTs counted uniquely within each MA.\n\nSource: effect-measure-stability/data/processed/per_study_data.csv. Full canonical export, before model-convergence filtering or primary-analysis selection. Count distinct trial_id within ma_id. Trials can recur across MAs. Reproduce with scripts/exploratory_figures.py; source hash and definitions in figs/exploratory/provenance.json."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#exploratory-analysis-monotonicity-and-direction",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#exploratory-analysis-monotonicity-and-direction",
+    "title": "Effect Measure Stability",
+    "section": "Exploratory analysis: monotonicity and direction",
+    "text": "Exploratory analysis: monotonicity and direction\n\nOf the 65 certain/likely MAs with ≥5 RCTs: 34 decrease, 20 increase, 11 unknown.\n\nMonotonicity is a subject-matter screening assessment, not established empirically. Direction refers to increasing or decreasing P(Y=1), not outcome valence. Across all 256 certain/likely MAs: 144 decrease, 85 increase, 27 unknown. Panels have different count-axis ranges. Further primary-analysis exclusions have not been applied."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#exploratory-analysis-baseline-rates",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#exploratory-analysis-baseline-rates",
+    "title": "Effect Measure Stability",
+    "section": "Exploratory analysis: baseline rates",
+    "text": "Exploratory analysis: baseline rates\n\nBaseline rate = control events / control participants; 798 zero-event and 66 all-event controls.\n\nIdentical control counts within an MA/trial are counted once; distinct control observations are retained. The left panel weights control observations equally; the right weights MA groups equally using each group’s median. Trials may recur across MAs, so observations are not independent. Includes zero and all-event controls, before primary-analysis exclusions."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#three-questions",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#three-questions",
+    "title": "Effect Measure Stability",
+    "section": "Three empirical questions",
+    "text": "Three empirical questions\nUnder monotonicity and constant mechanism strength, the direction-matched scale is stable across baseline risks.\n\n\n\n\n\n\n\nQuestion\nEmpirical target\n\n\n\n\nHeterogeneity\nIs between-trial variation smaller on the matched scale?\n\n\nCoupling\nIs the matched effect less associated with baseline risk?\n\n\nPrediction\nDoes matching improve prediction of another trial?\n\n\n\nMatched = RR for an expected decrease in \\(P(Y=1)\\); SR for an expected increase.\n\nThese are different estimands, not interchangeable tests of individual-level monotonicity. Constancy requires an additional assumption about mechanism strength; monotonicity alone is insufficient. Predictive comparisons depend on estimation, target information and loss as well as the data-generating relationship."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#heterogeneity-analysis",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#heterogeneity-analysis",
+    "title": "Effect Measure Stability",
+    "section": "Heterogeneity: analysis",
+    "text": "Heterogeneity: analysis\nObserved data\n\nFit each MA on both RR and SR scales; compare between-trial heterogeneity.\nClassical analyses: paired comparisons and a second-stage mixed model with MA and review random intercepts.\nBayesian extensions: per-MA fits followed by an across-MA model, or a joint single-stage hierarchy.\n\n\n\\[\n\\theta_m=\\log(\\tau_{m,\\mathrm{matched}})\n          -\\log(\\tau_{m,\\mathrm{mismatched}}).\n\\]\nNegative values favor the matched scale.\nImplementation and dependence\n\nThe displayed log-SD contrast expresses the Bayesian heterogeneity target. The classical paired implementation uses log(tau2_matched + 1e-6) minus log(tau2_mismatched + 1e-6), not this exact formula. Sources: analysis/01_primary.R, analysis/03_hierarchical.R, and analysis/bayesian_heterogeneity_{two,single}_stage.ipynb in effect-measure-stability. The classical paired sample has 104 MAs and requires at least 3 studies, not the later 5-trial threshold. The Bayesian hierarchy does not itself encode shared-review/shared-trial clustering."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#heterogeneity-what-we-learned",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#heterogeneity-what-we-learned",
+    "title": "Effect Measure Stability",
+    "section": "Heterogeneity: what we learned",
+    "text": "Heterogeneity: what we learned\nObserved data · paired comparison\n\nMany estimates are tied at zero; the answer is sensitive to the estimator.\nThe early simulation assessed the paired test under a stylized design—not the entire analysis pipeline.\n\nSource: output/tables/primary_results.csv. Matched lower/tied/higher proportions are computed from saved paired contrasts. One-sided paired Wilcoxon p values: GLMM 0.941; metabin REML 0.652. These do not establish equivalence. Mixed-model results and Bayesian analyses are separate; this figure does not summarize all of them. simulation/simulation_calibration.R evaluates the paired heterogeneity test and explicitly skips the hierarchical model. It uses 500 MAs, 5–20 trials and 200 people per arm, not the empirical sparse-event design. The draft paper reports calibration results; a separate saved replicate-level result was not located."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#coupling-analysis",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#coupling-analysis",
+    "title": "Effect Measure Stability",
+    "section": "Baseline coupling: a more direct target",
+    "text": "Baseline coupling: a more direct target\nLet \\(\\alpha=\\operatorname{logit}(p_C)\\) and \\(\\beta=\\log(\\mathrm{RR})\\) or \\(\\log(\\mathrm{SR})\\).\n\\[\n\\kappa_m=\\frac{\\operatorname{Cov}_m(\\alpha,\\beta)}\n                   {\\operatorname{Var}_m(\\alpha)}.\n\\]\n\n\n\nExpected direction\nRR slope\nSR slope\n\n\n\n\nDecrease\n\\(0\\)\npositive\n\n\nIncrease\nnegative\n\\(0\\)\n\n\n\nClassical regression uses observed control rates; Bayesian approaches estimate latent probabilities and their coupling.\nDifficulty: control data enter both the baseline estimate and the effect estimate.\n\nThe displayed slope is the equal-study finite-MA projection used in the later coupling analyses, assuming baseline variation is nonzero. It is not a claim that both relationships are linear. Classical meta-regression uses observed probability rather than logit baseline; its primary comparison is absolute z-statistics, with slope magnitude as sensitivity. Shared estimation error can induce association; baseline measurement error is not simply independent classical error here. Sources: analysis/02_secondary.R; docs/independent_binomial_coupling_methods.md; docs/baseline_coupling_revision_design.md. Strict signs require positive mechanism strength and variation in baseline risk; under no effect both slopes are zero."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#coupling-can-we-recover-the-known-truth",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#coupling-can-we-recover-the-known-truth",
+    "title": "Effect Measure Stability",
+    "section": "Coupling: can we recover the known truth?",
+    "text": "Coupling: can we recover the known truth?\nSimulation · independent-binomial estimator\n\nFor the matched decrease/RR slope: truth 0, mean estimate −0.291, nominal 95% interval coverage 0/200.\n\nSource: output/independent_binomial_coupling_direction_v2/report/evaluation/recovery.csv. Selection: mechanism_010_0.8__perfect, prior 2, four cell means. Each point is a mean across 200 replicates; no uncertainty bars are implied. 35-MA/361-trial design, original arm sizes, baseline-logit SD 0.8, constant mechanism strength 0.10, correct expected-direction labels. This demonstrates failure of this estimator under these settings. It does not show that the scientific prediction is false or that every estimator must fail."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#coupling-what-additional-information-changes",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#coupling-what-additional-information-changes",
+    "title": "Effect Measure Stability",
+    "section": "Coupling: what additional information changes",
+    "text": "Coupling: what additional information changes\nSimulation · independent-binomial estimator\n\n\n\n\n\n\n\n\nNumber of MAs\nBias of matched decrease/RR slope\nMean 95% interval width\n\n\n\n\n35\n−0.285\n0.209\n\n\n140\n−0.291\n0.107\n\n\n350\n−0.288\n0.067\n\n\n\nMore similar MAs narrowed intervals without removing within-MA bias.\nLarger arms improved recovery in broad-baseline settings. Alternative estimators still faced weak information, bias or computational problems.\nEstimator revisions and simulations\n\nSource: docs/more_meta_analyses_results.md. Constant mechanism 0.10, baseline-logit SD 0.80, original participants/trial and trials/MA, 50 replicates per setting. Coverage for this cell was 0/50 at each MA count. The separate information study varied participants by factors 10 and 100 and trials per MA by factor 4; substantial improvement at 100-times participants does not establish feasibility at the actual design. Alternative studies evaluated corrected moments, Fieller sets, independent Beta priors and within-MA pooling. Do not conflate their diagnostics with this no-pooling estimator."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#prediction-analysis",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#prediction-analysis",
+    "title": "Effect Measure Stability",
+    "section": "Prediction: does scale choice help?",
+    "text": "Prediction: does scale choice help?\nSource trials in an MA → fit RR, SR or OR model\nHeld-out control data → estimate the target baseline\nPredict held-out treated outcome → score after prediction\n\\[\n\\Delta L=L_{\\mathrm{comparator}}-L_{\\mathrm{matched}}.\n\\]\n\nPositive values favor matching, on a common treated-probability scale.\nAverage held-out losses within MA, then weight MAs equally.\nSeparate random-effects prediction from the later constant-effect curve analysis.\n\n\nThe held-out treated count is excluded from fitting and prediction, but the held-out control count is available. This is not prediction with no target information. Matched is defined by the supplied direction label, not observed prediction performance. Sources: docs/real_rct_prediction_protocol_v1.md and docs/monotonicity_validation_protocol_v3.md. Simulation can score latent treated probabilities; actual data score observed treated proportions. Paired expected loss differences agree under the held-out binomial task, but observed losses retain sampling uncertainty."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#random-effects-prediction-simulation",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#random-effects-prediction-simulation",
+    "title": "Effect Measure Stability",
+    "section": "Random-effects prediction: simulation",
+    "text": "Random-effects prediction: simulation\nSimulation · exact-binomial RR/SR/OR models\n\n\nSource: output/new_rct_prediction/v1/results/performance_contrasts.csv. Base prior, no target baseline shift, target controls available, latent MSE contrast, opposite-scale comparator. Four selected generators C2/V1/V4/O1, 400 evaluation collections each. Each panel has its own y-axis range. The broader study completed 9,600 collection jobs across reference/evaluation and prior streams; these are not 9,600 independent replications of one contrast. Each MA contributes two held-out targets per simulation collection. Target uncertainty includes a new random effect; RR/SR distributions respect probability constraints. Mean-performance intervals undercovered in some scenarios; Monte Carlo intervals in this plot quantify simulation precision, not uncertainty for one observed-data sample."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#random-effects-prediction-observed-data",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#random-effects-prediction-observed-data",
+    "title": "Effect Measure Stability",
+    "section": "Random-effects prediction: observed data",
+    "text": "Random-effects prediction: observed data\nObserved data · 35 MAs, 361 held-out trials\n\n\n\nComparator\nMean MSE improvement from matching\n\n\n\n\nOpposite scale\n+14.95\n\n\nOR\n+2.29\n\n\n\nUnits: squared percentage points; positive favors matching.\n\nDescriptive mean errors favor matching, but the comparison depends on direction and loss function.\nAverage-performance intervals were not adequately calibrated across simulation settings.\nThese results do not establish predictive superiority or identify a causal mechanism.\n\nPrediction methods and calibration\n\nSource: output/real_rct_prediction/v1/results.md; 24 decrease and 11 increase MAs. Full leave-one-trial-out evaluation, equal-MA overall aggregation. Against OR, direction-specific squared-error improvements are +5.28 for decrease and −4.24 for increase. Overall log-score improvement against OR is −0.031, illustrating dependence on loss. The source model uses exact binomial random effects; later constant-curve prediction uses a different estimator and sample. Selection: likely/certain, known direction, at least five distinct trials, one MA per review, no shared corrected trial identities. Zero/all-event arms retained."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#constant-effect-curves-fit-and-prediction",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#constant-effect-curves-fit-and-prediction",
+    "title": "Effect Measure Stability",
+    "section": "Constant-effect curves: fit and prediction",
+    "text": "Constant-effect curves: fit and prediction\nObserved data · later profile-likelihood analysis\n\nNo demonstrated average advantage over OR; the predictive interval failed its sample-size-specific calibration gate.\nStrict constant-directional fit flagged 10/31 likely/certain and 16/60 unlikely MAs after nominal BH correction.\n\nSources: output/monotonicity_validation/v3/real_ma_results.csv and docs/monotonicity_validation_results.md. 31 likely/certain MAs (314 trials), 60 unlikely MAs (644 trials). A different selected sample from the October 35-MA random-effects analysis. Profile likelihood fits constant RR/SR/OR; target baseline averaged under a support-conditioned Jeffreys posterior. Separate bootstrap test constrains the matched log ratio to be nonpositive. 480,000 independent simulated MA datasets plus 1,200 bootstrap-calibration MAs. Nominal 95% predictive coverage at 31 MAs ranged 87.5–95.0%; approximate bootstrap rejection calibration ranged 4–8.5% under nominal 5%. The observed mean advantage is −0.000197 squared probability (about −1.97 squared percentage points). The unvalidated interval is not shown as a calibrated confidence interval. Fit rejections concern constant effect plus expected direction, not individual-level monotonicity alone. Failure to reject does not establish either assumption."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#paper-discussion",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#paper-discussion",
+    "title": "Effect Measure Stability",
+    "section": "What would make a coherent paper?",
+    "text": "What would make a coherent paper?\nCandidate question: does expected treatment direction help choose an effect scale for evidence synthesis?\n\nEmpirical assessment: heterogeneity and prediction results are mixed; selection and uncertainty matter.\nMethodological finding: intuitive coupling diagnostics can fail even when the generating assumptions hold.\nPossible contribution: explain when scale matching helps, when estimation obscures it, and what these data cannot establish.\n\n\nDiscussion: which endpoint should lead—and what minimum additional work would make the conclusion defensible?\n\nPotential paper structure: theoretical motivation; empirical sample and external labels; one main endpoint; simulations tied to that endpoint; empirical evaluation; limitations and implications. Ask specifically about shared-control estimation error, uncertainty for equal-MA predictive comparisons, and robustness to direction/monotonicity labels. Do not turn every implementation into a co-primary analysis. Label exploratory revisions and historical versions transparently. A potential negative empirical result can be publishable without claiming the underlying theory is disproved."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#principal-strata",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#principal-strata",
+    "title": "Effect Measure Stability",
+    "section": "Principal stratification: four response types",
+    "text": "Principal stratification: four response types\nFor \\(Y=1\\) denoting death, define \\(\\pi_{ij}(x)=P(Y^0=i,Y^1=j\\mid X=x)\\).\n\n\n\nResponse type\n\\(Y^0\\)\n\\(Y^1\\)\nProbability\n\n\n\n\nAlways survives (“always cured”)\n0\n0\n\\(\\pi_{00}(x)\\)\n\n\nDoomed\n1\n1\n\\(\\pi_{11}(x)\\)\n\n\nSaved when treated\n1\n0\n\\(\\pi_{10}(x)\\)\n\n\nHarmed when treated\n0\n1\n\\(\\pi_{01}(x)\\)\n\n\n\nThese latent groups use the joint-potential-outcome construction of principal stratification. Standard applications stratify on an intermediate variable and estimate effects on a separate endpoint.\nFrangakis & Rubin (2002)\nBack to Lemma 6"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#lemma-6-reparameterizes-the-stratum-proportions",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#lemma-6-reparameterizes-the-stratum-proportions",
+    "title": "Effect Measure Stability",
+    "section": "Lemma 6 reparameterizes the stratum proportions",
+    "text": "Lemma 6 reparameterizes the stratum proportions\nSuppressing \\(x\\), write \\(m_d=m_{\\text{decrease}}\\) and \\(m_i=m_{\\text{increase}}\\):\n\\[\nb=\\pi_{10}+\\pi_{11},\\qquad\nm_d=\\frac{\\pi_{10}}{b},\\qquad\nm_i=\\frac{\\pi_{01}}{1-b}.\n\\]\nEquivalently,\n\\[\n\\begin{aligned}\n\\pi_{00}&=(1-b)(1-m_i), & \\pi_{01}&=(1-b)m_i,\\\\\n\\pi_{10}&=bm_d, & \\pi_{11}&=b(1-m_d).\n\\end{aligned}\n\\]\nTherefore,\n\\[\np_1-p_0\n=\\underbrace{\\pi_{01}}_{\\text{harmed}}\n-\\underbrace{\\pi_{10}}_{\\text{saved}}\n=(1-b)m_i-bm_d.\n\\]\nFor \\(0&lt;b&lt;1\\), these are equivalent parameterizations of the same joint distribution.\nBack to Lemma 6"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#identification-what-does-randomization-give-us",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#identification-what-does-randomization-give-us",
+    "title": "Effect Measure Stability",
+    "section": "Identification: what does randomization give us?",
+    "text": "Identification: what does randomization give us?\nAn RCT identifies the marginal risks:\n\\[\np_0=\\pi_{10}+\\pi_{11},\\qquad\np_1=\\pi_{01}+\\pi_{11}.\n\\]\nIt does not generally identify all four stratum proportions.\nMonotonicity removes one stratum:\n\\[\n\\begin{aligned}\n\\text{No harm:}\\quad &\\pi_{01}=0\n&&\\Longrightarrow\\quad \\mathrm{RR}=1-m_d,\\\\\n\\text{No benefit:}\\quad &\\pi_{10}=0\n&&\\Longrightarrow\\quad \\mathrm{SR}=1-m_i.\n\\end{aligned}\n\\]\nThese identities hold conditional on \\(X=x\\), with nonzero denominators. Stability across populations requires additional assumptions about \\(m_d(x)\\) or \\(m_i(x)\\).\nFor roulette: \\(m_d(x)=0\\), \\(m_i(x)=1/6\\), hence \\(\\mathrm{SR}=5/6\\).\nBack to Lemma 6"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#analysis-details",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#analysis-details",
+    "title": "Effect Measure Stability",
+    "section": "Implementation and dependence",
+    "text": "Implementation and dependence\n\n\n\n\n\n\n\nAnalysis\nDependence handling\n\n\n\n\nClassical paired tests\nRR/SR paired within MA\n\n\nSecond-stage heterogeneity mixed model\nMA and review random intercepts\n\n\nBayesian heterogeneity notebooks\nAcross-MA hierarchy; no explicit review/shared-trial effect\n\n\nLater coupling/prediction samples\nOne MA per review; exclude repeated corrected trial IDs\n\n\n\nReview effects do not encode the exact covariance from shared trials across reviews.\nBack to heterogeneity"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#coupling-variants",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#coupling-variants",
+    "title": "Effect Measure Stability",
+    "section": "Coupling variants and their status",
+    "text": "Coupling variants and their status\n\n\n\n\n\n\n\n\nApproach\nWhat was done\nMain limitation\n\n\n\n\nShared-binomial v2\n91-MA empirical fit; development simulations\nStrict diagnostic failure; incomplete recovery checks\n\n\nIndependent arms\nLarge simulation panels; label/information variations\nBiased slopes and poor coverage\n\n\nCorrected moments / Fieller\nSmall development panels\nUndefined points or unbounded intervals\n\n\nWithin-MA pooling\n60 collections each at 35 and 350 MAs\nOnly 14/60 and 3/60 passed original diagnostics\n\n\n\nBack to coupling\n\nSources: docs/coupling_revision_v2_report_20260917.md; docs/independent_binomial_coupling_report.md; docs/coupling_interval_bayesian_development_20260923.md; docs/coupling_shared_binomial_v1_feasibility_20260923.md; docs/coupling_shared_binomial_ma350_review_20260928.md. The 350-MA result uses the original strict diagnostic screen; 23/60 passed a post hoc relaxed screen. Completed computation is not successful calibration."
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#prediction-details",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#prediction-details",
+    "title": "Effect Measure Stability",
+    "section": "Prediction methods and calibration",
+    "text": "Prediction methods and calibration\n\n\n\n\n\n\n\nMethod\nTarget and uncertainty\n\n\n\n\nEarly feasibility benchmark\nTransport mean log effect to known target baseline; no new-trial random effect\n\n\nOctober random-effects models\nNew target effect plus baseline uncertainty; RR/SR/OR\n\n\nNovember constant-effect curves\nCommon-effect point fit; baseline uncertainty; separate bootstrap fit test\n\n\n\nThe later simulations evaluate different procedures; they do not validate the earlier ones retrospectively.\nBack to prediction"
+  },
+  {
+    "objectID": "talks/261106-effect-measure-stability-unstuck/index.html#analysis-populations",
+    "href": "talks/261106-effect-measure-stability-unstuck/index.html#analysis-populations",
+    "title": "Effect Measure Stability",
+    "section": "Analysis populations",
+    "text": "Analysis populations\n\n\n\nDataset / analysis\nMA count\n\n\n\n\nDescriptive canonical export\n1,291\n\n\nAt least five distinct RCTs\n389\n\n\nCertain/likely monotonic, at least five RCTs\n65\n\n\nSame, known direction\n54\n\n\nOctober prediction: selected independent MAs\n35\n\n\nNovember curves: selected likely/certain MAs\n31\n\n\n\nDifferent versions use different selection rules and samples; these are not interchangeable denominators.\nBack to discussion\n\nThe 35- versus 31-MA sets come from separate frozen selection workflows; this table is not a single sequential attrition flow. The November analysis additionally includes 60 unlikely MAs. The earlier paired heterogeneity result uses 104 MAs under its own &gt;=3-study criterion. Sources: figs/exploratory/provenance.json; docs/real_rct_prediction_protocol_v1.md; docs/monotonicity_validation_results.md."
+  },
+  {
     "objectID": "unlisted.html",
     "href": "unlisted.html",
     "title": "Unlisted pages",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nOct 5, 2026\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\n\nDec 1, 2025\n\n\nCausality in Prediction Research & Target Trial Emulation\n\n\nAI methods lab seminar\n\n\n\n\n\n\nOct 27, 2025\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\n\nAug 14, 2025\n\n\nAligning development, deployment and monitoring for AI: a causal perspective\n\n\nMLHC pre-conference workshop 2025\n\n\n\n\n\n\nAug 14, 2025\n\n\nBuilding and evaluating AI for deployment: evidence before and after\n\n\nMLHC pre-conference workshop 2025\n\n\n\n\n\n\nJul 13, 2025\n\n\nPROTECT update\n\n\nManchester / Rajesh\n\n\n\n\n\n\nMay 7, 2025\n\n\nEffect Measure Stability\n\n\n \n\n\n\n\n\n\nSep 23, 2022\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nSubtitle\n\n\n\n\n\n\n\n\nNov 6, 2026\n\n\nEffect Measure Stability\n\n\nGetting unstuck\n\n\n\n\n\n\nOct 5, 2026\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\n\nDec 1, 2025\n\n\nCausality in Prediction Research & Target Trial Emulation\n\n\nAI methods lab seminar\n\n\n\n\n\n\nOct 27, 2025\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\n\nAug 14, 2025\n\n\nAligning development, deployment and monitoring for AI: a causal perspective\n\n\nMLHC pre-conference workshop 2025\n\n\n\n\n\n\nAug 14, 2025\n\n\nBuilding and evaluating AI for deployment: evidence before and after\n\n\nMLHC pre-conference workshop 2025\n\n\n\n\n\n\nJul 13, 2025\n\n\nPROTECT update\n\n\nManchester / Rajesh\n\n\n\n\n\n\nMay 7, 2025\n\n\nEffect Measure Stability\n\n\n \n\n\n\n\n\n\nSep 23, 2022\n\n\nCausal Inference for AI meetup\n\n\nRotterdam / Leiden / Delft / Utrecht\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts.html",
     "href": "posts.html",
     "title": "Posts",
     "section": "",
-    "text": "The circle of survival\n\n\n\nsurvival analysis\n\nteaching\n\n\n\nStarting with the survival curve, a trip around the five main functions of survival analysis—and back again.\n\n\n\n\n\nOct 29, 2026\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nGeneral Chair’s notes on Machine Learning for Healthcare 2026\n\n\n\nmachine learning\n\nhealthcare\n\nMLHC\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nWouter van Amsterdam, Rahul G. Krishnan\n\n\n\n\n\n\n\n\n\n\n\n\nFlipping the sign of hazard ratios\n\n\n\nr\n\nsurvival analysis\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJul 4, 2025\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is stronger evidence of prediction model robustness?\n\n\n\nstatistics\n\nprediction\n\ncausal inference\n\n\n\n\n\n\n\n\n\nApr 25, 2025\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nIs the JAMA opening up their language for causal effects?\n\n\n\ncausal inference\n\n\n\n\n\n\n\n\n\nJun 7, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\nr\n\nlinear regression\n\ndata visualization\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\nr\n\njulia\n\njax\n\npython\n\nsimulation studies\n\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\ncausal inference\n\nstatistics\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\ncausal inference\n\npredictions\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\nstatistics\n\nsimulations\n\nlinear regression\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\nNo matching items"
+    "text": "The circle of survival\n\n\n\nsurvival analysis\n\nteaching\n\n\n\n\nStarting with the survival curve, a trip around the five main functions of survival analysis—and back again.\n\n\n\n\n\n\nOct 29, 2026\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nGeneral Chair’s notes on Machine Learning for Healthcare 2026\n\n\n\nmachine learning\n\nhealthcare\n\nMLHC\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nWouter van Amsterdam, Rahul G. Krishnan\n\n\n\n\n\n\n\n\n\n\n\n\nFlipping the sign of hazard ratios\n\n\n\nr\n\nsurvival analysis\n\ncausal inference\n\n\n\n\n\n\n\n\n\n\n\nJul 4, 2025\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is stronger evidence of prediction model robustness?\n\n\n\nstatistics\n\nprediction\n\ncausal inference\n\n\n\n\n\n\n\n\n\n\n\nApr 25, 2025\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nIs the JAMA opening up their language for causal effects?\n\n\n\ncausal inference\n\n\n\n\n\n\n\n\n\n\n\nJun 7, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nPartial residual plots with multiply imputed data\n\n\n\nr\n\nlinear regression\n\ndata visualization\n\n\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe need for speed, performing simulation studies in R, JAX and Julia\n\n\n\nr\n\njulia\n\njax\n\npython\n\nsimulation studies\n\n\n\n\n\n\n\n\n\n\n\nMar 8, 2024\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nThe difference between intervention and counterfactuals\n\n\n\ncausal inference\n\nstatistics\n\n\n\n\n\n\n\n\n\n\n\nJul 25, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nWhen good predictions lead to bad decisions\n\n\n\ncausal inference\n\npredictions\n\n\n\n\n\n\n\n\n\n\n\nJul 20, 2021\n\n\nWouter van Amsterdam\n\n\n\n\n\n\n\n\n\n\n\n\nFinding the functional form for multiple linear regression\n\n\n\nstatistics\n\nsimulations\n\nlinear regression\n\n\n\n\n\n\n\n\n\n\n\nAug 16, 2019\n\n\nWouter van Amsterdam\n\n\n\n\n\nNo matching items"
   }
 ]

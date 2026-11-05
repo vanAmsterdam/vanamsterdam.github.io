@@ -1,0 +1,30 @@
+{
+  "source": "/Users/wamster3/dev/effect-measure-stability/data/processed/per_study_data.csv",
+  "sha256": "9a0abecc3b653a6e3131b9ebbb4434ca35738739afa87af51beb40e3995fde4a",
+  "meta_analyses": 1291,
+  "at_least_5_trials": 389,
+  "certain_or_likely": 256,
+  "certain_or_likely_at_least_5": 65,
+  "monotonic_direction_counts": {
+    "decrease": 144,
+    "increase": 85,
+    "unknown": 27
+  },
+  "monotonic_direction_counts_at_least_5": {
+    "decrease": 34,
+    "increase": 20,
+    "unknown": 11
+  },
+  "control_observations": 5922,
+  "zero_event_controls": 798,
+  "all_event_controls": 66,
+  "control_rate_median": 0.101178895682787,
+  "ma_median_control_rate_median": 0.113636363636364,
+  "definitions": {
+    "MA": "cochrane_id × comparison × outcome × subgroup (canonical ma_id)",
+    "RCT_count": "distinct trial_id within ma_id",
+    "monotonic": "screened certain or likely, not empirically established",
+    "baseline": "event.c/n.c; deduplicate identical control counts within ma_id/trial_id; retain distinct observations",
+    "scope": "all canonical per-study rows; no convergence or effect-direction selection"
+  }
+}

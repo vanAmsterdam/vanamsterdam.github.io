@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Wouter van Amsterdam">
+<meta name="author" content="Wouter A.C. van Amsterdam">
 <meta name="dcterms.date" content="2024-03-08">
 
 <title>The need for speed, performing simulation studies in R, JAX and Julia – Wouter van Amsterdam</title>
@@ -417,7 +417,7 @@ window.Quarto = {
     <div class="quarto-title-meta-heading">Affiliation</div>
     
       <div class="quarto-title-meta-contents">
-      <p class="author"><a href="https://vanamsterdam.github.io">Wouter van Amsterdam</a> </p>
+      <p class="author"><a href="https://vanamsterdam.github.io">Wouter A.C. van Amsterdam</a> </p>
     </div>
     <div class="quarto-title-meta-contents">
           <p class="affiliation">
@@ -1517,7 +1517,7 @@ Amsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, et al. 
 <li id="fn1"><p>One concrete example with my own previous simulation studies <span class="citation" data-cites="vanamsterdamConditionalAverageTreatment2023">(<a href="#ref-vanamsterdamConditionalAverageTreatment2023" role="doc-biblioref">Amsterdam and Ranganath 2023</a>)</span> is that I used first used <code>jax.numpy</code> arrays for different parameters and then a <code>scipy</code> function to create all combinations of these parameters. Creating this grid of parameters this way forced copying of <code>jax.numpy</code> arrays from the GPU back to CPU and then copying the grid back to GPU. This made the entire process orders of magnitude slower (it was a large grid O(1e12)). Gotchas like these can bite you. Also, JAX relies on pure functions that cannot depend on global variables.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><div class="code-copy-outer-scaffold"><pre class="sourceCode quarto-appendix-bibtex code-with-copy"><code class="sourceCode bibtex">@online{van_amsterdam2024,
-  author = {van Amsterdam, Wouter},
+  author = {van Amsterdam, Wouter A.C.},
   title = {The Need for Speed, Performing Simulation Studies in {R,}
     {JAX} and {Julia}},
   date = {2024-03-08},
@@ -1525,7 +1525,7 @@ Amsterdam, Wouter A. C. van, Joost J. C. Verhoeff, Netanja I. Harlianto, et al. 
   langid = {en}
 }
 </code></pre><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-van_amsterdam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Amsterdam, Wouter van. 2024. <span>“The Need for Speed, Performing
+Amsterdam, Wouter A.C. van. 2024. <span>“The Need for Speed, Performing
 Simulation Studies in R, JAX and Julia.”</span> March 8. <a href="https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/">https://vanamsterdam.github.io/posts/240308-jaxopt-vs-r-vs-julia/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

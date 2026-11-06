@@ -173,7 +173,6 @@
 <h2 id="toc-title">Table of contents</h2>
 <ul>
 <li class="fragment"><a href="#/motivation" id="/toc-motivation">Motivation</a></li>
-<li class="fragment"><a href="#/risk-ratio-survival-ratio-risk-difference" id="/toc-risk-ratio-survival-ratio-risk-difference">Risk ratio, survival ratio, risk difference ,…</a></li>
 <li class="fragment"><a href="#/project-set-up-an-empirical-evalution-of-the-theory" id="/toc-project-set-up-an-empirical-evalution-of-the-theory">Project set-up: an empirical evalution of the theory</a></li>
 <li class="fragment"><a href="#/appendix" id="/toc-appendix">Appendix</a></li>
 </ul>
@@ -220,122 +219,36 @@
 <li class="fragment">… - now, statistical analysis</li>
 </ul>
 </section>
-<section id="effects-of-interventions" class="slide level2">
-<h2>Effects of interventions</h2>
+<section id="effect-scale-choice" class="slide level2">
+<h2>Effect-scale choice</h2>
+<p>For a binary outcome, let <span class="math inline">\(p_a=P(Y^a=1)\)</span>.</p>
+<p><span class="math display">\[
+\mathrm{RD}=p_1-p_0,\qquad
+\mathrm{RR}=\frac{p_1}{p_0},\qquad
+\mathrm{SR}=\frac{1-p_1}{1-p_0}.
+\]</span></p>
 <ul>
-<li class="fragment">In healthcare we need to make decisions regarding interventions (‘treatments’), based on their ‘effects’</li>
-<li class="fragment">Let <span class="math inline">\(Y^0,Y^1\)</span> be potential outcomes under treatment <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> respectively:</li>
+<li class="fragment">These describe different contrasts of the same two risks.</li>
+<li class="fragment">As populations and baseline risks change, their stability can differ.</li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[ \Psi = f(E[Y^0], E[Y^1]) \]</span></p>
-<ul>
-<li class="fragment">If <span class="math inline">\(Y\)</span> is binary, <span class="math inline">\(\Psi\)</span> could be a risk difference (<span class="math inline">\(\Psi_{rd}\)</span>), risk ratio (<span class="math inline">\(\Psi_{rr}\)</span>), survival ratio (<span class="math inline">\(\Psi_{sr}\)</span>), number needed to treat, odds ratio, etc.</li>
-</ul>
+<p><strong>Question:</strong> which scale is useful for combining trials and predicting effects in another population?</p>
 </div>
 </section>
-<section id="estimating-effects" class="slide level2">
-<h2>Estimating effects</h2>
+<section id="stability-across-populations" class="slide level2">
+<h2>Stability across populations</h2>
 <ul>
-<li class="fragment">We get estimates of treatment effects from RCTs, as these give us random samples from <span class="math inline">\(P(Y^0),P(Y^1)\)</span>, <span class="math inline">\(D=\)</span></li>
+<li class="fragment">Between-trial heterogeneity depends on the effect scale.</li>
+<li class="fragment">Under monotonicity <strong>and constant mechanism strength</strong>, RR or SR can remain constant while baseline risk varies.</li>
+<li class="fragment">We investigate whether expected treatment direction helps select a scale for evidence synthesis.</li>
 </ul>
 <div class="fragment">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">\(Y=0\)</span></th>
-<th><span class="math inline">\(Y=1\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>control</td>
-<td><span class="math inline">\(\sum_{i}^{n_0} Y_i^0 = 0\)</span></td>
-<td><span class="math inline">\(\sum_{i}^{n_0} Y_i^0 = 1\)</span></td>
-</tr>
-<tr class="even">
-<td>treatment</td>
-<td><span class="math inline">\(\sum_i^{n_1} Y_i^1 = 0\)</span></td>
-<td><span class="math inline">\(\sum_i^{n_1} Y_i^1 = 1\)</span></td>
-</tr>
-</tbody>
-</table>
-<p><!-- $$D = \{\sum_{i}^{n_0} Y_i^0 = 1, \sum_{i}^{n_0} Y_i^0 = 0, \sum_i^{n_1} Y_i^1 = 1, \sum_i^{n_1} Y_i^1 = 0 \}$$ --></p>
-<ul>
-<li class="fragment">For a well-conducted RCT, many choices <span class="math inline">\(\Psi\)</span> are a <em>valid</em> measure of the treatment effect</li>
-</ul>
+<p><strong>A simple example: Russian roulette.</strong></p>
 </div>
-</section>
-<section id="how-to-use-the-rct-evidence" class="slide level2">
-<h2>How to use the RCT evidence?</h2>
-<ul>
-<li class="fragment">Typical highest standard of evidence: have a series of all <span class="math inline">\(k\)</span> published RCT results, <span class="math inline">\(D_1, \ldots, D_k\)</span>.</li>
-<li class="fragment">Calculate <em>an</em> effect meausre <span class="math inline">\(\Psi_i\)</span> for each trial (with variance estimate <span class="math inline">\(v_i\)</span>), and then combine them to get a single estimate with <em>meta-analysis</em>.</li>
-</ul>
-<div class="fragment">
-<span class="math display">\[\begin{aligned}
-\Psi_i &amp;\;\sim\; N \bigl(\mu,\;v_i\bigr), \quad i=1,\dots,k
-\end{aligned}\]</span>
-<ul>
-<li class="fragment"><span class="math inline">\(\mu\)</span> is <em>overall</em> effect measure; <span class="math inline">\(\Psi\)</span> typically on log scale, or risk difference</li>
-<li class="fragment">this is a ‘fixed effects’ model with a single underlying treatment effect</li>
-</ul>
-</div>
-</section>
-<section id="heterogeneity-poses-challenges-for-decision-making" class="slide level2">
-<h2>Heterogeneity poses challenges for decision making</h2>
-<ul>
-<li class="fragment"><span class="math inline">\(\Psi\)</span> is a functional of the underlying joint distribution of <span class="math inline">\(Y^0\)</span> and <span class="math inline">\(Y^1\)</span>, which may depend on covariates <span class="math inline">\(X\)</span> among other factors:</li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[ \Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) \]</span></p>
-<ul>
-<li class="fragment">Need to make a decision on interventions for <em>a specific</em> subpopulation (‘target’) with a specific distribution: <span class="math inline">\(P^*(Y^0,Y^1,X)\)</span></li>
-</ul>
-</div>
-</section>
-<section id="issues-with-trial-evidence" class="slide level2">
-<h2>Issues with trial evidence</h2>
-<ul>
-<li class="fragment">Trials are typically conducted in specific subpopulations, which
-<ol type="a">
-<li class="fragment">may not <em>cover</em> <span class="math inline">\(P^*(X)\)</span> (e.g.&nbsp;elderly, pregnant women and children are often excluded)</li>
-<li class="fragment">may have a different disctribution of <span class="math inline">\(X\)</span></li>
-</ol></li>
-<li class="fragment">(when) are the trial results generalizable to the target population?</li>
-</ul>
-</section>
-<section id="meta-analysis-with-random-effects" class="slide level2">
-<h2>Meta-analysis with random effects</h2>
-<span class="math display">\[\begin{aligned}
-\Psi_i \mid \theta_i &amp;\;\sim\; N \bigl(\theta_i,\;v_i\bigr), \quad i=1,\dots,k \\[6pt]
-\theta_i \mid \mu,\tau &amp;\;\sim\; N\bigl(\mu,\;\tau^{2}\bigr)
-\end{aligned}\]</span>
-<ul>
-<li class="fragment"><span class="math inline">\(\mu\)</span> is <em>overall</em> effect measure, <span class="math inline">\(\tau\)</span> is <em>heterogeneity</em> of the effect measure (which could be 0)</li>
-<li class="fragment">this is a <em>random effects</em> model, setting <span class="math inline">\(\tau=0\)</span> retreives the ‘fixed effects’ model</li>
-</ul>
-</section>
-<section id="motivation-1" class="slide level2">
-<h2>Motivation</h2>
-<ul>
-<li class="fragment">Need to make assumptions to pick best measure for:
-<ul>
-<li class="fragment">learning about our target population</li>
-<li class="fragment">decision making</li>
-</ul></li>
-<li class="fragment">Though many choices of <span class="math inline">\(\Psi\)</span> (risk ratio, survival ratio, risk difference, …) are <em>causally valid</em> measures of treatment effect, not all of them are created equally when it comes to their dependence on the underlying joint distribution of <span class="math inline">\(Y^0\)</span> and <span class="math inline">\(Y^1\)</span>, i.e.&nbsp;their <em>generalizability</em>.</li>
-<li class="fragment">Colnet showed that for treatments with <em>monotonic</em> effects (never hurting or never benefitting), the conditional <em>risk ratio</em> (/<em>survival ratio</em>) may be decoupled from baseline risk</li>
-</ul>
-</section></section>
-<section>
-<section id="risk-ratio-survival-ratio-risk-difference" class="title-slide slide level1 center">
-<h1>Risk ratio, survival ratio, risk difference ,…</h1>
-
 </section>
 <section id="russian-roulette" class="slide level2">
 <h2>Russian roulette</h2>
-<p>When playing Russion roulette, the risk of dying is 1/6 if you play, and 0 if you don’t. <!-- The risk ratio is 1/6, the survival ratio is 5/6, and the risk difference is 1/6. If you play, you die with probability 1/6, and if you don't play, you die with probability 0. --> Say we want to measure the effect of forcing people to undergo Russion roulette with a randomized trial.</p>
+<p>When playing Russion roulette, the immediate risk of dying is 1/6 if you play, and 0 if you don’t. <!-- The risk ratio is 1/6, the survival ratio is 5/6, and the risk difference is 1/6. If you play, you die with probability 1/6, and if you don't play, you die with probability 0. --> Say we want to measure the effect of forcing people to undergo Russion roulette with a randomized trial.</p>
 <ul>
 <li class="fragment">outcome: death in 30 days</li>
 <li class="fragment">intervention: forcing people to play Russion roulette, or ‘care as usual’</li>
@@ -361,6 +274,10 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
 </section>
 <section id="roulette-risk-difference" class="slide level2">
 <h2>Roulette: risk difference</h2>
+<p><span class="math display">\[
+P(Y^a=1\mid X=x)=b(x)+a\,\frac{1-b(x)}{6}.
+\]</span></p>
+<div class="fragment">
 <p>Average over the covariate distribution in population <span class="math inline">\(P\)</span>:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -375,9 +292,14 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
 <p><span class="math display">\[
 \lim_{\mathbb{E}_P[b(X)]\to 1}\psi_{\mathrm{RD}}^P=0.
 \]</span></p>
+</div>
 </section>
 <section id="roulette-risk-ratio" class="slide level2">
 <h2>Roulette: risk ratio</h2>
+<p><span class="math display">\[
+P(Y^a=1\mid X=x)=b(x)+a\,\frac{1-b(x)}{6}.
+\]</span></p>
+<div class="fragment">
 <p>For <span class="math inline">\(\mathbb{E}_P[b(X)]&gt;0\)</span>,</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -394,9 +316,14 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
 \qquad
 \lim_{\mathbb{E}_P[b(X)]\to 1}\psi_{\mathrm{RR}}^P=1.
 \]</span></p>
+</div>
 </section>
 <section id="roulette-survival-ratio" class="slide level2">
 <h2>Roulette: survival ratio</h2>
+<p><span class="math display">\[
+P(Y^a=1\mid X=x)=b(x)+a\,\frac{1-b(x)}{6}.
+\]</span></p>
+<div class="fragment">
 <p>For <span class="math inline">\(\mathbb{E}_P[b(X)]&lt;1\)</span>,</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -410,6 +337,7 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
 \end{aligned}
 \]</span></p>
 <p>The survival ratio is constant across populations with different baseline risks.</p>
+</div>
 </section>
 <section id="lemma-6-model" class="slide level2">
 <h2>Lemma 6</h2>
@@ -628,6 +556,7 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
 <li class="fragment">Bayesian extensions: per-MA fits followed by an across-MA model, or a joint single-stage hierarchy.</li>
 </ul>
 <div class="fragment">
+<p>Let <span class="math inline">\(\tau_{m,s}\)</span> denote the between-trial standard deviation of the <strong>true log effects</strong> in meta-analysis <span class="math inline">\(m\)</span>, on scale <span class="math inline">\(s\in\{\mathrm{RR},\mathrm{SR}\}\)</span>.</p>
 <p><span class="math display">\[
 \theta_m=\log(\tau_{m,\mathrm{matched}})
           -\log(\tau_{m,\mathrm{mismatched}}).
@@ -654,7 +583,7 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
 <p><strong>Observed data · paired comparison</strong></p>
 <p><img data-src="figs/analysis-overview/heterogeneity.png" alt="In 104 meta-analyses, heterogeneity ties occur in 85.6 percent with GLMM-based estimation and 19.2 percent with REML. The matched scale has lower estimates in 2.9 and 36.5 percent, respectively." height="380"></p>
 <p>Many estimates are tied at zero; the answer is sensitive to the estimator.</p>
-<p>The early simulation assessed the paired test under a stylized design—not the entire analysis pipeline.</p>
+<!-- The early simulation assessed the paired test under a stylized design—not the entire analysis pipeline. -->
 <aside class="notes">
 <p>Source: output/tables/primary_results.csv. Matched lower/tied/higher proportions are computed from saved paired contrasts. One-sided paired Wilcoxon p values: GLMM 0.941; metabin REML 0.652. These do not establish equivalence. Mixed-model results and Bayesian analyses are separate; this figure does not summarize all of them. simulation/simulation_calibration.R evaluates the paired heterogeneity test and explicitly skips the hierarchical model. It uses 500 MAs, 5–20 trials and 200 people per arm, not the empirical sparse-event design. The draft paper reports calibration results; a separate saved replicate-level result was not located.</p>
 <style type="text/css">
@@ -788,16 +717,16 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
 <p><strong>Source trials in an MA</strong> → fit RR, SR or OR model</p>
 <p><strong>Held-out control data</strong> → estimate the target baseline</p>
 <p><strong>Predict held-out treated outcome</strong> → score after prediction</p>
+<p>Here <span class="math inline">\(L=(\widehat p_T-y_T/n_T)^2\)</span> is <strong>squared prediction loss</strong>: predicted versus observed treated event proportion.</p>
 <p><span class="math display">\[
 \Delta L=L_{\mathrm{comparator}}-L_{\mathrm{matched}}.
 \]</span></p>
 <ul>
 <li class="fragment">Positive values favor matching, on a common treated-probability scale.</li>
 <li class="fragment">Average held-out losses within MA, then weight MAs equally.</li>
-<li class="fragment">Separate <strong>random-effects prediction</strong> from the later <strong>constant-effect curve</strong> analysis.</li>
 </ul>
 <aside class="notes">
-<p>The held-out treated count is excluded from fitting and prediction, but the held-out control count is available. This is not prediction with no target information. Matched is defined by the supplied direction label, not observed prediction performance. Sources: docs/real_rct_prediction_protocol_v1.md and docs/monotonicity_validation_protocol_v3.md. Simulation can score latent treated probabilities; actual data score observed treated proportions. Paired expected loss differences agree under the held-out binomial task, but observed losses retain sampling uncertainty.</p>
+<p>The held-out treated count is excluded from fitting and prediction, but the held-out control count is available. This is not prediction with no target information. Matched is defined by the supplied direction label, not observed prediction performance. Source: docs/real_rct_prediction_protocol_v1.md. Simulation can score latent treated probabilities; actual data score observed treated proportions. Paired expected loss differences agree under the held-out binomial task, but observed losses retain sampling uncertainty.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -813,9 +742,12 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
 <section id="random-effects-prediction-simulation" class="slide level2">
 <h2>Random-effects prediction: simulation</h2>
 <p><strong>Simulation · exact-binomial RR/SR/OR models</strong></p>
-<p><img data-src="figs/analysis-overview/prediction-simulation.png" alt="Matched versus opposite-scale predictive MSE gains in four generators, split by expected direction. Gains vary and can reverse with direction errors or constant OR." height="430"></p>
+<p><img data-src="figs/analysis-overview/prediction-simulation.png" alt="Predictive MSE gains from matching versus both the opposite RR/SR scale and OR, across four generators and two expected directions. Mechanism-based gains are strongest for increases; OR performs better under constant OR." height="380"></p>
+<div class="fragment">
+<p><strong>Promising prediction gains</strong>, especially for expected increases; direction errors and the comparator matter.</p>
+<p><strong>Separate issue:</strong> intervals for average predictive advantage remain imperfectly calibrated.</p>
 <aside class="notes">
-<p>Source: output/new_rct_prediction/v1/results/performance_contrasts.csv. Base prior, no target baseline shift, target controls available, latent MSE contrast, opposite-scale comparator. Four selected generators C2/V1/V4/O1, 400 evaluation collections each. Each panel has its own y-axis range. The broader study completed 9,600 collection jobs across reference/evaluation and prior streams; these are not 9,600 independent replications of one contrast. Each MA contributes two held-out targets per simulation collection. Target uncertainty includes a new random effect; RR/SR distributions respect probability constraints. Mean-performance intervals undercovered in some scenarios; Monte Carlo intervals in this plot quantify simulation precision, not uncertainty for one observed-data sample.</p>
+<p>Source: output/new_rct_prediction/v1/results/performance_contrasts.csv. Base prior, no target baseline shift, target controls available, latent MSE contrast, opposite-scale and OR comparators. Four selected generators C2/V1/V4/O1, 400 evaluation collections each. Each panel has its own y-axis range. With 20% direction errors, matching loses against both comparators for expected decreases but retains gains for expected increases. Under constant OR, matching loses against OR itself; a small loss against the opposite scale does not mean a small loss against OR. The figure scores latent treated probabilities, replacing the observed event proportion in the preceding slide’s loss definition with the known simulated probability. The broader study completed 9,600 collection jobs across reference/evaluation and prior streams; these are not 9,600 independent replications of one contrast. Each MA contributes two held-out targets per simulation collection. Target uncertainty includes a new random effect; RR/SR distributions respect probability constraints. Mean-performance intervals undercovered in some scenarios; Monte Carlo intervals in this plot quantify simulation precision, not uncertainty for one observed-data sample.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -827,6 +759,7 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
 </section>
 <section id="random-effects-prediction-observed-data" class="slide level2">
 <h2>Random-effects prediction: observed data</h2>
@@ -857,7 +790,7 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
 </ul>
 <p><a href="#/prediction-details">Prediction methods and calibration</a></p>
 <aside class="notes">
-<p>Source: output/real_rct_prediction/v1/results.md; 24 decrease and 11 increase MAs. Full leave-one-trial-out evaluation, equal-MA overall aggregation. Against OR, direction-specific squared-error improvements are +5.28 for decrease and −4.24 for increase. Overall log-score improvement against OR is −0.031, illustrating dependence on loss. The source model uses exact binomial random effects; later constant-curve prediction uses a different estimator and sample. Selection: likely/certain, known direction, at least five distinct trials, one MA per review, no shared corrected trial identities. Zero/all-event arms retained.</p>
+<p>Source: output/real_rct_prediction/v1/results.md; 24 decrease and 11 increase MAs. Full leave-one-trial-out evaluation, equal-MA overall aggregation. Against OR, direction-specific squared-error improvements are +5.28 for decrease and −4.24 for increase. Overall log-score improvement against OR is −0.031, illustrating dependence on loss. The source model uses exact binomial random effects. Selection: likely/certain, known direction, at least five distinct trials, one MA per review, no shared corrected trial identities. Zero/all-event arms retained.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -870,14 +803,16 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
           display:block!important;
       }</style></aside>
 </section>
-<section id="constant-effect-curves-fit-and-prediction" class="slide level2">
-<h2>Constant-effect curves: fit and prediction</h2>
-<p><strong>Observed data · later profile-likelihood analysis</strong></p>
-<p><img data-src="figs/analysis-overview/constant-effect-prediction.png" alt="Per-MA prediction advantages versus constant OR in 31 likely/certain MAs. Twenty favor matching, but the overall mean is slightly negative." height="350"></p>
-<p>No demonstrated average advantage over OR; the predictive interval failed its sample-size-specific calibration gate.</p>
-<p>Strict constant-directional fit flagged <strong>10/31</strong> likely/certain and <strong>16/60</strong> unlikely MAs after nominal BH correction.</p>
+<section id="visual-exploration-expected-decrease" class="slide level2">
+<h2>Visual exploration: expected decrease</h2>
+<p>Two example MAs; columns show RR and SR against control-arm odds.</p>
+<p><img data-src="figs/ma-grid-preview/decrease.png" alt="First two expected-decrease MAs in the original grid order, showing observed RR and SR against control-arm odds and descriptive theory overlays." height="350"></p>
+<p>Colored points/lines: observed trial ratios, joined in baseline order. Black dashed: theory overlay estimated from the mean RR.</p>
+<div class="fragment">
+<p><strong>Open question:</strong> can agreement with these patterns become a useful analysis?</p>
+<p><a href="figs/ma-grid-preview/monotonic_studies_odds.pdf" target="_blank">Full grids: odds</a> · <a href="figs/ma-grid-preview/monotonic_studies_probability.pdf" target="_blank">probability</a> · <a href="figs/ma-grid-preview/monotonic_studies_inverse_odds.pdf" target="_blank">inverse odds</a></p>
 <aside class="notes">
-<p>Sources: output/monotonicity_validation/v3/real_ma_results.csv and docs/monotonicity_validation_results.md. 31 likely/certain MAs (314 trials), 60 unlikely MAs (644 trials). A different selected sample from the October 35-MA random-effects analysis. Profile likelihood fits constant RR/SR/OR; target baseline averaged under a support-conditioned Jeffreys posterior. Separate bootstrap test constrains the matched log ratio to be nonpositive. 480,000 independent simulated MA datasets plus 1,200 bootstrap-calibration MAs. Nominal 95% predictive coverage at 31 MAs ranged 87.5–95.0%; approximate bootstrap rejection calibration ranged 4–8.5% under nominal 5%. The observed mean advantage is −0.000197 squared probability (about −1.97 squared percentage points). The unvalidated interval is not shown as a calibrated confidence interval. Fit rejections concern constant effect plus expected direction, not individual-level monotonicity alone. Failure to reject does not establish either assumption.</p>
+<p>Descriptive plots only. Source: analysis/plot_monotonic_study_grids.R in the development repository. The full PDFs include 54 likely/certain MAs with known expected direction and at least five study records; repeated trial labels/multi-arm records are retained. This is not the selected 35-MA prediction sample. Preview takes the first two decrease MAs in original PDF order, without selecting for agreement. m_d = 1 - arithmetic mean of finite observed RRs, equally weighted; RR overlay is 1 - m_d and SR overlay is 1 + m_d times baseline odds. Parameters outside [0,1] are marked with an asterisk, not clipped. Gray dashed line is ratio 1. Undefined ratios are crosses at the top; infinite ratios are triangles. Lines connect different trials, not longitudinal trajectories or fitted regressions. These overlays are descriptive summaries, not fitted inferential models.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -889,6 +824,30 @@ b(x) + a\,\underbrace{(1-b(x))\frac{1}{6}}_{\text{additional risk}}.
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
+</section>
+<section id="visual-exploration-expected-increase" class="slide level2">
+<h2>Visual exploration: expected increase</h2>
+<p>Same display; the direction-matched scale is now SR.</p>
+<p><img data-src="figs/ma-grid-preview/increase.png" alt="First two expected-increase MAs in the original grid order, showing observed RR and SR against control-arm odds and descriptive theory overlays." height="350"></p>
+<p>Black dashed: theory overlay estimated from the mean SR; RR varies with inverse baseline odds.</p>
+<div class="fragment">
+<p><strong>What would be informative?</strong> Assess shape agreement, compare scales, or leave this descriptive—while accounting for sampling noise and shared control data.</p>
+<p><a href="figs/ma-grid-preview/monotonic_studies_odds.pdf" target="_blank">Browse all MAs</a></p>
+<aside class="notes">
+<p>First two increase MAs in original PDF order. m_i = 1 - arithmetic mean of finite observed SRs; SR overlay is 1 - m_i and RR overlay is 1 + m_i divided by baseline odds. Both slides retain odds on the x-axis. Axes vary between MA rows as in the original plots. Discussion only: no proposed estimator or test has been selected here. Baseline and effect ratios share control counts; plug-in ratios can be noisy or undefined; mechanism strength may vary across trials. Visual fit alone cannot establish individual-level monotonicity or absence of heterogeneity.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
 </section>
 <section id="paper-discussion" class="slide level2">
 <h2>What would make a coherent paper?</h2>
@@ -1070,18 +1029,10 @@ p_1=\pi_{01}+\pi_{11}.
 <td>Large simulation panels; label/information variations</td>
 <td>Biased slopes and poor coverage</td>
 </tr>
-<tr class="odd">
-<td>Corrected moments / Fieller</td>
-<td>Small development panels</td>
-<td>Undefined points or unbounded intervals</td>
-</tr>
-<tr class="even">
-<td>Within-MA pooling</td>
-<td>60 collections each at 35 and 350 MAs</td>
-<td>Only 14/60 and 3/60 passed original diagnostics</td>
-</tr>
 </tbody>
 </table>
+<!-- | Corrected moments / Fieller | Small development panels | Undefined points or unbounded intervals | -->
+<div class="line-block">Within-MA pooling | 60 collections each at 35 and 350 MAs | Only 14/60 and 3/60 passed original diagnostics |</div>
 <p><a href="#/coupling-analysis">Back to coupling</a></p>
 <aside class="notes">
 <p>Sources: docs/coupling_revision_v2_report_20260917.md; docs/independent_binomial_coupling_report.md; docs/coupling_interval_bayesian_development_20260923.md; docs/coupling_shared_binomial_v1_feasibility_20260923.md; docs/coupling_shared_binomial_ma350_review_20260928.md. The 350-MA result uses the original strict diagnostic screen; 23/60 passed a post hoc relaxed screen. Completed computation is not successful calibration.</p>
@@ -1119,13 +1070,9 @@ p_1=\pi_{01}+\pi_{11}.
 <td>October random-effects models</td>
 <td>New target effect plus baseline uncertainty; RR/SR/OR</td>
 </tr>
-<tr class="odd">
-<td>November constant-effect curves</td>
-<td>Common-effect point fit; baseline uncertainty; separate bootstrap fit test</td>
-</tr>
 </tbody>
 </table>
-<p>The later simulations evaluate different procedures; they do not validate the earlier ones retrospectively.</p>
+<p>The random-effects simulations evaluate the new-trial prediction procedure; the early feasibility benchmark uses a different target.</p>
 <p><a href="#/prediction-analysis">Back to prediction</a></p>
 </section>
 <section id="analysis-populations" class="slide level2">
@@ -1158,16 +1105,12 @@ p_1=\pi_{01}+\pi_{11}.
 <td>October prediction: selected independent MAs</td>
 <td style="text-align: right;">35</td>
 </tr>
-<tr class="even">
-<td>November curves: selected likely/certain MAs</td>
-<td style="text-align: right;">31</td>
-</tr>
 </tbody>
 </table>
 <p>Different versions use different selection rules and samples; these are not interchangeable denominators.</p>
 <p><a href="#/paper-discussion">Back to discussion</a></p>
 <aside class="notes">
-<p>The 35- versus 31-MA sets come from separate frozen selection workflows; this table is not a single sequential attrition flow. The November analysis additionally includes 60 unlikely MAs. The earlier paired heterogeneity result uses 104 MAs under its own &gt;=3-study criterion. Sources: figs/exploratory/provenance.json; docs/real_rct_prediction_protocol_v1.md; docs/monotonicity_validation_results.md.</p>
+<p>The visual grids separately select 54 MAs using at least five source study records, retaining repeated trial labels/multi-arm records; this differs from the distinct-RCT criterion in the descriptive table. The prediction analysis selects 35 independent MAs under its frozen workflow. The earlier paired heterogeneity result uses 104 MAs under its own &gt;=3-study criterion. Sources: figs/exploratory/provenance.json; docs/real_rct_prediction_protocol_v1.md; analysis/plot_monotonic_study_grids.R.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

@@ -1,12 +1,20 @@
 ---
 title: "General Chair’s notes on Machine Learning for Healthcare 2026"
 author: 
-  - name: Wouter van Amsterdam
-  - name: Rahul G. Krishnan
+  - name:
+      given: Wouter A.C.
+      family: van Amsterdam
+  - name:
+      given: Rahul G.
+      family: Krishnan
 citation:
   author: 
-    - name: Wouter van Amsterdam
-    - name: Rahul G. Krishnan
+    - name:
+        given: Wouter A.C.
+        family: van Amsterdam
+    - name:
+        given: Rahul G.
+        family: Krishnan
 date: 2026-09-08
 image: ./rahul_wouter.png
 image-alt: "Machine Learning for Healthcare 2026 at Johns Hopkins University"

@@ -6,7 +6,9 @@ citation: true
 bibliography: ../library.bib
 
 author:
-  - name: Wouter van Amsterdam
+  - name:
+      given: Wouter A.C.
+      family: van Amsterdam
     url: https://vanamsterdam.github.io
     affiliation: University Medical Center Utrecht
     #affiliation-url: 

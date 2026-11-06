@@ -23,10 +23,19 @@ p <- ggplot(r,aes(target)) + geom_hline(yintercept=0,color='grey65') + geom_segm
 save_plot(p,'coupling-recovery',11,5)
 
 s <- read.csv(file.path(root,'output/new_rct_prediction/v1/results/performance_contrasts.csv')) |>
- filter(prior_variant=='base',shift==0,baseline_mode=='count',direction_group %in% c('decrease','increase'), comparator=='opposite',scenario %in% c('C2','V1','V4','O1'))
-stopifnot(nrow(s)==8)
+ filter(prior_variant=='base',shift==0,baseline_mode=='count',direction_group %in% c('decrease','increase'), comparator %in% c('opposite','or'),scenario %in% c('C2','V1','V4','O1'))
+stopifnot(nrow(s)==16)
 s$scenario <- factor(s$scenario,levels=c('C2','V1','V4','O1'),labels=c('Constant mechanism','Varying mechanism','20% direction errors','Constant OR'))
-p <- ggplot(s,aes(scenario,improvement_latent_mean*10000)) + geom_hline(yintercept=0,linetype='dashed',color='grey50') + geom_errorbar(aes(ymin=improvement_latent_lower*10000,ymax=improvement_latent_upper*10000),width=.15) + geom_point(color='#0072B2',size=3) + facet_wrap(~direction_group,ncol=1,scales='free_y') + labs(title='Prediction gains depend on the generator',subtitle='Opposite-scale MSE minus matched-scale MSE; positive favors matching',x=NULL,y='MSE improvement (pp²)',caption='400 evaluation collections per setting; target control counts available; 95% Monte Carlo intervals.') + theme(axis.text.x=element_text(size=12))
+s$comparator <- factor(s$comparator, levels=c('opposite','or'), labels=c('Opposite RR/SR scale','OR'))
+dodge <- position_dodge(width=.35)
+p <- ggplot(s,aes(scenario,improvement_latent_mean*10000,color=comparator,shape=comparator)) +
+  geom_hline(yintercept=0,linetype='dashed',color='grey50') +
+  geom_errorbar(aes(ymin=improvement_latent_lower*10000,ymax=improvement_latent_upper*10000),width=.12,position=dodge) +
+  geom_point(size=3,position=dodge) +
+  scale_color_manual(values=c('#0072B2','#D55E00')) +
+  facet_wrap(~direction_group,ncol=1,scales='free_y') +
+  labs(title='Predictive advantage of direction matching',subtitle='Comparator MSE minus matched MSE; positive favors matching',x=NULL,y='MSE improvement (pp²)',color='Comparator',shape='Comparator',caption='400 evaluation collections per setting; target controls available; 95% Monte Carlo intervals.') +
+  theme(axis.text.x=element_text(size=12),legend.text=element_text(size=13),legend.title=element_text(size=13))
 save_plot(p,'prediction-simulation',11,6)
 
 v <- read.csv(file.path(root,'output/monotonicity_validation/v3/real_ma_results.csv')) |> filter(group=='monotonic') |> arrange(adv_or) |> mutate(rank=row_number())

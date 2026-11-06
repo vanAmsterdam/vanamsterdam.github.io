@@ -39,86 +39,36 @@ The aim is to identify a defensible contribution rather than to include every im
 - May 2025, presented progress to Julie Josse and colleagues (remotely)
 - ... - now, statistical analysis
 
-## Effects of interventions
+## Effect-scale choice
 
-- In healthcare we need to make decisions regarding interventions ('treatments'), based on their 'effects'
-- Let $Y^0,Y^1$ be potential outcomes under treatment $0$ and $1$ respectively:
+For a binary outcome, let $p_a=P(Y^a=1)$.
+
+$$
+\mathrm{RD}=p_1-p_0,\qquad
+\mathrm{RR}=\frac{p_1}{p_0},\qquad
+\mathrm{SR}=\frac{1-p_1}{1-p_0}.
+$$
+
+- These describe different contrasts of the same two risks.
+- As populations and baseline risks change, their stability can differ.
+
+. . .
+
+**Question:** which scale is useful for combining trials and predicting effects in another population?
+
+## Stability across populations
+
+- Between-trial heterogeneity depends on the effect scale.
+- Under monotonicity **and constant mechanism strength**, RR or SR can remain constant while baseline risk varies.
+- We investigate whether expected treatment direction helps select a scale for evidence synthesis.
 
 . . . 
 
-$$ \Psi = f(E[Y^0], E[Y^1]) $$
-
-- If $Y$ is binary, $\Psi$ could be a risk difference ($\Psi_{rd}$), risk ratio ($\Psi_{rr}$), survival ratio ($\Psi_{sr}$), number needed to treat, odds ratio, etc.
-
-## Estimating effects
-
-- We get estimates of treatment effects from RCTs, as these give us random samples from $P(Y^0),P(Y^1)$, $D=$
-
-. . .
-
-|           | $Y=0$                      | $Y=1$                      |
-|-----------|----------------------------|----------------------------|
-| control   | $\sum_{i}^{n_0} Y_i^0 = 0$ | $\sum_{i}^{n_0} Y_i^0 = 1$ |
-| treatment | $\sum_i^{n_1} Y_i^1 = 0$   | $\sum_i^{n_1} Y_i^1 = 1$   |
-
-  <!-- $$D = \{\sum_{i}^{n_0} Y_i^0 = 1, \sum_{i}^{n_0} Y_i^0 = 0, \sum_i^{n_1} Y_i^1 = 1, \sum_i^{n_1} Y_i^1 = 0 \}$$ -->
-
-- For a well-conducted RCT, many choices $\Psi$ are a *valid* measure of the treatment effect
-
-## How to use the RCT evidence?
-
-- Typical highest standard of evidence: have a series of all $k$ published RCT results, $D_1, \ldots, D_k$.
-- Calculate *an* effect meausre $\Psi_i$ for each trial (with variance estimate $v_i$), and then combine them to get a single estimate with *meta-analysis*.
-
-. . .
-
-\begin{aligned}
-\Psi_i &\;\sim\; N \bigl(\mu,\;v_i\bigr), \quad i=1,\dots,k
-\end{aligned}
-
-- $\mu$ is *overall* effect measure; $\Psi$ typically on log scale, or risk difference
-- this is a 'fixed effects' model with a single underlying treatment effect
-
-## Heterogeneity poses challenges for decision making
-
-- $\Psi$ is a functional of the underlying joint distribution of $Y^0$ and $Y^1$, which may depend on covariates $X$ among other factors:
-
-. . .
-
-$$ \Psi(x) = f(E[Y^0|X=x], E[Y^1|X=x]) $$
-
-- Need to make a decision on interventions for *a specific* subpopulation ('target') with a specific distribution: $P^*(Y^0,Y^1,X)$
-
-## Issues with trial evidence
-
-- Trials are typically conducted in specific subpopulations, which
-  a. may not *cover* $P^*(X)$ (e.g. elderly, pregnant women and children are often excluded)
-  b. may have a different disctribution of $X$
-- (when) are the trial results generalizable to the target population?
-
-## Meta-analysis with random effects
-
-\begin{aligned}
-\Psi_i \mid \theta_i &\;\sim\; N \bigl(\theta_i,\;v_i\bigr), \quad i=1,\dots,k \\[6pt]
-\theta_i \mid \mu,\tau &\;\sim\; N\bigl(\mu,\;\tau^{2}\bigr)
-\end{aligned}
-
-- $\mu$ is *overall* effect measure, $\tau$ is *heterogeneity* of the effect measure (which could be 0)
-- this is a *random effects* model, setting $\tau=0$ retreives the 'fixed effects' model
-
-## Motivation
-
-- Need to make assumptions to pick best measure for:
-  - learning about our target population
-  - decision making
-- Though many choices of $\Psi$ (risk ratio, survival ratio, risk difference, ...) are *causally valid* measures of treatment effect, not all of them are created equally when it comes to their dependence on the underlying joint distribution of $Y^0$ and $Y^1$, i.e. their *generalizability*.
-- Colnet showed that for treatments with *monotonic* effects (never hurting or never benefitting), the conditional *risk ratio* (/*survival ratio*) may be decoupled from baseline risk
-
-# Risk ratio, survival ratio, risk difference ,...
+**A simple example: Russian roulette.**
 
 ## Russian roulette
 
-When playing Russion roulette, the risk of dying is 1/6 if you play, and 0 if you don't.
+When playing Russion roulette, the immediate risk of dying is 1/6 if you play, and 0 if you don't.
 <!-- The risk ratio is 1/6, the survival ratio is 5/6, and the risk difference is 1/6. If you play, you die with probability 1/6, and if you don't play, you die with probability 0. -->
 Say we want to measure the effect of forcing people to undergo Russion roulette with a randomized trial.
 
@@ -152,6 +102,12 @@ We'll calculate a few different effect measures, averaged over the covariate dis
 
 ## Roulette: risk difference
 
+$$
+P(Y^a=1\mid X=x)=b(x)+a\,\frac{1-b(x)}{6}.
+$$
+
+. . .
+
 Average over the covariate distribution in population $P$:
 
 $$
@@ -171,6 +127,12 @@ $$
 $$
 
 ## Roulette: risk ratio
+
+$$
+P(Y^a=1\mid X=x)=b(x)+a\,\frac{1-b(x)}{6}.
+$$
+
+. . .
 
 For $\mathbb{E}_P[b(X)]>0$,
 
@@ -193,6 +155,12 @@ $$
 $$
 
 ## Roulette: survival ratio
+
+$$
+P(Y^a=1\mid X=x)=b(x)+a\,\frac{1-b(x)}{6}.
+$$
+
+. . .
 
 For $\mathbb{E}_P[b(X)]<1$,
 
@@ -410,6 +378,8 @@ Predictive comparisons depend on estimation, target information and loss as well
 
 . . . 
 
+Let $\tau_{m,s}$ denote the between-trial standard deviation of the **true log effects** in meta-analysis $m$, on scale $s\in\{\mathrm{RR},\mathrm{SR}\}$.
+
 $$
 \theta_m=\log(\tau_{m,\mathrm{matched}})
           -\log(\tau_{m,\mathrm{mismatched}}).
@@ -435,7 +405,7 @@ The Bayesian hierarchy does not itself encode shared-review/shared-trial cluster
 
 Many estimates are tied at zero; the answer is sensitive to the estimator.
 
-The early simulation assessed the paired test under a stylized design—not the entire analysis pipeline.
+<!-- The early simulation assessed the paired test under a stylized design—not the entire analysis pipeline. -->
 
 ::: {.notes}
 Source: output/tables/primary_results.csv. Matched lower/tied/higher proportions are computed from saved paired contrasts.
@@ -516,18 +486,19 @@ Alternative studies evaluated corrected moments, Fieller sets, independent Beta 
 
 **Predict held-out treated outcome** → score after prediction
 
+Here $L=(\widehat p_T-y_T/n_T)^2$ is **squared prediction loss**: predicted versus observed treated event proportion.
+
 $$
 \Delta L=L_{\mathrm{comparator}}-L_{\mathrm{matched}}.
 $$
 
 - Positive values favor matching, on a common treated-probability scale.
 - Average held-out losses within MA, then weight MAs equally.
-- Separate **random-effects prediction** from the later **constant-effect curve** analysis.
 
 ::: {.notes}
 The held-out treated count is excluded from fitting and prediction, but the held-out control count is available. This is not prediction with no target information.
 Matched is defined by the supplied direction label, not observed prediction performance.
-Sources: docs/real_rct_prediction_protocol_v1.md and docs/monotonicity_validation_protocol_v3.md.
+Source: docs/real_rct_prediction_protocol_v1.md.
 Simulation can score latent treated probabilities; actual data score observed treated proportions. Paired expected loss differences agree under the held-out binomial task, but observed losses retain sampling uncertainty.
 :::
 
@@ -535,11 +506,19 @@ Simulation can score latent treated probabilities; actual data score observed tr
 
 **Simulation · exact-binomial RR/SR/OR models**
 
-![](figs/analysis-overview/prediction-simulation.png){height=430px fig-alt="Matched versus opposite-scale predictive MSE gains in four generators, split by expected direction. Gains vary and can reverse with direction errors or constant OR."}
+![](figs/analysis-overview/prediction-simulation.png){height=380px fig-alt="Predictive MSE gains from matching versus both the opposite RR/SR scale and OR, across four generators and two expected directions. Mechanism-based gains are strongest for increases; OR performs better under constant OR."}
+
+. . .
+
+**Promising prediction gains**, especially for expected increases; direction errors and the comparator matter.
+
+**Separate issue:** intervals for average predictive advantage remain imperfectly calibrated.
 
 ::: {.notes}
 Source: output/new_rct_prediction/v1/results/performance_contrasts.csv.
-Base prior, no target baseline shift, target controls available, latent MSE contrast, opposite-scale comparator. Four selected generators C2/V1/V4/O1, 400 evaluation collections each. Each panel has its own y-axis range.
+Base prior, no target baseline shift, target controls available, latent MSE contrast, opposite-scale and OR comparators. Four selected generators C2/V1/V4/O1, 400 evaluation collections each. Each panel has its own y-axis range.
+With 20% direction errors, matching loses against both comparators for expected decreases but retains gains for expected increases. Under constant OR, matching loses against OR itself; a small loss against the opposite scale does not mean a small loss against OR.
+The figure scores latent treated probabilities, replacing the observed event proportion in the preceding slide's loss definition with the known simulated probability.
 The broader study completed 9,600 collection jobs across reference/evaluation and prior streams; these are not 9,600 independent replications of one contrast.
 Each MA contributes two held-out targets per simulation collection. Target uncertainty includes a new random effect; RR/SR distributions respect probability constraints.
 Mean-performance intervals undercovered in some scenarios; Monte Carlo intervals in this plot quantify simulation precision, not uncertainty for one observed-data sample.
@@ -565,27 +544,47 @@ Units: squared percentage points; positive favors matching.
 ::: {.notes}
 Source: output/real_rct_prediction/v1/results.md; 24 decrease and 11 increase MAs. Full leave-one-trial-out evaluation, equal-MA overall aggregation.
 Against OR, direction-specific squared-error improvements are +5.28 for decrease and −4.24 for increase. Overall log-score improvement against OR is −0.031, illustrating dependence on loss.
-The source model uses exact binomial random effects; later constant-curve prediction uses a different estimator and sample.
+The source model uses exact binomial random effects.
 Selection: likely/certain, known direction, at least five distinct trials, one MA per review, no shared corrected trial identities. Zero/all-event arms retained.
 :::
 
-## Constant-effect curves: fit and prediction
+## Visual exploration: expected decrease
 
-**Observed data · later profile-likelihood analysis**
+Two example MAs; columns show RR and SR against control-arm odds.
 
-![](figs/analysis-overview/constant-effect-prediction.png){height=350px fig-alt="Per-MA prediction advantages versus constant OR in 31 likely/certain MAs. Twenty favor matching, but the overall mean is slightly negative."}
+![](figs/ma-grid-preview/decrease.png){height=350px fig-alt="First two expected-decrease MAs in the original grid order, showing observed RR and SR against control-arm odds and descriptive theory overlays."}
 
-No demonstrated average advantage over OR; the predictive interval failed its sample-size-specific calibration gate.
+Colored points/lines: observed trial ratios, joined in baseline order. Black dashed: theory overlay estimated from the mean RR.
 
-Strict constant-directional fit flagged **10/31** likely/certain and **16/60** unlikely MAs after nominal BH correction.
+. . .
+
+**Open question:** can agreement with these patterns become a useful analysis?
+
+[Full grids: odds](figs/ma-grid-preview/monotonic_studies_odds.pdf){target="_blank"} · [probability](figs/ma-grid-preview/monotonic_studies_probability.pdf){target="_blank"} · [inverse odds](figs/ma-grid-preview/monotonic_studies_inverse_odds.pdf){target="_blank"}
 
 ::: {.notes}
-Sources: output/monotonicity_validation/v3/real_ma_results.csv and docs/monotonicity_validation_results.md.
-31 likely/certain MAs (314 trials), 60 unlikely MAs (644 trials). A different selected sample from the October 35-MA random-effects analysis.
-Profile likelihood fits constant RR/SR/OR; target baseline averaged under a support-conditioned Jeffreys posterior. Separate bootstrap test constrains the matched log ratio to be nonpositive.
-480,000 independent simulated MA datasets plus 1,200 bootstrap-calibration MAs. Nominal 95% predictive coverage at 31 MAs ranged 87.5–95.0%; approximate bootstrap rejection calibration ranged 4–8.5% under nominal 5%.
-The observed mean advantage is −0.000197 squared probability (about −1.97 squared percentage points). The unvalidated interval is not shown as a calibrated confidence interval.
-Fit rejections concern constant effect plus expected direction, not individual-level monotonicity alone. Failure to reject does not establish either assumption.
+Descriptive plots only. Source: analysis/plot_monotonic_study_grids.R in the development repository. The full PDFs include 54 likely/certain MAs with known expected direction and at least five study records; repeated trial labels/multi-arm records are retained. This is not the selected 35-MA prediction sample.
+Preview takes the first two decrease MAs in original PDF order, without selecting for agreement. m_d = 1 - arithmetic mean of finite observed RRs, equally weighted; RR overlay is 1 - m_d and SR overlay is 1 + m_d times baseline odds. Parameters outside [0,1] are marked with an asterisk, not clipped. Gray dashed line is ratio 1. Undefined ratios are crosses at the top; infinite ratios are triangles. Lines connect different trials, not longitudinal trajectories or fitted regressions.
+These overlays are descriptive summaries, not fitted inferential models.
+:::
+
+## Visual exploration: expected increase
+
+Same display; the direction-matched scale is now SR.
+
+![](figs/ma-grid-preview/increase.png){height=350px fig-alt="First two expected-increase MAs in the original grid order, showing observed RR and SR against control-arm odds and descriptive theory overlays."}
+
+Black dashed: theory overlay estimated from the mean SR; RR varies with inverse baseline odds.
+
+. . .
+
+**What would be informative?** Assess shape agreement, compare scales, or leave this descriptive—while accounting for sampling noise and shared control data.
+
+[Browse all MAs](figs/ma-grid-preview/monotonic_studies_odds.pdf){target="_blank"}
+
+::: {.notes}
+First two increase MAs in original PDF order. m_i = 1 - arithmetic mean of finite observed SRs; SR overlay is 1 - m_i and RR overlay is 1 + m_i divided by baseline odds. Both slides retain odds on the x-axis. Axes vary between MA rows as in the original plots.
+Discussion only: no proposed estimator or test has been selected here. Baseline and effect ratios share control counts; plug-in ratios can be noisy or undefined; mechanism strength may vary across trials. Visual fit alone cannot establish individual-level monotonicity or absence of heterogeneity.
 :::
 
 ## What would make a coherent paper? {#paper-discussion}
@@ -705,7 +704,7 @@ Review effects do not encode the exact covariance from shared trials across revi
 |---|---|---|
 | Shared-binomial v2 | 91-MA empirical fit; development simulations | Strict diagnostic failure; incomplete recovery checks |
 | Independent arms | Large simulation panels; label/information variations | Biased slopes and poor coverage |
-| Corrected moments / Fieller | Small development panels | Undefined points or unbounded intervals |
+<!-- | Corrected moments / Fieller | Small development panels | Undefined points or unbounded intervals | -->
 | Within-MA pooling | 60 collections each at 35 and 350 MAs | Only 14/60 and 3/60 passed original diagnostics |
 
 [Back to coupling](#coupling-analysis)
@@ -721,9 +720,8 @@ The 350-MA result uses the original strict diagnostic screen; 23/60 passed a pos
 |---|---|
 | Early feasibility benchmark | Transport mean log effect to known target baseline; no new-trial random effect |
 | October random-effects models | New target effect plus baseline uncertainty; RR/SR/OR |
-| November constant-effect curves | Common-effect point fit; baseline uncertainty; separate bootstrap fit test |
 
-The later simulations evaluate different procedures; they do not validate the earlier ones retrospectively.
+The random-effects simulations evaluate the new-trial prediction procedure; the early feasibility benchmark uses a different target.
 
 [Back to prediction](#prediction-analysis)
 
@@ -736,14 +734,12 @@ The later simulations evaluate different procedures; they do not validate the ea
 | Certain/likely monotonic, at least five RCTs | 65 |
 | Same, known direction | 54 |
 | October prediction: selected independent MAs | 35 |
-| November curves: selected likely/certain MAs | 31 |
 
 Different versions use different selection rules and samples; these are not interchangeable denominators.
 
 [Back to discussion](#paper-discussion)
 
 ::: {.notes}
-The 35- versus 31-MA sets come from separate frozen selection workflows; this table is not a single sequential attrition flow.
-The November analysis additionally includes 60 unlikely MAs. The earlier paired heterogeneity result uses 104 MAs under its own >=3-study criterion.
-Sources: figs/exploratory/provenance.json; docs/real_rct_prediction_protocol_v1.md; docs/monotonicity_validation_results.md.
+The visual grids separately select 54 MAs using at least five source study records, retaining repeated trial labels/multi-arm records; this differs from the distinct-RCT criterion in the descriptive table. The prediction analysis selects 35 independent MAs under its frozen workflow. The earlier paired heterogeneity result uses 104 MAs under its own >=3-study criterion.
+Sources: figs/exploratory/provenance.json; docs/real_rct_prediction_protocol_v1.md; analysis/plot_monotonic_study_grids.R.
 :::
